@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/auth/:hacktoberfest/github', to: 'sessions#create'
-
+  root to: "home#index"
+  get "/auth/:provider/callback", to: "sessions#create"
+    get "/login" => redirect("/auth/github"), as: :login
+    get "/logout" => "sessions#destroy", as: :logout
 end
