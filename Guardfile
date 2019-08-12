@@ -30,6 +30,8 @@ guard :rspec, cmd: "bundle exec rspec" do
 
   # Feel free to open issues for suggestions and improvements
 
+  notification :terminal_notifier if `uname` =~ /Darwin/
+
   # RSpec files
   rspec = dsl.rspec
   watch(rspec.spec_helper) { rspec.spec_dir }
