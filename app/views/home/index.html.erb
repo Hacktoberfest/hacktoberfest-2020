@@ -1,0 +1,7 @@
+<div>
+<% if current_user %>
+  <%= "Welcome #{current_user.name}" %>
+<% else %>
+  <%= link_to "Sign in with Github", "/auth/github" %>
+<% end %>
+</div>
