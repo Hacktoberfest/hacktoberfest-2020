@@ -18,6 +18,8 @@ gem 'sass-rails', '~> 5.0'
 
 gem 'sqlite3'
 
+gem 'pry'
+
 gem 'turbolinks', '~> 5'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
