@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def create
-    @user = User.where(gh_id: auth_hash[:uid]).first_or_create
+    @user = User.where(uid: auth_hash[:uid]).first_or_create
     session[:current_user_id] = @user.id
     redirect_to '/'
   end
