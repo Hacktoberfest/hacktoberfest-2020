@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_08_13_184016) do
+
   create_table "issues", force: :cascade do |t|
     t.integer "gh_id"
     t.datetime "created_at", null: false
@@ -38,4 +39,5 @@ ActiveRecord::Schema.define(version: 2019_08_13_184016) do
     t.datetime "updated_at", null: false
     t.string "provider", default: "github"
   end
+
 end

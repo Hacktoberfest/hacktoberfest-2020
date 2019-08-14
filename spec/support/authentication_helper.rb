@@ -17,8 +17,8 @@ module AuthenticationHelper
       }
     }
     OmniAuth.config.add_mock(:github, omniauth_hash)
-    Rails.application.env_config["omniauth.auth"] =
+    Rails.application.env_config['omniauth.auth'] =
       OmniAuth.config.mock_auth[:github]
-    get "/auth/github/callback"
+    get '/auth/github/callback'
   end
 end
