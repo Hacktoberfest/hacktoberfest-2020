@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 module AuthenticationHelper
   def login(provider = 'github', uid = '123456')
     omniauth_hash = {

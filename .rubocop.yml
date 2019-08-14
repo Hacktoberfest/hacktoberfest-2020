@@ -1,0 +1,4 @@
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'db/schema.rb'
