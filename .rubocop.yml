@@ -1,4 +1,17 @@
 AllCops:
   Exclude:
-    - 'Gemfile'
+    - 'Gemfile'  #TODO: Update Gemfile style rules
     - 'db/schema.rb'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+BlockLength:
+  Max: 70
+MethodLength:
+  Max: 35
+Style/PercentLiteralDelimiters:
+  Enabled: false
+Rails:
+  Enabled: true
+Documentation:
+  Enabled: false
