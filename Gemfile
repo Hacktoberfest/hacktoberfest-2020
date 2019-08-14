@@ -26,7 +26,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'uglifier', '>= 1.3.0'
 
-
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
@@ -36,7 +35,6 @@ group :development, :test do
 
   gem 'rubocop'
 end
-
 
 group :development do
   gem 'guard-rspec', require: false
@@ -51,9 +49,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'chromedriver-helper'
-
 end

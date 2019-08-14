@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
+
 require "rails_helper"
 
 RSpec.describe 'Sessions', type: :request do
-
   describe "signup and login" do
-
     it "logs the user in" do
       login
       expect(session[:current_user_id]).to_not eq(nil)
