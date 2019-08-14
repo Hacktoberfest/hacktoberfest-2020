@@ -11,7 +11,9 @@ RSpec.describe 'Sessions', type: :request do
 
     context 'user already exists' do
       before do
-        User.create(gh_id: 123_456)
+        # rubocop:disable Style/NumericLiterals
+        User.create(uid: 123456)
+        # rubocop:enable Style/NumericLiterals
       end
 
       it 'does not create a new User' do
