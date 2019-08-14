@@ -1,12 +1,26 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  before_action :set_current_user
+
   def current_user
-    user = User.find(session[:current_user_id])
-    @current_user ||= user if session[:current_user_id]
+    if logged_in?
+      User.find(session[:current_user_id])
+    end
   end
 
   def logged_in?
-    !@current_user.nil?
+    !session[:current_user_id].nil?
+  end
+
+  def set_current_user
+    @current_user = current_user
+  end
+
+  def authenticate_user!
+    unless logged_in?
+      session[:destination] = request.env["REQUEST_PATH"]
+      redirect_to login_path
+    end
   end
 end
