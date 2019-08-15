@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :set_current_user
 
   def current_user
-    if logged_in?
-      User.find(session[:current_user_id])
-    end
+    return unless logged_in?
+
+    User.find(session[:current_user_id])
   end
 
   def logged_in?
@@ -18,9 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    unless logged_in?
-      session[:destination] = request.env["REQUEST_PATH"]
-      redirect_to login_path
-    end
+    return unless logged_in?
+
+    session[:destination] = request.env['REQUEST_PATH']
+    redirect_to login_path
   end
 end
