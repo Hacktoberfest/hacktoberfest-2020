@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
+  # skip_before_action :verify_authenticity_token, only: [:create]
+
   def create
     @user = User.where(uid: auth_hash[:uid]).first_or_create
     session[:current_user_id] = @user.id

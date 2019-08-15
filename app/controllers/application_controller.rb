@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    !session[:current_user_id].nil?
+    session[:current_user_id].present?
   end
 
   def set_current_user
@@ -18,8 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    return unless logged_in?
-
+    return if logged_in?
     session[:destination] = request.env['REQUEST_PATH']
     redirect_to login_path
   end
