@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 module AuthenticationHelper
-  def login(provider = 'github', uid = '123_456')
+  def login
+    get '/auth/github/callback'
+  end
+
+  def mock_authentication(provider = 'github', uid = '123_456')
     omniauth_hash = {
       'provider': provider,
       'uid': uid,
@@ -19,6 +23,5 @@ module AuthenticationHelper
     OmniAuth.config.add_mock(:github, omniauth_hash)
     Rails.application.env_config['omniauth.auth'] =
       OmniAuth.config.mock_auth[:github]
-    get '/auth/github/callback'
   end
 end

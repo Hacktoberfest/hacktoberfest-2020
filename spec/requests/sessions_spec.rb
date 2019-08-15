@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Sessions', type: :request do
+  before { mock_authentication }
+
   describe 'signup and login' do
     it 'logs the user in' do
       login
@@ -28,20 +30,14 @@ RSpec.describe 'Sessions', type: :request do
 
   describe 'requesting protected resource' do
     context 'user not logged in' do
-      it 'does not render the view' do
-        get logout_path
+      it 'redirects the user to login' do
         get profile_path
-        expect(request.env['path']).to_not eq(profile_path) # modify expect arg
+        expect(response).to redirect_to(login_path)
       end
 
-      it 'logs the user in' do
-        login
-        expect(session[:current_user_id]).to_not eq(nil)
-      end
-
-      it 'redirects the user to destination' do
+      it 'saves user destination in the session' do
         get profile_path
-        expect(request.path).to eq(profile_path)
+        expect(session[:destination]).to eq(profile_path)
       end
     end
 
@@ -50,10 +46,9 @@ RSpec.describe 'Sessions', type: :request do
         login
       end
 
-      it 'renders thew view' do
+      it 'the request is succesful' do
         get profile_path
-        expect(session[:current_user_id]).to_not eq(nil)
-        expect(request.path).to eq(profile_path)
+        expect(response).to be_success 
       end
     end
   end
