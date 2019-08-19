@@ -270,6 +270,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   dotenv-rails
   factory_bot
+  faraday
   guard-rspec
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

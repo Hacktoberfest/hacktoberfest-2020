@@ -6,6 +6,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'coffee-rails', '~> 4.2'
 
+gem 'faraday'
+
 gem 'jbuilder', '~> 2.5'
 
 gem 'omniauth-github'
@@ -41,6 +43,7 @@ group :development, :test do
 end
 
 group :development do
+
   gem 'guard-rspec', require: false
 
   gem 'listen', '>= 3.0.5', '< 3.2'
