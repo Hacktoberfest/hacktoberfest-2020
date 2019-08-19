@@ -48,7 +48,7 @@ RSpec.describe 'Sessions', type: :request do
 
       it 'the request is succesful' do
         get profile_path
-        expect(response).to be_success 
+        expect(response).to be_success
       end
     end
   end
