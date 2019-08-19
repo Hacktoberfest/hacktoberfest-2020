@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :user do
-    name { "Testerson McTest " }
-    email { "test@mail.com" }
-    uid { 40510669 }
+    name { 'Testerson McTest' }
+    email { 'test@mail.com' }
+    uid { 405_106_69 }
     provider_token { ENV['GITHUB_ACCESS_TOKEN'] }
   end
 end

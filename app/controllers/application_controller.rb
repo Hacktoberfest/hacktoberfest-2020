@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     return if logged_in?
+
     session[:destination] = request.path
     redirect_to login_path
   end
