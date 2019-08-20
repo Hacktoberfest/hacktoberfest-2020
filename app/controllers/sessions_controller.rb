@@ -6,20 +6,13 @@ class SessionsController < ApplicationController
   def create
     @user = User.where(uid: auth_hash[:uid]).first_or_create
     session[:current_user_id] = @user.id
-    get_user_token(params['code'], params['state'])
+    store_user_info
     redirect_to session[:destination] || '/'
   end
 
-  def get_user_token(code, state)
-    conn = Faraday.new(url: 'https://github.com')
-
-    response = conn.post('/login/oauth/access_token', {
-                           code: code,
-                           client_id: ENV['GITHUB_CLIENT_ID'],
-                           client_secret: ENV['GITHUB_CLIENT_SECRET'],
-                           state: state
-                         })
-    binding.pry
+  def store_user_info
+    @user.provider_token = auth_hash.credentials.token
+    @user.name = auth_hash.info.nickname
   end
 
   def destroy
