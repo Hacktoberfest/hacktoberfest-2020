@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.where(uid: auth_hash[:uid]).first_or_create
     session[:current_user_id] = @user.id
-    getUserToken(params['code'], params['state'])
+    get_user_token(params['code'], params['state'])
     redirect_to session[:destination] || '/'
   end
 
