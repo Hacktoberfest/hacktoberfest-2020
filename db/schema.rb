@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_184016) do
     t.string "name"
     t.string "email"
     t.integer "uid"
-    t.integer "provider_token"
+    t.string "provider_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider", default: "github"
