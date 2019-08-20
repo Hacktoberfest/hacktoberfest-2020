@@ -31,7 +31,7 @@ RSpec.describe 'UserScoreboard' do
   describe '#score' do
     context 'a user with pull request outside allowed date-range' do
       old_start_date = DateTime.new(2017, 9, 25).utc
-      old_end_date = DateTime.new(2017, 11, 1).utcs
+      old_end_date = DateTime.new(2017, 11, 1).utc
       subject { UserScoreboard.new(user, old_start_date, old_end_date) }
 
       it 'returns an integer' do

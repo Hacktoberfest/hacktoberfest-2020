@@ -6,7 +6,8 @@ class HomeController < ApplicationController
   def index; end
 
   def profile
-    # UserScoreboard.new(current_user, ENV['start_date'], ENV['end_date'])
-    @score = 3
+    @score = UserScoreboard.new(current_user,
+                                ENV['start_date'],
+                                ENV['end_date']).score
   end
 end

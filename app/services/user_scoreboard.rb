@@ -12,9 +12,8 @@ class UserScoreboard
   end
 
   def score
-    # client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
-    #  byebug
-    #  prs = client.search_issues('is:pr user: #{client.user.name}')
-    return 5
+    client = Octokit::Client.new(access_token: user.provider_token)
+    prs = client.search_issues("is:pr user: #{client.user.name}")
+    prs.total_count
   end
 end
