@@ -1,0 +1,10 @@
+<% unless @current_user.confirmation_step  %>
+  <div>
+    Welcome back sign up for emails and accept terms pls
+    <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
+      <%= f.select :email, @emails  %><br/>
+      I have read and understand Terms & Conditions : <%= f.check_box :confirmed %><br />
+      <%= f.submit "Start Hacking"%>
+    <% end %>
+  </div>
+<% end %>
