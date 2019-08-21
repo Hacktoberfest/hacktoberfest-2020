@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     if @current_user.set_registration_validations(params_for_registration)
       redirect_to session[:destination] || '/'
-      @current_user.finish_registration_validations
+      @current_user.finish_registration_validations(true)
     else
       set_user_emails
       render 'users/edit'
