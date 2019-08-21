@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     @user = User.where(uid: auth_hash[:uid]).first_or_create
     session[:current_user_id] = @user.id
     store_user_info
-    redirect_to session[:destination] || '/'
+    unless @user.confirmation_step
+     redirect_to register_form_path
+    else
+     redirect_to session[:destination] || '/'
+    end
   end
 
   def store_user_info
