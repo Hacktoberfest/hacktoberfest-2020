@@ -40,6 +40,8 @@ group :development, :test do
   gem 'rubocop'
 
   gem 'vcr'
+
+  gem 'webmock'
 end
 
 group :development do
