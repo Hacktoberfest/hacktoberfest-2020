@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'vcr'
 
 RSpec.describe 'Sessions', type: :request do
   before { mock_authentication }
