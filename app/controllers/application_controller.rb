@@ -17,10 +17,18 @@ class ApplicationController < ActionController::Base
     @current_user = current_user
   end
 
-  def authenticate_user!
+  def require_user_logged_in!
     return if logged_in?
-
-    session[:destination] = request.path
     redirect_to login_path
+  end
+
+  def require_user_registration!
+    return if logged_in? && @current_user.terms_acceptance
+
+    if logged_in?
+      redirect_to register_form_path
+    else
+      redirect_to login_path
+    end
   end
 end
