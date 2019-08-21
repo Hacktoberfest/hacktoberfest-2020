@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'faraday'
-
 class SessionsController < ApplicationController
   def create
     @user = User.where(uid: auth_hash[:uid]).first_or_create
