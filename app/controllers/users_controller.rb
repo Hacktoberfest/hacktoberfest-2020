@@ -1,29 +1,30 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def index
-    users = User.order('id ASC')
-    render json: users
-  end
+  before_action :authenticate_user!, only: [:show]
 
+# render current user profile
   def show
-    user = User.find_by_id(params[:id])
+    @score = UserScoreboard.new(@current_user,
+                                  ENV['start_date'],
+                                  ENV['end_date']).score
+  end
 
-    if user.nil?
-      render json: { error: "User for id #{params[:id]} not found" },
-             status: :not_found
+# action to save registration
+  def update
+    if params["user"]["confirmed"].to_i == 1
+      @current_user.update(email: params["user"]["email"])
+      redirect_to session[:destination] if @current_user.save
     else
-      render json: user
+      redirect_to register_form_path
     end
   end
 
-  def create
-    user = User.new(params)
-
-    if user.save
-      render json: user
-    else
-      render json: { errors: user.errors.full_messages }, status: :bad_request
-    end
+# action to render register form
+  def edit
+    client = Octokit::Client.new(access_token: @current_user.provider_token)
+    @emails = client.emails.select do |email|
+      email unless email.visibility.nil?
+    end.map { |email| email.email }
   end
 end
