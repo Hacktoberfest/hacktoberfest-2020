@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+  before_action :require_user_registration!, only: [:show]
+  before_action :require_user_logged_in!, only: [:edit, :update]
 
 # render current user profile
   def show
@@ -12,19 +13,31 @@ class UsersController < ApplicationController
 
 # action to save registration
   def update
-    if params["user"]["confirmed"].to_i == 1
-      @current_user.update(email: params["user"]["email"])
-      redirect_to session[:destination] if @current_user.save
+
+    if @current_user.set_registration_validations(params_for_registration)
+      redirect_to session[:destination] || '/'
+      @current_user.finish_registration_validations
     else
-      redirect_to register_form_path
+      set_user_emails
+      render 'users/edit'
     end
   end
 
 # action to render register form
   def edit
+    set_user_emails
+  end
+
+  private
+
+  def set_user_emails
     client = Octokit::Client.new(access_token: @current_user.provider_token)
     @emails = client.emails.select do |email|
       email unless email.visibility.nil?
     end.map { |email| email.email }
+  end
+
+  def params_for_registration
+    params.require(:user).permit(:email, :terms_acceptance, :marketing_emails)
   end
 end
