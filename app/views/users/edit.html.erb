@@ -1,7 +1,7 @@
   <div>
     Welcome back sign up for emails and accept terms
     <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
-      <% if !@current_user.finish_registration_validations %>
+      <% if @current_user.errors.any? %>
         <div id="error_explenation">
          <ul>
           <li>Please accept terms & conditions</li>

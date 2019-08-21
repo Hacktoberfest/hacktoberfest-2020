@@ -19,12 +19,15 @@ class ApplicationController < ActionController::Base
 
   def require_user_logged_in!
     return if logged_in?
+
+    session[:destination] = request.path
     redirect_to login_path
   end
 
   def require_user_registration!
     return if logged_in? && @current_user.terms_acceptance
 
+    session[:destination] = request.path
     if logged_in?
       redirect_to register_form_path
     else
