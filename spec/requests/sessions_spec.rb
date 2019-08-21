@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'vcr'
 
 RSpec.describe 'Sessions', type: :request do
   before { mock_authentication }
@@ -42,14 +41,27 @@ RSpec.describe 'Sessions', type: :request do
       end
     end
 
-    context 'user is logged in' do
+    context 'user is logged in and registered' do
+      let(:registered_user) { FactoryBot.create(:user) }
+      before do
+        mock_authentication(uid: registered_user.uid)
+        login
+      end
+
+      it 'the request is succesful', vcr: true do
+        get profile_path
+        expect(response).to be_success
+      end
+    end
+
+    context 'user is logged in and the user is not registered' do
       before do
         login
       end
 
-      it 'the request is succesful' do
+      it 'the request is unsuccesful' do
         get profile_path
-        expect(response).to be_success
+        expect(response).to_not be_success
       end
     end
   end

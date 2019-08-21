@@ -1,0 +1,160 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token 2c844a5f769352480f78c2a4c11a8a344552ec8d
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Aug 2019 22:22:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4994'
+      X-Ratelimit-Reset:
+      - '1566429757'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      Etag:
+      - W/"ddb29c5a85809c9474d69e7ec1d992b6"
+      Last-Modified:
+      - Thu, 09 May 2019 20:59:58 GMT
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - 2a86dccabd1ede1c7b03
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - C586:2D35:1122AB:18EC84:5D5DC42D
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"fridaland","id":40510669,"node_id":"MDQ6VXNlcjQwNTEwNjY5","avatar_url":"https://avatars2.githubusercontent.com/u/40510669?v=4","gravatar_id":"","url":"https://api.github.com/users/fridaland","html_url":"https://github.com/fridaland","followers_url":"https://api.github.com/users/fridaland/followers","following_url":"https://api.github.com/users/fridaland/following{/other_user}","gists_url":"https://api.github.com/users/fridaland/gists{/gist_id}","starred_url":"https://api.github.com/users/fridaland/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/fridaland/subscriptions","organizations_url":"https://api.github.com/users/fridaland/orgs","repos_url":"https://api.github.com/users/fridaland/repos","events_url":"https://api.github.com/users/fridaland/events{/privacy}","received_events_url":"https://api.github.com/users/fridaland/received_events","type":"User","site_admin":false,"name":"Frida
+        Casas","company":null,"blog":"","location":"New York, NY","email":null,"hireable":true,"bio":"Flatiron
+        School Grad; Full Stack Web developer with a passion for creativity and debugging.","public_repos":338,"public_gists":0,"followers":3,"following":6,"created_at":"2018-06-23T03:19:55Z","updated_at":"2019-05-09T20:59:58Z"}'
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 22:22:37 GMT
+- request:
+    method: get
+    uri: https://api.github.com/search/issues?q=is:pr%20user:%20Frida%20Casas
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token 2c844a5f769352480f78c2a4c11a8a344552ec8d
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Aug 2019 22:22:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '30'
+      X-Ratelimit-Remaining:
+      - '29'
+      X-Ratelimit-Reset:
+      - '1566426217'
+      Cache-Control:
+      - no-cache
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - 2a86dccabd1ede1c7b03
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      Vary:
+      - Accept-Encoding
+      X-Github-Request-Id:
+      - C587:02BB:268E40:38318A:5D5DC42D
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total_count":0,"incomplete_results":false,"items":[]}'
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 22:22:37 GMT
+recorded_with: VCR 5.0.0

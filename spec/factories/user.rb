@@ -6,5 +6,10 @@ FactoryBot.define do
     email { 'test@mail.com' }
     uid { 405_106_69 }
     provider_token { ENV['GITHUB_ACCESS_TOKEN'] }
+    terms_acceptance { true }
+
+    trait :unregistered do
+      terms_acceptance { false }
+    end
   end
 end

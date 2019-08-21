@@ -5,13 +5,18 @@ module AuthenticationHelper
     get '/auth/github/callback'
   end
 
-  def mock_authentication(provider = 'github', uid = '123_456')
+  def mock_authentication(provider: 'github', uid: '123_456')
+    binding.pry
     omniauth_hash = {
       'provider': provider,
       'uid': uid,
+      'credentials': {
+        'token': '2c844a5f769352480f78c2a4c11a8a344552ec8d',
+        'expires': 'false'
+      },
       'info': {
         'name': 'Frida',
-        'emaill': 'mail@example.com',
+        'email': 'mail@example.com',
         'nickname': 'fridaland'
       },
       'extra': {

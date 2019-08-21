@@ -29,20 +29,24 @@ RSpec.describe 'UserScoreboard' do
   end
 
   describe '#score' do
+    before do
+      mock_authentication(uid: user.uid)
+    end
+
     context 'a user with pull request outside allowed date-range' do
       old_start_date = DateTime.new(2017, 9, 25).utc
       old_end_date = DateTime.new(2017, 11, 1).utc
       subject { UserScoreboard.new(user, old_start_date, old_end_date) }
 
-      it 'returns an integer' do
+      it 'returns an integer', vcr: true do
         expect(subject.score).to eq(0)
       end
     end
 
-    context 'a user with pull request within allowed date-range' do
+    context 'a user with pull request within allowed date-range'  do
       subject { UserScoreboard.new(scoreboard, start_date, end_date) }
 
-      it 'returns does not add invalid pull requests to the score' do
+        it 'returns does not add invalid pull requests to the score', vcr: true do
         expect(subject.score).to be_a(Integer)
       end
     end
