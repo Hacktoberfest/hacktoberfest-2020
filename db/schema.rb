@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_183954) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider", default: "github"
-    t.boolean "confirmation_step", default: false
+    t.boolean "terms_acceptance", default: false
     t.boolean "marketing_emails", default: false
   end
 
