@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout' => 'sessions#destroy', as: :logout
   get '/login' => redirect('/auth/github'), as: :login
-  get '/profile' => 'home#profile', as: :profile
+  get '/profile' => 'users#show', as: :profile
+  get '/register' => 'users#edit', as: :register_form
+  patch '/register' => 'users#update', as: :register
 end
