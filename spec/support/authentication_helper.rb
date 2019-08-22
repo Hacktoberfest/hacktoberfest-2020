@@ -6,7 +6,6 @@ module AuthenticationHelper
   end
 
   def mock_authentication(provider: 'github', uid: '123_456')
-    binding.pry
     omniauth_hash = {
       'provider': provider,
       'uid': uid,
