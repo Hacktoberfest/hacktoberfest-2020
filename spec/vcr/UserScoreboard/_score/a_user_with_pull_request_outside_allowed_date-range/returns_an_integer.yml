@@ -23,7 +23,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Wed, 21 Aug 2019 23:55:22 GMT
+      - Thu, 22 Aug 2019 12:40:40 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -37,9 +37,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '60'
       X-Ratelimit-Remaining:
-      - '56'
+      - '58'
       X-Ratelimit-Reset:
-      - '1566435322'
+      - '1566481240'
       Access-Control-Expose-Headers:
       - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
@@ -59,10 +59,10 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - C77D:53C0:31F34E:4CFFEF:5D5DD9EA
+      - 8C01:44AB:68D5D:93CAE:5D5E8D47
     body:
       encoding: UTF-8
       string: '{"message":"Bad credentials","documentation_url":"https://developer.github.com/v3"}'
     http_version: 
-  recorded_at: Wed, 21 Aug 2019 23:55:22 GMT
+  recorded_at: Thu, 22 Aug 2019 12:40:40 GMT
 recorded_with: VCR 5.0.0
