@@ -12,7 +12,6 @@ class UserScoreboard
   end
 
   def score
-    binding.pry
     client = Octokit::Client.new(access_token: user.provider_token)
     prs = client.search_issues("is:pr user: #{client.user.name}")
     prs.total_count
