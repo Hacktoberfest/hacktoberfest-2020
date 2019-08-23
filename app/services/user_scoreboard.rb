@@ -13,6 +13,7 @@ class UserScoreboard
             id
             title
             body
+            url
             createdAt
             labels(first: 100) {
               edges {
