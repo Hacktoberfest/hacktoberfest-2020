@@ -11,6 +11,10 @@ class GraphqlPullRequest
     @graphql_hash.title
   end
 
+  def body
+    @graphql_hash.body
+  end
+
   def created_at
     @graphql_hash.createdAt
   end
