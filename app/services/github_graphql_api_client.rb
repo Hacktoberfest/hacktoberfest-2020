@@ -8,8 +8,7 @@ class GithubGraphqlApiClient
   def request(query, variables = {})
     response = Faraday.post(GITHUB_GRAPHQL_API_URL,
                             { query: query, variables: variables }.to_json,
-                            { 'Authorization': "bearer #{@access_token}", 'Content-Type': 'application/json' }
-                            )
+                            { 'Authorization': "bearer #{@access_token}", 'Content-Type': 'application/json' })
     Hashie::Mash.new(JSON.parse(response.body))
   end
 end
