@@ -26,18 +26,15 @@ class UserScoreboard
     }
   GRAPHQL
 
-  def initialize(user, start_date, end_date)
-    @start_date = start_date
-    @end_date = end_date
+  def initialize(user)
     @user = user
   end
 
   def score
     client = GithubGraphqlApiClient.new(access_token: user.provider_token)
-    response = client.request(SCOREBOARD_QUERY, username: user.name)
+    response = client.request(SCOREBOARD_QUERY, username: "mkcode")
     prs = response.data.user.pullRequests.nodes.map{ |pr| GraphqlPullRequest.new(pr) }
 
-    # New Filter service object here
-    42
+    PullRequestFilterService.new(prs).filter.count
   end
 end
