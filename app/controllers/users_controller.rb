@@ -29,11 +29,7 @@ class UsersController < ApplicationController
   private
 
   def set_user_emails
-    client = Octokit::Client.new(access_token: @current_user.provider_token)
-    selected = client.emails.select do |email|
-      email unless email.visibility.nil?
-    end
-    @emails = selected.map(&:email)
+    @emails = UserEmailService.new(@current_user).emails
   end
 
   def params_for_registration
