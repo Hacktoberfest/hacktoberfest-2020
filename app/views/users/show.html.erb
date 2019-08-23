@@ -1,4 +1,11 @@
 <div>
   <p>Score:</p>
   <%= @score.to_i %> out of 4!
+  <div>
+  <% @pull_requests.map do |pr| %>
+    <h2><%= pr.title %><br/> </h2>
+    <p><%= pr.body %><p/><br/>
+    <%= pr.created_at %><br/>
+    <% end %>
+  </div>
 </div>
