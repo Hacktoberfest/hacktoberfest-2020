@@ -12,6 +12,7 @@ class UserScoreboard
           nodes {
             id
             title
+            body
             createdAt
             labels(first: 100) {
               edges {
@@ -30,11 +31,16 @@ class UserScoreboard
     @user = user
   end
 
-  def score
+  def pull_requests
     client = GithubGraphqlApiClient.new(access_token: user.provider_token)
-    response = client.request(SCOREBOARD_QUERY, username: "mkcode")
-    prs = response.data.user.pullRequests.nodes.map{ |pr| GraphqlPullRequest.new(pr) }
+    response = client.request(SCOREBOARD_QUERY, username: @user.name)
+    prs = response.data.user.pullRequests.nodes.map do |pr|
+      GraphqlPullRequest.new(pr)
+    end
+    PullRequestFilterService.new(prs).filter.last(4)
+  end
 
-    PullRequestFilterService.new(prs).filter.count
+  def score
+    pull_requests.count
   end
 end
