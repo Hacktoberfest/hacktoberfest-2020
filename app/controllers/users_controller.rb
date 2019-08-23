@@ -6,9 +6,7 @@ class UsersController < ApplicationController
 
   # render current user profile
   def show
-    @score = UserScoreboard.new(@current_user,
-                                ENV['START_DATE'],
-                                ENV['END_DATE']).score
+    @score = UserScoreboard.new(@current_user).score
   end
 
   # action to save registration

@@ -12,7 +12,7 @@ class GraphqlPullRequest
   end
 
   def created_at
-    @graphql_hash.created_at
+    @graphql_hash.createdAt
   end
 
   def label_names
