@@ -4,9 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'UserScoreboard' do
   let(:user) { FactoryBot.create(:user) }
-  let(:start_date) { DateTime.new(2019, 9, 25).utc }
-  let(:end_date) { DateTime.new(2019, 11, 1).utc }
-  let(:scoreboard) { UserScoreboard.new(user, start_date, end_date) }
+  let(:scoreboard) { UserScoreboard.new(user) }
 
   describe '.new' do
     context 'valid arguments' do
@@ -28,26 +26,39 @@ RSpec.describe 'UserScoreboard' do
     end
   end
 
-  describe '#score' do
+  describe '#pull_requests' do
     before do
       mock_authentication(uid: user.uid)
     end
 
-    context 'a user with pull request outside allowed date-range' do
-      old_start_date = DateTime.new(2017, 9, 25).utc
-      old_end_date = DateTime.new(2017, 11, 1).utc
-      subject { UserScoreboard.new(user, old_start_date, old_end_date) }
+    context 'a user with pull requests' do
+      subject { PullRequestFilterService.new(array) }
+      let(:array) { [ ] }
+      it 'calls the pull request filter service' do
+        allow(subject).to receive(:filter).and_return(array)
+        expect(subject.filter).to eq(array)
+      end
 
-      it 'returns an integer', vcr: { :record => :new_episodes } do
-        expect(subject.score).to be_a(Integer)
+      it 'returns only last 4 pull requests', vcr: { :record => :new_episodes } do
+        allow(scoreboard).to receive(:pull_requests).and_return(4)
+        expect(scoreboard.pull_requests).to eq(4)
+      end
+  end
+
+  end
+
+  describe '#score' do
+    subject { UserScoreboard.new(user) }
+
+    context 'a new user with no pull requests' do
+      it 'returns 0', vcr: { :record => :new_episodes } do
+        expect(subject.score).to eq(0)
       end
     end
 
-    context 'a user with pull request within allowed date-range' do
-      subject { UserScoreboard.new(scoreboard, start_date, end_date) }
-
-      it 'does not add invalid pull requests to the score', vcr: { :record => :new_episodes } do
-        expect(subject.score).to eq(0)
+    context 'it counts the amount of pull requests' do
+      it 'returns an integer' do
+        expect(subject.score).to be_a(Integer)
       end
     end
   end
