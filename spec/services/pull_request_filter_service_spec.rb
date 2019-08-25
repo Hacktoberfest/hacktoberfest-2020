@@ -26,24 +26,48 @@ RSpec.describe 'PullRequestFilterService' do
     end
   end
 
-  describe 'filter'do
+  describe '#filter' do
+  context 'given an array of 4 pull requests' do
 
-    context 'filters Prs with valid dates and valid labels' do
-      it 'takes in an array with valid dates' do
-        expect(original_array.length).to eq(filtered_array.length)
+    context 'pull requests with valid dates and valid labels' do
+      before do
+        result = mock_pull_request_filter('valid array')
+      end
+
+      it 'filters and returns all 4 pull requests' do
+        expect(result.length).to eq(4)
       end
     end
 
-    context 'filters Prs with invalid dates & valid labels' do
+    context 'pull requests with 2 invalid dates & valid labels' do
+      before do
+        result = mock_pull_request_filter('invalid dates')
+      end
 
+      it 'filters and returns 2 of the pull requests' do
+        expect(result.length).to eq(2)
+      end
     end
 
-    context 'filters Prs with valid dates & invalid labels' do
+    context 'pull_requests with valid dates & 2 invalid labels' do
+      before do
+        result = mock_pull_request_filter('invalid label')
+      end
 
+      it 'filters and returns 2 of the pull requests' do
+        expect(result.length).to eq(2)
+      end
     end
 
-    context 'filters Prs with invalid dates & invalid labels' do
+    context 'pull_requests with 4 invalid dates & invalid labels' do
+      before do
+        result = mock_pull_request_filter('invalid dates and invalid label')
+      end
 
+      it 'filters and returns an empty array' do
+        expect(result.length).to eq(0)
+      end
     end
+  end
   end
 end
