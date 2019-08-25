@@ -26,17 +26,18 @@ RSpec.describe 'UserEmailService' do
       end
     end
   end
+  
 
   describe '#emails' do
     before do
       mock_authentication(uid: user.uid)
     end
 
-    context 'a valid user should have at least one email' do
-
+    context 'a valid user UserEmailService have at least one email' do
+      subject { UserEmailService.new(user) }
+      it 'returns an array of emails', vcr: { :record => :new_episodes } do
+        expect(subject.emails.length).to_not eq(0)
+      end
     end
-
-    context 'emails returns all of a users emails' do
-      
-    end
+  end
 end
