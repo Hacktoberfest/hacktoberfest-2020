@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-require 'octokit'
-
 class UserScoreboard
-  attr_reader :user, :start_date, :end_date
+  attr_reader :user, :pull_requests, :score
 
   SCOREBOARD_QUERY = <<~GRAPHQL
     query($username:String!) {
@@ -38,10 +36,10 @@ class UserScoreboard
     prs = response.data.user.pullRequests.nodes.map do |pr|
       GraphqlPullRequest.new(pr)
     end
-    PullRequestFilterService.new(prs).filter.last(4)
+    @pull_requests = PullRequestFilterService.new(prs).filter.last(4)
   end
 
   def score
-    pull_requests.count
+    @score = @pull_requests.nil? ? 0 : @pull_requests.count
   end
 end
