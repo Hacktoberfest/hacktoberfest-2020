@@ -15,12 +15,3 @@ class GithubGraphqlApiClient
     Hashie::Mash.new(JSON.parse(response.body))
   end
 end
-
-# stub mock - vcr
-# happy - it returns a Hashie with right props (succesful?)
-
-# unhappy - it raises an error
-# expect it to raise bad request (bad credentials)
-# expect to raise server err ()
-# use webmock to fake a 500
-# expect new request to eq 500

@@ -81,6 +81,8 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.include AuthenticationHelper
   config.include PullRequestFilterHelper
+  config.include GraphqlClientHelper
+
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
