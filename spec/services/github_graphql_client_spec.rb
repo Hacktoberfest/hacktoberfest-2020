@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe 'GithubGraphqlApiClient' do
-  let(:github_graphql_client) { GithubGraphqlApiClient.new(user.provider_token) }
+  let(:github_graphql_client) do
+    GithubGraphqlApiClient.new(user.provider_token)
+  end
   let(:user) { FactoryBot.create(:user) }
 
   describe '.new' do
@@ -27,7 +29,7 @@ RSpec.describe 'GithubGraphqlApiClient' do
 
   describe '#request' do
     context 'the request is succesful' do
-      it 'returns a response hash with the right props', vcr: { record: :new_episodes } do
+      it 'returns hash with correct props', vcr: { record: :new_episodes } do
         response = github_graphql_client.request(mock_query)
         expect(response).to be_an_instance_of(Hashie::Mash)
       end
@@ -46,7 +48,7 @@ RSpec.describe 'GithubGraphqlApiClient' do
       it 'returns a status 500 and raises an error' do
         stub_request(:post, 'https://api.github.com/graphql').to_raise(ServerError)
         response = RestClient.post('https://api.github.com/graphql')
-        
+
         expect(response).to raise_error(ServerError)
       end
     end
