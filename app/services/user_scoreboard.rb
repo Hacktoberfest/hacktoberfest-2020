@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UserScoreboard
-  attr_reader :user, :pull_requests, :score
+  attr_reader :user
 
   SCOREBOARD_QUERY = <<~GRAPHQL
     query($username:String!) {

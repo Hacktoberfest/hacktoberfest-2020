@@ -33,25 +33,24 @@ RSpec.describe 'UserScoreboard' do
 
     context 'a user with pull requests' do
       subject { PullRequestFilterService.new(array) }
-      let(:array) { [ ] }
+      let(:array) { [] }
       it 'calls the pull request filter service' do
         allow(subject).to receive(:filter).and_return(array)
         expect(subject.filter).to eq(array)
       end
 
-      it 'returns only last 4 pull requests', vcr: { :record => :new_episodes } do
+      it 'returns only last 4 pull requests', vcr: { record: :new_episodes } do
         allow(scoreboard).to receive(:pull_requests).and_return(4)
         expect(scoreboard.pull_requests).to eq(4)
       end
-  end
-
+    end
   end
 
   describe '#score' do
     subject { UserScoreboard.new(user) }
 
     context 'a new user with no pull requests' do
-      it 'returns 0', vcr: { :record => :new_episodes } do
+      it 'returns 0', vcr: { record: :new_episodes } do
         expect(subject.score).to eq(0)
       end
     end

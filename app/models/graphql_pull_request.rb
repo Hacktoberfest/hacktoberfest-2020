@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GraphqlPullRequest
   def initialize(hash)
     @graphql_hash = hash

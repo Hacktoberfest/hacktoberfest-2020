@@ -16,7 +16,7 @@ RSpec.describe 'UserEmailService' do
 
     context 'invalid arguments' do
       it 'raises an error ' do
-        expect { UserEmailService.new(123, 'abc') }.to raise_error(ArgumentError)
+        expect { UserEmailService.new(123, 'xy') }.to raise_error(ArgumentError)
       end
     end
 
@@ -26,7 +26,6 @@ RSpec.describe 'UserEmailService' do
       end
     end
   end
-  
 
   describe '#emails' do
     before do
@@ -35,7 +34,7 @@ RSpec.describe 'UserEmailService' do
 
     context 'a valid user UserEmailService have at least one email' do
       subject { UserEmailService.new(user) }
-      it 'returns an array of emails', vcr: { :record => :new_episodes } do
+      it 'returns an array of emails', vcr: { record: :new_episodes } do
         expect(subject.emails.length).to_not eq(0)
       end
     end
