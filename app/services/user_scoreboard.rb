@@ -36,10 +36,10 @@ class UserScoreboard
     prs = response.data.user.pullRequests.nodes.map do |pr|
       GraphqlPullRequest.new(pr)
     end
-    @pull_requests = PullRequestFilterService.new(prs).filter.last(4)
+    PullRequestFilterService.new(prs).filter.last(4)
   end
 
   def score
-    @score = @pull_requests.nil? ? 0 : @pull_requests.count
+    pull_requests.count || 0
   end
 end
