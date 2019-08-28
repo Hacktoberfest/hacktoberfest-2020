@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+
  RSpec.describe 'GithubGraphqlApiClient' do
-  let(:github_graphql_client) do
-    GithubGraphqlApiClient.new(user.provider_token)
-  end
-  let(:user) { FactoryBot.create(:user) }
+   let(:user) { FactoryBot.create(:user) }
+   let(:github_graphql_client) do
+     GithubGraphqlApiClient.new(access_token: user.provider_token)
+   end
 
    describe '.new' do
     context 'valid arguments' do
@@ -15,7 +17,7 @@
 
      context 'invalid arguments' do
       it 'raises an error ' do
-        expect { GithubGraphqlApiClient.new(123, 'abc') }.to
+        expect { GithubGraphqlApiClient.new(fklds: 'abc') }.to
         raise_error(ArgumentError)
       end
     end
