@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GraphqlClientHelper
+module GraphqlClientHelper
   def mock_query
     query = <<~GRAPHQL
       query {

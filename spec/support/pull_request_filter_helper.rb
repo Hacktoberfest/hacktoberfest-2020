@@ -136,7 +136,7 @@ VALID_ARRAY = [
     'labels' => ['Invalid'] }
 ].freeze
 
-class PullRequestFilterHelper
+module PullRequestFilterHelper
   def mock_pull_request_filter(array_type)
     if array_type == 'valid array'
       VALID_ARRAY.select do |e|
