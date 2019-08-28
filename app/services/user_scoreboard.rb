@@ -32,10 +32,12 @@ class UserScoreboard
 
   def pull_requests
     client = GithubGraphqlApiClient.new(access_token: user.provider_token)
+binding.pry
     response = client.request(SCOREBOARD_QUERY, username: @user.name)
     prs = response.data.user.pullRequests.nodes.map do |pr|
       GraphqlPullRequest.new(pr)
     end
+    binding.pry
     PullRequestFilterService.new(prs).filter.last(4)
   end
 

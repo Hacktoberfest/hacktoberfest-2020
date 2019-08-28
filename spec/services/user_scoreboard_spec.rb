@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'UserScoreboard' do
+RSpec.describe UserScoreboard do
   let(:user) { FactoryBot.create(:user) }
   let(:scoreboard) { UserScoreboard.new(user) }
 
@@ -51,12 +51,14 @@ RSpec.describe 'UserScoreboard' do
 
     context 'a new user with no pull requests' do
       it 'returns 0', vcr: { record: :new_episodes } do
+        binding.pry
         expect(subject.score).to eq(0)
       end
     end
 
     context 'it counts the amount of pull requests' do
-      it 'returns an integer' do
+      it 'returns an integer', vcr: { record: :new_episodes }  do
+        binding.pry
         expect(subject.score).to be_a(Integer)
       end
     end
