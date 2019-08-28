@@ -15,8 +15,8 @@ RSpec.describe 'PullRequestFilterService' do
 
     context 'invalid arguments' do
       it 'raises an error ' do
-        expect { PullRequestFilterService.new(123, 'abc') }.to
-        raise_error(ArgumentError)
+        expect { PullRequestFilterService.new(123, 'abc') }.
+          to raise_error(ArgumentError)
       end
     end
 
@@ -30,9 +30,7 @@ RSpec.describe 'PullRequestFilterService' do
   describe '#filter' do
     context 'given an array of 4 pull requests' do
       context 'pull requests with valid dates and valid labels' do
-        before do
-          let(:result) { mock_pull_request_filter('valid array') }
-        end
+        let(:result) { mock_pull_request_filter('valid array') }
 
         it 'filters and returns all 4 pull requests' do
           expect(result.length).to eq(4)
@@ -40,30 +38,21 @@ RSpec.describe 'PullRequestFilterService' do
       end
 
       context 'pull requests with 2 invalid dates & valid labels' do
-        before do
-          let(:result) { mock_pull_request_filter('invalid dates') }
-        end
-
+        let(:result) { mock_pull_request_filter('invalid dates') }
         it 'filters and returns 2 of the pull requests' do
           expect(result.length).to eq(2)
         end
       end
 
       context 'pull_requests with valid dates & 2 invalid labels' do
-        before do
-          let(:result) { mock_pull_request_filter('invalid label') }
-        end
-
+        let(:result) { mock_pull_request_filter('invalid label') }
         it 'filters and returns 2 of the pull requests' do
           expect(result.length).to eq(2)
         end
       end
 
       context 'pull_requests with 4 invalid dates & invalid labels' do
-        before do
-          let(:result) { mock_pull_request_filter('invalid dates & label') }
-        end
-
+        let(:result) { mock_pull_request_filter('invalid dates & label') }
         it 'filters and returns an empty array' do
           expect(result.length).to eq(0)
         end
