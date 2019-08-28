@@ -22,7 +22,7 @@ ARRAY_WITH_INVALID_DATES = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => '2016-05-08T06:24:38Z',
+    'createdAt' => '2019-10-08T06:24:38Z',
     'labels' => ['Invalid'] },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
@@ -30,7 +30,7 @@ ARRAY_WITH_INVALID_DATES = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => '2016-10-25T19:59:18Z',
+    'createdAt' => '2019-10-25T19:59:18Z',
     'labels' => ['Invalid'] }
 ].freeze
 
@@ -116,7 +116,7 @@ VALID_ARRAY = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => '2019-11-20T22:49:53Z',
+    'createdAt' => '2019-10-20T22:49:53Z',
     'labels' => [] },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
@@ -124,8 +124,8 @@ VALID_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => '2019-05-08T06:24:38Z',
-    'labels' => ['Invalid'] },
+    'createdAt' => '2019-10-08T06:24:38Z',
+    'labels' => [] },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -133,34 +133,34 @@ VALID_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => '2019-10-25T19:59:18Z',
-    'labels' => ['Invalid'] }
+    'labels' => [] }
 ].freeze
 
 module PullRequestFilterHelper
   def mock_pull_request_filter(array_type)
     if array_type == 'valid array'
       VALID_ARRAY.select do |e|
-        !e['labels'].include?('invalid') &&
+        !e['labels'].include?('Invalid') &&
           e['createdAt'] >= ENV['START_DATE'] &&
-          e['createdAt'] >= ENV['END_DATE']
+          e['createdAt'] <= ENV['END_DATE']
       end
     elsif  array_type == 'invalid label'
       ARRAY_WITH_INVALID_LABEL.select do |e|
-        !e['labels'].include?('invalid') &&
+        !e['labels'].include?('Invalid') &&
           e['createdAt'] >= ENV['START_DATE'] &&
-          e['createdAt'] >= ENV['END_DATE']
+          e['createdAt'] <= ENV['END_DATE']
       end
     elsif  array_type == 'invalid dates'
       ARRAY_WITH_INVALID_DATES.select do |e|
-        !e['labels'].include?('invalid') &&
+        !e['labels'].include?('Invalid') &&
           e['createdAt'] >= ENV['START_DATE'] &&
-          e['createdAt'] >= ENV['END_DATE']
+          e['createdAt'] <= ENV['END_DATE']
       end
     elsif  array_type == 'invalid dates & label'
       ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL.select do |e|
-        !e['labels'].include?('invalid') &&
+        !e['labels'].include?('Invalid') &&
           e['createdAt'] >= ENV['START_DATE'] &&
-          e['createdAt'] >= ENV['END_DATE']
+          e['createdAt'] <= ENV['END_DATE']
       end
     end
   end

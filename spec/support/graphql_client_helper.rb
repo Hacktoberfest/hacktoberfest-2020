@@ -4,7 +4,7 @@ module GraphqlClientHelper
   def mock_query
     query = <<~GRAPHQL
       query {
-        user(login: 'mkcode') {
+        user(login: mkcode) {
           pullRequests(states: OPEN last: 100) {
             nodes {
               id

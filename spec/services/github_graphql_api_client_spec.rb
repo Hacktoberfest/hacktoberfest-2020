@@ -17,8 +17,8 @@ require 'rails_helper'
 
      context 'invalid arguments' do
       it 'raises an error ' do
-        expect { GithubGraphqlApiClient.new(fklds: 'abc') }.to
-        raise_error(ArgumentError)
+        expect { GithubGraphqlApiClient.new(123, 'abc') }.
+          to raise_error(ArgumentError)
       end
     end
 
@@ -37,17 +37,18 @@ require 'rails_helper'
       end
     end
 
-     context 'bad request' do
-      it 'returns a status 400 and raises an error' do
-        Hacktoberfest.client('garbage query')
-         expect(response).to raise_error(Faraday::BadRequest)
+    context 'invalid auth token was provided' do
+      it 'returns a status 400 and raises an error', vcr: { record: :new_episodes } do
+        graphql_client = GithubGraphqlApiClient.new(access_token: 'bad token')
+        expect { graphql_client.request(mock_query) }.to raise_error(Faraday::ClientError)
       end
     end
 
-     context 'server error' do
+    context 'server error' do
       it 'returns a status 500 and raises an error' do
-        Hacktoberfest.client(mock_query)
-         expect(response).to raise_error(Faraday::ServerError)
+        stub_request(:post, 'https://api.github.com/graphql').and_return(status: 500)
+
+        expect { github_graphql_client.request(mock_query) }.to raise_error #(Faraday::ServerError)
       end
     end
   end
