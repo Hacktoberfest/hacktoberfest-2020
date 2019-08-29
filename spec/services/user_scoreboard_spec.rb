@@ -56,7 +56,7 @@ RSpec.describe UserScoreboard do
     end
 
     context 'it counts the amount of pull requests' do
-      it 'returns an integer', vcr: { record: :new_episodes }  do
+      it 'returns an integer', vcr: { record: :new_episodes } do
         expect(subject.score).to be_a(Integer)
       end
     end
