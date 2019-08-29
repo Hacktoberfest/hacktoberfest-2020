@@ -23,7 +23,7 @@ ARRAY_WITH_INVALID_DATES = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     'createdAt' => '2019-10-08T06:24:38Z',
-    'labels' => ['Invalid'] },
+    'labels' => [] },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -31,7 +31,7 @@ ARRAY_WITH_INVALID_DATES = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => '2019-10-25T19:59:18Z',
-    'labels' => ['Invalid'] }
+    'labels' => [] }
 ].freeze
 
 ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
