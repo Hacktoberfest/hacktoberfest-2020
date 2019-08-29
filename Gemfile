@@ -29,6 +29,8 @@ gem 'sass-rails', '~> 5.0'
 
 gem 'state_machines'
 
+gem 'state_machines-activerecord'
+
 gem 'sqlite3'
 
 gem 'pry'

@@ -254,6 +254,12 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.4.1)
     state_machines (0.5.0)
+    state_machines-activemodel (0.7.0)
+      activemodel (>= 4.1, < 6.1)
+      state_machines (>= 0.5.0)
+    state_machines-activerecord (0.6.0)
+      activerecord (>= 4.1)
+      state_machines-activemodel (>= 0.5.0)
     terminal-notifier-guard (1.7.0)
     thor (0.20.3)
     thread_safe (0.3.6)
@@ -323,6 +329,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3
   state_machines
+  state_machines-activerecord
   terminal-notifier-guard
   turbolinks (~> 5)
   tzinfo-data
