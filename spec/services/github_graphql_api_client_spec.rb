@@ -38,15 +38,19 @@ RSpec.describe 'GithubGraphqlApiClient' do
     end
 
     context 'invalid auth token was provided' do
-      it 'returns a status 400 and raises an error', vcr: { record: :new_episodes } do
+      it 'returns status 400 & raises error', vcr: { record: :new_episodes } do
         graphql_client = GithubGraphqlApiClient.new(access_token: 'bad token')
-        expect { graphql_client.request(mock_query) }.to raise_error(Faraday::ClientError)
+        expect { graphql_client.request(mock_query) }.to raise_error(
+          Faraday::ClientError
+        )
       end
     end
 
     context 'server error' do
       it 'returns a status 500 and raises an error' do
-        stub_request(:post, 'https://api.github.com/graphql').to_return(status: 501)
+        stub_request(:post, 'https://api.github.com/graphql').to_return(
+          status: 501
+        )
 
         expect { github_graphql_client.request(mock_query) }.to raise_error
       end

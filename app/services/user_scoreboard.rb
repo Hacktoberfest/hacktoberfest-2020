@@ -31,12 +31,14 @@ class UserScoreboard
   end
 
   def pull_requests
+    return @pull_requests if @pull_requests
+
     client = GithubGraphqlApiClient.new(access_token: @user.provider_token)
     response = client.request(SCOREBOARD_QUERY, username: @user.name)
     prs = response.data.user.pullRequests.nodes.map do |pr|
       GraphqlPullRequest.new(pr)
     end
-    PullRequestFilterService.new(prs).filter.last(4)
+    @pull_requests = PullRequestFilterService.new(prs).filter.last(4)
   end
 
   def score

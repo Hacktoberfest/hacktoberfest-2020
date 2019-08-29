@@ -10,7 +10,7 @@ module AuthenticationHelper
       'provider': provider,
       'uid': uid,
       'credentials': {
-        'token': '2c844a5f769352480f78c2a4c11a8a344552ec8d',
+        'token': ENV['GITHUB_ACCESS_TOKEN'],
         'expires': 'false'
       },
       'info': {

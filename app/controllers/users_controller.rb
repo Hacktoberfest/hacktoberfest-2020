@@ -6,8 +6,9 @@ class UsersController < ApplicationController
 
   # render current user profile
   def show
-    @score = UserScoreboard.new(@current_user).score
-    @pull_requests = UserScoreboard.new(@current_user).pull_requests
+    scoreboard = UserScoreboard.new(@current_user)
+    @score = scoreboard.score
+    @pull_requests = scoreboard.pull_requests
   end
 
   # action to save registration

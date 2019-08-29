@@ -28,33 +28,38 @@ RSpec.describe 'PullRequestFilterService' do
   end
 
   describe '#filter' do
+    let(:subject) { PullRequestFilterService.new(prs) }
+
     context 'given an array of 4 pull requests' do
       context 'pull requests with valid dates and valid labels' do
-        let(:result) { mock_pull_request_filter('valid array') }
+        let(:prs) { pull_request_data(:valid_array) }
 
         it 'filters and returns all 4 pull requests' do
-          expect(result.length).to eq(4)
+          expect(subject.filter.length).to eq(4)
         end
       end
 
       context 'pull requests with 2 invalid dates & valid labels' do
-        let(:result) { mock_pull_request_filter('invalid dates') }
+        let(:prs) { pull_request_data(:array_with_invalid_dates) }
+
         it 'filters and returns 2 of the pull requests' do
-          expect(result.length).to eq(2)
+          expect(subject.filter.length).to eq(2)
         end
       end
 
       context 'pull_requests with valid dates & 2 invalid labels' do
-        let(:result) { mock_pull_request_filter('invalid label') }
+        let(:prs) { pull_request_data(:array_with_invalid_labels) }
+
         it 'filters and returns 2 of the pull requests' do
-          expect(result.length).to eq(2)
+          expect(subject.filter.length).to eq(2)
         end
       end
 
       context 'pull_requests with 4 invalid dates & invalid labels' do
-        let(:result) { mock_pull_request_filter('invalid dates & label') }
+        let(:prs) { pull_request_data(:invalid_array) }
+
         it 'filters and returns an empty array' do
-          expect(result.length).to eq(0)
+          expect(subject.filter.length).to eq(0)
         end
       end
     end
