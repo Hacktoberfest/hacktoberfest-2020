@@ -15,8 +15,8 @@ RSpec.describe 'PullRequestFilterService' do
 
     context 'invalid arguments' do
       it 'raises an error ' do
-        expect { PullRequestFilterService.new(123, 'abc') }.
-          to raise_error(ArgumentError)
+        expect { PullRequestFilterService.new(123, 'abc') }
+          .to raise_error(ArgumentError)
       end
     end
 

@@ -2,27 +2,27 @@
 
 require 'rails_helper'
 
- RSpec.describe 'GithubGraphqlApiClient' do
-   let(:user) { FactoryBot.create(:user) }
-   let(:github_graphql_client) do
-     GithubGraphqlApiClient.new(access_token: user.provider_token)
-   end
+RSpec.describe 'GithubGraphqlApiClient' do
+  let(:user) { FactoryBot.create(:user) }
+  let(:github_graphql_client) do
+    GithubGraphqlApiClient.new(access_token: user.provider_token)
+  end
 
-   describe '.new' do
+  describe '.new' do
     context 'valid arguments' do
       it 'returns a PullRequestFilterService' do
         expect(github_graphql_client).to_not be(nil)
       end
     end
 
-     context 'invalid arguments' do
+    context 'invalid arguments' do
       it 'raises an error ' do
-        expect { GithubGraphqlApiClient.new(123, 'abc') }.
-          to raise_error(ArgumentError)
+        expect { GithubGraphqlApiClient.new(123, 'abc') }
+          .to raise_error(ArgumentError)
       end
     end
 
-     context 'no arguments provided' do
+    context 'no arguments provided' do
       it 'raises an error ' do
         expect { GithubGraphqlApiClient.new }.to raise_error(ArgumentError)
       end
