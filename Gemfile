@@ -27,6 +27,8 @@ gem 'rails', '~> 5.2.3'
 
 gem 'sass-rails', '~> 5.0'
 
+gem 'state_machines'
+
 gem 'sqlite3'
 
 gem 'pry'
