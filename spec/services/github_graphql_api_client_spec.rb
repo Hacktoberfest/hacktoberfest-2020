@@ -46,9 +46,9 @@ require 'rails_helper'
 
     context 'server error' do
       it 'returns a status 500 and raises an error' do
-        stub_request(:post, 'https://api.github.com/graphql').and_return(status: 500)
+        stub_request(:post, 'https://api.github.com/graphql').to_return(status: 501)
 
-        expect { github_graphql_client.request(mock_query) }.to raise_error #(Faraday::ServerError)
+        expect { github_graphql_client.request(mock_query) }.to raise_error
       end
     end
   end
