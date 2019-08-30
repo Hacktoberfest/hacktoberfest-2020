@@ -27,7 +27,7 @@ class GraphqlPullRequest
 
   def label_names
     @graphql_hash.labels.edges.map do |e|
-      e.node.name
+      e.node.name.downcase
     end
   end
 end

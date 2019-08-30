@@ -7,8 +7,7 @@ class PullRequestFilterService
 
   def filter
     @array.select do |e|
-        e.created_at >= ENV['START_DATE'] &&
-        e.created_at <= ENV['END_DATE']
+        e.created_at >= ENV['START_DATE'] && e.created_at <= ENV['END_DATE']
     end
   end
 end
