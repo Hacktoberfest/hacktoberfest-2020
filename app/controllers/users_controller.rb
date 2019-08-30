@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   def show
     scoreboard = UserScoreboard.new(@current_user)
     @score = scoreboard.score
-    @pull_requests = scoreboard.pull_requests
+    @pull_requests = scoreboard.pull_requests.select { |p| p.label_names != ['invalid'] }
+    @invalid_pull_requests = scoreboard.pull_requests.select { |p| p.label_names == ['invalid'] }
   end
 
   # action to save registration
