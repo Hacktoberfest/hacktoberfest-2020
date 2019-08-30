@@ -50,7 +50,7 @@ RSpec.describe 'Sessions', type: :request do
 
       it 'the request is succesful', vcr: { record: :new_episodes } do
         get profile_path
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -61,7 +61,7 @@ RSpec.describe 'Sessions', type: :request do
 
       it 'the request is unsuccesful' do
         get profile_path
-        expect(response).to_not be_success
+        expect(response).to_not be_successful
       end
     end
   end
