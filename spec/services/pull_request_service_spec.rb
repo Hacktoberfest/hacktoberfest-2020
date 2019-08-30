@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe UserScoreboard do
+RSpec.describe PullRequestService do
   let(:user) { FactoryBot.create(:user) }
-  let(:scoreboard) { UserScoreboard.new(user) }
+  let(:scoreboard) { PullRequestService.new(user) }
 
   describe '.new' do
     context 'valid arguments' do
@@ -15,17 +15,19 @@ RSpec.describe UserScoreboard do
 
     context 'invalid arguments' do
       it 'raises an error ' do
-        expect { UserScoreboard.new(123, 'abc') }.to raise_error(ArgumentError)
+        expect { PullRequestService.new(123, 'abc') }.to raise_error(ArgumentError)
       end
     end
 
     context 'no arguments provided' do
       it 'raises an error ' do
-        expect { UserScoreboard.new }.to raise_error(ArgumentError)
+        expect { PullRequestService.new }.to raise_error(ArgumentError)
       end
     end
   end
 
+
+  # Change this to all method
   describe '#pull_requests' do
     before do
       mock_authentication(uid: user.uid)
@@ -47,7 +49,7 @@ RSpec.describe UserScoreboard do
   end
 
   describe '#score' do
-    subject { UserScoreboard.new(user) }
+    subject { PullRequestService.new(user) }
 
     context 'a new user with no pull requests' do
       it 'returns 0', vcr: { record: :new_episodes } do
