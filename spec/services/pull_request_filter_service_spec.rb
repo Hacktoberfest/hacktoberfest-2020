@@ -2,6 +2,8 @@
 
 require 'rails_helper'
 
+# Add these specs to PullREquestService specs
+
 RSpec.describe 'PullRequestFilterService' do
   let(:array) { [] }
   let(:pull_request_filter) { PullRequestFilterService.new(array) }

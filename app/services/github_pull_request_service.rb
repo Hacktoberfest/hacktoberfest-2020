@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-class UserScoreboard
+# Fetches Pull Requests for a user from the GitHub API
+# Returns an array of GraphqlPullRequest instances
+class GithubPullRequestService
   attr_reader :user
 
-  SCOREBOARD_QUERY = <<~GRAPHQL
+  PULL_REQUEST_QUERY = <<~GRAPHQL
     query($username:String!) {
       user(login: $username) {
         pullRequests(states: OPEN last: 100) {
@@ -31,17 +33,10 @@ class UserScoreboard
   end
 
   def pull_requests
-    return @pull_requests if @pull_requests
-
     client = GithubGraphqlApiClient.new(access_token: @user.provider_token)
-    response = client.request(SCOREBOARD_QUERY, username: @user.name )
-    prs = response.data.user.pullRequests.nodes.map do |pr|
-      GraphqlPullRequest.new(pr)
+    response = client.request(PULL_REQUEST_QUERY, username: @user.name)
+    response.data.user.pullRequests.nodes.map do |pr|
+      GithubPullRequest.new(pr)
     end
-    @pull_requests = PullRequestFilterService.new(prs).filter.last(4)
-  end
-
-  def score
-    pull_requests.count || 0
   end
 end

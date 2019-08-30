@@ -6,10 +6,9 @@ class UsersController < ApplicationController
 
   # render current user profile
   def show
-    scoreboard = UserScoreboard.new(@current_user)
-    @score = scoreboard.score
-    @pull_requests = scoreboard.pull_requests.select { |p| p.label_names != ['invalid'] }
-    @invalid_pull_requests = scoreboard.pull_requests.select { |p| p.label_names == ['invalid'] }
+    prs = PullRequestService.new(@current_user)
+    @pull_requests = prs.all_by_state
+    @score = prs.score
   end
 
   # action to save registration
