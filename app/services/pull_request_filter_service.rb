@@ -7,7 +7,6 @@ class PullRequestFilterService
 
   def filter
     @array.select do |e|
-      !e.label_names.include?('Invalid') &&
         e.created_at >= ENV['START_DATE'] &&
         e.created_at <= ENV['END_DATE']
     end
