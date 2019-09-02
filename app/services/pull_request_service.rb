@@ -12,19 +12,19 @@ class PullRequestService
     # Create this service when we lookup spammy repos in order to lookup
     # all Repo Spammy states in SQL query
     # prs = PullRequestStateLookupService.new(filtered_github_pull_requests)
-    filtered_github_pull_requests.map{ |ghpr| PullRequest.new(ghpr) }
+    filtered_github_pull_requests.map { |ghpr| PullRequest.new(ghpr) }
   end
 
   def all_by_state
-
-  end
-
-  def all_eligible
-    all.select(&:eligible?)
+    hash = {
+      invalid: all.select { |p| p.label_names.include?('invalid') },
+      eligible: all.reject { |p| p.label_names.include?('invalid') }
+     }
+    hash
   end
 
   def score
-    all_eligible.count || 0
+    all_by_state[:eligible].count || 0
   end
 
   private

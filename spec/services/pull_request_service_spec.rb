@@ -26,7 +26,6 @@ RSpec.describe PullRequestService do
     end
   end
 
-
   # Change this to all method
   describe '#pull_requests' do
     before do

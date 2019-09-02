@@ -18,7 +18,6 @@ class PullRequest
     end
   end
 
-
   def eligible?
     state == 'eligible'
   end
