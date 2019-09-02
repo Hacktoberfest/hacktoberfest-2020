@@ -3,7 +3,7 @@
   <%= @score.to_i %> out of 4!
   <div>
     <p>Valid</p>
-  <% @pull_requests.map do |pr| %>
+  <% @pull_requests[:eligible].map do |pr| %>
     <h2><%= pr.title %><br/> </h2>
     <p><%= pr.body %><p/><br/>
       <a href="<%= pr.url %>"> click here to view on github </a><br/>
@@ -12,7 +12,7 @@
   </div>
   <div>
     <p>Invalid</p>
-  <% @invalid_pull_requests.map do |pr| %>
+  <% @pull_requests[:invalid].map do |pr| %>
     <h2><%= pr.title %><br/> </h2>
     <p><%= pr.body %><p/><br/>
       <a href="<%= pr.url %>"> click here to view on github </a><br/>
