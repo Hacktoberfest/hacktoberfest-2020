@@ -24,10 +24,14 @@ class UsersController < ApplicationController
 
   # action to render register form
   def edit
-    @emails = UserEmailService.new(@current_user).emails
+    set_user_emails
   end
 
   private
+
+  def set_user_emails 
+    @emails = UserEmailService.new(@current_user).emails
+  end
 
   def params_for_registration
     params.require(:user).permit(:email, :terms_acceptance, :marketing_emails)
