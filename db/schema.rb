@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_184016) do
+ActiveRecord::Schema.define(version: 2019_08_20_183954) do
 
   create_table "issues", force: :cascade do |t|
     t.integer "gh_id"
@@ -34,10 +34,12 @@ ActiveRecord::Schema.define(version: 2019_08_13_184016) do
     t.string "name"
     t.string "email"
     t.integer "uid"
-    t.integer "provider_token"
+    t.string "provider_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider", default: "github"
+    t.boolean "terms_acceptance", default: false
+    t.boolean "marketing_emails", default: false
   end
 
 end

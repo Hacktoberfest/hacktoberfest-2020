@@ -1,29 +1,38 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def index
-    users = User.order('id ASC')
-    render json: users
-  end
+  before_action :require_user_registration!, only: :show
+  before_action :require_user_logged_in!, only: %i[edit update]
 
+  # render current user profile
   def show
-    user = User.find_by_id(params[:id])
+    @score = UserScoreboard.new(@current_user,
+                                ENV['START_DATE'],
+                                ENV['END_DATE']).score
+  end
 
-    if user.nil?
-      render json: { error: "User for id #{params[:id]} not found" },
-             status: :not_found
+  # action to save registration
+  def update
+    if @current_user.update_registration_validations(params_for_registration)
+      redirect_to session[:destination] || '/'
     else
-      render json: user
+      set_user_emails
+      render 'users/edit'
     end
   end
 
-  def create
-    user = User.new(params)
+  # action to render register form
+  def edit
+    set_user_emails
+  end
 
-    if user.save
-      render json: user
-    else
-      render json: { errors: user.errors.full_messages }, status: :bad_request
-    end
+  private
+
+  def set_user_emails
+    @emails = UserEmailService.new(@current_user).emails
+  end
+
+  def params_for_registration
+    params.require(:user).permit(:email, :terms_acceptance, :marketing_emails)
   end
 end

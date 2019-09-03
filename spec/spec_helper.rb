@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 require 'omniauth'
+require 'factory_bot'
 
+FactoryBot.definition_file_paths = ['./spec/factories']
+FactoryBot.find_definitions
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

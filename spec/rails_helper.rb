@@ -33,7 +33,29 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+def user_github_token
+  ENV.fetch('TEST_USER_GITHUB_TOKEN') { SecureRandom.hex(20) }
+end
+
+unless ENV['TEST_USER_GITHUB_TOKEN']
+  puts <<~ENDWARNING
+
+    *************************************************************************
+
+    No environment variable `TEST_USER_GITHUB_TOKEN` variable is defined!
+
+    Ignore this message if tests are running on CI or no new tests are being
+    written, as successful network responses will be replayed by VCR.
+
+    `TEST_USER_GITHUB_TOKEN` will likely need to be set in the `.env` file to
+    a valid user token in order to record new successful network requests.
+
+    *************************************************************************
+
+  ENDWARNING
+end
+
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -57,7 +79,7 @@ RSpec.configure do |config|
   #
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
-  config.include AuthenticationHelper, type: :request
+  config.include AuthenticationHelper
 
   config.infer_spec_type_from_file_location!
 

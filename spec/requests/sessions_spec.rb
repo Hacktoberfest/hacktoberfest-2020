@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Sessions', type: :request do
+  before { mock_authentication }
+
   describe 'signup and login' do
     it 'logs the user in' do
       login
@@ -11,9 +13,7 @@ RSpec.describe 'Sessions', type: :request do
 
     context 'user already exists' do
       before do
-        # rubocop:disable Style/NumericLiterals
-        User.create(uid: 123456)
-        # rubocop:enable Style/NumericLiterals
+        User.create(uid: 123_456)
       end
 
       it 'does not create a new User' do
@@ -28,6 +28,44 @@ RSpec.describe 'Sessions', type: :request do
     end
   end
 
+  describe 'requesting protected resource' do
+    context 'user not logged in' do
+      it 'redirects the user to login' do
+        get profile_path
+        expect(response).to redirect_to(login_path)
+      end
+
+      it 'saves user destination in the session' do
+        get profile_path
+        expect(session[:destination]).to eq(profile_path)
+      end
+    end
+
+    context 'user is logged in and registered' do
+      let(:registered_user) { FactoryBot.create(:user) }
+      before do
+        mock_authentication(uid: registered_user.uid)
+        login
+      end
+
+      it 'the request is succesful', :vcr do
+        get profile_path
+        expect(response).to be_successful
+      end
+    end
+
+    context 'user is logged in and the user is not registered' do
+      before do
+        login
+      end
+
+      it 'the request is unsuccesful' do
+        get profile_path
+        expect(response).to_not be_successful
+      end
+    end
+  end
+
   describe 'logout' do
     context 'The user is logged in' do
       before do
@@ -35,7 +73,7 @@ RSpec.describe 'Sessions', type: :request do
       end
 
       it 'logs the user out' do
-        get '/logout'
+        get logout_path
         expect(session[:current_user_id]).to eq(nil)
       end
     end

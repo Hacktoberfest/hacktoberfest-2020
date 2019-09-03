@@ -1,0 +1,17 @@
+  <div>
+    Welcome back sign up for emails and accept terms
+    <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
+      <% if @current_user.errors.any? %>
+        <div id="error_explenation">
+         <ul>
+          <li>Please accept terms & conditions</li>
+        </ul>
+        </div>
+      <% end %>
+      <%= f.select :email, @emails %><br/>
+      Sign up for marketing emails: <%= f.check_box :marketing_emails %><br />
+
+      I have read and understand Terms & Conditions : <%= f.check_box :terms_acceptance %><br />
+      <%= f.submit 'Start Hacking'%>
+    <% end %>
+  </div>
