@@ -34,7 +34,7 @@ RSpec.describe 'UserScoreboard' do
       old_end_date = DateTime.new(2017, 11, 1).utc
       subject { UserScoreboard.new(user, old_start_date, old_end_date) }
 
-      it 'returns an integer', vcr: { :record => :once } do
+      it 'returns an integer', :vcr do
         expect(subject.score).to be_a(Integer)
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe 'UserScoreboard' do
     context 'a user with pull request within allowed date-range'  do
       subject { UserScoreboard.new(user, start_date, end_date) }
 
-      it 'returns does not add invalid pull requests to the score', vcr: { :record => :new_episodes } do
+      it 'returns does not add invalid pull requests to the score', :vcr do
         expect(subject.score).to be_a(Integer)
       end
     end
