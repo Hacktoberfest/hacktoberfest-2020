@@ -15,7 +15,8 @@ RSpec.describe PullRequestService do
 
     context 'invalid arguments' do
       it 'raises an error ' do
-        expect { PullRequestService.new(123, 'abc') }.to raise_error(ArgumentError)
+        expect { PullRequestService.new(123, 'abc') }
+          .to raise_error(ArgumentError)
       end
     end
 
@@ -26,40 +27,76 @@ RSpec.describe PullRequestService do
     end
   end
 
-  # Change this to all method
-  describe '#pull_requests' do
+  describe '#all' do
     before do
       mock_authentication(uid: user.uid)
     end
 
-    context 'a user with pull requests' do
-      subject { PullRequestFilterService.new(array) }
-      let(:array) { [] }
-      it 'calls the pull request filter service' do
-        allow(subject).to receive(:filter).and_return(array)
-        expect(subject.filter).to eq(array)
+    context 'it ruturns an array of PullRequest objects' do
+    end
+  end
+
+  describe '#all_by_state' do
+    context 'it returns a pull request hash with state keys' do
+      it 'will filter each pull request and assign it to the right key' do
+      end
+    end
+  end
+
+  describe '#github_pull_requests' do
+    context 'the GithubPullRequestService is called' do
+      it 'makes a new GithubPullRequestService' do
       end
 
-      it 'returns only last 4 pull requests', vcr: { record: :new_episodes } do
-        allow(scoreboard).to receive(:pull_requests).and_return(4)
-        expect(scoreboard.pull_requests).to eq(4)
+      it 'returns an array of GithubPullRequests objects' do
+      end
+    end
+  end
+
+  describe '#filtered_github_pull_requests' do
+    context 'given an array of 4 pull requests' do
+      context 'pull requests with valid dates and valid labels' do
+        it 'filters and returns all 4 PRs', vcr: { record: :new_episodes } do
+          prs = pull_request_data(PR_DATA[:valid_array])
+          expect(scoreboard.filtered_github_pull_requests(prs).length).to eq(4)
+        end
+      end
+
+      context 'pull requests with 2 invalid dates & valid labels' do
+        it 'filters and returns 2 of the PRs', vcr: { record: :new_episodes } do
+          prs = pull_request_data(PR_DATA[:array_with_invalid_dates])
+          expect(scoreboard.filtered_github_pull_requests(prs).length).to eq(2)
+        end
+      end
+
+      context 'pull_requests with valid dates & 2 invalid labels' do
+        it 'filters and returns 2 of the PRs', vcr: { record: :new_episodes } do
+          prs = pull_request_data(PR_DATA[:array_with_invalid_labels])
+          expect(scoreboard.filtered_github_pull_requests(prs).length).to eq(2)
+        end
+      end
+
+      context 'pull_requests with 4 invalid dates & invalid labels' do
+        it 'filters & returns an empty array', vcr: { record: :new_episodes } do
+          prs = pull_request_data(PR_DATA[:invalid_array])
+          expect(scoreboard.filtered_github_pull_requests(prs).length).to eq(0)
+        end
       end
     end
   end
 
   describe '#score' do
-    subject { PullRequestService.new(user) }
-
-    context 'a new user with no pull requests' do
-      it 'returns 0', vcr: { record: :new_episodes } do
-        expect(subject.score).to eq(0)
-      end
-    end
-
-    context 'it counts the amount of pull requests' do
-      it 'returns an integer', vcr: { record: :new_episodes } do
-        expect(subject.score).to be_a(Integer)
-      end
-    end
+    # subject { PullRequestService.new(user) }
+    # context 'a new user with no pull requests' do
+    #   it 'returns 0', vcr: { record: :new_episodes } do
+    #     expect(subject.score).to eq(0)
+    #   end
+    # end
+    #
+    # context 'it counts the amount of pull requests' do
+    #   it 'returns an integer', vcr: { record: :new_episodes } do
+    #     expect(subject.score).to be_a(Integer)
+    #   end
+    # end
   end
 end
