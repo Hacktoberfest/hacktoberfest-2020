@@ -28,6 +28,8 @@ class PullRequestService
     all_by_state[:eligible].count || 0
   end
 
+  protected
+
   def github_pull_requests
     github_prs = GithubPullRequestService.new(user)
     github_prs.pull_requests
