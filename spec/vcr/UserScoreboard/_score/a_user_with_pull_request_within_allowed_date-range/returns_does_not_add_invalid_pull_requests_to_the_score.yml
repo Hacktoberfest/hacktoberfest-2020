@@ -22,27 +22,26 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Server:
+      - GitHub.com
       Date:
-      - Tue, 03 Sep 2019 19:30:04 GMT
+      - Tue, 03 Sep 2019 19:30:05 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
-      Server:
-      - GitHub.com
       Status:
       - 200 OK
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4999'
+      - '4997'
       X-Ratelimit-Reset:
       - '1567542604'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
       - Accept, Authorization, Cookie, X-GitHub-OTP
-      - Accept-Encoding
       Etag:
       - W/"f219fc2cf315311448762a32309ad00e"
       Last-Modified:
@@ -74,13 +73,13 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - C895:70CE:C38055:12A325A:5D6EBF3B
+      - C899:68BB:C0323E:125A54D:5D6EBF3D
     body:
       encoding: ASCII-8BIT
       string: '{"login":"mkcode","id":283496,"node_id":"MDQ6VXNlcjI4MzQ5Ng==","avatar_url":"https://avatars2.githubusercontent.com/u/283496?v=4","gravatar_id":"","url":"https://api.github.com/users/mkcode","html_url":"https://github.com/mkcode","followers_url":"https://api.github.com/users/mkcode/followers","following_url":"https://api.github.com/users/mkcode/following{/other_user}","gists_url":"https://api.github.com/users/mkcode/gists{/gist_id}","starred_url":"https://api.github.com/users/mkcode/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mkcode/subscriptions","organizations_url":"https://api.github.com/users/mkcode/orgs","repos_url":"https://api.github.com/users/mkcode/repos","events_url":"https://api.github.com/users/mkcode/events{/privacy}","received_events_url":"https://api.github.com/users/mkcode/received_events","type":"User","site_admin":false,"name":"Chris
         Ewald","company":"Raise.dev","blog":"","location":"NYC","email":null,"hireable":null,"bio":null,"public_repos":54,"public_gists":19,"followers":15,"following":4,"created_at":"2010-05-21T15:58:58Z","updated_at":"2019-08-22T14:27:15Z"}'
     http_version: 
-  recorded_at: Tue, 03 Sep 2019 19:30:04 GMT
+  recorded_at: Tue, 03 Sep 2019 19:30:05 GMT
 - request:
     method: get
     uri: https://api.github.com/search/issues?q=is:pr%20user:%20Chris%20Ewald
@@ -104,7 +103,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 03 Sep 2019 19:30:04 GMT
+      - Tue, 03 Sep 2019 19:30:06 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -116,7 +115,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '30'
       X-Ratelimit-Remaining:
-      - '29'
+      - '27'
       X-Ratelimit-Reset:
       - '1567539064'
       Cache-Control:
@@ -150,14 +149,14 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Github-Request-Id:
-      - C896:1E41:4119DA:5DC266:5D6EBF3C
+      - C89A:68B9:5C2D6E:880381:5D6EBF3E
     body:
       encoding: ASCII-8BIT
       string: '{"total_count":3,"incomplete_results":false,"items":[{"url":"https://api.github.com/repos/parasew/instiki/issues/16","repository_url":"https://api.github.com/repos/parasew/instiki","labels_url":"https://api.github.com/repos/parasew/instiki/issues/16/labels{/name}","comments_url":"https://api.github.com/repos/parasew/instiki/issues/16/comments","events_url":"https://api.github.com/repos/parasew/instiki/issues/16/events","html_url":"https://github.com/parasew/instiki/pull/16","id":7912603,"node_id":"MDExOlB1bGxSZXF1ZXN0Mjc5Njk1OQ==","number":16,"title":"Running
         on heroku","user":{"login":"mkcode","id":283496,"node_id":"MDQ6VXNlcjI4MzQ5Ng==","avatar_url":"https://avatars2.githubusercontent.com/u/283496?v=4","gravatar_id":"","url":"https://api.github.com/users/mkcode","html_url":"https://github.com/mkcode","followers_url":"https://api.github.com/users/mkcode/followers","following_url":"https://api.github.com/users/mkcode/following{/other_user}","gists_url":"https://api.github.com/users/mkcode/gists{/gist_id}","starred_url":"https://api.github.com/users/mkcode/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mkcode/subscriptions","organizations_url":"https://api.github.com/users/mkcode/orgs","repos_url":"https://api.github.com/users/mkcode/repos","events_url":"https://api.github.com/users/mkcode/events{/privacy}","received_events_url":"https://api.github.com/users/mkcode/received_events","type":"User","site_admin":false},"labels":[],"state":"closed","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":21,"created_at":"2012-10-27T17:20:56Z","updated_at":"2019-04-09T04:13:42Z","closed_at":"2016-05-27T05:00:34Z","author_association":"NONE","pull_request":{"url":"https://api.github.com/repos/parasew/instiki/pulls/16","html_url":"https://github.com/parasew/instiki/pull/16","diff_url":"https://github.com/parasew/instiki/pull/16.diff","patch_url":"https://github.com/parasew/instiki/pull/16.patch"},"body":"Hi,\n\nJust
         did the bare minimum changes to get instiki running on heroku. Uses the latest
         instiki and runs on the latest heroku cedar stack.\n\nThis isn''t a real pull
-        request. Just letting you know!\n","score":1.3849146},{"url":"https://api.github.com/repos/syl20bnr/spacemacs/issues/2676","repository_url":"https://api.github.com/repos/syl20bnr/spacemacs","labels_url":"https://api.github.com/repos/syl20bnr/spacemacs/issues/2676/labels{/name}","comments_url":"https://api.github.com/repos/syl20bnr/spacemacs/issues/2676/comments","events_url":"https://api.github.com/repos/syl20bnr/spacemacs/issues/2676/events","html_url":"https://github.com/syl20bnr/spacemacs/pull/2676","id":101306389,"node_id":"MDExOlB1bGxSZXF1ZXN0NDI1NDUwMTI=","number":2676,"title":"Update
+        request. Just letting you know!\n","score":1.3849164},{"url":"https://api.github.com/repos/syl20bnr/spacemacs/issues/2676","repository_url":"https://api.github.com/repos/syl20bnr/spacemacs","labels_url":"https://api.github.com/repos/syl20bnr/spacemacs/issues/2676/labels{/name}","comments_url":"https://api.github.com/repos/syl20bnr/spacemacs/issues/2676/comments","events_url":"https://api.github.com/repos/syl20bnr/spacemacs/issues/2676/events","html_url":"https://github.com/syl20bnr/spacemacs/pull/2676","id":101306389,"node_id":"MDExOlB1bGxSZXF1ZXN0NDI1NDUwMTI=","number":2676,"title":"Update
         hybrid-mode to swap out the insert state keymap","user":{"login":"mkcode","id":283496,"node_id":"MDQ6VXNlcjI4MzQ5Ng==","avatar_url":"https://avatars2.githubusercontent.com/u/283496?v=4","gravatar_id":"","url":"https://api.github.com/users/mkcode","html_url":"https://github.com/mkcode","followers_url":"https://api.github.com/users/mkcode/followers","following_url":"https://api.github.com/users/mkcode/following{/other_user}","gists_url":"https://api.github.com/users/mkcode/gists{/gist_id}","starred_url":"https://api.github.com/users/mkcode/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mkcode/subscriptions","organizations_url":"https://api.github.com/users/mkcode/orgs","repos_url":"https://api.github.com/users/mkcode/repos","events_url":"https://api.github.com/users/mkcode/events{/privacy}","received_events_url":"https://api.github.com/users/mkcode/received_events","type":"User","site_admin":false},"labels":[],"state":"closed","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":31,"created_at":"2015-08-16T22:44:25Z","updated_at":"2015-09-08T17:04:01Z","closed_at":"2015-09-07T05:50:00Z","author_association":"CONTRIBUTOR","pull_request":{"url":"https://api.github.com/repos/syl20bnr/spacemacs/pulls/2676","html_url":"https://github.com/syl20bnr/spacemacs/pull/2676","diff_url":"https://github.com/syl20bnr/spacemacs/pull/2676.diff","patch_url":"https://github.com/syl20bnr/spacemacs/pull/2676.patch"},"body":"I
         believe these changes nicely accommodate both my concerns for having the full
         emacs experience in hybrid mode and @justbur''s concerns for having perfect
@@ -166,8 +165,8 @@ http_interactions:
         `hybrid-mode-insert-state-map` is set to inherit from `evil-emacs-state-map`
         with the few essential changes made for escaping correctly. This simplifies
         the code quite a bit and works great with `helm-descbinds`.\n\n@justbur, @syl20bnr
-        - Please review and let me know what you think! \n\nReferences #1244.\n","score":2.6549493e-05},{"url":"https://api.github.com/repos/openmm/openmm/issues/120","repository_url":"https://api.github.com/repos/openmm/openmm","labels_url":"https://api.github.com/repos/openmm/openmm/issues/120/labels{/name}","comments_url":"https://api.github.com/repos/openmm/openmm/issues/120/comments","events_url":"https://api.github.com/repos/openmm/openmm/issues/120/events","html_url":"https://github.com/openmm/openmm/pull/120","id":18497397,"node_id":"MDExOlB1bGxSZXF1ZXN0NzgzNTMzNw==","number":120,"title":"Use
-        reaction field to smoothly cut off GB interactions","user":{"login":"peastman","id":4379786,"node_id":"MDQ6VXNlcjQzNzk3ODY=","avatar_url":"https://avatars3.githubusercontent.com/u/4379786?v=4","gravatar_id":"","url":"https://api.github.com/users/peastman","html_url":"https://github.com/peastman","followers_url":"https://api.github.com/users/peastman/followers","following_url":"https://api.github.com/users/peastman/following{/other_user}","gists_url":"https://api.github.com/users/peastman/gists{/gist_id}","starred_url":"https://api.github.com/users/peastman/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/peastman/subscriptions","organizations_url":"https://api.github.com/users/peastman/orgs","repos_url":"https://api.github.com/users/peastman/repos","events_url":"https://api.github.com/users/peastman/events{/privacy}","received_events_url":"https://api.github.com/users/peastman/received_events","type":"User","site_admin":false},"labels":[],"state":"closed","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":36,"created_at":"2013-08-23T23:16:35Z","updated_at":"2014-07-02T00:59:18Z","closed_at":"2013-08-26T22:24:57Z","author_association":"CONTRIBUTOR","pull_request":{"url":"https://api.github.com/repos/openmm/openmm/pulls/120","html_url":"https://github.com/openmm/openmm/pull/120","diff_url":"https://github.com/openmm/openmm/pull/120.diff","patch_url":"https://github.com/openmm/openmm/pull/120.patch"},"body":"","score":1.9830983e-07}]}'
+        - Please review and let me know what you think! \n\nReferences #1244.\n","score":2.6549487e-05},{"url":"https://api.github.com/repos/openmm/openmm/issues/120","repository_url":"https://api.github.com/repos/openmm/openmm","labels_url":"https://api.github.com/repos/openmm/openmm/issues/120/labels{/name}","comments_url":"https://api.github.com/repos/openmm/openmm/issues/120/comments","events_url":"https://api.github.com/repos/openmm/openmm/issues/120/events","html_url":"https://github.com/openmm/openmm/pull/120","id":18497397,"node_id":"MDExOlB1bGxSZXF1ZXN0NzgzNTMzNw==","number":120,"title":"Use
+        reaction field to smoothly cut off GB interactions","user":{"login":"peastman","id":4379786,"node_id":"MDQ6VXNlcjQzNzk3ODY=","avatar_url":"https://avatars3.githubusercontent.com/u/4379786?v=4","gravatar_id":"","url":"https://api.github.com/users/peastman","html_url":"https://github.com/peastman","followers_url":"https://api.github.com/users/peastman/followers","following_url":"https://api.github.com/users/peastman/following{/other_user}","gists_url":"https://api.github.com/users/peastman/gists{/gist_id}","starred_url":"https://api.github.com/users/peastman/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/peastman/subscriptions","organizations_url":"https://api.github.com/users/peastman/orgs","repos_url":"https://api.github.com/users/peastman/repos","events_url":"https://api.github.com/users/peastman/events{/privacy}","received_events_url":"https://api.github.com/users/peastman/received_events","type":"User","site_admin":false},"labels":[],"state":"closed","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":36,"created_at":"2013-08-23T23:16:35Z","updated_at":"2014-07-02T00:59:18Z","closed_at":"2013-08-26T22:24:57Z","author_association":"CONTRIBUTOR","pull_request":{"url":"https://api.github.com/repos/openmm/openmm/pulls/120","html_url":"https://github.com/openmm/openmm/pull/120","diff_url":"https://github.com/openmm/openmm/pull/120.diff","patch_url":"https://github.com/openmm/openmm/pull/120.patch"},"body":"","score":1.9831056e-07}]}'
     http_version: 
-  recorded_at: Tue, 03 Sep 2019 19:30:04 GMT
+  recorded_at: Tue, 03 Sep 2019 19:30:06 GMT
 recorded_with: VCR 5.0.0
