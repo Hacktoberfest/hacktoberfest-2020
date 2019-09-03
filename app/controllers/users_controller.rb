@@ -13,7 +13,8 @@ class UsersController < ApplicationController
 
   # action to save registration
   def update
-    if @current_user.update_registration_validations(params_for_registration)
+    @current_user.assign_attributes(params_for_registration)
+    if @current_user.register
       redirect_to session[:destination] || '/'
     else
       set_user_emails
