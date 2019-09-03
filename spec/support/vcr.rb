@@ -7,7 +7,7 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.configure_rspec_metadata!
 
-  c.filter_sensitive_data("<TEST_USER_GITHUB_TOKEN>") do
+  c.filter_sensitive_data('<TEST_USER_GITHUB_TOKEN>') do
     user_github_token
   end
 end

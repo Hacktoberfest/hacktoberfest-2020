@@ -34,23 +34,23 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 def user_github_token
-  ENV.fetch("TEST_USER_GITHUB_TOKEN") { SecureRandom.hex(20) }
+  ENV.fetch('TEST_USER_GITHUB_TOKEN') { SecureRandom.hex(20) }
 end
 
 unless ENV['TEST_USER_GITHUB_TOKEN']
   puts <<~ENDWARNING
 
-  *************************************************************************
+    *************************************************************************
 
-  No environment variable `TEST_USER_GITHUB_TOKEN` variable is defined!
+    No environment variable `TEST_USER_GITHUB_TOKEN` variable is defined!
 
-  Ignore this message if tests are running on CI or no new tests are being
-  written, as successful network responses will be replayed by VCR.
+    Ignore this message if tests are running on CI or no new tests are being
+    written, as successful network responses will be replayed by VCR.
 
-  `TEST_USER_GITHUB_TOKEN` will likely need to be set in the `.env` file to
-  a valid user token in order to record new successful network requests.
+    `TEST_USER_GITHUB_TOKEN` will likely need to be set in the `.env` file to
+    a valid user token in order to record new successful network requests.
 
-  *************************************************************************
+    *************************************************************************
 
   ENDWARNING
 end

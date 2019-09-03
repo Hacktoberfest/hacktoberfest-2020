@@ -39,7 +39,7 @@ RSpec.describe 'UserScoreboard' do
       end
     end
 
-    context 'a user with pull request within allowed date-range'  do
+    context 'a user with pull request within allowed date-range' do
       subject { UserScoreboard.new(user, start_date, end_date) }
 
       it 'returns does not add invalid pull requests to the score', :vcr do
