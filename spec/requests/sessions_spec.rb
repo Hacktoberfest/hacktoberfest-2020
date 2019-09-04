@@ -48,7 +48,7 @@ RSpec.describe 'Sessions', type: :request do
         login
       end
 
-      it 'the request is succesful', :vcr do
+      it 'the request is succesful', vcr: { record: :new_episodes } do
         get profile_path
         expect(response).to be_successful
       end

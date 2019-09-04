@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'octokit'
+
 class UserEmailService
   attr_reader :user
 

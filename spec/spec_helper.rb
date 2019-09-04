@@ -2,6 +2,7 @@
 
 require 'omniauth'
 require 'factory_bot'
+require 'webmock/rspec'
 
 FactoryBot.definition_file_paths = ['./spec/factories']
 FactoryBot.find_definitions
