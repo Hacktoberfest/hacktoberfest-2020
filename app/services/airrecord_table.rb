@@ -9,7 +9,7 @@ class AirrecordTable
   end
 
   def faraday_connection
-    @connection ||= Faraday.new(
+    @faraday_connection ||= Faraday.new(
       url: 'https://api.airtable.com',
       headers: {
         'Authorization' => "Bearer #{api_key}",
