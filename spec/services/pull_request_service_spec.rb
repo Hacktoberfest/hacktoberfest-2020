@@ -93,16 +93,6 @@ RSpec.describe PullRequestService do
         expect(pr_service.score).to eq(0)
       end
     end
-  end
-
-  describe '#filtered_github_pull_requests' do
-    context 'given an array of 4 pull requests' do
-      context 'pull requests with valid dates and valid labels' do
-        it 'filters and returns all 4 PRs', vcr: { record: :new_episodes } do
-          prs = pull_request_data(PR_DATA[:valid_array])
-          expect(scoreboard.filtered_github_pull_requests(prs).length).to eq(4)
-        end
-      end
 
     context 'it counts the amount of pull requests' do
       before { stub_helper(PR_DATA[:valid_array]) }

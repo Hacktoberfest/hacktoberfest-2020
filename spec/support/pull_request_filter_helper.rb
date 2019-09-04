@@ -146,7 +146,7 @@ PR_DATA = {
 module PullRequestFilterHelper
   def pull_request_data(type)
     type.map do |hash|
-      ::GraphqlPullRequest.new(Hashie::Mash.new(hash))
+      GithubPullRequest.new(Hashie::Mash.new(hash))
     end
   end
 end
