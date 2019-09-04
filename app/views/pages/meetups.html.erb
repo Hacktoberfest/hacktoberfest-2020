@@ -6,7 +6,6 @@
     <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %><br/>
     <%= m["Event City"] %>, <%= m["Event Country"] %><br/>
     <%= m["Event Organizer"] %><br/>
-      <% binding.pry %>
   <a href="<%= m["Event URL"] %>">view more details <a/><br/>
   <% end %>
   <div>
