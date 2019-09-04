@@ -2,7 +2,9 @@
 
 class PagesController < ApplicationController
   def index
-    @meetups = meetups
+    @meetups = meetups.select do |m|
+      m.fields.key?("Featured?")
+    end
   end
 
   def faqs

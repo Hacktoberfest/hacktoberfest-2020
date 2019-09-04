@@ -2,8 +2,8 @@
 <div>
   <%= link_to 'Hacktoberfest', '/' %><br/>
   <% @meetups.map do |m| %>
-    <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %><br/>
     <%= m["Event Name"] %><br/>
+    <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %><br/>
     <%= m["Event City"] %>, <%= m["Event Country"] %><br/>
     <%= m["Event Organizer"] %><br/>
   <a href="<%= m["Event URL"] %>">view more details <a/><br/>
