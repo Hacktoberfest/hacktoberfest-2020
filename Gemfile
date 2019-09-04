@@ -2,13 +2,22 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
+gem 'airrecord'
+
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'coffee-rails', '~> 4.2'
 
 gem 'faraday'
+gem 'faraday-http-cache'
 
 gem 'jbuilder', '~> 2.5'
+
+gem 'kramdown'
+
+# Must be locked before version 3.0 for use with airrecord gems
+# See: https://github.com/sirupsen/airrecord/issues/63
+gem 'net-http-persistent', '~> 2.9'
 
 gem 'omniauth-github'
 
