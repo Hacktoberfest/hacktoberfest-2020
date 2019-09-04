@@ -52,7 +52,9 @@ RSpec.describe 'GithubGraphqlApiClient' do
           status: 501
         )
 
-        expect { github_graphql_client.request(mock_query) }.to raise_error
+        expect { github_graphql_client.request(mock_query) }.to raise_error(
+          Faraday::ClientError
+        )
       end
     end
   end
