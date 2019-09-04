@@ -29,11 +29,7 @@ RSpec.describe PullRequestService do
 
   describe '#all_by_state' do
     context 'given an array with valid pull_requests' do
-      before do
-        allow(pr_service)
-          .to receive(:github_pull_requests)
-          .and_return(pull_request_data(PR_DATA[:valid_array]))
-      end
+      before { stub_helper(PR_DATA[:valid_array]) }
 
       it 'will categorize prs as eligible', vcr: { record: :new_episodes } do
         pr_service.all
@@ -42,11 +38,7 @@ RSpec.describe PullRequestService do
     end
 
     context 'given an array with invalid pull_requests' do
-      before do
-        allow(pr_service)
-          .to receive(:github_pull_requests)
-          .and_return(pull_request_data(PR_DATA[:array_with_invalid_labels]))
-      end
+      before { stub_helper(PR_DATA[:array_with_invalid_labels]) }
 
       it 'will categorize invalid prs', vcr: { record: :new_episodes } do
         pr_service.all
@@ -58,44 +50,32 @@ RSpec.describe PullRequestService do
   describe '#all' do
     context 'given an array of 4 pull requests' do
       context 'pull requests with valid dates and valid labels' do
-        before do
-          allow(pr_service)
-            .to receive(:github_pull_requests)
-            .and_return(pull_request_data(PR_DATA[:valid_array]))
-        end
+        before { stub_helper(PR_DATA[:valid_array]) }
+
         it 'filters and returns all 4 PRs', vcr: { record: :new_episodes } do
           expect(pr_service.all.length).to eq(4)
         end
       end
 
       context 'pull requests with 2 invalid dates & valid labels' do
-        before do
-          allow(pr_service)
-            .to receive(:github_pull_requests)
-            .and_return(pull_request_data(PR_DATA[:array_with_invalid_dates]))
-        end
+        before { stub_helper(PR_DATA[:array_with_invalid_dates]) }
+
         it 'filters and returns 2 of the PRs', vcr: { record: :new_episodes } do
           expect(pr_service.all.length).to eq(2)
         end
       end
 
       context 'pull_requests with valid dates & 2 invalid labels' do
-        before do
-          allow(pr_service)
-            .to receive(:github_pull_requests)
-            .and_return(pull_request_data(PR_DATA[:array_with_invalid_labels]))
-        end
+        before { stub_helper(PR_DATA[:array_with_invalid_labels]) }
+
         it 'filters and returns 4 of the PRs', vcr: { record: :new_episodes } do
           expect(pr_service.all.length).to eq(4)
         end
       end
 
       context 'pull_requests with 4 invalid dates & invalid labels' do
-        before do
-          allow(pr_service)
-            .to receive(:github_pull_requests)
-            .and_return(pull_request_data(PR_DATA[:invalid_array]))
-        end
+        before { stub_helper(PR_DATA[:invalid_array]) }
+
         it 'filters & returns an empty array', vcr: { record: :new_episodes } do
           expect(pr_service.all.length).to eq(0)
         end
@@ -105,11 +85,8 @@ RSpec.describe PullRequestService do
 
   describe '#score' do
     context 'a new user with no eligible pull requests' do
-      before do
-        allow(pr_service)
-          .to receive(:github_pull_requests)
-          .and_return(pull_request_data(PR_DATA[:invalid_array]))
-      end
+      before { stub_helper(PR_DATA[:invalid_array]) }
+
       it 'returns 0', vcr: { record: :new_episodes } do
         pr_service.all
         pr_service.all_by_state
@@ -118,16 +95,19 @@ RSpec.describe PullRequestService do
     end
 
     context 'it counts the amount of pull requests' do
-      before do
-        allow(pr_service)
-          .to receive(:github_pull_requests)
-          .and_return(pull_request_data(PR_DATA[:valid_array]))
-      end
+      before { stub_helper(PR_DATA[:valid_array]) }
+
       it 'returns the total', vcr: { record: :new_episodes } do
         pr_service.all
         pr_service.all_by_state
         expect(pr_service.score).to eq(4)
       end
     end
+  end
+
+  def stub_helper(arr_type)
+    allow(pr_service)
+      .to receive(:github_pull_requests)
+      .and_return(pull_request_data(arr_type))
   end
 end
