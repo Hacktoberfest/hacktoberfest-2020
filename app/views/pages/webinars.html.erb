@@ -1,0 +1,12 @@
+<div>
+  <%= link_to 'Hacktoberfest', '/' %><br/>
+  <div>
+    <% @webinars.map do |w| %>
+      <%=  %><br/>
+      <%= w['Webinar Name'] %><br/>
+      <%= w['Region'] %><br/>
+      <%= w['Date/Time String'] %><br/>
+      <%= w['Category'] %><br/>
+    <% end %>
+  </div>
+</div>

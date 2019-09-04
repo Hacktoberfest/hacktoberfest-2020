@@ -1,0 +1,26 @@
+<div>
+  <%= link_to 'Hacktoberfest', '/' %>
+  <h2>General </h2><br/>
+  <% @faqs_general.map do |q| %>
+    <h4><%= markdown q["Question"] %></h4>
+    <p> <%= markdown q["Answer"] %></p><br/>
+  <% end %>
+
+  <h2>Rules</h2><br/>
+  <% @faqs_rules.map do |q| %>
+    <h4><%= markdown q["Question"] %></h4>
+    <p> <%= markdown q["Answer"] %></p><br/>
+  <% end %>
+
+  <h2>Events </h2><br/>
+  <% @faqs_events.map do |q| %>
+    <h4><%= markdown q["Question"] %></h4>
+    <p> <%= markdown q["Answer"] %></p><br/>
+  <% end %>
+
+  <h2>Shipping </h2><br/>
+  <% @faqs_shipping.map do |q| %>
+    <h4><%= markdown q["Question"] %></h4>
+    <p> <%= markdown q["Answer"] %></p><br/>
+  <% end %>
+</div>

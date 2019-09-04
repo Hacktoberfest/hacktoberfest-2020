@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   get '/profile' => 'users#show', as: :profile
   get '/register' => 'users#edit', as: :register_form
   patch '/register' => 'users#update', as: :register
+  get '/faq', to: 'pages#faqs'
+  get '/meetups', to: 'pages#meetups'
+  get '/webinars', to: 'pages#webinars'
 end

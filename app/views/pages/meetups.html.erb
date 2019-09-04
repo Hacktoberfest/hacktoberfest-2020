@@ -1,0 +1,30 @@
+<div>
+<div>
+  <%= link_to 'Hacktoberfest', '/' %><br/>
+  <% @meetups.map do |m| %>
+    <%= m["Event Name"] %><br/>
+    <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %><br/>
+    <%= m["Event City"] %>, <%= m["Event Country"] %><br/>
+    <%= m["Event Organizer"] %><br/>
+  <a href="<%= m["Event URL"] %>">view more details <a/><br/>
+  <% end %>
+  <div>
+  <h1>Have an event?</h1>
+    <iframe class="airtable-embed" src="https://airtable.com/embed/shrD5rVJ7kfZec5hD?backgroundColor=blue" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+  </div>
+  <div>
+    <h1>Additional Resources</h1>
+    <% @resources.map do |r| %>
+      <a href="<%= r["URL"] %>"><%=r["Link Text"]%><a/><br/>
+    <% end %>
+  </div>
+</div>
+
+  <% @meetups.map do |m| %>
+    <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %><br/>
+    <%= m["Event Name"] %><br/>
+    <%= m["Event City"] %>, <%= m["Event Country"] %><br/>
+    <%= m["Event Organizer"] %><br/>
+  <a href="<%= m["Event URL"] %>">view more details <a/><br/>
+  <% end %>
+</div>
