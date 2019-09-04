@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 
   # render current user profile
   def show
-    @score = UserScoreboard.new(@current_user,
-                                ENV['START_DATE'],
-                                ENV['END_DATE']).score
+    prs = PullRequestService.new(@current_user)
+    @pull_requests = prs.all_by_state
+    @score = prs.score
   end
 
   # action to save registration
@@ -23,14 +23,10 @@ class UsersController < ApplicationController
 
   # action to render register form
   def edit
-    set_user_emails
+    @emails = UserEmailService.new(@current_user).emails
   end
 
   private
-
-  def set_user_emails
-    @emails = UserEmailService.new(@current_user).emails
-  end
 
   def params_for_registration
     params.require(:user).permit(:email, :terms_acceptance, :marketing_emails)
