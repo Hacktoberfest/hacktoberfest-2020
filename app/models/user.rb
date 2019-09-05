@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  with_options unless: -> (user) { user.state == 'new' } do |user|
+    user.validates :terms_acceptance, acceptance: true
+    user.validates :email, presence: true
+  end
+
   state_machine initial: :new do
     event :register do
       transition new: :registered
@@ -9,16 +14,13 @@ class User < ApplicationRecord
       transition registered: :waiting
     end
     event :complete do
-      transition waiting: :complete
+      transition waiting: :completed
     end
     event :incomplete do 
-      transition waiting: :complete
+      transition waiting: :incompleted
     end
 
-    state :registered do
-      validates :terms_acceptance, acceptance: true
-      validates :email, presence: true
-    end
+    state :registered
 
     state :waiting do 
       with_options unless: :hacktoberfest_ended? do |user|
@@ -26,45 +28,15 @@ class User < ApplicationRecord
       end
     end
 
-    state :complete do
-      validates :score_mature_prs, numericality: { greater_than_or_equal_to: 4 }
+    state :completed do
+      validates :won_hacktoberfest? , inclusion: [true]
     end
 
-    state :incomplete do
+    state :incompleted do
+      validates :hacktoberfest_ended? , inclusion: [true]
+      validates :won_hacktoberfest?, inclusion: [false]
     end
   end
-
-
-  # with_options if: :run_registration_validations do |confirm|
-  #   confirm.validates :terms_acceptance, acceptance: true
-  #   confirm.validates :email, presence: true
-  # end ask daniel: when the user crosses 4 eloigible PRs... do you want 7 days from that point {might be easier} 
-  
-  # Method when i score:
-  
-  #   gives you the PR that you're scoring- geting all the open PRS not invalid sort by date from oldest to newest take the four oldest
-
-  #   provisional score and active score
-
-  #   provisional hasnt cured 
-
-  #   actual score method - starting with oct 1 test whjich pontetc
-
-  #   should be the first four that they did 
-
-  #   from waiting to one complete/incomplete/banned .. scorecard 
-
-  # def update_registration_validations(*args)
-  #   @run_registration_validations = true
-  #   updated = update(*args)
-  #   @run_registration_validations = false
-  #   updated
-  # end
-
-  # review
-  # completed
-  # coupon applied
-  # cooling
 
   protected
 
@@ -76,6 +48,10 @@ class User < ApplicationRecord
   def score_mature_prs 
     pr_service = PullRequestService.new(self)
     pr_service.count_mature_prs
+  end
+
+  def won_hacktoberfest?
+    score_mature_prs >= 4
   end
 
   def hacktoberfest_ended?

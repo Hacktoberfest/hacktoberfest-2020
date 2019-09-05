@@ -34,7 +34,7 @@ class GithubPullRequestService
 
   def pull_requests
     client = GithubGraphqlApiClient.new(access_token: @user.provider_token)
-    response = client.request(PULL_REQUEST_QUERY, username: @user.name)
+    response = client.request(PULL_REQUEST_QUERY, username: "mkcode")
     response.data.user.pullRequests.nodes.map do |pr|
       GithubPullRequest.new(pr)
     end

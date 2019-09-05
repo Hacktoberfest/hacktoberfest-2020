@@ -120,4 +120,42 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#complete' do
+    context 'the user has 4 mature PRs' do 
+      let(:user) { FactoryBot.create(:user) }
+
+      before {
+        user.register
+        user.stub(:score) { 4 }
+        user.wait
+        user.stub(:score_mature_prs) { 4 }
+      }
+
+      it 'allows the user to enter the completed state' do
+        expect(user.complete).to eq(true)
+      end
+
+      it 'persists the completed state' do
+        user.complete
+        user.reload
+        expect(user.state).to eq('completed')
+      end
+    end
+
+    context 'the user does not have 4 mature PRs' do 
+      let(:user) { FactoryBot.create(:user) }
+
+      before {
+        user.register
+        user.stub(:score) { 4 }
+        user.wait
+        user.stub(:score_mature_prs) { 3 }
+      }
+
+      it 'disallows the user to enter the completed state' do
+        expect(user.complete).to eq(false)
+      end
+    end
+  end
 end
