@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   patch '/register' => 'users#update', as: :register
   get '/faq', to: 'pages#faqs'
   get '/meetups', to: 'pages#meetups'
+  get '/webinars', to: 'pages#webinars'
 end

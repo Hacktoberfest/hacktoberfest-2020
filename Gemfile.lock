@@ -280,7 +280,21 @@ GEM
     websocket-extensions (0.1.4)
 
 PLATFORMS
+  coffee-unknown
+  dotenv-unknown
+  faraday-unknown
+  guard-unknown
+  net-unknown
+  omniauth-unknown
+  rspec-unknown
+  rubocop-unknown
   ruby
+  sass-unknown
+  spring-unknown
+  terminal-unknown
+  tzinfo-unknown
+  unknown
+  web-unknown
 
 DEPENDENCIES
   airrecord
