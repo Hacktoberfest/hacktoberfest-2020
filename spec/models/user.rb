@@ -62,4 +62,62 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#wait' do
+    context 'user has 4 open prs' do
+      let(:user) { FactoryBot.create(:user) } 
+
+      before do
+        user.register
+        user.stub(:score) { 4 }
+      end
+
+      it 'allows the user to enter the waiting state' do
+        expect(user.wait).to eq(true)
+      end
+
+      it 'persists the waiting state' do
+        user.wait
+        user.reload
+        expect(user.state).to eq('waiting')
+      end
+    end
+
+    context 'user has less than 4 open prs' do 
+      let(:user) { FactoryBot.create(:user) } 
+
+      before do
+        user.register
+        user.stub(:score) { 3 }
+      end
+
+      it 'disallows the user to enter the waiting state' do
+        expect(user.wait).to eq(false)
+      end
+
+      it 'keeps the user in the registered state' do 
+        expect(user.state).to eq('registered')
+      end
+    end
+
+    context 'hacktoberfest has ended' do
+      let(:user) { FactoryBot.create(:user) } 
+
+      before do
+        user.register
+        user.stub(:score) { 3 }
+        user.stub(:hacktoberfest_ended?) { true }
+      end
+
+      it 'moves user to waiting regardless of pr count' do
+        expect(user.wait).to eq(true)
+      end
+
+      it 'persists the waiting state' do
+        user.wait
+        user.reload
+        expect(user.state).to eq('waiting')
+      end
+    end
+  end
 end
