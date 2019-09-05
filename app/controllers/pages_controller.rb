@@ -23,14 +23,7 @@ class PagesController < ApplicationController
     @meetups = meetups.sort_by { |e| e['Event Start Date/Time'] }
   end
 
-  def meetups
-    meetups = AirrecordTable.new.table('Meetups').all
-    @resources = AirrecordTable.new.table('Resource Links').all
-    @meetups = meetups.sort_by { |e| e['Event Start Date/Time'] }
-  end
-
   def webinars
-    binding.pry
     webinars = AirrecordTable.new.table('Webinar Listings').all
     @webinars = webinars.sort_by { |w| w['Event Start Date/Time'] }
   end

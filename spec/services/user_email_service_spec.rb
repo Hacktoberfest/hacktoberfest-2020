@@ -27,7 +27,6 @@ RSpec.describe 'UserEmailService' do
     end
   end
 
-
   describe '#emails' do
     before do
       mock_authentication(uid: user.uid)
