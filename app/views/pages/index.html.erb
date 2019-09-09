@@ -4,16 +4,26 @@
     <%= javascript_include_tag 'segment' %>
   </head>
   <div>
-    <%= link_to "FAQ", faq_path %>
-  </div>
-  <div>
-    <% @meetups.first(4).map do |m| %>
-      <%= m["Event Name"] %><br/>
-      <%= m["Event City"] %><br/>
-      <%= m["Event Organizer"] %><br/>
+    <%= link_to 'Hacktoberfest', '/' %><br/>
+    <% if @current_user %>
+      <%= "Welcome #{@current_user.name}" %>
+      <%= link_to "View your profile", profile_path %>
+    <% else %>
+      <%= link_to "Sign in for Hacktoberfest with Github", login_path %>
     <% end %>
-    <%= link_to "View all events", meetups_path %>
+    <div>
+      <%= link_to "FAQ", faq_path %>
+    </div>
+    <div>
+      <% @meetups.first(4).map do |m| %>
+        <%= m["Event Name"] %><br/>
+        <%= m["Event City"] %><br/>
+        <%= m["Event Organizer"] %><br/>
+      <% end %>
+      <%= link_to "View all events", meetups_path %>
+    </div>
+    <div>
+      <%= link_to 'Logout', logout_path %>
+    </div>
   </div>
-  <div>
-    <%= link_to 'Logout', logout_path %>
-  </div>
+</html>
