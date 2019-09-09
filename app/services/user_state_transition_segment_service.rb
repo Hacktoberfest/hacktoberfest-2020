@@ -6,7 +6,6 @@ module UserStateTransitionSegmentService
   def call(user, transition)
     case transition.event_name
     register(user) when :register
-    when ...
     end
   end
 

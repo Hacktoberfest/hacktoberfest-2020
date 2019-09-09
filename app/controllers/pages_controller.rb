@@ -7,7 +7,6 @@ class PagesController < ApplicationController
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
   def faqs
     faq = AirrecordTable.new.table('FAQ').all
     @faqs_rules = faq.select { |q| q.fields['Category'] == 'Rules' }
@@ -15,7 +14,6 @@ class PagesController < ApplicationController
     @faqs_events = faq.select { |q| q.fields['Category'] == 'Events' }
     @faqs_shipping = faq.select { |q| q.fields['Category'] == 'Shipping' }
   end
-  # rubocop:enable Metrics/AbcSize
 
   def meetups
     meetups = AirrecordTable.new.table('Meetups').all
