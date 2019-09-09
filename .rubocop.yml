@@ -15,6 +15,8 @@ Metrics/MethodLength:
   Max: 35
 Style/PercentLiteralDelimiters:
   Enabled: false
+Metrics/AbcSize:
+    Max: 20
 Rails:
   Enabled: true
 Documentation:

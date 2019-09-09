@@ -77,4 +77,8 @@ class User < ApplicationRecord
   def hacktoberfest_ended?
     Hacktoberfest.end_date.past?
   end
+
+  def before_transition(user, transition)
+    UserStateTransitionSegmentService.call(user, transition)
+  end
 end

@@ -5,11 +5,17 @@ class SessionsController < ApplicationController
     @user = User.where(uid: auth_hash[:uid]).first_or_create
     session[:current_user_id] = @user.id
     store_user_info
+    store_segment_user
     if !@user.terms_acceptance
       redirect_to register_form_path
     else
       redirect_to session[:destination] || '/'
     end
+  end
+
+  def store_segment_user
+    segment = SegmentService.new(@user)
+    segment.identify
   end
 
   def store_user_info
