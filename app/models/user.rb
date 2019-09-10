@@ -23,12 +23,10 @@ class User < ApplicationRecord
       transition waiting: :registered
     end
 
-    state :registered 
+    state :registered
 
     state :waiting do 
-      with_options unless: :hacktoberfest_ended? do |user|
-        user.validates :score, numericality: { greater_than_or_equal_to: 4 }
-      end
+      validates :score, numericality: { greater_than_or_equal_to: 4 }
     end
 
     state :completed do

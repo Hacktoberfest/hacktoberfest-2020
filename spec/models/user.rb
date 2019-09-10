@@ -93,25 +93,6 @@ RSpec.describe User, type: :model do
         expect(user.state).to eq('registered')
       end
     end
-
-    context 'hacktoberfest has ended' do
-      let(:user) { FactoryBot.create(:user, :registered) } 
-
-      before do
-        user.stub(:score) { 3 }
-        user.stub(:hacktoberfest_ended?) { true }
-        user.wait
-      end
-
-      it 'moves user to waiting regardless of pr count' do
-        expect(user.state).to eq('waiting')
-      end
-
-      it 'persists the waiting state' do
-        user.reload
-        expect(user.state).to eq('waiting')
-      end
-    end
   end
 
   describe '#complete' do
