@@ -47,7 +47,7 @@ class User < ApplicationRecord
 
   protected
 
-  def score
+  def eligible_pull_requests_count
     pr_service = PullRequestService.new(self)
     pr_service.score
   end
@@ -58,7 +58,7 @@ class User < ApplicationRecord
   end
 
   def sufficient_eligible_prs?
-    score >= 4
+    eligible_pull_requests_count >= 4
   end
 
   def won_hacktoberfest?

@@ -22,7 +22,7 @@ FactoryBot.define do
       state { 'waiting' }
 
       after :build do |user|
-        user.stub(:score) { 4 }
+        user.stub(:eligible_pull_requests_count) { 4 }
       end
     end
 
@@ -30,7 +30,7 @@ FactoryBot.define do
       state { 'completed' }
 
       after :build do |user|
-        user.stub(:score) { 4 }
+        user.stub(:eligible_pull_requests_count) { 4 }
         user.stub(:score_mature_prs) { 4 }
       end
     end

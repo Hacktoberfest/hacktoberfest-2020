@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-        user.stub(:score) { 4 }
+        user.stub(:eligible_pull_requests_count) { 4 }
         user.wait
       end
 
@@ -82,7 +82,7 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-        user.stub(:score) { 3 }
+        user.stub(:eligible_pull_requests_count) { 3 }
         user.wait
       end
 
@@ -138,7 +138,7 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user, :waiting) }
 
       before do
-        user.stub(:score) { 3 }
+        user.stub(:eligible_pull_requests_count) { 3 }
         user.ineligible
       end
 
