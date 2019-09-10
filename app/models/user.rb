@@ -31,12 +31,13 @@ class User < ApplicationRecord
     end
 
     state :completed do
-      validates :won_hacktoberfest?, inclusion: [true]
+      validates :won_hacktoberfest?, inclusion: {
+        in: [true], message: "user has not met all winning conditions" }
     end
 
     state :incompleted do
-      validates :hacktoberfest_ended?, inclusion: [true]
-      validates :won_hacktoberfest?, inclusion: [false]
+      validates :hacktoberfest_ended?, inclusion: {
+        in: [true], message: "hacktoberfest has not yet ended" }
     end
   end
   # rubocop:enable Metrics/BlockLength
