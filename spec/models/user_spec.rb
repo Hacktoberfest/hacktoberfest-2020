@@ -102,7 +102,7 @@ RSpec.describe User, type: :model do
 
     context 'the user has 4 mature PRs' do
       before do
-        user.stub(:score_mature_prs) { 4 }
+        user.stub(:mature_pull_requests_count) { 4 }
         user.complete
       end
 
@@ -118,7 +118,7 @@ RSpec.describe User, type: :model do
 
     context 'the user does not have 4 mature PRs' do
       before do
-        user.stub(:score_mature_prs) { 3 }
+        user.stub(:mature_pull_requests_count) { 3 }
         user.complete
       end
 

@@ -31,7 +31,7 @@ FactoryBot.define do
 
       after :build do |user|
         user.stub(:eligible_pull_requests_count) { 4 }
-        user.stub(:score_mature_prs) { 4 }
+        user.stub(:mature_pull_requests_count) { 4 }
       end
     end
   end

@@ -52,7 +52,7 @@ class User < ApplicationRecord
     pr_service.score
   end
 
-  def score_mature_prs
+  def mature_pull_requests_count
     pr_service = PullRequestService.new(self)
     pr_service.count_mature_prs
   end
@@ -62,7 +62,7 @@ class User < ApplicationRecord
   end
 
   def won_hacktoberfest?
-    score_mature_prs >= 4
+    mature_pull_requests_count >= 4
   end
 
   def hacktoberfest_ended?
