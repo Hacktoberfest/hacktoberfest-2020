@@ -4,8 +4,11 @@ require 'omniauth'
 require 'factory_bot'
 require 'webmock/rspec'
 
-FactoryBot.definition_file_paths = ['./spec/factories']
-FactoryBot.find_definitions
+# Allow us to mock some methods inside of our factories
+FactoryBot::SyntaxRunner.class_eval do
+  include RSpec::Mocks::ExampleMethods
+end
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 RSpec.configure do |config|

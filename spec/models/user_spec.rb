@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-        user.stub(:eligible_pull_requests_count) { 4 }
+        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
         user.wait
       end
 
@@ -82,7 +82,7 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-        user.stub(:eligible_pull_requests_count) { 3 }
+        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
         user.wait
       end
 
@@ -102,7 +102,7 @@ RSpec.describe User, type: :model do
 
     context 'the user has 4 mature PRs' do
       before do
-        user.stub(:mature_pull_requests_count) { 4 }
+        allow(user).to receive(:mature_pull_requests_count).and_return(4)
         user.complete
       end
 
@@ -118,7 +118,7 @@ RSpec.describe User, type: :model do
 
     context 'the user does not have 4 mature PRs' do
       before do
-        user.stub(:mature_pull_requests_count) { 3 }
+        allow(user).to receive(:mature_pull_requests_count).and_return(3)
         user.complete
       end
 
@@ -138,7 +138,7 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user, :waiting) }
 
       before do
-        user.stub(:eligible_pull_requests_count) { 3 }
+        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
         user.ineligible
       end
 
@@ -175,7 +175,7 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-        user.stub(:hacktoberfest_ended?) { false }
+        allow(user).to receive(:hacktoberfest_ended?).and_return(false)
         user.incomplete
       end
 
@@ -193,7 +193,7 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-        user.stub(:hacktoberfest_ended?) { true }
+        allow(user).to receive(:hacktoberfest_ended?).and_return(true)
         user.incomplete
       end
 
