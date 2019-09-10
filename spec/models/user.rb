@@ -47,8 +47,8 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-         user.terms_acceptance = true 
-         user.register
+        user.terms_acceptance = true
+        user.register
       end
 
       it 'allows the user to enter the registered state' do
@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
 
   describe '#wait' do
     context 'registered user has 4 open prs' do
-      let(:user) { FactoryBot.create(:user, :registered) } 
+      let(:user) { FactoryBot.create(:user, :registered) }
 
       before do
         user.stub(:score) { 4 }
@@ -81,8 +81,8 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'registered user has less than 4 open prs' do 
-      let(:user) { FactoryBot.create(:user, :registered) } 
+    context 'registered user has less than 4 open prs' do
+      let(:user) { FactoryBot.create(:user, :registered) }
 
       before do
         user.stub(:score) { 3 }
@@ -96,15 +96,15 @@ RSpec.describe User, type: :model do
   end
 
   describe '#complete' do
-    context 'the user has 4 mature PRs' do 
+    context 'the user has 4 mature PRs' do
       let(:user) { FactoryBot.create(:user, :registered) }
 
-      before {
+      before do
         user.stub(:score) { 4 }
         user.wait
         user.stub(:score_mature_prs) { 4 }
         user.complete
-      }
+      end
 
       it 'allows the user to enter the completed state' do
         expect(user.state).to eq('completed')
@@ -116,15 +116,15 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'the user does not have 4 mature PRs' do 
+    context 'the user does not have 4 mature PRs' do
       let(:user) { FactoryBot.create(:user, :registered) }
 
-      before {
+      before do
         user.stub(:score) { 4 }
         user.wait
         user.stub(:score_mature_prs) { 3 }
         user.complete
-      }
+      end
 
       it 'disallows the user to enter the completed state' do
         expect(user.state).to eq('waiting')
@@ -142,7 +142,7 @@ RSpec.describe User, type: :model do
         user.ineligible
       end
 
-      it 'transitions the user back to the registered state'do
+      it 'transitions the user back to the registered state' do
         expect(user.state).to eq('registered')
       end
       it 'persists the registered state' do

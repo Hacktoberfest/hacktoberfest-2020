@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user_emails 
+  def set_user_emails
     @emails = UserEmailService.new(@current_user).emails
   end
 
