@@ -150,4 +150,24 @@ RSpec.describe User, type: :model do
       end
     end
   end
+  describe '#ineligible' do
+    context 'waiting user has dropped below 4 prs' do
+      let(:user) { FactoryBot.create(:user, :registered) }
+
+      before do
+        user.stub(:score) { 4 }
+        user.wait
+        user.stub(:score) { 3 }
+        user.ineligible
+      end
+
+      it 'transitions the user back to the registered state'do
+        expect(user.state).to eq('registered')
+      end
+      it 'persists the registered state' do
+        user.reload
+        expect(user.state).to eq('registered')
+      end
+    end
+  end
 end

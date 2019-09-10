@@ -17,10 +17,13 @@ class User < ApplicationRecord
       transition waiting: :completed
     end
     event :incomplete do 
-      transition waiting: :incompleted
+      transition registered: :incompleted
+    end
+    event :ineligible do
+      transition waiting: :registered
     end
 
-    state :registered
+    state :registered 
 
     state :waiting do 
       with_options unless: :hacktoberfest_ended? do |user|
