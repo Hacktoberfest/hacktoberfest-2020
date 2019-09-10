@@ -18,6 +18,14 @@ FactoryBot.define do
       email { nil }
     end
 
+    trait :waiting do
+      state { 'waiting' }
+
+      after :build do |user|
+        user.stub(:score) { 4 }
+      end
+    end
+
     trait :completed do
       state { 'completed' }
 

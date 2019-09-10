@@ -98,12 +98,10 @@ RSpec.describe User, type: :model do
   end
 
   describe '#complete' do
-    context 'the user has 4 mature PRs' do
-      let(:user) { FactoryBot.create(:user) }
+    let(:user) { FactoryBot.create(:user, :waiting) }
 
+    context 'the user has 4 mature PRs' do
       before do
-        user.stub(:score) { 4 }
-        user.wait
         user.stub(:score_mature_prs) { 4 }
         user.complete
       end
@@ -119,11 +117,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'the user does not have 4 mature PRs' do
-      let(:user) { FactoryBot.create(:user) }
-
       before do
-        user.stub(:score) { 4 }
-        user.wait
         user.stub(:score_mature_prs) { 3 }
         user.complete
       end
@@ -141,11 +135,9 @@ RSpec.describe User, type: :model do
 
   describe '#ineligible' do
     context 'waiting user has dropped below 4 prs' do
-      let(:user) { FactoryBot.create(:user) }
+      let(:user) { FactoryBot.create(:user, :waiting) }
 
       before do
-        user.stub(:score) { 4 }
-        user.wait
         user.stub(:score) { 3 }
         user.ineligible
       end
@@ -163,13 +155,9 @@ RSpec.describe User, type: :model do
 
   describe '#incomplete' do
     context 'the user is in the complete state' do
-      let(:user) { FactoryBot.create(:user) }
+      let(:user) { FactoryBot.create(:user, :completed) }
 
       before do
-        user.stub(:score) { 4 }
-        user.wait
-        user.stub(:score_mature_prs) { 4 }
-        user.complete
         user.incomplete
       end
 
