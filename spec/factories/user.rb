@@ -2,16 +2,16 @@
 
 FactoryBot.define do
   factory :user do
-    name { 'Testerson McTest' }
-    email { 'test@mail.com' }
-    uid { 405_106_69 }
-    provider_token { ENV['GITHUB_ACCESS_TOKEN'] }
-    terms_acceptance { true }
-    state { 'registered' }
+    name              { 'Testerson McTest' }
+    email             { 'test@mail.com' }
+    uid               { rand(1..1_000_000) }
+    provider_token    { user_github_token }
+    terms_acceptance  { false }
+    state             { 'new' }
 
-    trait :unregistered do
-      terms_acceptance { false }
-      state { 'new' }
+    trait :registered do
+      terms_acceptance { true }
+      state { 'registered' }
     end
 
     trait :no_email do

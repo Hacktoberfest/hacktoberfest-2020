@@ -41,7 +41,7 @@ class PullRequestService
 
   def find_mature(prs)
     mature_prs = prs.select do |e|
-      DateTime.parse(e.created_at) < DateTime.now - 7.days()
+      DateTime.parse(e.created_at) < (DateTime.now - 7.days)
     end
     mature_prs
   end

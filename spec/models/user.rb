@@ -6,57 +6,56 @@ RSpec.describe User, type: :model do
   describe '#register' do
     before { user.register }
     context 'user is created but has not agreed to terms' do
-      let(:user) { FactoryBot.create(:user, :unregistered) }
+      let(:user) { FactoryBot.create(:user) }
 
       it 'disallows the user to enter the registered state' do
-        expect(user.register).to eq(false)
+        expect(user.state).to eq('new')
       end
       it 'applies the correct errors to the user object' do
-        user.register
-        expect(user.errors.messages[:terms_acceptance][0])
+        expect(user.errors.messages[:terms_acceptance].first)
           .to eq('must be accepted')
       end
     end
 
-    context 'user is created but has no email' do
-      let(:user) { FactoryBot.create(:user, :unregistered, :no_email) }
+    context 'user has no email' do
+      let(:user) { FactoryBot.create(:user, :no_email) }
 
       it 'disallows the user to enter the registered state' do
-        expect(user.register).to eq(false)
+        expect(user.state).to eq('new')
       end
 
       it 'applies the correct errors to the user object' do
-        user.register
-        expect(user.errors.messages[:email][0]).to eq("can't be blank")
+        expect(user.errors.messages[:email].first).to eq("can't be blank")
       end
     end
 
-    context 'user is created but has neither an email nor an agreement' do
-      let(:user) { FactoryBot.create(:user, :unregistered, :no_email) }
+    context 'user has neither an email nor an agreement' do
+      let(:user) { FactoryBot.create(:user, :no_email) }
 
       it 'disallows the user to enter the registered state' do
-        expect(user.register).to eq(false)
+        expect(user.state).to eq('new')
       end
 
       it 'applies errors to the user' do
-        user.register
-        expect(user.errors.messages[:email][0]).to eq("can't be blank")
-        expect(user.errors.messages[:terms_acceptance][0])
+        expect(user.errors.messages[:email].first).to eq("can't be blank")
+        expect(user.errors.messages[:terms_acceptance].first)
           .to eq('must be accepted')
       end
     end
 
     context 'an unregistered user has an email and has agreed to terms' do
-      let(:user) { FactoryBot.create(:user, :unregistered) }
+      let(:user) { FactoryBot.create(:user) }
 
-      before { user.terms_acceptance = true }
+      before do
+         user.terms_acceptance = true 
+         user.register
+      end
 
       it 'allows the user to enter the registered state' do
-        expect(user.register).to eq(true)
+        expect(user.state).to eq('registered')
       end
 
       it 'persists the registered state' do
-        user.register
         user.reload
         expect(user.state).to eq('registered')
       end
@@ -64,57 +63,51 @@ RSpec.describe User, type: :model do
   end
 
   describe '#wait' do
-    context 'user has 4 open prs' do
-      let(:user) { FactoryBot.create(:user) } 
+    context 'registered user has 4 open prs' do
+      let(:user) { FactoryBot.create(:user, :registered) } 
 
       before do
-        user.register
         user.stub(:score) { 4 }
+        user.wait
       end
 
       it 'allows the user to enter the waiting state' do
-        expect(user.wait).to eq(true)
+        expect(user.state).to eq('waiting')
       end
 
       it 'persists the waiting state' do
-        user.wait
         user.reload
         expect(user.state).to eq('waiting')
       end
     end
 
-    context 'user has less than 4 open prs' do 
-      let(:user) { FactoryBot.create(:user) } 
+    context 'registered user has less than 4 open prs' do 
+      let(:user) { FactoryBot.create(:user, :registered) } 
 
       before do
-        user.register
         user.stub(:score) { 3 }
+        user.wait
       end
 
       it 'disallows the user to enter the waiting state' do
-        expect(user.wait).to eq(false)
-      end
-
-      it 'keeps the user in the registered state' do 
         expect(user.state).to eq('registered')
       end
     end
 
     context 'hacktoberfest has ended' do
-      let(:user) { FactoryBot.create(:user) } 
+      let(:user) { FactoryBot.create(:user, :registered) } 
 
       before do
-        user.register
         user.stub(:score) { 3 }
         user.stub(:hacktoberfest_ended?) { true }
+        user.wait
       end
 
       it 'moves user to waiting regardless of pr count' do
-        expect(user.wait).to eq(true)
+        expect(user.state).to eq('waiting')
       end
 
       it 'persists the waiting state' do
-        user.wait
         user.reload
         expect(user.state).to eq('waiting')
       end
@@ -123,38 +116,37 @@ RSpec.describe User, type: :model do
 
   describe '#complete' do
     context 'the user has 4 mature PRs' do 
-      let(:user) { FactoryBot.create(:user) }
+      let(:user) { FactoryBot.create(:user, :registered) }
 
       before {
-        user.register
         user.stub(:score) { 4 }
         user.wait
         user.stub(:score_mature_prs) { 4 }
+        user.complete
       }
 
       it 'allows the user to enter the completed state' do
-        expect(user.complete).to eq(true)
+        expect(user.state).to eq('completed')
       end
 
       it 'persists the completed state' do
-        user.complete
         user.reload
         expect(user.state).to eq('completed')
       end
     end
 
     context 'the user does not have 4 mature PRs' do 
-      let(:user) { FactoryBot.create(:user) }
+      let(:user) { FactoryBot.create(:user, :registered) }
 
       before {
-        user.register
         user.stub(:score) { 4 }
         user.wait
         user.stub(:score_mature_prs) { 3 }
+        user.complete
       }
 
       it 'disallows the user to enter the completed state' do
-        expect(user.complete).to eq(false)
+        expect(user.state).to eq('waiting')
       end
     end
   end
