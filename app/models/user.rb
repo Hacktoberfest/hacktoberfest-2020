@@ -6,6 +6,7 @@ class User < ApplicationRecord
     validates :email, presence: true
   end
 
+  # rubocop:disable Metrics/BlockLength
   state_machine initial: :new do
     event :register do
       transition new: :registered
@@ -38,6 +39,7 @@ class User < ApplicationRecord
       validates :won_hacktoberfest?, inclusion: [false]
     end
   end
+  # rubocop:enable Metrics/BlockLength
 
   protected
 
