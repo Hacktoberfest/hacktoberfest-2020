@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
     before { user.register }
 
     context 'user is created but has not agreed to terms' do
-      let(:user) { FactoryBot.create(:user) }
+      let(:user) { FactoryBot.create(:user, :new) }
 
       it 'disallows the user to enter the registered state' do
         expect(user.state).to eq('new')
@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'user has no email' do
-      let(:user) { FactoryBot.create(:user, :no_email) }
+      let(:user) { FactoryBot.create(:user, :no_email, state: 'new') }
 
       it 'disallows the user to enter the registered state' do
         expect(user.state).to eq('new')
@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'user has neither an email nor an agreement' do
-      let(:user) { FactoryBot.create(:user, :no_email) }
+      let(:user) { FactoryBot.create(:user, :new, :no_email) }
 
       it 'disallows the user to enter the registered state' do
         expect(user.state).to eq('new')
@@ -46,12 +46,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'an unregistered user has an email and has agreed to terms' do
-      let(:user) { FactoryBot.create(:user) }
-
-      before do
-        user.terms_acceptance = true
-        user.register
-      end
+      let(:user) { FactoryBot.create(:user, state: 'new') }
 
       it 'allows the user to enter the registered state' do
         expect(user.state).to eq('registered')
@@ -66,7 +61,7 @@ RSpec.describe User, type: :model do
 
   describe '#wait' do
     context 'registered user has 4 open prs' do
-      let(:user) { FactoryBot.create(:user, :registered) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         user.stub(:score) { 4 }
@@ -84,7 +79,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'registered user has less than 4 open prs' do
-      let(:user) { FactoryBot.create(:user, :registered) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         user.stub(:score) { 3 }
@@ -104,7 +99,7 @@ RSpec.describe User, type: :model do
 
   describe '#complete' do
     context 'the user has 4 mature PRs' do
-      let(:user) { FactoryBot.create(:user, :registered) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         user.stub(:score) { 4 }
@@ -124,7 +119,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'the user does not have 4 mature PRs' do
-      let(:user) { FactoryBot.create(:user, :registered) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         user.stub(:score) { 4 }
@@ -146,7 +141,7 @@ RSpec.describe User, type: :model do
 
   describe '#ineligible' do
     context 'waiting user has dropped below 4 prs' do
-      let(:user) { FactoryBot.create(:user, :registered) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         user.stub(:score) { 4 }
@@ -168,7 +163,7 @@ RSpec.describe User, type: :model do
 
   describe '#incomplete' do
     context 'the user is in the complete state' do
-      let(:user) { FactoryBot.create(:user, :registered) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         user.stub(:score) { 4 }
@@ -189,7 +184,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'hacktoberfest has not yet ended' do
-      let(:user) { FactoryBot.create(:user, :registered) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         user.stub(:hacktoberfest_ended?) { false }
@@ -207,7 +202,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'hacktoberfest has ended' do
-      let(:user) { FactoryBot.create(:user, :registered) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         user.stub(:hacktoberfest_ended?) { true }

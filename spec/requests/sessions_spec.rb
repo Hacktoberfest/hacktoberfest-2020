@@ -42,7 +42,7 @@ RSpec.describe 'Sessions', type: :request do
     end
 
     context 'user is logged in and registered' do
-      let(:registered_user) { FactoryBot.create(:user, :registered) }
+      let(:registered_user) { FactoryBot.create(:user) }
       before do
         mock_authentication(uid: registered_user.uid)
         login
