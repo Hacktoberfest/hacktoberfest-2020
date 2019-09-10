@@ -96,8 +96,8 @@ RSpec.describe User, type: :model do
       end
 
       it 'adds the correct errors to the user' do
-        expect(user.errors.messages[:score].first)
-          .to include("must be greater than or equal to")
+        expect(user.errors.messages[:sufficient_eligible_prs?].first)
+          .to include('user does not have sufficient eligible prs')
       end
     end
   end

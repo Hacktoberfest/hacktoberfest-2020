@@ -27,7 +27,8 @@ class User < ApplicationRecord
     state :registered
 
     state :waiting do
-      validates :score, numericality: { greater_than_or_equal_to: 4 }
+      validates :sufficient_eligible_prs?, inclusion: {
+        in: [true], message: 'user does not have sufficient eligible prs' }
     end
 
     state :completed do
@@ -52,6 +53,10 @@ class User < ApplicationRecord
   def score_mature_prs
     pr_service = PullRequestService.new(self)
     pr_service.count_mature_prs
+  end
+
+  def sufficient_eligible_prs?
+    score >= 4
   end
 
   def won_hacktoberfest?
