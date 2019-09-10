@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  with_options unless: ->(user) { user.state == 'new' } do
-    validates :terms_acceptance, acceptance: true
-    validates :email, presence: true
-  end
-
   # rubocop:disable Metrics/BlockLength, Layout/MultilineHashBraceLayout
   state_machine initial: :new do
     event :register do
@@ -28,7 +23,10 @@ class User < ApplicationRecord
       transition waiting: :registered
     end
 
-    state :registered
+    state :registered do
+      validates :terms_acceptance, acceptance: true
+      validates :email, presence: true
+    end
 
     state :waiting do
       validates :sufficient_eligible_prs?, inclusion: {
