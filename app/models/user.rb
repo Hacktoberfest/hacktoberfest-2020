@@ -58,7 +58,6 @@ class User < ApplicationRecord
   end
 
   def hacktoberfest_ended?
-    result = Date.parse('01/11/2019') - Date.today
-    result < 0
+    Date.parse(ENV.fetch('END_DATE')).past?
   end
 end
