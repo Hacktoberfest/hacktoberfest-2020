@@ -5,12 +5,14 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe '#register' do
     before { user.register }
+
     context 'user is created but has not agreed to terms' do
       let(:user) { FactoryBot.create(:user) }
 
       it 'disallows the user to enter the registered state' do
         expect(user.state).to eq('new')
       end
+
       it 'applies the correct errors to the user object' do
         expect(user.errors.messages[:terms_acceptance].first)
           .to eq('must be accepted')
@@ -131,6 +133,7 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
   describe '#ineligible' do
     context 'waiting user has dropped below 4 prs' do
       let(:user) { FactoryBot.create(:user, :registered) }
@@ -145,6 +148,7 @@ RSpec.describe User, type: :model do
       it 'transitions the user back to the registered state' do
         expect(user.state).to eq('registered')
       end
+
       it 'persists the registered state' do
         user.reload
         expect(user.state).to eq('registered')
