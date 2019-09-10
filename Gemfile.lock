@@ -75,6 +75,9 @@ GEM
     execjs (2.7.0)
     factory_bot (5.0.2)
       activesupport (>= 4.2.0)
+    factory_bot_rails (5.0.2)
+      factory_bot (~> 5.0.2)
+      railties (>= 4.2.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     faraday-http-cache (2.0.0)
@@ -309,7 +312,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   dotenv-rails
-  factory_bot
+  factory_bot_rails
   faraday
   faraday-http-cache
   guard-rspec
