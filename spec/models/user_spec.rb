@@ -139,8 +139,7 @@ RSpec.describe User, type: :model do
 
       it 'adds the correct errors to the user' do
         expect(user.errors.messages[:won_hacktoberfest?].first)
-          .to include("user has not met all winning conditions")
-
+          .to include('user has not met all winning conditions')
       end
     end
   end
@@ -203,7 +202,7 @@ RSpec.describe User, type: :model do
 
       it 'adds the correct errors to the user' do
         expect(user.errors.messages[:hacktoberfest_ended?].first)
-          .to include("hacktoberfest has not yet ended")
+          .to include('hacktoberfest has not yet ended')
       end
     end
 

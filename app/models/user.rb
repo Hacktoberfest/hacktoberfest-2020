@@ -6,20 +6,24 @@ class User < ApplicationRecord
     validates :email, presence: true
   end
 
-  # rubocop:disable Metrics/BlockLength
+  # rubocop:disable Metrics/BlockLength, Layout/MultilineHashBraceLayout
   state_machine initial: :new do
     event :register do
       transition new: :registered
     end
+
     event :wait do
       transition registered: :waiting
     end
+
     event :complete do
       transition waiting: :completed
     end
+
     event :incomplete do
       transition registered: :incompleted
     end
+
     event :ineligible do
       transition waiting: :registered
     end
@@ -33,15 +37,15 @@ class User < ApplicationRecord
 
     state :completed do
       validates :won_hacktoberfest?, inclusion: {
-        in: [true], message: "user has not met all winning conditions" }
+        in: [true], message: 'user has not met all winning conditions' }
     end
 
     state :incompleted do
       validates :hacktoberfest_ended?, inclusion: {
-        in: [true], message: "hacktoberfest has not yet ended" }
+        in: [true], message: 'hacktoberfest has not yet ended' }
     end
   end
-  # rubocop:enable Metrics/BlockLength
+  # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
   protected
 
