@@ -7,8 +7,17 @@ class UsersController < ApplicationController
   # render current user profile
   def show
     prs = PullRequestService.new(@current_user)
-    @pull_requests = prs.all
-    @score = prs.eligible_prs.count
+    @pull_requests = pull_request_timeline(prs.all)
+    count = prs.eligible_prs.count
+    @score = count > 4 ? 4 : count
+  end
+
+  def pull_request_timeline(prs)
+    counter = 0
+    prs.take_while do |pr|
+      counter += 1 if pr.eligible?
+      counter <= 4
+    end
   end
 
   # action to save registration
