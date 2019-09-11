@@ -17,17 +17,6 @@ class PullRequestService
     end
   end
 
-  def all_by_state
-    {
-      invalid: all.select { |p| p.label_names.include?('invalid') },
-      eligible: all.reject { |p| p.label_names.include?('invalid') }
-    }
-  end
-
-  def score
-    all_by_state[:eligible].count || 0
-  end
-
   def count_matured_prs
     find_mature(all_by_state[:eligible]).count
   end
