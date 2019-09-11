@@ -21,4 +21,8 @@ class PullRequest
   def eligible?
     state == 'eligible'
   end
+
+  def mature?
+    DateTime.parse(@github_pull_request.created_at) < (DateTime.now - ENV['MATURATION_DAYS'].to_i.days)
+  end
 end
