@@ -119,17 +119,23 @@ RSpec.describe PullRequestService do
 
     context 'given an array of four matured prs' do
       before { stub_helper(PR_DATA[:mature_array]) }
-      it 'returns a count of four' do
+      it 'returns the correct count' do
         expect(pr_service.count_matured_prs).to eq(4)
       end
     end
 
     context 'given an array of no matured prs' do
       before { stub_helper(PR_DATA[:immature_array]) }
-      it 'returns a count of zero' do
+      it 'returns the correct count' do
         expect(pr_service.count_matured_prs).to eq(0)
       end
+    end
 
+    context 'given an array of mixed maturity prs' do
+      before { stub_helper(PR_DATA[:mixed_maturity_array]) }
+      it 'returns the correct count' do
+        expect(pr_service.count_matured_prs).to eq(2)
+      end
     end
   end
 end
