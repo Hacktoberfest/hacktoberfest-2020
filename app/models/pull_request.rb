@@ -24,8 +24,7 @@ class PullRequest
 
   def mature?
     pr_date = DateTime.parse(@github_pull_request.created_at)
-    maturation_duration = ENV['MATURATION_DAYS'].to_i.days
 
-    pr_date < (DateTime.now - maturation_duration)
+    pr_date < (DateTime.now - Hacktoberfest.pull_request_maturation_days)
   end
 end

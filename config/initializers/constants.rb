@@ -10,4 +10,8 @@ module Hacktoberfest
   def end_date
     @end_date ||= Date.parse(ENV.fetch('END_DATE'))
   end
+
+  def pull_request_maturation_days
+    @pull_request_maturation_days ||= ENV.fetch('MATURATION_DAYS', 7).to_i.days
+  end
 end
