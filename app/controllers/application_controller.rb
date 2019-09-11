@@ -25,7 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user_registration!
-    binding.pry
     return if logged_in? && @current_user.terms_acceptance
 
     session[:destination] = request.path

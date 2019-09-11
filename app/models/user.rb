@@ -45,12 +45,17 @@ class User < ApplicationRecord
   end
   # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
+  def pull_requests
+    PullRequestService.new(self).all
+  end
+  
   protected
 
   def eligible_pull_requests_count
     pr_service = PullRequestService.new(self)
     pr_service.score
   end
+
 
   def mature_pull_requests_count
     pr_service = PullRequestService.new(self)
