@@ -23,7 +23,7 @@ class User < ApplicationRecord
       transition waiting: :registered
     end
 
-    state :registered do
+    state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
     end
