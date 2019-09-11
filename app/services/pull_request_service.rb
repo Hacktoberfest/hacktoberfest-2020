@@ -17,8 +17,8 @@ class PullRequestService
     end
   end
 
-  def count_matured_prs
-    find_mature(all_by_state[:eligible]).count
+  def matured_prs
+    all.select { |p| p.mature? }
   end
 
   protected

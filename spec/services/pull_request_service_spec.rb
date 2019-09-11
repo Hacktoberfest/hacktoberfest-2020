@@ -83,27 +83,27 @@ RSpec.describe PullRequestService do
     end
   end
 
-  describe '#score' do
-    context 'a new user with no eligible pull requests' do
-      before { stub_helper(PR_DATA[:invalid_array]) }
+  # describe '#score' do
+  #   context 'a new user with no eligible pull requests' do
+  #     before { stub_helper(PR_DATA[:invalid_array]) }
 
-      it 'returns 0', vcr: { record: :new_episodes } do
-        pr_service.all
-        pr_service.all_by_state
-        expect(pr_service.score).to eq(0)
-      end
-    end
+  #     it 'returns 0', vcr: { record: :new_episodes } do
+  #       pr_service.all
+  #       pr_service.all_by_state
+  #       expect(pr_service.score).to eq(0)
+  #     end
+  #   end
 
-    context 'it counts the amount of pull requests' do
-      before { stub_helper(PR_DATA[:valid_array]) }
+  #   context 'it counts the amount of pull requests' do
+  #     before { stub_helper(PR_DATA[:valid_array]) }
 
-      it 'returns the total', vcr: { record: :new_episodes } do
-        pr_service.all
-        pr_service.all_by_state
-        expect(pr_service.score).to eq(4)
-      end
-    end
-  end
+  #     it 'returns the total', vcr: { record: :new_episodes } do
+  #       pr_service.all
+  #       pr_service.all_by_state
+  #       expect(pr_service.score).to eq(4)
+  #     end
+  #   end
+  # end
 
   def stub_helper(arr_type)
     allow(pr_service)
@@ -111,7 +111,7 @@ RSpec.describe PullRequestService do
       .and_return(pull_request_data(arr_type))
   end
 
-  describe '#count_matured_prs' do
+  describe '#matured_prs' do
     before do
       allow(DateTime)
         .to receive(:now).and_return(DateTime.parse('2019-10-21T00:46:43Z'))
@@ -120,21 +120,21 @@ RSpec.describe PullRequestService do
     context 'given an array of four matured prs' do
       before { stub_helper(PR_DATA[:mature_array]) }
       it 'returns the correct count' do
-        expect(pr_service.count_matured_prs).to eq(4)
+        expect(pr_service.matured_prs.count).to eq(4)
       end
     end
 
     context 'given an array of no matured prs' do
       before { stub_helper(PR_DATA[:immature_array]) }
       it 'returns the correct count' do
-        expect(pr_service.count_matured_prs).to eq(0)
+        expect(pr_service.matured_prs.count).to eq(0)
       end
     end
 
     context 'given an array of mixed maturity prs' do
       before { stub_helper(PR_DATA[:mixed_maturity_array]) }
       it 'returns the correct count' do
-        expect(pr_service.count_matured_prs).to eq(2)
+        expect(pr_service.matured_prs.count).to eq(2)
       end
     end
   end

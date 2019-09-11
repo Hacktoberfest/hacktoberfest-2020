@@ -23,6 +23,9 @@ class PullRequest
   end
 
   def mature?
-    DateTime.parse(@github_pull_request.created_at) < (DateTime.now - ENV['MATURATION_DAYS'].to_i.days)
+    pr_date = DateTime.parse(@github_pull_request.created_at)
+    maturation_duration = ENV['MATURATION_DAYS'].to_i.days
+
+    pr_date < (DateTime.now - maturation_duration)
   end
 end
