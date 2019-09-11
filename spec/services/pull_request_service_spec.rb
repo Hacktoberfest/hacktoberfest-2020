@@ -110,4 +110,32 @@ RSpec.describe PullRequestService do
       .to receive(:github_pull_requests)
       .and_return(pull_request_data(arr_type))
   end
+
+  describe '#count_matured_prs' do
+    before do
+      allow(DateTime)
+        .to receive(:now).and_return(DateTime.parse('2019-10-21T00:46:43Z'))
+    end
+
+    context 'given an array of four matured prs' do
+      before { stub_helper(PR_DATA[:mature_array]) }
+      it 'returns the correct count' do
+        expect(pr_service.count_matured_prs).to eq(4)
+      end
+    end
+
+    context 'given an array of no matured prs' do
+      before { stub_helper(PR_DATA[:immature_array]) }
+      it 'returns the correct count' do
+        expect(pr_service.count_matured_prs).to eq(0)
+      end
+    end
+
+    context 'given an array of mixed maturity prs' do
+      before { stub_helper(PR_DATA[:mixed_maturity_array]) }
+      it 'returns the correct count' do
+        expect(pr_service.count_matured_prs).to eq(2)
+      end
+    end
+  end
 end
