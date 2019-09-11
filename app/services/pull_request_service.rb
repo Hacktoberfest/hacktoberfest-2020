@@ -17,19 +17,12 @@ class PullRequestService
     end
   end
 
-  def all_by_state
-    {
-      invalid: all.select { |p| p.label_names.include?('invalid') },
-      eligible: all.reject { |p| p.label_names.include?('invalid') }
-    }
+  def eligible_prs
+    all.select(&:eligible?)
   end
 
-  def score
-    all_by_state[:eligible].count || 0
-  end
-
-  def count_matured_prs
-    find_mature(all_by_state[:eligible]).count
+  def matured_prs
+    all.select(&:mature?)
   end
 
   protected
@@ -37,13 +30,6 @@ class PullRequestService
   def github_pull_requests
     github_prs = GithubPullRequestService.new(user)
     github_prs.pull_requests
-  end
-
-  def find_mature(prs)
-    mature_prs = prs.select do |e|
-      DateTime.parse(e.created_at) < (DateTime.now - 7.days)
-    end
-    mature_prs
   end
 
   def filtered_github_pull_requests(prs)

@@ -21,4 +21,10 @@ class PullRequest
   def eligible?
     state == 'eligible'
   end
+
+  def mature?
+    pr_date = DateTime.parse(@github_pull_request.created_at)
+
+    pr_date < (DateTime.now - Hacktoberfest.pull_request_maturation_days)
+  end
 end

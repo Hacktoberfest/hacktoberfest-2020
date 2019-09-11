@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   # render current user profile
   def show
     prs = PullRequestService.new(@current_user)
-    @pull_requests = prs.all_by_state
-    @score = prs.score
+    @pull_requests = prs.all
+    @score = prs.eligible_prs.count
   end
 
   # action to save registration
