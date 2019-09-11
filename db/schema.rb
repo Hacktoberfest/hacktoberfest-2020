@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_183954) do
+ActiveRecord::Schema.define(version: 2019_08_29_202240) do
 
   create_table "issues", force: :cascade do |t|
     t.integer "gh_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_183954) do
     t.string "provider", default: "github"
     t.boolean "terms_acceptance", default: false
     t.boolean "marketing_emails", default: false
+    t.string "state"
   end
 
 end

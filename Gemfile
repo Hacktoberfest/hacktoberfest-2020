@@ -27,6 +27,10 @@ gem 'rails', '~> 5.2.3'
 
 gem 'sass-rails', '~> 5.0'
 
+gem 'state_machines'
+
+gem 'state_machines-activerecord'
+
 gem 'sqlite3'
 
 gem 'pry'
@@ -42,7 +46,7 @@ group :development, :test do
 
   gem 'dotenv-rails'
 
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
 
   gem 'rspec-rails'
 

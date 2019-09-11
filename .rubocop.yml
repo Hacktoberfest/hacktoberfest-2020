@@ -6,9 +6,12 @@ AllCops:
     - 'script/**/*'
     - 'bin/**/*'
     - 'vendor/**/*'
-BlockLength:
-  Max: 90
-MethodLength:
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+    - 'Guardfile'
+Metrics/MethodLength:
   Max: 35
 Style/PercentLiteralDelimiters:
   Enabled: false
