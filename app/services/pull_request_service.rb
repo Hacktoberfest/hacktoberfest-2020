@@ -17,8 +17,12 @@ class PullRequestService
     end
   end
 
+  def eligible_prs
+    all.select(&:eligible?)
+  end
+
   def matured_prs
-    all.select { |p| p.mature? }
+    all.select(&:mature?)
   end
 
   protected
