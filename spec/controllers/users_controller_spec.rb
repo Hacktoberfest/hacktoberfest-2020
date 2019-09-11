@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-
-# relevant PRs are NOT showing up on response for profile page
 require 'rails_helper'
 
 RSpec.describe 'UsersController', type: :request do
