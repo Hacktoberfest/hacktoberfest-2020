@@ -204,39 +204,7 @@ IMMATURE_ARRAY = [
     'labels' => { 'edges' => [] } }
 ].freeze
 
-MIXED_MATURITY_ARRAY = [
-  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
-    'title' => 'Results by cookie',
-    'body' =>
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-    'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => '2019-10-02T00:46:43Z',
-    'labels' => { 'edges' => [] } },
-  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
-    'title' => 'Update README.md',
-    'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-    'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => '2019-10-18T22:49:53Z',
-    'labels' => { 'edges' => [] } },
-  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
-    'title' => 'Add natural layer',
-    'body' =>
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-    'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => '2019-10-05T06:24:38Z',
-    'labels' => { 'edges' => [] } },
-  { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
-    'title' => 'Coercion type systems',
-    'body' =>
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-    'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => '2019-10-19T19:59:18Z',
-    'labels' => { 'edges' => [] } }
-].freeze
+MIXED_MATURITY_ARRAY = IMMATURE_ARRAY[0..1] + MATURE_ARRAY[2..3]
 
 PR_DATA = {
   valid_array: VALID_ARRAY,
