@@ -21,6 +21,9 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  # Using stub rather than expect/allow will raise errors.
+  config.raise_errors_for_deprecations!
+
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
   OmniAuth.config.test_mode = true
