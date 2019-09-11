@@ -28,12 +28,12 @@ RSpec.describe PullRequestService do
   end
 
   describe '#all' do
-    context 'given an array of 4 pull requests' do
+    context 'given an array of 5 pull requests' do
       context 'pull requests with valid dates and valid labels' do
         before { stub_helper(PR_DATA[:valid_array]) }
 
-        it 'filters and returns all 4 PRs', vcr: { record: :new_episodes } do
-          expect(pr_service.all.length).to eq(4)
+        it 'filters and returns all 5 PRs', vcr: { record: :new_episodes } do
+          expect(pr_service.all.length).to eq(5)
         end
       end
 
@@ -45,11 +45,11 @@ RSpec.describe PullRequestService do
         end
       end
 
-      context 'pull_requests with valid dates & 2 invalid labels' do
+      context '7 pull_requests with valid dates & 2 invalid labels' do
         before { stub_helper(PR_DATA[:array_with_invalid_labels]) }
 
-        it 'filters and returns 4 of the PRs', vcr: { record: :new_episodes } do
-          expect(pr_service.all.length).to eq(4)
+        it 'filters and returns 5 of the PRs', vcr: { record: :new_episodes } do
+          expect(pr_service.all.length).to eq(5)
         end
       end
 
@@ -76,7 +76,7 @@ RSpec.describe PullRequestService do
       before { stub_helper(PR_DATA[:valid_array]) }
 
       it 'returns all the eligible prs', vcr: { record: :new_episodes } do
-        expect(pr_service.eligible_prs.count).to eq(4)
+        expect(pr_service.eligible_prs.count).to eq(5)
       end
     end
   end
