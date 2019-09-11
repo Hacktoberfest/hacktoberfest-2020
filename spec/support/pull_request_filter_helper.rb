@@ -133,6 +133,14 @@ VALID_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => '2019-10-25T19:59:18Z',
+    'labels' => { 'edges' => [] } },
+  { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
+    'title' => 'Timeline Feature',
+    'body' =>
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/intridea/hashie/pull/379',
+    'createdAt' => '2019-10-25T19:59:18Z',
     'labels' => { 'edges' => [] } }
 ].freeze
 
@@ -217,8 +225,8 @@ PR_DATA = {
 }.freeze
 
 module PullRequestFilterHelper
-  def pull_request_data(type)
-    type.map do |hash|
+  def pull_request_data(pr_array)
+    pr_array.map do |hash|
       GithubPullRequest.new(Hashie::Mash.new(hash))
     end
   end

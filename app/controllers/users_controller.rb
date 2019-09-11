@@ -12,14 +12,6 @@ class UsersController < ApplicationController
     @score = count > 4 ? 4 : count
   end
 
-  def pull_request_timeline(prs)
-    counter = 0
-    prs.take_while do |pr|
-      counter += 1 if pr.eligible?
-      counter <= 4
-    end
-  end
-
   # action to save registration
   def update
     @current_user.assign_attributes(params_for_registration)
@@ -37,6 +29,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def pull_request_timeline(prs)
+    counter = 0
+    prs.take_while do |pr|
+      counter += 1 if pr.eligible?
+      counter <= 4
+    end
+  end
 
   def set_user_emails
     @emails = UserEmailService.new(@current_user).emails
