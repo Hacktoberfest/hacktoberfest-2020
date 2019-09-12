@@ -6,10 +6,8 @@ class UsersController < ApplicationController
 
   # render current user profile
   def show
-    prs = PullRequestService.new(@current_user)
-    @pull_requests = pull_request_timeline(prs.all)
-    count = prs.eligible_prs.count
-    @score = count > 4 ? 4 : count
+    @pull_requests = pull_request_timeline(@current_user.pull_requests)
+    @score = @current_user.score
   end
 
   # action to save registration

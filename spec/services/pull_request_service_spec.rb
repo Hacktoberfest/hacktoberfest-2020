@@ -81,12 +81,6 @@ RSpec.describe PullRequestService do
     end
   end
 
-  def stub_helper(arr_type)
-    allow(pr_service)
-      .to receive(:github_pull_requests)
-      .and_return(pull_request_data(arr_type))
-  end
-
   describe '#matured_prs' do
     before do
       allow(DateTime)
@@ -113,5 +107,11 @@ RSpec.describe PullRequestService do
         expect(pr_service.matured_prs.count).to eq(2)
       end
     end
+  end
+
+  def stub_helper(arr_type)
+    allow(pr_service)
+      .to receive(:github_pull_requests)
+      .and_return(pull_request_data(arr_type))
   end
 end

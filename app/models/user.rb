@@ -48,14 +48,18 @@ class User < ApplicationRecord
   def pull_requests
     PullRequestService.new(self).all
   end
-  
+
+  def score
+    score = eligible_pull_requests_count
+    score > 4 ? 4 : score
+  end
+
   protected
 
   def eligible_pull_requests_count
     pr_service = PullRequestService.new(self)
-    pr_service.score
+    pr_service.eligible_prs.count
   end
-
 
   def mature_pull_requests_count
     pr_service = PullRequestService.new(self)
