@@ -11,14 +11,12 @@ module UserStateTransitionSegmentService
     end
   end
 
-  private
-
   def self.register(user)
     segment = SegmentService.new(user)
-    segment.identify({
+    segment.identify(
       email: user.email,
       marketing_emails: user.marketing_emails
-    })
+    )
   end
 
   def self.ineligible(user)
