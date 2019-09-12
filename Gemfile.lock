@@ -54,6 +54,8 @@ GEM
     bootsnap (1.4.4)
       msgpack (~> 1.0)
     builder (3.2.3)
+    bulma-rails (0.7.5)
+      sassc (~> 2.0)
     byebug (11.0.1)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -242,6 +244,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (2.2.0)
+      ffi (~> 1.9)
     sawyer (0.8.2)
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
@@ -312,6 +316,7 @@ DEPENDENCIES
   airrecord
   analytics-ruby (~> 2.0.0)
   bootsnap (>= 1.1.0)
+  bulma-rails (~> 0.7.5)
   byebug
   coffee-rails (~> 4.2)
   dotenv-rails
