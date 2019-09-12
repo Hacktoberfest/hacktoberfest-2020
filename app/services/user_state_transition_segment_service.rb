@@ -3,15 +3,17 @@
 # This class relays the appropiate data to Segment for specific
 # user state transitions.
 module UserStateTransitionSegmentService
-  def call(user, transition)
-    case transition.event_name
-    register(user) when :register
+  def self.call(user, transition)
+    if transition == :register
+      register(user)
+    elsif transition == :ineligible
+      ineligible(user)
     end
   end
 
   private
 
-  def register(user)
+  def self.register(user)
     segment = SegmentService.new(user)
     segment.identify({
       email: user.email,
@@ -19,7 +21,7 @@ module UserStateTransitionSegmentService
     })
   end
 
-  def ineligible(user)
+  def self.ineligible(user)
     segment = SegmentService.new(user)
     segment.track('user_ineligible')
     segment.identify(state: 'ineligible')

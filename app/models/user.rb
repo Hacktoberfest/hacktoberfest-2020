@@ -3,6 +3,9 @@
 class User < ApplicationRecord
   # rubocop:disable Metrics/BlockLength, Layout/MultilineHashBraceLayout
   state_machine initial: :new do
+    before_transition on: :register, do: :transition_user_register
+    before_transition on: :ineligible, do: :transition_user_ineligible
+
     event :register do
       transition new: :registered
     end
@@ -78,7 +81,11 @@ class User < ApplicationRecord
     Hacktoberfest.end_date.past?
   end
 
-  def before_transition(user, transition)
-    UserStateTransitionSegmentService.call(user, transition)
+  def transition_user_register
+    UserStateTransitionSegmentService.call(self, :register)
+  end
+
+  def transition_user_ineligible
+    UserStateTransitionSegmentService.call(self, :ineligible)
   end
 end
