@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Sessions, type: :request do
+RSpec.describe SessionsController, type: :request do
   before { mock_authentication }
 
   describe 'signup and login' do
