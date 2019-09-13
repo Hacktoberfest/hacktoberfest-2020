@@ -9,11 +9,11 @@ RSpec.describe User, type: :model do
     context 'user is created but has not agreed to terms' do
       let(:user) { FactoryBot.create(:user, :new) }
 
-      it 'disallows the user to enter the registered state' do
+      it 'can\'t enter the registered state', vcr: { record: :new_episodes } do
         expect(user.state).to eq('new')
       end
 
-      it 'applies the correct errors to the user object' do
+      it 'applies the correct errors', vcr: { record: :new_episodes } do
         expect(user.errors.messages[:terms_acceptance].first)
           .to eq('must be accepted')
       end
@@ -22,11 +22,11 @@ RSpec.describe User, type: :model do
     context 'user has no email' do
       let(:user) { FactoryBot.create(:user, :no_email, state: 'new') }
 
-      it 'disallows the user to enter the registered state' do
+      it 'can\'t enter the registered state', vcr: { record: :new_episodes } do
         expect(user.state).to eq('new')
       end
 
-      it 'applies the correct errors to the user object' do
+      it 'applies the correct errors', vcr: { record: :new_episodes } do
         expect(user.errors.messages[:email].first).to eq("can't be blank")
       end
     end
@@ -34,11 +34,11 @@ RSpec.describe User, type: :model do
     context 'user has neither an email nor an agreement' do
       let(:user) { FactoryBot.create(:user, :new, :no_email) }
 
-      it 'disallows the user to enter the registered state' do
+      it 'can\'t enter the registered state', vcr: { record: :new_episodes } do
         expect(user.state).to eq('new')
       end
 
-      it 'adds the correct errors to the user' do
+      it 'adds the correct errors to user', vcr: { record: :new_episodes } do
         expect(user.errors.messages[:email].first).to eq("can't be blank")
         expect(user.errors.messages[:terms_acceptance].first)
           .to eq('must be accepted')
@@ -48,11 +48,11 @@ RSpec.describe User, type: :model do
     context 'an unregistered user has an email and has agreed to terms' do
       let(:user) { FactoryBot.create(:user, state: 'new') }
 
-      it 'allows the user to enter the registered state' do
+      it 'can enter the registered state', vcr: { record: :new_episodes } do
         expect(user.state).to eq('registered')
       end
 
-      it 'persists the registered state' do
+      it 'persists the registered state', vcr: { record: :new_episodes } do
         user.reload
         expect(user.state).to eq('registered')
       end
@@ -68,11 +68,11 @@ RSpec.describe User, type: :model do
         user.wait
       end
 
-      it 'allows the user to enter the waiting state' do
+      it 'user can enter the waiting state', vcr: { record: :new_episodes } do
         expect(user.state).to eq('waiting')
       end
 
-      it 'persists the waiting state' do
+      it 'persists the waiting state', vcr: { record: :new_episodes } do
         user.reload
         expect(user.state).to eq('waiting')
       end
@@ -86,11 +86,11 @@ RSpec.describe User, type: :model do
         user.wait
       end
 
-      it 'disallows the user to enter the waiting state' do
+      it 'dcan\'t enter the waiting state', vcr: { record: :new_episodes } do
         expect(user.state).to eq('registered')
       end
 
-      it 'adds the correct errors to the user' do
+      it 'adds the correct errors to user', vcr: { record: :new_episodes } do
         expect(user.errors.messages[:sufficient_eligible_prs?].first)
           .to include('user does not have sufficient eligible prs')
       end
@@ -106,11 +106,11 @@ RSpec.describe User, type: :model do
         user.complete
       end
 
-      it 'allows the user to enter the completed state' do
+      it 'lets user to enter completed state', vcr: { record: :new_episodes } do
         expect(user.state).to eq('completed')
       end
 
-      it 'persists the completed state' do
+      it 'persists the completed state', vcr: { record: :new_episodes } do
         user.reload
         expect(user.state).to eq('completed')
       end
@@ -122,11 +122,11 @@ RSpec.describe User, type: :model do
         user.complete
       end
 
-      it 'disallows the user to enter the completed state' do
+      it 'can\'t enter the completed state', vcr: { record: :new_episodes } do
         expect(user.state).to eq('waiting')
       end
 
-      it 'adds the correct errors to the user' do
+      it 'adds the correct errors to user', vcr: { record: :new_episodes } do
         expect(user.errors.messages[:won_hacktoberfest?].first)
           .to include('user has not met all winning conditions')
       end
@@ -142,11 +142,11 @@ RSpec.describe User, type: :model do
         user.ineligible
       end
 
-      it 'transitions the user back to the registered state' do
+      it 'transitions user to registered', vcr: { record: :new_episodes } do
         expect(user.state).to eq('registered')
       end
 
-      it 'persists the registered state' do
+      it 'persists the registered state', vcr: { record: :new_episodes } do
         user.reload
         expect(user.state).to eq('registered')
       end
@@ -161,11 +161,11 @@ RSpec.describe User, type: :model do
         user.incomplete
       end
 
-      it 'disallows the user to enter the incompleted state' do
+      it 'can\'t enter the incomplete state', vcr: { record: :new_episodes } do
         expect(user.state).to eq('completed')
       end
 
-      it 'adds the correct errors to the user' do
+      it 'adds correct errors to the user', vcr: { record: :new_episodes } do
         expect(user.errors.messages[:state].first)
           .to include('cannot transition via "incomplete"')
       end
@@ -179,11 +179,11 @@ RSpec.describe User, type: :model do
         user.incomplete
       end
 
-      it 'disallows the user to enter the incompleted state' do
+      it 'can\'t enter the incomplete state', vcr: { record: :new_episodes } do
         expect(user.state).to eq('registered')
       end
 
-      it 'adds the correct errors to the user' do
+      it 'adds the correct errors to user', vcr: { record: :new_episodes } do
         expect(user.errors.messages[:hacktoberfest_ended?].first)
           .to include('hacktoberfest has not yet ended')
       end
@@ -197,11 +197,11 @@ RSpec.describe User, type: :model do
         user.incomplete
       end
 
-      it 'transitions the user to the incomplete state' do
+      it 'transitions user to incomplete', vcr: { record: :new_episodes } do
         expect(user.state).to eq('incompleted')
       end
 
-      it 'persists the registered state' do
+      it 'persists the registered state', vcr: { record: :new_episodes } do
         user.reload
         expect(user.state).to eq('incompleted')
       end
