@@ -6,6 +6,7 @@ module UserStateTransitionSegmentService
   module_function
 
   def call(user, transition)
+    pull_requests_count(user)
     if transition.event == :register
       register(user)
     elsif transition.event == :ineligible
@@ -14,17 +15,24 @@ module UserStateTransitionSegmentService
   end
 
   def register(user)
-    segment = SegmentService.new(user)
-    segment.identify(
+    segment(user).identify(
       email: user.email,
-      marketing_emails: user.marketing_emails
+      marketing_emails: user.marketing_emails,
+      state: 'register'
     )
+    segment(user).track('register')
   end
 
   def ineligible(user)
-    segment = SegmentService.new(user)
-    properties = { pull_requests_count: user.score }
-    segment.track('user_ineligible', properties)
-    segment.identify(state: 'ineligible')
+    segment(user).track('user_ineligible')
+    segment(user).identify(state: 'ineligible')
+  end
+
+  def pull_requests_count(user)
+    segment(user).identify(pull_requests_count: user.score)
+  end
+
+  def segment(user)
+    SegmentService.new(user)
   end
 end

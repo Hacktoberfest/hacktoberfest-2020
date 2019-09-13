@@ -12,11 +12,10 @@ class SegmentService
     )
   end
 
-  def track(event_name, properties)
+  def track(event_name)
     Analytics.track(
       user_id: @user.id,
-      event: event_name,
-      properties: properties
+      event: event_name
     )
   end
 end
