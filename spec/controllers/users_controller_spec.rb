@@ -3,13 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe 'UsersController', type: :request do
-  let(:current_user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
   let(:pr_service) { PullRequestService.new(current_user) }
   let(:controller) { UsersController.new }
 
   describe '#show' do
     before do
-      mock_current_user(current_user)
+      mock_authentication(uid: user.uid)
+      login
     end
 
     context 'a user has more than 4 eligible pull requests' do
@@ -18,8 +19,8 @@ RSpec.describe 'UsersController', type: :request do
           PullRequest.new(pr)
         end
 
-        allow(current_user).to receive(:pull_requests).and_return(pr_arr)
-        allow(current_user).to receive(:score).and_return(4)
+        allow_any_instance_of(User).to receive(:pull_requests).and_return(pr_arr)
+        allow_any_instance_of(User).to receive(:score).and_return(4)
       end
 
       it 'returns 4 as the max score', vcr: { record: :new_episodes } do
@@ -37,7 +38,7 @@ RSpec.describe 'UsersController', type: :request do
 
     context 'a user has no pull_requests' do
       before do
-        allow(current_user).to receive(:pull_requests).and_return([])
+        allow_any_instance_of(User).to receive(:pull_requests).and_return([])
       end
 
       it 'only displays progress', vcr: { record: :new_episodes } do
@@ -51,8 +52,8 @@ RSpec.describe 'UsersController', type: :request do
         pr_arr = pull_request_data(PR_DATA[:invalid_array]).map do |pr|
           PullRequest.new(pr)
         end
-        allow(current_user).to receive(:pull_requests).and_return(pr_arr)
-        allow(current_user).to receive(:score).and_return(3)
+        allow_any_instance_of(User).to receive(:pull_requests).and_return(pr_arr)
+        allow_any_instance_of(User).to receive(:score).and_return(3)
       end
 
       it 'calculates score of 3 valid PRs', vcr: { record: :new_episodes } do
