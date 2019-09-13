@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem "bulma-rails", "~> 0.7.5"
 
 gem 'coffee-rails', '~> 4.2'
+# gem 'compass-rails'
 
 gem 'faraday'
 gem 'faraday-http-cache'

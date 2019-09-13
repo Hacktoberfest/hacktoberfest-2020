@@ -1,0 +1,159 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+// @import "compass";
+// @include font-face("SpaceMono", "fonts/SpaceMono-Regular", $asset-pipeline: true);
+// @include font-face ("SpaceMono", "../fonts/SpaceMono-RegularItalic", $asset-pipeline: true);
+// @include font-face ("SpaceMono", "../fonts/SpaceMono-Bold", $weight: 600, $style: normal, $asset-pipeline: true);
+// @include font-face ("SpaceMono", "../fonts/SpaceMono-BoldItalic", $weight: 600, $style: normal, $asset-pipeline: true);
+
+
+// Bulma overrides and sass definitions
+ $body-background-color: rgb(21, 35, 71);
+ $body-color: rgb(153, 161, 179);
+ $body-family: SpaceMono;
+ $body-font-size: 16px;
+ $size-3: 1.75rem;
+
+// survey block styling
+ section{
+  background-color: #0a142e;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+    margin-bottom: 80px;
+  }
+
+  section p{
+    margin-left: 80px;
+    color: white;
+    padding: 20px;
+  }
+
+
+// content styling
+ body{
+   background-image: image-url("logo-hf19-header.png");
+   background-repeat: no-repeat;
+   background-position: left top;
+   margin-top: 20px;
+ }
+
+ img{
+   position: absolute;
+   top: 80px;
+   left: 20;
+ }
+
+div nav{
+  display: flex;
+  justify-content: flex-end;
+  // margin-bottom: 20%;;
+  border: 1px solid pink;
+}
+
+nav a{
+  color: rgb(255,255,255);
+  margin-left: 2.25rem;
+  font-size: 14px;
+}
+
+ nav a:hover{
+    border-bottom: 2px solid #fff922;
+ }
+
+
+ div{
+   width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+   border: 1px solid lime;
+   padding: 2%;
+   flex-grow: 1;
+ }
+
+ h1 a, h1, h2, h2 p, h3, h3 p, h4, h4 p{
+   color: rgb(255,255,255);
+   font-weight: 600;
+   line-height: 1.125;
+   width: 100%;
+ }
+
+ main{
+   margin-top: 100px;
+ }
+
+ main p{
+    line-height: 1.5;
+    margin-bottom: 16px;
+ }
+
+ h1 a, h1{
+    font-size: 2rem !important;
+    margin-bottom: .5em;
+  }
+
+ h2 {
+    font-size: $size-3 !important;
+    margin-bottom: .5714em;
+  }
+
+ h3{
+   font-size: 1.5rem !important;
+   margin-top: 1.333rem  !important;
+ }
+ h4 p{
+   font-size: 1.25rem !important;
+ }
+
+ @import "bulma";
+
+
+
+
+ // Colors and fonts used on live faq site:
+ //   Blue background: rgb(21, 35, 71)
+ //   Nav Link hovers:   bottom-border: 2px solid #fff922;
+ //   Section header font color: rgb(255, 255, 255)
+ //   Text font color: rgb(153, 161, 179);
+ //   Link color: rgb(50, 115, 220);
+ //   Link hover color: rgb(255, 0, 170);
+ //   Link visited color: same as regular link color - rgb(50, 115, 220);
+ //
+ //
+ //   .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+ //       color: #363636;
+ //       font-weight: 600;
+ //       line-height: 1.125;
+ //
+ //
+ //   Font family info:    font-family: Space Mono,monospace;
+ //   h1 font size:  2em
+ //   h1 line height: 1.125 em
+ //
+ //   h2 font size: 1.75 em
+ //   h2 line height: 1.125 em
+ //
+ //   h3 font size: 1.5 em
+ //   h3 line height: 1.125 em
+ //
+ //   h4 font size: 1.25 em
+ //   h4 line height: 1.125 em
+ //
+ //   Text font size: computed font size = 16px
+ //   text line height: computed line height = 24px
+ //
