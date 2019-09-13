@@ -39,6 +39,7 @@ RSpec.describe 'UsersController', type: :request do
     context 'a user has no pull_requests' do
       before do
         allow_any_instance_of(User).to receive(:pull_requests).and_return([])
+        allow_any_instance_of(User).to receive(:score).and_return(0)
       end
 
       it 'only displays progress', vcr: { record: :new_episodes } do
