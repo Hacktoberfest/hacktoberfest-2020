@@ -6,6 +6,6 @@ module TryUserTransitionFromWaitingService
 
     return if user.complete
 
-    user.ineligible if user.eligible_pull_requests_count < 4
+    user.ineligible if user.score < 4
   end
 end
