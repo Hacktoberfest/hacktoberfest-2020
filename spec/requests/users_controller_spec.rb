@@ -15,11 +15,11 @@ RSpec.describe UsersController, type: :request do
 
     context 'a user has more than 4 eligible pull requests' do
       before do
-        pr_arr = pull_request_data(PR_DATA[:valid_array]).map do |pr|
+        prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
           PullRequest.new(pr)
         end
 
-        allow_any_instance_of(User).to receive(:pull_requests).and_return(pr_arr)
+        allow_any_instance_of(User).to receive(:pull_requests).and_return(prs)
         allow_any_instance_of(User).to receive(:score).and_return(4)
       end
 
@@ -50,10 +50,10 @@ RSpec.describe UsersController, type: :request do
 
     context 'a user has some eligible and invalid pull_requests' do
       before do
-        pr_arr = pull_request_data(PR_DATA[:invalid_array]).map do |pr|
+        prs = pull_request_data(PR_DATA[:invalid_array]).map do |pr|
           PullRequest.new(pr)
         end
-        allow_any_instance_of(User).to receive(:pull_requests).and_return(pr_arr)
+        allow_any_instance_of(User).to receive(:pull_requests).and_return(prs)
         allow_any_instance_of(User).to receive(:score).and_return(3)
       end
 
