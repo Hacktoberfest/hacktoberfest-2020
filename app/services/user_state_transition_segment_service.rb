@@ -21,7 +21,8 @@ module UserStateTransitionSegmentService
 
   def self.ineligible(user)
     segment = SegmentService.new(user)
-    segment.track('user_ineligible')
+    properties = { pull_requests_count: user.score }
+    segment.track('user_ineligible', properties)
     segment.identify(state: 'ineligible')
   end
 end
