@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Sessions', type: :request do
+RSpec.describe SessionsController, type: :request do
   before { mock_authentication }
 
   describe 'signup and login' do
@@ -30,12 +30,12 @@ RSpec.describe 'Sessions', type: :request do
 
   describe 'requesting protected resource' do
     context 'user not logged in' do
-      it 'redirects the user to login' do
+      it 'redirects the user to login', vcr: { record: :new_episodes } do
         get profile_path
         expect(response).to redirect_to(login_path)
       end
 
-      it 'saves user destination in the session' do
+      it 'saves user destination in session', vcr: { record: :new_episodes } do
         get profile_path
         expect(session[:destination]).to eq(profile_path)
       end
@@ -55,11 +55,13 @@ RSpec.describe 'Sessions', type: :request do
     end
 
     context 'user is logged in and the user is not registered' do
+      let(:user) { FactoryBot.create(:user, :new) }
       before do
         login
+        mock_authentication(uid: user.uid)
       end
 
-      it 'the request is unsuccesful' do
+      it 'the request is unsuccesful', vcr: { record: :new_episodes } do
         get profile_path
         expect(response).to_not be_successful
       end
