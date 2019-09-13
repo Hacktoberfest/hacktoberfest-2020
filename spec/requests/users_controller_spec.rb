@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'UsersController', type: :request do
+RSpec.describe UsersController, type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:pr_service) { PullRequestService.new(current_user) }
   let(:controller) { UsersController.new }
