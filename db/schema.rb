@@ -16,9 +16,19 @@ ActiveRecord::Schema.define(version: 2019_09_16_010600) do
   enable_extension "plpgsql"
 
   create_table "issues", force: :cascade do |t|
-    t.integer "gh_id"
+    t.string "title", limit: 191, null: false
+    t.bigint "number", null: false
+    t.integer "gh_database_id", null: false
+    t.string "url", limit: 191, null: false
+    t.bigint "repository_id", null: false
+    t.boolean "open", default: true, null: false
+    t.bigint "timeline_events"
+    t.bigint "participants"
+    t.float "quality", default: 1.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["gh_database_id"], name: "index_issues_on_gh_database_id", unique: true
+    t.index ["repository_id"], name: "index_issues_on_repository_id"
   end
 
   create_table "pull_requests", force: :cascade do |t|
@@ -28,9 +38,21 @@ ActiveRecord::Schema.define(version: 2019_09_16_010600) do
   end
 
   create_table "repositories", force: :cascade do |t|
-    t.integer "gh_id"
+    t.bigint "gh_database_id", null: false
+    t.string "url", limit: 191, null: false
+    t.string "name", null: false
+    t.string "full_name", null: false
+    t.bigint "pull_requests_count", default: 0
+    t.integer "language_id"
+    t.string "description", limit: 191
+    t.string "code_of_conduct_url", limit: 191
+    t.bigint "forks"
+    t.bigint "stars"
+    t.bigint "watchers"
+    t.boolean "banned", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["gh_database_id"], name: "index_repositories_on_gh_database_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
