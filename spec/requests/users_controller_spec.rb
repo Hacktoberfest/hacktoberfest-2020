@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.shared_examples 'tries transition'  do
-  it 'tries to transition the user', vcr: { record: :new_episodes } do
-    expect(TryUserTransitionService).to receive(:call)
+  it 'tries to transition the user' do
+    expect(TryUserTransitionService).to receive(:call).and_return(true)
     get profile_path
   end
 end
