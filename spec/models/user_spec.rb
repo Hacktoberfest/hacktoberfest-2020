@@ -3,6 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  before do
+    allow(UserStateTransitionSegmentService)
+      .to receive(:call).and_return(true)
+  end
+
   describe '#register' do
     before { user.register }
 
