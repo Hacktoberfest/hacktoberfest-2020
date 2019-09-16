@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_010600) do
+ActiveRecord::Schema.define(version: 2019_09_16_212332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 2019_09_16_010600) do
     t.datetime "updated_at", null: false
     t.index ["gh_database_id"], name: "index_issues_on_gh_database_id", unique: true
     t.index ["repository_id"], name: "index_issues_on_repository_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_languages_on_name", unique: true
   end
 
   create_table "pull_requests", force: :cascade do |t|
