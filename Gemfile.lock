@@ -158,6 +158,7 @@ GEM
     parallel (1.17.0)
     parser (2.6.4.0)
       ast (~> 2.4.0)
+    pg (0.20.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -322,6 +323,7 @@ DEPENDENCIES
   net-http-persistent (~> 2.9)
   octokit
   omniauth-github
+  pg
   pry
   puma (~> 3.11)
   rails (~> 5.2.3)
