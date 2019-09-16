@@ -122,4 +122,44 @@ http_interactions:
         feature"}}]}}]}}}}'
     http_version: 
   recorded_at: Fri, 13 Sep 2019 19:58:03 GMT
+- request:
+    method: post
+    uri: https://api.segment.io/v1/import
+    body:
+      encoding: UTF-8
+      string: '{"sentAt":"2019-09-16T10:44:52.989-04:00","batch":[{"userId":1,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{},"options":null,"timestamp":"2019-09-16T10:44:52.989-04:00","type":"identify","messageId":"c8066c8c-1f26-4ebf-a9be-444c9eded660"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic NWw3czVyTVl0T3doWUNZMDBTcnIzMTYzWkZmR2N5ZVQ6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 16 Sep 2019 14:44:53 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '21'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "success": true
+        }
+    http_version: 
+  recorded_at: Mon, 16 Sep 2019 14:44:53 GMT
 recorded_with: VCR 5.0.0

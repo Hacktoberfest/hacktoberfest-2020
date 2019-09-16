@@ -40,4 +40,44 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 13 Sep 2019 20:13:41 GMT
+- request:
+    method: post
+    uri: https://api.segment.io/v1/import
+    body:
+      encoding: UTF-8
+      string: '{"sentAt":"2019-09-16T10:44:53.483-04:00","batch":[{"userId":2,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{},"options":null,"timestamp":"2019-09-16T10:44:53.088-04:00","type":"identify","messageId":"9dcd102b-0210-40a6-98da-f561f4ad549a"},{"userId":3,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{},"options":null,"timestamp":"2019-09-16T10:44:53.107-04:00","type":"identify","messageId":"163673c9-037c-4913-a3cd-315d735780d8"},{"userId":4,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{},"options":null,"timestamp":"2019-09-16T10:44:53.127-04:00","type":"identify","messageId":"4292fb73-28ed-4a26-91f6-15569a3a7ede"},{"userId":5,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{},"options":null,"timestamp":"2019-09-16T10:44:53.150-04:00","type":"identify","messageId":"0189cc7f-b575-4582-8ba3-d3ec57f4f7d8"},{"userId":6,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"pull_requests_count":0},"options":null,"timestamp":"2019-09-16T10:44:53.193-04:00","type":"identify","messageId":"640d8d18-6bdb-4b5c-a9d8-0ccf42b8c991"},{"userId":6,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"email":"test@mail.com","marketing_emails":false,"state":"register"},"options":null,"timestamp":"2019-09-16T10:44:53.193-04:00","type":"identify","messageId":"b2154a2b-bea7-4f8f-88c2-fbbc1e7be8e2"},{"event":"register","userId":6,"anonymousId":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"options":null,"integrations":null,"properties":{},"timestamp":"2019-09-16T10:44:53.193-04:00","type":"track","messageId":"c90624d6-6f86-43db-90a6-31a1f379de51"},{"userId":7,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"pull_requests_count":0},"options":null,"timestamp":"2019-09-16T10:44:53.294-04:00","type":"identify","messageId":"52dea747-1f5a-4f6e-b5cc-ad1f53de8230"},{"userId":7,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"email":"test@mail.com","marketing_emails":false,"state":"register"},"options":null,"timestamp":"2019-09-16T10:44:53.294-04:00","type":"identify","messageId":"d546d097-a051-4163-b942-888f279de4fb"},{"event":"register","userId":7,"anonymousId":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"options":null,"integrations":null,"properties":{},"timestamp":"2019-09-16T10:44:53.294-04:00","type":"track","messageId":"0e33148d-531c-4c98-8431-f3c8b9439067"},{"userId":8,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"pull_requests_count":0},"options":null,"timestamp":"2019-09-16T10:44:53.322-04:00","type":"identify","messageId":"e6302282-f113-47b2-8cd6-1651d916d245"},{"userId":8,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"email":null,"marketing_emails":false,"state":"register"},"options":null,"timestamp":"2019-09-16T10:44:53.322-04:00","type":"identify","messageId":"74f89901-38f3-4167-a84a-2674c3e9340b"},{"event":"register","userId":8,"anonymousId":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"options":null,"integrations":null,"properties":{},"timestamp":"2019-09-16T10:44:53.322-04:00","type":"track","messageId":"c98c602f-8547-457b-a348-d17e8d34797e"},{"userId":9,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"pull_requests_count":0},"options":null,"timestamp":"2019-09-16T10:44:53.350-04:00","type":"identify","messageId":"0bc5ab7a-5da5-448f-b88a-840b0a309281"},{"userId":9,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"email":null,"marketing_emails":false,"state":"register"},"options":null,"timestamp":"2019-09-16T10:44:53.350-04:00","type":"identify","messageId":"c25edc81-3278-4687-aeb0-895a6ea75657"},{"event":"register","userId":9,"anonymousId":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"options":null,"integrations":null,"properties":{},"timestamp":"2019-09-16T10:44:53.350-04:00","type":"track","messageId":"e06cb029-d8a1-460f-ae12-b1a83ac21efa"},{"userId":10,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"pull_requests_count":0},"options":null,"timestamp":"2019-09-16T10:44:53.389-04:00","type":"identify","messageId":"94988777-73ea-4c66-adb9-04f0af6199ea"},{"userId":10,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"email":null,"marketing_emails":false,"state":"register"},"options":null,"timestamp":"2019-09-16T10:44:53.389-04:00","type":"identify","messageId":"87875559-b38a-41ca-be0d-e6f48cf698e2"},{"event":"register","userId":10,"anonymousId":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"options":null,"integrations":null,"properties":{},"timestamp":"2019-09-16T10:44:53.390-04:00","type":"track","messageId":"357aff44-296a-45f3-b410-b4dd88f59c96"},{"userId":11,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"pull_requests_count":0},"options":null,"timestamp":"2019-09-16T10:44:53.429-04:00","type":"identify","messageId":"104fa0ef-7366-4e85-a19e-85f4c0882ab3"},{"userId":11,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"email":null,"marketing_emails":false,"state":"register"},"options":null,"timestamp":"2019-09-16T10:44:53.429-04:00","type":"identify","messageId":"0ddfaf9c-0400-4890-8f39-3805a0237003"},{"event":"register","userId":11,"anonymousId":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"options":null,"integrations":null,"properties":{},"timestamp":"2019-09-16T10:44:53.429-04:00","type":"track","messageId":"0d4fbb81-af4f-40f5-aa69-63e63261f121"},{"userId":12,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"pull_requests_count":0},"options":null,"timestamp":"2019-09-16T10:44:53.474-04:00","type":"identify","messageId":"c5095e98-2bc5-4a03-a176-f182daf7377f"},{"userId":12,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{"email":"test@mail.com","marketing_emails":false,"state":"register"},"options":null,"timestamp":"2019-09-16T10:44:53.474-04:00","type":"identify","messageId":"b694ce30-4509-4f01-b772-618f973b4f19"},{"event":"register","userId":12,"anonymousId":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"options":null,"integrations":null,"properties":{},"timestamp":"2019-09-16T10:44:53.474-04:00","type":"track","messageId":"88c4fabf-d53d-43de-b8b0-f0c8c68f6741"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic NWw3czVyTVl0T3doWUNZMDBTcnIzMTYzWkZmR2N5ZVQ6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 16 Sep 2019 14:44:54 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '21'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "success": true
+        }
+    http_version: 
+  recorded_at: Mon, 16 Sep 2019 14:44:54 GMT
 recorded_with: VCR 5.0.0
