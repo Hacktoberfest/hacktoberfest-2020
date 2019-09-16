@@ -2,6 +2,46 @@
 http_interactions:
 - request:
     method: post
+    uri: https://api.segment.io/v1/import
+    body:
+      encoding: UTF-8
+      string: '{"sentAt":"2019-09-16T18:18:58.126-04:00","batch":[{"userId":2609,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{},"options":null,"timestamp":"2019-09-16T18:18:58.125-04:00","type":"identify","messageId":"15a97124-4966-415d-a649-5c5185c418e0"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic NWw3czVyTVl0T3doWUNZMDBTcnIzMTYzWkZmR2N5ZVQ6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 16 Sep 2019 22:18:58 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '21'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "success": true
+        }
+    http_version: 
+  recorded_at: Mon, 16 Sep 2019 22:18:58 GMT
+- request:
+    method: post
     uri: https://api.github.com/graphql
     body:
       encoding: UTF-8
@@ -10,7 +50,7 @@ http_interactions:
         100) {\n          edges {\n            node {\n              name\n            }\n          }\n        }\n      }\n    }\n  }\n}\n","variables":{"username":"mkcode"}}'
     headers:
       User-Agent:
-      - Faraday v0.12.2
+      - Faraday v0.15.4
       Authorization:
       - bearer <TEST_USER_GITHUB_TOKEN>
       Content-Type:
@@ -25,7 +65,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 13 Sep 2019 19:58:08 GMT
+      - Mon, 16 Sep 2019 22:18:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -37,7 +77,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Oauth-Scopes:
-      - user:email
+      - admin:public_key
       X-Accepted-Oauth-Scopes:
       - repo
       X-Github-Media-Type:
@@ -45,9 +85,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4956'
+      - '4999'
       X-Ratelimit-Reset:
-      - '1568408095'
+      - '1568675938'
       Access-Control-Expose-Headers:
       - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
@@ -69,7 +109,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Github-Request-Id:
-      - 77D7:6F22:50342:7DAC3:5D7BF4CF
+      - E76C:0EFD:908F8:EEE43:5D800A52
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"user":{"pullRequests":{"nodes":[{"id":"MDExOlB1bGxSZXF1ZXN0NTc5MDc4Mg==","title":"Upgraded
@@ -121,45 +161,5 @@ http_interactions:
         in their own repos. We may want to add a few tests though.\n","url":"https://github.com/intridea/hashie/pull/379","createdAt":"2016-10-25T19:59:18Z","labels":{"edges":[{"node":{"name":"new
         feature"}}]}}]}}}}'
     http_version: 
-  recorded_at: Fri, 13 Sep 2019 19:58:08 GMT
-- request:
-    method: post
-    uri: https://api.segment.io/v1/import
-    body:
-      encoding: UTF-8
-      string: '{"sentAt":"2019-09-16T18:15:25.324-04:00","batch":[{"userId":2481,"anonymousId":null,"integrations":null,"context":{"library":{"name":"analytics-ruby","version":"2.0.13"}},"traits":{},"options":null,"timestamp":"2019-09-16T18:15:25.324-04:00","type":"identify","messageId":"74320148-2e8a-46e7-9c02-bb5adfea7e50"}]}'
-    headers:
-      Content-Type:
-      - application/json
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      User-Agent:
-      - Ruby
-      Authorization:
-      - Basic NWw3czVyTVl0T3doWUNZMDBTcnIzMTYzWkZmR2N5ZVQ6
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Mon, 16 Sep 2019 22:15:25 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '21'
-      Connection:
-      - keep-alive
-      Vary:
-      - Origin
-    body:
-      encoding: UTF-8
-      string: |-
-        {
-          "success": true
-        }
-    http_version: 
-  recorded_at: Mon, 16 Sep 2019 22:15:25 GMT
+  recorded_at: Mon, 16 Sep 2019 22:18:58 GMT
 recorded_with: VCR 5.0.0
