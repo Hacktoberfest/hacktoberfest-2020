@@ -6,7 +6,6 @@ module UserStateTransitionSegmentService
   module_function
 
   def call(user, transition)
-    pull_requests_count(user)
     if transition.event == :register
       register(user)
     elsif transition.event == :ineligible
