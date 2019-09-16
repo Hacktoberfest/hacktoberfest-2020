@@ -38,7 +38,7 @@ RSpec.describe User, type: :model do
         expect(user.state).to eq('new')
       end
 
-      it 'adds the correct errors to the user' do
+      it 'adds the correct errors to the user object' do
         expect(user.errors.messages[:email].first).to eq("can't be blank")
         expect(user.errors.messages[:terms_acceptance].first)
           .to eq('must be accepted')
@@ -126,7 +126,7 @@ RSpec.describe User, type: :model do
         expect(user.state).to eq('waiting')
       end
 
-      it 'adds the correct errors to the user' do
+      it 'adds the correct errors to user' do
         expect(user.errors.messages[:won_hacktoberfest?].first)
           .to include('user has not met all winning conditions')
       end
@@ -161,7 +161,7 @@ RSpec.describe User, type: :model do
         user.incomplete
       end
 
-      it 'disallows the user to enter the incompleted state' do
+      it 'disallows the user to enter the incomplete state' do
         expect(user.state).to eq('completed')
       end
 

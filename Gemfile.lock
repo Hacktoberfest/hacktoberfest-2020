@@ -47,6 +47,7 @@ GEM
     airrecord (1.0.2)
       faraday (~> 0.10)
       net-http-persistent (>= 2.9)
+    analytics-ruby (2.0.13)
     arel (9.0.0)
     ast (2.4.0)
     bindex (0.8.1)
@@ -309,6 +310,7 @@ PLATFORMS
 
 DEPENDENCIES
   airrecord
+  analytics-ruby (~> 2.0.0)
   bootsnap (>= 1.1.0)
   byebug
   coffee-rails (~> 4.2)

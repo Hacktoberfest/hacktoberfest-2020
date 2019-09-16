@@ -42,6 +42,10 @@ class User < ApplicationRecord
       validates :hacktoberfest_ended?, inclusion: {
         in: [true], message: 'hacktoberfest has not yet ended' }
     end
+
+    before_transition do |user, transition|
+      UserStateTransitionSegmentService.call(user, transition)
+    end
   end
   # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
