@@ -14,28 +14,22 @@
  *= require_self
  */
 
-// @import "compass";
-// @include font-face("SpaceMono", "fonts/SpaceMono-Regular", $asset-pipeline: true);
-// @include font-face ("SpaceMono", "../fonts/SpaceMono-RegularItalic", $asset-pipeline: true);
-// @include font-face ("SpaceMono", "../fonts/SpaceMono-Bold", $weight: 600, $style: normal, $asset-pipeline: true);
-// @include font-face ("SpaceMono", "../fonts/SpaceMono-BoldItalic", $weight: 600, $style: normal, $asset-pipeline: true);
 
-
-// Bulma overrides and sass definitions
+// Bulma overrides and common definitions
  $body-background-color: rgb(21, 35, 71);
  $body-color: rgb(153, 161, 179);
- $body-family: SpaceMono;
+ $body-family: "Space Mono", monospace;
  $body-font-size: 16px;
  $size-3: 1.75rem;
 
 // survey block styling
- section{
-  background-color: #0a142e;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-    margin-bottom: 80px;
+ .survey{
+   background-color: #0a142e;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+    margin-bottom: 180px;
   }
 
   section p{
@@ -45,12 +39,13 @@
   }
 
 
+// ADJUST BG IMAGE PLACEMENTS!!!
 // content styling
- body{
-   background-image: image-url("logo-hf19-header.png");
+ .body{
+   background-image: image-url("logo-hf19-header.png"), url("bg-left.png"), url("bg-right.png");
    background-repeat: no-repeat;
-   background-position: left top;
-   margin-top: 20px;
+   background-position: left top, top left, bottom right;
+   margin-top: 80px;
  }
 
  img{
@@ -62,8 +57,9 @@
 div nav{
   display: flex;
   justify-content: flex-end;
+  height: 60px;
   // margin-bottom: 20%;;
-  border: 1px solid pink;
+  // border: 1px solid pink;
 }
 
 nav a{
@@ -72,8 +68,10 @@ nav a{
   font-size: 14px;
 }
 
+// FIX HOVER - BOTTOM IS TOO FAR FROM TEXT
  nav a:hover{
     border-bottom: 2px solid #fff922;
+    color: rgb(255,255,255);
  }
 
 
@@ -81,12 +79,12 @@ nav a{
    width: 90%;
    margin-left: auto;
    margin-right: auto;
-   border: 1px solid lime;
+   // border: 1px solid lime;
    padding: 2%;
    flex-grow: 1;
  }
 
- h1 a, h1, h2, h2 p, h3, h3 p, h4, h4 p{
+ .h1 a, .h1, .h2, .h2 p, .h3, .h3 p, .h4, .h4 p{
    color: rgb(255,255,255);
    font-weight: 600;
    line-height: 1.125;
@@ -102,22 +100,22 @@ nav a{
     margin-bottom: 16px;
  }
 
- h1 a, h1{
-    font-size: 2rem !important;
+ .h1 a, .h1{
+    font-size: 2rem;
     margin-bottom: .5em;
   }
 
- h2 {
-    font-size: $size-3 !important;
+ .h2 {
+    font-size: $size-3;
     margin-bottom: .5714em;
   }
 
- h3{
-   font-size: 1.5rem !important;
-   margin-top: 1.333rem  !important;
+ .h3{
+   font-size: 1.5rem;
+   margin-top: 1.333rem;
  }
- h4 p{
-   font-size: 1.25rem !important;
+ .h4 p{
+   font-size: 1.25rem;
  }
 
  @import "bulma";
