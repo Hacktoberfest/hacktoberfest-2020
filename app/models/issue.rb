@@ -1,0 +1,34 @@
+class Issue < ActiveRecord::Base
+  belongs_to :repository
+
+  validates :gh_database_id, presence: true, uniqueness: true
+  validates :number, presence: true, uniqueness: { scope: :repository_id }
+  validates :title, presence: true
+  validates :url, presence: true
+
+  def self.random
+    order("RAND()")
+  end
+
+  def self.random_order_weighted_by_quality
+    order("RAND()*quality DESC")
+  end
+
+  def self.open_issues_with_unique_permitted_repositories
+    Issue
+      .select("`#{:temporary_random_valid_issues}`.*")
+      .from(
+        open_issues_with_permitted_repositories.random,
+        :temporary_random_valid_issues,
+      )
+      .group("`#{:temporary_random_valid_issues}`.`repository_id`")
+  end
+
+  def self.open_issues_with_permitted_repositories
+    joins(:repository)
+      .where(
+        open: true,
+        repositories: { banned: false},
+      )
+  end
+end
