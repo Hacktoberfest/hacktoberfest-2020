@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-namespace :user do
+namespace :users do
   desc 'Transition all users'
   task transition: :environment do
     User.all.find_in_batches do |group|
