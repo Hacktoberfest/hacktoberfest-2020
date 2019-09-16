@@ -1,26 +1,44 @@
-<div>
-  <%= link_to 'Hacktoberfest', '/' %>
-  <h2>General </h2><br/>
-  <% @faqs_general.map do |q| %>
-    <h4><%= markdown q["Question"] %></h4>
-    <p> <%= markdown q["Answer"] %></p><br/>
-  <% end %>
+<div class="body">
+  <!-- survey block -->
+  <section class="survey">
+    <p>Survey block goes here</p>
+  </section>
 
-  <h2>Rules</h2><br/>
-  <% @faqs_rules.map do |q| %>
-    <h4><%= markdown q["Question"] %></h4>
-    <p> <%= markdown q["Answer"] %></p><br/>
-  <% end %>
+  <!-- navigation block -->
+  <nav>
+   <a href="">FAQ</a>
+   <a href="">EVENT KIT</a>
+  </nav>
 
-  <h2>Events </h2><br/>
-  <% @faqs_events.map do |q| %>
-    <h4><%= markdown q["Question"] %></h4>
-    <p> <%= markdown q["Answer"] %></p><br/>
-  <% end %>
+  <!-- <img src="logo-hf19-header.png" alt="Hacktoberfest 2019 logo"> -->
 
-  <h2>Shipping </h2><br/>
-  <% @faqs_shipping.map do |q| %>
-    <h4><%= markdown q["Question"] %></h4>
-    <p> <%= markdown q["Answer"] %></p><br/>
-  <% end %>
+  <main>
+    <h2 class="h2"><%= link_to 'logo_goes_here', '/' %></h2>
+    <h1 class="h1">What is Hacktoberfest?</h1>
+    <h3 class="h3">Have questions? These are the most frequently asked questions about Hacktoberfest.</h3>
+    <h2 class="h2">General </h2><br/>
+    <% @faqs_general.map do |q| %>
+      <h4 class="h4"><%= markdown q["Question"] %></h4>
+      <p> <%= markdown q["Answer"] %></p><br/>
+    <% end %>
+
+    <h2 class="h2">Rules</h2><br/>
+    <% @faqs_rules.map do |q| %>
+      <h4 class="h4"><%= markdown q["Question"] %></h4>
+      <p> <%= markdown q["Answer"] %></p><br/>
+    <% end %>
+
+    <h2 class="h2">Events </h2><br/>
+    <% @faqs_events.map do |q| %>
+      <h4 class="h4"><%= markdown q["Question"] %></h4>
+      <p> <%= markdown q["Answer"] %></p><br/>
+    <% end %>
+
+    <h2 class="h2">Shipping </h2><br/>
+    <% @faqs_shipping.map do |q| %>
+      <h4 class="h4"><%= markdown q["Question"] %></h4>
+      <p> <%= markdown q["Answer"] %></p><br/>
+    <% end %>
+  </main>
+
 </div>

@@ -25,6 +25,7 @@
 /yarn-error.log
 
 /public/assets
+/.sass-cache
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
