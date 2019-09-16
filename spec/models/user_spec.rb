@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
         expect(user.state).to eq('new')
       end
 
-      it 'applies the correct errors to the user' do
+      it 'applies the correct errors to the user object' do
         expect(user.errors.messages[:email].first).to eq("can't be blank")
       end
     end
@@ -38,7 +38,7 @@ RSpec.describe User, type: :model do
         expect(user.state).to eq('new')
       end
 
-      it 'adds the correct errors to user object' do
+      it 'adds the correct errors to the user object' do
         expect(user.errors.messages[:email].first).to eq("can't be blank")
         expect(user.errors.messages[:terms_acceptance].first)
           .to eq('must be accepted')
@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
     context 'an unregistered user has an email and has agreed to terms' do
       let(:user) { FactoryBot.create(:user, state: 'new') }
 
-      it 'can enter the registered state' do
+      it 'allows the user to enter the registered state' do
         expect(user.state).to eq('registered')
       end
 
@@ -68,7 +68,7 @@ RSpec.describe User, type: :model do
         user.wait
       end
 
-      it 'user can enter the waiting state' do
+      it 'allows the user to enter the waiting state' do
         expect(user.state).to eq('waiting')
       end
 
@@ -90,7 +90,7 @@ RSpec.describe User, type: :model do
         expect(user.state).to eq('registered')
       end
 
-      it 'adds the correct errors to user' do
+      it 'adds the correct errors to the user' do
         expect(user.errors.messages[:sufficient_eligible_prs?].first)
           .to include('user does not have sufficient eligible prs')
       end
@@ -106,7 +106,7 @@ RSpec.describe User, type: :model do
         user.complete
       end
 
-      it 'lets user to enter completed state' do
+      it 'allows the user to enter the completed state' do
         expect(user.state).to eq('completed')
       end
 
@@ -142,7 +142,7 @@ RSpec.describe User, type: :model do
         user.ineligible
       end
 
-      it 'transitions user to back registered state' do
+      it 'transitions the user back to the registered state' do
         expect(user.state).to eq('registered')
       end
 
@@ -179,7 +179,7 @@ RSpec.describe User, type: :model do
         user.incomplete
       end
 
-      it 'disallows the user to enter the incomplete state' do
+      it 'disallows the user to enter the incompleted state' do
         expect(user.state).to eq('registered')
       end
 
