@@ -22,66 +22,28 @@
  $body-font-size: 16px;
  $size-3: 1.75rem;
 
-// survey block styling
- .survey{
-   background-color: #0a142e;
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-    margin-bottom: 180px;
-  }
-
-  section p{
-    margin-left: 80px;
-    color: white;
-    padding: 20px;
-  }
-
+ @import "bulma";
 
 // ADJUST BG IMAGE PLACEMENTS!!!
 // content styling
- .body{
-   background-image: image-url("logo-hf19-header.png"), url("bg-left.png"), url("bg-right.png");
+ body{
+   background-image: image-url("logo-hf19-header.png");
    background-repeat: no-repeat;
    background-position: left top, top left, bottom right;
-   margin-top: 80px;
  }
 
- img{
+ .bg-left::after{
+   content: image-url("bg-left.png");
    position: absolute;
    top: 80px;
    left: 20;
  }
 
-div nav{
-  display: flex;
-  justify-content: flex-end;
-  height: 60px;
-  // margin-bottom: 20%;;
-  // border: 1px solid pink;
-}
-
-nav a{
-  color: rgb(255,255,255);
-  margin-left: 2.25rem;
-  font-size: 14px;
-}
-
-// FIX HOVER - BOTTOM IS TOO FAR FROM TEXT
- nav a:hover{
-    border-bottom: 2px solid #fff922;
-    color: rgb(255,255,255);
- }
-
-
- div{
-   width: 90%;
-   margin-left: auto;
-   margin-right: auto;
-   // border: 1px solid lime;
-   padding: 2%;
-   flex-grow: 1;
+ .bg-right::after{
+   content: image-url("bg-right.png");
+   position: absolute;
+   top: 80px;
+   left: 20;
  }
 
  .h1 a, .h1, .h2, .h2 p, .h3, .h3 p, .h4, .h4 p{
@@ -89,10 +51,6 @@ nav a{
    font-weight: 600;
    line-height: 1.125;
    width: 100%;
- }
-
- main{
-   margin-top: 100px;
  }
 
  main p{
@@ -118,7 +76,6 @@ nav a{
    font-size: 1.25rem;
  }
 
- @import "bulma";
 
 
 

@@ -1,0 +1,39 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// survey block styling
+.survey{
+  background-color: #0a142e;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 180px;
+}
+
+section p{
+  margin-left: 80px;
+  color: white;
+  padding: 20px;
+}
+
+div nav{
+  display: flex;
+  justify-content: flex-end;
+  height: 60px;
+  // margin-bottom: 20%;;
+  // border: 1px solid pink;
+}
+
+nav a{
+  color: rgb(255,255,255);
+  margin-left: 2.25rem;
+  font-size: 14px;
+}
+
+// FIX HOVER - BOTTOM IS TOO FAR FROM TEXT
+nav a:hover{
+  border-bottom: 2px solid #fff922;
+  color: rgb(255,255,255);
+}
