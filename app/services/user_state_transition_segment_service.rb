@@ -28,10 +28,6 @@ module UserStateTransitionSegmentService
     segment(user).identify(state: 'ineligible')
   end
 
-  def pull_requests_count(user)
-    segment(user).identify(pull_requests_count: user.score)
-  end
-
   def segment(user)
     SegmentService.new(user)
   end

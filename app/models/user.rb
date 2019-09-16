@@ -46,6 +46,10 @@ class User < ApplicationRecord
     after_transition do |user, transition|
       UserStateTransitionSegmentService.call(user, transition)
     end
+
+    before_transition do |user, transition|
+      UserPullRequestSegmentUpdaterService.call(user)
+    end
   end
   # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
