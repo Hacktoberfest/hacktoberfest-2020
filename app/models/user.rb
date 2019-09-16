@@ -43,7 +43,7 @@ class User < ApplicationRecord
         in: [true], message: 'hacktoberfest has not yet ended' }
     end
 
-    before_transition do |user, transition|
+    after_transition do |user, transition|
       UserStateTransitionSegmentService.call(user, transition)
     end
   end
