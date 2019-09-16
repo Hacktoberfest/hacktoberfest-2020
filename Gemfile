@@ -33,6 +33,8 @@ gem 'state_machines-activerecord'
 
 gem 'sqlite3'
 
+gem 'pg'
+
 gem 'pry'
 
 gem 'turbolinks', '~> 5'
