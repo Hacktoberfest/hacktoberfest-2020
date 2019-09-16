@@ -2,6 +2,13 @@
 
 require 'rails_helper'
 
+RSpec.shared_examples 'tries transition'  do
+  it 'tries to transition the user', vcr: { record: :new_episodes } do
+    expect(TryUserTransitionService).to receive(:call)
+    get profile_path
+  end
+end
+
 RSpec.describe UsersController, type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:pr_service) { PullRequestService.new(current_user) }
@@ -23,6 +30,8 @@ RSpec.describe UsersController, type: :request do
         allow_any_instance_of(User).to receive(:score).and_return(4)
       end
 
+      include_examples 'tries transition'
+
       it 'returns 4 as the max score', vcr: { record: :new_episodes } do
         get profile_path
         expect(response.body).to include('4 out of 4')
@@ -42,6 +51,8 @@ RSpec.describe UsersController, type: :request do
         allow_any_instance_of(User).to receive(:score).and_return(0)
       end
 
+      include_examples 'tries transition'
+
       it 'only displays progress', vcr: { record: :new_episodes } do
         get profile_path
         expect(response.body).to include('0 out of 4')
@@ -56,6 +67,8 @@ RSpec.describe UsersController, type: :request do
         allow_any_instance_of(User).to receive(:pull_requests).and_return(prs)
         allow_any_instance_of(User).to receive(:score).and_return(3)
       end
+
+      include_examples 'tries transition'
 
       it 'calculates score of 3 valid PRs', vcr: { record: :new_episodes } do
         get profile_path
