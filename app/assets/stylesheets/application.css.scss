@@ -22,6 +22,7 @@
  $body-font-size: 16px;
  $size-3: 1.75rem;
 
+
  @import "bulma";
 
 // ADJUST BG IMAGE PLACEMENTS!!!
@@ -29,7 +30,8 @@
  body{
    background-image: image-url("logo-hf19-header.png");
    background-repeat: no-repeat;
-   background-position: left top, top left, bottom right;
+   background-position: left top;
+   margin-top: 80px;
  }
 
  .bg-left::after{
@@ -37,6 +39,7 @@
    position: absolute;
    top: 80px;
    left: 20;
+   z-index: -1;
  }
 
  .bg-right::after{
@@ -44,6 +47,7 @@
    position: absolute;
    top: 80px;
    left: 20;
+   z-index: -1;
  }
 
  .h1 a, .h1, .h2, .h2 p, .h3, .h3 p, .h4, .h4 p{
@@ -78,11 +82,9 @@
 
 
 
-
-
  // Colors and fonts used on live faq site:
  //   Blue background: rgb(21, 35, 71)
- //   Nav Link hovers:   bottom-border: 2px solid #fff922;
+ //   navbar Link hovers:   bottom-border: 2px solid #fff922;
  //   Section header font color: rgb(255, 255, 255)
  //   Text font color: rgb(153, 161, 179);
  //   Link color: rgb(50, 115, 220);

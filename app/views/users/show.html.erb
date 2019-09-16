@@ -1,14 +1,28 @@
-<div>
-  <%= link_to 'Hacktoberfest', '/' %>
-  <p>Score:</p>
-  <%= @score.to_i %> out of 4!
-  <div>
-  <% @pull_requests.map do |pr| %>
-    <h2><%= pr.eligible? ? 'Valid' : 'Invalid' %><br/></h2>
-    <h2><%= pr.title %><br/> </h2>
-    <p><%= pr.body %><p/><br/>
-      <a href="<%= pr.url %>"> click here to view on github </a><br/>
-    <%= DateTime.parse(pr.created_at).to_formatted_s(:short) %><br/>
-  <% end %>
-  </div>
+<nav id="navbar">
+  <a href="/">HOME</a>
+  <a class="navLink" href="#">DETAILS</a>
+  <a class="navLink" href="/meetups">EVENTS</a>
+  <a class="navLink" href="/faq">FAQS</a>
+  <a class="navLink" href="/login">START HACKING</a>
+</nav>
+<div class="container is-fullhd">
+  <main>
+    <div class="profile-container">
+      <div class="user-section">
+        <image src="/profile/jane-doe.png"/> <h2><%= @current_user.name %> </h2>
+        <p>Completed: <%= @score.to_i %> out of 4!</p>
+      </div>
+      <div class="columns">
+        <h2>Your contributions:</h2>
+        <div class="column is full">
+          <% @pull_requests.map do |pr| %>
+          <p> <%= DateTime.parse(pr.created_at).to_formatted_s(:short) %><br/> </p>
+          <h2 class="h2"><%= pr.title %><br/> </h2>
+            <a href="<%= pr.url %>"> click here to view on github </a><br/>
+            <% end %>
+        </div>
+      </div>
+      <button class="profile-button" type="button" name="pull_requests_load">Load More</button>
+    </div>
+  </main>
 </div>
