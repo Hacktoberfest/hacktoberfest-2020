@@ -67,7 +67,7 @@ class User < ApplicationRecord
 
   def mature_pull_requests_count
     pr_service = PullRequestService.new(self)
-    pr_service.count_mature_prs
+    pr_service.matured_prs.count
   end
 
   def sufficient_eligible_prs?
