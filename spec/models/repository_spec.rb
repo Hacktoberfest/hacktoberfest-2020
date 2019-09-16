@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Repository do
+RSpec.describe Repository, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:language) }
   end
