@@ -36,8 +36,15 @@
 }
 
 // Bulma overrides and common definitions
-$body-background-color: rgb(21, 35, 71);
-$body-color: rgb(153, 161, 179);
+// Initial Variables
+$grey: hsl(221.54, 14.61%, 65.1%);
+$blue: hsl(223.2, 54.35%, 18.04%);
+// Derived Variables
+$primary: $blue;
+
+// Generic Variables
+$body-background-color: $primary;
+$body-color: $grey;
 $body-family: 'Space Mono', monospace;
 $body-font-size: 16px;
 $size-3: 1.75rem;
