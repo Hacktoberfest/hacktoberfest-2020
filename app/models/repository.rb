@@ -5,7 +5,7 @@ class Repository < ApplicationRecord
 
   before_validation :truncate_description
 
-  belongs_to :language
+  belongs_to :language, optional: true
   has_many :pull_requests, dependent: :destroy
 
   validates :full_name, presence: true
