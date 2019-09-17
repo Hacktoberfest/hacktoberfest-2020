@@ -4,8 +4,6 @@ ruby '2.5.1'
 
 gem 'airrecord'
 
-gem 'analytics-ruby', '~> 2.0.0', require: 'segment/analytics'
-
 gem 'bootsnap', '>= 1.1.0', require: false
 gem "bulma-rails", "~> 0.7.5"
 
