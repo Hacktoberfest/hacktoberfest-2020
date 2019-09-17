@@ -28,14 +28,17 @@ class Repository < ApplicationRecord
   end
 
   def self.total_count
-    joins(:pull_requests).where(pull_requests: { is_valid: true }).distinct.count
+    joins(:pull_requests)
+      .where(pull_requests: { is_valid: true })
+      .distinct
+      .count
   end
 
   private
 
   def truncate_description
-    if description.present?
-      self.description = description.truncate(MAX_DESCRIPTION_LENGTH)
-    end
+    return if description.blank?
+
+    self.description = description.truncate(MAX_DESCRIPTION_LENGTH)
   end
 end
