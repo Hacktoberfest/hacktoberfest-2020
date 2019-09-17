@@ -1,4 +1,6 @@
-class Issue < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Issue < ApplicationRecord
   belongs_to :repository
 
   validates :gh_database_id, presence: true, uniqueness: true
@@ -7,11 +9,11 @@ class Issue < ActiveRecord::Base
   validates :url, presence: true
 
   def self.random
-    order(Arel.sql("RANDOM()"))
+    order(Arel.sql('RANDOM()'))
   end
 
   def self.random_order_weighted_by_quality
-    order(Arel.sql("RANDOM()*quality DESC"))
+    order(Arel.sql('RANDOM()*quality DESC'))
   end
 
   def self.open_issues_with_unique_permitted_repositories
@@ -26,7 +28,7 @@ class Issue < ActiveRecord::Base
     joins(:repository)
       .where(
         open: true,
-        repositories: { banned: false},
+        repositories: { banned: false }
       )
   end
 end
