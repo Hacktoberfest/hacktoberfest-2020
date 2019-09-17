@@ -1,23 +1,41 @@
-<div class="container is-fullhd">
-  <main>
-    <div class="profile-container">
-      <div class="user-section">
-        <%= image_tag "jane-doe.png" %>
-        <h2><%= @current_user.name %> </h2>
-        <% Hacktoberfest.pre_launch? %>
-        <p>Completed: <%= @score.to_i %> out of 4!</p>
-      </div>
-      <div class="columns">
-        <h2>Your contributions:</h2>
-        <div class="column is full">
-          <% @pull_requests.map do |pr| %>
-          <p> <%= DateTime.parse(pr.created_at).to_formatted_s(:short) %><br/> </p>
-          <h2 class="h2"><%= pr.title %><br/> </h2>
-            <a href="<%= pr.url %>"> click here to view on github </a><br/>
-            <% end %>
+<div class="main-user-container">
+  <div class='container is-fullhd'>
+    <main>
+      <div class='profile-container'>
+        <div class='container is-fullhd '>
+          <div class='user-section'>
+            <div class="level">
+              <div class="level-left">
+                <div class="avatar">
+                  <figure class='image is-128x128'>
+                    <%= image_tag "https://github.com/#{@current_user.name}.png?size=150", class: 'is-rounded'%>
+                  </figure>
+                </div>
+                <h2 class='username'><%= @current_user.name %> </h2>
+              </div>
+              <div class="level-right"
+              <div>
+                <p class='progress-msg'>YOUR PROGRESS</p>
+                <div class="progress-bar">
+                  <% if @pre_launch %>
+                  <%= image_tag 'pre-launch-progress-bar' %>
+                  <% else %>
+                  <%= render 'users/show/progress_bar' %>
+                  <% end  %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <% if @display_timeline %>
+          <%= render 'users/show/timeline' %>
+          <% else %>
+          <%= render 'users/show/pre_launch' %>
+          <% end %>
         </div>
       </div>
-      <button class="profile-button" type="button" name="pull_requests_load">Load More</button>
     </div>
   </main>
+  </div>
 </div>

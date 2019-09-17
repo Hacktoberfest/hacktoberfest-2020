@@ -1,3 +1,10 @@
-<% if @display_results %>
-  <%= render 'results' %>
-<% end %>
+<div class="columns">
+  <h3>Your contributions:</h3>
+  <div class="column is full">
+    <% @pull_requests.map do |pr| %>
+    <p> <%= DateTime.parse(pr.created_at).to_formatted_s(:short) %><br/> </p>
+    <h3><%= pr.title %><br/> </h3>
+      <a href="<%= pr.url %>"> click here to view on github </a><br/>
+      <% end %>
+  </div>
+</div>

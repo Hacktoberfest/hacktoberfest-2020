@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @score = @current_user.score
     @display_timeline = Hacktoberfest.active?
     @dispay_results =  Hacktoberfest.ended?
+    @pre_launch = Hacktoberfest.pre_launch?
   end
 
   # action to save registration

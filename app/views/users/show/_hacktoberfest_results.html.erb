@@ -1,0 +1,13 @@
+<div class="columns">
+  <div class="winner">
+
+  </div>
+  <h2>Your contributions:</h2>
+  <div class="column is full">
+    <% @pull_requests.map do |pr| %>
+    <p> <%= DateTime.parse(pr.created_at).to_formatted_s(:short) %><br/> </p>
+    <h2 class="h2"><%= pr.title %><br/> </h2>
+      <a href="<%= pr.url %>"> click here to view on github </a><br/>
+      <% end %>
+  </div>
+</div>

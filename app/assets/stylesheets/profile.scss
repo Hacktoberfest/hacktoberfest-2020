@@ -1,3 +1,7 @@
+.main-user-container {
+  padding-left: 250px;
+}
+
 .profile-container {
   width: 1170px;
   height: 907px;
@@ -8,13 +12,39 @@
   box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.2);
 }
 
+.pre-launch-container {
+  padding-top: 100px;
+  padding-right: 150px;
+  padding-left: 150px;
+}
+
+.username {
+  font-size: 24px;
+  line-height: 36px;
+  color: white;
+  padding-left: 25px;
+}
+
 .user-section {
   width: 1170px;
   height: 160px;
   left: 135px;
   top: 236px;
-
   background: #39486E;
+}
+
+.avatar {
+  padding-top: 20px;
+  padding-left: 25px;
+}
+
+.progress-msg {
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+.progress-bar {
+  padding-right: 25px;
 }
 
 .profile-button {
@@ -23,4 +53,10 @@
   top: 1053px;
 
   background: #152347;
+}
+
+// temporary
+.highlight {
+  color: yellow;
+  font-size: 44px;
 }

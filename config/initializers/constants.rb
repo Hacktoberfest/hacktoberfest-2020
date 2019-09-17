@@ -16,7 +16,6 @@ module Hacktoberfest
   end
 
   def pre_launch?
-    binding.pry
     Date.today < start_date
   end
 
