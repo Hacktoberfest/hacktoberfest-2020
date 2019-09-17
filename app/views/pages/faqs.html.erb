@@ -1,22 +1,8 @@
-<!-- survey block -->
-<section class="survey">
-  <p>Survey block goes here</p>
-</section>
 
-<div class="container is-fluid">
-
-  <!-- navigation block -->
-  <nav id="navbar">
-   <a class="navLink" href="">FAQ</a>
-   <a class="navLink" href="">EVENT KIT</a>
-  </nav>
-
-  <!-- <img src="logo-hf19-header.png" alt="Hacktoberfest 2019 logo"> -->
-
-  <main>
-    <h2 class="h2"><%= link_to 'logo_goes_here', '/' %></h2>
+  <main class="container is-fluid is-centered">
+    <!-- <h2 class="h2"><%= link_to 'logo_goes_here', '/' %></h2> -->
     <h1 class="h1">What is Hacktoberfest?</h1>
-    <h3 class="h3">Have questions? These are the most frequently asked questions about Hacktoberfest.</h3>
+    <h3 class="h3">Have questions? These are the most Frequently Asked Questions about Hacktoberfest.</h3>
     <h2 class="h2">General </h2><br/>
     <% @faqs_general.map do |q| %>
       <h4 class="h4"><%= markdown q["Question"] %></h4>

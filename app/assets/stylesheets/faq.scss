@@ -2,7 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-main{
-  margin-top: 94px;
-  margin-left: 28px;
+// main{
+//   // margin-top: 94px;
+//   // margin-left: 30px;
+//   margin-right: auto;
+// }
+
+.container {
+  flex-grow: 1 !important;
+  flex-shrink: 0 !important;
+  margin-top: 175px !important;
+  border: 1px solid lime;
+  padding-top: 6rem !important;
+  padding-right: 6.4rem !important;
+  padding-bottom: 3rem !important;
+  padding-left: 6.4rem !important;
+}
+
+.h1, .h2, .h3, .h4{
+  margin-bottom: 16px;
+}
+
+.h2{
+  margin-top: 2rem;
+}
+
+.h3{
+  margin-top: 3.5rem;
 }
