@@ -2,7 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+<<<<<<< HEAD
 $navColor: rgba(0, 0, 0, 0);
+=======
+$navColor: rgba(0,0,0,0);
+>>>>>>> WIP
 
 // survey block styling
 .survey {
@@ -21,11 +25,16 @@ section p {
   padding: 20px;
 }
 
+<<<<<<< HEAD
 #navbar {
+=======
+#navbar{
+>>>>>>> WIP
   display: flex;
   justify-content: flex-end;
   height: 50px;
   padding: 10px;
+<<<<<<< HEAD
   margin-right: 30px;
   background-color: rgba(0, 0, 0, 0);
   font-weight: bold;
@@ -54,4 +63,22 @@ section p {
       color: rgb(255, 255, 255);
     }
   }
+=======
+  margin-top: 30px;
+  margin-right: 30px;
+  background-color: rgba(0,0,0,0);
+  background-color: orange;
+}
+
+.navLink{
+  color: rgb(255,255,255);
+  margin-left: 2.25rem;
+  font-size: 16px;
+  z-index: 1;
+}
+
+.navLink:hover{
+  border-bottom: 2px solid #fff922;
+  color: rgb(255,255,255);
+>>>>>>> WIP
 }
