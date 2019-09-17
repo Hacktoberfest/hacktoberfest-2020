@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     TryUserTransitionService.call(@current_user)
     @pull_requests = pull_request_timeline(@current_user.pull_requests)
     @score = @current_user.score
-    @pre_launch = Hacktoberfest.pre_launch?
-    @hacktoberfest_ended = Hacktoberfest.ended?
+    @display_timeline = Hacktoberfest.active?
+    @dispay_results =  Hacktoberfest.ended?
   end
 
   # action to save registration

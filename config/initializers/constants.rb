@@ -17,13 +17,14 @@ module Hacktoberfest
 
   def pre_launch?
     binding.pry
-    Date.today > ENV['START']
+    Date.today < start_date
   end
 
   def ended?
-
+    Date.today > end_date
   end
 
   def active?
+    Date.today > start_date && Date.today < end_date
   end
 end
