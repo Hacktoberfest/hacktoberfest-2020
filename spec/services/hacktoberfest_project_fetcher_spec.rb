@@ -83,9 +83,9 @@ RSpec.describe HacktoberfestProjectFetcher do
         }
       JSON_RESPONSE_BODY
       response = double(:response, body: json_response)
-      allow(RestClient).to receive(:post).and_return(response)
-      access_token = "fake access token"
-      client = GithubGraphqlApiClient.new(access_token: access_token)
+      client = Hacktoberfest.client
+      allow(client).to receive(:post).and_return(response)
+      client = GithubGraphqlApiClient.new(access_token: '123', client: client)
       fetcher = HacktoberfestProjectFetcher.new(api_client: client)
 
       fetcher.fetch!
@@ -253,15 +253,15 @@ RSpec.describe HacktoberfestProjectFetcher do
         SECOND_JSON_RESPONSE_BODY
         first_response = double(:response, body: first_json_response_body)
         second_response = double(:response, body: second_json_response_body)
-        allow(RestClient).to receive(:post)
+        client = Hacktoberfest.client
+        allow(client).to receive(:post)
           .with(anything, string_excluding(/after:/), anything)
           .and_return(first_response)
-        allow(RestClient).to receive(:post)
+        allow(client).to receive(:post)
           .with(anything, /after:\\"#{end_cursor_1}\\"/, anything)
           .and_return(second_response)
-        access_token = "fake access token"
-        client = GithubGraphqlApiClient.new(access_token: access_token)
-        fetcher = HacktoberfestProjectFetcher.new(api_client: client)
+        api_client = GithubGraphqlApiClient.new(access_token: '123', client: client)
+        fetcher = HacktoberfestProjectFetcher.new(api_client: api_client)
 
         fetcher.fetch!
 

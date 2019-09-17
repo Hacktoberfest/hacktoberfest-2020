@@ -4,8 +4,9 @@ class GithubGraphqlApiClient
   GITHUB_GRAPHQL_API_URL = 'https://api.github.com/graphql'
   attr_writer :client
 
-  def initialize(access_token:)
+  def initialize(access_token:, client: nil)
     @access_token = access_token
+    @client = client
   end
 
   def client
