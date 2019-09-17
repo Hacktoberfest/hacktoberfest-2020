@@ -9,7 +9,8 @@
   <main>
     <div class="profile-container">
       <div class="user-section">
-        <image src="/profile/jane-doe.png"/> <h2><%= @current_user.name %> </h2>
+        <%= image_tag "jane-doe.png" %>
+        <h2><%= @current_user.name %> </h2>
         <p>Completed: <%= @score.to_i %> out of 4!</p>
       </div>
       <div class="columns">
