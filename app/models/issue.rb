@@ -16,12 +16,10 @@ class Issue < ActiveRecord::Base
 
   def self.open_issues_with_unique_permitted_repositories
     Issue
-      .select("`#{:temporary_random_valid_issues}`.*")
-      .from(
-        open_issues_with_permitted_repositories.random,
-        :temporary_random_valid_issues,
-      )
-      .group("`#{:temporary_random_valid_issues}`.`repository_id`")
+      .select('DISTINCT ON (temporary_random_valid_issues.repository_id)
+               temporary_random_valid_issues.*')
+      .from(open_issues_with_permitted_repositories.random,
+            :temporary_random_valid_issues)
   end
 
   def self.open_issues_with_permitted_repositories
