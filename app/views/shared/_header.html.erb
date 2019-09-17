@@ -1,0 +1,12 @@
+<header>
+  <nav id="navbar">
+    <a href="/"><img id="drag1" src="<%= asset_path('logo-hf19-header.svg') %>"width="475" ></a>
+    <ul class="navbar-end">
+      <li><%= link_to "home", root_path, :class => active_path_class?(root_path) + " navLink"  %></li>
+      <li><%= link_to "details", root_path, :class => active_path_class?(root_path) + " navLink"  %></li>
+      <li><%= link_to "events", meetups_path, :class => active_path_class?(meetups_path) + " navLink"  %></li>
+      <li><%= link_to "faqs", faq_path, :class => active_path_class?(faq_path) + " navLink"  %></li>
+      <li><%= link_to "start hacking", login_path, :class => active_path_class?(login_path) + " navLink callOutLink"  %></li>
+    </ul>
+  </nav>
+</header>

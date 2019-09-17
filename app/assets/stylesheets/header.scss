@@ -3,10 +3,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
- $navColor: rgba(0,0,0,0);
+$navColor: rgba(0, 0, 0, 0);
 
 // survey block styling
-.survey{
+.survey {
   background-color: #0a142e;
   position: absolute;
   top: 0;
@@ -16,30 +16,43 @@
   margin-top: 0;
 }
 
-section p{
+section p {
   margin-left: 80px;
   color: white;
   padding: 20px;
 }
 
-#navbar{
+#navbar {
   display: flex;
   justify-content: flex-end;
   height: 50px;
   padding: 10px;
   margin-right: 30px;
-  background-color: rgba(0,0,0,0);
-}
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 3px;
 
-.navLink{
-  color: rgb(255,255,255);
-  margin-left: 2.25rem;
-  font-size: 16px;
-  z-index: 1;
-}
+  ul.navbar-end {
+    .navLink {
+      color: rgba(255, 255, 255, 0.5);
+      margin-left: 2.25rem;
+      font-size: 16px;
+      z-index: 1;
+      text-transform: uppercase;
+    }
 
-// FIX HOVER - BOTTOM IS TOO FAR FROM TEXT
-.navLink:hover{
-  border-bottom: 2px solid #fff922;
-  color: rgb(255,255,255);
+    .callOutLink {
+      color: rgb(161, 30, 198);
+    }
+
+    // FIX HOVER - BOTTOM IS TOO FAR FROM TEXT
+    .navLink:hover,
+    .active {
+      padding-bottom: 5px;
+      border-bottom: 2px solid #fff922;
+      color: rgb(255, 255, 255);
+    }
+  }
 }
