@@ -6,8 +6,11 @@ class UsersController < ApplicationController
 
   # render current user profile
   def show
+    TryUserTransitionService.call(@current_user)
     @pull_requests = pull_request_timeline(@current_user.pull_requests)
     @score = @current_user.score
+    @pre_launch = Hacktoberfest.pre_launch?
+    @hacktoberfest_ended = Hacktoberfest.ended?
   end
 
   # action to save registration

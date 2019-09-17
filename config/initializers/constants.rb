@@ -14,4 +14,16 @@ module Hacktoberfest
   def pull_request_maturation_days
     @pull_request_maturation_days ||= ENV.fetch('MATURATION_DAYS', 7).to_i.days
   end
+
+  def pre_launch?
+    binding.pry
+    Date.today > ENV['START']
+  end
+
+  def ended?
+
+  end
+
+  def active?
+  end
 end

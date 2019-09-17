@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'faraday'
 gem 'faraday-http-cache'
 
+
 gem 'jbuilder', '~> 2.5'
 
 gem 'kramdown'
@@ -56,6 +57,8 @@ group :development, :test do
   gem 'rspec-rails'
 
   gem 'rubocop-rails'
+
+  gem 'shoulda-matchers'
 
   gem 'vcr'
 

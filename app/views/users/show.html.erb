@@ -1,16 +1,10 @@
-<nav id="navbar">
-  <a href="/">HOME</a>
-  <a class="navLink" href="#">DETAILS</a>
-  <a class="navLink" href="/meetups">EVENTS</a>
-  <a class="navLink" href="/faq">FAQS</a>
-  <a class="navLink" href="/login">START HACKING</a>
-</nav>
 <div class="container is-fullhd">
   <main>
     <div class="profile-container">
       <div class="user-section">
         <%= image_tag "jane-doe.png" %>
         <h2><%= @current_user.name %> </h2>
+        <% Hacktoberfest.pre_launch? %>
         <p>Completed: <%= @score.to_i %> out of 4!</p>
       </div>
       <div class="columns">
