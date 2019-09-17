@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Repository, type: :model do
@@ -20,7 +22,7 @@ RSpec.describe Repository, type: :model do
       it 'truncates the description' do
         repository = build(:repository)
         maximum_length = 180
-        repository.description = "*"*(maximum_length*2)
+        repository.description = '*' * (maximum_length * 2)
         repository.save
 
         expect(repository).to be_valid
@@ -33,7 +35,7 @@ RSpec.describe Repository, type: :model do
     context 'Given a description that is less than the maximum length' do
       it 'does not truncate the description' do
         maximum_length = 180
-        original_description = "*"*(maximum_length-1)
+        original_description = '*' * (maximum_length - 1)
         repository = build(:repository)
         repository.description = original_description
         repository.save
@@ -69,7 +71,6 @@ RSpec.describe Repository, type: :model do
       expect(result).to eq [good_repo]
     end
   end
-
 
   describe '.total_count' do
     xit 'returns total count of all repositories with valid pull requests' do

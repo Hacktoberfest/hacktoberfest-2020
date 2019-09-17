@@ -1,4 +1,6 @@
-class Repository < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Repository < ApplicationRecord
   MAX_DESCRIPTION_LENGTH = 180
 
   before_validation :truncate_description
@@ -12,13 +14,13 @@ class Repository < ActiveRecord::Base
   validates :url, presence: true, uniqueness: true
 
   def self.with_highest_prs_count(limit = 20)
-    select('count(pull_requests.id) as prs_count, repositories.*').
-      excluding_hacktoberfest_repos.
-      joins(:pull_requests).
-      where(pull_requests: { is_valid: true }).
-      group(:id).
-      order("prs_count DESC").
-      limit(limit)
+    select('count(pull_requests.id) as prs_count, repositories.*')
+      .excluding_hacktoberfest_repos
+      .joins(:pull_requests)
+      .where(pull_requests: { is_valid: true })
+      .group(:id)
+      .order('prs_count DESC')
+      .limit(limit)
   end
 
   def self.excluding_hacktoberfest_repos

@@ -1,11 +1,13 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe Issue, type: :model do
-  describe "associations" do
+  describe 'associations' do
     it { is_expected.to belong_to(:repository) }
   end
 
-  describe "validations" do
+  describe 'validations' do
     subject { build(:issue) }
     it { is_expected.to validate_presence_of(:gh_database_id) }
     it { is_expected.to validate_uniqueness_of(:gh_database_id) }
@@ -15,8 +17,8 @@ RSpec.describe Issue, type: :model do
     it { is_expected.to validate_presence_of(:url) }
   end
 
-  describe ".random" do
-    it "returns issues in random order" do
+  describe '.random' do
+    it 'returns issues in random order' do
       total_issues = 10
       create_list(:issue, total_issues)
 
@@ -27,30 +29,30 @@ RSpec.describe Issue, type: :model do
     end
   end
 
-  describe ".open_issues_with_permitted_repositories" do
-    it "returns all open issues belonging to permitted repos" do
+  describe '.open_issues_with_permitted_repositories' do
+    it 'returns all open issues belonging to permitted repos' do
       language = create(:language)
       permitted_repo = create(:repository, language: language, banned: false)
       first_open_issue_for_permitted_repo = create(
         :issue,
         repository: permitted_repo,
-        open: true,
+        open: true
       )
       second_open_issue_for_permitted_repo = create(
         :issue,
         repository: permitted_repo,
-        open: true,
+        open: true
       )
       closed_issue_for_permitted_repo = create(
         :issue,
         repository: permitted_repo,
-        open: false,
+        open: false
       )
       banned_repo = create(:repository, language: language, banned: true)
       open_issue_for_banned_repo = create(
         :issue,
         repository: banned_repo,
-        open: true,
+        open: true
       )
 
       issues = Issue.open_issues_with_permitted_repositories
@@ -62,25 +64,25 @@ RSpec.describe Issue, type: :model do
     end
   end
 
-  describe ".open_issues_with_unique_permitted_repositories" do
-    it "returns open issues belonging to permitted repos" do
+  describe '.open_issues_with_unique_permitted_repositories' do
+    it 'returns open issues belonging to permitted repos' do
       language = create(:language)
       permitted_repo = create(:repository, language: language, banned: false)
       open_issue_for_permitted_repo = create(
         :issue,
         repository: permitted_repo,
-        open: true,
+        open: true
       )
       closed_issue_for_permitted_repo = create(
         :issue,
         repository: permitted_repo,
-        open: false,
+        open: false
       )
       banned_repo = create(:repository, language: language, banned: true)
       open_issue_for_banned_repo = create(
         :issue,
         repository: banned_repo,
-        open: true,
+        open: true
       )
 
       issues = Issue.open_issues_with_unique_permitted_repositories
@@ -90,7 +92,7 @@ RSpec.describe Issue, type: :model do
       expect(issues).to include open_issue_for_permitted_repo
     end
 
-    it "returns only one issue per repo" do
+    it 'returns only one issue per repo' do
       language = create(:language)
       permitted_repo = create(:repository, language: language, banned: false)
       number_of_open_issues_for_permitted_repo = 2
@@ -98,7 +100,7 @@ RSpec.describe Issue, type: :model do
         :issue,
         number_of_open_issues_for_permitted_repo,
         repository: permitted_repo,
-        open: true,
+        open: true
       )
 
       issues = Issue.open_issues_with_unique_permitted_repositories
@@ -106,18 +108,18 @@ RSpec.describe Issue, type: :model do
       expect(issues.to_a.count).to eq 1
     end
 
-    it "returns a random issue per repo" do
+    it 'returns a random issue per repo' do
       language = create(:language)
       permitted_repo = create(:repository, language: language, banned: false)
       first_issue = create(
         :issue,
         repository: permitted_repo,
-        open: true,
+        open: true
       )
       second_issue = create(
         :issue,
         repository: permitted_repo,
-        open: true,
+        open: true
       )
 
       first_issue_selections = 0
@@ -138,8 +140,8 @@ RSpec.describe Issue, type: :model do
     end
   end
 
-  describe ".random_order_weighted_by_quality" do
-    it "returns all issues by default" do
+  describe '.random_order_weighted_by_quality' do
+    it 'returns all issues by default' do
       total_number_of_issues = 3
       create_list(:issue, total_number_of_issues)
 
@@ -148,7 +150,7 @@ RSpec.describe Issue, type: :model do
       expect(issues_returned.size).to eq total_number_of_issues
     end
 
-    it "orders issues so higher quality issues are more likely to come first" do
+    it 'orders issues so higher quality issues are more likely to come first' do
       high_quality_issue = create(:issue, quality: 1000)
       medium_quality_issue = create(:issue, quality: 100)
       low_quality_issue = create(:issue, quality: 10)
