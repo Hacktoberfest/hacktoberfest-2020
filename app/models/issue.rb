@@ -7,11 +7,11 @@ class Issue < ActiveRecord::Base
   validates :url, presence: true
 
   def self.random
-    order("RAND()")
+    order(Arel.sql("RANDOM()"))
   end
 
   def self.random_order_weighted_by_quality
-    order("RAND()*quality DESC")
+    order(Arel.sql("RANDOM()*quality DESC"))
   end
 
   def self.open_issues_with_unique_permitted_repositories
