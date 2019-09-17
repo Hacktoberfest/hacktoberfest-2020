@@ -1,3 +1,26 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.footer {
+  background-image: image-url('bg-left2.png'), image-url('bg-right2.png');
+  background-position: bottom left, top right;
+  background-repeat: no-repeat;
+  min-height: 1040px;
+  padding-top: 30px;
+  padding-left: 135px;
+  padding-right: 135px;
+
+  .footer-end {
+    text-align: center;
+
+    .footer-logos a {
+      padding: 10px 5px;
+
+      img:hover {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+      }
+    }
+  }
+}

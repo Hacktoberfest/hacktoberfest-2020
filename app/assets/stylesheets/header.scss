@@ -2,57 +2,92 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$break-small: 1024px;
+$break-med: 1288px;
 
-$navColor: rgba(0, 0, 0, 0);
+header {
+  margin: 30px 135px 100px 135px;
+  min-height: 160px;
+
+  @media screen and (max-width: $break-med) {
+    margin: 30px 85px 30px 85px;
+  }
+
+  @media screen and (max-width: $break-small) {
+    margin: 30px 30px 30px 30px;
+  }
+}
 
 // survey block styling
 .survey {
-  background-color: #0a142e;
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  margin-bottom: 180px;
-  margin-top: 0;
+  min-height: 40px;
+  left: 0px;
+  top: 0px;
+  background: #0a142e;
+  box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+  font-size: 0.75rem;
+  padding: 10px 10px 10px 135px;
+  color: white;
+
+  a {
+    color: hsl(320, 100%, 50%);
+  }
+
+  @media screen and (max-width: $break-small) {
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+  }
 }
 
-section p {
-  margin-left: 80px;
-  color: white;
-  padding: 20px;
-}
+// Main Nav
 
 #navbar {
   display: flex;
   justify-content: flex-end;
-  height: 50px;
-  padding: 10px;
-  margin-right: 30px;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0);
   font-weight: bold;
-  font-size: 14px;
   line-height: 21px;
   letter-spacing: 3px;
+  margin: 74px 0 100px 0;
 
   ul.navbar-end {
-    .navLink {
-      color: rgba(255, 255, 255, 0.5);
-      margin-left: 2.25rem;
-      font-size: 16px;
-      z-index: 1;
-      text-transform: uppercase;
+    @media screen and (max-width: $break-small) {
+      margin-top: 20px;
     }
+    li {
+      margin-bottom: 15px;
+      text-align: center;
 
-    .callOutLink {
-      color: rgb(161, 30, 198);
-    }
+      .navLink {
+        color: rgba(255, 255, 255, 0.5);
+        margin-left: 1.875rem;
+        font-size: 0.875rem;
+        z-index: 1;
+        text-transform: uppercase;
+        text-align: center;
 
-    // FIX HOVER - BOTTOM IS TOO FAR FROM TEXT
-    .navLink:hover,
-    .active {
-      padding-bottom: 5px;
-      border-bottom: 2px solid #fff922;
-      color: rgb(255, 255, 255);
+        @media screen and (max-width: $break-small) {
+          margin-left: 0;
+        }
+      }
+      .callOutLink {
+        color: rgb(161, 30, 198);
+      }
+
+      .navLink:hover,
+      .active {
+        padding-bottom: 5px;
+        border-bottom: 2px solid #fff922;
+        color: rgb(255, 255, 255);
+      }
     }
+  }
+
+  @media screen and (max-width: $break-small) {
+    flex-direction: column;
   }
 }
