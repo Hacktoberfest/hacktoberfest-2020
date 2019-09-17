@@ -10,4 +10,8 @@ VCR.configure do |c|
   c.filter_sensitive_data('<TEST_USER_GITHUB_TOKEN>') do
     user_github_token
   end
+
+  c.filter_sensitive_data('<TEST_SEGMENT_WRITE_KEY>') do
+    segment_write_key
+  end
 end
