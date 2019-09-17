@@ -2,18 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// main{
-//   // margin-top: 94px;
-//   // margin-left: 30px;
-//   margin-right: auto;
-// }
 
 .hero-body{
-  // border: 1px solid lime;
-  padding-top: 6rem !important;
-  padding-right: 3.5rem !important;
-  padding-bottom: 6rem !important;
-  padding-left: 3.5rem !important;
+  padding-top: 3rem !important;
+  padding-right: 1.5rem !important;
+  padding-bottom: 3rem !important;
+  padding-left: 1.5rem !important;
 }
 
 .container {
@@ -42,44 +36,3 @@
 .h4 p{
   margin-top: -18px;
 }
-
-
-
-// media queries:
-//
-// @media screen and (min-width:1088px) {
-// 	.container {
-// 		max-width:960px;
-// 		width:960px
-// 	}
-// 	.container.is-fluid {
-// 		margin-left:64px;
-// 		margin-right:64px;
-// 		max-width:none;
-// 		width:auto
-// 	}
-// }
-// @media screen and (max-width:1279px) {
-// 	.container.is-widescreen {
-// 		max-width:1152px;
-// 		width:auto
-// 	}
-// }
-// @media screen and (max-width:1471px) {
-// 	.container.is-fullhd {
-// 		max-width:1344px;
-// 		width:auto
-// 	}
-// }
-// @media screen and (min-width:1280px) {
-// 	.container {
-// 		max-width:1152px;
-// 		width:1152px
-// 	}
-// }
-// @media screen and (min-width:1472px) {
-// 	.container {
-// 		max-width:1344px;
-// 		width:1344px
-// 	}
-// }
