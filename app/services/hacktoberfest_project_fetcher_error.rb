@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HacktoberfestProjectFetcherError < StandardError
   attr_reader :errors, :query
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HacktoberfestProjectImporter
   def import_all(projects)
     projects.each do |project|
