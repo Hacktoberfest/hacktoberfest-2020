@@ -1,8 +1,10 @@
 .main-user-container {
-  padding-left: 250px;
+  margin: 0 auto;
 }
 
 .profile-container {
+  margin-left: auto;
+  margin-right: auto;
   width: 1170px;
   height: 907px;
   left: 135px;
@@ -15,7 +17,8 @@
 .pre-launch-container {
   padding-top: 100px;
   padding-right: 150px;
-  padding-left: 150px;
+  padding-left: 300px;
+  padding-right: 300px;
 }
 
 .username {
@@ -26,6 +29,8 @@
 }
 
 .user-section {
+  margin-left: auto;
+  margin-right: auto;
   width: 1170px;
   height: 160px;
   left: 135px;
