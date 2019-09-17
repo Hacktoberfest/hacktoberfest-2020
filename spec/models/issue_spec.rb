@@ -12,9 +12,11 @@ RSpec.describe Issue, type: :model do
     it { is_expected.to validate_presence_of(:gh_database_id) }
     it { is_expected.to validate_uniqueness_of(:gh_database_id) }
     it { is_expected.to validate_presence_of(:number) }
-    it { is_expected.to validate_uniqueness_of(:number).scoped_to(:repository_id) }
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:url) }
+    it do
+      is_expected.to validate_uniqueness_of(:number).scoped_to(:repository_id)
+    end
   end
 
   describe '.random' do
@@ -126,7 +128,8 @@ RSpec.describe Issue, type: :model do
       second_issue_selections = 0
       many = 20
       many.times do
-        selection = Issue.open_issues_with_unique_permitted_repositories.to_a.first
+        selection = Issue.open_issues_with_unique_permitted_repositories
+                         .to_a.first
         case selection
         when first_issue
           first_issue_selections += 1
@@ -171,8 +174,10 @@ RSpec.describe Issue, type: :model do
         end
       end
 
-      expect(high_quality_issue_selections).to be > medium_quality_issue_selections
-      expect(medium_quality_issue_selections).to be > low_quality_issue_selections
+      expect(high_quality_issue_selections)
+        .to be > medium_quality_issue_selections
+      expect(medium_quality_issue_selections)
+        .to be > low_quality_issue_selections
     end
   end
 end
