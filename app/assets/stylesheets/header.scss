@@ -46,7 +46,6 @@ header {
 #navbar {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   background-color: rgba(0, 0, 0, 0);
   font-weight: bold;
   line-height: 21px;
@@ -88,5 +87,6 @@ header {
 
   @media screen and (max-width: $break-small) {
     flex-direction: column;
+    align-items: center;
   }
 }
