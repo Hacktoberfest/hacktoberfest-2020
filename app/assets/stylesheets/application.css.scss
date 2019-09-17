@@ -37,6 +37,7 @@
 
 // Bulma overrides and common definitions
 // Initial Variables
+$white: hsl(0, 0%, 100%);
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
 $grey-darker: hsl(222.5, 43.64%, 21.57%); // box dark blue
@@ -45,6 +46,11 @@ $cyan: hsl(191.56, 100%, 78.63%);
 $red: hsl(320, 100%, 50%);
 $purple: hsl(286.79, 73.68%, 44.71%);
 $yellow: hsl(58.37, 100%, 56.67%);
+$size-1: 2.75rem;
+$size-2: 2.25rem;
+$size-3: 1.5rem;
+$size-4: 1.25rem;
+$size-5: 1.125rem;
 
 // Derived Variables
 $primary: $grey-darker;
@@ -53,8 +59,10 @@ $primary: $grey-darker;
 $body-background-color: $black-bis;
 $body-color: $grey;
 $body-family: 'Space Mono', monospace;
-$body-font-size: 18px;
-$size-3: 1.75rem;
+$body-font-size: $size-5;
+$footer-background-color: none;
+$title-color: $white;
+$title-size: $size-1;
 
 @import 'bulma';
 
@@ -70,7 +78,10 @@ body {
     margin: 0;
   }
 
-  .bg-left::after {
+  .top-bgs {
+    min-height: 1000px;
+  }
+  .top-bgs::before {
     content: image-url('bg-left.png');
     position: absolute;
     top: 0px;
@@ -78,7 +89,7 @@ body {
     z-index: -1;
   }
 
-  .bg-right::after {
+  .top-bgs::after {
     content: image-url('bg-right.png');
     position: absolute;
     top: 80px;
