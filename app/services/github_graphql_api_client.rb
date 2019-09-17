@@ -14,10 +14,20 @@ class GithubGraphqlApiClient
   end
 
   def request(query, variables = {})
+    query, variables = normalize_hash_args(query, variables)
     response = client.post(GITHUB_GRAPHQL_API_URL,
                            { query: query, variables: variables }.to_json,
                            'Authorization': "bearer #{@access_token}",
                            'Content-Type': 'application/json')
     Hashie::Mash.new(JSON.parse(response.body))
+  end
+
+  private
+
+  def normalize_hash_args(query, variables)
+    return [query, variables] unless query.is_a?(Hash)
+
+    variables = query.delete(:variables)
+    [query[:query], variables]
   end
 end
