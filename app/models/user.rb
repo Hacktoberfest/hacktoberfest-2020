@@ -44,6 +44,10 @@ class User < ApplicationRecord
     end
 
     before_transition do |user, transition|
+      UserPullRequestSegmentUpdaterService.call(user)
+    end
+
+    after_transition do |user, transition|
       UserStateTransitionSegmentService.call(user, transition)
     end
   end
