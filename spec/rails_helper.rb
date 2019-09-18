@@ -38,7 +38,7 @@ def user_github_token
 end
 
 def segment_write_key
-  ENV.fetch('TEST_SEGMENT_WRITE_KEY') { SecureRandom.hex(20) }
+  ENV.fetch('SEGMENT_WRITE_KEY') { SecureRandom.hex(20) }
 end
 
 unless ENV['TEST_USER_GITHUB_TOKEN']

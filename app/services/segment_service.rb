@@ -31,10 +31,15 @@ class SegmentService
 
   protected
 
+  def transform_token(string)
+    string += ':'
+    Base64.encode64(string)
+  end
+
   def request(endpoint, data)
     client.post(SEGMENT_API_URL + "/#{endpoint}",
                 data.to_json,
-                'Authorization': "Basic #{@access_token}",
+                'Authorization': "Basic #{transform_token(@access_token)}",
                 'Content-Type': 'application/json')
   end
 
