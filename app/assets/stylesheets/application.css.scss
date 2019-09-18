@@ -37,6 +37,9 @@
 
 // Bulma overrides and common definitions
 // Initial Variables
+$break-small: 1024px;
+$break-med: 1288px;
+
 $black: hsl(0, 100%, 0%);
 $white: hsl(0, 0%, 100%);
 $grey: hsl(221.54, 14.61%, 65.1%);
@@ -69,6 +72,12 @@ $body-font-size: $size-5;
 
 // -- footer
 $footer-background-color: none;
+$footer-padding: 130px 135px 20px 135px;
+.footer {
+  @media screen and (max-width: $break-small) {
+    $footer-padding: 30px 35px 20px 35px;
+  }
+}
 
 // -- title
 $title-color: $white;
@@ -104,8 +113,6 @@ $table-head-cell-border-width: 0 0 0;
 
 // Global content styling
 
-$break-small: 1024px;
-$break-med: 1288px;
 body {
   .section {
     padding: 0 135px;
@@ -152,6 +159,30 @@ body {
 
   .highlight {
     color: $yellow;
+  }
+
+  .line-br {
+    color: $yellow;
+    line-height: 0.4rem;
+    position: relative;
+    margin-bottom: 40px;
+
+    span {
+      background-color: $yellow;
+    }
+
+    span.line-br-1 {
+      width: 40px;
+      height: 6px;
+      position: absolute;
+    }
+
+    span.line-br-2 {
+      width: 10px;
+      height: 6px;
+      position: absolute;
+      left: 50px;
+    }
   }
 }
 

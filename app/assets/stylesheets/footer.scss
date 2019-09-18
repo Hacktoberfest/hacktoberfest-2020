@@ -7,12 +7,58 @@
   background-position: bottom left, top right;
   background-repeat: no-repeat;
   min-height: 1040px;
-  padding-top: 30px;
-  padding-left: 135px;
-  padding-right: 135px;
+
+  .level-left {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .footer-social-links {
+      a {
+        font-family: 'Space Mono Bold', monospace;
+        text-transform: uppercase;
+        color: hsl(0, 0%, 100%);
+        letter-spacing: 3px;
+        font-size: 14px;
+        border: none;
+        width: 170px;
+        height: 150px;
+        background: hsl(287, 74%, 45%);
+        box-shadow: 0px 10px 20px hsla(0, 0%, 0%, 0.2);
+        display: inline-block;
+        cursor: pointer;
+        margin-right: 30px;
+        text-align: left;
+        vertical-align: top;
+        padding: 30px;
+
+        svg {
+          height: 37px;
+        }
+
+        span {
+          position: relative;
+          top: 28px;
+        }
+
+        &:hover {
+          background-color: hsl(192, 100%, 79%);
+          color: hsl(223, 32%, 33%);
+          svg path {
+            fill: hsl(223, 32%, 33%);
+          }
+        }
+      }
+    }
+  }
 
   .footer-end {
     text-align: center;
+    position: relative;
+    top: 250px;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 
     .footer-logos a {
       padding: 10px 5px;
