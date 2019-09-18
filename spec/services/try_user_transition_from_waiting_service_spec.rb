@@ -6,6 +6,11 @@ RSpec.describe TryUserTransitionFromWaitingService do
   describe '.call' do
     let(:user) { FactoryBot.create(:user, :waiting) }
 
+    before do
+      allow(UserStateTransitionSegmentService).to receive(:call)
+      allow(UserPullRequestSegmentUpdaterService).to receive(:call)
+    end
+
     context 'The user has enough mature PRs to transition' do
       before do
         allow(user).to receive(:mature_pull_requests_count).and_return(4)

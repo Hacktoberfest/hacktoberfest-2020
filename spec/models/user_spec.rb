@@ -6,6 +6,8 @@ RSpec.describe User, type: :model do
   before do
     allow(UserStateTransitionSegmentService)
       .to receive(:call).and_return(true)
+    allow(UserPullRequestSegmentUpdaterService)
+      .to receive(:call).and_return(true)
   end
 
   describe '#register' do

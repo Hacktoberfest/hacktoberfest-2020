@@ -1,5 +1,6 @@
 require: rubocop-rails
 AllCops:
+  TargetRubyVersion: 2.5.1
   Exclude:
     - 'Gemfile'  #TODO: Update Gemfile style rules
     - 'db/schema.rb'

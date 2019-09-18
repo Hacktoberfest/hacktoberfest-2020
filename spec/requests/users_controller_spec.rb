@@ -17,6 +17,9 @@ RSpec.describe UsersController, type: :request do
   describe '#show' do
     before do
       mock_authentication(uid: user.uid)
+      allow_any_instance_of(SegmentService).to receive(:identify)
+      allow_any_instance_of(SegmentService).to receive(:track)
+
       login
     end
 
