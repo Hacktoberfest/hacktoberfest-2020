@@ -86,20 +86,30 @@ $button-background-color: $purple;
   border-radius: none;
 }
 
-@import 'bulma';
+// Global content styling
 
-// content styling
-
+$break-small: 1024px;
+$break-med: 1288px;
 body {
   .section {
     padding: 0 135px;
     margin: 0;
+
+    @media screen and (max-width: $break-med) {
+      padding: 30px 85px 30px 85px;
+    }
+
+    @media screen and (max-width: $break-small) {
+      padding: 30px 30px 30px 30px;
+      text-align: center;
+    }
   }
 
   .container {
     margin: 0;
   }
 
+  // Styles for background images
   .top-bgs {
     min-height: 1000px;
   }
@@ -110,7 +120,6 @@ body {
     left: 20;
     z-index: -1;
   }
-
   .top-bgs::after {
     content: image-url('bg-right.png');
     position: absolute;
@@ -119,40 +128,15 @@ body {
     z-index: -1;
   }
 
+  p {
+    margin-top: 20px;
+  }
+
+  // Reuseable
+
   .highlight {
     color: $yellow;
   }
 }
 
-// Colors and fonts used on live faq site:
-//   Blue background: rgb(21, 35, 71)
-//   navbar Link hovers:   bottom-border: 2px solid #fff922;
-//   Section header font color: rgb(255, 255, 255)
-//   Text font color: rgb(153, 161, 179);
-//   Link color: rgb(50, 115, 220);
-//   Link hover color: rgb(255, 0, 170);
-//   Link visited color: same as regular link color - rgb(50, 115, 220);
-//
-//
-//   .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-//       color: #363636;
-//       font-weight: 600;
-//       line-height: 1.125;
-//
-//
-//   Font family info:    font-family: Space Mono,monospace;
-//   h1 font size:  2em
-//   h1 line height: 1.125 em
-//
-//   h2 font size: 1.75 em
-//   h2 line height: 1.125 em
-//
-//   h3 font size: 1.5 em
-//   h3 line height: 1.125 em
-//
-//   h4 font size: 1.25 em
-//   h4 line height: 1.125 em
-//
-//   Text font size: computed font size = 16px
-//   text line height: computed line height = 24px
-//
+@import 'bulma';
