@@ -1,10 +1,36 @@
-<div class="columns">
-  <h3>Your contributions:</h3>
-  <div class="column is full">
-    <% @pull_requests.map do |pr| %>
-    <p> <%= DateTime.parse(pr.created_at).to_formatted_s(:short) %><br/> </p>
-    <h3><%= pr.title %><br/> </h3>
-      <a href="<%= pr.url %>"> click here to view on github </a><br/>
+
+<div class="timeline-container">
+    <h3 class="title is-3">Your contributions</h3><br/>
+    <div class="columns">
+    <div class="column is full">
+      <div class="level">
+      </div>
+      <% @pull_requests.map do |pr| %>
+      <div class="level-left">
+        <% if pr.mature? %>
+          <div class="eligible-box">
+            <%= image_tag 'eligible', class: 'center-icon' %>
+          </div>
+        <% elsif pr.eligible? && !pr.mature %>
+        <div class="pending-box">
+          <%= image_tag 'pending', class: 'center-icon' %>
+        </div>
+        <% else %>
+        <div class="ineligible-box">
+          <%= image_tag 'ineligible', class: 'center-icon' %>
+        </div>
+        <% end %>
+      </div>
+      <div class="level-right ">
+        <div>
+          <p> <%= DateTime.parse(pr.created_at).to_formatted_s(:short) %><br/> </p>
+          <h3 class="title is-3">You submitted "<%= pr.title %>" to repo_name<br/> </h3>
+          <a href="<%= pr.url %>"> view on github </a><br/>
+        </div>
+      </div>
+      </div>
       <% end %>
+    </div>
   </div>
+  <button class="button">Load more</button>
 </div>

@@ -1,7 +1,3 @@
-.main-user-container {
-  margin: 0 auto;
-}
-
 .profile-container {
   margin-left: auto;
   margin-right: auto;
@@ -19,6 +15,10 @@
   padding-right: 150px;
   padding-left: 300px;
   padding-right: 300px;
+}
+
+.timeline-container {
+  padding-top: 20px;
 }
 
 .username {
@@ -44,7 +44,7 @@
 }
 
 .progress-msg {
-  padding-top: 20px;
+  padding-top: 5px;
   padding-right: 20px;
 }
 
@@ -52,14 +52,27 @@
   padding-right: 25px;
 }
 
-.profile-button {
-  width: 1109px;
-  height: 60px;
-  top: 1053px;
-
-  background: #152347;
+.eligible-box {
+  width: 30px;
+  height: 30px;
+  background-color: #FF00AA;
 }
 
+.pending-box {
+  width: 30px;
+  height: 30px;
+  background-color: #39486E;
+}
+
+.ineligible-box {
+  width: 30px;
+  height: 30px;
+  background-color: #FF4E4E;
+}
+
+.center-icon {
+  margin-left: 10px;
+}
 // temporary
 .highlight {
   color: yellow;
