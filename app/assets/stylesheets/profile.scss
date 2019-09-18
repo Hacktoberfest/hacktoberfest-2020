@@ -1,0 +1,77 @@
+//will probably need to be updated
+.profile-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1170px;
+  left: 135px;
+  top: 236px;
+
+  background: #1F2D4F;
+  box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.2);
+}
+
+.pre-launch-container {
+  padding-top: 100px;
+  padding-right: 150px;
+  padding-left: 300px;
+  padding-right: 300px;
+}
+
+.timeline-container {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.username {
+  font-size: 24px;
+  line-height: 36px;
+  color: white;
+  padding-left: 25px;
+}
+
+//will probably need to be updated
+.user-section {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1170px;
+  height: 160px;
+  left: 135px;
+  top: 236px;
+  background: #39486E;
+}
+
+.avatar {
+  padding-top: 20px;
+  padding-left: 25px;
+}
+
+.progress-msg {
+  padding-top: 5px;
+  padding-right: 20px;
+}
+
+.progress-bar {
+  padding-right: 25px;
+}
+
+.eligible-box {
+  width: 30px;
+  height: 30px;
+  background-color: #FF00AA;
+}
+
+.pending-box {
+  width: 30px;
+  height: 30px;
+  background-color: #39486E;
+}
+
+.ineligible-box {
+  width: 30px;
+  height: 30px;
+  background-color: #FF4E4E;
+}
+
+.center-icon {
+  margin-left: 10px;
+}

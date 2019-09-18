@@ -14,6 +14,27 @@
  *= require_self
  */
 
+// Loading in fonts
+@font-face {
+  font-family: 'Space Mono Bold';
+  src: font-url('SpaceMono-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Space Mono Bold Italic';
+  src: font-url('SpaceMono-BoldItalic.ttf');
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: font-url('SpaceMono-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Space Mono Italic';
+  src: font-url('SpaceMono-RegularItalic.ttf');
+}
+=======
  // Loading in fonts
  @font-face {
    font-family: 'Space Mono Bold';
@@ -37,101 +58,118 @@
 
  
 // Bulma overrides and common definitions
- $body-background-color: rgb(21, 35, 71);
- $body-color: rgb(153, 161, 179);
- $body-family: "Space Mono", monospace;
- $body-font-size: 16px;
- $size-3: 1.75rem;
+// Initial Variables
+$black: hsl(0, 100%, 0%);
+$white: hsl(0, 0%, 100%);
+$grey: hsl(221.54, 14.61%, 65.1%);
+$black-bis: hsl(223.2, 54.35%, 18.04%); // background color
+$grey-darker: hsl(222.5, 43.64%, 21.57%); // box dark blue
+$grey-dark: hsl(223.33, 32.14%, 32.94%); // box lighter blue
+$cyan: hsl(191.56, 100%, 78.63%);
+$red: hsl(320, 100%, 50%);
+$purple: hsl(286.79, 73.68%, 44.71%);
+$yellow: hsl(58.37, 100%, 56.67%);
+$size-1: 2.75rem;
+$size-2: 2.25rem;
+$size-3: 1.5rem;
+$size-4: 1.25rem;
+$size-5: 1.125rem;
 
+// Derived Variables
+$primary: $grey-darker;
 
- @import "bulma";
+// Generic Variables
 
-// ADJUST BG IMAGE PLACEMENTS!!!
+// -- general
+$body-background-color: $black-bis;
+$body-color: $grey;
+$body-family: 'Space Mono', monospace;
+$body-font-size: $size-5;
+
+// -- footer
+$footer-background-color: none;
+
+// -- title
+$title-color: $white;
+$title-size: $size-1;
+
+// -- box
+$box-color: $grey;
+$box-radius: none;
+$box-background-color: $grey-darker;
+$box-shadow: 0px 50px 100px rgba($black, 0.2);
+
+// -- section
+$button-color: $white;
+$button-background-color: $purple;
+
+@import 'bulma';
+
 // content styling
- body{
-   background-image: image-url("logo-hf19-header.png");
-   background-repeat: no-repeat;
-   background-position: left top;
-   margin-top: 80px;
- }
 
- .bg-left::after{
-   content: image-url("bg-left.png");
-   position: absolute;
-   top: 80px;
-   left: 20;
-   z-index: -1;
- }
-
- .bg-right::after{
-   content: image-url("bg-right.png");
-   position: absolute;
-   top: 80px;
-   left: 20;
-   z-index: -1;
- }
-
- .h1 a, .h1, .h2, .h2 p, .h3, .h3 p, .h4, .h4 p{
-   color: rgb(255,255,255);
-   font-weight: 600;
-   line-height: 1.125;
-   width: 100%;
- }
-
- main p{
-    line-height: 1.5;
-    margin-bottom: 16px;
- }
-
- .h1 a, .h1{
-    font-size: 2rem;
-    margin-bottom: .5em;
+body {
+  .section {
+    padding: 0 135px;
+    margin: 0;
   }
 
- .h2 {
-    font-size: $size-3;
-    margin-bottom: .5714em;
+  .container {
+    margin: 0;
   }
 
- .h3{
-   font-size: 1.5rem;
-   margin-top: 1.333rem;
- }
- .h4 p{
-   font-size: 1.25rem;
- }
+  .top-bgs {
+    min-height: 1000px;
+  }
+  .top-bgs::before {
+    content: image-url('bg-left.png');
+    position: absolute;
+    top: 0px;
+    left: 20;
+    z-index: -1;
+  }
 
+  .top-bgs::after {
+    content: image-url('bg-right.png');
+    position: absolute;
+    top: 80px;
+    right: 0;
+    z-index: -1;
+  }
 
+  .highlight {
+    color: $yellow;
+  }
+}
 
- // Colors and fonts used on live faq site:
- //   Blue background: rgb(21, 35, 71)
- //   navbar Link hovers:   bottom-border: 2px solid #fff922;
- //   Section header font color: rgb(255, 255, 255)
- //   Text font color: rgb(153, 161, 179);
- //   Link color: rgb(50, 115, 220);
- //   Link hover color: rgb(255, 0, 170);
- //   Link visited color: same as regular link color - rgb(50, 115, 220);
- //
- //
- //   .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
- //       color: #363636;
- //       font-weight: 600;
- //       line-height: 1.125;
- //
- //
- //   Font family info:    font-family: Space Mono,monospace;
- //   h1 font size:  2em
- //   h1 line height: 1.125 em
- //
- //   h2 font size: 1.75 em
- //   h2 line height: 1.125 em
- //
- //   h3 font size: 1.5 em
- //   h3 line height: 1.125 em
- //
- //   h4 font size: 1.25 em
- //   h4 line height: 1.125 em
- //
- //   Text font size: computed font size = 16px
- //   text line height: computed line height = 24px
- //
+// Colors and fonts used on live faq site:
+//   Blue background: rgb(21, 35, 71)
+//   navbar Link hovers:   bottom-border: 2px solid #fff922;
+//   Section header font color: rgb(255, 255, 255)
+//   Text font color: rgb(153, 161, 179);
+//   Link color: rgb(50, 115, 220);
+//   Link hover color: rgb(255, 0, 170);
+//   Link visited color: same as regular link color - rgb(50, 115, 220);
+//
+//
+//   .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+//       color: #363636;
+//       font-weight: 600;
+//       line-height: 1.125;
+//
+//
+//   Font family info:    font-family: Space Mono,monospace;
+//   h1 font size:  2em
+//   h1 line height: 1.125 em
+//
+//   h2 font size: 1.75 em
+//   h2 line height: 1.125 em
+//
+//   h3 font size: 1.5 em
+//   h3 line height: 1.125 em
+//
+//   h4 font size: 1.25 em
+//   h4 line height: 1.125 em
+//
+//   Text font size: computed font size = 16px
+//   text line height: computed line height = 24px
+//

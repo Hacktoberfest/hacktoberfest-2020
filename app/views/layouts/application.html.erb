@@ -9,8 +9,10 @@
   </head>
 
   <body>
-    <div class="bg-left" />
-    <div class="bg-right" />
+  <div class="top-bgs">
+    <%= render 'shared/header' %>
     <%= yield %>
+  </div>
+  <%= render 'shared/footer' %>
   </body>
 </html>
