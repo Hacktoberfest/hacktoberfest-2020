@@ -29,6 +29,8 @@ gem 'rails', '~> 5.2.3'
 
 gem 'sass-rails', '~> 5.0'
 
+gem 'sidekiq'
+
 gem 'state_machines'
 
 gem 'state_machines-activerecord'
