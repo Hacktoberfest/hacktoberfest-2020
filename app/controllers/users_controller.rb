@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @pull_requests = pull_request_timeline(@current_user.pull_requests)
     @score = @current_user.score
     @display_timeline = Hacktoberfest.active?
-    @dispay_results =  Hacktoberfest.ended?
+    @dispay_results = Hacktoberfest.ended?
     @pre_launch = Hacktoberfest.pre_launch?
   end
 
