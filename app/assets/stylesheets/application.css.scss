@@ -15,27 +15,6 @@
  */
 
 // Loading in fonts
-@font-face {
-  font-family: 'Space Mono Bold';
-  src: font-url('SpaceMono-Bold.ttf');
-}
-
-@font-face {
-  font-family: 'Space Mono Bold Italic';
-  src: font-url('SpaceMono-BoldItalic.ttf');
-}
-
-@font-face {
-  font-family: 'Space Mono';
-  src: font-url('SpaceMono-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'Space Mono Italic';
-  src: font-url('SpaceMono-RegularItalic.ttf');
-}
-=======
- // Loading in fonts
  @font-face {
    font-family: 'Space Mono Bold';
    src: font-url('SpaceMono-Bold.ttf');
@@ -56,7 +35,6 @@
    src: font-url('SpaceMono-RegularItalic.ttf');
  }
 
- 
 // Bulma overrides and common definitions
 // Initial Variables
 $black: hsl(0, 100%, 0%);
