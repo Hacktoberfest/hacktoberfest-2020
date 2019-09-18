@@ -1,7 +1,6 @@
   <div class='container is-fullhd'>
       <div class='profile-container'>
-        <div class='container is-fullhd '>
-          <div class='user-section'>
+        <div class='user-section'>
             <div class="level">
               <div class="level-left">
                 <div class="avatar">
@@ -9,10 +8,9 @@
                     <%= image_tag "https://github.com/#{@current_user.name}.png?size=150", class: 'is-rounded'%>
                   </figure>
                 </div>
-                <h2 class='username'><%= @current_user.name %> </h2>
+                <h2 class='username title is-2'><%= @current_user.name %> </h2>
               </div>
               <div class="level-right"
-              <div>
                 <p class='progress-msg'>YOUR PROGRESS</p>
                 <div class="progress-bar">
                   <% if @pre_launch %>
@@ -21,7 +19,6 @@
                   <%= render 'users/show/progress_bar' %>
                   <% end  %>
                 </div>
-              </div>
             </div>
           </div>
         </div>
@@ -31,6 +28,5 @@
         <div class="container">
           <%= render 'users/show/timeline' %>
         </div>
-      </div>
     </div>
   </div>
