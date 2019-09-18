@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require 'rails_helper'
 
 describe Project do
-  context "Given an issue with a repository and language" do
-    it "exposes the expected properties" do
-      language = create(:language, name: "Python")
+  context 'Given an issue with a repository and language' do
+    it 'exposes the expected properties' do
+      language = create(:language, name: 'Python')
       repository = create(
         :repository,
         language: language,
-        name: "HelloWorld",
+        name: 'HelloWorld',
         description: "An app to display 'Hello World'"
       )
       issue = create(
@@ -17,7 +17,7 @@ describe Project do
         repository: repository,
         number: 123,
         title: "App does not display 'Hello World'",
-        url: "https://github.com/example/helloworld/issues/1",
+        url: 'https://github.com/example/helloworld/issues/1'
       )
 
       project = Project.new(issue)
