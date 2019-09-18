@@ -6,6 +6,11 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
   describe '.call' do
     let(:user) { FactoryBot.create(:user) }
 
+    before do
+      allow(UserStateTransitionSegmentService).to receive(:call)
+      allow(UserPullRequestSegmentUpdaterService).to receive(:call)
+    end
+
     context 'The user has enough PRs to transition' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)

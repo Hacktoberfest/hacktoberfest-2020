@@ -3,7 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :request do
-  before { mock_authentication }
+  before do
+    mock_authentication
+    allow_any_instance_of(SegmentService).to receive(:identify)
+    allow_any_instance_of(SegmentService).to receive(:track)
+  end
 
   describe 'signup and login' do
     it 'logs the user in' do

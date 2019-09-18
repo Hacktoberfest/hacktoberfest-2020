@@ -19,10 +19,18 @@ RSpec.describe UserStateTransitionSegmentService do
           marketing_emails: user.marketing_emails,
           state: 'register'
         )
+        allow_any_instance_of(SegmentService).to receive(:track).with(
+          'register'
+        )
         UserStateTransitionSegmentService.call(user, transition)
       end
 
       it 'calls SegmentService#track with proper arguments' do
+        allow_any_instance_of(SegmentService).to receive(:identify).with(
+          email: user.email,
+          marketing_emails: user.marketing_emails,
+          state: 'register'
+        )
         expect_any_instance_of(SegmentService).to receive(:track).with(
           'register'
         )
@@ -38,6 +46,9 @@ RSpec.describe UserStateTransitionSegmentService do
       end
 
       it 'calls SegmentService#identify with proper arguments' do
+        allow_any_instance_of(SegmentService).to receive(:track).with(
+          'user_ineligible'
+        )
         expect_any_instance_of(SegmentService).to receive(:identify).with(
           state: 'ineligible'
         )
@@ -45,6 +56,9 @@ RSpec.describe UserStateTransitionSegmentService do
       end
 
       it 'calls SegmentService#track with proper arguments' do
+        allow_any_instance_of(SegmentService).to receive(:identify).with(
+          state: 'ineligible'
+        )
         expect_any_instance_of(SegmentService).to receive(:track).with(
           'user_ineligible'
         )

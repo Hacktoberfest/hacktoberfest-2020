@@ -2,8 +2,9 @@
 
 class SegmentService
   SEGMENT_API_URL = 'https://api.segment.io/v1'
+  SEGMENT_KEY = ENV['SEGMENT_WRITE_KEY']
 
-  def initialize(client: nil, user: user, access_token: ENV['SEGMENT_WRITE_KEY'])
+  def initialize(user, client: nil, access_token: SEGMENT_KEY)
     @client = client
     @user = user
     @access_token = access_token
@@ -11,7 +12,7 @@ class SegmentService
 
   def identify(traits = {})
     data = {
-      type: "identify",
+      type: 'identify',
       traits: traits,
       userId: @user.id
     }
@@ -19,22 +20,22 @@ class SegmentService
   end
 
   def track(event_name)
-    json = {
-      type: "track",
+    data = {
+      type: 'track',
       event: event_name,
       userId: @user.id
     }
 
-    request('track', json)
+    request('track', data)
   end
 
   protected
 
   def request(endpoint, data)
-    response = client.post(SEGMENT_API_URL + "/#{endpoint}",
-                           data.to_json,
-                           'Authorization': "Basic #{@access_token}",
-                           'Content-Type': 'application/json')
+    client.post(SEGMENT_API_URL + "/#{endpoint}",
+                data.to_json,
+                'Authorization': "Basic #{@access_token}",
+                'Content-Type': 'application/json')
   end
 
   def client

@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.segment.io/v1/track
+    body:
+      encoding: UTF-8
+      string: '{"type":"track","event":"event","userId":342}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic 5l7s5rMYtOwhYCY00Srr3163ZFfGcyeT
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Sep 2019 15:18:19 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '21'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "success": true
+        }
+    http_version: 
+  recorded_at: Wed, 18 Sep 2019 15:18:19 GMT
+recorded_with: VCR 5.0.0
