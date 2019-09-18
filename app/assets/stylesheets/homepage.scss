@@ -1,0 +1,70 @@
+// Place all the styles related to the Homepage controller here (index page).
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$yellow: hsl(58.37, 100%, 56.67%);
+$grey: hsl(221.54, 14.61%, 65.1%);
+$white: hsl(0, 0%, 100%);
+$purple: hsl(286.79, 73.68%, 44.71%);
+$padding-left: 0;
+$size-1: 2.50rem;
+$size-3: 1.5rem;
+$button-color: $white;
+$button-background-color: $purple;
+
+.bgImg{
+  width: 100%;
+  height: 300px;
+  border: 1px solid green;
+}
+
+main{
+  text-align: left;
+  background-image: url("polygon-photo-1.png"), url("polygon-photo-2.png");
+  background-repeat: no-repeat;
+  background-position: top 100px right 164px, top 40px  right 0px;
+}
+
+.p{
+  margin: 24px 0px 24px 0px;
+}
+
+.hero-body{
+  margin-bottom: 160px;
+  width: 70%;
+}
+
+.hero-body h1{
+  font-size: $size-1;
+  line-height: 60px;
+}
+
+.hero-body button{
+  font-size: $size-3;
+  line-height: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.button2 {
+  background-color: $button-background-color;
+  color: $button-color;
+  border: none;
+  border-radius: 0px;
+}
+
+.section2{
+  width: 70%;
+  padding-left: $padding-left;
+}
+
+.bullet{
+  list-style-type: disc;
+  color: $yellow;
+  margin-bottom: 20px;
+}
+
+.p{
+  width: 70%;
+  color: $grey;
+}
