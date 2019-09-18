@@ -1,16 +1,13 @@
 
 <div class="timeline-container">
     <h3 class="title is-3">Your contributions</h3><br/>
-    <div class="columns">
-    <div class="column is full">
-      <div class="level">
-      </div>
+    <div class="">
       <% @pull_requests.map do |pr| %>
-      <div class="level-left">
+      <div class="">
         <% if pr.mature? %>
-          <div class="eligible-box">
-            <%= image_tag 'eligible', class: 'center-icon' %>
-          </div>
+        <div class="eligible-box">
+          <%= image_tag 'eligible', class: 'center-icon' %>
+        </div>
         <% elsif pr.eligible? && !pr.mature %>
         <div class="pending-box">
           <%= image_tag 'pending', class: 'center-icon' %>
@@ -21,16 +18,12 @@
         </div>
         <% end %>
       </div>
-      <div class="level-right ">
-        <div>
-          <p> <%= DateTime.parse(pr.created_at).to_formatted_s(:short) %><br/> </p>
-          <h3 class="title is-3">You submitted "<%= pr.title %>" to repo_name<br/> </h3>
-          <a href="<%= pr.url %>"> view on github </a><br/>
-        </div>
-      </div>
+      <div class="">
+        <p> <%=  DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/> </p>
+        <h3 class="title is-3">You submitted "<%= pr.title %>" to <%= pr.url.split('/')[3] %><br/> </h3>
+        <a href="<%= pr.url %>"> view on github </a><br/>
       </div>
       <% end %>
     </div>
-  </div>
-  <button class="button">Load more</button>
+    <button class="button secondary">Load more</button>
 </div>
