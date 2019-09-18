@@ -35,7 +35,6 @@
   src: font-url('SpaceMono-RegularItalic.ttf');
 }
 
-
 // Bulma overrides and common definitions
 // Initial Variables
 $black: hsl(0, 100%, 0%);
@@ -48,21 +47,23 @@ $cyan: hsl(191.56, 100%, 78.63%);
 $red: hsl(320, 100%, 50%);
 $purple: hsl(286.79, 73.68%, 44.71%);
 $yellow: hsl(58.37, 100%, 56.67%);
-$size-1: 2.75rem;
-$size-2: 2.25rem;
+$size-1: 2.25rem;
+$size-2: 2rem;
 $size-3: 1.5rem;
 $size-4: 1.25rem;
 $size-5: 1.125rem;
+$family-monospace: 'Space Mono', monospace;
 
 // Derived Variables
 $primary: $grey-darker;
+$family-primary: $family-monospace;
 
 // Generic Variables
 
 // -- general
 $body-background-color: $black-bis;
 $body-color: $grey;
-$body-family: 'Space Mono', monospace;
+$body-family: $family-monospace;
 $body-font-size: $size-5;
 
 // -- footer
@@ -78,9 +79,12 @@ $box-radius: none;
 $box-background-color: $grey-darker;
 $box-shadow: 0px 50px 100px rgba($black, 0.2);
 
-// -- section
+// -- button
 $button-color: $white;
 $button-background-color: $purple;
+.button {
+  border-radius: none;
+}
 
 @import 'bulma';
 
