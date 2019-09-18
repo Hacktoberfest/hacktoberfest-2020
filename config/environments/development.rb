@@ -7,6 +7,10 @@ Rails.application.configure do
 
   config.consider_all_requests_local = true
 
+  logger           = ActiveSupport::Logger.new(STDOUT)
+  logger.formatter = config.log_formatter
+  config.logger    = ActiveSupport::TaggedLogging.new(logger)
+
   config.log_level = :debug
 
   if Rails.root.join('tmp', 'caching-dev.txt').exist?

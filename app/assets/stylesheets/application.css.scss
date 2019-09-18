@@ -35,28 +35,6 @@
   src: font-url('SpaceMono-RegularItalic.ttf');
 }
 
- // Loading in fonts
- @font-face {
-   font-family: 'Space Mono Bold';
-   src: font-url('SpaceMono-Bold.ttf');
- }
-
- @font-face {
-   font-family: 'Space Mono Bold Italic';
-   src: font-url('SpaceMono-BoldItalic.ttf');
- }
-
- @font-face {
-   font-family: 'Space Mono';
-   src: font-url('SpaceMono-Regular.ttf');
- }
-
- @font-face {
-   font-family: 'Space Mono Italic';
-   src: font-url('SpaceMono-RegularItalic.ttf');
- }
-
-
 // Bulma overrides and common definitions
 // Initial Variables
 $black: hsl(0, 100%, 0%);
@@ -69,21 +47,24 @@ $cyan: hsl(191.56, 100%, 78.63%);
 $red: hsl(320, 100%, 50%);
 $purple: hsl(286.79, 73.68%, 44.71%);
 $yellow: hsl(58.37, 100%, 56.67%);
-$size-1: 2.75rem;
-$size-2: 2.25rem;
+$size-1: 2.25rem;
+$size-2: 2rem;
 $size-3: 1.5rem;
 $size-4: 1.25rem;
 $size-5: 1.125rem;
+$family-monospace: 'Space Mono', monospace;
 
 // Derived Variables
 $primary: $grey-darker;
+$family-primary: $family-monospace;
+$link: $cyan;
 
 // Generic Variables
 
 // -- general
 $body-background-color: $black-bis;
 $body-color: $grey;
-$body-family: 'Space Mono', monospace;
+$body-family: $family-monospace;
 $body-font-size: $size-5;
 
 // -- footer
@@ -99,24 +80,52 @@ $box-radius: none;
 $box-background-color: $grey-darker;
 $box-shadow: 0px 50px 100px rgba($black, 0.2);
 
-// -- section
+// -- button
 $button-color: $white;
 $button-background-color: $purple;
+.button {
+  border-radius: none;
+}
 
-@import 'bulma';
+// -- table
+$table-color: $grey;
+$table-background-color: $grey-darker;
+$table-cell-border: 1px solid $grey-dark;
+$table-cell-heading-color: $white;
+$table-head-cell-border-width: 0 0 0;
+.table {
+  thead {
+    th {
+      background-color: $grey-dark;
+      color: $white !important;
+    }
+  }
+}
 
-// content styling
+// Global content styling
 
+$break-small: 1024px;
+$break-med: 1288px;
 body {
   .section {
     padding: 0 135px;
     margin: 0;
+
+    @media screen and (max-width: $break-med) {
+      padding: 30px 85px 30px 85px;
+    }
+
+    @media screen and (max-width: $break-small) {
+      padding: 30px 30px 30px 30px;
+      text-align: center;
+    }
   }
 
   .container {
     margin: 0;
   }
 
+  // Styles for background images
   .top-bgs {
     min-height: 1000px;
   }
@@ -127,7 +136,6 @@ body {
     left: 20;
     z-index: -1;
   }
-
   .top-bgs::after {
     content: image-url('bg-right.png');
     position: absolute;
@@ -136,40 +144,15 @@ body {
     z-index: -1;
   }
 
+  p {
+    margin-top: 20px;
+  }
+
+  // Reuseable
+
   .highlight {
     color: $yellow;
   }
 }
 
-// Colors and fonts used on live faq site:
-//   Blue background: rgb(21, 35, 71)
-//   navbar Link hovers:   bottom-border: 2px solid #fff922;
-//   Section header font color: rgb(255, 255, 255)
-//   Text font color: rgb(153, 161, 179);
-//   Link color: rgb(50, 115, 220);
-//   Link hover color: rgb(255, 0, 170);
-//   Link visited color: same as regular link color - rgb(50, 115, 220);
-//
-//
-//   .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-//       color: #363636;
-//       font-weight: 600;
-//       line-height: 1.125;
-//
-//
-//   Font family info:    font-family: Space Mono,monospace;
-//   h1 font size:  2em
-//   h1 line height: 1.125 em
-//
-//   h2 font size: 1.75 em
-//   h2 line height: 1.125 em
-//
-//   h3 font size: 1.5 em
-//   h3 line height: 1.125 em
-//
-//   h4 font size: 1.25 em
-//   h4 line height: 1.125 em
-//
-//   Text font size: computed font size = 16px
-//   text line height: computed line height = 24px
-//
+@import 'bulma';

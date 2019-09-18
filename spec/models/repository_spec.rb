@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Repository, type: :model do
   describe 'associations' do
-    it { is_expected.to belong_to(:language) }
+    it { is_expected.to belong_to(:language).optional }
   end
 
   describe 'validations' do
