@@ -6,7 +6,7 @@
         <div class="eligible-box">
           <%= image_tag 'eligible', class: 'center-icon' %>
         </div>
-        <% elsif pr.eligible? && !pr.mature %>
+        <% elsif pr.eligible? && !pr.mature? %>
         <div class="pending-box">
           <%= image_tag 'pending', class: 'center-icon' %>
         </div>
