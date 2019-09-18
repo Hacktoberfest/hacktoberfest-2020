@@ -57,6 +57,7 @@ $family-monospace: 'Space Mono', monospace;
 // Derived Variables
 $primary: $grey-darker;
 $family-primary: $family-monospace;
+$link: $cyan;
 
 // Generic Variables
 
@@ -84,6 +85,21 @@ $button-color: $white;
 $button-background-color: $purple;
 .button {
   border-radius: none;
+}
+
+// -- table
+$table-color: $grey;
+$table-background-color: $grey-darker;
+$table-cell-border: 1px solid $grey-dark;
+$table-cell-heading-color: $white;
+$table-head-cell-border-width: 0 0 0;
+.table {
+  thead {
+    th {
+      background-color: $grey-dark;
+      color: $white !important;
+    }
+  }
 }
 
 // Global content styling
