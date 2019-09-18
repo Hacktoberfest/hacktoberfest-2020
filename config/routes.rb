@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get '/faq', to: 'pages#faqs'
   get '/meetups', to: 'pages#meetups'
   get '/webinars', to: 'pages#webinars'
+  get '/details', to: 'pages#details'
 end
