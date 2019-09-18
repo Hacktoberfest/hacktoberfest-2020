@@ -20,9 +20,11 @@
     <tbody>
       <% @meetups.map do |m| %>
       <tr>
+        <td><%= m["Event City"] %>, <%= m["Event Country"] %></td>
         <td><%= m["Event Name"] %></td>
         <td><%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %></td>
-        <td><%= m["Event City"] %>, <%= m["Event Country"] %></td>
+        <!-- //FIGMA dictates an end date but no end date is being pulled currently -->
+        <td>END DATE GOES HERE</td>
         <td><%= m["Event Organizer"] %></td>
         <td><a href="<%= m["Event URL"] %>">view more details <a/></td>
       </tr>
