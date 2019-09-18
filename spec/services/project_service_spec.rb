@@ -4,7 +4,7 @@ RSpec.describe ProjectService do
   describe "#sample" do
     context "Given a sample size of zero" do
       it "returns an empty array" do
-        projects = ProjectService.new.sample(0)
+        projects = ProjectService.sample(0)
 
         expect(projects).to eq []
       end
@@ -16,7 +16,7 @@ RSpec.describe ProjectService do
         total_issues = 4
         create_list(:issue, total_issues)
 
-        projects = ProjectService.new.sample(sample_size)
+        projects = ProjectService.sample(sample_size)
 
         expect(projects.count).to eq(sample_size)
       end
@@ -25,26 +25,17 @@ RSpec.describe ProjectService do
         total_issues = 2
         create_list(:issue, total_issues)
 
-        projects = ProjectService.new.sample
+        projects = ProjectService.sample
 
         expected_default_sample_size = 1
         expect(projects.count).to eq expected_default_sample_size
-      end
-
-      it "sorts the projects in random order weighted by quality" do
-        allow(Issue).to receive(:random_order_weighted_by_quality)
-          .and_call_original
-
-        ProjectService.new.sample
-
-        expect(Issue).to have_received(:random_order_weighted_by_quality)
       end
 
       it "returns only open projects belonging to permitted repositories" do
         allow(Issue).to receive(:open_issues_with_unique_permitted_repositories)
           .and_call_original
 
-        ProjectService.new.sample
+        ProjectService.sample
 
         expect(Issue).to have_received(:open_issues_with_unique_permitted_repositories)
       end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class ProjectService
+module ProjectService
+  module_function
+
   def sample(sample_size=1)
     issues = Issue
       .open_issues_with_unique_permitted_repositories
