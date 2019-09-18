@@ -1,20 +1,49 @@
-<div>
+<section class="section">
   <%= link_to 'Hacktoberfest', '/' %><br/>
-  <% @meetups.map do |m| %>
-    <%= m["Event Name"] %><br/>
-    <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %><br/>
-    <%= m["Event City"] %>, <%= m["Event Country"] %><br/>
-    <%= m["Event Organizer"] %><br/>
-  <a href="<%= m["Event URL"] %>">view more details <a/><br/>
-  <% end %>
-  <div>
-  <h1>Have an event?</h1>
+  <h1 class="title is-1">Hacktoberfest events</h1>
+  <p>
+    Hacktoberfest events are organized by individuals and organizations in your community. (Thank you, everyone!) We kindly ask you to follow the Hacktoberfest Events Code of Conduct when organizing or attending an event.
+  </p>
+
+  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
+    <tr>
+      <th><abbr title="Location">Location</abbr></th>
+      <th><abbr title="Event">Event</abbr></th>
+      <th><abbr title="Date">Date</abbr></th>
+      <th><abbr title="Start Time">Start Time</abbr></th>
+      <th><abbr title="End Time">End Time</abbr></th>
+      <th><abbr title="Organized by">Organized by</abbr></th>
+      <th><abbr title="RSVP">RSVP</abbr></th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @meetups.map do |m| %>
+      <tr>
+        <td><%= m["Event City"] %>, <%= m["Event Country"] %></td>
+        <td><%= m["Event Name"] %></td>
+        <td><%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %></td>
+<!-- //FIGMA dictates a start time column date but currently date and start time are being pulled together -->
+        <td>START TIME ONLY GOES HERE</td>
+<!-- //FIGMA dictates an end date column but no end date is being pulled currently -->
+        <td>END DATE GOES HERE</td>
+        <td><%= m["Event Organizer"] %></td>
+        <td><a href="<%= m["Event URL"] %>">view more details <a/></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <section>
+  <h2 class="title is-2">Have an event?</h2>
     <iframe class="airtable-embed" src="https://airtable.com/embed/shrD5rVJ7kfZec5hD?backgroundColor=blue" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
-  </div>
-  <div>
-    <h1>Additional Resources</h1>
+  </section>
+
+  <section>
+    <h2 class="title is-2">Additional Resources</h2>
     <% @resources.map do |r| %>
       <a href="<%= r["URL"] %>"><%=r["Link Text"]%><a/><br/>
     <% end %>
-  </div>
-</div>
+  </section>
+</section>
