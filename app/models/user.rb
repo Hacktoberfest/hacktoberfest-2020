@@ -86,3 +86,28 @@ class User < ApplicationRecord
     Hacktoberfest.end_date.past?
   end
 end
+
+
+
+
+
+#Coupon service
+#in complete or inclomplete (coupons might still be available)
+  #take a user and assign a user a coupon
+   #coupon type logic here 
+
+#validations user can only have one kind of sticker
+
+## Coupons
+# Sticker, T-Shirt
+# coupon - unclaimed - no user id etc.
+
+#User has_one sticker_coupon
+
+#User has_one shirt_coupon
+
+#User validates only one coupon
+  #coupon method on User returns either sticker coupon || shirt || nil
+  #based on this appropriate hacktoberfest ends partial in displayed
+
+# ENSURE NO RACE CONDITIONS
