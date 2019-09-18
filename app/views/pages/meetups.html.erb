@@ -23,7 +23,9 @@
         <td><%= m["Event City"] %>, <%= m["Event Country"] %></td>
         <td><%= m["Event Name"] %></td>
         <td><%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %></td>
-        <!-- //FIGMA dictates an end date but no end date is being pulled currently -->
+<!-- //FIGMA dictates a start time column date but currently date and start time are being pulled together -->
+        <td>START TIME ONLY GOES HERE</td>
+<!-- //FIGMA dictates an end date column but no end date is being pulled currently -->
         <td>END DATE GOES HERE</td>
         <td><%= m["Event Organizer"] %></td>
         <td><a href="<%= m["Event URL"] %>">view more details <a/></td>
