@@ -8,20 +8,18 @@ class Issue < ApplicationRecord
   validates :title, presence: true
   validates :url, presence: true
 
-  def self.random
-    order(Arel.sql('RANDOM()'))
-  end
-
-  def self.random_order_weighted_by_quality
-    order(Arel.sql('RANDOM()*quality DESC'))
-  end
-
   def self.open_issues_with_unique_permitted_repositories
-    Issue
-      .select('DISTINCT ON (temporary_random_valid_issues.repository_id)
-               temporary_random_valid_issues.*')
-      .from(open_issues_with_permitted_repositories.random,
-            :temporary_random_valid_issues)
+    random_unique_repo_issues = <<~SQL
+      (
+        SELECT DISTINCT ON ("repositories"."id") "issues".*
+        FROM issues
+        INNER JOIN "repositories" ON "repositories"."id" = issues.repository_id
+        WHERE issues.open = TRUE AND "repositories"."banned" = FALSE
+        ORDER BY "repositories"."id", RANDOM()
+      ) random_unique_repo_issues
+    SQL
+
+    select('*').from(Arel.sql(random_unique_repo_issues))
   end
 
   def self.open_issues_with_permitted_repositories

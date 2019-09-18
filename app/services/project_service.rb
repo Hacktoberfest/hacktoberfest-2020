@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class ProjectService
   def sample(sample_size=1)
     issues = Issue
       .open_issues_with_unique_permitted_repositories
-      .random_order_weighted_by_quality
+      .order(quality: :desc)
       .limit(sample_size)
     projects = issues.map {|issue| Project.new(issue)}
     projects
