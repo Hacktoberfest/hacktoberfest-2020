@@ -1,6 +1,8 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$break-small: 1024px;
+$break-med: 1288px;
 
 .footer {
   background-image: image-url('bg-left2.png'), image-url('bg-right2.png');
@@ -8,11 +10,23 @@
   background-repeat: no-repeat;
   min-height: 1040px;
 
+  h2 {
+    @media screen and (max-width: $break-small) {
+      padding-top: 40px;
+    }
+  }
+
   .level-left {
     flex-direction: column;
     align-items: flex-start;
 
     .footer-social-links {
+      @media screen and (max-width: $break-small) {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+      }
       a {
         font-family: 'Space Mono Bold', monospace;
         text-transform: uppercase;
@@ -47,8 +61,16 @@
             fill: hsl(223, 32%, 33%);
           }
         }
+
+        @media screen and (max-width: $break-small) {
+          margin-bottom: 40px;
+        }
       }
     }
+  }
+
+  .level-right {
+    flex-shrink: 1;
   }
 
   .footer-end {

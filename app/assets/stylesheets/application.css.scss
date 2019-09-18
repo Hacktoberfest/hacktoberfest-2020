@@ -73,11 +73,6 @@ $body-font-size: $size-5;
 // -- footer
 $footer-background-color: none;
 $footer-padding: 130px 135px 20px 135px;
-.footer {
-  @media screen and (max-width: $break-small) {
-    $footer-padding: 30px 35px 20px 35px;
-  }
-}
 
 // -- title
 $title-color: $white;
