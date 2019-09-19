@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_one :sticker_coupon
+  has_one :shirt_coupon
+  validate :only_one_coupon
   # rubocop:disable Metrics/BlockLength, Layout/MultilineHashBraceLayout
   state_machine initial: :new do
     event :register do
@@ -63,6 +66,14 @@ class User < ApplicationRecord
   def score
     score = eligible_pull_requests_count
     score > 4 ? 4 : score
+  end
+
+  protected
+
+  def only_one_coupon
+    if self.shirt_coupon && self.sticker_coupon
+      errors.add(:user, "can only have one type of coupon")
+    end
   end
 
   def eligible_pull_requests_count
