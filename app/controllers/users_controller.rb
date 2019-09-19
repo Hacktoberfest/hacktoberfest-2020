@@ -17,8 +17,8 @@ class UsersController < ApplicationController
   # action to save registration
   def update
     @current_user.assign_attributes(params_for_registration)
-    if @current_user.register
-      redirect_to session[:destination] || '/'
+    if save_or_register(@current_user)
+      render 'users/update'
     else
       set_user_emails
       render 'users/edit'
@@ -31,6 +31,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def save_or_register(user)
+    if user.can_register?
+      user.register
+    else
+      user.save
+    end
+  end
 
   def pull_request_timeline(prs)
     counter = 0
