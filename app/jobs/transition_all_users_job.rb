@@ -5,8 +5,8 @@ class TransitionAllUsersJob < ApplicationJob
   queue_as :default
 
   def perform
-    User.all.find_in_batches do |group|
-      group.each { |user| UserTransitionJob.perform_later(user) }
+    User.select(:id).find_in_batches do |group|
+      group.each { |user_id| UserTransitionJob.perform_later(user_id) }
     end
   end
 end
