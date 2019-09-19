@@ -1,12 +1,10 @@
 //will probably need to be updated
 .profile-container {
-  margin-left: auto;
+  margin-left: 100px;
   margin-right: auto;
   width: 1170px;
-  left: 135px;
   top: 236px;
 
-  background: #1F2D4F;
   box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.2);
 }
 
@@ -15,6 +13,7 @@
   padding-right: 150px;
   padding-left: 300px;
   padding-right: 300px;
+  min-height: 400px
 }
 
 .timeline-container {
@@ -74,4 +73,18 @@
 
 .center-icon {
   margin-left: 10px;
+}
+
+.icon-box {
+  padding-top: 30px;
+}
+
+.hacktoberfest-winner {
+  background-image: url('profile-hexagon.png');
+  background-color: #1F2D4F;
+  background-position: left top -150px;
+}
+
+.congratulations-txt {
+  padding-left: 40px;
 }
