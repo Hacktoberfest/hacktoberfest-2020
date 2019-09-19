@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def index
     @meetups = meetups.select do |m|
       m.fields.key?('Featured?')
-    end
+    end.first(4)
     binding.pry
     @issues = ProjectService.sample
 
@@ -19,7 +19,6 @@ class PagesController < ApplicationController
   end
 
   def meetups
-    meetups = AirrecordTable.new.table('Meetups').all
     @resources = AirrecordTable.new.table('Resource Links').all
     @meetups = meetups.sort_by { |e| e['Event Start Date/Time'] }
   end
@@ -27,5 +26,11 @@ class PagesController < ApplicationController
   def webinars
     webinars = AirrecordTable.new.table('Webinar Listings').all
     @webinars = webinars.sort_by { |w| w['Event Start Date/Time'] }
+  end
+
+  private
+
+  def meetups
+     AirrecordTable.new.table('Meetups').all
   end
 end
