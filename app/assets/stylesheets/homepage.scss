@@ -62,6 +62,7 @@ main{
   color: $yellow;
   line-height: 0.4rem;
   position: relative;
+  margin-top: 100px;
   margin-bottom: 60px;
 
   span {
@@ -111,4 +112,18 @@ main{
 .tile{
   margin: $tile-margin;
   padding: $tile-padding;
+}
+
+.eventsBlock{
+  margin-left: 0px;
+  height: 900px;
+  width: 100%;
+  background-image: url("bg-map.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-x: visible;
+}
+
+.events{
+  padding-top: 150px;
 }
