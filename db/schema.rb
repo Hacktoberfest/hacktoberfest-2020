@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_19_203631) do
+ActiveRecord::Schema.define(version: 2019_09_16_212332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 2019_09_19_203631) do
     t.boolean "banned", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "banned?"
     t.index ["gh_database_id"], name: "index_repositories_on_gh_database_id", unique: true
   end
 
