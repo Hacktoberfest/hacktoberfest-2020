@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
+
 Rails.application.routes.draw do
+
   root to: 'pages#index'
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout' => 'sessions#destroy', as: :logout
@@ -12,4 +16,10 @@ Rails.application.routes.draw do
   get '/meetups', to: 'pages#meetups'
   get '/webinars', to: 'pages#webinars'
   get '/details', to: 'pages#details'
+
+  Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+    ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_USERNAME"])) &
+      ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_PASSWORD"]))
+  end if Rails.env.production?
+  mount Sidekiq::Web, at: "/sidekiq" unless Rails.env.production? && ENV["SIDEKIQ_PASSWORD"].blank?
 end
