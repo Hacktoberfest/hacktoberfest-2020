@@ -1,4 +1,4 @@
-<main>
+<!-- <nav class="section">
   <%= link_to 'Hacktoberfest', '/' %><br/>
   <% if @current_user %>
     <%= "Welcome #{@current_user.name}" %>
@@ -29,54 +29,104 @@
       <%= link_to 'Logout', logout_path %>
     </div>
   </div>
+</nav> -->
+
+<main class="section">
+  <section class="hero-body">
+    <h1 class="title is-1 is-spaced">Support open source and earn a <span class="highlight">limited edition T-shirt</span>!
+    </h1>
+    <a href="#">
+      <button type="button" name="button">Start Hacking</button>
+    </a>
+  </section>
+
+  <div class="line-brTop">
+    <span class="line-br-1">-</span>
+    <span class="line-br-2">-</span>
+  </div>
+
+  <section class="section2">
+    <h2 class="title is-spaced"> Event Details</h2>
+    <p class="p">
+      Hacktoberfest is open to everyone in our global community. Whether you’re a developer, student learning to code, event host, or company of any size, you can help drive growth of open source and make positive contributions to an ever-growing community. All backgrounds and skills levels are encouraged to complete the challenge.
+    </p>
+    <ul>
+      <li class="bullet">
+        <span class="p">Hacktoberfest is open to everyone in our global community!</span>
+      </li>
+      <li class="bullet">
+        <span class="p">Pull requests can be made in any GitHub-hosted repositories/projects.</span>
+      </li>
+      <li class="bullet">
+        <span class="p">Sign up anytime between October 1 and October 31.</span>
+      </li>
+    </ul>
+    <h2 class="title is-2 is-spaced">Rules</h2>
+    <p class="p">
+      To qualify for the official limited edition Hacktoberfest shirt, you must register and make four pull requests (PRs) between October 1-31 (in any time zone). PRs can be made to any public repo on GitHub, not only the ones with issues labeled Hacktoberfest. If a maintainer reports your pull request as spam or behavior not in line with the project’s code of conduct, you will be ineligible to participate. This year, the first 50,000 participants who successfully complete the challenge will earn a T-shirt.
+    </p>
+    <a href="#">Participation details</a>
+
+    <div class="line-brTop">
+      <span class="line-br-1">-</span>
+      <span class="line-br-2">-</span>
+    </div>
+
+    <h2 class="title is-2 is-spaced">Hacktoberfest Projects</h2>
+    <p class="p">
+      You can contribute to any project on GitHub. Here are a few looking for some help:
+    </p>
+    <section class="tile is-ancenstor">
+      <!-- dynamically generated content will appear in boxes like this -->
+
+      <div class="box"> TEST PROJECT BOX</div>
+    </section>
+    <a href="">
+      <button class="button2" type="button" name="button">Browse more on Github</button>
+    </a>
+    <h3 class="title is-3 is-spaced">Projects focused on climate change</h3>
+    <p class="p">
+      Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
+    </p>
+    <section class="tile is-ancenstor">
+      <!-- dynamically generated content will appear in boxes like this -->
+      <div class="box"> TEST PROJECT BOX</div>
+    </section>
+    <!-- note: FROM DANIEL: Return a paginated list of repos and metadata, ordered by semi-randomized ranking criteria -->
+    <a href="">
+      <button class="button2" type="button" name="button">Browse more on Github</button>
+    </a>
+  </section>
 </main>
-
-<main class="hero-body">
-  <h1 class="h1 title is-1">Support open source and earn a limited edition T-shirt!
-  </h1>
-
-  <h2 class="h2 title is-2"> Event Details</h2>
-  <p>
-    Hacktoberfest is open to everyone in our global community. Whether you’re a developer, student learning to code, event host, or company of any size, you can help drive growth of open source and make positive contributions to an ever-growing community. All backgrounds and skills levels are encouraged to complete the challenge.
-  </p>
-
-  <ul>
-    <li>Hacktoberfest is open to everyone in our global community!</li>
-    <li>Pull requests can be made in any GitHub-hosted repositories/projects.</li>
-    <li>Sign up anytime between October 1 and October 31.</li>
-  </ul>
-
-  <h2 class="h2 title is-2">Rules</h2>
-  <p>
-    To qualify for the official limited edition Hacktoberfest shirt, you must register and make four pull requests (PRs) between October 1-31 (in any time zone). PRs can be made to any public repo on GitHub, not only the ones with issues labeled Hacktoberfest. If a maintainer reports your pull request as spam or behavior not in line with the project’s code of conduct, you will be ineligible to participate. This year, the first 50,000 participants who successfully complete the challenge will earn a T-shirt.
-  </p>
-  <!-- CTA: Participation details   -->
-
-  <h2 class="h2 title is-2">Hacktoberfest Projects</h2>
-  <p>
-    You can contribute to any project on GitHub. Here are a few looking for some help:
-  </p>
-  <!-- CTA: Browse more on Github -->
-  <h3 class="h3 title is-3">Projects focused on climate change</h3>
-  <p>
-    Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
-  </p>
-
-  <!-- note: FROM DANIEL: Return a paginated list of repos and metadata, ordered by semi-randomized ranking criteria -->
-  <!-- CTA: Browse more on Github -->
-
-  <h2 class="h2 title is-2">Global events</h2>
-  <p>
-    Celebrate and support open source technology by
-    <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a>
-    or attending a local event.
-  </p>
-  <!-- CTA: See more events -->
-
-  <h2 class="h2 title is-2">Words from our sponsors</h2>
-  <div class="tile is-ancestor">
-    <div class="tile is-child is-4">
-      <h4 class="h4 title is-4">DigitalOcean</h4>
+<section class="eventsBlock">
+  <div class="section events">
+    <div class="line-brTop">
+      <span class="line-br-1">-</span>
+      <span class="line-br-2">-</span>
+    </div>
+    <h2 class="title is-2 is-spaced">Global events</h2>
+    <p class="p">
+      Celebrate and support open source technology by
+      <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a>
+      or attending a local event.
+    </p>
+    <a href="">
+      <button class="button2" type="button" name="button">See more events</button>
+    </a>
+  </div>
+</section>
+<section class="section">
+  <div class="line-brTop">
+    <span class="line-br-1">-</span>
+    <span class="line-br-2">-</span>
+  </div>
+  <h2 class="title is-2 is-spaced">Words from our sponsors</h2>
+  <section class="tile is-ancestor">
+    <section class="tile is-child is-4">
+      <h4 class="title is-4 is-spaced">
+        <%= image_tag("DO-logo-white.png", :alt => "DO Logo") %>
+        DigitalOcean
+      </h4>
       <p>
         We’re so excited to partner with
         <a href="https://dev.to">DEV</a>
@@ -85,9 +135,11 @@
         community platform built for developers of all backgrounds and experience levels – for this year’s Hacktoberfest. As a torch-bearer for open source, transparency, and inclusion in tech, DEV fully embodies the Hacktoberfest values. Check out the <a href="https://dev.to/t/hacktoberfest">#Hacktoberfest</a>
         tag on DEV for announcements and resources before, during, and after the event.
       </p>
-    </div>
-    <div class="tile is-child is-4">
-      <h4 class="h4 title is-4">DEV</h4>
+    </section>
+    <section class="tile is-child is-4">
+      <h4 class="title is-4 is-spaced">
+        <%= image_tag("DEV-logo-white.png", :alt => "DEV Logo") %>
+      </h4>
       <p>
         As participants long before we became sponsors, we’re thankful to our friends at
         <a href="https://www.digitalocean.com/">DigitalOcean</a>
@@ -96,8 +148,6 @@
         has become a global resource for education on development and DevOps topics, further illustrating that they, too, are stewards of
         <a href="https://developers.digitalocean.com/opensource/">open source</a>.
       </p>
-    </div>
-  </div>
-
-
-</main>
+    </section>
+  </section>
+</section>
