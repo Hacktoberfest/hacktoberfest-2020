@@ -7,25 +7,28 @@
     <p>goal. Thanks for honoring the values and following the rules</p>
     <p>of participation.</p>
   </div>
-  <div class="tabs">
-    <ul id="tabs" class="details-box box panel-tabs">
-      <li> <a id="tab1" class="inactive">Beginners</a> </li>
-      <li> <a id="tab2" class="inactive">Maintaiers</a> </li>
-      <li> <a id="tab3" class="inactive">Event organizers</a> </li>
-      <li> <a id="tab4" class="inactive">Companies</a> </li>
+  <div class="details-tabs">
+    <ul id="tabs" class="details-box box">
+      <li> <a id="tab1" >Beginners</a> </li>
+      <li> <a id="tab2" >Maintainers</a> </li>
+      <li> <a id="tab3" >Event organizers</a> </li>
+      <li> <a id="tab4">Companies</a> </li>
     </ul>
-    <div id="tab1C" class="panel-block">
-      <%= render 'pages/details_resources/beginners_resources' %>
-    </div> 
-    <div id="tab2C" class="panel-block">
-      <%= render 'pages/details_resources/maintainers_resources' %>
+    <div class="box">
+     <div id="tab1C" class="tab-block">
+        <%= render 'pages/details_resources/beginners_resources' %>
+      </div> 
+      <div id="tab2C" class="tab-block">
+        <%= render 'pages/details_resources/maintainers_resources' %>
+      </div>
+      <div id="tab3C" class="tab-block">
+        <%= render 'pages/details_resources/event_organizers_resources' %>
+      </div>
+      <div id="tab4C" class="tab-block">
+        <%= render 'pages/details_resources/companies_resources' %>
+      </div>
     </div>
-    <div id="tab3C" class="panel-block">
-      <%= render 'pages/details_resources/event_organizers_resources' %>
-    </div>
-    <div id="tab4C" class="panel-block">
-      <%= render 'pages/details_resources/companies_resources' %>
-    </div>
+    
   </div>
   <div class="container">
     <h1 class="title is-1">Event details</h1>

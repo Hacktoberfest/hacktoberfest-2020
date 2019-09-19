@@ -87,9 +87,9 @@ $box-shadow: 0px 50px 100px rgba($black, 0.2);
 // -- button
 $button-color: $white;
 $button-background-color: $purple;
-.button {
-  border-radius: none;
-}
+$button-border-color: $purple;
+$button-border-width: 0;
+$button-padding-horizontal: 2em;
 
 // -- table
 $table-color: $grey;
@@ -178,6 +178,12 @@ body {
       position: absolute;
       left: 50px;
     }
+  }
+
+  .button {
+    border-radius: 0;
+    font-weight: 600;
+    font-size: 14px;
   }
 }
 
