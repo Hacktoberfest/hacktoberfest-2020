@@ -9,6 +9,7 @@ $purple: hsl(286.79, 73.68%, 44.71%);
 $padding-left: 0;
 $size-1: 2.50rem;
 $size-3: 1.5rem;
+$size-4: 1.25rem;
 $button-color: $white;
 $button-background-color: $purple;
 $tile-margin:2%;
@@ -27,8 +28,8 @@ main{
 }
 
 .hero-body{
-  margin-bottom: 160px;
-  width: 70%;
+  margin-bottom: 140px;
+  width: 60%;
 }
 
 .hero-body h1{
@@ -42,6 +43,10 @@ main{
   line-height: 60px;
   padding-left: 20px;
   padding-right: 20px;
+  background-color: $button-background-color;
+  color: $button-color;
+  border: none;
+  border-radius: 0px;
 }
 
 .button2 {
@@ -49,17 +54,48 @@ main{
   color: $button-color;
   border: none;
   border-radius: 0px;
+  padding: 15px;
+  font-size: $size-4;
+}
+
+.line-brTop {
+  color: $yellow;
+  line-height: 0.4rem;
+  position: relative;
+  margin-bottom: 60px;
+
+  span {
+    background-color: $yellow;
+  }
+
+  span.line-br-1 {
+    width: 40px;
+    height: 6px;
+    position: absolute;
+  }
+
+  span.line-br-2 {
+    width: 10px;
+    height: 6px;
+    position: absolute;
+    left: 50px;
+  }
 }
 
 .section2{
   width: 70%;
-  // padding-left: $padding-left;
+  margin-top: 40px;
+  padding-top: 30px;
+}
+
+.is-spaced{
+  padding-top: 40px;
 }
 
 .bullet{
   list-style-type: disc;
   color: $yellow;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   margin-left: 20px;
 }
 
