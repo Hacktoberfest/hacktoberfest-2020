@@ -1,3 +1,6 @@
+$break-small: 1024px;
+$break-med: 1288px;
+
 .details,
 .container.details {
   max-width: 650px;
@@ -7,6 +10,10 @@
 .details-tabs {
   display: flex;
   margin: 70px 0;
+
+  @media screen and (max-width: $break-med) {
+    flex-direction: column;
+  }
 
   #tabs.box {
     padding: 0;
@@ -21,9 +28,23 @@
     width: 284px;
     margin-bottom: 0;
 
+    @media screen and (max-width: $break-med) {
+      flex-direction: row;
+      width: 100%;
+    }
+
+    @media screen and (max-width: $break-small) {
+      flex-direction: column;
+    }
+
     li {
       width: 284px;
       text-align: left;
+
+      @media screen and (max-width: $break-small) {
+        width: 100%;
+        text-align: center;
+      }
 
       :hover {
         background-color: #a11ec6;
