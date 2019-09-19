@@ -29,6 +29,11 @@ gem 'rails', '~> 5.2.3'
 
 gem 'sass-rails', '~> 5.0'
 
+source "https://enterprise.contribsys.com/" do
+  gem 'sidekiq-pro'
+  gem 'sidekiq-ent'
+end
+
 gem 'state_machines'
 
 gem 'state_machines-activerecord'
