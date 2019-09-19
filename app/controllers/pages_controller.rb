@@ -5,6 +5,9 @@ class PagesController < ApplicationController
     @meetups = meetups.select do |m|
       m.fields.key?('Featured?')
     end
+    binding.pry
+    @issues = ProjectService.sample
+
   end
 
   def faqs

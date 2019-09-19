@@ -61,7 +61,9 @@
   <p>
     Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
   </p>
-
+  <% @issues.map |issue| %>
+  <%= issue.title %>
+  <% end %>
   <!-- note: FROM DANIEL: Return a paginated list of repos and metadata, ordered by semi-randomized ranking criteria -->
   <!-- CTA: Browse more on Github -->
 
