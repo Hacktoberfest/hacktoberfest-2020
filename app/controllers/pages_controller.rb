@@ -2,7 +2,7 @@
 
 class PagesController < ApplicationController
   def index
-    @meetups = meetups.sort_by { |e| e['Event Start Date/Time'] }.first(4) 
+    @meetups = meetups.sort_by { |e| e['Event Start Date/Time'] }.first(4)
     # @meetups = meetups.select do |m|
     #   m.fields.key?('Featured?')
     # end.first(4)
