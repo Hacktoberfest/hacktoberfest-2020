@@ -2,10 +2,17 @@
 
 class PagesController < ApplicationController
   def index
+<<<<<<< HEAD
     @meetups = meetups.sort_by { |e| e['Event Start Date/Time'] }.first(4)
     # @meetups = meetups.select do |m|
     #   m.fields.key?('Featured?')
     # end.first(4)
+=======
+    @meetups = meetups.select do |m|
+      m.fields.key?('Featured?')
+    end.first(4)
+    binding.pry
+>>>>>>> Create private meetups method in page controller
     @issues = ProjectService.sample
 
   end
