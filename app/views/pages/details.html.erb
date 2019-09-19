@@ -1,3 +1,4 @@
+<div class="section">
 <div class="container">
   <div class="getting-started">
     <h1 class="title is-1">Getting Started with Hacktoberfest</h1>
@@ -6,18 +7,26 @@
     <p>goal. Thanks for honoring the values and following the rules</p>
     <p>of participation.</p>
   </div>
-  <div class="destails-box box">
-    <h3 class="title is-3">Beginners</h3>
-    <h3 class="title is-3">Maintaiers</h3>
-    <h3 class="title is-3">Event organizers</h3>
-    <h3 class="title is-3">Companies</h3>
-    <div>
+  <nav class="panel">
+    <ul class="details-box box panel-tabs">
+      <li> <a class="title is-3">Beginners</a> </li>
+      <li> <a class="title is-3">Maintaiers</a> </li>
+      <li> <a class="title is-3">Event organizers</a> </li>
+      <li> <a class="title is-3">Companies</a> </li>
+    </ul>
+    <div class="panel-block">
       <%= render 'pages/details_resources/beginners_resources' %>
+    </div> 
+    <div class="panel-block">
       <%= render 'pages/details_resources/maintainers_resources' %>
+    </div>
+    <div class="panel-block">
       <%= render 'pages/details_resources/event_organizers_resources' %>
+    </div>
+    <div class="panel-block">
       <%= render 'pages/details_resources/companies_resources' %>
     </div>
-  </div>
+  </nav>
   <div class="container">
     <h1 class="title is-1">Event details</h1>
     <p class="highlight">*</p><p>Hacktoberfest is open to everyone in our global community!</p>
@@ -62,4 +71,5 @@
       us. Your participation has a lasting effect on people and technology long
       after October comes to an end. This is a voyage, not a race.</p>
   </div>
+</div>
 </div>
