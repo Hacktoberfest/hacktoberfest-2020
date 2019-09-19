@@ -11,6 +11,9 @@ $size-1: 2.50rem;
 $size-3: 1.5rem;
 $button-color: $white;
 $button-background-color: $purple;
+$tile-margin:2%;
+$tile-padding:2%;
+$tile-width: 150%;
 
 main{
   text-align: left;
@@ -31,6 +34,7 @@ main{
 .hero-body h1{
   font-size: $size-1;
   line-height: 60px;
+  padding-left: $padding-left;
 }
 
 .hero-body button{
@@ -49,16 +53,26 @@ main{
 
 .section2{
   width: 70%;
-  padding-left: $padding-left;
+  // padding-left: $padding-left;
 }
 
 .bullet{
   list-style-type: disc;
   color: $yellow;
   margin-bottom: 20px;
+  margin-left: 20px;
 }
 
 .p{
   width: 70%;
   color: $grey;
+}
+
+.is-ancestor{
+  width: $tile-width;
+}
+
+.tile{
+  margin: $tile-margin;
+  padding: $tile-padding;
 }
