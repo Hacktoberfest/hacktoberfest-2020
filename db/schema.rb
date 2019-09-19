@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 2019_09_22_161515) do
     t.index ["gh_database_id"], name: "index_repositories_on_gh_database_id", unique: true
   end
 
+  create_table "shirt_coupons", force: :cascade do |t|
+    t.string "code", null: false
+    t.integer "user_id"
+  end
+
+  create_table "sticker_coupons", force: :cascade do |t|
+    t.string "code", null: false
+    t.integer "user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
