@@ -110,6 +110,25 @@
       <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a>
       or attending a local event.
     </p>
+    <!-- FEATURED EVENTS GENERATED HERE -->
+    <section class="eventUnion">
+      <% @meetups.map do |m| %>
+      <div class="box">
+        <span class="eventMonth">
+          <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %>
+        </span>
+        <span class="eventDay">
+          <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %>
+        </span>
+        <span class="eventTitle">
+          <%= m["Event Name"] %>
+        </span>
+        <span class="eventLocation">
+          <%= m["Event City"] %>, <%= m["Event Country"] %>
+        </span>
+      </div>
+      <% end %>
+    </section>
     <a href="">
       <button class="button2" type="button" name="button">See more events</button>
     </a>
