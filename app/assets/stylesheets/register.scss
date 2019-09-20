@@ -27,6 +27,11 @@
       color: hsl(58, 100%, 57%);
     }
 
+    .pink {
+      background: hsl(320, 100%, 50%);
+      color: hsl(320, 100%, 50%);
+    }
+
     .pink-open {
       background: hsl(223.2, 54.35%, 18.04%);
       border: 3px solid hsl(320, 100%, 50%);
@@ -54,6 +59,10 @@
     height: 5px;
     background: hsla(0, 0%, 100%, 0.1);
   }
+
+  div.pink-line:empty {
+    background: hsl(320, 100%, 50%);
+  }
 }
 
 section.reg-content {
@@ -62,7 +71,10 @@ section.reg-content {
     margin: 120px auto;
 
     p {
-      margin: 20px 0 40px 0;
+      margin-top: 20px;
     }
+  }
+  .button {
+    margin-top: 40px;
   }
 }
