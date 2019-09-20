@@ -75,25 +75,35 @@
       You can contribute to any project on GitHub. Here are a few looking for some help:
     </p>
     <section class="tile is-ancenstor">
-      <!-- dynamically generated content will appear in boxes like this -->
+      <% @projects.map do |project| %>
+        <div class="box">
+          <a href="<%= project.url %>">
 
-      <div class="box"> TEST PROJECT BOX</div>
+            <%= project.repository_name %>
+            <%= project.language %>
+
+            <%= project.repository_description %>
+
+            <%= project.number %>
+            <%= project.title %>
+
+          </a>
+        </div>
+      <% end %>
     </section>
     <a href="">
       <button class="button2" type="button" name="button">Browse more on Github</button>
     </a>
-    <h3 class="title is-3 is-spaced">Projects focused on climate change</h3>
-    <p class="p">
-      Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
-    </p>
-    <section class="tile is-ancenstor">
-      <!-- dynamically generated content will appear in boxes like this -->
-      <div class="box"> TEST PROJECT BOX</div>
-    </section>
-    <!-- note: FROM DANIEL: Return a paginated list of repos and metadata, ordered by semi-randomized ranking criteria -->
-    <a href="">
-      <button class="button2" type="button" name="button">Browse more on Github</button>
-    </a>
+    <!-- <h3 class="title is-3 is-spaced">Projects focused on climate change</h3> -->
+    <!-- <p class="p"> -->
+    <!-- Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change: -->
+    <!-- </p> -->
+    <!-- <section class="tile is-ancenstor"> -->
+    <!-- <div class="box"> TEST PROJECT BOX</div> -->
+    <!-- </section> -->
+    <!-- <a href=""> -->
+    <!-- <button class="button2" type="button" name="button">Browse more on Github</button> -->
+    <!-- </a> -->
   </section>
 </main>
 <section class="eventsBlock">
