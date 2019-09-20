@@ -23,7 +23,7 @@
     <p>Please confirm your email address and accept terms. We’ll be in touch with details about redeeming a shirt and/or stickers once Hacktoberfest is over. </p>
      <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
       <% if @current_user.errors.any? %>
-         <p class="error">Please accept terms & conditions</p>
+         <p class="error"><%= @current_user.errors.full_messages %></p>
       <% end %>
       <%= f.select :email, @emails %>
      <p> Sign up for marketing emails: <%= f.check_box :marketing_emails %><br />
