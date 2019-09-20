@@ -1,9 +1,26 @@
+$break-phone: 600px;
+$break-small: 1024px;
+$break-med: 1288px;
+
 .registration-steps {
   display: flex;
   justify-content: space-between;
   max-width: 695px;
   position: relative;
   margin: 0 auto;
+
+  @media screen and (max-width: $break-med) {
+    max-width: 500px;
+  }
+
+  @media screen and (max-width: $break-small) {
+    max-width: 300px;
+  }
+
+  @media screen and (max-width: $break-phone) {
+    max-width: 225px;
+    flex-direction: column;
+  }
 
   .step {
     display: flex;
@@ -13,6 +30,18 @@
     color: #fff;
     font-weight: 600;
     position: absolute;
+
+    @media screen and (max-width: $break-phone) {
+      align-items: flex-start;
+      flex-direction: row;
+      position: relative;
+      margin-bottom: 10px;
+
+      p {
+        margin-top: 3px;
+        margin-left: 10px;
+      }
+    }
 
     .circle {
       width: 22px;
@@ -42,22 +71,47 @@
   .step.one {
     left: -80px;
     top: -8px;
+    @media screen and (max-width: $break-phone) {
+      left: 0;
+      top: 0;
+    }
   }
 
   .step.two {
     left: 310px;
     top: -8px;
+    @media screen and (max-width: $break-med) {
+      left: 207px;
+    }
+
+    @media screen and (max-width: $break-small) {
+      left: 122px;
+    }
+
+    @media screen and (max-width: $break-phone) {
+      left: 0;
+      top: 0;
+    }
   }
 
   .step.three {
     right: -80px;
     top: -8px;
+
+    @media screen and (max-width: $break-phone) {
+      left: 0;
+      top: 0;
+    }
   }
 
   div:empty {
-    width: 325px;
+    width: 100%;
+    max-width: 325px;
     height: 5px;
     background: hsla(0, 0%, 100%, 0.1);
+    @media screen and (max-width: $break-phone) {
+      display: none;
+    }
   }
 
   div.pink-line:empty {
@@ -69,7 +123,9 @@ section.reg-content {
   div {
     max-width: 695px;
     margin: 120px auto;
-
+    @media screen and (max-width: $break-phone) {
+      margin: 0px auto;
+    }
     p {
       margin-top: 20px;
     }
