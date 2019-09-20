@@ -21,6 +21,10 @@ Sidekiq.configure_server do |config|
     # first arg is chron tab syntax for "every day at 1 am"
     mgr.register('0 1 * * *', TransitionAllUsersJob, retry: 2, queue: "transition_all")
   end
+
+  config.death_handlers << ->(job, ex) do
+    raise("#{job['class']} #{job["jid"]} died with error #{ex.message}.")
+  end
 end
 
 Sidekiq.configure_client do |config|
