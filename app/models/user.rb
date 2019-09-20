@@ -62,8 +62,6 @@ class User < ApplicationRecord
     score > 4 ? 4 : score
   end
 
-  protected
-
   def eligible_pull_requests_count
     pr_service = PullRequestService.new(self)
     pr_service.eligible_prs.count
