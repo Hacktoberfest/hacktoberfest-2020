@@ -214,6 +214,10 @@ body {
     font-weight: 600;
     font-size: 14px;
   }
+
+  .error {
+    color: hsl(320, 100%, 50%);
+  }
 }
 
 @import 'bulma';
