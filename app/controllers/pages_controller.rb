@@ -2,12 +2,10 @@
 
 class PagesController < ApplicationController
   def index
-    @meetups = meetups.sort_by { |e| e['Event Start Date/Time'] }.first(4)
-    # @meetups = meetups.select do |m|
-    #   m.fields.key?('Featured?')
-    # end.first(4)
-    @projects = ProjectService.sample(9)
-
+    @meetups = meetups.select do |m|
+      m.fields.key?('Featured?')
+    end.first
+    @issues = ProjectService.sample
   end
 
   def faqs
@@ -19,7 +17,7 @@ class PagesController < ApplicationController
   end
 
   def meetups
-    @resources = AirrecordTable.new.table('Resource Links').all
+    meetups = AirrecordTable.new.table('Meetups').all
     @meetups = meetups.sort_by { |e| e['Event Start Date/Time'] }
   end
 
@@ -29,10 +27,6 @@ class PagesController < ApplicationController
   end
 
   private
-
-  def meetups
-     AirrecordTable.new.table('Meetups').all
-  end
 
   def start
   end
