@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     # @meetups = meetups.select do |m|
     #   m.fields.key?('Featured?')
     # end.first(4)
-    @issues = ProjectService.sample
+    @projects = ProjectService.sample(9)
 
   end
 
