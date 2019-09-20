@@ -1,0 +1,68 @@
+.registration-steps {
+  display: flex;
+  justify-content: space-between;
+  max-width: 695px;
+  position: relative;
+  margin: 0 auto;
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+    position: absolute;
+
+    .circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 100px;
+      padding: 3px 6px;
+      font-size: 8px;
+    }
+
+    .yellow {
+      background: hsl(58, 100%, 57%);
+      color: hsl(58, 100%, 57%);
+    }
+
+    .pink-open {
+      background: hsl(223.2, 54.35%, 18.04%);
+      border: 3px solid hsl(320, 100%, 50%);
+      color: hsl(223.2, 54.35%, 18.04%);
+    }
+  }
+
+  .step.one {
+    left: -80px;
+    top: -8px;
+  }
+
+  .step.two {
+    left: 310px;
+    top: -8px;
+  }
+
+  .step.three {
+    right: -80px;
+    top: -8px;
+  }
+
+  div:empty {
+    width: 325px;
+    height: 5px;
+    background: hsla(0, 0%, 100%, 0.1);
+  }
+}
+
+section.reg-content {
+  div {
+    max-width: 695px;
+    margin: 120px auto;
+
+    p {
+      margin: 20px 0 40px 0;
+    }
+  }
+}
