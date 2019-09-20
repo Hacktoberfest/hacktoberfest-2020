@@ -2,6 +2,7 @@
 
 class HacktoberfestProjectFetcher
   NODE_LIMIT = 100
+  MAX_RETRIES = ENV.fetch('IMPORT_MAX_RETRIES', 7)
 
   attr_reader :projects
 
@@ -27,16 +28,33 @@ class HacktoberfestProjectFetcher
     !@started || @has_next_page
   end
 
-  def fetch_next_page
-    query = HacktoberfestProjectQueryComposer.compose(
-      results_per_page: NODE_LIMIT,
-      cursor: @last_cursor
-    )
-    response = @api_client.request(query)
+  def api_request_with_retries
+    retry_count = 0
+    begin
+      query = HacktoberfestProjectQueryComposer.compose(
+        results_per_page: NODE_LIMIT,
+        cursor: @last_cursor
+      )
+      response = @api_client.request(query)
+    rescue Faraday::ClientError => e
+      if e.response[:status] == 502
+        if retry_count < MAX_RETRIES
+          retry_count += 1
+          retry
+        else
+          raise HacktoberfestProjectFetcherError.new('Max retries exceeded',
+                                                     errors: @errors,
+                                                     query: query)
+        end
+      end
+    end
+    response
+  end
 
-    if response_returns_expected_error?(response)
-      @has_next_page = false
-    elsif response_invalid?(response)
+  def fetch_next_page
+    response = api_request_with_retries
+
+    if response_invalid?(response)
       raise HacktoberfestProjectFetcherError.new(
         'Invalid response received',
         errors: @errors,
@@ -47,14 +65,6 @@ class HacktoberfestProjectFetcher
       @has_next_page = search['pageInfo']['hasNextPage']
       @last_cursor = search['pageInfo']['endCursor']
       build_projects(search['edges'])
-    end
-  end
-
-  def response_returns_expected_error?(response)
-    if response['errors'].present? && response['errors'].size == 1
-      response['errors'].first['message'].include?(
-        'Something went wrong while executing your query. This is most likely a GitHub bug.'
-      )
     end
   end
 

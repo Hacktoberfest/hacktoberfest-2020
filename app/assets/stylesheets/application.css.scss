@@ -107,6 +107,34 @@ $table-head-cell-border-width: 0 0 0;
   }
 }
 
+// -- form input
+$control-radius: 0;
+$control-radius-small: 0;
+input.input {
+  background-color: $grey-dark;
+  box-shadow: 0px 30px 60px hsla(0, 0%, 0%, 0.2);
+  border-radius: 0;
+  border: none;
+  color: $white;
+  margin-top: 30px;
+}
+input.input::placeholder {
+  color: $white;
+  opacity: 1;
+}
+
+// -- form select
+select {
+  background-color: $grey-dark;
+  padding: 20px;
+  height: 40px;
+  width: 100%;
+  color: $white;
+  font-size: 14px;
+  border: 0;
+  border-radius: 0;
+}
+
 // Global content styling
 
 body {
@@ -185,6 +213,10 @@ body {
     border-radius: 0;
     font-weight: 600;
     font-size: 14px;
+  }
+
+  .error {
+    color: hsl(320, 100%, 50%);
   }
 }
 

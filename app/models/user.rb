@@ -54,7 +54,7 @@ class User < ApplicationRecord
   # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
   def pull_requests
-    PullRequestService.new(self).all
+    pull_request_service.all
   end
 
   def score
@@ -62,16 +62,12 @@ class User < ApplicationRecord
     score > 4 ? 4 : score
   end
 
-  protected
-
   def eligible_pull_requests_count
-    pr_service = PullRequestService.new(self)
-    pr_service.eligible_prs.count
+    pull_request_service.eligible_prs.count
   end
 
   def mature_pull_requests_count
-    pr_service = PullRequestService.new(self)
-    pr_service.matured_prs.count
+    pull_request_service.matured_prs.count
   end
 
   def sufficient_eligible_prs?
@@ -84,5 +80,11 @@ class User < ApplicationRecord
 
   def hacktoberfest_ended?
     Hacktoberfest.end_date.past?
+  end
+
+  private
+
+  def pull_request_service
+    @pull_request_service ||= PullRequestService.new(self)
   end
 end

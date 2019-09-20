@@ -9,6 +9,6 @@ RSpec.describe UserTransitionJob, type: :job do
 
   it 'tries to transition the user' do
     expect(TryUserTransitionService).to receive(:call).once.with(user)
-    UserTransitionJob.perform_now(user)
+    UserTransitionJob.perform_now(user.id)
   end
 end
