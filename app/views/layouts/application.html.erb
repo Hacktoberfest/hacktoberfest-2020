@@ -14,15 +14,24 @@
     <%= yield %>
   </div>
   <%= render 'shared/footer' %>
-  <script type="text/javascript" src="vanilla-tilt.js"></script>
-<script type="text/javascript">
-	VanillaTilt.init(document.querySelector(".your-element"), {
-		max: 25,
-		speed: 400
-	});
+  <!-- Header Logo Tilt -->
+  <script type="text/javascript">
+  	VanillaTilt.init(document.getElementById("header-logo"), {
+  		max: 5,
+  		speed: 300
+  	});
+  	//It also supports NodeList
+  	VanillaTilt.init(document.getElementById("header-logo"));
+  </script>
 
-	//It also supports NodeList
-	VanillaTilt.init(document.querySelectorAll(".your-element"));
-</script>
+  <!-- Footer Logo Tilt -->
+  <script type="text/javascript">
+  	VanillaTilt.init(document.getElementById("footer-logo"), {
+  		max: 7,
+  		speed: 300
+  	});
+  	//It also supports NodeList
+  	VanillaTilt.init(document.getElementById("footer-logo"));
+  </script>
   </body>
 </html>
