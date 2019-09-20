@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     if logged_in?
       redirect_to register_form_path
     else
-      redirect_to login_path
+      redirect_to start_path
     end
   end
 end

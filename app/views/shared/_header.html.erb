@@ -10,7 +10,7 @@
       <li><%= link_to "events", meetups_path, :class => active_path_class?(meetups_path) + " navLink"  %></li>
       <li><%= link_to "faqs", faq_path, :class => active_path_class?(faq_path) + " navLink"  %></li>
       <%# FIXME: logic to check if registered or not - send to profile vs start path %>
-      <li><%= link_to "start hacking", start_path, :class => active_path_class?(start_path) + " navLink callOutLink"  %></li>
+      <li><%= link_to "start hacking", profile_path, :class => active_path_class?(profile_path) + " navLink callOutLink"  %></li>
     </ul>
   </nav>
 </header>

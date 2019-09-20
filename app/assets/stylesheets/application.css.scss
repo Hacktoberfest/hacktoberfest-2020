@@ -123,6 +123,18 @@ input.input::placeholder {
   opacity: 1;
 }
 
+// -- form select
+select {
+  background-color: $grey-dark;
+  padding: 20px;
+  height: 40px;
+  width: 100%;
+  color: $white;
+  font-size: 14px;
+  border: 0;
+  border-radius: 0;
+}
+
 // Global content styling
 
 body {
@@ -201,6 +213,10 @@ body {
     border-radius: 0;
     font-weight: 600;
     font-size: 14px;
+  }
+
+  .error {
+    color: hsl(320, 100%, 50%);
   }
 }
 
