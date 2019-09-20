@@ -1,28 +1,12 @@
-$break-small: 1024px;
-$break-med: 1500px;
 $grey-dark: hsl(223.33, 32.14%, 32.94%);
-$grey-darker: hsl(222.5, 43.64%, 21.57%);
 
 .profile-container {
-  margin-left: 20%;
+  margin-left: 100px;
   margin-right: auto;
   width: 1170px;
   top: 236px;
-  justify-content: center;
-  background-color: $grey-darker;
 
-    @media screen and (max-width: $break-med) {
-      margin-left: 10%;
-      width: 900px;
-    }
-
-    @media screen and (max-width: $break-small) {
-      margin-left: auto;
-      margin-right: auto;
-      flex-direction: column;
-      width: 1000px !important;
-      overflow: hidden;
-    }
+  box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.2);
 }
 
 .pre-launch-container {
@@ -45,9 +29,11 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
   padding-left: 25px;
 }
 
+//will probably need to be updated
 .user-section {
   margin-left: auto;
   margin-right: auto;
+  width: 1170px;
   height: 160px;
   left: 135px;
   top: 236px;
@@ -107,17 +93,6 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
 .progress-bar {
   margin-right: 20px;
   display: flex;
-  @media screen and (max-width: $break-med) {
-    margin-left: auto;
-    margin-right: auto;
-    max-width:100%;
-    max-height:100%;
-    align-items: center;
-  }
-}
-
-.progress-union {
-
 }
 
 .code-button {

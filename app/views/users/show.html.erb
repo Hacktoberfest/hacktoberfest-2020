@@ -12,20 +12,20 @@
         </div>
         <div class="level-right"
           <p class='progress-msg'>YOUR PROGRESS</p>
-          <%= render 'users/show/progress_bar' %>
+            <%= render 'users/show/progress_bar' %>
         </div>
       </div>
     </div>
-    <% if  Hacktoberfest.pre_launch?  %>
+    <% if @current_user.won_hacktoberfest? && Hacktoberfest.ended? %>
     <div class="hacktoberfest-winner">
       <%= render 'users/show/hacktoberfest_results' %>
     </div>
     <% end %>
-    <% if !Hacktoberfest.pre_launch? %>
+    <% if Hacktoberfest.active? %>
     <div class="container box">
       <%= render 'users/show/timeline' %>
     </div>
-    <% elsif !Hacktoberfest.pre_launch? %>
+    <% elsif Hacktoberfest.pre_launch? %>
     <div class="container box">
       <%= render 'users/show/pre_launch' %>
     </div>
