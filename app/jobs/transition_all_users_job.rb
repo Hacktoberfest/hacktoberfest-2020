@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 class TransitionAllUsersJob < ApplicationJob
-  queue_as :default
+  queue_as :transition_all
 
   def perform
     User.select(:id).find_in_batches do |group|
