@@ -114,10 +114,11 @@
       <% @meetups.map do |m| %>
       <div class="box">
         <span class="eventMonth">
-          <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %>
+          <% formatted_date= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:long).split(" ") %>
+          <%= formatted_date[0] %>
         </span>
         <span class="eventDay">
-          <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %>
+          <%= formatted_date[1].split(",")[0] %>
         </span>
         <span class="eventTitle">
           <%= m["Event Name"] %>

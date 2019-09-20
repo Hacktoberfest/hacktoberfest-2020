@@ -144,6 +144,11 @@ main{
   border: 2px solid lime;
 }
 
+.box span{
+  width: 100%;
+  float: left;
+}
+
 .eventUnion .box:nth-child(4n+1){
   background: linear-gradient(76.04deg, #febd3b -0.33%, #ff9353 100.08%);
   box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
