@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/meetups', to: 'pages#meetups'
   get '/webinars', to: 'pages#webinars'
   get '/details', to: 'pages#details'
+  get '/start' => 'pages#start'
+  get '/thanks' => 'pages#thanks'
 
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
     ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_USERNAME"])) &
