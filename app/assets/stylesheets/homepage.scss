@@ -15,6 +15,7 @@ $button-background-color: $purple;
 $tile-margin:2%;
 $tile-padding:2%;
 $tile-width: 150%;
+$box-color: rgba(0, 0, 0, 0);
 
 main{
   text-align: left;
@@ -129,25 +130,66 @@ main{
 }
 
 .eventUnion{
-  // position: absolute;
-  // width: 1170px;
-  // height: 215px;
-  // left: 135px;
-  // top: 3190px;
+  // width: 100%;
   display: flex;
   justify-content: space-around;
-  background: linear-gradient(76.04deg, #FFC337 -0.33%, #FF00AA 100.08%);
+  vertical-align: baseline;
+}
+
+.box{
+  text-align: center;
+  margin: 2%;
+  height: 300px;
+  width: 25%;
+  border: 2px solid lime;
+}
+
+.eventUnion .box:nth-child(4n+1){
+  background: linear-gradient(76.04deg, #febd3b -0.33%, #ff9353 100.08%);
   box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
 }
 
-.box2{
-  margin-top: 20px;
-  width: 20%;
-  height: auto;
-  border: 2px solid black;
-  margin-bottom: 20px;
+.eventUnion .box:nth-child(4n+2){
+  background: linear-gradient(76.04deg, #ff8c57 -0.33%, #ff646f 100.08%);
+  box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+}
+.eventUnion .box:nth-child(4n+3){
+  background: linear-gradient(76.04deg, #ff5d73 -0.33%, #ff358b 100.08%);
+  box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+}
+.eventUnion .box:nth-child(4n+4){
+  background: linear-gradient(76.04deg, #ff2e90 -0.33%, #ff06a6 100.08%);
+  box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
 }
 
+
+//
+//
+//
+// .box{
+//   background-color: $box-color !important;
+//   margin-top: 20px;
+//   width: 25%;
+//   // height: auto;
+//   border: 2px solid black;
+//   margin-bottom: 20px;
+//   margin-right: 20px;
+// }
+//
+
+// .even-stops-linear-left {
+//
+// background-image: -moz-linear-gradient(left, transparent, blue, transparent, green, blue, green, transparent, blue, transparent);
+//
+// background-image: -webkit-linear-gradient(left, transparent, blue, transparent, green, blue, green, transparent, blue, transparent);
+//
+// background-image: -o-linear-gradient(left, transparent, blue, transparent, green, blue, green, transparent, blue, transparent);
+//
+// padding: 5px;
+//
+// margin-left:5px
+//
+// }
 
 .eventMonth{
   // position: absolute;

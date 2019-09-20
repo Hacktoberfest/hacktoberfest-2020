@@ -66,12 +66,10 @@
       To qualify for the official limited edition Hacktoberfest shirt, you must register and make four pull requests (PRs) between October 1-31 (in any time zone). PRs can be made to any public repo on GitHub, not only the ones with issues labeled Hacktoberfest. If a maintainer reports your pull request as spam or behavior not in line with the project’s code of conduct, you will be ineligible to participate. This year, the first 50,000 participants who successfully complete the challenge will earn a T-shirt.
     </p>
     <a href="#">Participation details</a>
-
     <div class="line-brTop">
       <span class="line-br-1">-</span>
       <span class="line-br-2">-</span>
     </div>
-
     <h2 class="title is-2 is-spaced">Hacktoberfest Projects</h2>
     <p class="p">
       You can contribute to any project on GitHub. Here are a few looking for some help:
@@ -112,8 +110,9 @@
     </p>
     <!-- FEATURED EVENTS GENERATED HERE -->
     <section class="eventUnion">
+    <!-- <section class="even-stops-linear-left"> -->
       <% @meetups.map do |m| %>
-      <div class="box2 level">
+      <div class="box">
         <span class="eventMonth">
           <%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %>
         </span>
