@@ -33,17 +33,8 @@
       <% end %>
     </tbody>
   </table>
-
-
   <section>
   <h2 class="title is-2">Have an event?</h2>
     <iframe class="airtable-embed" src="https://airtable.com/embed/shrD5rVJ7kfZec5hD?backgroundColor=blue" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
-  </section>
-
-  <section>
-    <h2 class="title is-2">Additional Resources</h2>
-    <% @resources.map do |r| %>
-      <a href="<%= r["URL"] %>"><%=r["Link Text"]%></a><br/>
-    <% end %>
   </section>
 </section>
