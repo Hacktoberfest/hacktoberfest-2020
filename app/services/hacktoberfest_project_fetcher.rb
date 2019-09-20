@@ -2,7 +2,7 @@
 
 class HacktoberfestProjectFetcher
   NODE_LIMIT = 100
-  MAX_RETRIES = ENV.fetch('IMPORT_MAX_RETRIES', 7)
+  MAX_RETRIES = ENV.fetch('IMPORT_MAX_RETRIES', 7).to_i
 
   attr_reader :projects
 
