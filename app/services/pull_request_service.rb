@@ -28,8 +28,7 @@ class PullRequestService
   protected
 
   def github_pull_requests
-    github_prs = GithubPullRequestService.new(user)
-    github_prs.pull_requests
+    @github_pull_requests ||= GithubPullRequestService.new(user).pull_requests
   end
 
   def filtered_github_pull_requests(prs)
