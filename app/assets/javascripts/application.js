@@ -15,4 +15,4 @@
 //= require turbolinks
 //= require jquery
 //= require_tree .
-//= require tilt-vanilla
+//= require vanilla-tilt

@@ -3,7 +3,9 @@
   <p>👋 Take our survey about open source to contribute to our biannual Currents report on developer trends. <%= link_to "Learn more", root_path, :class => active_path_class?(root_path) + " navLink"  %></p>
 </div>
   <nav class="navbar" id="navbar">
-    <a href="/"><img src="<%= asset_path('logo-hf19-header.svg') %>"width="475" ></a>
+    <div class="your-element" data-tilt>
+      <a href="/"><img src="<%= asset_path('logo-hf19-header.svg') %>"width="475" ></a>
+    </div>
     <ul class="navbar-end">
       <li><%= link_to "home", root_path, :class => active_path_class?(root_path) + " navLink"  %></li>
       <li><%= link_to "details", details_path, :class => active_path_class?(details_path) + " navLink"  %></li>
