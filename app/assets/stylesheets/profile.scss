@@ -1,4 +1,5 @@
-//will probably need to be updated
+$grey-dark: hsl(223.33, 32.14%, 32.94%);
+
 .profile-container {
   margin-left: 100px;
   margin-right: auto;
@@ -36,7 +37,7 @@
   height: 160px;
   left: 135px;
   top: 236px;
-  background: #39486E;
+  background:  $grey-dark;
 }
 
 .avatar {
@@ -92,4 +93,16 @@
 .progress-bar {
   margin-right: 20px;
   display: flex;
+}
+
+.code-button {
+  height: 68px !important;
+  width: 105px;
+  margin-right: 155px;
+  float: right !important;
+}
+
+.code-textarea {
+  background-color: $grey-dark !important;
+  float: left !important;
 }
