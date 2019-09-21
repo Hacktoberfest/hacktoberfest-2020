@@ -132,9 +132,15 @@ main.home {
 
   .eventUnion {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     vertical-align: baseline;
     margin-bottom: 60px;
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
     @media screen and (max-width: $break-small) {
       flex-direction: column;
