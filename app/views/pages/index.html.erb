@@ -31,21 +31,19 @@
   </div>
 </nav> -->
 
-<main class="section">
-  <section class="hero-body">
+<main class="home">
+<section class="section">
+  <div class="hero-body">
     <h1 class="title is-1 is-spaced">Support open source and earn a <span class="highlight">limited edition T-shirt</span>!
     </h1>
-    <a href="#">
-      <button type="button" name="button">Start Hacking</button>
-    </a>
-  </section>
-
-  <div class="line-brTop">
-    <span class="line-br-1">-</span>
-    <span class="line-br-2">-</span>
+    <%= link_to 'Start Hacking', profile_path, :class => 'button' %>
   </div>
 
-  <section class="section2">
+  <div class="section2 space">
+    <div class="line-br">
+      <span class="line-br-1">-</span>
+      <span class="line-br-2">-</span>
+    </div>
     <h2 class="title is-spaced"> Event Details</h2>
     <p class="p">
       Hacktoberfest is open to everyone in our global community. Whether you’re a developer, student learning to code, event host, or company of any size, you can help drive growth of open source and make positive contributions to an ever-growing community. All backgrounds and skills levels are encouraged to complete the challenge.
@@ -65,8 +63,10 @@
     <p class="p">
       To qualify for the official limited edition Hacktoberfest shirt, you must register and make four pull requests (PRs) between October 1-31 (in any time zone). PRs can be made to any public repo on GitHub, not only the ones with issues labeled Hacktoberfest. If a maintainer reports your pull request as spam or behavior not in line with the project’s code of conduct, you will be ineligible to participate. This year, the first 50,000 participants who successfully complete the challenge will earn a T-shirt.
     </p>
-    <a href="#">Participation details</a>
-    <div class="line-brTop">
+    <%= link_to 'Participation details', details_path, :class => "participation-link" %>
+    </div>
+    <div class="section2">
+    <div class="line-br">
       <span class="line-br-1">-</span>
       <span class="line-br-2">-</span>
     </div>
@@ -74,26 +74,27 @@
     <p class="p">
       You can contribute to any project on GitHub. Here are a few looking for some help:
     </p>
-    <section class="tile is-ancenstor">
+    <div class="grid">
+    <!-- FIXME: Add in max letter count... truncate long content -->
       <% @projects.map do |project| %>
-        <div class="box">
-          <a href="<%= project.url %>">
-
-            <%= project.repository_name %>
-            <%= project.language %>
-
-            <%= project.repository_description %>
-
-            <%= project.number %>
-            <%= project.title %>
-
-          </a>
+       <a href="<%= project.url %>">
+        <div class="box projects">
+          <div class="title-wrap"> 
+            <h3 class="repo-name"> <%= project.repository_name %> </h3>
+            <span class="lang"><%= project.language %></span>
+          </div>
+          <p class="description"><%= project.repository_description %></p>
+          <div class="details-wrap">
+            <span class="details-number"><%= project.number %></span>
+            <p class="details"><%= project.title %></p>
+          </div>
         </div>
+         </a>
       <% end %>
-    </section>
-    <a href="">
-      <button class="button2" type="button" name="button">Browse more on Github</button>
-    </a>
+    </div>
+    <!-- FIXME: link to browse more on Github -->
+        <%= link_to 'Browse more on Github', root_path, :class => 'button' %>
+   
     <!-- <h3 class="title is-3 is-spaced">Projects focused on climate change</h3> -->
     <!-- <p class="p"> -->
     <!-- Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change: -->
@@ -104,11 +105,11 @@
     <!-- <a href=""> -->
     <!-- <button class="button2" type="button" name="button">Browse more on Github</button> -->
     <!-- </a> -->
+  </div>
   </section>
-</main>
 <section class="eventsBlock">
   <div class="section events">
-    <div class="line-brTop">
+    <div class="line-br">
       <span class="line-br-1">-</span>
       <span class="line-br-2">-</span>
     </div>
@@ -120,7 +121,6 @@
     </p>
     <!-- FEATURED EVENTS GENERATED HERE -->
     <section class="eventUnion">
-    <!-- <section class="even-stops-linear-left"> -->
       <% @meetups.map do |m| %>
       <div class="box">
         <span class="eventMonth">
@@ -139,13 +139,12 @@
       </div>
       <% end %>
     </section>
-    <a href="">
-      <button class="button2" type="button" name="button">See more events</button>
-    </a>
+   <%= link_to 'See more events', meetups_path, :class => 'button' %>
+ 
   </div>
 </section>
-<section class="section">
-  <div class="line-brTop">
+<section class="section sponsors">
+  <div class="line-br">
     <span class="line-br-1">-</span>
     <span class="line-br-2">-</span>
   </div>
@@ -180,3 +179,4 @@
     </section>
   </section>
 </section>
+</main>

@@ -11,9 +11,7 @@ $break-med: 1288px;
   min-height: 1040px;
 
   h2 {
-    @media screen and (max-width: $break-small) {
-      padding-top: 40px;
-    }
+    padding-top: 40px;
   }
 
   .level-left {
