@@ -1,25 +1,25 @@
-function timer(startDate) {
-  var diff = (new Date("2019-11-01 00:00:00 UTC") - startDate) / 1000;
+var target_date = new Date("2019-11-01 00:00:00 UTC").getTime();
+var days, hours, minutes, seconds;
 
-  // clear countdown when date is reached
-  if (diff <= 0) {
-    return false;
-  }
-  var days        = Math.floor(diff/24/60/60);
-  var hoursLeft   = Math.floor((diff) - (days*86400));
-  var hours       = Math.floor(hoursLeft/3600);
-  var minutesLeft = Math.floor((hoursLeft) - (hours*3600));
-  var minutes     = Math.floor(minutesLeft/60);
-  var remainingSeconds = diff % 60;
-  function pad(n) {
-    return (n < 10 ? "0" + n : n);
-  }
-  document.getElementById('countdown').innerHTML = pad(days) + "d:" + pad(hours) + "h:" + pad(minutes) + "m:" + pad(remainingSeconds) + "s" ;
-  if (diff == 0) {
-    clearInterval(countdownTimer);
-    document.getElementById('countdown').innerHTML = "Completed";
-  } else {
-    diff;
-  }
+function countdownTimers (elements, date) {
+  setInterval(function () {
+    // find the amount of "seconds" between now and target
+    // update current Date with user.mature_at date
+    var current_date = new Date().getTime()
+      var seconds_left = (target_date - current_date) / 1000;
+
+    // do some time calculations
+    days = parseInt(seconds_left / 86400);
+    seconds_left = seconds_left % 86400;
+    hours = parseInt(seconds_left / 3600);
+    seconds_left = seconds_left % 3600;
+    minutes = parseInt(seconds_left / 60);
+    seconds = parseInt(seconds_left % 60);
+
+    for(i=0; i < elements.length; i++) {
+      var element = elements[i];
+      countdown = days + "d: " + hours + "h: " + minutes + "m: " + seconds + "s";
+      element.innerHTML = countdown
+    }
+  }, 1000);
 }
-var countdownTimer = setInterval(() => timer(new Date("2019-10-01 03:40:02 UTC")), 1000);
