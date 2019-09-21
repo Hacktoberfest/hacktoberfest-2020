@@ -44,8 +44,8 @@ $black: hsl(0, 100%, 0%);
 $white: hsl(0, 0%, 100%);
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
-$grey-darker: hsl(222.5, 43.64%, 21.57%); // box dark blue
-$grey-dark: hsl(223.33, 32.14%, 32.94%); // box lighter blue
+$grey-darker: hsl(222, 45%, 21%); // box dark blue
+$grey-dark: hsl(223, 32%, 33%); // box lighter blue
 $cyan: hsl(191.56, 100%, 78.63%);
 $red: hsl(320, 100%, 50%);
 $purple: hsl(286.79, 73.68%, 44.71%);
@@ -90,7 +90,20 @@ $button-color: $white;
 $button-background-color: $purple;
 $button-border-color: $purple;
 $button-border-width: 0;
+$button-padding-vertical: 1.85em;
 $button-padding-horizontal: 2em;
+$button-hover-color: $grey-dark;
+
+.button {
+  height: 60px;
+  border: none;
+  border-radius: 0px;
+  font-size: 16px;
+  padding-bottom: 2em;
+}
+.button:hover {
+  background-color: $cyan;
+}
 
 // -- table
 $table-color: $grey;
@@ -189,7 +202,7 @@ body {
     color: $yellow;
     line-height: 0.4rem;
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 
     span {
       background-color: $yellow;

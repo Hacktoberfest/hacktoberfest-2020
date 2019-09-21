@@ -14,5 +14,5 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
-//= require_tree .
 //= require vanilla-tilt
+//= require_tree .
