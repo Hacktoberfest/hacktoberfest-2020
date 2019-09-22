@@ -40,8 +40,6 @@ gem 'state_machines'
 
 gem 'state_machines-activerecord'
 
-gem 'sqlite3'
-
 gem 'pg'
 
 gem 'pry'
