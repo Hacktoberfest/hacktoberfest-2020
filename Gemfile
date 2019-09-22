@@ -73,6 +73,7 @@ end
 group :development do
   gem "capistrano", "~> 3.11", require: false
   gem "capistrano-rails", "~> 1.4", require: false
+  gem 'capistrano-bundler', '~> 1.6', require: false
 
   gem 'guard-rspec', require: false
 
