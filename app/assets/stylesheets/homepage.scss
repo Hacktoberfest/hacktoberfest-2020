@@ -22,7 +22,7 @@ $box-color: rgba(0, 0, 0, 0);
 
 main.home {
   text-align: left;
-  background-image: url('polygon-photo-1.png'), url('polygon-photo-2.png');
+  background-image: asset-path('polygon-photo-1.png'), asset-path('polygon-photo-2.png');
   background-repeat: no-repeat;
   background-position: top 100px right 164px, top 40px right 0px;
 
@@ -85,7 +85,7 @@ main.home {
     margin-left: 0px;
     height: 900px;
     width: 100%;
-    background-image: url('bg-map.png');
+    background-image: asset-path('bg-map.png');
     background-position: center;
     background-repeat: no-repeat;
     overflow-x: visible;
