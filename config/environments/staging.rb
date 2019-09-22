@@ -11,8 +11,6 @@ Rails.application.configure do
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  config.secret_key_base = ENV["SECRET_KEY_BASE"]
-
   config.assets.js_compressor = :uglifier
 
   config.assets.compile = false
