@@ -59,3 +59,8 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+# Production specific options for capistrano/puma
+set :puma_threads, [0, 16]
+set :puma_workers, 16
+

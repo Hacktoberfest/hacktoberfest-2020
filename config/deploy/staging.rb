@@ -60,3 +60,7 @@ role :app, %w{hacktoberfest@167.99.59.27}
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+# Staging specific options for capistrano/puma
+set :puma_threads, [0, 16]
+set :puma_workers, 8

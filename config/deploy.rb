@@ -68,4 +68,14 @@ namespace :dotenv do
 end
 
 
+# Shared options for capistrano/puma
+# See: https://github.com/seuros/capistrano-puma
 set :puma_nginx, :app
+# Preload app must be false in order to do phased restarts
+set :puma_preload_app, false
+set :puma_init_active_record, false
+set :puma_control_app, false
+# Worker and thread count options in stage specific config
+# set :puma_threads, [0, 16]
+# set :puma_workers, 8
+
