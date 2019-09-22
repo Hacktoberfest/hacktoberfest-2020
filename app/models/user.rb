@@ -26,6 +26,14 @@ class User < ApplicationRecord
       transition waiting: :registered
     end
 
+    event :won_shirt do
+      transition completed: :won_shirt
+    end
+
+    event :won_sticker do
+      transition completed: :won_sticker
+    end
+
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
