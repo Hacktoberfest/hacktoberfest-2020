@@ -78,4 +78,5 @@ set :puma_control_app, false
 # Worker and thread count options in stage specific config
 # set :puma_threads, [0, 16]
 # set :puma_workers, 8
+after 'puma:config', 'puma:phased-restart'
 
