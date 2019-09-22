@@ -75,6 +75,10 @@ GEM
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano3-puma (4.0.0)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (~> 4.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -189,7 +193,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (4.1.1)
+      nio4r (~> 2.0)
     rack (2.0.7)
     rack-protection (2.0.7)
       rack
@@ -347,6 +352,7 @@ DEPENDENCIES
   capistrano-bundler (~> 1.6)
   capistrano-dotenv
   capistrano-rails (~> 1.4)
+  capistrano3-puma (~> 4.0)
   coffee-rails (~> 4.2)
   dotenv-rails
   factory_bot_rails
@@ -361,7 +367,7 @@ DEPENDENCIES
   omniauth-github
   pg
   pry
-  puma (~> 3.11)
+  puma (~> 4.0)
   rails (~> 5.2.3)
   rspec-rails
   rubocop-rails
