@@ -40,20 +40,26 @@ set :deploy_to, "/home/deploy/hacktoberfest"
 
 # Options for capistrano-bundler
 # See: https://github.com/capistrano/bundler
-append :linked_dirs, '.bundle'
+append :linked_dirs, '.bundle', 'tmp/pids', 'tmp/sockets', 'log'
+
+
+# Options for capistrano-rails
+# See: https://github.com/capistrano/rails
+set :migration_role, :app
+set :assets_roles, :app
 
 # Options for capistrano-dotenv
 # See: https://github.com/capistrano/bundler
-set :env_file, ".env_#{fetch(:stage)}"
+append :linked_files, '.env'
+before 'bundler:map_bins', 'dotenv:hook'
+set :env_file, ".env.#{fetch(:stage)}"
+set :dotenv_hook_commands, %w(bundle rake rails sidekiq puma pumactl)
 
 namespace :deploy do
-  desc 'Setup dotenv'
+  desc 'Upload dotenv config .env.[staging|production]'
   task :setup_dotenv do
     invoke 'dotenv:read'
-    # invoke 'dotenv:check'
     invoke 'dotenv:setup'
-    invoke 'dotenv:hook'
-    append :linked_files, '.env'
   end
 
   before :check, :setup_dotenv
