@@ -298,7 +298,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.1)
     sshkit (1.20.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
@@ -372,7 +371,6 @@ DEPENDENCIES
   sidekiq-pro!
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3
   state_machines
   state_machines-activerecord
   terminal-notifier-guard
