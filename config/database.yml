@@ -96,7 +96,9 @@ staging:
   username: <%= ENV['HACKTOBERFEST_DATABASE_USERNAME'] %>
   password: <%= ENV['HACKTOBERFEST_DATABASE_PASSWORD'] %>
   host: <%= ENV['HACKTOBERFEST_DATABASE_HOST'] %>
-  pool: 32
+  host: <%= ENV['HACKTOBERFEST_DATABASE_PORT'] %>
+  pool: <%= ENV['HACKTOBERFEST_DATABASE_POOL_SIZE'] %>
+  timeout: <%= ENV['HACKTOBERFEST_DATABASE_TIMEOUT'] %>
 
 production:
   <<: *default
@@ -104,5 +106,6 @@ production:
   username: <%= ENV['HACKTOBERFEST_DATABASE_USERNAME'] %>
   password: <%= ENV['HACKTOBERFEST_DATABASE_PASSWORD'] %>
   host: <%= ENV['HACKTOBERFEST_DATABASE_HOST'] %>
-  pool: 32
-  timeout: 10
+  host: <%= ENV['HACKTOBERFEST_DATABASE_PORT'] %>
+  pool: <%= ENV['HACKTOBERFEST_DATABASE_POOL_SIZE'] %>
+  timeout: <%= ENV['HACKTOBERFEST_DATABASE_TIMEOUT'] %>
