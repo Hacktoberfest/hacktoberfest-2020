@@ -60,7 +60,7 @@ namespace :dotenv do
   task :config do
     invoke 'dotenv:read'
     invoke 'dotenv:setup'
-    invoke 'puma:restart'
+    invoke 'puma:phased-restart'
   end
 
   # We do not want to always upload a new .env file
