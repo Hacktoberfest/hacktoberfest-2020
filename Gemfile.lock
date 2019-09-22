@@ -343,6 +343,7 @@ DEPENDENCIES
   bulma-rails (~> 0.7.5)
   byebug
   capistrano (~> 3.11)
+  capistrano-bundler (~> 1.6)
   capistrano-rails (~> 1.4)
   coffee-rails (~> 4.2)
   dotenv-rails
