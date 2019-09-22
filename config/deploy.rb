@@ -41,3 +41,20 @@ set :deploy_to, "/home/deploy/hacktoberfest"
 # Options for capistrano-bundler
 # See: https://github.com/capistrano/bundler
 append :linked_dirs, '.bundle'
+
+# Options for capistrano-dotenv
+# See: https://github.com/capistrano/bundler
+set :env_file, ".env_#{fetch(:stage)}"
+
+namespace :deploy do
+  desc 'Setup dotenv'
+  task :setup_dotenv do
+    invoke 'dotenv:read'
+    # invoke 'dotenv:check'
+    invoke 'dotenv:setup'
+    invoke 'dotenv:hook'
+    append :linked_files, '.env'
+  end
+
+  before :check, :setup_dotenv
+end
