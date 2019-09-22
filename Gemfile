@@ -26,7 +26,7 @@ gem 'net-http-persistent', '~> 2.9'
 gem 'octokit'
 gem 'omniauth-github'
 
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.0'
 
 gem 'rails', '~> 5.2.3'
 
@@ -74,6 +74,7 @@ group :development do
   gem 'capistrano-bundler', '~> 1.6', require: false
   gem 'capistrano-dotenv', require: false
   gem "capistrano-rails", "~> 1.4", require: false
+  gem 'capistrano3-puma', "~> 4.0", require: false
 
   gem 'guard-rspec', require: false
 
