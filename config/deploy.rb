@@ -37,3 +37,7 @@ set :deploy_to, "/home/deploy/hacktoberfest"
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+# Options for capistrano-bundler
+# See: https://github.com/capistrano/bundler
+append :linked_dirs, '.bundle'
