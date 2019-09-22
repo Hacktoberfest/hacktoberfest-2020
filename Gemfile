@@ -23,6 +23,7 @@ gem 'kramdown'
 # See: https://github.com/sirupsen/airrecord/issues/63
 gem 'net-http-persistent', '~> 2.9'
 
+gem 'octokit'
 gem 'omniauth-github'
 
 gem 'puma', '~> 3.11'
@@ -77,8 +78,6 @@ group :development do
   gem 'guard-rspec', require: false
 
   gem 'listen', '>= 3.0.5', '< 3.2'
-
-  gem 'octokit'
 
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
