@@ -21,11 +21,11 @@
       <%= render 'users/show/hacktoberfest_results' %>
     </div>
     <% end %>
-    <% if Hacktoberfest.active? %>
+    <% if Hacktoberfest.pre_launch? %>
     <div class="container box">
       <%= render 'users/show/timeline' %>
     </div>
-    <% elsif Hacktoberfest.pre_launch? %>
+    <% elsif !Hacktoberfest.pre_launch? %>
     <div class="container box">
       <%= render 'users/show/pre_launch' %>
     </div>

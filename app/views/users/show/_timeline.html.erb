@@ -23,7 +23,7 @@
           <p> <%=  DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/> </p>
           <h3 class="title is-3">You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.url.split('/')[3] %><br/></h3>
         </div></td>
-          <% if pr.eligible? %>
+          <% if pr.eligible? && @current_user.state == 'waiting' %>
           <td><div>
             <p>Mature in:</p>
             <span class="countdown" >
@@ -43,8 +43,8 @@
         </td>
         <% if @pull_requests.any? %>
         <script type="text/javascript">
-          var elements = document.getElementsByClassName('countdown');
-          var date = "<%= @pull_requests.last.created_at %>";
+          var elements = document.getElementsByClassName('countdown')
+          var date = "<%= @current_user.waiting_since %>"
           countdownTimers(elements, date)
         </script>
         <% end %>

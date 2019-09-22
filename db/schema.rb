@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_212332) do
+ActiveRecord::Schema.define(version: 2019_09_22_161515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 2019_09_16_212332) do
     t.index ["gh_database_id"], name: "index_repositories_on_gh_database_id", unique: true
   end
 
+  create_table "shirt_coupons", force: :cascade do |t|
+    t.string "code"
+    t.integer "user_id"
+  end
+
+  create_table "sticker_coupons", force: :cascade do |t|
+    t.string "code"
+    t.integer "user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -73,6 +83,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_212332) do
     t.boolean "terms_acceptance", default: false
     t.boolean "marketing_emails", default: false
     t.string "state"
+    t.datetime "waiting_since"
   end
 
 end
