@@ -55,14 +55,16 @@ before 'bundler:map_bins', 'dotenv:hook'
 set :env_file, ".env.#{fetch(:stage)}"
 set :dotenv_hook_commands, %w(bundle rake rails sidekiq puma pumactl)
 
-namespace :deploy do
+namespace :dotenv do
   desc 'Upload dotenv config .env.[staging|production]'
-  task :setup_dotenv do
+  task :config do
     invoke 'dotenv:read'
     invoke 'dotenv:setup'
+    invoke 'puma:restart'
   end
 
-  before :check, :setup_dotenv
+  # We do not want to always upload a new .env file
+  # before :check, :setup_dotenv
 end
 
 
