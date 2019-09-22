@@ -64,3 +64,6 @@ namespace :deploy do
 
   before :check, :setup_dotenv
 end
+
+
+set :puma_nginx, :app
