@@ -84,4 +84,35 @@ RSpec.describe SessionsController, type: :request do
       end
     end
   end
+
+  describe 'impersionation' do
+    let(:user) { FactoryBot.create(:user) }
+
+    context 'the app is in production mode' do
+      before { allow(Rails).to receive(:env) { "production".inquiry } }
+
+      it 'returns a 404' do
+        expect{ get impersonate_path(user) }.
+          to raise_error(ActionController::RoutingError)
+      end
+    end
+
+    context 'the app is in development mode' do
+      before { allow(Rails).to receive(:env) { "development".inquiry } }
+
+      it 'impersonates the user' do
+        get impersonate_path(user)
+        expect(session[:current_user_id]).to eq(user.id)
+      end
+
+      context 'the user does not exist' do
+        let(:user) { FactoryBot.build(:user) }
+
+        it 'does nothing' do
+          get '/impersonate/0'
+          expect(session[:current_user_id]).to eq(nil)
+        end
+      end
+    end
+  end
 end

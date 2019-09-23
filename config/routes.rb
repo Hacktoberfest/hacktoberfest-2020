@@ -25,4 +25,8 @@ Rails.application.routes.draw do
       ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_PASSWORD"]))
   end if Rails.env.production?
   mount Sidekiq::Web, at: "/sidekiq" unless Rails.env.production? && ENV["SIDEKIQ_PASSWORD"].blank?
+
+  unless Rails.env.production?
+    get '/impersonate/:id', to: 'sessions#impersonate', as: :impersonate
+  end
 end

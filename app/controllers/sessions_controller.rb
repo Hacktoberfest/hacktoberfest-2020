@@ -28,6 +28,17 @@ class SessionsController < ApplicationController
     redirect_to '/'
   end
 
+  def impersonate
+    if Rails.env.production?
+      raise ActionController::RoutingError, 'Not Found'
+    else
+      if @user = User.find_by_id(params[:id])
+        session[:current_user_id] = @user.id
+      end
+      redirect_to '/'
+    end
+  end
+
   protected
 
   def auth_hash
