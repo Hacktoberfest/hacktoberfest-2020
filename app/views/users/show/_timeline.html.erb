@@ -42,11 +42,13 @@
             <% end %>
           </div>
         </td>
+        <% if @pull_requests.any? %>
         <script type="text/javascript">
-          var elements = document.getElementsByClassName('countdown')
-          var date = "<%= @pull_requests.last.created_at %>"
+          var elements = document.getElementsByClassName('countdown');
+          var date = "<%= @pull_requests.last.created_at %>";
           countdownTimers(elements, date)
         </script>
+        <% end %>
       </tbody>
     </table>
 </div>

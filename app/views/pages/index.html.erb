@@ -79,7 +79,7 @@
       <% @projects.map do |project| %>
        <a href="<%= project.url %>">
         <div class="box projects">
-          <div class="title-wrap"> 
+          <div class="title-wrap">
             <h3 class="repo-name"> <%= project.repository_name %> </h3>
             <span class="lang"><%= project.language %></span>
           </div>
@@ -93,8 +93,13 @@
       <% end %>
     </div>
     <!-- FIXME: link to browse more on Github -->
-        <%= link_to 'Browse more on Github', root_path, :class => 'button' %>
-   
+    <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen&type=Issues">
+      <button class="button" type="button" name="button">Browse more on Github</button>
+      <!-- <%= link_to 'Browse more on Github', root_path, :class => 'button' %> -->
+    </a>
+
+
+
     <!-- <h3 class="title is-3 is-spaced">Projects focused on climate change</h3> -->
     <!-- <p class="p"> -->
     <!-- Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change: -->
@@ -103,7 +108,7 @@
     <!-- <div class="box"> TEST PROJECT BOX</div> -->
     <!-- </section> -->
     <!-- <a href=""> -->
-    <!-- <button class="button2" type="button" name="button">Browse more on Github</button> -->
+    <!-- <a class="button" type="button" name="button">Browse more on Github</a> -->
     <!-- </a> -->
   </div>
   </section>
@@ -122,27 +127,29 @@
     <!-- FEATURED EVENTS GENERATED HERE -->
     <section class="eventUnion">
       <% @meetups.map do |m| %>
-      <div class="box">
-        <span class="eventMonth">
-          <% formatted_date= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:long).split(" ") %>
-          <%= formatted_date[0] %>
-        </span>
-        <span class="eventDay">
-          <%= formatted_date[1].split(",")[0] %>
-        </span>
-        <div>
-        <span class="eventTitle">
-          <%= m["Event Name"] %>
-        </span>
-        <span class="eventLocation">
-          <%= m["Event City"] %>, <%= m["Event Country"] %>
-        </span>
+      <a href="<%= m["Event URL"] %>">
+        <div class="box">
+          <span class="eventMonth">
+            <% formatted_date= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:long).split(" ") %>
+            <%= formatted_date[0] %>
+          </span>
+          <span class="eventDay">
+            <%= formatted_date[1].split(",")[0] %>
+          </span>
+          <div>
+          <span class="eventTitle">
+            <%= m["Event Name"] %>
+          </span>
+          <span class="eventLocation">
+            <%= m["Event City"] %>, <%= m["Event Country"] %>
+          </span>
+          </div>
         </div>
-      </div>
+      </a>
       <% end %>
     </section>
    <%= link_to 'See more events', meetups_path, :class => 'button' %>
- 
+
   </div>
 </section>
 <section class="section sponsors">

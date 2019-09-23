@@ -90,16 +90,17 @@ $button-color: $white;
 $button-background-color: $purple;
 $button-border-color: $purple;
 $button-border-width: 0;
-$button-padding-vertical: 1.85em;
+$button-padding-vertical: 1.125em;
 $button-padding-horizontal: 2em;
 $button-hover-color: $grey-dark;
 
 .button {
-  height: 60px;
+  min-height: 60px;
   border: none;
   border-radius: 0px;
   font-size: 16px;
   padding-bottom: 2em;
+  padding-top: 1.125em;
 }
 .button:hover {
   background-color: $cyan;
@@ -223,12 +224,6 @@ body {
       position: absolute;
       left: 50px;
     }
-  }
-
-  .button {
-    border-radius: 0;
-    font-weight: 600;
-    font-size: 14px;
   }
 
   .error {
