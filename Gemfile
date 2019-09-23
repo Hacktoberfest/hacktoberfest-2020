@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby '2.5.1'
+ruby '2.5.5'
 
 gem 'airbrake', '~> 9.4'
 
@@ -23,9 +23,10 @@ gem 'kramdown'
 # See: https://github.com/sirupsen/airrecord/issues/63
 gem 'net-http-persistent', '~> 2.9'
 
+gem 'octokit'
 gem 'omniauth-github'
 
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.0'
 
 gem 'rails', '~> 5.2.3'
 
@@ -39,8 +40,6 @@ end
 gem 'state_machines'
 
 gem 'state_machines-activerecord'
-
-gem 'sqlite3'
 
 gem 'pg'
 
@@ -71,12 +70,15 @@ group :development, :test do
 end
 
 group :development do
+  gem "capistrano", "~> 3.11", require: false
+  gem 'capistrano-bundler', '~> 1.6', require: false
+  gem 'capistrano-dotenv', require: false
+  gem "capistrano-rails", "~> 1.4", require: false
+  gem 'capistrano3-puma', "~> 4.0", require: false
 
   gem 'guard-rspec', require: false
 
   gem 'listen', '>= 3.0.5', '< 3.2'
-
-  gem 'octokit'
 
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
