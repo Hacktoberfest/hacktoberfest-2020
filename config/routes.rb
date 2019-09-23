@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/meetups', to: 'pages#meetups'
   get '/webinars', to: 'pages#webinars'
   get '/details', to: 'pages#details'
-  get '/start' => 'pages#start'
+  get '/start' => 'pages#start', as: :start
   get '/thanks' => 'pages#thanks'
   get '/boom', to: 'boom#show'
 
