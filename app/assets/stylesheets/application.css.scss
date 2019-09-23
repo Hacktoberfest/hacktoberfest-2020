@@ -173,9 +173,6 @@ body {
   }
 
   // Styles for background images
-  .top-bgs {
-    min-height: 1000px;
-  }
   .top-bgs::before {
     content: image-url('bg-left.png');
     position: absolute;
