@@ -76,6 +76,7 @@ group :development do
   gem 'capistrano-dotenv', require: false
   gem "capistrano-rails", "~> 1.4", require: false
   gem 'capistrano3-puma', "~> 4.0", require: false
+  gem 'capistrano-sidekiq', require: false
 
   gem 'guard-rspec', require: false
 
