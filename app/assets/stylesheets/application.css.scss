@@ -151,6 +151,9 @@ select {
 // Global content styling
 
 body {
+  overflow: hidden;
+  position: relative;
+
   .section {
     padding: 0 135px;
     margin: 0;
