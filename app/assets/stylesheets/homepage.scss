@@ -110,6 +110,10 @@ main.home {
     @media screen and (max-width: $break-small) {
       grid-template-columns: repeat(1, 1fr);
     }
+
+    a:hover {
+      margin-top: -5px;
+    }
   }
 
   .box {
