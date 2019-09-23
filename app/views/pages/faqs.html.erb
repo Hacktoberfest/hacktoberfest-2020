@@ -1,24 +1,32 @@
 <main class="section is-fluid">
  <h1 class="title is-1">What is Hacktoberfest?</h1>
  <p>Have questions? These are the most Frequently Asked Questions about Hacktoberfest.</p>
- <h2 class="title is-2 highlight">General </h2><br/>
- <% @faqs_general.map do |q| %>
-   <div class= 'title is-4'><%= markdown(q["Question"])%></div>
-   <%= markdown(q["Answer"])%><br/>
- <% end %>
- <h2 class="title is-2 highlight">Rules</h2><br/>
- <% @faqs_rules.map do |q| %>
-   <div class="title is-4"><%= markdown(q["Question"])%></div>
-   <div> <%= markdown q["Answer"] %></div><br/>
- <% end %>
- <h2 class="title is-2 highlight">Events </h2><br/>
- <% @faqs_events.map do |q| %>
-   <div class= 'title is-4'><%= markdown q["Question"] %></div>
-   <div> <%= markdown q["Answer"] %></div><br/>
- <% end %>
- <h2 class="title is-2 highlight">Shipping </h2><br/>
- <% @faqs_shipping.map do |q| %>
-   <div class= 'title is-4'><%= markdown q["Question"] %></div>
-   <div> <%= markdown q["Answer"] %></div><br/>
- <% end %>
+ <section class="faqBlock">
+  <h2 class="title is-2 highlight">General </h2><br/>
+   <% @faqs_general.map do |q| %>
+    <div class= 'title is-4'><%= markdown(q["Question"])%></div>
+    <%= markdown(q["Answer"])%><br/>
+   <% end %>
+ </section>
+ <section class="faqBlock">
+  <h2 class="title is-2 highlight">Rules</h2><br/>
+   <% @faqs_rules.map do |q| %>
+    <div class="title is-4"><%= markdown(q["Question"])%></div>
+    <div> <%= markdown q["Answer"] %></div><br/>
+   <% end %>
+ </section>
+ <section class="faqBlock">
+  <h2 class="title is-2 highlight">Events </h2><br/>
+   <% @faqs_events.map do |q| %>
+    <div class= 'title is-4'><%= markdown q["Question"] %></div>
+    <div> <%= markdown q["Answer"] %></div><br/>
+   <% end %>
+ </section>
+ <section class="faqBlock">
+  <h2 class="title is-2 highlight">Shipping </h2><br/>
+   <% @faqs_shipping.map do |q| %>
+    <div class= 'title is-4'><%= markdown q["Question"] %></div>
+    <div> <%= markdown q["Answer"] %></div><br/>
+   <% end %>
+ </section>
 </main>
