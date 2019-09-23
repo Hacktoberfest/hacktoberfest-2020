@@ -67,5 +67,5 @@ set :puma_workers, 16
 # Production specific options for capistrano/sidekiq
 # Use as many cores (processes) as possible while under 100 total threads due to
 # license requirements
-set :sidekiq_processes, 16
-set :sidekiq_concurrency, 6
+set :sidekiq_processes, 32
+set :sidekiq_concurrency, 3
