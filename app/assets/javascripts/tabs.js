@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $('#tabs li a:first').addClass('selected');
   $('#tabs li a:not(:first)').addClass('inactive');
   $('.tab-block').hide();
