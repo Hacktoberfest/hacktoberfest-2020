@@ -1,0 +1,24 @@
+<script>
+
+  var airbrake = new airbrakeJs.Client({
+    projectId: "<%= ENV['AIRBRAKE_PROJECT_ID'] %>",
+    projectKey: "<%= ENV['AIRBRAKE_PROJECT_KEY'] %>"
+  });
+
+  airbrake.addFilter(function(notice) {
+    notice.context.environment = "<%= Rails.env %>";
+    return notice;
+  });
+
+  try {
+    throw new Error('hello from airbrake-js');
+  } catch (err) {
+    airbrake.notify(err).then(function(notice) {
+      if (notice.id) {
+        console.log('notice id:', notice.id);
+      } else {
+        console.log('notify failed:', notice.error);
+      }
+    });
+  }
+</script>
