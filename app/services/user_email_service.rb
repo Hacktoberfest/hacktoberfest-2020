@@ -12,7 +12,7 @@ class UserEmailService
   def emails
     client = Octokit::Client.new(access_token: @user.provider_token)
     selected = client.emails.select do |email|
-      email unless email.visibility.nil?
+      email unless email.email.include?('noreply')
     end
     selected.map(&:email)
   end
