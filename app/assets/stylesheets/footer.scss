@@ -84,11 +84,19 @@ $break-med: 1288px;
     letter-spacing: 3px;
     text-transform: uppercase;
 
-    .footer-logos a {
+    .footer-logos {
       padding: 10px 5px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: row;
 
       .dev-logo {
         transform: rotate(6deg)
+      }
+
+      p {
+        margin: 10px 6px;
       }
 
       img:hover {
