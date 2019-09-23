@@ -1,11 +1,10 @@
 <section class="section">
-  <%= link_to 'Hacktoberfest', '/' %><br/>
   <h1 class="title is-1">Hacktoberfest events</h1>
   <p>
     Hacktoberfest events are organized by individuals and organizations in your community. (Thank you, everyone!) We kindly ask you to follow the Hacktoberfest Events Code of Conduct when organizing or attending an event.
   </p>
 
-  <table class="table is-narrow is-narrow is-fullwidth">
+  <table class="table is-narrow is-narrow is-fullwidth event-table">
     <thead>
     <tr>
       <th><abbr title="Location">Location</abbr></th>
@@ -34,7 +33,9 @@
     </tbody>
   </table>
   <section>
-  <h2 class="title is-2">Have an event?</h2>
-    <iframe class="airtable-embed" src="https://airtable.com/embed/shrD5rVJ7kfZec5hD?backgroundColor=blue" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+  <h2 class="title is-2">Submit your Hacktoberfest 2019 event</h2>
+  <div>
+    <%= link_to 'Submit event', event_kit_path + "/#form" %>
+  </div>
   </section>
 </section>
