@@ -64,3 +64,10 @@ role :app, %w{deploy@167.99.59.27}
 # Staging specific options for capistrano/puma
 set :puma_threads, [0, 16]
 set :puma_workers, 8
+
+# Staging specific options for capistrano/sidekiq
+# Use as many cores (processes) as possible while under 100 total threads due to
+# license requirements
+set :sidekiq_processes, 8
+set :sidekiq_concurrency, 10
+

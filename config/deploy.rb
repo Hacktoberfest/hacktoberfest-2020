@@ -53,7 +53,7 @@ set :assets_roles, :app
 append :linked_files, '.env'
 before 'bundler:map_bins', 'dotenv:hook'
 set :env_file, ".env.#{fetch(:stage)}"
-set :dotenv_hook_commands, %w(bundle rake rails sidekiq puma pumactl)
+set :dotenv_hook_commands, %w(bundle rake rails sidekiq sidekiqctl puma pumactl)
 
 namespace :dotenv do
   desc 'Upload dotenv config .env.[staging|production]'
@@ -79,4 +79,12 @@ set :puma_control_app, false
 # set :puma_threads, [0, 16]
 # set :puma_workers, 8
 after 'puma:config', 'puma:phased-restart'
+
+
+# Shared options for capistrano/sidekiq
+# See: https://github.com/seuros/capistrano-sidekiq
+set :sidekiq_roles, :job
+# Worker and thread count options in stage specific config
+# set :sidekiq_processes, 8
+# set :sidekiq_concurrency, 10
 
