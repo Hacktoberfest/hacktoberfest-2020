@@ -313,6 +313,10 @@ main.home {
 
       .is-child {
         padding: 0;
+
+        .dev-logo {
+          transform: rotate(5deg);
+        }
       }
     }
 
