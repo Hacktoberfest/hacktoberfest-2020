@@ -127,7 +127,7 @@
     <!-- FEATURED EVENTS GENERATED HERE -->
     <section class="eventUnion">
       <% @meetups.map do |m| %>
-      <a href="">
+      <a href="<%= m["Event URL"] %>">
         <div class="box">
           <span class="eventMonth">
             <% formatted_date= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:long).split(" ") %>
