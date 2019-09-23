@@ -87,6 +87,10 @@ $break-med: 1288px;
     .footer-logos a {
       padding: 10px 5px;
 
+      .dev-logo {
+        transform: rotate(6deg)
+      }
+
       img:hover {
         opacity: 0.5;
         filter: alpha(opacity=50);
