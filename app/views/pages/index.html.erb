@@ -75,7 +75,6 @@
       You can contribute to any project on GitHub. Here are a few looking for some help:
     </p>
     <div class="grid">
-    <!-- FIXME: Add in max letter count... truncate long content -->
       <% @projects.map do |project| %>
        <a href="<%= project.url %>">
         <div class="box projects">
@@ -92,7 +91,6 @@
          </a>
       <% end %>
     </div>
-    <!-- FIXME: link to browse more on Github -->
     <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen&type=Issues">
       <button class="button" type="button" name="button">Browse more on Github</button>
       <!-- <%= link_to 'Browse more on Github', root_path, :class => 'button' %> -->
@@ -161,8 +159,7 @@
   <section class="tile is-ancestor">
     <section class="tile is-child is-4">
       <h4 class="title is-4 is-spaced">
-        <%= image_tag("DO-logo-white.png", :alt => "DO Logo") %>
-        DigitalOcean
+        <%= image_tag("DO-logo-footer.svg", :alt => "DO Logo") %>
       </h4>
       <p>
         We’re so excited to partner with
@@ -175,7 +172,7 @@
     </section>
     <section class="tile is-child is-4">
       <h4 class="title is-4 is-spaced">
-        <%= image_tag("DEV-logo-white.png", :alt => "DEV Logo") %>
+        <%= image_tag("DEV-logo-footer.svg", :alt => "DEV Logo") %>
       </h4>
       <p>
         As participants long before we became sponsors, we’re thankful to our friends at
