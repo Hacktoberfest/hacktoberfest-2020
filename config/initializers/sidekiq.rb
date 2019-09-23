@@ -12,6 +12,20 @@ if (redis_url = ENV.fetch('HACKTOBERFEST_REDIS_URL', nil))
   }
 end
 
+# Custom Error message reporting a job death to airbrake
+module Sidekiq
+  class JobDeathError < StandardError
+    def initialize(job, ex)
+      @job = job
+      @ex = ex
+    end
+
+    def message
+      "#{@job['class']} #{@job["jid"]} died with error #{@ex.message}."
+    end
+  end
+end
+
 Sidekiq.configure_server do |config|
   config.redis = REDIS_CONFIG if defined?(REDIS_CONFIG)
 
@@ -20,6 +34,13 @@ Sidekiq.configure_server do |config|
   config.periodic do |mgr|
     # first arg is chron tab syntax for "every day at 1 am"
     mgr.register('0 1 * * *', TransitionAllUsersJob, retry: 2, queue: "transition_all")
+  end
+
+  config.death_handlers << ->(job, ex) do
+    error = Sidekiq::JobDeathError.new(job,ex)
+    Airbrake.notify(error) do |notice|
+      notice[:context][:component] = 'sidekiq'
+    end
   end
 end
 
