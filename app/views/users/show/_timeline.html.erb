@@ -23,7 +23,7 @@
           <p> <%=  DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/> </p>
           <h3 class="title is-3">You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.url.split('/')[3] %><br/></h3>
         </div></td>
-          <% if pr.eligible? && @current_user.state == 'waiting' %>
+          <% if pr.eligible? && @current_user.state == 'waiting' && !@current_user.waiting_since.nil?%>
           <td><div>
             <p>Mature in:</p>
             <span class="countdown" >
