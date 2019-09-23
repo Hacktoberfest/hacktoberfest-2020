@@ -12,6 +12,7 @@ module Hacktoberfest
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts')
     config.active_job.queue_adapter = :sidekiq
+    config.cache_store = :redis_store, ENV['REDIS_CACHE_URL']
     config.require_master_key = false
   end
 end
