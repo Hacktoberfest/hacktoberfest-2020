@@ -50,6 +50,8 @@ class User < ApplicationRecord
     after_transition do |user, transition|
       UserStateTransitionSegmentService.call(user, transition)
     end
+
+    after transition on: :waiting, do: :log_date
   end
   # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
@@ -80,6 +82,10 @@ class User < ApplicationRecord
 
   def hacktoberfest_ended?
     Hacktoberfest.end_date.past?
+  end
+
+  def log_date
+    self.update(waiting_since: DateTime.now)
   end
 
   private
