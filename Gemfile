@@ -32,6 +32,7 @@ gem 'puma', '~> 4.0'
 gem 'rails', '~> 5.2.3'
 
 gem 'sass-rails', '~> 5.0'
+gem 'sidekiq', '< 6.0'
 
 source "https://enterprise.contribsys.com/" do
   gem 'sidekiq-pro'
@@ -76,6 +77,7 @@ group :development do
   gem 'capistrano-dotenv', require: false
   gem "capistrano-rails", "~> 1.4", require: false
   gem 'capistrano3-puma', "~> 4.0", require: false
+  gem 'capistrano-sidekiq', require: false
 
   gem 'guard-rspec', require: false
 

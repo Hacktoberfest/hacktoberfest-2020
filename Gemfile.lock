@@ -75,6 +75,9 @@ GEM
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano-sidekiq (1.0.2)
+      capistrano (>= 3.9.0)
+      sidekiq (>= 3.4)
     capistrano3-puma (4.0.0)
       capistrano (~> 3.7)
       capistrano-bundler
@@ -282,15 +285,15 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (4.1.2)
       activesupport (>= 4.2.0)
-    sidekiq (6.0.0)
-      connection_pool (>= 2.2.2)
-      rack (>= 2.0.0)
-      rack-protection (>= 2.0.0)
-      redis (>= 4.1.0)
-    sidekiq-ent (2.0.0)
-      einhorn (>= 0.7.4)
-      sidekiq (>= 6.0.0)
-      sidekiq-pro (>= 5.0.0)
+    sidekiq (5.2.7)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
+    sidekiq-ent (1.8.1)
+      einhorn (= 0.7.4)
+      sidekiq (>= 5.2.3)
+      sidekiq-pro (>= 4.0.4)
     sidekiq-pro (5.0.0)
       concurrent-ruby (>= 1.0.5)
       sidekiq (>= 5.2.7)
@@ -354,6 +357,7 @@ DEPENDENCIES
   capistrano-bundler (~> 1.6)
   capistrano-dotenv
   capistrano-rails (~> 1.4)
+  capistrano-sidekiq
   capistrano3-puma (~> 4.0)
   coffee-rails (~> 4.2)
   dotenv-rails
@@ -376,6 +380,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (~> 5.0)
   shoulda-matchers
+  sidekiq (< 6.0)
   sidekiq-ent!
   sidekiq-pro!
   spring
