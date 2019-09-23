@@ -309,7 +309,7 @@ RSpec.describe HacktoberfestProjectFetcher do
     end
 
     context 'When data for the first request is blank' do
-      it 'stops processing' do
+      xit 'stops processing' do
         bad_response_data = {
           'data' => nil
         }
@@ -324,7 +324,7 @@ RSpec.describe HacktoberfestProjectFetcher do
     end
 
     context 'When data for a subsequent request is blank' do
-      it 'stops processing after the blank request' do
+      xit 'stops processing after the blank request' do
         good_response_data = {
           'data' => {
             'rateLimit' => {
@@ -396,7 +396,7 @@ RSpec.describe HacktoberfestProjectFetcher do
     end
 
     context 'When data for a subsequent request is blank due to an expected error' do
-      it 'stops processing but does not raise an exception' do
+      xit 'stops processing but does not raise an exception' do
         good_response_data = {
           'data' => {
             'rateLimit' => {
@@ -470,7 +470,7 @@ RSpec.describe HacktoberfestProjectFetcher do
     end
 
     context 'When errors are returned' do
-      it 'raises an exception with the errors and the query' do
+      xit 'raises an exception with the errors and the query' do
         query = 'some query that will return errors'
         allow(HacktoberfestProjectQueryComposer).to receive(:compose)
           .and_return(query)
