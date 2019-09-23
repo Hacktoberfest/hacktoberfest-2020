@@ -22,7 +22,8 @@ $box-color: rgba(0, 0, 0, 0);
 
 main.home {
   text-align: left;
-  background-image: asset-url('polygon-photo-1.png'), asset-url('polygon-photo-2.png');
+  background-image: asset-url('polygon-photo-1.png'),
+    asset-url('polygon-photo-2.png');
   background-repeat: no-repeat;
   background-position: top 100px right 164px, top 40px right 0px;
 
@@ -316,7 +317,7 @@ main.home {
     }
 
     .is-ancestor {
-      width: $tile-width;
+      width: 100%;
     }
   }
 }
