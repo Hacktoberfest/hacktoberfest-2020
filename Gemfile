@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'faraday'
 gem 'faraday-http-cache'
 
+gem "health_check"
 
 gem 'jbuilder', '~> 2.5'
 
