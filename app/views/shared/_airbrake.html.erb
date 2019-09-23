@@ -1,0 +1,11 @@
+<script>
+  var airbrake = new airbrakeJs.Client({
+    projectId: "<%= ENV['AIRBRAKE_PROJECT_ID'] %>",
+    projectKey: "<%= ENV['AIRBRAKE_PROJECT_KEY'] %>"
+  });
+
+  airbrake.addFilter(function(notice) {
+    notice.context.environment = "<%= Rails.env %>";
+    return notice;
+  });
+</script>

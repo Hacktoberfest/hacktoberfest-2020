@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require jquery
 //= require vanilla-tilt
+//= require airbrake
 //= require_tree .
