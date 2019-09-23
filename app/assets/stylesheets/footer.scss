@@ -92,5 +92,12 @@ $break-med: 1288px;
         filter: alpha(opacity=50);
       }
     }
+
+    .footer-company-links a {
+      font-family: 'Space Mono Bold', monospace;
+      font-style: normal;
+      font-weight: bold;
+      color: hsl(320, 100%, 50%);
+    }
   }
 }
