@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.shared_examples 'tries transition' do
-  it 'tries to transition the user' do
+  it 'tries to transition the user', :vcr do
     expect(TryUserTransitionService).to receive(:call).and_return(true)
     get profile_path
   end
@@ -19,6 +19,9 @@ RSpec.describe UsersController, type: :request do
       mock_authentication(uid: user.uid)
       allow_any_instance_of(SegmentService).to receive(:identify)
       allow_any_instance_of(SegmentService).to receive(:track)
+
+      allow(Hacktoberfest).to receive(:ended?).and_return(:false)
+      allow(Hacktoberfest).to receive(:active?).and_return(:true)
 
       login
     end

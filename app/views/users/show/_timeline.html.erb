@@ -44,8 +44,16 @@
         </td>
         <script type="text/javascript">
           var elements = document.getElementsByClassName('countdown')
-          var date = "<%= @pull_requests.last.created_at %>"
-          countdownTimers(elements, date)
+          var date = "<%= 
+                          if @pull_requests.empty?
+                            false
+                          else
+                            @pull_requests.last.created_at
+                          end
+                            %>"
+          if (date != false) {
+            countdownTimers(elements, date)
+          }
         </script>
       </tbody>
     </table>
