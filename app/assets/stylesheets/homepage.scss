@@ -101,17 +101,18 @@ main.home {
   }
 
   .grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
     padding-bottom: 60px;
     margin: 0 auto;
 
     @media screen and (max-width: $break-small) {
-      flex-direction: column;
+      grid-template-columns: repeat(1, 1fr);
     }
-    .box:nth-child(3n + 3) {
-      margin-right: 0;
+
+    a:hover {
+      margin-top: -5px;
     }
   }
 
@@ -137,6 +138,9 @@ main.home {
     vertical-align: baseline;
     margin-bottom: 60px;
 
+    a:hover {
+      margin-top: -5px;
+    }
     .box {
       display: flex;
       flex-direction: column;
@@ -159,6 +163,9 @@ main.home {
     justify-content: flex-start;
     font-size: 14px;
     text-align: left;
+    margin-right: 0;
+    margin-top: 0;
+    width: 100%;
 
     .title-wrap {
       display: flex;
@@ -313,6 +320,10 @@ main.home {
 
       .is-child {
         padding: 0;
+
+        .dev-logo {
+          transform: rotate(5deg);
+        }
       }
     }
 

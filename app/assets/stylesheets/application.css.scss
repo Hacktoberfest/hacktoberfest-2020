@@ -78,6 +78,10 @@ $footer-padding: 130px 135px 20px 135px;
 // -- title
 $title-color: $white;
 $title-size: $size-1;
+.title.is-1,
+.title.is-2 {
+  font-weight: 400;
+}
 
 // -- box
 $box-color: $grey;
