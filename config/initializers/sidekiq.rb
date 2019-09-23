@@ -37,7 +37,10 @@ Sidekiq.configure_server do |config|
   end
 
   config.death_handlers << ->(job, ex) do
-    raise(Sidekiq::JobDeathError.new(job,ex))
+    error = Sidekiq::JobDeathError.new(job,ex)
+    Airbrake.notify(error) do |notice|
+      notice[:context][:component] = 'sidekiq'
+    end
   end
 end
 
