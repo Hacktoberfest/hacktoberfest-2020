@@ -11,8 +11,7 @@
       <th><abbr title="Location">Location</abbr></th>
       <th><abbr title="Event">Event</abbr></th>
       <th><abbr title="Date">Date</abbr></th>
-      <th><abbr title="Start Time">Start Time</abbr></th>
-      <th><abbr title="End Time">End Time</abbr></th>
+      <th><abbr title="Start Time">start time</abbr></th>
       <th><abbr title="Organized by">Organized by</abbr></th>
       <th><abbr title="RSVP">RSVP</abbr></th>
     </tr>
@@ -22,11 +21,12 @@
       <tr>
         <td><%= m["Event City"] %>, <%= m["Event Country"] %></td>
         <td><%= m["Event Name"] %></td>
-        <td><%= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short) %></td>
+        <% date_time_info = DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short).split(' ') %>
+
+        <td><%= date_time_info[1] + " " +  date_time_info[0]  %></td>
 <!-- //FIGMA dictates a start time column date but currently date and start time are being pulled together -->
-        <td>START TIME ONLY GOES HERE</td>
+        <td><%= DateTime.parse( m["Event Start Date/Time"]).strftime("%I:%M %p") %></td>
 <!-- //FIGMA dictates an end date column but no end date is being pulled currently -->
-        <td>END DATE GOES HERE</td>
         <td><%= m["Event Organizer"] %></td>
         <td><a href="<%= m["Event URL"] %>">view more details <a/></td>
       </tr>
