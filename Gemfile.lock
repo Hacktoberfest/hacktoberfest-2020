@@ -75,6 +75,9 @@ GEM
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano-sidekiq (1.0.2)
+      capistrano (>= 3.9.0)
+      sidekiq (>= 3.4)
     capistrano3-puma (4.0.0)
       capistrano (~> 3.7)
       capistrano-bundler
@@ -354,6 +357,7 @@ DEPENDENCIES
   capistrano-bundler (~> 1.6)
   capistrano-dotenv
   capistrano-rails (~> 1.4)
+  capistrano-sidekiq
   capistrano3-puma (~> 4.0)
   coffee-rails (~> 4.2)
   dotenv-rails
