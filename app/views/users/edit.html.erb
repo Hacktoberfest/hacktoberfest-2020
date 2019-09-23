@@ -22,14 +22,15 @@
     <h1 class="title is-1">About you</h1>
     <p>Please confirm your email address and accept terms. We’ll be in touch with details about redeeming a shirt and/or stickers once Hacktoberfest is over. </p>
      <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
-      <% if @current_user.errors.any? %>
-         <p class="error"><%= @current_user.errors.full_messages %></p>
-      <% end %>
       <%= f.select :email, @emails %>
      <p> Sign up for marketing emails: <%= f.check_box :marketing_emails %><br />
 
       I have read and understand Terms & Conditions : <%= f.check_box :terms_acceptance %></p>
       <%= f.submit 'Start Hacking', :class => 'button'%>
+
+      <% if @current_user.errors.messages[:terms_acceptance].include?("must be accepted")  %>
+         <p class="error">You must accept the terms and conditions to participate in Hactoberfest.</p>
+      <% end %>
     <% end %>
   </div>
 </section>
