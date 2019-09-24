@@ -1,0 +1,2 @@
+class IssueStateFetcherInvalidRepoError < IssueStateFetcherError
+end
