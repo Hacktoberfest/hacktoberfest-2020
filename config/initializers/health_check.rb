@@ -43,12 +43,15 @@ HealthCheck.setup do |config|
   # You can define multiple tests under the same name - they will be run one after the other.
   config.add_custom_check('mem_cache') do
     # Success if mem_mache is not being used
-    return '' unless (mem_cache_url = ENV.fetch('MEM_CACHE_URL', nil))
-
-    alive = Rails.cache.stats.fetch(mem_cache_url)&.fetch('pid').present?
-    return '' if alive
-
-    "[mem_cache: error connecting to: `#{mem_cache_url}]`"
+    if (mem_cache_url = ENV.fetch('MEM_CACHE_URL', nil))
+      if Rails.cache.stats.fetch(mem_cache_url)&.fetch('pid').present?
+        ''
+      else
+        "[mem_cache: error connecting to: `#{mem_cache_url}`]"
+      end
+    else
+      ''
+    end
   end
 
   # max-age of response in seconds
