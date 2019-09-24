@@ -1,36 +1,3 @@
-<!-- <nav class="section">
-  <%= link_to 'Hacktoberfest', '/' %><br/>
-  <% if @current_user %>
-    <%= "Welcome #{@current_user.name}" %>
-    <%= link_to "View your profile", profile_path %>
-  <% else %>
-    <%= link_to "Sign in for Hacktoberfest with GitHub", login_path %>
-  <% end %>
-  <div>
-    <%= link_to 'Hacktoberfest', '/' %><br/>
-    <% if @current_user %>
-      <%= "Welcome #{@current_user.name}" %>
-      <%= link_to "View your profile", profile_path %>
-    <% else %>
-      <%= link_to "Sign in for Hacktoberfest with GitHub", login_path %>
-    <% end %>
-    <div>
-      <%= link_to "FAQ", faq_path %>
-    </div>
-    <div>
-      <% @meetups.first(4).map do |m| %>
-        <%= m["Event Name"] %><br/>
-        <%= m["Event City"] %><br/>
-        <%= m["Event Organizer"] %><br/>
-      <% end %>
-      <%= link_to "View all events", meetups_path %>
-    </div>
-    <div>
-      <%= link_to 'Logout', logout_path %>
-    </div>
-  </div>
-</nav> -->
-
 <main class="home">
 <section class="section">
   <div class="hero-body">
@@ -93,7 +60,6 @@
     </div>
     <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen&type=Issues">
       <button class="button" type="button" name="button">Browse more on GitHub</button>
-      <!-- <%= link_to 'Browse more on GitHub', root_path, :class => 'button' %> -->
     </a>
 
 
@@ -118,20 +84,7 @@
     </div>
     <a href="https://github.com/topics/climate-change">
       <button class="button" type="button" name="button">Browse more on GitHub</button>
-      <!-- <%= link_to 'Browse more on GitHub', root_path, :class => 'button' %> -->
     </a>
-
-
-    <!-- <h3 class="title is-3 is-spaced">Projects focused on climate change</h3> -->
-    <!-- <p class="p"> -->
-    <!-- Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change: -->
-    <!-- </p> -->
-    <!-- <section class="tile is-ancenstor"> -->
-    <!-- <div class="box"> TEST PROJECT BOX</div> -->
-    <!-- </section> -->
-    <!-- <a href=""> -->
-    <!-- <a class="button" type="button" name="button">Browse more on Github</a> -->
-    <!-- </a> -->
   </div>
   </section>
 <section class="eventsBlock">
