@@ -63,6 +63,7 @@ main.home {
 
     @media screen and (max-width: $break-small) {
       text-align: left;
+      margin-bottom: 80px;
     }
   }
 
@@ -98,6 +99,7 @@ main.home {
 
     @media screen and (max-width: $break-small) {
       text-align: left;
+      padding-top: 0px;
     }
   }
 
@@ -306,7 +308,7 @@ main.home {
   .sponsors {
     text-align: left;
     @media screen and (max-width: $break-small) {
-      margin-top: 700px;
+      margin-top: 560px;
     }
 
     .tile {
