@@ -7,6 +7,12 @@
 .sort {
   cursor: pointer;
 }
+.past{
+  .event_name:before{
+    content: "(Past event)";
+    color: rgb(210, 210, 210);
+  }
+}
 .emphasis {
   color: #FFF;
 }
