@@ -18,26 +18,27 @@
     </tr>
     </thead>
     <tbody class="list">
-      <% @meetups.map do |m| %>
-      <tr>
-        <td class="multisort is-hidden">
-          <%= m["Event Country"] %> 
-          <%= DateTime.parse( m["Event Start Date/Time"]).strftime("%m %d") %>
-        </td>
-        <td class="location">
-          <%= m["Event City"] %>,
-          <%= m["Event State"] || '' %>
-          <%= m["Event Country"] %>
-        </td>
-        <td class="event_name">
-          <a class="emphasis" href="<%= m["Event URL"] %>" target="blank" rel="noopener"><%= m["Event Name"] %></a>
-          <br/>
-          by <%= m["Event Organizer"] %>
-        </td>
-        <td class="date"><%= DateTime.parse( m["Event Start Date/Time"]).strftime("%b %e") %></td>
-      </tr>
+      <% unless @meetups.blank? %>
+        <% @meetups.map do |m| %>
+          <tr>
+            <td class="multisort is-hidden">
+              <%= m["Event Country"] %> 
+              <%= DateTime.parse( m["Event Start Date/Time"]).strftime("%m %d") %>
+            </td>
+            <td class="location">
+              <%= m["Event City"] %>,
+              <%= m["Event State"] || '' %>
+              <%= m["Event Country"] %>
+            </td>
+            <td class="event_name">
+              <a class="emphasis" href="<%= m["Event URL"] %>" target="blank" rel="noopener"><%= m["Event Name"] %></a>
+              <br/>
+              by <%= m["Event Organizer"] %>
+            </td>
+            <td class="date"><%= DateTime.parse( m["Event Start Date/Time"]).strftime("%b %e") %></td>
+          </tr>
+        <% end %>
       <% end %>
-    </tbody>
   </table>
   <section>
   <h2 class="title is-2">Submit your Hacktoberfest 2019 event</h2>
