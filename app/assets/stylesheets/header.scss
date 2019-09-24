@@ -93,6 +93,9 @@ $navColor: rgba(0, 0, 0, 0);
         padding: 0.5em 1em;
         color: white; /* .button has this, .navLink overriding it */
         margin-top: -0.5em; /* Keep all link text aligned */
+        @media screen and (max-width: $break-small) {
+          margin-top: 10px;
+        }
       }
 
       .dropdown-trigger {
@@ -172,7 +175,11 @@ $navColor: rgba(0, 0, 0, 0);
 
       .button.navLink:hover {
         color: $grey-darker;
-        border-bottom: none;
+        border-bottom: 0;
+        @media screen and (max-width: $break-small) {
+          margin-top: 10px;
+          padding-bottom: 7px;
+        }
       }
     }
   }
