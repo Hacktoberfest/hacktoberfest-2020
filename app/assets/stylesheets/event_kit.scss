@@ -1,6 +1,7 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$red: hsl(320, 100%, 50%);
 
 
 .event-kit-page{
@@ -10,10 +11,12 @@
     text-align: center;
   }
 
-
+  .pink-highlight {
+    color: $red;
+  }
   .title.is-2{
     margin-top: 5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.75rem;
   }
 
   .title.is-3{
@@ -25,13 +28,11 @@
     margin-bottom: 1.5rem;
   }
 
-  // .question-answer{
-  //   margin-bottom: 1rem;
-  //   padding-bottom: 1rem;
-  //
-  //   &:not(:last-child) {
-  //     border-bottom: 1px solid #1F2D4F;
-  //     border-radius: 4px;
-  //   }
-  // }
+  span.underline-div {
+    width: 75%;
+    height: 1px;
+    position: absolute;
+    background-color: $red;
+  }
+
 }
