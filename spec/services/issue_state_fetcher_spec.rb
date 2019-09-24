@@ -62,9 +62,11 @@ RSpec.describe IssueStateFetcher do
           }
         JSON_RESPONSE_BODY
         response = double(:response, body: json_response_body)
-        allow(RestClient).to receive(:post).and_return(response)
+        http_client = Hacktoberfest.client
+        allow(http_client).to receive(:post).and_return(response)
         access_token = "fake access token"
-        client = GithubGraphqlApiClient.new(access_token: access_token)
+        client = GithubGraphqlApiClient.new(access_token: access_token,
+                                            client: http_client)
         fetcher = IssueStateFetcher.new(api_client: client)
 
         fetched_issue_state = fetcher.fetch!(issue)
@@ -95,9 +97,11 @@ RSpec.describe IssueStateFetcher do
           }
         JSON_RESPONSE_BODY
         response = double(:response, body: json_response_body)
-        allow(RestClient).to receive(:post).and_return(response)
+        http_client = Hacktoberfest.client
+        allow(http_client).to receive(:post).and_return(response)
         access_token = "fake access token"
-        client = GithubGraphqlApiClient.new(access_token: access_token)
+        client = GithubGraphqlApiClient.new(access_token: access_token,
+                                            client: http_client)
         fetcher = IssueStateFetcher.new(api_client: client)
 
         fetched_issue_state = fetcher.fetch!(issue)
