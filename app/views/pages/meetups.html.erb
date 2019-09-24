@@ -22,8 +22,9 @@
         <% @meetups.map do |m| %>
           <tr>
             <td class="multisort is-hidden">
+              <%= DateTime.parse(m["Event Start Date/Time"]) > DateTime.yesterday ? 'Future' : 'Past'%>
               <%= m["Event Country"] %> 
-              <%= DateTime.parse( m["Event Start Date/Time"]).strftime("%m %d") %>
+              <%= DateTime.parse(m["Event Start Date/Time"]).strftime("%m %d") %>
             </td>
             <td class="location">
               <%= m["Event City"] %>,
