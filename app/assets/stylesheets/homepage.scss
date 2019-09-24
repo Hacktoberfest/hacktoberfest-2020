@@ -128,27 +128,6 @@ main.home {
     }
   }
 
-  .eventUnion {
-    display: flex;
-    justify-content: space-between;
-    vertical-align: baseline;
-    margin-bottom: 60px;
-
-    .box {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    @media screen and (max-width: $break-small) {
-      flex-direction: column;
-    }
-    .box span {
-      width: 100%;
-      float: left;
-    }
-  }
-
   .box.projects {
     position: relative;
     display: flex;
@@ -159,6 +138,7 @@ main.home {
     margin-right: 0;
     margin-top: 0;
     width: 100%;
+    background-color: transparent;
 
     .title-wrap {
       display: flex;
@@ -187,6 +167,28 @@ main.home {
       p.details {
         margin: 0;
       }
+    }
+  }
+
+  .eventUnion {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: baseline;
+    margin-bottom: 60px;
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    @media screen and (max-width: $break-small) {
+      flex-direction: column;
+    }
+    .box span {
+      width: 100%;
+      float: left;
     }
   }
 
