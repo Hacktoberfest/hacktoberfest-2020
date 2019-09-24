@@ -4,30 +4,39 @@
     Hacktoberfest events are organized by individuals and organizations in your community. (Thank you, everyone!) We kindly ask you to follow the Hacktoberfest Events Code of Conduct when organizing or attending an event.
   </p>
 
+<div id="meetups">
+  <input name="filter" class="search input" placeholder="Search for events" />
+  
+  <h2 class="highlight">Showing <span data-js="visible_event_count"> all <%= @meetups.length %></span> Events</h2>
+
   <table class="table is-narrow is-narrow is-fullwidth event-table">
     <thead>
     <tr>
-      <th><abbr title="Location">Location</abbr></th>
-      <th><abbr title="Event">Event</abbr></th>
-      <th><abbr title="Date">Date</abbr></th>
-      <th><abbr title="Start Time">start time</abbr></th>
-      <th><abbr title="Organized by">Organized by</abbr></th>
+      <th><abbr title="Location" class="sort" data-sort="location">Location</abbr></th>
+      <th><abbr title="Event" class="sort" data-sort="event_name">Event</abbr></th>
+      <th><abbr title="Date" class="sort" data-sort="date">Date</abbr></th>
       <th><abbr title="RSVP">RSVP</abbr></th>
     </tr>
     </thead>
-    <tbody>
+    <tbody class="list">
       <% @meetups.map do |m| %>
       <tr>
-        <td><%= m["Event City"] %>, <%= m["Event Country"] %></td>
-        <td><%= m["Event Name"] %></td>
-        <% date_time_info = DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:short).split(' ') %>
-
-        <td><%= date_time_info[1] + " " +  date_time_info[0]  %></td>
-<!-- //FIGMA dictates a start time column date but currently date and start time are being pulled together -->
-        <td><%= DateTime.parse( m["Event Start Date/Time"]).strftime("%I:%M %p") %></td>
-<!-- //FIGMA dictates an end date column but no end date is being pulled currently -->
-        <td><%= m["Event Organizer"] %></td>
-        <td><a href="<%= m["Event URL"] %>">view more details <a/></td>
+        <td class="multisort is-hidden">
+          <%= m["Event Country"] %> 
+          <%= DateTime.parse( m["Event Start Date/Time"]).strftime("%b %e") %>
+        </td>
+        <td class="location">
+          <%= m["Event City"] %>,
+          <%= m["Event State"] || '' %>
+          <%= m["Event Country"] %>
+        </td>
+        <td class="event_name">
+          <span class="emphasis"><%= m["Event Name"] %></span>
+          <br/>
+          by <%= m["Event Organizer"] %>
+        </td>
+        <td class="date"><%= DateTime.parse( m["Event Start Date/Time"]).strftime("%b %e") %></td>
+        <td class="rsvp_link"><a href="<%= m["Event URL"] %>">view more details <a/></td>
       </tr>
       <% end %>
     </tbody>
@@ -39,3 +48,13 @@
   </div>
   </section>
 </section>
+<script>
+  var event_count_display = document.querySelector('*[data-js="visible_event_count"]'),
+      meetupsList = new List('meetups', {
+    valueNames: ['multisort', 'location', 'event_name', 'date']
+  });
+  meetupsList.sort('multisort', { order: "asc" });
+  meetupsList.on('updated', function(){
+    event_count_display.innerText = meetupsList.visibleItems.length;
+  })
+</script>
