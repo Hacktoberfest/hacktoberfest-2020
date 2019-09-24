@@ -28,4 +28,9 @@ RSpec.describe IssueUpdateService do
       expect(Issue.find_by(id: bad_issue.id)).to be_nil
     end
   end
+
+  context 'When the issue has an updated state' do
+    xit 'updates the issue state' do
+    end
+  end
 end
