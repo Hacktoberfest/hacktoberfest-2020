@@ -1,12 +1,48 @@
+$break-small: 812px;
+$break-med: 1024px;
 $grey-dark: hsl(223.33, 32.14%, 32.94%);
+$grey-darker: hsl(222.5, 43.64%, 21.57%);
+
+.avatar {
+  padding-top: 20px;
+  padding-left: 25px;
+}
+
+.container {
+  text-align: center;
+}
+
+.congratulations-txt {
+  padding-left: 40px;
+}
+.code-button {
+  height: 68px !important;
+  width: 105px;
+  margin-right: 155px;
+  float: right !important;
+}
+
+.code-textarea {
+  background-color: $grey-dark !important;
+  float: left !important;
+}
 
 .profile-container {
-  margin-left: 100px;
-  margin-right: auto;
-  width: 1170px;
-  top: 236px;
+  display: inline-block;
+  justify-content: center;
+  background-color: $grey-darker;
 
-  box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.2);
+    @media screen and (max-width: $break-med) {
+      margin-left: 10%;
+    }
+
+    @media screen and (max-width: $break-small) {
+      margin-left: auto;
+      margin-right: auto;
+      width: 90vw !important;
+      flex-direction: column;
+      overflow: hidden;
+    }
 }
 
 .pre-launch-container {
@@ -20,6 +56,7 @@ $grey-dark: hsl(223.33, 32.14%, 32.94%);
 .timeline-container {
   padding-top: 20px;
   padding-left: 20px;
+  text-align: left;
 }
 
 .username {
@@ -29,21 +66,15 @@ $grey-dark: hsl(223.33, 32.14%, 32.94%);
   padding-left: 25px;
 }
 
-//will probably need to be updated
 .user-section {
   margin-left: auto;
   margin-right: auto;
-  width: 1170px;
   height: 160px;
   left: 135px;
   top: 236px;
   background:  $grey-dark;
 }
 
-.avatar {
-  padding-top: 20px;
-  padding-left: 25px;
-}
 
 .progress-msg {
   padding-top: 5px;
@@ -81,29 +112,19 @@ $grey-dark: hsl(223.33, 32.14%, 32.94%);
 }
 
 .hacktoberfest-winner {
-  background-image: asset-url('profile-hexagon.png');
+  background-image: url('profile-hexagon.png');
   background-color: #1F2D4F;
   background-position: left top -150px;
 }
 
-.congratulations-txt {
-  padding-left: 40px;
-}
-
 .progress-bar {
   margin-right: 20px;
-  margin-top: 23px;
   display: flex;
-}
-
-.code-button {
-  height: 68px !important;
-  width: 105px;
-  margin-right: 155px;
-  float: right !important;
-}
-
-.code-textarea {
-  background-color: $grey-dark !important;
-  float: left !important;
+  @media screen and (max-width: $break-med) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width:100%;
+    max-height:100%;
+    align-items: center;
+  }
 }
