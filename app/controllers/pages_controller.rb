@@ -15,10 +15,8 @@ class PagesController < ApplicationController
   end
 
   def meetups
-    binding.pry
     unless all_meetups.blank?
       current_meetups = all_meetups.select do |e|
-        DateTime.parse(e['Event Start Date/Time']) > DateTime.yesterday &&
           e['Published?'] == true
       end
 
