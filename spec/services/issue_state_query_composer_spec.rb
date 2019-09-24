@@ -14,9 +14,9 @@ RSpec.describe IssueStateQueryComposer do
       )
 
       expected_query = {
-        "query" => "query GetIssueState($ownerName: String!, $repoName: String!, $issueNumber: Int!) { rateLimit { cost limit remaining resetAt } repository(owner: $ownerName, name: $repoName) { issue(number: $issueNumber) { state } } }",
-        "variables" => { "ownerName" => owner_name, "repoName" => repo_name, "issueNumber" => issue_number }
-      }.to_json
+        query: "query GetIssueState($ownerName: String!, $repoName: String!, $issueNumber: Int!) { rateLimit { cost limit remaining resetAt } repository(owner: $ownerName, name: $repoName) { issue(number: $issueNumber) { state } } }",
+        variables: { ownerName: owner_name, repoName: repo_name, issueNumber: issue_number }
+      }
       expect(query).to eq expected_query
     end
   end
