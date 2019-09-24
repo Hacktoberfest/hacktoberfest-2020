@@ -10,8 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+ * Use Sass import lines rather than sprockets to import files!
  */
 
 // Loading in fonts
@@ -233,3 +232,4 @@ body {
 }
 
 @import 'bulma';
+@import '*';
