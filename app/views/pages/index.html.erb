@@ -97,6 +97,30 @@
     </a>
 
 
+    <a name="climate">
+      <h2 class="title is-2 is-spaced">Projects focused on climate change</h2>
+    </a>
+    <p class="p">
+      Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
+    </p>
+    <div class="grid">
+      <% @climate_repository.map do |repository| %>
+       <a href="<%= repository[:url] %>">
+        <div class="box projects">
+          <div class="title-wrap">
+            <h3 class="repo-name"> <%= repository[:name] %> </h3>
+            <span class="lang"><%= repository[:language] %></span>
+          </div>
+          <p class="description"><%= repository[:description] %></p>
+        </div>
+         </a>
+      <% end %>
+    </div>
+    <a href="https://github.com/topics/climate-change">
+      <button class="button" type="button" name="button">Browse more on Github</button>
+      <!-- <%= link_to 'Browse more on Github', root_path, :class => 'button' %> -->
+    </a>
+
 
     <!-- <h3 class="title is-3 is-spaced">Projects focused on climate change</h3> -->
     <!-- <p class="p"> -->
