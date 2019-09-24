@@ -1,6 +1,7 @@
 $break-small: 1024px;
 $red: hsl(320, 100%, 50%);
 $purple: hsl(286.79, 73.68%, 44.71%);
+$grey-dark: hsl(223, 32%, 33%);
 
 
 .event-kit-page{
@@ -35,6 +36,14 @@ $purple: hsl(286.79, 73.68%, 44.71%);
     @media screen and (max-width: $break-med) {
       left: 10%;
     }
+  }
+
+  .secondary-box {
+    background-color: $grey-dark;
+  }
+
+  .box-text {
+    color: white;
   }
 
   .steps-list {
