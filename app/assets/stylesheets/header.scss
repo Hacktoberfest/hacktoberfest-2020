@@ -125,6 +125,7 @@ $navColor: rgba(0, 0, 0, 0);
               font-size: 0.875rem;
               padding: 0;
               text-align: center;
+              height: 25px;
             }
           }
 
@@ -135,6 +136,7 @@ $navColor: rgba(0, 0, 0, 0);
 
             @media screen and (max-width: $break-small) {
               background-color: transparent;
+              border-bottom: 2px solid #fff922;
             }
           }
 
@@ -161,7 +163,6 @@ $navColor: rgba(0, 0, 0, 0);
 
         @media screen and (max-width: $break-small) {
           padding-bottom: 2px;
-          border-bottom: 2px solid #fff922;
         }
       }
     }
