@@ -1,0 +1,35 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.event-kit-page{
+  .title.is-1{
+    font-size: 2.5rem;
+  }
+
+
+  .title.is-2{
+    margin-top: 5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .title.is-3{
+    margin-top: 2rem;
+  }
+
+  .title.is-4{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .question-answer{
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #1F2D4F;
+      border-radius: 4px;
+    }
+  }
+}
