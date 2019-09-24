@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     mount Sidekiq::Web, at: "/sidekiq"
   end
 
+  health_check_routes
+
   unless Rails.env.production?
     get '/impersonate/:id', to: 'sessions#impersonate', as: :impersonate
   end
