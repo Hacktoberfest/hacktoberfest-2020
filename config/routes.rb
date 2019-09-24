@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   patch '/register' => 'users#update', as: :register
   get '/faq', to: 'pages#faqs'
   get '/events', to: 'pages#meetups'
+  get '/meetups' => redirect('/events')
   get '/webinars', to: 'pages#webinars'
   get '/details', to: 'pages#details'
   get '/event-kit', to: 'pages#event_kit', as: :event_kit
