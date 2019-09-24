@@ -10,3 +10,18 @@
 .emphasis {
   color: #FFF;
 }
+.sort {
+  cursor: pointer;
+  &.asc, &.desc {
+    &::after {
+        margin-left: .25em;
+        text-decoration: none;
+    }
+  }
+  &.asc::after {
+    content: "▲";
+  }
+  &.desc::after {
+    content: "▼";
+  }
+}
