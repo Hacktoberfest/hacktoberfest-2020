@@ -5,6 +5,12 @@ $break-med: 1288px;
 .container.details {
   max-width: 650px;
   margin-bottom: 60px;
+
+  h1 {
+    a {
+      color: #fff;
+    }
+  }
 }
 
 .details-tabs {
