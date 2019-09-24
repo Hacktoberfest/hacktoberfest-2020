@@ -15,7 +15,6 @@
       <th><abbr title="Location" class="sort" data-sort="location">Location</abbr></th>
       <th><abbr title="Event" class="sort" data-sort="event_name">Event</abbr></th>
       <th><abbr title="Date" class="sort" data-sort="date">Date</abbr></th>
-      <th><abbr title="RSVP">RSVP</abbr></th>
     </tr>
     </thead>
     <tbody class="list">
@@ -31,12 +30,11 @@
           <%= m["Event Country"] %>
         </td>
         <td class="event_name">
-          <span class="emphasis"><%= m["Event Name"] %></span>
+          <a class="emphasis" href="<%= m["Event URL"] %>" target="blank" rel="noopener"><%= m["Event Name"] %></a>
           <br/>
           by <%= m["Event Organizer"] %>
         </td>
         <td class="date"><%= DateTime.parse( m["Event Start Date/Time"]).strftime("%b %e") %></td>
-        <td class="rsvp_link"><a href="<%= m["Event URL"] %>">view more details <a/></td>
       </tr>
       <% end %>
     </tbody>
