@@ -6,6 +6,7 @@ $break-med: 1350px;
 $yellow: hsl(58.37, 100%, 56.67%);
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
+$grey-darker: hsl(222, 45%, 21%); // box dark blue
 $white: hsl(0, 0%, 100%);
 $cyan: hsl(191.56, 100%, 78.63%);
 $purple: hsl(286.79, 73.68%, 44.71%);
@@ -34,7 +35,7 @@ main.home {
   }
 
   @media screen and (max-width: $break-small) {
-    background-position: top 440px right 164px, top 380px right 0px;
+    background-position: top 560px right 164px, top 480px right 0px;
   }
 
   .hero-body {
@@ -62,6 +63,7 @@ main.home {
 
     @media screen and (max-width: $break-small) {
       text-align: left;
+      margin-bottom: 80px;
     }
   }
 
@@ -97,6 +99,7 @@ main.home {
 
     @media screen and (max-width: $break-small) {
       text-align: left;
+      padding-top: 0px;
     }
   }
 
@@ -138,7 +141,7 @@ main.home {
     margin-right: 0;
     margin-top: 0;
     width: 100%;
-    background-color: transparent;
+    background-color: $grey-darker;
 
     .title-wrap {
       display: flex;
@@ -305,7 +308,7 @@ main.home {
   .sponsors {
     text-align: left;
     @media screen and (max-width: $break-small) {
-      margin-top: 700px;
+      margin-top: 560px;
     }
 
     .tile {
