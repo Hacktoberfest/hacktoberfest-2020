@@ -50,7 +50,16 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
   padding-right: 150px;
   padding-left: 300px;
   padding-right: 300px;
-  min-height: 400px
+  min-height: 400px;
+
+  @media screen and (max-width: $break-med) {
+    padding-right: 0px;
+    padding-left: 0px;  }
+
+  @media screen and (max-width: $break-small) {
+    padding-right: 0px;
+    padding-left: 0px;  }
+
 }
 
 .timeline-container {
