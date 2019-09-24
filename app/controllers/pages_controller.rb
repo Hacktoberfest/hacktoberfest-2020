@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   def meetups
     unless all_meetups.blank?
       current_meetups = all_meetups.select do |e|
-        DateTime.parse(e['Event Start Date/Time']) > DateTime.now
+        DateTime.parse(e['Event Start Date/Time']) > DateTime.yesterday
       end
 
       @meetups = current_meetups.sort_by { |e| e['Event Start Date/Time'] }
