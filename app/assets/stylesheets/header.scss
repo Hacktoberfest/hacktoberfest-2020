@@ -87,6 +87,14 @@ $navColor: rgba(0, 0, 0, 0);
         }
       }
 
+      .button.navLink {
+        height: auto;
+        min-height: auto;
+        padding: 0.5em 1em;
+        color: white; /* .button has this, .navLink overriding it */
+        margin-top: -0.5em; /* Keep all link text aligned */
+      }
+
       .dropdown-trigger {
         @media screen and (max-width: $break-small) {
           display: none;
@@ -151,10 +159,6 @@ $navColor: rgba(0, 0, 0, 0);
         }
       }
 
-      .callOutLink {
-        color: rgb(161, 30, 198);
-      }
-
       .navLink:hover,
       .active {
         padding-bottom: 5px;
@@ -164,6 +168,11 @@ $navColor: rgba(0, 0, 0, 0);
         @media screen and (max-width: $break-small) {
           padding-bottom: 2px;
         }
+      }
+
+      .button.navLink:hover {
+        color: $grey-darker;
+        border-bottom: none;
       }
     }
   }
