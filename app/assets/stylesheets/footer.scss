@@ -10,6 +10,11 @@ $break-med: 1288px;
   background-repeat: no-repeat;
   min-height: 1040px;
 
+  @media screen and (max-width: $break-small) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   h2 {
     padding-top: 40px;
   }
@@ -78,11 +83,15 @@ $break-med: 1288px;
   .footer-end {
     text-align: center;
     position: relative;
-    top: 250px;
+    top: 220px;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 3px;
     text-transform: uppercase;
+
+    @media screen and (max-width: $break-small) {
+      top: 0px;
+    }
 
     .footer-logos {
       padding: 10px 5px;
@@ -108,7 +117,7 @@ $break-med: 1288px;
     .footer-company-links a {
       font-family: 'Space Mono Bold', monospace;
       font-style: normal;
-      font-weight: bold;
+      font-weight: 400;
       color: hsl(320, 100%, 50%);
     }
   }
