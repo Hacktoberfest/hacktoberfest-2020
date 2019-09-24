@@ -1,6 +1,4 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$break-small: 1024px;
 $red: hsl(320, 100%, 50%);
 $purple: hsl(286.79, 73.68%, 44.71%);
 
@@ -30,16 +28,17 @@ $purple: hsl(286.79, 73.68%, 44.71%);
   }
 
   span.underline-div {
-    width: 75%;
+    width: 80vw;
     height: 1px;
     position: absolute;
     background-color: $red;
+    @media screen and (max-width: $break-med) {
+      left: 10%;
+    }
   }
 
   .steps-list {
     margin-left: 3%
   }
-
-
 
 }
