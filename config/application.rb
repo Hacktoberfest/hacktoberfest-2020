@@ -13,5 +13,9 @@ module Hacktoberfest
     config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts')
     config.active_job.queue_adapter = :sidekiq
     config.require_master_key = false
+
+    if (mem_cache_url = ENV.fetch('MEM_CACHE_URL', nil))
+      config.cache_store = :mem_cache_store, mem_cache_url
+    end
   end
 end
