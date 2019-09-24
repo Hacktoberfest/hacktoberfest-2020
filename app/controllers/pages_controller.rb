@@ -15,7 +15,11 @@ class PagesController < ApplicationController
   end
 
   def meetups
-    @meetups = all_meetups.sort_by { |e| e['Event Start Date/Time'] }
+    current_meetups = all_meetups.select do |e|
+      DateTime.parse(e['Event Start Date/Time']) > DateTime.now
+    end
+
+    @meetups = current_meetups.sort_by { |e| e['Event Start Date/Time'] }
   end
 
   def webinars
