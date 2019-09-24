@@ -1,0 +1,34 @@
+$grow-time: 0.4s;
+$grow-scale: scale(1.04, 1.04);
+$grow-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+// $grow-timing-function: ease-out;
+.grow-shadow{
+  -webkit-transition: all $grow-time $grow-timing-function;
+  transition: all $grow-time $grow-timing-function;
+
+  &:hover {
+    -webkit-transform: $grow-scale;
+    transform: $grow-scale;
+  }
+
+  &::after {
+    content: "";
+    border-radius: 5px;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    // box-shadow: 0 5px 15px $purple;
+    opacity: 0;
+    -webkit-transition: all $grow-time $grow-timing-function;
+    transition: all $grow-time $grow-timing-function;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+

@@ -77,7 +77,7 @@
     <div class="grid">
       <% @projects.map do |project| %>
        <a href="<%= project.url %>">
-        <div class="box projects">
+        <div class="box projects grow-shadow">
           <div class="title-wrap">
             <h3 class="repo-name"> <%= project.repository_name %> </h3>
             <span class="lang"><%= project.language %></span>
@@ -126,7 +126,7 @@
     <section class="eventUnion">
       <% @meetups.map do |m| %>
       <a href="<%= m["Event URL"] %>">
-        <div class="box">
+        <div class="box grow-shadow">
           <span class="eventMonth">
             <% formatted_date= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:long).split(" ") %>
             <%= formatted_date[0] %>

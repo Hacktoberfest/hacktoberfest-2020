@@ -110,10 +110,6 @@ main.home {
     @media screen and (max-width: $break-small) {
       grid-template-columns: repeat(1, 1fr);
     }
-
-    a:hover {
-      margin-top: -5px;
-    }
   }
 
   .box {
@@ -138,9 +134,6 @@ main.home {
     vertical-align: baseline;
     margin-bottom: 60px;
 
-    a:hover {
-      margin-top: -5px;
-    }
     .box {
       display: flex;
       flex-direction: column;
