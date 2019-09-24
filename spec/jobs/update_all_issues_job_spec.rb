@@ -9,7 +9,7 @@ RSpec.describe UpdateAllIssuesJob, type: :job do
     2.times { FactoryBot.create(:issue) }
   end
 
-  it 'calls the IssueUpdateJob on all jobs' do
+  it 'calls the IssueUpdateJob for all issues' do
     expect(IssueUpdateJob).to receive(:perform_later).twice
     UpdateAllIssuesJob.perform_now
   end
