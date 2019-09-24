@@ -1,3 +1,36 @@
 .event-table {
   margin-top: 50px;
 }
+.search {
+  margin-bottom: 30px;
+}
+.sort {
+  cursor: pointer;
+}
+.past{
+  .event_name:before{
+    content: "(Past event)";
+    color: rgb(210, 210, 210);
+  }
+}
+.emphasis {
+  color: #FFF;
+}
+.sort {
+  cursor: pointer;
+  &.asc, &.desc {
+    &::after {
+        margin-left: .25em;
+        text-decoration: none;
+    }
+  }
+  &.asc::after {
+    content: "▲";
+  }
+  &.desc::after {
+    content: "▼";
+  }
+}
+td {
+  min-width: 90px;
+}

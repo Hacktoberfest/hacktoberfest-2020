@@ -16,7 +16,13 @@ class PagesController < ApplicationController
   end
 
   def meetups
-    @meetups = all_meetups.sort_by { |e| e['Event Start Date/Time'] }.reverse
+    unless all_meetups.blank?
+      current_meetups = all_meetups.select do |e|
+          e['Published?'] == true
+      end
+
+      @meetups = current_meetups.sort_by { |e| e['Event Start Date/Time'] }
+    end
   end
 
   def webinars
