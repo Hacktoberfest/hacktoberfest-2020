@@ -5,7 +5,9 @@
 
 .event-kit-page{
   .title.is-1{
-    font-size: 2.5rem;
+    font-size: 3.0rem;
+    font-weight: bold;
+    text-align: center;
   }
 
 
@@ -23,13 +25,13 @@
     margin-bottom: 1.5rem;
   }
 
-  .question-answer{
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-
-    &:not(:last-child) {
-      border-bottom: 1px solid #1F2D4F;
-      border-radius: 4px;
-    }
-  }
+  // .question-answer{
+  //   margin-bottom: 1rem;
+  //   padding-bottom: 1rem;
+  //
+  //   &:not(:last-child) {
+  //     border-bottom: 1px solid #1F2D4F;
+  //     border-radius: 4px;
+  //   }
+  // }
 }
