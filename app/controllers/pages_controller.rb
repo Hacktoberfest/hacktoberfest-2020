@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def index
     @meetups = featured_meetups.first(4)
     @projects = ProjectService.sample(9)
+    @climate_repository = ClimateProjectService.sample(3)
   end
 
   def faqs
