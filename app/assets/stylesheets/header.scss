@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $break-small: 1024px;
 $break-med: 1288px;
+$grey-darker: hsl(222, 45%, 21%); // box dark blue
+$black-bis: hsl(223.2, 54.35%, 18.04%); // background color
 
 header {
   margin: 30px 135px 100px 135px;
@@ -60,7 +62,7 @@ $navColor: rgba(0, 0, 0, 0);
 
   @media screen and (max-width: $break-small) {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin: 124px 0 20px 0;
   }
 
@@ -84,6 +86,33 @@ $navColor: rgba(0, 0, 0, 0);
           margin-left: 0;
         }
       }
+
+      .dropdown-menu {
+        padding-top: 15px;
+
+        .dropdown-content {
+          background-color: $grey-darker;
+          padding: 0;
+
+          .navLink {
+            margin-left: 0;
+            padding: 10px;
+            font-size: 12px;
+          }
+
+          .navLink:hover,
+          .dropdown-item:hover {
+            background-color: $black-bis;
+            border-bottom: 0;
+          }
+
+          .dropdown-divider {
+            background-color: $black-bis;
+            margin: 0;
+          }
+        }
+      }
+
       .callOutLink {
         color: rgb(161, 30, 198);
       }

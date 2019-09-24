@@ -176,6 +176,10 @@ body {
     margin: 0;
   }
 
+  .navbar-end {
+    align-items: flex-start;
+  }
+
   // Styles for background images
   .top-bgs::before {
     content: image-url('bg-left.png');

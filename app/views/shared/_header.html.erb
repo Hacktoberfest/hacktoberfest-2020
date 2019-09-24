@@ -9,24 +9,15 @@
       <li><%= link_to "details", details_path, :class => active_path_class?(details_path) + " navLink"  %></li>
       <li class="dropdown is-hoverable">
         <div class="dropdown-trigger">
-          <button class="navLink"  aria-haspopup="true" aria-controls="dropdown-menu">
-           <span class="active_path_class?(meetups_path)"> Events </span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
+          <a class="navLink"  aria-haspopup="true" aria-controls="dropdown-menu">Events</a>
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
-    <div class="dropdown-content">
-      <a href="#" class="dropdown-item">
-         <%= link_to "events", meetups_path, :class => "navLink"  %> 
-      </a>
-      <hr class="dropdown-divider">
-      <a href="#" class="dropdown-item">
-        With a divider
-      </a>
-    </div>
-  </div>
+          <div class="dropdown-content">
+            <%= link_to "event details", meetups_path, :class => "dropdown-item navLink"  %> 
+            <hr class="dropdown-divider">
+            <%= link_to "event kit", event_kit_path, :class => "dropdown-item navLink"  %> 
+          </div>
+        </div>
       </li>
       <li><%= link_to "faqs", faq_path, :class => active_path_class?(faq_path) + " navLink"  %></li>
       <li><%= link_to "start hacking", profile_path, :class => active_path_class?(profile_path) + " navLink callOutLink"  %></li>
