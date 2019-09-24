@@ -106,7 +106,7 @@
     <div class="grid">
       <% @climate_repository.map do |repository| %>
        <a href="<%= repository[:url] %>">
-        <div class="box projects">
+        <div class="box projects grow-shadow">
           <div class="title-wrap">
             <h3 class="repo-name"> <%= repository[:name] %> </h3>
             <span class="lang"><%= repository[:language] %></span>
@@ -150,7 +150,7 @@
     <section class="eventUnion">
       <% @meetups.map do |m| %>
       <a class="box grow-shadow" href="<%= m["Event URL"] %>">
- 
+
           <span class="eventMonth">
             <% formatted_date= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:long).split(" ") %>
             <%= formatted_date[0] %>
@@ -166,7 +166,7 @@
             <%= m["Event City"] %>, <%= m["Event Country"] %>
           </span>
           </div>
-  
+
       </a>
       <% end %>
     </section>
