@@ -1,109 +1,174 @@
+$break-small: 1024px;
 $grey-dark: hsl(223.33, 32.14%, 32.94%);
-
-.profile-container {
-  margin-left: 100px;
-  margin-right: auto;
-  width: 1170px;
-  top: 236px;
-
-  box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.2);
-}
-
-.pre-launch-container {
-  padding-top: 100px;
-  padding-right: 150px;
-  padding-left: 300px;
-  padding-right: 300px;
-  min-height: 400px
-}
-
-.timeline-container {
-  padding-top: 20px;
-  padding-left: 20px;
-}
-
-.username {
-  font-size: 24px;
-  line-height: 36px;
-  color: white;
-  padding-left: 25px;
-}
-
-//will probably need to be updated
-.user-section {
-  margin-left: auto;
-  margin-right: auto;
-  width: 1170px;
-  height: 160px;
-  left: 135px;
-  top: 236px;
-  background:  $grey-dark;
-}
+$grey-darker: hsl(222.5, 43.64%, 21.57%);
 
 .avatar {
-  padding-top: 20px;
-  padding-left: 25px;
+  padding-left: 30px;
 }
 
-.progress-msg {
-  padding-top: 5px;
-}
+.container.profile {
+  text-align: center;
+  margin: 0 auto;
 
-.progress-bar {
-  padding-right: 25px;
-  padding-left: 25px;
-}
+  .congratulations-txt {
+    padding-left: 40px;
+  }
+  .code-button {
+    height: 68px !important;
+    width: 105px;
+    margin-right: 155px;
+    float: right !important;
+  }
 
-.eligible-box {
-  width: 30px;
-  height: 30px;
-  background-color: #FF00AA;
-}
+  .code-textarea {
+    background-color: $grey-dark !important;
+    float: left !important;
+  }
 
-.pending-box {
-  width: 30px;
-  height: 30px;
-  background-color: #39486E;
-}
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $grey-darker;
 
-.ineligible-box {
-  width: 30px;
-  height: 30px;
-  background-color: #FF4E4E;
-}
+    @media screen and (max-width: $break-small) {
+      margin: 80px 30px 0 30px;
+    }
+  }
 
-.center-icon {
-  margin-left: 10px;
-}
+  .pre-launch-container {
+    padding-top: 100px;
+    max-width: 765px;
+    padding: 100px 30px;
+    min-height: 400px;
+    margin: 0 auto;
 
-.icon-box {
-  padding-top: 30px;
-}
+    h2 {
+      font-size: 44px;
+      line-height: 1.5em;
 
-.hacktoberfest-winner {
-  background-image: asset-url('profile-hexagon.png');
-  background-color: #1F2D4F;
-  background-position: left top -150px;
-}
+      @media screen and (max-width: $break-small) {
+        font-size: 32px;
+      }
+    }
 
-.congratulations-txt {
-  padding-left: 40px;
-}
+    @media screen and (max-width: $break-small) {
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+  }
 
-.progress-bar {
-  margin-right: 20px;
-  margin-top: 23px;
-  display: flex;
-}
+  .timeline-container {
+    padding-top: 20px;
+    padding-left: 20px;
+    text-align: left;
+  }
 
-.code-button {
-  height: 68px !important;
-  width: 105px;
-  margin-right: 155px;
-  float: right !important;
-}
+  .username {
+    font-size: 24px;
+    line-height: 36px;
+    color: white;
+    padding-left: 25px;
+  }
 
-.code-textarea {
-  background-color: $grey-dark !important;
-  float: left !important;
+  .user-section {
+    min-height: 160px;
+    left: 135px;
+    top: 236px;
+    background: $grey-dark;
+
+    .level {
+      min-height: 160px;
+      @media screen and (max-width: $break-small) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .level-left,
+      .level-right {
+        @media screen and (max-width: $break-small) {
+          padding: 20px;
+          flex-direction: column;
+        }
+      }
+
+      .level-left {
+        margin-top: 15px;
+      }
+
+      .level-left .avatar,
+      .level-left .username {
+        @media screen and (max-width: $break-small) {
+          padding: 0;
+        }
+      }
+
+      .level-right {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .progress-msg {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 1em;
+    @media screen and (max-width: $break-small) {
+      margin-bottom: 15px;
+    }
+  }
+
+  .eligible-box {
+    width: 30px;
+    height: 30px;
+    background-color: #ff00aa;
+  }
+
+  .pending-box {
+    width: 30px;
+    height: 30px;
+    background-color: #39486e;
+  }
+
+  .ineligible-box {
+    width: 30px;
+    height: 30px;
+    background-color: #ff4e4e;
+  }
+
+  .center-icon {
+    margin-left: 10px;
+  }
+
+  .icon-box {
+    padding-top: 30px;
+  }
+
+  .hacktoberfest-winner {
+    background-image: url('profile-hexagon.png');
+    background-color: #1f2d4f;
+    background-position: left top -150px;
+  }
+
+  .image {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20000px;
+    border: 2px solid #fff;
+  }
+
+  .progress-bar {
+    padding-right: 5px;
+    padding-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    @media screen and (max-width: $break-small) {
+      margin: 0 auto;
+      max-width: 70vw;
+      max-height: 100%;
+      align-items: center;
+      padding: 0;
+    }
+  }
 }
