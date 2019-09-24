@@ -7,7 +7,8 @@ module ProjectService
     issues = Issue
              .open_issues_with_unique_permitted_repositories
              .order(quality: :desc)
-             .limit(sample_size)
+             .limit(sample_size * 10)
+             .sample(sample_size)
     projects = issues.map { |issue| Project.new(issue) }
     projects
   end
