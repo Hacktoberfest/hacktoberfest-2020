@@ -1,8 +1,17 @@
 <main class="section is-fluid fluid-content-page">
   <h1 class="title is-1">What is Hacktoberfest?</h1>
   <p>Have questions? These are the most Frequently Asked Questions about Hacktoberfest.</p>
+  <section class="level section">
+    <a class="is-size-3" href="#generalSection">General</a>
+    <a class="is-size-3" href="#rulesSection">Rules</a>
+    <a class="is-size-3" href="#eventsSection">Events</a>
+    <a class="is-size-3" href="#shippingSection">Shipping</a>
+  </section>
+
   <div class="qa-section">
-    <h2 class="title is-2 highlight">General </h2>
+    <a name="generalSection">
+      <h2 class="title is-2 highlight">General </h2>
+    </a>
     <% @faqs_general.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
@@ -11,7 +20,9 @@
     <% end %>
   </div>
   <div class="qa-section">
-    <h2 class="title is-2 highlight">Rules</h2>
+    <a name="rulesSection">
+      <h2 class="title is-2 highlight">Rules</h2>
+    </a>
     <% @faqs_rules.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
@@ -20,7 +31,9 @@
     <% end %>
   </div>
   <div class="qa-section">
-    <h2 class="title is-2 highlight">Events </h2>
+    <a name="eventsSection">
+      <h2 class="title is-2 highlight">Events </h2>
+    </a>
     <% @faqs_events.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
@@ -29,7 +42,9 @@
     <% end %>
   </div>
   <div class="qa-section">
-    <h2 class="title is-2 highlight">Shipping </h2>
+    <a name="shippingSection">
+      <h2 class="title is-2 highlight">Shipping </h2>
+    </a>
     <% @faqs_shipping.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>

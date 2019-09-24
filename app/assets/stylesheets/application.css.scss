@@ -233,7 +233,13 @@ body {
   .error {
     color: hsl(320, 100%, 50%);
   }
+
+  strong{
+    color: $yellow;
+  }
 }
+
+
 
 @import 'bulma';
 @import '*';
