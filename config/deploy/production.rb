@@ -22,6 +22,8 @@
 # role :db,  %w{deploy@example.com}
 
 
+role :job, %w{deploy@157.245.215.208}
+role :app, %w{deploy@157.245.211.5 deploy@157.245.215.59}
 
 # Configuration
 # =============
