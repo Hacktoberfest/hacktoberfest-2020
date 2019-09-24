@@ -7,7 +7,18 @@
     <ul class="navbar-end">
       <li><%= link_to "home", root_path, :class => active_path_class?(root_path) + " navLink"  %></li>
       <li><%= link_to "details", details_path, :class => active_path_class?(details_path) + " navLink"  %></li>
-      <li><%= link_to "events", meetups_path, :class => active_path_class?(meetups_path) + " navLink"  %></li>
+      <li class="dropdown is-hoverable">
+        <div class="dropdown-trigger">
+          <a class="navLink"  aria-haspopup="true" aria-controls="dropdown-menu">Events</a>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <%= link_to "event details", meetups_path, :class => "dropdown-item navLink"  %> 
+            <hr class="dropdown-divider">
+            <%= link_to "event kit", event_kit_path, :class => "dropdown-item navLink"  %> 
+          </div>
+        </div>
+      </li>
       <li><%= link_to "faqs", faq_path, :class => active_path_class?(faq_path) + " navLink"  %></li>
       <li><%= link_to "start hacking", profile_path, :class => active_path_class?(profile_path) + " navLink callOutLink"  %></li>
     </ul>
