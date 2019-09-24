@@ -44,11 +44,11 @@ $break-med: 1288px;
     }
 
     .circle {
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       border-radius: 100px;
       padding: 3px 6px;
-      font-size: 8px;
+      font-size: 6px;
     }
 
     .yellow {
@@ -106,12 +106,19 @@ $break-med: 1288px;
 
   div:empty {
     width: 100%;
-    max-width: 325px;
+    max-width: 314px;
     height: 5px;
+    margin-left: 19px;
     background: hsla(0, 0%, 100%, 0.1);
     @media screen and (max-width: $break-phone) {
       display: none;
     }
+  }
+
+  div.right-bar:empty {
+    margin-left: 0;
+    margin-right: 14px;
+    max-width: 318px;
   }
 
   div.pink-line:empty {
