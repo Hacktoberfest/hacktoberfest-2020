@@ -7,7 +7,7 @@ RSpec.describe IssueUpdateJob, type: :job do
 
   let(:issue) { FactoryBot.create(:issue) }
 
-  it 'tries to transition the user' do
+  it 'calls the issue update service' do
     expect(IssueUpdateService).to receive(:call).once.with(issue)
     IssueUpdateJob.perform_now(issue.id)
   end
