@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/register' => 'users#edit', as: :register_form
   patch '/register' => 'users#update', as: :register
   get '/faq', to: 'pages#faqs'
-  get '/meetups', to: 'pages#meetups'
+  get '/events', to: 'pages#meetups'
   get '/webinars', to: 'pages#webinars'
   get '/details', to: 'pages#details'
   get '/event-kit', to: 'pages#event_kit', as: :event_kit
