@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   end
 
   def meetups
-    @meetups = all_meetups.sort_by { |e| e['Event Start Date/Time'] }.reverse
+    @meetups = all_meetups.sort_by { |e| e['Event Start Date/Time'] }
   end
 
   def webinars
