@@ -97,7 +97,8 @@ $navColor: rgba(0, 0, 0, 0);
         padding-top: 15px;
 
         @media screen and (max-width: $break-small) {
-          display: inline;
+          display: flex;
+          flex-direction: column;
           position: relative;
           padding-top: 0;
         }
