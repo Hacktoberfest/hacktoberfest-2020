@@ -3,22 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.fluid-content-page{
+.event-kit-page{
   .title.is-1{
     font-size: 2.5rem;
   }
 
-  .question, .question p{
-    color: $white;
-    margin: 0px;
+
+  .title.is-2{
+    margin-top: 5rem;
+    margin-bottom: 2.5rem;
   }
 
-  .qa-section{
-    margin-top: 4rem;
+  .title.is-3{
+    margin-top: 2rem;
+  }
 
-    .title.is-2{
-      margin-bottom: 2.5rem;
-    }
+  .title.is-4{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .question-answer{
