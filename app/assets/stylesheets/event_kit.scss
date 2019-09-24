@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $red: hsl(320, 100%, 50%);
+$purple: hsl(286.79, 73.68%, 44.71%);
 
 
 .event-kit-page{
@@ -34,5 +35,11 @@ $red: hsl(320, 100%, 50%);
     position: absolute;
     background-color: $red;
   }
+
+  .steps-list {
+    margin-left: 3%
+  }
+
+
 
 }
