@@ -32,20 +32,24 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
     background-color: $grey-darker;
 
     @media screen and (max-width: $break-small) {
-      margin: 30px;
+      margin: 80px 30px 0 30px;
     }
   }
 
   .pre-launch-container {
     padding-top: 100px;
-    max-width: 585px;
+    max-width: 765px;
     padding: 100px 30px;
     min-height: 400px;
     margin: 0 auto;
 
-    @media screen and (max-width: $break-med) {
-      padding-right: 0px;
-      padding-left: 0px;
+    h2 {
+      font-size: 44px;
+      line-height: 1.5em;
+
+      @media screen and (max-width: $break-small) {
+        font-size: 32px;
+      }
     }
 
     @media screen and (max-width: $break-small) {
