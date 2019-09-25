@@ -11,11 +11,11 @@ class ProfilePagePresenter
   end
 
   def display_timeline?
-     Hacktoberfest.active?
+    Hacktoberfest.active?
   end
 
-  def  dispay_results?
-     Hacktoberfest.ended?
+  def dispay_results?
+    Hacktoberfest.ended?
   end
 
   def score
