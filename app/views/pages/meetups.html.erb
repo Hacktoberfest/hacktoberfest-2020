@@ -37,7 +37,8 @@
                 <br/>
                 by <%= m["Event Organizer"] %>
               </td>
-              <td class="date"><%= DateTime.parse( m["Event Start Date/Time"]).strftime("%b %e") %></td>
+              <td class="date is-hidden"><%= DateTime.parse( m["Event Start Date/Time"]) %></td>
+              <td><%= DateTime.parse( m["Event Start Date/Time"]).strftime("%b %e") %></td>
             </tr>
         <% end %>
       <% end %>
