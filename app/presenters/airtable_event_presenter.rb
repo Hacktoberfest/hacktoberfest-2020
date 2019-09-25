@@ -22,7 +22,7 @@ class AirtableEventPresenter
   end
 
   def city
-    @event['Event City']
+    @event['Event City'] + ', '
   end
 
   def country
