@@ -41,12 +41,15 @@
   		max: 5,
   		speed: 300
     });
-    // <!-- Footer Logo Tilt -->
+  // Footer Logo Tilt
   	VanillaTilt.init(document.getElementById("footer-logo"), {
   		max: 7,
   		speed: 300
   	});
   </script>
+
+  <!-- Toggle visibility for FAQ items on click -->
+  <script type="text/javascript" src="../../assets/javascripts/visibility-toggle-faq.js"></script>
 
   <% if Rails.env.production? %>
     <script type="text/javascript">
