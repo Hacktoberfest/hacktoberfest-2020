@@ -103,11 +103,11 @@
     </p>
     <!-- FEATURED EVENTS GENERATED HERE -->
     <section class="eventUnion">
-      <% @events.map do |m| %>
-      <a class="box grow-shadow" href="<%= m["Event URL"] %>">
+      <% @events.map do |e| %>
+      <a class="box grow-shadow" href="<%= e.url %>">
 
           <span class="eventMonth">
-            <% formatted_date= DateTime.parse(m["Event Start Date/Time"]).to_formatted_s(:long).split(" ") %>
+            <% formatted_date= e.date.to_formatted_s(:long).split(" ") %>
             <%= formatted_date[0] %>
           </span>
           <span class="eventDay">
@@ -115,10 +115,10 @@
           </span>
           <div>
           <span class="eventTitle">
-            <%= m["Event Name"] %>
+            <%= e.name %>
           </span>
           <span class="eventLocation">
-            <%= m["Event City"] %>, <%= m["Event Country"] %>
+            <%= e.city %>, <%= e.country %>
           </span>
           </div>
 

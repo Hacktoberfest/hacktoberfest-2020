@@ -2,7 +2,7 @@
 
 class PagesController < ApplicationController
   def index
-    @events = featured_meetups.first(4)
+    @events = all_events.select(&:featured?).first(4)
     @projects = ProjectService.sample(9)
     @climate_repository = ClimateProjectService.sample(3)
   end
@@ -17,9 +17,7 @@ class PagesController < ApplicationController
 
   def events
     unless all_events.blank?
-      events = all_events.map { |e| ::AirtableEventPresenter.new(e) }
-
-      @events = @events = events.select(&:published?)
+      @events = all_events.select(&:published?)
     end
   end
 
@@ -34,10 +32,10 @@ class PagesController < ApplicationController
   private
 
   def all_events
-    AirrecordTable.new.table('Meetups').all
-  end
-
-  def featured_events
-    all_events.select{ |m| m.fields.key?('Featured?') }
+    unless AirrecordTable.new.table('Meetups').all.blank?
+      AirrecordTable.new.table('Meetups').all.map do |e|
+        ::AirtableEventPresenter.new(e)
+      end
+    end
   end
 end
