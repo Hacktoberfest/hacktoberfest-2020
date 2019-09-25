@@ -1,5 +1,8 @@
-function formModal(form) {
+$(document).on('turbolinks:load', function() {
   if (window.location.href.includes('form')) {
-    $(form).addClass('is-active')
+    $('.modal').addClass('is-active')
   }
-}
+  $('#close-modal').click(function() {
+    $('.modal').removeClass('is-active')
+  });
+});
