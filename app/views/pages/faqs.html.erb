@@ -24,8 +24,8 @@
       <h2 class="title is-2 highlight">General </h2>
     </a>
     <% @faqs_general.map do |q| %>
-      <div class="question-answer expand">
-        <div class="question"><%= markdown(q["Question"])%> <span class="is-size-3">&#x2304;</span></div>
+      <div class="question-answer">
+        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
       </div>
     <% end %>
@@ -36,9 +36,8 @@
     </a>
     <% @faqs_rules.map do |q| %>
       <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3">&#x2304;</span>
-          <div class="answer hidden"> <%= markdown q["Answer"] %></div>
-        </div>
+        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
+        <div class="answer hidden"> <%= markdown q["Answer"] %></div>
       </div>
     <% end %>
   </div>
@@ -48,7 +47,7 @@
     </a>
     <% @faqs_events.map do |q| %>
       <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3">&#x2304;</span></div>
+        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
       </div>
     <% end %>
@@ -59,7 +58,7 @@
     </a>
     <% @faqs_shipping.map do |q| %>
       <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3">&#x2304;</span></div>
+        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
       </div>
     <% end %>
