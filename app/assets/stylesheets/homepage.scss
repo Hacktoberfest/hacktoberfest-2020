@@ -59,7 +59,7 @@ main.home {
   .section2 {
     margin-top: 0;
     padding-top: 40px;
-    margin-bottom: 150px;
+    margin-bottom: 200px;
 
     p {
       margin: 20px 0 60px 0;
@@ -77,6 +77,9 @@ main.home {
     }
   }
 
+  .section2.space {
+    margin-bottom: 180px;
+  }
   .space {
     @media screen and (max-width: $break-small) {
       margin-top: 620px;
