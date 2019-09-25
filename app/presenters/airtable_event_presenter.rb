@@ -14,15 +14,11 @@ class AirtableEventPresenter
   end
 
   def state
-    unless @event["Event State"].blank? 
-      @event["Event State"] + ', '
-    else
-      ' '
-    end
+     @event["Event State"]
   end
 
   def city
-    @event['Event City'] + ', '
+    @event['Event City']
   end
 
   def country
@@ -30,7 +26,19 @@ class AirtableEventPresenter
   end
 
   def location
-    city + state + country
+    location = ""
+
+    unless city.blank?
+      location += "#{city}, "
+    end
+
+    unless state.blank?
+      location += "#{state}, "
+    end
+
+    location += country
+
+    location
   end
 
   def url
