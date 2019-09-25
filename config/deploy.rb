@@ -82,6 +82,20 @@ set :puma_control_app, false
 after 'puma:config', 'puma:phased-restart'
 
 
+namespace :nginx do
+  %w[restart start stop].map do |command|
+    desc "#{command} nginx"
+    task command do
+      on roles (fetch(:puma_role)) do
+        execute :sudo, :service, :nginx, command
+      end
+    end
+  end
+end
+
+after 'puma:nginx_config', 'nginx:restart'
+
+
 # Shared options for capistrano/sidekiq
 # See: https://github.com/seuros/capistrano-sidekiq
 set :sidekiq_roles, :job
