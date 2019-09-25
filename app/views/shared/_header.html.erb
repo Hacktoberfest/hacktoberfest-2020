@@ -13,9 +13,9 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
-            <%= link_to "view all events", events_path, :class => "dropdown-item navLink"  %>
+            <%= link_to "view all events", events_path, :class => active_path_class?(events_path, '') +  " dropdown-item navLink"  %>
             <hr class="dropdown-divider">
-            <%= link_to "event kit", event_kit_path, :class => "dropdown-item navLink"  %>
+            <%= link_to "event kit", event_kit_path, :class => active_path_class?(event_kit_path, '') +  " dropdown-item navLink"  %>
           </div>
         </div>
       </li>
