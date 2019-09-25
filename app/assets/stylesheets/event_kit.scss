@@ -38,9 +38,15 @@ $grey-dark: hsl(223, 32%, 33%);
     }
   }
 
-  // .secondary-box {
-  //   background-color: $grey-dark;
-  // }
+  .test {
+    padding-top: 0.10rem;
+    padding-left: 1.2rem;
+  }
+
+  .secondary-box {
+    background-color: $grey-dark;
+    padding: 20px;
+  }
 
   .box-text {
     color: white;
