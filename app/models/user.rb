@@ -50,6 +50,8 @@ class User < ApplicationRecord
     after_transition do |user, transition|
       UserStateTransitionSegmentService.call(user, transition)
     end
+
+    after_transition to: :waiting, do: :update_waiting_since
   end
   # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
@@ -80,6 +82,10 @@ class User < ApplicationRecord
 
   def hacktoberfest_ended?
     Hacktoberfest.end_date.past?
+  end
+
+  def update_waiting_since
+    update(waiting_since: DateTime.now)
   end
 
   private
