@@ -59,7 +59,7 @@ main.home {
   .section2 {
     margin-top: 0;
     padding-top: 40px;
-    margin-bottom: 160px;
+    margin-bottom: 150px;
 
     p {
       margin: 20px 0 60px 0;
@@ -73,7 +73,7 @@ main.home {
 
     @media screen and (max-width: $break-small) {
       text-align: left;
-      margin-bottom: 80px;
+      margin-bottom: 140px;
     }
   }
 
@@ -102,10 +102,6 @@ main.home {
     background-position: center;
     background-repeat: no-repeat;
     overflow-x: visible;
-
-    @media screen and (max-width: $break-small) {
-      margin-top: 60px;
-    }
   }
 
   .events {
@@ -328,7 +324,7 @@ main.home {
     margin-top: 40px;
 
     @media screen and (max-width: $break-small) {
-      margin-top: 600px;
+      margin-top: 530px;
     }
 
     .tile {
