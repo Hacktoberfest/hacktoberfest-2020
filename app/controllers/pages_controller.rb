@@ -2,7 +2,7 @@
 
 class PagesController < ApplicationController
   def index
-    @meetups = featured_meetups.first(4)
+    @events = featured_meetups.first(4)
     @projects = ProjectService.sample(9)
     @climate_repository = ClimateProjectService.sample(3)
   end
@@ -21,7 +21,7 @@ class PagesController < ApplicationController
         e['Published?'] == true
       end
 
-      @meetups = published_events.map { |e| ::AirtableEventPresenter.new(e) }
+      @events = published_events.map { |e| ::AirtableEventPresenter.new(e) }
     end
   end
 

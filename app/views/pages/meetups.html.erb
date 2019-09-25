@@ -4,7 +4,7 @@
 <div id="meetups">
   <input name="filter" class="search input" placeholder="Search for events" />
   
-  <h2 class="highlight">Showing <span data-js="visible_event_count"> all <%= @meetups.length %></span> Events</h2>
+  <h2 class="highlight">Showing <span data-js="visible_event_count"> all <%= @events.length %></span> Events</h2>
 
   <table class="table is-narrow is-narrow is-fullwidth event-table">
     <thead>
@@ -15,8 +15,8 @@
     </tr>
     </thead>
     <tbody class="list">
-      <% unless @meetups.blank? %>
-        <% @meetups.map do |e| %>
+      <% unless @events.blank? %>
+        <% @events.map do |e| %>
           <% if e.date > DateTime.yesterday%>
             <tr>
           <% else %>
