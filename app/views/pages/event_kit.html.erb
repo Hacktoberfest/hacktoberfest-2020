@@ -1,3 +1,11 @@
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <iframe class="airtable-embed" src="https://airtable.com/embed/shrD5rVJ7kfZec5hD?backgroundColor=blue" frameborder="0" onmousewheel="" width="100%" height="100%" style="background: transparent; border: 1px solid #ccc;"></iframe>
+  </div>
+  <button class="modal-close">x</button>
+</div>
+
 <div class="section is-fluid event-kit-page">
   <h1 class="highlight title is-1">Event Kit</h1>
   <h2 id="how-to" class="title is-2 pink-highlight">How to organize a Hacktoberfest-themed
@@ -219,12 +227,6 @@
     <p>Learn best practices for planning and running a
       Hacktoberfest event, handling challenges you might face, and creating the best
       collaborative environment.</p>
-    <form>
-      <div>
-        <input aria-label="Enter your email address" type="email" name="Email"
-               placeholder="Notify me of Organizer Webinars" class="input">
-        <button type="submit" class="button">Register Email</button></div>
-    </form>
     <h2 id="faqs" class="title is-2 pink-highlight">FAQs</h2>
     <span class="underline-div"></span>
     <h3 class="title is-3">Why organize a Hacktoberfest-themed meetup?</h3>
@@ -270,5 +272,8 @@
       <a href="mailto:hacktoberfestevents@digitalocean.com">hacktoberfestevents@digitalocean.com</a>.
     </p>
   </div>
-
+  <script type="text/javascript">
+    var form = document.getElementsByClassName('modal')
+    formModal(form)
+  </script>
 </div>
