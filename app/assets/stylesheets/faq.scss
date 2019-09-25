@@ -117,4 +117,16 @@
   .show{
     display: block;
   }
+
+  .chevron{
+    color: $cyan;
+    display: flex;
+    justify-content: right;
+  }
+
+  .exColAll{
+    position: sticky;
+    top: 90px;
+    right: 20px;
+  }
 }
