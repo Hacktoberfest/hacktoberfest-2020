@@ -29,7 +29,12 @@
               </td>
               <td class="location">
                 <%= m["Event City"] %>,
-                <%= m["Event State"] || '' %>
+                <%= unless m["Event State"].blank? 
+                      m["Event State"] + ','
+                    else
+                      ''
+                    end
+                %>
                 <%= m["Event Country"] %>
               </td>
               <td class="event_name">
