@@ -24,6 +24,7 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
+    <link rel="stylesheet" href="https://assets.digitalocean.com/cookieConsent/cookieConsent.css">
     <%= javascript_include_tag 'application' %>
     <%= render 'shared/airbrake' %>
     <%= render 'shared/segment' %>
@@ -47,16 +48,28 @@
   	});
   </script>
 
-  <% if Rails.env.production? %>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68219300-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-68219300-1');
+  <% if Rails.env.production? %> 
+    <script type="text/javascript">
+      window.cookieDomain = ".digitalocean.com";
+    </script>
+  <% else %>
+    <script type="text/javascript">
+      window.cookieDomain = window.location.hostname;
     </script>
   <% end %>
+
+  <script src="https://assets.digitalocean.com/cookieConsent/cookieConsent.js"></script>
+
+  <script>
+    window.addEventListener('cookieconsent_statuschange', function(e) {
+      if(e.detail.status === 'deny') { return; }
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-KHWBBT');
+    });
+  </script>
+    
   </body>
 </html>
