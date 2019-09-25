@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/meetups' => redirect('/events')
   get '/webinars', to: 'pages#webinars'
   get '/details', to: 'pages#details'
-  get '/eventkit', to: 'pages#event_kit', as: :eventkit
+  get '/eventkit', to: 'pages#event_kit', as: :event_kit
   get '/start' => 'pages#start', as: :start
   get '/thanks' => 'pages#thanks'
   get '/boom', to: 'boom#show'
