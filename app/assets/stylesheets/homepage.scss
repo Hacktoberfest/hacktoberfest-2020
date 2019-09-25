@@ -59,7 +59,7 @@ main.home {
   .section2 {
     margin-top: 0;
     padding-top: 40px;
-    margin-bottom: 110px;
+    margin-bottom: 160px;
 
     p {
       margin: 20px 0 60px 0;
@@ -96,16 +96,20 @@ main.home {
 
   .eventsBlock {
     margin-left: 0px;
-    height: 900px;
+    height: 800px;
     width: 100%;
     background-image: asset-url('bg-map.png');
     background-position: center;
     background-repeat: no-repeat;
     overflow-x: visible;
+
+    @media screen and (max-width: $break-small) {
+      margin-top: 60px;
+    }
   }
 
   .events {
-    padding-top: 150px;
+    padding-top: 30px;
 
     @media screen and (max-width: $break-small) {
       text-align: left;
@@ -321,8 +325,10 @@ main.home {
 
   .sponsors {
     text-align: left;
+    margin-top: 40px;
+
     @media screen and (max-width: $break-small) {
-      margin-top: 560px;
+      margin-top: 600px;
     }
 
     .tile {
