@@ -30,5 +30,7 @@
       <%= render 'users/show/pre_launch' %>
     </div>
     <% end %>
+
+    <%= link_to "Log out @#{@current_user.name}", logout_path, :class => "button" %>
   </div>
-</div> 
+</div>
