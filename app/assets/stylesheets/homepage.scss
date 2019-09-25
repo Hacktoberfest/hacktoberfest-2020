@@ -42,7 +42,7 @@ main.home {
     padding-top: 0;
     padding-left: 0;
     max-width: 620px;
-    margin-bottom: 140px;
+    margin-bottom: 130px;
     @media screen and (max-width: $break-small) {
       margin: 0 auto;
     }
@@ -57,9 +57,19 @@ main.home {
   }
 
   .section2 {
-    margin-top: 40px;
+    margin-top: 0;
     padding-top: 40px;
-    margin-bottom: 140px;
+    margin-bottom: 110px;
+
+    p {
+      margin: 20px 0 60px 0;
+    }
+
+    .climate {
+      h2 {
+        margin-top: 60px;
+      }
+    }
 
     @media screen and (max-width: $break-small) {
       text-align: left;
@@ -112,6 +122,10 @@ main.home {
 
     @media screen and (max-width: $break-small) {
       grid-template-columns: repeat(1, 1fr);
+    }
+
+    .box {
+      height: 100%;
     }
   }
 
