@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/meetups' => redirect('/events')
   get '/webinars', to: 'pages#webinars'
   get '/details', to: 'pages#details'
-  get '/event-kit', to: 'pages#event_kit', as: :event_kit
+  get '/eventkit', to: 'pages#event_kit', as: :eventkit
   get '/start' => 'pages#start', as: :start
   get '/thanks' => 'pages#thanks'
   get '/boom', to: 'boom#show'
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     Sidekiq::Web.use Rack::Auth::Basic do |username, password|
       ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_USERNAME"])) &
         ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_PASSWORD"]))
-    end 
+    end
     mount Sidekiq::Web, at: "/sidekiq" unless ENV["SIDEKIQ_PASSWORD"].blank?
   else
     mount Sidekiq::Web, at: "/sidekiq"
