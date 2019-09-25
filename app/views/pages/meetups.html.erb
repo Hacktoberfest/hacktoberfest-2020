@@ -1,8 +1,5 @@
 <section class="section">
   <h1 class="title is-1">Hacktoberfest events</h1>
-  <p>
-    Hacktoberfest events are organized by individuals and organizations in your community. (Thank you, everyone!) We kindly ask you to follow the Hacktoberfest Events <a href="https://do.co/hacktoberconduct">Code of Conduct</a> when organizing or attending an event.
-  </p>
 
 <div id="meetups">
   <input name="filter" class="search input" placeholder="Search for events" />
@@ -45,12 +42,33 @@
         <% end %>
       <% end %>
   </table>
-  <section>
-  <h2 class="title is-2">Submit your Hacktoberfest 2019 event</h2>
-  <div>
-    <%= link_to 'Submit event', event_kit_path + "/#form" %>
   </div>
+
+  <p>
+    New events will be added throughout Hacktoberfest – please check back soon!
+  </p>
+  
+  <section>
+    <br/>
+    <br/>
+    <div class="line-br">
+      <span class="line-br-1">-</span>
+      <span class="line-br-2">-</span>
+    </div>
+    <h2 class="title is-2">List your event</h2>
+    <p>
+      To add your Hacktoberfest 2019 event to this page, please <%= link_to 'share the event details here', event_kit_path + "/#form" %>
+    </p>
   </section>
+
+  <br/>
+  <br/>
+  <p>
+    <small>
+      Hacktoberfest events are organized by individuals and organizations in your community. (Thank you, everyone!) We kindly ask you to follow the <a href="https://do.co/hacktoberconduct">Hacktoberfest Events Code of Conduct</a> when organizing or attending an event.
+    </small>
+  </p>
+  
 </section>
 <script>
   var event_count_display = document.querySelector('*[data-js="visible_event_count"]'),
