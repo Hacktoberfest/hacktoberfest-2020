@@ -13,6 +13,7 @@ describe AirtableEventPresenter do
         "Event URL"=>"https://www.meetup.com",
         "Event Organizer"=>"Facebook Developers Circle Indore",
         "Published?"=>true,
+        "Featured?"=>true,
         "Contact Email"=>"test@mail.com",
         "Contact Name"=>"Mrinal Jain",
         "Agreed to CoC?"=>true,
@@ -43,6 +44,7 @@ describe AirtableEventPresenter do
         event['Event Country'])
       expect(event_presenter.url).to eq event['Event URL']
       expect(event_presenter.published?).to eq event['Published?']
+      expect(event_presenter.featured?).to eq event['Featured?']
     end
   end
 end

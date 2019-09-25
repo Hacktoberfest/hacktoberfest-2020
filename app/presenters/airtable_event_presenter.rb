@@ -52,4 +52,8 @@ class AirtableEventPresenter
   def published?
     @event['Published?']
   end
+
+  def featured?
+    @event['Featured?']
+  end
 end
