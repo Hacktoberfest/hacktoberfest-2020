@@ -13,14 +13,18 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
-            <%= link_to "view all events", events_path, :class => "dropdown-item navLink"  %> 
+            <%= link_to "view all events", events_path, :class => "dropdown-item navLink"  %>
             <hr class="dropdown-divider">
-            <%= link_to "event kit", event_kit_path, :class => "dropdown-item navLink"  %> 
+            <%= link_to "event kit", event_kit_path, :class => "dropdown-item navLink"  %>
           </div>
         </div>
       </li>
       <li><%= link_to "faqs", faq_path, :class => active_path_class?(faq_path) + " navLink"  %></li>
-      <li><%= link_to "start hacking", profile_path, :class => active_path_class?(profile_path) + "button navLink"  %></li>
+      <% if @current_user %>
+        <li><%= link_to "profile", profile_path, :class => active_path_class?(profile_path) + " button navLink"  %></li>
+      <% else %>
+        <li><%= link_to "start hacking", profile_path, :class => "button navLink"  %></li>
+      <% end %>
     </ul>
   </nav>
 </header>
