@@ -61,6 +61,7 @@ namespace :dotenv do
     invoke 'dotenv:read'
     invoke 'dotenv:setup'
     invoke 'puma:phased-restart'
+    invoke 'sidekiq:restart'
   end
 
   # We do not want to always upload a new .env file
@@ -79,6 +80,20 @@ set :puma_control_app, false
 # set :puma_threads, [0, 16]
 # set :puma_workers, 8
 after 'puma:config', 'puma:phased-restart'
+
+
+namespace :nginx do
+  %w[restart start stop].map do |command|
+    desc "#{command} nginx"
+    task command do
+      on roles (fetch(:puma_role)) do
+        execute :sudo, :service, :nginx, command
+      end
+    end
+  end
+end
+
+after 'puma:nginx_config', 'nginx:restart'
 
 
 # Shared options for capistrano/sidekiq
