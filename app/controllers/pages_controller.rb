@@ -15,7 +15,7 @@ class PagesController < ApplicationController
     @faqs_shipping = faq.select { |q| q.fields['Category'] == 'Shipping' }
   end
 
-  def meetups
+  def events
     unless all_events.blank?
       events = all_events.map { |e| ::AirtableEventPresenter.new(e) }
 
