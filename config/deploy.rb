@@ -61,6 +61,7 @@ namespace :dotenv do
     invoke 'dotenv:read'
     invoke 'dotenv:setup'
     invoke 'puma:phased-restart'
+    invoke 'sidekiq:restart'
   end
 
   # We do not want to always upload a new .env file
