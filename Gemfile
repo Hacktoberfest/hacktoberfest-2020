@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'dalli', '~> 2.7'
 
 gem 'faraday'
-gem 'faraday-http-cache'
+gem 'faraday_middleware'
 
 gem "health_check"
 
