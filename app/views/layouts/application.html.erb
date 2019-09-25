@@ -41,14 +41,14 @@
   		max: 5,
   		speed: 300
     });
-    // <!-- Footer Logo Tilt -->
+  // Footer Logo Tilt
   	VanillaTilt.init(document.getElementById("footer-logo"), {
   		max: 7,
   		speed: 300
   	});
   </script>
 
-  <% if Rails.env.production? %> 
+  <% if Rails.env.production? %>
     <script type="text/javascript">
       window.cookieDomain = ".digitalocean.com";
     </script>
@@ -60,7 +60,7 @@
 
   <script src="https://assets.digitalocean.com/cookieConsent/cookieConsent.js"></script>
 
-  <% if Rails.env.production? %> 
+  <% if Rails.env.production? %>
     <script>
       window.addEventListener('cookieconsent_statuschange', function(e) {
         if(e.detail.status === 'deny') { return; }
@@ -72,6 +72,5 @@
       });
     </script>
   <% end %>
-    
   </body>
 </html>
