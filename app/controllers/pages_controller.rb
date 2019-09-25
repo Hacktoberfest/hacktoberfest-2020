@@ -16,12 +16,12 @@ class PagesController < ApplicationController
   end
 
   def meetups
-    unless all_meetups.blank?
-      current_meetups = all_meetups.select do |e|
-          e['Published?'] == true
+     unless all_events.blank?
+      published_events = all_events.select do |e|
+        e['Published?'] == true
       end
 
-      @meetups = current_meetups.sort_by { |e| e['Event Start Date/Time'] }
+      @meetups = published_events.map { |e| ::AirtableEventPresenter.new(e) }
     end
   end
 
@@ -35,11 +35,11 @@ class PagesController < ApplicationController
 
   private
 
-  def all_meetups
+  def all_events
     AirrecordTable.new.table('Meetups').all
   end
 
-  def featured_meetups
-    all_meetups.select{ |m| m.fields.key?('Featured?') }
+  def featured_events
+    all_events.select{ |m| m.fields.key?('Featured?') }
   end
 end

@@ -16,34 +16,25 @@
     </thead>
     <tbody class="list">
       <% unless @meetups.blank? %>
-        <% @meetups.map do |m| %>
-          <% if DateTime.parse(m["Event Start Date/Time"]) > DateTime.yesterday%>
+        <% @meetups.map do |e| %>
+          <% if e.date > DateTime.yesterday%>
             <tr>
           <% else %>
             <tr class="past">
           <% end %>
               <td class="multisort is-hidden">
-                <%= DateTime.parse(m["Event Start Date/Time"]) > DateTime.yesterday ? 'Future' : 'Past'%>
-                <%= m["Event Country"] %> 
-                <%= DateTime.parse(m["Event Start Date/Time"]).strftime("%m %d") %>
+                <%= e.date > DateTime.yesterday ? 'Future' : 'Past'%>
+                <%= e.country %> 
+                <%= e.date.strftime("%m %d") %>
               </td>
-              <td class="location">
-                <%= m["Event City"] %>,
-                <%= unless m["Event State"].blank? 
-                      m["Event State"] + ','
-                    else
-                      ''
-                    end
-                %>
-                <%= m["Event Country"] %>
-              </td>
+              <td class="location"><%= e.location %></td>
               <td class="event_name">
-                <a class="emphasis" href="<%= m["Event URL"] %>" target="blank" rel="noopener"><%= m["Event Name"] %></a>
+                <a class="emphasis" href="<%= e.url %>" target="blank" rel="noopener"><%= e.name %></a>
                 <br/>
-                by <%= m["Event Organizer"] %>
+                by <%= e.organizer %>
               </td>
-              <td class="date is-hidden"><%= DateTime.parse( m["Event Start Date/Time"]) %></td>
-              <td><%= DateTime.parse( m["Event Start Date/Time"]).strftime("%b %e") %></td>
+              <td class="date is-hidden"><%= e.date %></td>
+              <td><%= e.date.strftime("%b %e") %></td>
             </tr>
         <% end %>
       <% end %>
