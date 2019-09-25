@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   # render current user profile
   def show
     TryUserTransitionService.call(@current_user)
-    @pull_requests = pull_request_timeline(@current_user.pull_requests)
   end
 
   # action to save registration
@@ -33,14 +32,6 @@ class UsersController < ApplicationController
       user.register
     else
       user.save
-    end
-  end
-
-  def pull_request_timeline(prs)
-    counter = 0
-    prs.take_while do |pr|
-      counter += 1 if pr.eligible?
-      counter <= 4
     end
   end
 

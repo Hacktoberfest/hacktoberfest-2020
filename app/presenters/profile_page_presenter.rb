@@ -18,6 +18,14 @@ class ProfilePagePresenter
     Hacktoberfest.ended?
   end
 
+  def pull_request_timeline
+    counter = 0
+    @user.pull_requests.take_while do |pr|
+      counter += 1 if pr.eligible?
+      counter <= 4
+    end
+  end
+
   def score
     @user.score
   end
