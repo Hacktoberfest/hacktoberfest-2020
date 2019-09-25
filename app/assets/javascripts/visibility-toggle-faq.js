@@ -16,13 +16,14 @@ window.onload = function() {
 
   // Expand single target item
   for(var i = 0; i< question.length; i++){
-    question[i].addEventListener("click", () => {
+    question[i].addEventListener("click", function() {
 
       //FIXME: THIS CODE WORKS BUT ONLY IF YOU CLICK CERTAIN AREA OF BLOCK (SLIGHTLY BELOW THE CHEVRON )
-      let temp = event.target;
+      let temp = this;
       let content = temp.querySelector(".answer");
       console.log(content);
         content.classList.toggle("hidden");
+
     })
   }
 
