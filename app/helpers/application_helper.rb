@@ -6,8 +6,8 @@ module ApplicationHelper
     Kramdown::Document.new(source.to_s).to_html.html_safe
   end
 
-  def active_path_class?(test_path)
-    return 'active' if request.path == test_path
+  def active_path_class?(test_path, test_path_2)
+    return 'active' if request.path == test_path || request.path == test_path_2
 
     ''
   end
