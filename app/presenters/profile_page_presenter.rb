@@ -11,10 +11,10 @@ class ProfilePagePresenter
   end
 
   def display_timeline?
-    Hacktoberfest.active?
+    Hacktoberfest.active? || (Hacktoberfest.ended? && !@user.won_hacktoberfest?)
   end
 
-  def dispay_results?
+  def display_results?
     Hacktoberfest.ended? && @user.won_hacktoberfest?
   end
 
