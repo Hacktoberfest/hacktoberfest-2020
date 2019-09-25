@@ -18,8 +18,6 @@ class AirrecordTable
       },
       request: { params_encoder: Airrecord::QueryString }
     ) do |conn|
-      conn.use :http_cache, store: Rails.cache, logger:
-      Rails.logger, serializer: Marshal
       conn.request :airrecord_rate_limiter, requests_per_second: 5
       conn.adapter :net_http_persistent
     end
