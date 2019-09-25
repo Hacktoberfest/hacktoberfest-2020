@@ -15,7 +15,7 @@ class ProfilePagePresenter
   end
 
   def dispay_results?
-    Hacktoberfest.ended?
+    Hacktoberfest.ended? && @user.won_hacktoberfest?
   end
 
   def pull_request_timeline
