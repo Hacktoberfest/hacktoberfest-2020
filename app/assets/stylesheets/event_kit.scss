@@ -28,19 +28,17 @@ $grey-dark: hsl(223, 32%, 33%);
     margin-bottom: 1.5rem;
   }
 
-  span.underline-div {
-    width: 80vw;
+  div.underline-div {
+    width: 100%;
     height: 1px;
-    position: absolute;
+    margin-top: 10px;
     background-color: $red;
-    @media screen and (max-width: $break-med) {
-      left: 10%;
-    }
   }
 
-  .test {
+  .sample-section {
     padding-top: 0.10rem;
     padding-left: 1.2rem;
+    overflow-wrap: break-word;
   }
 
   .box-text {
@@ -54,6 +52,10 @@ $grey-dark: hsl(223, 32%, 33%);
   .promote-list {
     margin-top: 35px;
     margin-bottom: 80px;
+  }
+
+  .promote-links-list {
+    list-style: disc;
   }
 
   .modal {
