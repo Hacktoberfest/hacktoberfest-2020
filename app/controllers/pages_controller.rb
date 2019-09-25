@@ -16,12 +16,10 @@ class PagesController < ApplicationController
   end
 
   def meetups
-     unless all_events.blank?
-      published_events = all_events.select do |e|
-        e['Published?'] == true
-      end
+    unless all_events.blank?
+      events = all_events.map { |e| ::AirtableEventPresenter.new(e) }
 
-      @events = published_events.map { |e| ::AirtableEventPresenter.new(e) }
+      @events = @events = events.select(&:published?)
     end
   end
 
