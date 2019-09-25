@@ -28,7 +28,7 @@ describe AirtableEventPresenter do
         "Submitted Time"=>"2019-09-24T20:58:11.000Z",
         "Event Start Date/Time (Real)"=>"10/19/2019 10:00"
       }
-      
+
       event_presenter = AirtableEventPresenter.new(event)
 
       expect(event_presenter.name).to eq event['Event Name']
@@ -42,6 +42,7 @@ describe AirtableEventPresenter do
         event['Event State'],
         event['Event Country'])
       expect(event_presenter.url).to eq event['Event URL']
+      expect(event_presenter.published?).to eq event['Published?']
     end
   end
 end

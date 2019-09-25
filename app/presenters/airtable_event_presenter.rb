@@ -48,4 +48,8 @@ class AirtableEventPresenter
   def organizer
     @event["Event Organizer"]
   end
+  
+  def published?
+    @event['Published?']
+  end
 end
