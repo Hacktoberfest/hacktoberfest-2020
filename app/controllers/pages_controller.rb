@@ -2,7 +2,7 @@
 
 class PagesController < ApplicationController
   def index
-    @meetups = featured_meetups.first(4)
+    @events = all_events.select(&:featured?).first(4)
     @projects = ProjectService.sample(9)
     @climate_repository = ClimateProjectService.sample(3)
   end
@@ -15,13 +15,9 @@ class PagesController < ApplicationController
     @faqs_shipping = faq.select { |q| q.fields['Category'] == 'Shipping' }
   end
 
-  def meetups
-    unless all_meetups.blank?
-      current_meetups = all_meetups.select do |e|
-          e['Published?'] == true
-      end
-
-      @meetups = current_meetups.sort_by { |e| e['Event Start Date/Time'] }
+  def events
+    unless all_events.blank?
+      @events = all_events.select(&:published?)
     end
   end
 
@@ -35,11 +31,13 @@ class PagesController < ApplicationController
 
   private
 
-  def all_meetups
-    AirrecordTable.new.table('Meetups').all
-  end
-
-  def featured_meetups
-    all_meetups.select{ |m| m.fields.key?('Featured?') }
+  def all_events
+    unless AirrecordTable.new.table('Meetups').all.blank?
+      AirrecordTable.new.table('Meetups').all.map do |e|
+        AirtableEventPresenter.new(e)
+      rescue AirtableEventPresenter::ParseError
+        #Ignore invalid events
+      end.compact
+    end
   end
 end
