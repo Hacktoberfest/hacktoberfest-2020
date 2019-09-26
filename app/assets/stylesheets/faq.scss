@@ -53,11 +53,53 @@
     position: relative;
     top: -29px;
     right: 0px;
+
+    @media screen and (max-width: $break-med) {
+      display: block;
+        margin-top: 40px;
+      // justify-content: right;
+      // position: relative;
+      // top: -29px;
+      // right: 0px;
+    }
+
+    @media screen and (max-width: $break-small) {
+      display: block;
+      margin-top: 40px;
+      // justify-content: right;
+      // position: relative;
+      // top: -29px;
+      // right: 0px;
+    }
   }
 
-  .exColAll{
-    position: sticky;
-    top: 90px;
-    right: 20px;
+  .ex-col-all{
+    position: relative;
+    right: 90;
+    padding: 1%;
+    margin-bottom: 40px;
+
+    @media screen and (max-width: $break-med) {
+      display: none;
+    }
+
+    @media screen and (max-width: $break-small) {
+      display: none;
+    }
+  }
+
+  #back-to-top {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 1;
+
+    @media screen and (max-width: $break-med) {
+      display: none;
+    }
+
+    @media screen and (max-width: $break-small) {
+      display: none;
+    }
   }
 }
