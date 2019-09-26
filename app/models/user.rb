@@ -72,6 +72,10 @@ class User < ApplicationRecord
     pull_request_service.matured_prs.count
   end
 
+  def timeline_pull_requests
+    pull_request_service.timeline_pull_requests
+  end
+
   def sufficient_eligible_prs?
     eligible_pull_requests_count >= 4
   end
