@@ -16,10 +16,6 @@ describe ProfilePagePresenter do
       expect(profile_presenter.display_pre_launch?).to eq(true)
     end
 
-    it 'does not display the profile timeline partial' do
-      expect(profile_presenter.display_timeline?).to eq(false)
-    end
-
     it 'does not display the results_partial' do
       expect(profile_presenter.display_results?).to eq(false)
     end
@@ -39,10 +35,6 @@ describe ProfilePagePresenter do
     it 'does not display the pre_launch partial' do
       expect(profile_presenter.display_pre_launch?).to eq(false)
     end
-
-    it 'does not display the timeline_partial' do
-      expect(profile_presenter.display_timeline?).to eq(false)
-    end
   end
 
   context 'Hacktoberfest has ended and the user has not won' do
@@ -53,12 +45,12 @@ describe ProfilePagePresenter do
       allow(user).to receive(:won_hacktoberfest?).and_return(false)
     end
 
-    it 'displays the profile timeline partial' do
-      expect(profile_presenter.display_timeline?).to eq(true)
-    end
-
     it 'does not display the results_partial' do
       expect(profile_presenter.display_results?).to eq(false)
+    end
+
+    it 'does not display the pre_launch partial' do
+      expect(profile_presenter.display_pre_launch?).to eq(false)
     end
   end
 end
