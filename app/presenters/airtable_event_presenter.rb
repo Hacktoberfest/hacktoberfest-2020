@@ -64,7 +64,7 @@ class AirtableEventPresenter
     @event['Featured?']
   end
 
-  def after_yesterday?
+  def current?
     date > Date.yesterday
   end
 

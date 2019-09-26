@@ -16,13 +16,13 @@
     </thead>
     <tbody class="list">
       <% @events.map do |e| %>
-        <% if e.after_yesterday? %>
+        <% if e.current? %>
           <tr>
         <% else %>
           <tr class="past">
         <% end %>
             <td class="multisort is-hidden">
-              <%= e.after_yesterday? ? 'Future' : 'Past'%>
+              <%= e.current? ? 'Future' : 'Past'%>
               <%= e.country %> 
               <%= e.date.strftime("%m %d") %>
             </td>

@@ -83,7 +83,7 @@ describe AirtableEventPresenter do
       end
     end
   end
-  describe '#after_yesterday?' do
+  describe '#current?' do
     let(:event) do
       {
         'Event Name' => 'Test',
@@ -106,7 +106,7 @@ describe AirtableEventPresenter do
       it 'returns true' do
         event_presenter = AirtableEventPresenter.new(event)
 
-        expect(event_presenter.after_yesterday?).to eq true
+        expect(event_presenter.current?).to eq true
       end
     end
 
@@ -119,7 +119,7 @@ describe AirtableEventPresenter do
       it 'returns false' do
         event_presenter = AirtableEventPresenter.new(event)
 
-        expect(event_presenter.after_yesterday?).to eq false
+        expect(event_presenter.current?).to eq false
       end
     end
   end
