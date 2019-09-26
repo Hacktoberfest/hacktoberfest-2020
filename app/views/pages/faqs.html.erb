@@ -1,57 +1,91 @@
 <main class="section is-fluid fluid-content-page">
   <h1 class="title is-1">What is Hacktoberfest?</h1>
   <p>Have questions? These are the most Frequently Asked Questions about Hacktoberfest.</p>
-  <section class="level section">
-    <a class="is-size-3" href="#general">General</a>
-    <a class="is-size-3" href="#rules">Rules</a>
-    <a class="is-size-3" href="#events">Events</a>
-    <a class="is-size-3" href="#shipping">Shipping</a>
-  </section>
-
-  <!-- <button class="button exColAll" type="button" name="button">Expand/Collapse All</button> -->
-
   <div class="qa-section">
-    <a name="general">
-      <h2 class="title is-2 highlight">General </h2>
-    </a>
+    <button id="back-to-top" class="button" type="button" name="button">Back to top</button>
+    <button id="exp-coll" class="button ex-col-all" type="button" name="button">Expand All</button>
+    <a name="generalSection"></a>
+    <h2 class="title is-2 highlight">General</h2>
+
     <% @faqs_general.map do |q| %>
-      <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
+      <details class="question-answer">
+        <summary class="question expand" open = "false"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></summary>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
-      </div>
+      </details>
     <% end %>
   </div>
   <div class="qa-section">
-    <a name="rules">
+    <a name="rulesSection"></a>
       <h2 class="title is-2 highlight">Rules</h2>
-    </a>
+
     <% @faqs_rules.map do |q| %>
-      <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
+      <details class="question-answer">
+        <summary class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></summary>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
-      </div>
+      </details>
     <% end %>
   </div>
   <div class="qa-section">
-    <a name="events">
-      <h2 class="title is-2 highlight">Events </h2>
-    </a>
+    <a name="eventsSection"></a>
+      <h2 class="title is-2 highlight">Events</h2>
+
     <% @faqs_events.map do |q| %>
-      <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
+      <details class="question-answer">
+        <summary class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></summary>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
-      </div>
+      </details>
     <% end %>
   </div>
   <div class="qa-section">
-    <a name="shipping">
-      <h2 class="title is-2 highlight">Shipping </h2>
-    </a>
+    <a name="shippingSection"></a>
+      <h2 class="title is-2 highlight">Shipping</h2>
+
     <% @faqs_shipping.map do |q| %>
-      <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
+      <details class="question-answer">
+        <summary class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></summary>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
-      </div>
+      </details>
     <% end %>
   </div>
 </main>
+
+<script type="text/javascript">
+// Toggle visibility of FAQ items on click
+
+$( function() {
+  // Select all elements with 'expand' class and hold in array
+  var question =  document.getElementsByClassName("question-answer");
+  var answer = document.getElementsByClassName("hidden");
+  var expandAll = document.getElementsByClassName("ex-col-all")[0];
+  var details = document.querySelectorAll("details");
+  var count = 0;
+  var top = document.getElementById("back-to-top");
+
+  top.addEventListener("click", function(){
+    window.scrollTo(0, 0);
+  })
+
+  function testFunction(){
+    var x =+ count + 1;
+    count = x;
+    for(var i = 0; i< details.length; i++){
+      if(count !== 0 && count % 2 ===0){
+        details[i].removeAttribute("open", " ");
+        expandAll.innerHTML = "Expand All";
+      }
+      else{
+        details[i].setAttribute("open", " ");
+        expandAll.innerHTML = "Collapse All";
+
+      }
+    }
+  }
+
+  // Expand all questions
+    expandAll.addEventListener("click", testFunction)});
+
+  window.addEventListener('hashchange', function() {
+    console.log('The hash has changed!')
+    expandAll.addEventListener("click", testFunction);
+  }, false);
+</script>

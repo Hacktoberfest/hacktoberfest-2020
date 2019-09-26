@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .fluid-content-page{
   .title.is-1{
     font-size: 2.5rem;
@@ -22,35 +21,92 @@
   }
 
   .question-answer{
-    margin-bottom: 1rem;
     padding-bottom: 1rem;
+    padding-top: 20px;
 
     &:not(:last-child) {
       border-bottom: 1px solid #1F2D4F;
       border-radius: 4px;
+      margin-top: 1rem;
+    }
+
+    .question, .answer {
+      width: 90%;
+    }
+
+    .answer p {
+      margin-bottom: 25px;
     }
   }
 
-  .hidden{
-    display: none;
+  // align question/answer blocks properly in mobile view
+  @media screen and (max-width: $break-small) {
+    .question-answer p{
+      text-align: center;
+      width: 110%;
+    }
   }
 
-  .show{
-    display: block;
+  .jump-title {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .jump-to {
+    margin-bottom: 3%;
+  }
+
+  .jump-to li {
+    margin-right: 40px;
+  }
+
+  details > summary {
+    list-style: none;
   }
 
   .chevron{
+    width: 110%;
     color: $cyan;
     display: flex;
     justify-content: right;
     position: relative;
-    top: -29px;
+    top: -40px;
     right: 0px;
+
+    @media screen and (max-width: $break-small) {
+      display: block;
+      margin-top: 40px;
+    }
   }
 
-  .exColAll{
-    position: sticky;
-    top: 90px;
-    right: 20px;
+  .ex-col-all{
+    position: relative;
+    right: 90;
+    padding: 1%;
+    margin-bottom: 40px;
+    min-width: 150px;
+
+    @media screen and (max-width: $break-med) {
+      display: none;
+    }
+
+    @media screen and (max-width: $break-small) {
+      display: none;
+    }
+  }
+
+  #back-to-top {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 1;
+
+    @media screen and (max-width: $break-med) {
+      display: none;
+    }
+
+    @media screen and (max-width: $break-small) {
+      display: none;
+    }
   }
 }
