@@ -15,28 +15,26 @@
     </tr>
     </thead>
     <tbody class="list">
-      <% unless @events.blank? %>
-        <% @events.map do |e| %>
-          <% if e.date > DateTime.yesterday%>
-            <tr>
-          <% else %>
-            <tr class="past">
-          <% end %>
-              <td class="multisort is-hidden">
-                <%= e.date > DateTime.yesterday ? 'Future' : 'Past'%>
-                <%= e.country %> 
-                <%= e.date.strftime("%m %d") %>
-              </td>
-              <td class="location"><%= e.location %></td>
-              <td class="event_name">
-                <a class="emphasis" href="<%= e.url %>" target="blank" rel="noopener"><%= e.name %></a>
-                <br/>
-                by <%= e.organizer %>
-              </td>
-              <td class="date is-hidden"><%= e.date %></td>
-              <td><%= e.date.strftime("%b %e") %></td>
-            </tr>
+      <% @events.map do |e| %>
+        <% if e.date > DateTime.yesterday%>
+          <tr>
+        <% else %>
+          <tr class="past">
         <% end %>
+            <td class="multisort is-hidden">
+              <%= e.date > DateTime.yesterday ? 'Future' : 'Past'%>
+              <%= e.country %> 
+              <%= e.date.strftime("%m %d") %>
+            </td>
+            <td class="location"><%= e.location %></td>
+            <td class="event_name">
+              <a class="emphasis" href="<%= e.url %>" target="blank" rel="noopener"><%= e.name %></a>
+              <br/>
+              by <%= e.organizer %>
+            </td>
+            <td class="date is-hidden"><%= e.date %></td>
+            <td><%= e.date.strftime("%b %e") %></td>
+          </tr>
       <% end %>
   </table>
   </div>
