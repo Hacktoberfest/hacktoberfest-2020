@@ -4,16 +4,14 @@ window.onload = function() {
   // Select all elements with 'expand' class and hold in array
   var question =  document.getElementsByClassName("question-answer");
   var answer = document.getElementsByClassName("hidden");
-  // var expandAll = document.getElementsByClassName("exColAll")[0];
-
+  var expandAll = document.getElementsByClassName("ex-col-all")[0];
 
   // Expand all questions
-
-    // expandAll.addEventListener("click", function(){
-    //   for(var j=0; j<answer.length;j++){
-    //     answer[j].classList.toggle("show");
-    //   }
-    // })
+    expandAll.addEventListener("click", function(){
+      for(var j=0; j<answer.length;j++){
+        answer[j].classList.toggle("show");
+      }
+    })
 
 
   // Expand single target item
