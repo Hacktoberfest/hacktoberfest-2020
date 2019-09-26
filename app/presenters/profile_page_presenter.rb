@@ -18,7 +18,7 @@ class ProfilePagePresenter
     Hacktoberfest.ended? && @user.won_hacktoberfest?
   end
 
-  def pull_request_timeline
+  def timeline_pull_requests
     counter = 0
     @user.pull_requests.take_while do |pr|
       counter += 1 if pr.eligible?
