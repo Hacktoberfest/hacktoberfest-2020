@@ -7,12 +7,8 @@ class UsersController < ApplicationController
 
   # render current user profile
   def show
-    TryUserTransitionService.call(@current_user)
-    @pull_requests = pull_request_timeline(@current_user.pull_requests)
-    @score = @current_user.score
-    @display_timeline = Hacktoberfest.active?
-    @dispay_results = Hacktoberfest.ended?
-    @pre_launch = Hacktoberfest.pre_launch?
+    TryUserTransitionService.call(current_user)
+    @presenter = ProfilePagePresenter.new(current_user)
   end
 
   # action to save registration
@@ -38,14 +34,6 @@ class UsersController < ApplicationController
       user.register
     else
       user.save
-    end
-  end
-
-  def pull_request_timeline(prs)
-    counter = 0
-    prs.take_while do |pr|
-      counter += 1 if pr.eligible?
-      counter <= 4
     end
   end
 

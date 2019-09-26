@@ -123,7 +123,7 @@ RSpec.describe UsersController, type: :request do
         body.should have_css('div.progress-bar')
       end
 
-      it 'returns all pull requests', :vcr do
+      xit 'returns all pull requests', :vcr do
         get profile_path
         invalid_pr = PR_DATA[:invalid_array].first
         expect(response.body).to include(invalid_pr['title'])
