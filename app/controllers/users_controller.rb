@@ -2,7 +2,8 @@
 
 class UsersController < ApplicationController
   before_action :require_user_logged_in!
-  before_action :require_user_registration!, only: :show
+  before_action :require_user_registered!, only: :show
+  before_action :disallow_registered_user!, only: :edit
 
   # render current user profile
   def show

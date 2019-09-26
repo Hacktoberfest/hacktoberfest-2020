@@ -24,14 +24,21 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
-  def require_user_registration!
-    return if logged_in? && @current_user.terms_acceptance
+  def require_user_registered!
+    return if logged_in? && !@current_user.new?
 
-    session[:destination] = request.path
-    if logged_in?
-      redirect_to register_form_path
-    else
-      redirect_to start_path
-    end
+    redirect_to start_path
+  end
+
+  def disallow_registered_user!
+    return unless logged_in? && !@current_user.new?
+
+    redirect_to profile_path
+  end
+
+  def disallow_logged_in_user!
+    return unless logged_in?
+
+    redirect_to register_form_path
   end
 end
