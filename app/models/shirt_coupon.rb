@@ -6,6 +6,6 @@ class ShirtCoupon < ApplicationRecord
   validates :code, presence: true
 
   def first_available
-    ShirtCoupon.where(user_id: nil)
+    ShirtCoupon.where(user_id: nil).first
   end
 end

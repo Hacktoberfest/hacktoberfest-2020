@@ -6,6 +6,6 @@ class StickerCoupon < ApplicationRecord
   validates :code, presence: true
 
   def first_available
-    StickerCoupon.where(user_id: nil)
+    StickerCoupon.where(user_id: nil).first
   end
 end
