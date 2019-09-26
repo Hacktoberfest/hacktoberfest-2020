@@ -23,12 +23,5 @@ RSpec.describe CouponService do
         expect(user.shirt_coupon).to be(nil)
       end
     end
-
-# We MIGHT want to make a third 'on_waitlist' column
-    context 'there are no shirt or sticker coupons available' do
-      xit 'assigns the user a waiting coupon' do
-        expect(user.on_waitlist).to_not be(nil)
-      end
-    end
   end
 end
