@@ -1,5 +1,7 @@
 <main class="section is-fluid fluid-content-page">
-  <h1 class="title is-1">What is Hacktoberfest?</h1>
+  <a name="top">
+    <h1 class="title is-1">What is Hacktoberfest?</h1>
+  </a>
   <p>Have questions? These are the most Frequently Asked Questions about Hacktoberfest.</p>
   <section class="level section">
     <a class="is-size-3" href="#generalSection">General</a>
@@ -7,13 +9,14 @@
     <a class="is-size-3" href="#eventsSection">Events</a>
     <a class="is-size-3" href="#shippingSection">Shipping</a>
   </section>
-
-  <!-- <button class="button exColAll" type="button" name="button">Expand/Collapse All</button> -->
-
   <div class="qa-section">
-    <a name="generalSection">
-      <h2 class="title is-2 highlight">General </h2>
+    <a href="#top">
+      <button id="back-to-top" class="button" type="button" name="button">Back to top</button>
     </a>
+    <a name="generalSection">
+      <h2 class="title is-2 highlight">General</h2>
+    </a>
+    <button id="exp-coll" class="button ex-col-all" type="button" name="button">Expand/Collapse All</button>
     <% @faqs_general.map do |q| %>
       <div class="question-answer">
         <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
@@ -25,6 +28,7 @@
     <a name="rulesSection">
       <h2 class="title is-2 highlight">Rules</h2>
     </a>
+    <!-- <button id="exp-coll" class="button ex-col-all" type="button" name="button">Expand/Collapse All</button> -->
     <% @faqs_rules.map do |q| %>
       <div class="question-answer">
         <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
@@ -36,6 +40,7 @@
     <a name="eventsSection">
       <h2 class="title is-2 highlight">Events </h2>
     </a>
+    <!-- <button id="exp-coll" class="button ex-col-all" type="button" name="button">Expand/Collapse All</button> -->
     <% @faqs_events.map do |q| %>
       <div class="question-answer">
         <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
@@ -47,6 +52,7 @@
     <a name="shippingSection">
       <h2 class="title is-2 highlight">Shipping </h2>
     </a>
+    <!-- <button id="exp-coll" class="button ex-col-all" type="button" name="button">Expand/Collapse All</button> -->
     <% @faqs_shipping.map do |q| %>
       <div class="question-answer">
         <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
