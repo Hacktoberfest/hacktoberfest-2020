@@ -72,3 +72,27 @@
     <% end %>
   </div>
 </main>
+<script type="text/javascript">
+ var question =  document.getElementsByClassName("question-answer");
+ var answer = document.getElementsByClassName("hidden");
+ var expandAll = document.getElementsByClassName("ex-col-all")[0];
+
+ // Expand all questions
+ expandAll.addEventListener("click", function(){
+   for(var j=0; j<answer.length;j++){
+     answer[j].classList.toggle("show");
+   }
+ })
+
+
+ // Expand single target item
+ for(var i = 0; i< question.length; i++){
+   question[i].addEventListener("click", function() {
+     var temp = this;
+     var content = temp.querySelector(".answer");
+     console.log(content);
+     content.classList.toggle("hidden");
+
+   })
+ }
+</script>
