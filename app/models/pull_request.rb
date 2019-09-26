@@ -7,7 +7,7 @@ class PullRequest
     @github_pull_request = github_pull_request
   end
 
-  delegate :id, :title, :body, :url, :created_at,
+  delegate :id, :title, :body, :url, :created_at, :repository_name,
            :label_names, to: :github_pull_request
 
   def state
