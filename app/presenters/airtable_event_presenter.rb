@@ -17,9 +17,7 @@ class AirtableEventPresenter
   end
 
   def date
-    date_time_arr = @event['Event Start Date/Time (Real)'].split(' ')
-    date = date_time_arr.first
-    Date.strptime(date, '%m/%d/%Y')
+    Date.strptime(@event['Event Start Date'], '%Y-%m-%d')
   rescue StandardError
     nil
   end
