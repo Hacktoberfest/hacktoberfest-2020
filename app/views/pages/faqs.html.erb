@@ -3,7 +3,8 @@
     <h1 class="title is-1">What is Hacktoberfest?</h1>
   </a>
   <p>Have questions? These are the most Frequently Asked Questions about Hacktoberfest.</p>
-  <section class="level section">
+  <h2 class="title is-2 highlight jump-title">Jump to</h2>
+  <section class="level jump-to">
     <a class="is-size-3" href="#generalSection">General</a>
     <a class="is-size-3" href="#rulesSection">Rules</a>
     <a class="is-size-3" href="#eventsSection">Events</a>
@@ -13,10 +14,10 @@
     <a href="#top">
       <button id="back-to-top" class="button" type="button" name="button">Back to top</button>
     </a>
+    <button id="exp-coll" class="button ex-col-all" type="button" name="button">Expand/Collapse All</button>
     <a name="generalSection">
       <h2 class="title is-2 highlight">General</h2>
     </a>
-    <button id="exp-coll" class="button ex-col-all" type="button" name="button">Expand/Collapse All</button>
     <% @faqs_general.map do |q| %>
       <div class="question-answer">
         <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>

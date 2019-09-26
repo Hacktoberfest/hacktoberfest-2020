@@ -22,13 +22,40 @@
   }
 
   .question-answer{
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
     padding-bottom: 1rem;
+    padding-top: 20px;
 
     &:not(:last-child) {
       border-bottom: 1px solid #1F2D4F;
       border-radius: 4px;
+      margin-top: 1rem;
     }
+    //
+    // .question, .answer {
+    //   width: 90%;
+    // }
+    //
+    // .chevron {
+    //   width: 100%;
+    // }
+
+    .answer p {
+      margin-bottom: 25px;
+    }
+  }
+
+  .jump-title {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .jump-to {
+    margin-bottom: 3%;
+  }
+
+  .jump-to li {
+    margin-right: 40px;
   }
 
   .hidden{
