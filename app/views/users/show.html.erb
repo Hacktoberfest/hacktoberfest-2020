@@ -12,22 +12,22 @@
         </div>
         <div class="level-right">
           <p class='progress-msg'>YOUR PROGRESS</p>
-            <%= render 'users/show/progress_bar' %>
+          <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
         </div>
       </div>
     </div>
-    <% if @presenter.display_pre_launch? %>
+    <% if !@presenter.display_pre_launch? %>
       <div class="container box">
-        <%= render 'users/show/pre_launch' %>
+        <%= render partial: 'users/show/pre_launch' %>
       </div>
     <% else %>
       <% if @presenter.display_results? %>
         <div class="hacktoberfest-winner">
-          <%= render 'users/show/hacktoberfest_results' %>
+          <%= render partial: 'users/show/hacktoberfest_results' %>
         </div>
       <% end %>
       <div class="container box">
-        <%= render 'users/show/timeline' %>
+        <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, pull_requests: @presenter.timeline_pull_requests }  %>
       </div>
     <% end %>
 
