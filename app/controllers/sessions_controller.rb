@@ -6,11 +6,7 @@ class SessionsController < ApplicationController
     session[:current_user_id] = @user.id
     store_user_info
     store_segment_user
-    if !@user.terms_acceptance
-      redirect_to register_form_path
-    else
-      redirect_to session[:destination] || '/'
-    end
+    redirect_to session[:destination] || '/'
   end
 
   def store_segment_user
