@@ -16,7 +16,7 @@
     </thead>
     <tbody class="list">
       <% @events.map do |e| %>
-        <% if e.date > DateTime.yesterday%>
+        <% if e.after_yesterday? %>
           <tr>
         <% else %>
           <tr class="past">
