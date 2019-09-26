@@ -7,7 +7,7 @@ class AirtableEventPresenter
     if event
       @event = event
     else
-      raise(ParseError, "Event not provided.")
+      raise(ParseError, 'Event not provided.')
     end
     validate
   end
@@ -19,13 +19,13 @@ class AirtableEventPresenter
   def date
     date_time_arr = @event['Event Start Date/Time (Real)'].split(' ')
     date = date_time_arr.first
-    Date.strptime(date, "%m/%d/%Y")
-  rescue
+    Date.strptime(date, '%m/%d/%Y')
+  rescue StandardError
     nil
   end
 
   def state
-     @event["Event State"]
+    @event['Event State']
   end
 
   def city
@@ -37,15 +37,11 @@ class AirtableEventPresenter
   end
 
   def location
-    location = ""
+    location = ''
 
-    unless city.blank?
-      location += "#{city}, "
-    end
+    location += "#{city}, " if city.present?
 
-    unless state.blank?
-      location += "#{state}, "
-    end
+    location += "#{state}, " if state.present?
 
     location += country
 
@@ -53,13 +49,13 @@ class AirtableEventPresenter
   end
 
   def url
-    @event["Event URL"]
+    @event['Event URL']
   end
 
   def organizer
-    @event["Event Organizer"]
+    @event['Event Organizer']
   end
-  
+
   def published?
     @event['Published?']
   end
@@ -75,10 +71,8 @@ class AirtableEventPresenter
   protected
 
   def validate
-    [:name, :url, :country, :date].each do |method|
-      if send(method).nil?
-        raise(ParseError, "Invalid event.")
-      end
+    %i[name url country date].each do |method|
+      raise(ParseError, 'Invalid event.') if send(method).nil?
     end
   end
 end
