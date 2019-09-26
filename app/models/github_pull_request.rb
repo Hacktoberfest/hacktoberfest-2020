@@ -30,4 +30,9 @@ class GithubPullRequest
       e.node.name.downcase
     end
   end
+
+  def repository_name
+    url_arr = url.split('/')
+    repo = url_arr[3] + '/' + url_arr[4]
+  end
 end
