@@ -10,7 +10,7 @@
   <h1 class="highlight title is-1">Event Kit</h1>
   <h2 id="how-to" class="title is-2 pink-highlight">How to organize a Hacktoberfest-themed
     meetup</h2>
-    <span class="underline-div"></span>
+  <div class="underline-div"></div>
   <h3 class="title is-3">Step-by-step</h3>
   <div class="container">
     <ol class="steps-list">
@@ -112,14 +112,14 @@
       hacking!"
     </p>
     <h2 id="promoting-your-event" class="title is-2 pink-highlight">Promoting your event</h2>
-    <span class="underline-div"></span>
-    <ol class="steps-list">
+    <div class="underline-div"></div>
+    <ol class="steps-list promote-list">
       <li>
         Share the event via email, social
         networks, and/or printed flyers. Consider posting on channels that are popular
         with developers and open source enthusiasts in your area, including but not
         limited to:
-        <ul>
+        <ul class="promote-links-list">
           <li>Eventbrite</li>
           <li>Meetup</li>
           <li>Twitter</li>
@@ -142,60 +142,64 @@
         <p class="box-text" >Logos, banners, posters, and more! We kindly ask that you
           adopt Hacktoberfest Brand Guidelines as you share your
           event/content.</p>
-        <a href="https://assets.digitalocean.com/hacktoberfest/hacktoberfest_2019_brand_assets.zip" class="button">Download assets here</a>
+        <a href="https://assets.digitalocean.com/hacktoberfest/hacktoberfest_2019_brand_assets.zip" class="button down-load-assets">Download assets here</a>
       </div>
       <div class="secondary-box column">
-        <img src="<%= asset_path('HF19_event.png') %>" alt="Example event">
+        <img class="grow-shadow" src="<%= asset_path('HF19_event.png') %>" alt="Example event">
       </div>
     </div>
-    <h3 class="title is-3">Sample copy for your event page</h3>
-    <h4 class="title is-4">Event name ideas</h4>
-    <ul>
-      <li>Hacktoberfest Open Hack Night</li>
-      <li>Hacktoberfest Open Hack Day</li>
-      <li>Hacktoberfest in [Your City]</li>
-      <li>Hacktoberfest Open Hack Fest!</li>
-    </ul>
-    <h4 class="title is-4">Description</h4>
-    <p>It's Hacktoberfest 2019! Let's celebrate open source over
-      food, drinks, learning, and great company!</p>
-    <p>Agenda</p>
-    <p>[Time] [Topic]</p>
-    <p>[Time] [Topic]</p>
-    <p>[Time]
-      [Topic]</p>
-    <p>[Time] [Topic]</p>
-    <h4 class="title is-4">What's Hacktoberfest?</h4>
-    <p><a href="https://hacktoberfest.digitalocean.com">Hacktoberfest — brought to you by DigitalOcean</a>
-      in partnership with DEV — is a month-long celebration of open source software.
-      Maintainers are invited to guide would-be contributors towards issues that
-      will help move the project forward, and contributors get the opportunity to
-      give back to both projects they like and others they've just discovered. No
-      contribution is too small — bug fixes and documentation updates are valid ways
-      of participating.</p>
-    <p>
-      Can't make it to this event?
-      Hacktoberfest is virtual and open to participants from around the globe. Sign
-      up to participate today at https://hacktoberfest.digitalocean.com.
-    </p>
-    <h4 class="title is-4">Rules and prizes</h4>
-    <p>First, sign up on the Hacktoberfest site at
-      https://hacktoberfest.digitalocean.com. To qualify for the official limited
-      edition Hacktoberfest shirt, you must register and make four pull requests
-      between October 1-31. Pull requests can be to any public repo on GitHub, not
-      just the ones with issues labeled Hacktoberfest. If a maintainer reports your
-      pull request as spam or behavior not in line with the project’s code of
-      conduct, you will be ineligible to participate.</p>
-    <p>Connect with other Hacktoberfest participants by using
-      #hacktoberfest on your social media platform of choice.</p>
-    <p>New to DigitalOcean? Receive USD $50 in infrastructure
-      credit at https://do.co/hacktoberfest50.</p>
-    <h4 class="title is-4">Events code of conduct </h4>
-    <p>Hacktoberfest events are welcoming, open, and inclusive. Include this
-       line on your event page: "Please read our <a href="https://do.co/hacktoberconduct">Events Code of Conduct</a> before
-       attending. Happy hacking!"</p>
+  <h3 class="title is-3">Sample copy for your event page</h3>
+    <div class="columns is-multiline box sample-section">
+      <div class="column sample-section">
+        <h4 class="title is-4">Event name ideas</h4>
+        <ul>
+          <li>Hacktoberfest Open Hack Night</li>
+          <li>Hacktoberfest Open Hack Day</li>
+          <li>Hacktoberfest in [Your City]</li>
+          <li>Hacktoberfest Open Hack Fest!</li>
+        </ul>
+        <h4 class="title is-4">Description</h4>
+          <p>It's Hacktoberfest 2019! Let's celebrate open source over
+            food, drinks, learning, and great company!</p>
+          <p>Agenda</p>
+          <p>[Time] [Topic]</p>
+          <p>[Time] [Topic]</p>
+          <p>[Time]
+            [Topic]</p>
+          <p>[Time] [Topic]</p>
+        <h4 class="title is-4">What's Hacktoberfest?</h4>
+          <p><a href="https://hacktoberfest.digitalocean.com">Hacktoberfest — brought to you by DigitalOcean</a>
+            in partnership with DEV — is a month-long celebration of open source software.
+            Maintainers are invited to guide would-be contributors towards issues that
+            will help move the project forward, and contributors get the opportunity to
+            give back to both projects they like and others they've just discovered. No
+            contribution is too small — bug fixes and documentation updates are valid ways
+            of participating.</p>
+          <p>
+            Can't make it to this event?
+            Hacktoberfest is virtual and open to participants from around the globe. Sign
+            up to participate today at https://hacktoberfest.digitalocean.com.
+          </p>
+        <h4 class="title is-4">Rules and prizes</h4>
+          <p>First, sign up on the Hacktoberfest site at
+            https://hacktoberfest.digitalocean.com. To qualify for the official limited
+            edition Hacktoberfest shirt, you must register and make four pull requests
+            between October 1-31. Pull requests can be to any public repo on GitHub, not
+            just the ones with issues labeled Hacktoberfest. If a maintainer reports your
+            pull request as spam or behavior not in line with the project’s code of
+            conduct, you will be ineligible to participate.</p>
+          <p>Connect with other Hacktoberfest participants by using
+            #hacktoberfest on your social media platform of choice.</p>
+          <p>New to DigitalOcean? Receive USD $50 in infrastructure
+            credit at https://do.co/hacktoberfest50.</p>
+        <h4 class="title is-4">Events code of conduct </h4>
+          <p>Hacktoberfest events are welcoming, open, and inclusive. Include this
+             line on your event page: "Please read our <a href="https://do.co/hacktoberconduct">Events Code of Conduct</a> before
+             attending. Happy hacking!"</p>
+      </div>
+    </div>
     <h2 id="resources" class="title is-2 pink-highlight">Resources</h2>
-    <span class="underline-div"></span>
+    <div class="underline-div"></div>
     <h3 class="title is-3">Git</h3>
     <ul>
       <li><a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github">How
@@ -228,7 +232,7 @@
       Hacktoberfest event, handling challenges you might face, and creating the best
       collaborative environment.</p>
     <h2 id="faqs" class="title is-2 pink-highlight">FAQs</h2>
-    <span class="underline-div"></span>
+    <div class="underline-div"></div>
     <h3 class="title is-3">Why organize a Hacktoberfest-themed meetup?</h3>
     <ul>
       <li>Increase awareness of open source in your community.</li>
