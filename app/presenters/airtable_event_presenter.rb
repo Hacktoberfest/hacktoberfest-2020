@@ -68,6 +68,10 @@ class AirtableEventPresenter
     @event['Featured?']
   end
 
+  def after_yesterday?
+    date > Date.yesterday
+  end
+
   protected
 
   def validate
