@@ -40,6 +40,14 @@ class User < ApplicationRecord
       validates_inclusion_of :email, in: :github_emails
     end
 
+    state all - [:won_shirt] do
+      validates :shirt_coupon, absence: true
+    end
+
+    state all - [:won_sticker] do
+      validates :sticker_coupon, absence: true
+    end
+
     state :waiting do
       validates :sufficient_eligible_prs?, inclusion: {
         in: [true], message: 'user does not have sufficient eligible prs' }
@@ -48,6 +56,20 @@ class User < ApplicationRecord
     state :completed do
       validates :won_hacktoberfest?, inclusion: {
         in: [true], message: 'user has not met all winning conditions' }
+    end
+
+    before_transition to: :won_shirt do
+      shirt_coupon = ShirtCoupon.first_available
+    end
+    state :won_shirt do
+      validates :shirt_coupon, presence: true
+    end
+
+    before_transition to: :won_sticker do
+      shirt_coupon = StickerCoupon.first_available
+    end
+    state :won_sticker do
+      validates :sticker_coupon, presence: true
     end
 
     state :incompleted do
