@@ -34,8 +34,10 @@ class PagesController < ApplicationController
   def all_events
     unless AirrecordTable.new.table('Meetups').all.blank?
       AirrecordTable.new.table('Meetups').all.map do |e|
-        ::AirtableEventPresenter.new(e)
-      end
+        AirtableEventPresenter.new(e)
+      rescue AirtableEventPresenter::ParseError
+        #Ignore invalid events
+      end.compact
     end
   end
 end

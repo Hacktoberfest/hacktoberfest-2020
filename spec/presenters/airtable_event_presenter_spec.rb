@@ -4,8 +4,8 @@ require 'rails_helper'
 
 describe AirtableEventPresenter do
   context 'Given an event with all fields' do
-    it 'exposes the expected properties' do
-      event = {
+    let(:event) do
+      {
         "Event Name"=>"Test Event",
         "Event City"=>"Indore",
         "Event Country"=>"India",
@@ -29,7 +29,9 @@ describe AirtableEventPresenter do
         "Submitted Time"=>"2019-09-24T20:58:11.000Z",
         "Event Start Date/Time (Real)"=>"10/19/2019 10:00"
       }
+    end
 
+    it 'exposes the expected properties' do
       event_presenter = AirtableEventPresenter.new(event)
 
       expect(event_presenter.name).to eq event['Event Name']
@@ -45,6 +47,33 @@ describe AirtableEventPresenter do
       expect(event_presenter.url).to eq event['Event URL']
       expect(event_presenter.published?).to eq event['Published?']
       expect(event_presenter.featured?).to eq event['Featured?']
+    end
+  end
+
+  context 'Given an invalid event object' do
+    let(:event) { "test" }
+    
+    it 'raises a parse error and does not instantiate the presenter' do
+      expect { AirtableEventPresenter.new(event) }.to raise_error(AirtableEventPresenter::ParseError)
+    end
+  end
+
+  context 'Given an event with missing required fields' do
+    let(:event) do 
+      {
+        "Event City"=>"Indore",
+        "Event Country"=>"India",
+        "Event Start Date"=>"2019-10-19",
+        "Event URL"=>"https://www.meetup.com",
+        "Event Start Time"=>"10:00",
+        "Event Start Date/Time"=>"2019-10-19T10:00:00.000Z",
+        "Submitted Time"=>"2019-09-24T20:58:11.000Z",
+        "Event Start Date/Time (Real)"=>"10/19/2019 10:00"
+      }
+    end
+
+    it 'raises a parse error and does not instantiate the presenter' do
+      expect { AirtableEventPresenter.new(event) }.to raise_error(AirtableEventPresenter::ParseError)
     end
   end
 end

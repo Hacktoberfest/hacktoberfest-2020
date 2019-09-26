@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 
 class AirtableEventPresenter
+  class ParseError < StandardError; end
+
   def initialize(event)
-    @event = event
+    if event
+      @event = event
+    else
+      raise(ParseError, "Event not provided.")
+    end
+    validate
   end
 
   def name
@@ -11,6 +18,8 @@ class AirtableEventPresenter
 
   def date
     DateTime.parse(@event['Event Start Date/Time'])
+  rescue
+    nil
   end
 
   def state
@@ -55,5 +64,15 @@ class AirtableEventPresenter
 
   def featured?
     @event['Featured?']
+  end
+
+  protected
+
+  def validate
+    [:name, :url, :country, :date].each do |method|
+      if send(method).nil?
+        raise(ParseError, "Invalid event.")
+      end
+    end
   end
 end
