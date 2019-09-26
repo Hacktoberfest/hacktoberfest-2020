@@ -1,4 +1,10 @@
 <div class="timeline-container">
+  <% if @presenter.timeline_pull_requests.empty? %>
+    <div class="container pre-launch-container" >
+      <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
+      <%= link_to "Get started", details_path, anchor: "getting-started", class: "button"%>
+    </div>
+  <% else %>
     <h3 class="title is-3">Your contributions</h3><br/>
     <table  class="table is-narrow is-narrow is-fullwidth " >
       <tbody>
@@ -50,4 +56,5 @@
         <% end %>
       </tbody>
     </table>
+  <% end %>
 </div>
