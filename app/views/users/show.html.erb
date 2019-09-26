@@ -16,18 +16,17 @@
         </div>
       </div>
     </div>
-    <% if @current_user.won_hacktoberfest? && Hacktoberfest.ended? %>
-    <div class="hacktoberfest-winner">
-      <%= render 'users/show/hacktoberfest_results' %>
+    <% if @pre_launch %>
+    <div class="container box">
+      <%= render 'users/show/pre_launch' %>
     </div>
-    <% end %>
-    <% if Hacktoberfest.active? %>
+    <% elsif @timeline %>
     <div class="container box">
       <%= render 'users/show/timeline' %>
     </div>
-    <% elsif Hacktoberfest.pre_launch? %>
-    <div class="container box">
-      <%= render 'users/show/pre_launch' %>
+    <% elsif @winner_results %>
+    <div class="hacktoberfest-winner">
+      <%= render 'users/show/hacktoberfest_results' %>
     </div>
     <% end %>
 
