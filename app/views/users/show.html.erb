@@ -5,10 +5,10 @@
         <div class="level-left">
           <div class="avatar">
             <figure class='image'>
-              <%= image_tag "https://github.com/#{@current_user.name}.png?size=150", class: 'is-rounded'%>
+              <%= image_tag "https://github.com/#{@presenter.name}.png?size=150", class: 'is-rounded'%>
             </figure>
           </div>
-          <h2 class='username title is-2'><%= @current_user.name %> </h2>
+          <h2 class='username title is-2'><%= @presenter.name %> </h2>
         </div>
         <div class="level-right">
           <p class='progress-msg'>YOUR PROGRESS</p>
@@ -16,20 +16,21 @@
         </div>
       </div>
     </div>
-    <% if @pre_launch %>
-    <div class="container box">
-      <%= render 'users/show/pre_launch' %>
-    </div>
-    <% elsif @timeline %>
-    <div class="container box">
-      <%= render 'users/show/timeline' %>
-    </div>
-    <% elsif @winner_results %>
-    <div class="hacktoberfest-winner">
-      <%= render 'users/show/hacktoberfest_results' %>
-    </div>
+    <% if @presenter.display_pre_launch? %>
+      <div class="container box">
+        <%= render 'users/show/pre_launch' %>
+      </div>
+    <% else %>
+      <% if @presenter.display_results? %>
+        <div class="hacktoberfest-winner">
+          <%= render 'users/show/hacktoberfest_results' %>
+        </div>
+      <% end %>
+      <div class="container box">
+        <%= render 'users/show/timeline' %>
+      </div>
     <% end %>
 
-    <%= link_to "Log out @#{@current_user.name}", logout_path, :class => "button" %>
+    <%= link_to "Log out @#{@presenter.name}", logout_path, :class => "button" %>
   </div>
 </div>
