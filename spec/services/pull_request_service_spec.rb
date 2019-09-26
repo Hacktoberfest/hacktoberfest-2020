@@ -94,6 +94,24 @@ RSpec.describe PullRequestService do
       end
     end
 
+  describe '#timeline_pull_requests' do
+    context 'a new user with no eligible pull requests' do
+      before { stub_helper(PR_DATA[:invalid_array]) }
+
+      it 'returns 0 eligible prs', vcr: { record: :new_episodes } do
+        expect(pr_service.timeline_pull_requests.count).to eq(0)
+      end
+    end
+
+    context 'it counts the amount of pull requests' do
+      before { stub_helper(PR_DATA[:valid_array]) }
+
+      it 'returns all the eligible prs', vcr: { record: :new_episodes } do
+        expect(pr_service.timeline_pull_requests.count).to eq(4)
+      end
+    end
+  end
+
     context 'given an array of no matured prs' do
       before { stub_helper(PR_DATA[:immature_array]) }
       it 'returns the correct count' do
