@@ -21,6 +21,10 @@ class GithubPullRequest
     @graphql_hash.url
   end
 
+  def state
+    @graphql_hash.state
+  end
+
   def created_at
     @graphql_hash.createdAt
   end
