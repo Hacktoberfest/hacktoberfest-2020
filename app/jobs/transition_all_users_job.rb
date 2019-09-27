@@ -1,8 +1,8 @@
 
 # frozen_string_literal: true
 
-class TransitionAllUsersJob < ApplicationJob
-  queue_as :transition_all
+class TransitionAllUsersJob
+  include Sidekiq::Worker
 
   def perform
     User.select(:id).find_in_batches do |group|

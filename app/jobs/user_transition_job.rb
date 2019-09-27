@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class UserTransitionJob < ApplicationJob
-  queue_as :transition
+class UserTransitionJob
+  include Sidekiq::Worker
 
   def perform(user_id)
     user = User.find(user_id)
