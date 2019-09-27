@@ -35,5 +35,9 @@ FactoryBot.define do
         allow(user).to receive(:waiting_since).and_return(Date.today - 8)
       end
     end
+
+    after :build do |user|
+      allow(user).to receive(:github_emails).and_return([user.email])
+    end
   end
 end
