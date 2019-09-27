@@ -6,16 +6,16 @@ require 'sidekiq-ent/web'
 Rails.application.routes.draw do
   # Sessions
   get '/auth/:provider/callback', to: 'sessions#create'
-  get '/logout' => 'sessions#destroy', as: :logout
-  get '/login' => redirect('/auth/github'), as: :login
+  get '/logout', to: 'sessions#destroy', as: :logout
+  get '/login', to: redirect('/auth/github'), as: :login
 
   # Sign up
-  get '/start' => 'pages#start', as: :start
-  get '/register' => 'users#registration', as: :register_form
-  patch '/register' => 'users#register', as: :register
+  get '/start', to: 'pages#start', as: :start
+  get '/register', to: 'users#registration', as: :register_form
+  patch '/register', to: 'users#register', as: :register
 
   # Users
-  get '/profile' => 'users#show', as: :profile
+  get '/profile', to: 'users#show', as: :profile
   get '/profile/edit', to: 'users#edit'
   patch '/profile/edit', to: 'users#update'
 
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get '/events', to: 'pages#events'
   get '/eventkit', to: 'pages#event_kit', as: :event_kit
   get '/faq', to: 'pages#faqs'
-  get '/thanks' => 'pages#thanks'
+  get '/thanks', to: 'pages#thanks'
   get '/webinars', to: 'pages#webinars'
 
   # Sidekiq
@@ -49,5 +49,5 @@ Rails.application.routes.draw do
   root to: 'pages#index'
 
   # Redirects
-  get '/meetups' => redirect('/events')
+  get '/meetups', to: redirect('/events')
 end
