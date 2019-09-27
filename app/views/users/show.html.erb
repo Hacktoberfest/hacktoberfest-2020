@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <% if !@presenter.display_pre_launch? %>
+    <% if @presenter.display_pre_launch? %>
       <div class="container box">
         <%= render partial: 'users/show/pre_launch' %>
       </div>
