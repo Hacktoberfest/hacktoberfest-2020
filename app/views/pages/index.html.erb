@@ -42,31 +42,16 @@
     <p class="p">
       You can contribute to any project on GitHub. Here are a few looking for some help:
     </p>
-    <div class="filter">
-      <%= collection_select(:language, :language_id, Language.all, :id, :name, prompt: true) %> <button type="button" class="button">Remove filter</button>
+    <div class="language-filter">
+      <%= collection_select(:language, :id, Language.all, :id, :name, prompt: true) %>
+      <button type="button" class="button">Remove filter</button>
     </div>
-    <div class="grid">
-      <% @projects.map do |project| %>
-       <a href="<%= project.url %>">
-        <div class="box projects grow-shadow">
-          <div class="title-wrap">
-            <h3 class="repo-name"> <%= project.repository_name %> </h3>
-            <span class="lang"><%= project.language %></span>
-          </div>
-          <p class="description"><%= project.repository_description %></p>
-          <div class="details-wrap">
-            <span class="details-number">#<%= project.number %></span>
-            <p class="details"><%= project.title %></p>
-          </div>
-        </div>
-         </a>
-      <% end %>
+    <div class="grid" id="project-list">
+      <%= render partial: 'languages/projects', locals: { projects: @projects } %>
     </div>
     <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen&type=Issues">
       <button class="button" type="button" name="button">Browse more on GitHub</button>
     </a>
-
-
     <a name="climate"></a>
     <h2 class="title is-2 is-spaced climate">Projects focused on climate change</h2>
     <p class="p">
