@@ -39,6 +39,8 @@ Sidekiq.configure_server do |config|
     mgr.register('0 1 * * *', TransitionAllUsersJob, retry: 3, queue: :critical)
     # Every day at 4AM
     mgr.register('0 4 * * *', UpdateAllIssuesJob, retry: 3, queue: :critical)
+    # Every hour. 1 hour max latency when updating banned repos in airtable
+    mgr.register('0 * * * *', BanAllReposJob, retry: 3, queue: :default)
   end
 
   config.death_handlers << ->(job, ex) do
