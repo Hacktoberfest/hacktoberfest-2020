@@ -14,6 +14,6 @@ class UserEmailService
     selected = client.emails.select do |email_obj|
       email_obj if email_obj.verified && !email_obj.email.include?('noreply')
     end
-    selected.map(&:email)
+    selected.sort_by { |e| e.primary ? 0 : 1 }.map(&:email)
   end
 end
