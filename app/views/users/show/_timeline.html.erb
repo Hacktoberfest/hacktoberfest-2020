@@ -27,7 +27,7 @@
         </div></td>
         <td><div>
           <p> <%=  DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/> </p>
-          <h3 class="title is-3">You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.repository_name %><br/></h3>
+          <h3 class="title is-3">You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/></h3>
         </div></td>
           <% if pr.eligible? && user.waiting? %>
           <td><div>
