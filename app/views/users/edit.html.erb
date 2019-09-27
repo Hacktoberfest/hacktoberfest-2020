@@ -28,6 +28,10 @@
     </p>
     <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
 
+      <% if @current_user.errors.messages[:email].present? %>
+         <p class="error">Please select an email from the list.</p>
+      <% end %>
+
       <div class="field">
         <label class="label">Preferred email</label>
         <div class="control">

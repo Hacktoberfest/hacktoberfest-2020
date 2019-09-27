@@ -26,6 +26,8 @@ class User < ApplicationRecord
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
+      validates_inclusion_of :email,
+        in: -> (user) { UserEmailService.new(user).emails }
     end
 
     state :waiting do
