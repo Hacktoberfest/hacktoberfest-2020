@@ -2,6 +2,7 @@
 
 class UpdateAllIssuesJob
   include Sidekiq::Worker
+  sidekiq_options queue: :critical, retry: 3
 
   def perform
     Issue.select(:id).find_in_batches do |issue_group|

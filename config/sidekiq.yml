@@ -1,5 +1,4 @@
 :queues:
-  - ["transition", 1]
-  - ["ban_repos", 1]
-  - ["transition_all", 1]
-  - ["default", 1]
+  - ["critical", 3]
+  - ["default", 2]
+  - ["bulk", 1]

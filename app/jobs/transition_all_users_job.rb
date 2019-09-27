@@ -2,6 +2,7 @@
 
 class TransitionAllUsersJob
   include Sidekiq::Worker
+  sidekiq_options queue: :critical, retry: 3
 
   def perform
     User.select(:id).find_in_batches do |group|
