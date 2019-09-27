@@ -4,26 +4,30 @@ require 'sidekiq-ent/web'
 
 
 Rails.application.routes.draw do
-
-  root to: 'pages#index'
+  # Sessions
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout' => 'sessions#destroy', as: :logout
   get '/login' => redirect('/auth/github'), as: :login
-  get '/profile' => 'users#show', as: :profile
+
+  # Sign up
+  get '/start' => 'pages#start', as: :start
   get '/register' => 'users#registration', as: :register_form
   patch '/register' => 'users#register', as: :register
+
+  # Users
+  get '/profile' => 'users#show', as: :profile
   get '/profile/edit', to: 'users#edit'
   patch '/profile/edit', to: 'users#update'
-  get '/faq', to: 'pages#faqs'
-  get '/events', to: 'pages#events'
-  get '/meetups' => redirect('/events')
-  get '/webinars', to: 'pages#webinars'
-  get '/details', to: 'pages#details'
-  get '/eventkit', to: 'pages#event_kit', as: :event_kit
-  get '/start' => 'pages#start', as: :start
-  get '/thanks' => 'pages#thanks'
-  get '/boom', to: 'boom#show'
 
+  # Pages
+  get '/details', to: 'pages#details'
+  get '/events', to: 'pages#events'
+  get '/eventkit', to: 'pages#event_kit', as: :event_kit
+  get '/faq', to: 'pages#faqs'
+  get '/thanks' => 'pages#thanks'
+  get '/webinars', to: 'pages#webinars'
+
+  # Sidekiq
   if Rails.env.production?
     Sidekiq::Web.use Rack::Auth::Basic do |username, password|
       ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_USERNAME"])) &
@@ -34,9 +38,16 @@ Rails.application.routes.draw do
     mount Sidekiq::Web, at: "/sidekiq"
   end
 
+  # Diagnostics
   health_check_routes
-
+  get '/boom', to: 'boom#show'
   unless Rails.env.production?
     get '/impersonate/:id', to: 'sessions#impersonate', as: :impersonate
   end
+
+  # Default
+  root to: 'pages#index'
+
+  # Redirects
+  get '/meetups' => redirect('/events')
 end
