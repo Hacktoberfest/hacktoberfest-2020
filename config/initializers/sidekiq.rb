@@ -29,6 +29,9 @@ end
 Sidekiq.configure_server do |config|
   config.redis = REDIS_CONFIG if defined?(REDIS_CONFIG)
 
+  # https://github.com/mperham/sidekiq/wiki/Reliability#using-super_fetch
+  config.super_fetch!
+
   # Periodic job setup
   # See: https://github.com/mperham/sidekiq/wiki/Ent-Periodic-Jobs
   config.periodic do |mgr|
