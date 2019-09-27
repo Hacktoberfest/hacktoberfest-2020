@@ -5,8 +5,8 @@ module ClimateProjectService
 
   PROJECTS = [
     {
-      name: 'electricitymap-contrib.json',
-      url: 'https://github.com/tmrowco/electricitymap-contrib.json',
+      name: 'electricitymap-contrib',
+      url: 'https://github.com/tmrowco/electricitymap-contrib',
       language: 'Python',
       description: 'A real-time visualisation of the CO2 emissions of electricity consumption'
     },

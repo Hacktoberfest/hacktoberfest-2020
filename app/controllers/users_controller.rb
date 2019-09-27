@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :require_user_logged_in!
   before_action :require_user_registration!, only: :show
-  before_action :require_user_logged_in!, only: %i[edit update]
 
   # render current user profile
   def show

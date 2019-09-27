@@ -111,8 +111,8 @@ GEM
       railties (>= 4.2.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    faraday-http-cache (2.0.0)
-      faraday (~> 0.8)
+    faraday_middleware (0.13.1)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.11.1)
     formatador (0.2.5)
     globalid (0.4.2)
@@ -365,7 +365,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faraday
-  faraday-http-cache
+  faraday_middleware
   guard-rspec
   health_check
   jbuilder (~> 2.5)

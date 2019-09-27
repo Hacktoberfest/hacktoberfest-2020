@@ -19,12 +19,14 @@
 </section>
 <section class="section reg-content">
   <div>
-    <h1 class="title is-1">All done - happy hacking!</h1>
-    <p>Please confirm your name and email address. We’ll be in touch with details about redeeming a shirt and/or stickers once Hacktoberfest is over. </p>
+    <h1 class="title is-1">All done - happy Hacking!</h1>
+    <p>Here are some resources to help you get started:</p>
 
-   <p> <span class="highlight">*</span> <%= link_to "Review program details", details_path %> </p>
-   <p> <span class="highlight">*</span> <%= link_to "Explore Hacktoberfest projects", root_path %> </p>
-   <p> <span class="highlight">*</span> <%= link_to "Find helpful tips from our list of resources", faq_path %> </p>
-  <p> <span class="highlight">*</span> <%= link_to "Check out your Hacktoberfest profile!", profile_path %> </p>
+    <p> <span class="highlight">●</span> <%= link_to "Review program details", details_path %> </p>
+    <p> <span class="highlight">●</span> <%= link_to "Explore Hacktoberfest projects", root_path(anchor: 'projects') %> </p>
+    <p> <span class="highlight">●</span> <%= link_to "Find helpful tips from our list of resources", faq_path %> </p>
+    
+    <%= link_to "See your profile", profile_path, :class => 'button' %>
+    
   </div>
 </section>

@@ -13,11 +13,11 @@
     </div>
     <h2 class="title is-2 is-spaced"> Event details</h2>
     <p class="p">
-      <span class="reg">®</span>Hacktoberfest is open to everyone in our global community. Whether you’re a developer, student learning to code, event host, or company of any size, you can help drive growth of open source and make positive contributions to an ever-growing community. All backgrounds and skill levels are encouraged to complete the challenge.
+      Hacktoberfest<span class="reg">&reg;</span> is open to everyone in our global community. Whether you’re a developer, student learning to code, event host, or company of any size, you can help drive growth of open source and make positive contributions to an ever-growing community. All backgrounds and skill levels are encouraged to complete the challenge.
     </p>
     <ul>
       <li class="bullet">
-        <span class="p"><span class="reg">®</span>Hacktoberfest is open to everyone in our global community!</span>
+        <span class="p">Hacktoberfest is open to everyone in our global community!</span>
       </li>
       <li class="bullet">
         <span class="p">Pull requests can be made in any GitHub-hosted repositories/projects.</span>
@@ -30,13 +30,14 @@
     <p class="p">
       To qualify for the official limited edition Hacktoberfest shirt, you must register and make four pull requests (PRs) between October 1-31 (in any time zone). PRs can be made to any public repo on GitHub, not only the ones with issues labeled Hacktoberfest. If a maintainer reports your pull request as spam or behavior not in line with the project’s code of conduct, you will be ineligible to participate. This year, the first 50,000 participants who successfully complete the challenge will earn a T-shirt.
     </p>
-    <p> Read more about <%= link_to 'participation details', details_path, :class => "participation-link" %>.</a>
-    </div>
-    <div class="section2">
+    <p>Read more about <%= link_to 'participation details', details_path, :class => "participation-link" %>.</p>
+  </div>
+  <div class="section2">
     <div class="line-br">
       <span class="line-br-1">-</span>
       <span class="line-br-2">-</span>
     </div>
+    <a name="projects"></a>
     <h2 class="title is-2 is-spaced">Hacktoberfest projects</h2>
     <p class="p">
       You can contribute to any project on GitHub. Here are a few looking for some help:
@@ -63,9 +64,8 @@
     </a>
 
 
-    <a name="climate">
-      <h2 class="title is-2 is-spaced">Projects focused on climate change</h2>
-    </a>
+    <a name="climate"></a>
+    <h2 class="title is-2 is-spaced climate">Projects focused on climate change</h2>
     <p class="p">
       Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
     </p>
@@ -86,7 +86,7 @@
       <button class="button" type="button" name="button">Browse more on GitHub</button>
     </a>
   </div>
-  </section>
+</section>
 <section class="eventsBlock">
   <div class="section events">
     <div class="line-br">
@@ -123,7 +123,7 @@
       </a>
       <% end %>
     </section>
-   <%= link_to 'See more events', meetups_path, :class => 'button' %>
+   <%= link_to 'See more events', events_path, :class => 'button' %>
 
   </div>
 </section>

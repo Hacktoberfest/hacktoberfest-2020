@@ -20,17 +20,49 @@
 <section class="section reg-content">
   <div>
     <h1 class="title is-1">About you</h1>
-    <p>Please confirm your email address and accept terms. We’ll be in touch with details about redeeming a shirt and/or stickers once Hacktoberfest is over. </p>
-     <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
-      <%= f.select :email, @emails %>
-     <p> Sign up for marketing emails: <%= f.check_box :marketing_emails %><br />
+    <p>
+      Please select which email address you'd like
+      to use for Hacktoberfest, and read the
+      <a target="_blank" href="/details#participation-rules">Hacktoberfest
+      rules and values</a>.
+    </p>
+    <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
 
-      I have read and understand Terms & Conditions : <%= f.check_box :terms_acceptance %></p>
-      <%= f.submit 'Start Hacking', :class => 'button'%>
+      <div class="field">
+        <label class="label">Preferred email</label>
+        <div class="control">
+          <div class="select">
+            <%= f.select :email, @emails %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= f.check_box :marketing_emails %>
+            Send me updates related to the Hacktoberfest community,
+            open source, and products from DigitalOcean.
+          </label>
+        </div>
+      </div>
 
       <% if @current_user.errors.messages[:terms_acceptance].include?("must be accepted")  %>
          <p class="error">You must accept the terms and conditions to participate in Hactoberfest.</p>
       <% end %>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= f.check_box :terms_acceptance %>
+            I have read and understand the
+            <a target="_blank" href="/details#participation-rules">Rules and Values</a>.
+          </label>
+        </div>
+      </div>
+
+      <%= f.submit 'Start Hacking', :class => 'button'%>
+
     <% end %>
   </div>
 </section>

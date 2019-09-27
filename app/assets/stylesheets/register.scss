@@ -127,7 +127,7 @@ $break-med: 1288px;
 }
 
 section.reg-content {
-  div {
+  & > div {
     max-width: 695px;
     margin: 120px auto;
     @media screen and (max-width: $break-phone) {
@@ -136,6 +136,16 @@ section.reg-content {
     p {
       margin-top: 20px;
       margin-bottom: 20px;
+    }
+    .field {
+      margin-bottom: 1.5rem;
+      label {
+        color: #fff922;
+        font-weight: 400;
+        &:hover {
+          color: #fff922;
+        }
+      }
     }
   }
   .button {

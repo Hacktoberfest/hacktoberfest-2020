@@ -26,7 +26,7 @@ main.home {
   background-image: asset-url('polygon-photo-1.png'),
     asset-url('polygon-photo-2.png');
   background-repeat: no-repeat;
-  background-position: top 100px right 164px, top 40px right 0px;
+  background-position: top 110px right 164px, top -20px right 0px;
 
   .p {
     max-width: 620px;
@@ -35,14 +35,14 @@ main.home {
   }
 
   @media screen and (max-width: $break-small) {
-    background-position: top 560px right 164px, top 480px right 0px;
+    background-position: top 530px right 164px, top 380px right 0px;
   }
 
   .hero-body {
     padding-top: 0;
     padding-left: 0;
     max-width: 620px;
-    margin-bottom: 140px;
+    margin-bottom: 130px;
     @media screen and (max-width: $break-small) {
       margin: 0 auto;
     }
@@ -57,16 +57,27 @@ main.home {
   }
 
   .section2 {
-    margin-top: 40px;
+    margin-top: 0;
     padding-top: 40px;
-    margin-bottom: 140px;
+    margin-bottom: 200px;
+
+    p {
+      margin: 20px 0 60px 0;
+    }
+
+    .climate {
+      margin-top: 60px;
+    }
 
     @media screen and (max-width: $break-small) {
       text-align: left;
-      margin-bottom: 80px;
+      margin-bottom: 140px;
     }
   }
 
+  .section2.space {
+    margin-bottom: 180px;
+  }
   .space {
     @media screen and (max-width: $break-small) {
       margin-top: 620px;
@@ -86,7 +97,7 @@ main.home {
 
   .eventsBlock {
     margin-left: 0px;
-    height: 900px;
+    height: 800px;
     width: 100%;
     background-image: asset-url('bg-map.png');
     background-position: center;
@@ -95,7 +106,7 @@ main.home {
   }
 
   .events {
-    padding-top: 150px;
+    padding-top: 30px;
 
     @media screen and (max-width: $break-small) {
       text-align: left;
@@ -112,6 +123,10 @@ main.home {
 
     @media screen and (max-width: $break-small) {
       grid-template-columns: repeat(1, 1fr);
+    }
+
+    .box {
+      height: 100%;
     }
   }
 
@@ -307,8 +322,10 @@ main.home {
 
   .sponsors {
     text-align: left;
+    margin-top: 40px;
+
     @media screen and (max-width: $break-small) {
-      margin-top: 560px;
+      margin-top: 530px;
     }
 
     .tile {

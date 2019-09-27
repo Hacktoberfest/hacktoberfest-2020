@@ -97,6 +97,12 @@ $button-padding-vertical: 1.125em;
 $button-padding-horizontal: 2em;
 $button-hover-color: $grey-dark;
 
+// -- modal
+$modal-content-width: 60vw;
+.modal-card {
+  height: 100vh;
+}
+
 .button {
   min-height: 60px;
   border: none;
