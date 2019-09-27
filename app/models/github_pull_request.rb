@@ -36,7 +36,7 @@ class GithubPullRequest
   end
 
   def owner
-      url.split('/')[3]
+    url.split('/')[3]
   end
 
   def name_with_owner
