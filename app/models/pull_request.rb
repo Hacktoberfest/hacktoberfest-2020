@@ -11,7 +11,9 @@ class PullRequest
            :name_with_owner, :label_names, to: :github_pull_request
 
   def state
-    if label_names.include?('invalid')
+    if spammy?
+      'spammy'
+    elsif label_names.include?('invalid')
       'invalid'
     else
       'eligible'
