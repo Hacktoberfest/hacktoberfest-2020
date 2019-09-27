@@ -119,29 +119,17 @@
   }
 
   .chevron{
+    width: 110%;
     color: $cyan;
     display: flex;
     justify-content: right;
     position: relative;
-    top: -29px;
+    top: -40px;
     right: 0px;
-
-    @media screen and (max-width: $break-med) {
-      display: block;
-        margin-top: 40px;
-      // justify-content: right;
-      // position: relative;
-      // top: -29px;
-      // right: 0px;
-    }
 
     @media screen and (max-width: $break-small) {
       display: block;
       margin-top: 40px;
-      // justify-content: right;
-      // position: relative;
-      // top: -29px;
-      // right: 0px;
     }
   }
 
