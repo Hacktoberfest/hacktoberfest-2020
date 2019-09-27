@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy', as: :logout
   get '/login' => redirect('/auth/github'), as: :login
   get '/profile' => 'users#show', as: :profile
-  get '/register' => 'users#edit', as: :register_form
-  patch '/register' => 'users#update', as: :register
+  get '/register' => 'users#registration', as: :register_form
+  patch '/register' => 'users#register', as: :register
   get '/faq', to: 'pages#faqs'
   get '/events', to: 'pages#events'
   get '/meetups' => redirect('/events')

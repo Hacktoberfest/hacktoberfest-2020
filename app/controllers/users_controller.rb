@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in!
   before_action :require_user_registered!, only: :show
-  before_action :disallow_registered_user!, only: :edit
+  before_action :disallow_registered_user!, only: :registration
 
   # render current user profile
   def show
@@ -12,18 +12,18 @@ class UsersController < ApplicationController
   end
 
   # action to save registration
-  def update
+  def register
     @current_user.assign_attributes(params_for_registration)
     if save_or_register(@current_user)
-      render 'users/update'
+      render 'users/registered'
     else
       set_user_emails
-      render 'users/edit'
+      render 'users/registration'
     end
   end
 
   # action to render register form
-  def edit
+  def registration
     set_user_emails
   end
 
