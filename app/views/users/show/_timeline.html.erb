@@ -21,7 +21,7 @@
         </div></td>
         <td><div>
           <p> <%=  DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/> </p>
-          <h3 class="title is-3">You <%= pr.merged? ? "merged" : "opened" %> <a href="<%= pr.url %>"><%= pr.title %></a> in <%= pr.url.split('/')[3] %><br/></h3>
+          <h3 class="title is-3">You opened <a href="<%= pr.url %>"><%= pr.title %></a> in <%= pr.url.split('/')[3] %><br/></h3>
         </div></td>
           <% if pr.eligible? && @presenter.user.waiting? %>
           <td><div>
