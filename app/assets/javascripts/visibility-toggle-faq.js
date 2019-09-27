@@ -19,8 +19,8 @@ window.onload = function() {
     question[i].addEventListener("click", function() {
       let temp = this;
       let content = temp.querySelector(".answer");
-      console.log(content);
-        content.classList.toggle("hidden");
+      content.classList.toggle("hidden");
+
 
     })
   }

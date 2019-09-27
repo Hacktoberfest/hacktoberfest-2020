@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .fluid-content-page{
   .title.is-1{
     font-size: 2.5rem;
@@ -22,7 +21,6 @@
   }
 
   .question-answer{
-    // margin-bottom: 1rem;
     padding-bottom: 1rem;
     padding-top: 20px;
 
@@ -31,17 +29,21 @@
       border-radius: 4px;
       margin-top: 1rem;
     }
-    //
-    // .question, .answer {
-    //   width: 90%;
-    // }
-    //
-    // .chevron {
-    //   width: 100%;
-    // }
+
+    .question, .answer {
+      width: 90%;
+    }
 
     .answer p {
       margin-bottom: 25px;
+    }
+  }
+
+  // align question/answer blocks properly in mobile view
+  @media screen and (max-width: $break-small) {
+    .question-answer p{
+      text-align: center;
+      width: 110%;
     }
   }
 
@@ -67,29 +69,17 @@
   }
 
   .chevron{
+    width: 110%;
     color: $cyan;
     display: flex;
     justify-content: right;
     position: relative;
-    top: -29px;
+    top: -40px;
     right: 0px;
-
-    @media screen and (max-width: $break-med) {
-      display: block;
-        margin-top: 40px;
-      // justify-content: right;
-      // position: relative;
-      // top: -29px;
-      // right: 0px;
-    }
 
     @media screen and (max-width: $break-small) {
       display: block;
       margin-top: 40px;
-      // justify-content: right;
-      // position: relative;
-      // top: -29px;
-      // right: 0px;
     }
   }
 
