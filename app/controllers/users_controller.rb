@@ -27,6 +27,22 @@ class UsersController < ApplicationController
     set_user_emails
   end
 
+  def edit
+    set_user_emails
+  end
+
+  def update
+    @current_user.assign_attributes(params_for_update)
+    if @current_user.save
+      segment = SegmentService.new(@current_user)
+      segment.identify(email: @current_user.email)
+      redirect_to profile_path
+    else
+      set_user_emails
+      render 'users/edit'
+    end
+  end
+
   private
 
   def save_or_register(user)
@@ -43,5 +59,9 @@ class UsersController < ApplicationController
 
   def params_for_registration
     params.require(:user).permit(:email, :terms_acceptance, :marketing_emails)
+  end
+
+  def params_for_update
+    params.require(:user).permit(:email)
   end
 end

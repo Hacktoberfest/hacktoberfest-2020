@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/profile' => 'users#show', as: :profile
   get '/register' => 'users#registration', as: :register_form
   patch '/register' => 'users#register', as: :register
+  get '/profile/edit', to: 'users#edit'
+  patch '/profile/edit', to: 'users#update'
   get '/faq', to: 'pages#faqs'
   get '/events', to: 'pages#events'
   get '/meetups' => redirect('/events')
