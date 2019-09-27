@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class IssueUpdateJob < ApplicationJob
-  queue_as :transition
+class IssueUpdateJob
+  include Sidekiq::Worker
 
   def perform(issue_id)
     issue = Issue.includes(:repository).find(issue_id)
