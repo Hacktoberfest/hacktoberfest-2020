@@ -42,6 +42,9 @@
     <p class="p">
       You can contribute to any project on GitHub. Here are a few looking for some help:
     </p>
+    <div class="filter">
+      <%= collection_select(:language, :language_id, Language.all, :id, :name, prompt: true) %>
+    </div>
     <div class="grid">
       <% @projects.map do |project| %>
        <a href="<%= project.url %>">
