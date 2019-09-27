@@ -30,4 +30,16 @@ class GithubPullRequest
       e.node.name.downcase
     end
   end
+
+  def name
+    url.split('/')[4]
+  end
+
+  def owner
+    url.split('/')[3]
+  end
+
+  def name_with_owner
+    owner + '/' + name
+  end
 end

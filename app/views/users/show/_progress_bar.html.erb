@@ -1,13 +1,13 @@
 <div class="progress-bar">
-  <% if @pre_launch %>
+  <% if score == 0 %>
     <%= show_svg('progress-bar-0.svg')%>
-  <% elsif !@pre_launch && @current_user.score == 1 %>
+  <% elsif score == 1 %>
     <%= show_svg('progress-bar-1.svg') %>
-  <% elsif !@pre_launch && @current_user.score == 2 %>
+  <% elsif score == 2 %>
     <%= show_svg('progress-bar-2.svg') %>
-  <% elsif !@pre_launch && @current_user.score == 3 %>
+  <% elsif score == 3 %>
     <%= show_svg('progress-bar-3.svg') %>
-  <% elsif !@pre_launch && @current_user.score == 4 %>
+  <% elsif score == 4 %>
     <%= show_svg('progress-bar-4.svg') %>
   <% end %>
 </div>

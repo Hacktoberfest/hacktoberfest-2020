@@ -7,8 +7,8 @@ class PullRequest
     @github_pull_request = github_pull_request
   end
 
-  delegate :id, :title, :body, :url, :created_at,
-           :label_names, to: :github_pull_request
+  delegate :id, :title, :body, :url, :created_at, :name, :owner,
+           :name_with_owner, :label_names, to: :github_pull_request
 
   def state
     if label_names.include?('invalid')

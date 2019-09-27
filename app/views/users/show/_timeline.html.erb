@@ -8,7 +8,7 @@
     <h3 class="title is-3">Your contributions</h3><br/>
     <table  class="table is-narrow is-narrow is-fullwidth " >
       <tbody>
-        <% @presenter.timeline_pull_requests.map do |pr| %>
+        <% pull_requests.map do |pr| %>
         <tr>
         <td><div class="icon-box">
           <% if pr.mature? %>
@@ -27,9 +27,9 @@
         </div></td>
         <td><div>
           <p> <%=  DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/> </p>
-          <h3 class="title is-3">You opened <a href="<%= pr.url %>"><%= pr.title %></a> in <%= pr.url.split('/')[3] %><br/></h3>
+          <h3 class="title is-3">You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/></h3>
         </div></td>
-          <% if pr.eligible? && @presenter.user.waiting? %>
+          <% if pr.eligible? && user.waiting? %>
           <td><div>
             <p>Mature in:</p>
             <span class="countdown" >
@@ -40,14 +40,14 @@
         <% end %>
         <td>
           <div>
-            <% if @presenter.timeline_pull_requests.count > 10 %>
+            <% if pull_requests.count > 10 %>
             <div class="indigo-button container is-full">
               <h3 class="title is-3 center">Load more</h3>
             </div>
             <% end %>
           </div>
         </td>
-        <% if @presenter.timeline_pull_requests.any? %>
+        <% if pull_requests.any? %>
         <script type="text/javascript">
           var elements = document.getElementsByClassName('countdown')
           var date = "<%= @presenter.user.waiting_since %>"
