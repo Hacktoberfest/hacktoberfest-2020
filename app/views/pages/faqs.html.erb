@@ -1,7 +1,5 @@
 <main class="section is-fluid fluid-content-page">
-  <a name="top">
-    <h1 class="title is-1">What is Hacktoberfest?</h1>
-  </a>
+  <h1 class="title is-1">What is Hacktoberfest?</h1>
   <p>Have questions? These are the most Frequently Asked Questions about Hacktoberfest.</p>
   <h2 class="title is-2 highlight jump-title">Jump to</h2>
   <section class="level jump-to">
@@ -19,77 +17,43 @@
       <h2 class="title is-2 highlight">General</h2>
     </a>
     <% @faqs_general.map do |q| %>
-      <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
+      <details class="question-answer">
+        <summary class="question expand" open = "false"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></summary>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
-      </div>
+      </details>
     <% end %>
   </div>
   <div class="qa-section">
     <a name="rulesSection">
       <h2 class="title is-2 highlight">Rules</h2>
     </a>
-    <!-- <button id="exp-coll" class="button ex-col-all" type="button" name="button">Expand/Collapse All</button> -->
     <% @faqs_rules.map do |q| %>
-      <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
+      <details class="question-answer">
+        <summary class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></summary>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
-      </div>
+      </details>
     <% end %>
   </div>
   <div class="qa-section">
     <a name="eventsSection">
-      <h2 class="title is-2 highlight">Events </h2>
+      <h2 class="title is-2 highlight">Events</h2>
     </a>
-    <!-- <button id="exp-coll" class="button ex-col-all" type="button" name="button">Expand/Collapse All</button> -->
     <% @faqs_events.map do |q| %>
-      <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
+      <details class="question-answer">
+        <summary class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></summary>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
-      </div>
+      </details>
     <% end %>
   </div>
   <div class="qa-section">
     <a name="shippingSection">
-      <h2 class="title is-2 highlight">Shipping </h2>
+      <h2 class="title is-2 highlight">Shipping</h2>
     </a>
-    <!-- <button id="exp-coll" class="button ex-col-all" type="button" name="button">Expand/Collapse All</button> -->
     <% @faqs_shipping.map do |q| %>
-      <div class="question-answer">
-        <div class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></div>
+      <details class="question-answer">
+        <summary class="question expand"><%= markdown(q["Question"])%> <span class="is-size-3 chevron">&#x2304;</span></summary>
         <div class="answer hidden"> <%= markdown q["Answer"] %></div>
-      </div>
+      </details>
     <% end %>
   </div>
 </main>
-<script>
-// Toggle visibility of FAQ items on click
-
-window.onload = function() {
-  // Select all elements with 'expand' class and hold in array
-  var question =  document.getElementsByClassName("question-answer");
-  var answer = document.getElementsByClassName("hidden");
-  var expandAll = document.getElementsByClassName("ex-col-all")[0];
-
-  // Expand all questions
-    expandAll.addEventListener("click", function(){
-      for(var j=0; j<answer.length;j++){
-        answer[j].classList.toggle("show");
-      }
-    })
-
-
-  // Expand single target item
-  for(var i = 0; i< question.length; i++){
-    question[i].addEventListener("click", function() {
-      let temp = this;
-      let content = temp.querySelector(".answer");
-      content.classList.toggle("hidden");
-
-
-    })
-  }
-
-}
-
-</script>

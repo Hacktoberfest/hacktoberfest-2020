@@ -60,13 +60,18 @@
     margin-right: 40px;
   }
 
-  .hidden{
-    display: none;
+  // .hidden{
+  //   display: none;
+  // }
+
+  details > summary {
+    list-style: none;
+    // transition: max-height .5s cubic-bezier(0, 1, 0, 1);
   }
 
-  .show{
-    display: block;
-  }
+  // .show{
+  //   display: block;
+  // }
 
   .chevron{
     width: 110%;
