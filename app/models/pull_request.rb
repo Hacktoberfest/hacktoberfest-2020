@@ -20,15 +20,6 @@ class PullRequest
     end
   end
 
-  def repo_id
-    decoded_id = Base64.decode(repository_id)
-
-    # because the decoded ID will look like this:
-    # "010:Repository176804829"
-    decoded_id.split('y')[1]
-  end
-
-
   def eligible?
     return false if spammy?
     state == 'eligible'

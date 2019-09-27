@@ -16,7 +16,7 @@ class GithubPullRequestService
             url
             createdAt
             repository{
-              id
+              databaseId
             }
             labels(first: 100) {
               edges {

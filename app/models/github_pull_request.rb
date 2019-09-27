@@ -9,8 +9,8 @@ class GithubPullRequest
     @graphql_hash.id
   end
 
-  def repository_id
-    @graphql_hash.repository.id
+  def repo_id
+    @graphql_hash.repository.databaseId
   end
 
   def title
