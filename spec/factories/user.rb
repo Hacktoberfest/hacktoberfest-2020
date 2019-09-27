@@ -34,5 +34,9 @@ FactoryBot.define do
         allow(user).to receive(:mature_pull_requests_count).and_return(4)
       end
     end
+
+    after :build do |user|
+      allow(user).to receive(:github_emails).and_return([user.email])
+    end
   end
 end
