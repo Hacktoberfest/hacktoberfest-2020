@@ -27,4 +27,11 @@ class PullRequest
 
     pr_date < (DateTime.now - Hacktoberfest.pull_request_maturation_days)
   end
+
+  def spammy?
+    repo = Repository.find_by_gh_database_id(repo_id)
+    return false unless repo
+
+    repo.banned?
+  end
 end
