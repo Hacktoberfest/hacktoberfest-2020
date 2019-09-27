@@ -7,11 +7,13 @@ class PullRequest
     @github_pull_request = github_pull_request
   end
 
-  delegate :id, :title, :body, :url, :created_at, :name, :owner,
+  delegate :id, :title, :body, :url, :created_at, :name, :owner, :repo_id,
            :name_with_owner, :label_names, to: :github_pull_request
 
   def state
-    if label_names.include?('invalid')
+    if spammy?
+      'spammy'
+    elsif label_names.include?('invalid')
       'invalid'
     else
       'eligible'
@@ -26,5 +28,12 @@ class PullRequest
     pr_date = DateTime.parse(@github_pull_request.created_at)
 
     pr_date < (DateTime.now - Hacktoberfest.pull_request_maturation_days)
+  end
+
+  def spammy?
+    repo = Repository.find_by_gh_database_id(repo_id)
+    return false unless repo
+
+    repo.banned?
   end
 end

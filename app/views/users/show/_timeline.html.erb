@@ -15,6 +15,10 @@
           <div class="eligible-box">
             <%= image_tag 'eligible', class: 'center-icon' %>
           </div>
+          <% elsif pr.spammy? %>
+          <div class="spammy-box">
+            <%= image_tag 'pending', class: 'center-icon' %>
+          </div>
           <% elsif pr.eligible? %>
           <div class="pending-box">
             <%= image_tag 'pending', class: 'center-icon' %>
