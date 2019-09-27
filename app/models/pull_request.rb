@@ -21,6 +21,7 @@ class PullRequest
   end
 
   def eligible?
+    return false if spammy?
     state == 'eligible'
   end
 
