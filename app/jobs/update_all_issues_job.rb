@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UpdateAllIssuesJob < ApplicationJob
-  queue_as :transition_all
+  queue_as :update_all_issues
 
   def perform
     Issue.select(:id).find_in_batches do |issue_group|

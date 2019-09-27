@@ -1,5 +1,6 @@
 :queues:
   - ["transition", 1]
-  - ["ban_repos", 1]
+  - ["ban_all_repos", 1]
   - ["transition_all", 1]
+  - ["update_all_issues", 1]
   - ["default", 1]

@@ -1,10 +1,9 @@
-
 # frozen_string_literal: true
 
 class BanAllReposJob < ApplicationJob
-  queue_as :ban_repos
+  queue_as :ban_all_repos
 
-  def perform 
+  def perform
     BanAllReposService.call
   end
 end
