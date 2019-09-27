@@ -6,7 +6,7 @@ class TransitionAllUsersJob
 
   def perform
     User.select(:id).find_in_batches do |group|
-      group.each { |user_id| UserTransitionJob.perform_later(user_id) }
+      group.each { |user_id| UserTransitionJob.perform_async(user_id) }
     end
   end
 end
