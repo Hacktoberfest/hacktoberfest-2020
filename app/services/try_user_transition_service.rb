@@ -7,6 +7,8 @@ module TryUserTransitionService
       TryUserTransitionFromRegisteredService.call(user)
     when 'waiting'
       TryUserTransitionFromWaitingService.call(user)
+    when 'completed'
+      TryUserTransitionFromCompletedService.call(user)
     end
   end
 end
