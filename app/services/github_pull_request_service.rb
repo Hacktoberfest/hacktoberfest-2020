@@ -8,7 +8,7 @@ class GithubPullRequestService
   PULL_REQUEST_QUERY = <<~GRAPHQL
     query($username:String!) {
       user(login: $username) {
-        pullRequests(states: OPEN last: 100) {
+        pullRequests(states: [OPEN, MERGED, CLOSED] last: 100) {
           nodes {
             id
             title
