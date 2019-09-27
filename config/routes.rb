@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/start' => 'pages#start', as: :start
   get '/thanks' => 'pages#thanks'
   get '/boom', to: 'boom#show'
+  get '/languages/projects/:language_id', to: 'languages#projects'
 
   if Rails.env.production?
     Sidekiq::Web.use Rack::Auth::Basic do |username, password|
