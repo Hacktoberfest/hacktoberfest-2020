@@ -1,10 +1,10 @@
-
 # frozen_string_literal: true
 
-class BanAllReposJob < ApplicationJob
-  queue_as :ban_repos
+class BanAllReposJob
+  include Sidekiq::Worker
+  sidekiq_options queue: :default, retry: 3
 
-  def perform 
+  def perform
     BanAllReposService.call
   end
 end

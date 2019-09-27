@@ -29,13 +29,18 @@ end
 Sidekiq.configure_server do |config|
   config.redis = REDIS_CONFIG if defined?(REDIS_CONFIG)
 
+  # https://github.com/mperham/sidekiq/wiki/Reliability#using-super_fetch
+  config.super_fetch!
+
   # Periodic job setup
   # See: https://github.com/mperham/sidekiq/wiki/Ent-Periodic-Jobs
   config.periodic do |mgr|
     # first arg is chron tab syntax for "every day at 1 am"
-    mgr.register('0 1 * * *', TransitionAllUsersJob, retry: 3, queue: "transition_all")
+    mgr.register('0 1 * * *', TransitionAllUsersJob, retry: 3, queue: :critical)
     # Every day at 4AM
-    mgr.register('0 4 * * *', UpdateAllIssuesJob, retry: 3, queue: "transition_all")
+    mgr.register('0 4 * * *', UpdateAllIssuesJob, retry: 3, queue: :critical)
+    # Every hour. 1 hour max latency when updating banned repos in airtable
+    mgr.register('0 * * * *', BanAllReposJob, retry: 3, queue: :default)
   end
 
   config.death_handlers << ->(job, ex) do
