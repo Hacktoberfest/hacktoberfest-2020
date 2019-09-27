@@ -3,8 +3,6 @@
 namespace :users do
   desc 'Transition all users'
   task transition: :environment do
-    User.all.find_in_batches do |group|
-      group.each { |user| UserTransitionJob.perform_later(user) }
-    end
+    TransitionAllUsersJob.perform_async
   end
 end
