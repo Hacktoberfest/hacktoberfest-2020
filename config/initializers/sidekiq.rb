@@ -35,9 +35,7 @@ Sidekiq.configure_server do |config|
     # first arg is chron tab syntax for "every day at 1 am"
     mgr.register('0 1 * * *', TransitionAllUsersJob, retry: 3, queue: "transition_all")
     # Every day at 4AM
-    mgr.register('0 4 * * *', UpdateAllIssuesJob, retry: 3, queue: "update_all_issues")
-    # Every hour
-    mgr.register('0 * * * *', BanAllReposJob, retry: 3, queue: "ban_all_repos")
+    mgr.register('0 4 * * *', UpdateAllIssuesJob, retry: 3, queue: "transition_all")
   end
 
   config.death_handlers << ->(job, ex) do
