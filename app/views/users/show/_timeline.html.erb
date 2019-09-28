@@ -1,63 +1,56 @@
 <div class="timeline-container">
   <% if @presenter.timeline_pull_requests.empty? %>
-    <div class="container pre-launch-container" >
+    <div class="container pre-launch-container">
       <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
-      <%= link_to "Get started", details_path, anchor: "getting-started", class: "button"%>
+      <%= link_to "Get started", details_path, anchor: "getting-started", class: "button" %>
     </div>
   <% else %>
     <h3 class="title is-3">Your contributions</h3><br/>
-    <table  class="table is-narrow is-narrow is-fullwidth " >
+    <table class="table is-narrow is-narrow is-fullwidth ">
       <tbody>
-        <% pull_requests.map do |pr| %>
+      <% pull_requests.map do |pr| %>
         <tr>
-        <td><div class="icon-box">
-          <% if pr.eligible? & user.completed? %>
-          <div class="eligible-box">
-            <%= image_tag 'eligible.png', class: 'center-icon' %>
-          </div>
-          <% elsif pr.spammy? %>
-          <div class="spammy-box">
-            <%= image_tag 'pending.png', class: 'center-icon' %>
-          </div>
-          <% elsif pr.eligible? %>
-          <div class="pending-box">
-            <%= image_tag 'pending.png', class: 'center-icon' %>
-          </div>
-          <% else %>
-          <div class="ineligible-box">
-            <%= image_tag 'ineligible.png', class: 'center-icon' %>
-          </div>
-          <% end %>
-        </div></td>
-        <td><div>
-          <p> <%=  DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/> </p>
-          <h3 class="title is-3">You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/></h3>
-        </div></td>
+          <td class="icon-block"><%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %></td>
+          <td>
+            <div>
+              <div class="timeline-date">
+                <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
+                <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
+              </div>
+              <h3 class="title is-3">
+                You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
+              </h3>
+            </div>
+          </td>
           <% if pr.eligible? && user.waiting? %>
-          <td><div>
-            <p>Mature in:</p>
-            <span class="countdown" >
+            <td>
+              <div>
+                <p>Mature in:</p>
+                <span class="countdown">
             </span>
-          </div></td>
-          </tr>
+              </div>
+            </td>
           <% end %>
-        <% end %>
+        </tr>
+      <% end %>
+      <tr>
         <td>
           <div>
             <% if pull_requests.count > 10 %>
-            <div class="indigo-button container is-full">
-              <h3 class="title is-3 center">Load more</h3>
-            </div>
+              <div class="indigo-button container is-full">
+                <h3 class="title is-3 center">Load more</h3>
+              </div>
             <% end %>
           </div>
         </td>
-        <% if pull_requests.any? %>
+      </tr>
+      <% if pull_requests.any? %>
         <script type="text/javascript">
-          var elements = document.getElementsByClassName('countdown')
-          var date = "<%= @presenter.user.waiting_since %>"
-          countdownTimers(elements, date)
+            var elements = document.getElementsByClassName('countdown')
+            var date = "<%= @presenter.user.waiting_since %>"
+            countdownTimers(elements, date)
         </script>
-        <% end %>
+      <% end %>
       </tbody>
     </table>
   <% end %>
