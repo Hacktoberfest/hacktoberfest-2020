@@ -62,6 +62,70 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
     padding-top: 20px;
     padding-left: 20px;
     text-align: left;
+
+    @media screen and (max-width: $break-small) {
+      padding-left: 0;
+    }
+
+    table {
+      tbody {
+        @media screen and (max-width: $break-small) {
+          display: block;
+        }
+
+        tr {
+          @media screen and (max-width: $break-small) {
+            display: flex;
+            flex-direction: column;
+          }
+
+          td {
+            @media screen and (max-width: $break-small) {
+              &:last-child {
+                padding-bottom: 1.5em;
+              }
+
+              &:not(:last-child) {
+                border-bottom: none;
+              }
+            }
+
+            &.icon-block {
+              @media screen and (max-width: $break-small) {
+                display: none;
+              }
+            }
+
+            .timeline-date {
+              display: flex;
+              flex-direction: row;
+
+              .icon-box {
+                display: none;
+
+                @media screen and (max-width: $break-small) {
+                  display: block;
+                }
+              }
+
+              p {
+                @media screen and (max-width: $break-small) {
+                  margin-left: .75em;
+                }
+              }
+            }
+
+            .timeline-mature {
+              p {
+                @media screen and (max-width: $break-small) {
+                  margin-top: .25em;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .username {
