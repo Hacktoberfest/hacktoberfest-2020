@@ -46,7 +46,7 @@
       <button type="button" class="button">Remove filter</button>
     </div>
     <div class="grid" id="project-list">
-      <%= render partial: 'languages/projects', locals: { projects: @projects } %>
+      <%= render partial: 'languages/all_projects', locals: { projects: @projects } %>
     </div>
     <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen&type=Issues">
       <button class="button" type="button" name="button">Browse more on GitHub</button>
