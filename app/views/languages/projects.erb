@@ -1,15 +1,1 @@
-<% @projects.map do |project| %>
- <a href="<%= project.url %>">
-  <div class="box projects grow-shadow">
-    <div class="title-wrap">
-      <h3 class="repo-name"> <%= project.repository_name %> </h3>
-      <span class="lang"><%= project.language %></span>
-    </div>
-    <p class="description"><%= project.repository_description %></p>
-    <div class="details-wrap">
-      <span class="details-number">#<%= project.number %></span>
-      <p class="details"><%= project.title %></p>
-    </div>
-  </div>
-  </a>
-<% end %>
+<%= render partial: 'languages/all_projects', locals: { projects: @projects } %>
