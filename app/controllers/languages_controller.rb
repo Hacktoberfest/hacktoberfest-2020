@@ -2,6 +2,6 @@
 
 class LanguagesController < ApplicationController
   def projects
-    ProjectService.language_sample(params["language_id"].to_i, 9)
+    @projects = ProjectService.language_sample(params["language_id"].to_i, 9)
   end
 end
