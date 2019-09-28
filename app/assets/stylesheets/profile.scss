@@ -159,7 +159,14 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
       }
 
       .level-left {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
         margin-top: 15px;
+
+        @media screen and (max-width: $break-small) {
+          justify-content: center;
+        }
       }
 
       .level-left .avatar,
