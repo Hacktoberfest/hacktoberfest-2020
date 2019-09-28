@@ -150,6 +150,8 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
 
       .level-left,
       .level-right {
+        max-width: 100%;
+
         @media screen and (max-width: $break-small) {
           padding: 20px;
           flex-direction: column;
@@ -222,17 +224,70 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
     border: 2px solid #fff;
   }
 
+  $progress-color: #152347;
+
   .progress-bar {
-    padding-right: 5px;
-    padding-left: 20px;
-    margin-right: 20px;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: relative;
+    background: $progress-color;
+    width: 330px;
+    max-width: 100%;
+    border: 2px solid $progress-color;
+    margin: 0 20px;
+
     @media screen and (max-width: $break-small) {
       margin: 0 auto;
-      max-width: 70vw;
-      max-height: 100%;
-      align-items: center;
-      padding: 0;
+    }
+
+    &:before {
+      position: absolute;
+      content: "";
+      display: block;
+      left: 0;
+      height: 100%;
+      background: #ff00aa;
+      background: linear-gradient(80deg, #ffc337 0%, #ff00aa 100%);
+    }
+
+    &.progress-state-0 {
+      &:before {
+        width: 0;
+      }
+    }
+
+    &.progress-state-1 {
+      &:before {
+        width: 25%;
+      }
+    }
+
+    &.progress-state-2 {
+      &:before {
+        width: 50%;
+      }
+    }
+
+    &.progress-state-3 {
+      &:before {
+        width: 75%;
+      }
+    }
+
+    &.progress-state-4 {
+      &:before {
+        width: 100%;
+      }
+    }
+
+    .progress-block {
+      flex-grow: 1;
+      border: 2px solid $progress-color;
+      height: 20px;
+      z-index: 1;
+      background: transparent;
     }
   }
+
 }
