@@ -1,17 +1,24 @@
 $(function() {
   $('#language_id').change(function(event) {
     var languageId = $(event.currentTarget).val();
-    var url = "/languages/projects/" + languageId;
+    var url = '/languages/projects/' + languageId;
     $.ajax({
-      type: "GET",
+      type: 'GET',
       url: url,
       success: function(htmlData) {
-        $('#project-list').html(htmlData);
+        $('#project-list').html($(htmlData).find('div.box.projects'));
       }
     })
+    $('#reset-filter').show()
+  })
+  $('#reset-filter').click(function(event) {
+    $.ajax({
+      type: 'GET',
+      url:  '/',
+      success: function(htmlData) {
+        $('#project-list').html($(htmlData).find('div.box.projects'));
+      }
+    })
+    $('#reset-filter').hide()
   })
 });
-
-function updateFilterText() {
-  //toggle button visibility
-}
