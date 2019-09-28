@@ -20,6 +20,7 @@ FactoryBot.define do
 
     trait :waiting do
       state { 'waiting' }
+      waiting_since { Date.today }
 
       after :build do |user|
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
@@ -31,7 +32,7 @@ FactoryBot.define do
 
       after :build do |user|
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
-        allow(user).to receive(:mature_pull_requests_count).and_return(4)
+        allow(user).to receive(:waiting_since).and_return(Date.today - 8)
       end
     end
   end

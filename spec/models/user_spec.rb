@@ -107,9 +107,10 @@ RSpec.describe User, type: :model do
   describe '#complete' do
     let(:user) { FactoryBot.create(:user, :waiting) }
 
-    context 'the user has 4 mature PRs' do
+    context 'the user has 4 eligible PRs and has been waiting for 7 days' do
       before do
-        allow(user).to receive(:mature_pull_requests_count).and_return(4)
+        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user).to receive(:waiting_since).and_return(Date.today - 8)
         user.complete
       end
 
@@ -123,9 +124,47 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'the user does not have 4 mature PRs' do
+    context 'the user has 4 eligible PRs but has not been waiting for 7 days' do
       before do
-        allow(user).to receive(:mature_pull_requests_count).and_return(3)
+        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user).to receive(:waiting_since).and_return(Date.today - 2)
+
+        user.complete
+      end
+
+      it 'disallows the user to enter the completed state', :vcr do
+        expect(user.state).to eq('waiting')
+      end
+
+      it 'adds the correct errors to user', :vcr do
+        expect(user.errors.messages[:won_hacktoberfest?].first)
+          .to include('user has not met all winning conditions')
+      end
+    end
+
+    context 'the user has been waiting for 7 days but has less than 4 eligible prs' do
+      before do
+        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        allow(user).to receive(:waiting_since).and_return(Date.today - 8)
+
+        user.complete
+      end
+
+      it 'disallows the user to enter the completed state', :vcr do
+        expect(user.state).to eq('waiting')
+      end
+
+      it 'adds the correct errors to user', :vcr do
+        expect(user.errors.messages[:won_hacktoberfest?].first)
+          .to include('user has not met all winning conditions')
+      end
+    end
+
+    context 'the user neither 4 eligible PRs nor has been waiting for 7 days' do
+      before do
+        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        allow(user).to receive(:waiting_since).and_return(Date.today - 2)
+
         user.complete
       end
 

@@ -21,10 +21,6 @@ class PullRequestService
     all.select(&:eligible?)
   end
 
-  def matured_prs
-    all.select(&:mature?)
-  end
-
   def timeline_pull_requests
     counter = 0
     all.take_while do |pr|

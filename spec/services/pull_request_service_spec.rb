@@ -81,52 +81,6 @@ RSpec.describe PullRequestService do
     end
   end
 
-  describe '#matured_prs' do
-    before do
-      allow(DateTime)
-        .to receive(:now).and_return(DateTime.parse('2019-10-21T00:46:43Z'))
-    end
-
-    context 'given an array of four matured prs' do
-      before { stub_helper(PR_DATA[:mature_array]) }
-      it 'returns the correct count' do
-        expect(pr_service.matured_prs.count).to eq(4)
-      end
-    end
-
-  describe '#timeline_pull_requests' do
-    context 'a new user with no eligible pull requests' do
-      before { stub_helper(PR_DATA[:invalid_array]) }
-
-      it 'returns 0 eligible prs', vcr: { record: :new_episodes } do
-        expect(pr_service.timeline_pull_requests.count).to eq(0)
-      end
-    end
-
-    context 'it counts the amount of pull requests' do
-      before { stub_helper(PR_DATA[:valid_array]) }
-
-      it 'returns all the eligible prs', vcr: { record: :new_episodes } do
-        expect(pr_service.timeline_pull_requests.count).to eq(4)
-      end
-    end
-  end
-
-    context 'given an array of no matured prs' do
-      before { stub_helper(PR_DATA[:immature_array]) }
-      it 'returns the correct count' do
-        expect(pr_service.matured_prs.count).to eq(0)
-      end
-    end
-
-    context 'given an array of mixed maturity prs' do
-      before { stub_helper(PR_DATA[:mixed_maturity_array]) }
-      it 'returns the correct count' do
-        expect(pr_service.matured_prs.count).to eq(2)
-      end
-    end
-  end
-
   def stub_helper(arr_type)
     allow(pr_service)
       .to receive(:github_pull_requests)

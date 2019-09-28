@@ -26,17 +26,16 @@ RSpec.describe UsersController, type: :request do
       login
     end
 
-    context 'a waiting user has 4 mature pull_requests' do
+    context 'a waiting user has 4 mature pull_requests and has been waiting for 7+ days' do
       before do
         prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
           PullRequest.new(pr)
         end
 
         allow_any_instance_of(User).to receive(:pull_requests).and_return(prs)
+        allow_any_instance_of(User).to receive(:waiting_since).and_return(Date.today - 8)
         allow_any_instance_of(User)
           .to receive(:eligible_pull_requests_count).and_return(4)
-        allow_any_instance_of(User)
-          .to receive(:mature_pull_requests_count).and_return(4)
 
         user.wait
         mock_authentication(uid: user.uid)
