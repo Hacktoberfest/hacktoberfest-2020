@@ -13,19 +13,19 @@
         <td><div class="icon-box">
           <% if pr.eligible? & user.completed? %>
           <div class="eligible-box">
-            <%= image_tag 'eligible', class: 'center-icon' %>
+            <%= image_tag 'eligible.png', class: 'center-icon' %>
           </div>
           <% elsif pr.spammy? %>
           <div class="spammy-box">
-            <%= image_tag 'pending', class: 'center-icon' %>
+            <%= image_tag 'pending.png', class: 'center-icon' %>
           </div>
           <% elsif pr.eligible? %>
           <div class="pending-box">
-            <%= image_tag 'pending', class: 'center-icon' %>
+            <%= image_tag 'pending.png', class: 'center-icon' %>
           </div>
           <% else %>
           <div class="ineligible-box">
-            <%= image_tag 'ineligible', class: 'center-icon' %>
+            <%= image_tag 'ineligible.png', class: 'center-icon' %>
           </div>
           <% end %>
         </div></td>
