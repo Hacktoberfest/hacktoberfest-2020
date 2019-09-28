@@ -75,12 +75,19 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
 
         tr {
           @media screen and (max-width: $break-small) {
-            display: block;
+            display: flex;
+            flex-direction: column;
           }
 
           td {
             @media screen and (max-width: $break-small) {
-              padding-bottom: 1.5em;
+              &:last-child {
+                padding-bottom: 1.5em;
+              }
+
+              &:not(:last-child) {
+                border-bottom: none;
+              }
             }
 
             &.icon-block {
@@ -104,6 +111,14 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
               p {
                 @media screen and (max-width: $break-small) {
                   margin-left: .75em;
+                }
+              }
+            }
+
+            .timeline-mature {
+              p {
+                @media screen and (max-width: $break-small) {
+                  margin-top: .25em;
                 }
               }
             }
