@@ -43,7 +43,7 @@
     </p>
     <div class="language-filter">
       <%= collection_select(:language, :id, Language.all, :id, :name, prompt: true) %>
-      <button type="button" class="button">Remove filter</button>
+      <button type="button" class="button" id="reset-filter">Remove filter</button>
     </div>
     <div class="grid" id="project-list">
       <%= render partial: 'languages/all_projects', locals: { projects: @projects } %>
