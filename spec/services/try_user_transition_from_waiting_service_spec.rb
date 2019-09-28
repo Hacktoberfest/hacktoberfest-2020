@@ -23,17 +23,6 @@ RSpec.describe TryUserTransitionFromWaitingService do
       end
     end
 
-    context 'The user has insufficient PRs to transition' do
-      before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
-        TryUserTransitionFromWaitingService.call(user)
-      end
-
-      it 'does not transition the user to the completed state' do
-        expect(user.state).to eq('waiting')
-      end
-    end
-
     context 'The user has dropped below 4 eligible prs' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(3)
