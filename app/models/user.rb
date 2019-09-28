@@ -68,10 +68,6 @@ class User < ApplicationRecord
     pull_request_service.eligible_prs.count
   end
 
-  def mature_pull_requests_count
-    pull_request_service.matured_prs.count
-  end
-
   def timeline_pull_requests
     pull_request_service.timeline_pull_requests
   end
