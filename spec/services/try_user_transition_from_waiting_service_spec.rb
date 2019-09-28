@@ -11,9 +11,10 @@ RSpec.describe TryUserTransitionFromWaitingService do
       allow(UserPullRequestSegmentUpdaterService).to receive(:call)
     end
 
-    context 'The user has enough mature PRs to transition' do
+    context 'The user has enough eligible PRs to transition and has been waiting 7+ days' do
       before do
-        allow(user).to receive(:mature_pull_requests_count).and_return(4)
+        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user).to receive(:waiting_since).and_return(Date.today - 8)
         TryUserTransitionFromWaitingService.call(user)
       end
 
@@ -22,9 +23,9 @@ RSpec.describe TryUserTransitionFromWaitingService do
       end
     end
 
-    context 'The user has insufficient mature PRs to transition' do
+    context 'The user has insufficient PRs to transition' do
       before do
-        allow(user).to receive(:mature_pull_requests_count).and_return(3)
+        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
         TryUserTransitionFromWaitingService.call(user)
       end
 
@@ -35,7 +36,6 @@ RSpec.describe TryUserTransitionFromWaitingService do
 
     context 'The user has dropped below 4 eligible prs' do
       before do
-        allow(user).to receive(:mature_pull_requests_count).and_return(3)
         allow(user).to receive(:eligible_pull_requests_count).and_return(3)
 
         TryUserTransitionFromWaitingService.call(user)

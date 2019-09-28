@@ -81,7 +81,7 @@ class User < ApplicationRecord
   end
 
   def won_hacktoberfest?
-    mature_pull_requests_count >= 4
+    sufficient_eligible_prs? && waiting_for_week?
   end
 
   def hacktoberfest_ended?
@@ -90,6 +90,11 @@ class User < ApplicationRecord
 
   def update_waiting_since
     update(waiting_since: DateTime.now)
+  end
+
+  def waiting_for_week?
+    return false if waiting_since.nil?
+    waiting_since < (Date.today - 7.days)
   end
 
   private

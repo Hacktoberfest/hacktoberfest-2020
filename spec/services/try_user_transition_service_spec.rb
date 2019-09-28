@@ -23,7 +23,8 @@ RSpec.describe 'TryUserTransitionService' do
       let(:user) { FactoryBot.create(:user, :waiting) }
 
       before do
-        allow(user).to receive(:mature_pull_requests_count).and_return(4)
+        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user).to receive(:waiting_since).and_return(Date.today - 8)
       end
 
       it 'calls the appropriate service' do
