@@ -1,13 +1,6 @@
-<div class="progress-bar">
-  <% if score == 0 %>
-    <%= show_svg('progress-bar-0.svg')%>
-  <% elsif score == 1 %>
-    <%= show_svg('progress-bar-1.svg') %>
-  <% elsif score == 2 %>
-    <%= show_svg('progress-bar-2.svg') %>
-  <% elsif score == 3 %>
-    <%= show_svg('progress-bar-3.svg') %>
-  <% elsif score == 4 %>
-    <%= show_svg('progress-bar-4.svg') %>
-  <% end %>
+<div class="progress-bar progress-state-<%= score %>">
+  <div class="progress-block"></div>
+  <div class="progress-block"></div>
+  <div class="progress-block"></div>
+  <div class="progress-block"></div>
 </div>
