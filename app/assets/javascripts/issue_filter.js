@@ -4,7 +4,7 @@ $(function() {
    var url = "/languages/projects/" + languageId;
    $.ajax({
      url: url
-   }).success(function(htmlData) {
+   }).done(function(htmlData) {
      $('#project-list').html(htmlData);
    });
  });

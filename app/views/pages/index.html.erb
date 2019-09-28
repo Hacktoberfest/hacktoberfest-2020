@@ -5,7 +5,6 @@
     </h1>
     <%= link_to 'Start Hacking', profile_path, :class => 'button' %>
   </div>
-
   <div class="section2 space">
     <div class="line-br">
       <span class="line-br-1">-</span>
@@ -91,7 +90,6 @@
     <section class="eventUnion">
       <% @events.map do |e| %>
       <a class="box grow-shadow" href="<%= e.url %>">
-
           <span class="eventMonth">
             <% formatted_date= e.date.to_formatted_s(:long).split(" ") %>
             <%= formatted_date[0] %>
@@ -107,12 +105,10 @@
             <%= e.city %>, <%= e.country %>
           </span>
           </div>
-
       </a>
       <% end %>
     </section>
    <%= link_to 'See more events', events_path, :class => 'button' %>
-
   </div>
 </section>
 <section class="section sponsors">
