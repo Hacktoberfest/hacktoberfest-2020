@@ -2,7 +2,6 @@
 
 class LanguagesController < ApplicationController
   def projects
-    binding.pry
-    ProjectService.language_sample(params["language_id"], 9)
+    ProjectService.language_sample(params["language_id"].to_i, 9)
   end
 end
