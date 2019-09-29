@@ -83,7 +83,7 @@ module HacktoberfestProjectQueryComposer
     variables
   end
 
-  def compose(query_string:, results_per_page:, cursor:)
+  def compose(query_string: nil, results_per_page:, cursor:)
     {
       query: PROJECT_IMPORT_QUERY,
       variables: compose_variables(query_string, results_per_page, cursor)

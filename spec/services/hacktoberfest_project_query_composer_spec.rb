@@ -8,8 +8,11 @@ RSpec.describe HacktoberfestProjectQueryComposer do
       it 'returns a project graphql json query for the first set of results' do
         results_per_page = 1_000_000
         graphql_json_query_without_pagination = {
-          query: "query FindHacktoberfestIssues($queryString: String!) { rateLimit { cost limit remaining resetAt } search(query: $queryString, type: ISSUE, first: #{results_per_page}) { issueCount pageInfo { endCursor hasNextPage } edges { node { ... on Issue { bodyText databaseId number title url participants { totalCount } timeline { totalCount } repository { databaseId description name nameWithOwner url primaryLanguage { name } stargazers { totalCount } watchers { totalCount } forks { totalCount } codeOfConduct { url } } } } } } }",
-          variables: { 'queryString' => 'state:open label:hacktoberfest' }
+          query: HacktoberfestProjectQueryComposer::PROJECT_IMPORT_QUERY,
+          variables: {
+            queryString: 'state:open label:hacktoberfest',
+            first: results_per_page
+          }
         }
 
         query = HacktoberfestProjectQueryComposer.compose(
@@ -26,13 +29,39 @@ RSpec.describe HacktoberfestProjectQueryComposer do
         results_per_page = 1_000_000
         cursor = 'a_dog_eared_page'
         graphql_json_query_with_pagination = {
-          query: "query FindHacktoberfestIssues($queryString: String!) { rateLimit { cost limit remaining resetAt } search(query: $queryString, type: ISSUE, first: #{results_per_page}, after:\"#{cursor}\") { issueCount pageInfo { endCursor hasNextPage } edges { node { ... on Issue { bodyText databaseId number title url participants { totalCount } timeline { totalCount } repository { databaseId description name nameWithOwner url primaryLanguage { name } stargazers { totalCount } watchers { totalCount } forks { totalCount } codeOfConduct { url } } } } } } }",
-          variables: { 'queryString' => 'state:open label:hacktoberfest' }
+          query: HacktoberfestProjectQueryComposer::PROJECT_IMPORT_QUERY,
+          variables: {
+            queryString: 'state:open label:hacktoberfest',
+            first: results_per_page,
+            after: cursor
+          }
         }
 
         query = HacktoberfestProjectQueryComposer.compose(
           results_per_page: results_per_page,
           cursor: cursor
+        )
+
+        expect(query).to eq graphql_json_query_with_pagination
+      end
+    end
+
+    context 'When given a query string' do
+      it 'returns a project graphql json query with the query string' do
+        results_per_page = 1_000_000
+        query_string = 'language:Ruby'
+        graphql_json_query_with_pagination = {
+          query: HacktoberfestProjectQueryComposer::PROJECT_IMPORT_QUERY,
+          variables: {
+            queryString: "state:open label:hacktoberfest #{query_string}",
+            first: results_per_page,
+          }
+        }
+
+        query = HacktoberfestProjectQueryComposer.compose(
+          query_string: query_string,
+          results_per_page: results_per_page,
+          cursor: nil
         )
 
         expect(query).to eq graphql_json_query_with_pagination
