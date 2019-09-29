@@ -1,27 +1,50 @@
-$(function() {
-  $('#language_id').change(function(event) {
-    var languageId = $(event.currentTarget).val();
-    var url = '/languages/projects/' + languageId;
-    $.ajax({
-      type: 'GET',
-      url: url,
-      success: function(htmlData) {
-        $('#project-list').html($(htmlData).find('div.box.projects'));
-      }
+$(function () {
+    var $reset = $('#reset-filter'),
+        $id = $('#language_id'),
+        $list = $('#project-list'),
+        $message = $('#projects-message'),
+        defaultMessage = $message.text();
+
+    // Handle resetting the filter to all
+    function reset() {
+        $.ajax({
+            type: 'GET',
+            url: '/',
+            success: function (htmlData) {
+                $list.html($(htmlData).find('div.box.projects'));
+            }
+        });
+        $reset.hide();
+        $message.text(defaultMessage);
+        $id.val("");
+    }
+
+    // Handle the filter selection changing
+    function change() {
+        var languageId = $id.val();
+        if (languageId === "") return reset(); // Reset if default selected
+        var url = '/languages/projects/' + languageId;
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (htmlData) {
+                $list.html($(htmlData).find('div.box.projects'));
+            }
+        });
+        $message.text('Displaying ' + $id.find("option:selected").text() + ' projects only');
+        $reset.show();
+    }
+
+    // Deal with browsers remembering last state of select
+    change();
+
+    // Detect the select change event
+    $id.change(function () {
+        change();
+    });
+
+    // Detect the reset button being clicked
+    $reset.click(function () {
+        reset();
     })
-    $('#projects-message').text('Displaying filtered project results');
-    $('#reset-filter').show()
-  })
-  $('#reset-filter').click(function(event) {
-    $.ajax({
-      type: 'GET',
-      url:  '/',
-      success: function(htmlData) {
-        $('#project-list').html($(htmlData).find('div.box.projects'));
-      }
-    })
-    $('#reset-filter').hide();
-    $('#projects-message').text('Displaying all projects');
-    $('#language_id').val("");
-  })
 });
