@@ -4,7 +4,7 @@ module ProjectImportService
   module_function
 
   def call
-    access_token = ENV.fetch('GITHUB_ACCESS_TOKEN')
+    access_token = GithubTokenService.random
     api_client = GithubGraphqlApiClient.new(access_token: access_token)
     fetcher = HacktoberfestProjectFetcher.new(api_client: api_client)
     fetcher.fetch!
