@@ -9,6 +9,7 @@ $(function() {
         $('#project-list').html($(htmlData).find('div.box.projects'));
       }
     })
+    $('#projects-message').text($('#projects-message').text().replace('Displaying filtered project results'));
     $('#reset-filter').show()
   })
   $('#reset-filter').click(function(event) {
