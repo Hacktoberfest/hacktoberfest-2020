@@ -247,25 +247,33 @@ main.home {
       margin: 0;
     }
 
-    select {
-      width: 27vw;
-      background-color: $grey-darker;
-      color: #fff;
-      border-color: $grey-darker;
+    .field {
+      margin: 0;
 
-      @media screen and (max-width: $break-small) {
-        width: 85vw;
-        padding-top: 1px
+      .select {
+        display: block;
+
+        select {
+          width: 27vw;
+          background-color: $grey-darker;
+          color: #fff;
+          border-color: $grey-darker;
+
+          @media screen and (max-width: $break-small) {
+            width: 100%;
+            margin: .5em 0 0;
+          }
+        }
       }
     }
 
     #reset-filter {
       display: none;
-      margin: -.75em 0 0 .5em;
+      margin: 0 0 0 .5em;
       padding: 0.3em 1em;
 
       @media screen and (max-width: $break-small) {
-        padding-bottom: 20px
+        margin: .5em 0 0;
       }
     }
   }
