@@ -11,13 +11,5 @@ module ProjectImportService
     projects = fetcher.projects
     importer = HacktoberfestProjectImporter.new
     importer.import_all(projects)
-  rescue HacktoberfestProjectFetcherError => e
-    log_error(e.message)
-  rescue StandardError => e
-    log_error(e.message)
-  end
-
-  def log_error(str)
-    Rails.logger.error str
   end
 end
