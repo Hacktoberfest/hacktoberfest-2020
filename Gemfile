@@ -12,6 +12,7 @@ gem "bulma-rails", "~> 0.7.5"
 gem 'coffee-rails', '~> 4.2'
 
 gem 'dalli', '~> 2.7'
+gem 'dotenv-rails'
 
 gem 'faraday'
 gem 'faraday_middleware'
@@ -57,8 +58,6 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
-  gem 'dotenv-rails'
 
   gem 'factory_bot_rails'
 
