@@ -23,6 +23,8 @@ RSpec.describe UsersController, type: :request do
       allow(Hacktoberfest).to receive(:ended?).and_return(:false)
       allow(Hacktoberfest).to receive(:active?).and_return(:true)
 
+      allow_any_instance_of(UserEmailService).to receive(:emails).and_return("test@mail.com")
+
       login
     end
 
