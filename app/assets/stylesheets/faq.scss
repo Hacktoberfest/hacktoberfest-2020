@@ -60,18 +60,9 @@
     margin-right: 40px;
   }
 
-  // .hidden{
-  //   display: none;
-  // }
-
   details > summary {
     list-style: none;
-    // transition: max-height .5s cubic-bezier(0, 1, 0, 1);
   }
-
-  // .show{
-  //   display: block;
-  // }
 
   .chevron{
     width: 110%;
@@ -93,6 +84,7 @@
     right: 90;
     padding: 1%;
     margin-bottom: 40px;
+    min-width: 150px;
 
     @media screen and (max-width: $break-med) {
       display: none;
