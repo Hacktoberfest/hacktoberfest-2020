@@ -186,6 +186,10 @@ main.home {
         margin: 0;
       }
     }
+    @media screen and (max-width: $break-small) {
+      width: 85vw;
+    }
+
   }
 
   .eventUnion {
@@ -230,15 +234,29 @@ main.home {
 
   #reset-filter {
     display: none;
+
+    @media screen and (max-width: $break-small) {
+      padding-bottom: 20px
+    }
   }
 
   .language-filter {
     padding-bottom: 20px;
+
+    @media screen and (max-width: $break-small) {
+      display: block;
+    }
   }
 
   select {
     width: 27vw;
+
+    @media screen and (max-width: $break-small) {
+      width: 85vw;
+      padding-top: 1px
+    }
   }
+
 
   .eventMonth {
     font-family: Space Mono;
