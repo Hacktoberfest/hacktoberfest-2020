@@ -35,10 +35,4 @@ class ApplicationController < ActionController::Base
 
     redirect_to profile_path
   end
-
-  def disallow_logged_in_user!
-    return unless logged_in?
-
-    redirect_to register_form_path
-  end
 end

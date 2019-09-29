@@ -2,7 +2,6 @@
 
 class PagesController < ApplicationController
   before_action :disallow_registered_user!, only: :start
-  before_action :disallow_logged_in_user!, only: :start
 
   def index
     @events = all_events.select(&:featured?).first(4)
