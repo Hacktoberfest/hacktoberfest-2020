@@ -12,7 +12,7 @@ gem "bulma-rails", "~> 0.7.5"
 gem 'coffee-rails', '~> 4.2'
 
 gem 'dalli', '~> 2.7'
-gem 'dotenv-rails'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 gem 'faraday'
 gem 'faraday_middleware'
