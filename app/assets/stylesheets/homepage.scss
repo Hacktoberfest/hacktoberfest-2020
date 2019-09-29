@@ -232,31 +232,43 @@ main.home {
     box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
   }
 
-  #reset-filter {
-    display: none;
-
-    @media screen and (max-width: $break-small) {
-      padding-bottom: 20px
-    }
-  }
-
   .language-filter {
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
     @media screen and (max-width: $break-small) {
       display: block;
     }
-  }
 
-  select {
-    width: 27vw;
+    #projects-message {
+      flex-grow: 1;
+      margin: 0;
+    }
 
-    @media screen and (max-width: $break-small) {
-      width: 85vw;
-      padding-top: 1px
+    select {
+      width: 27vw;
+      background-color: $grey-darker;
+      color: #fff;
+      border-color: $grey-darker;
+
+      @media screen and (max-width: $break-small) {
+        width: 85vw;
+        padding-top: 1px
+      }
+    }
+
+    #reset-filter {
+      display: none;
+      margin: -.75em 0 0 .5em;
+      padding: 0.3em 1em;
+
+      @media screen and (max-width: $break-small) {
+        padding-bottom: 20px
+      }
     }
   }
-
 
   .eventMonth {
     font-family: Space Mono;

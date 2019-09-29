@@ -110,9 +110,16 @@ $modal-content-width: 60vw;
   font-size: 16px;
   padding-bottom: 2em;
   padding-top: 1.125em;
-}
-.button:hover {
-  background-color: $cyan;
+
+  &:hover {
+    background-color: $cyan;
+  }
+
+  &.button-small {
+    height: auto;
+    min-height: auto;
+    padding: 0.5em 1em;
+  }
 }
 
 // -- table
