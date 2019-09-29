@@ -6,10 +6,12 @@ module UserStateTransitionSegmentService
   module_function
 
   def call(user, transition)
-    if transition.event == :register
-      register(user)
-    elsif transition.event == :ineligible
-      ineligible(user)
+    case transition.event
+    when :register then register(user)
+    when :wait then wait(user)
+    when :complete then complete(user)
+    when :incomplete then incomplete(user)
+    when :ineligible then ineligible(user)
     end
   end
 
@@ -20,6 +22,21 @@ module UserStateTransitionSegmentService
       state: 'register'
     )
     segment(user).track('register')
+  end
+
+  def wait(user)
+    segment(user).track('user_waiting')
+    segment(user).identify(state: 'waiting')
+  end
+
+  def complete(user)
+    segment(user).track('user_completed')
+    segment(user).identify(state: 'completed')
+  end
+
+  def incomplete(user)
+    segment(user).track('user_incompleted')
+    segment(user).identify(state: 'incomplete')
   end
 
   def ineligible(user)

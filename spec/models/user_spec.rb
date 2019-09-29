@@ -4,17 +4,19 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before do
-    allow(UserStateTransitionSegmentService)
-      .to receive(:call).and_return(true)
     allow(UserPullRequestSegmentUpdaterService)
       .to receive(:call).and_return(true)
   end
 
   describe '#register' do
-    before { user.register }
-
     context 'user is created but has not agreed to terms' do
       let(:user) { FactoryBot.create(:user, :new) }
+
+      before do
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
+
+        user.register
+      end
 
       it 'disallows the user to enter the registered state', :vcr do
         expect(user.state).to eq('new')
@@ -29,6 +31,12 @@ RSpec.describe User, type: :model do
     context 'user has no email' do
       let(:user) { FactoryBot.create(:user, :no_email, state: 'new') }
 
+      before do
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
+
+        user.register
+      end
+
       it 'disallows the user to enter the registered state', :vcr do
         expect(user.state).to eq('new')
       end
@@ -40,6 +48,12 @@ RSpec.describe User, type: :model do
 
     context 'user has neither an email nor an agreement' do
       let(:user) { FactoryBot.create(:user, :new, :no_email) }
+
+      before do
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
+
+        user.register
+      end
 
       it 'disallows the user to enter the registered state', :vcr do
         expect(user.state).to eq('new')
@@ -54,6 +68,13 @@ RSpec.describe User, type: :model do
 
     context 'an unregistered user has an email and has agreed to terms' do
       let(:user) { FactoryBot.create(:user, state: 'new') }
+
+      before do
+        expect(UserStateTransitionSegmentService)
+          .to receive(:register).and_return(true)
+
+        user.register
+      end
 
       it 'allows the user to enter the registered state', :vcr do
         expect(user.state).to eq('registered')
@@ -72,6 +93,9 @@ RSpec.describe User, type: :model do
 
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        expect(UserStateTransitionSegmentService)
+          .to receive(:wait).and_return(true)
+
         user.wait
       end
 
@@ -90,6 +114,8 @@ RSpec.describe User, type: :model do
 
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
+
         user.wait
       end
 
@@ -111,6 +137,9 @@ RSpec.describe User, type: :model do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
         allow(user).to receive(:waiting_since).and_return(Date.today - 8)
+        expect(UserStateTransitionSegmentService)
+          .to receive(:complete).and_return(true)
+
         user.complete
       end
 
@@ -128,6 +157,7 @@ RSpec.describe User, type: :model do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
         allow(user).to receive(:waiting_since).and_return(Date.today - 2)
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
 
         user.complete
       end
@@ -146,6 +176,7 @@ RSpec.describe User, type: :model do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(3)
         allow(user).to receive(:waiting_since).and_return(Date.today - 8)
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
 
         user.complete
       end
@@ -164,6 +195,7 @@ RSpec.describe User, type: :model do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(3)
         allow(user).to receive(:waiting_since).and_return(Date.today - 2)
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
 
         user.complete
       end
@@ -185,6 +217,8 @@ RSpec.describe User, type: :model do
 
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        expect(UserStateTransitionSegmentService)
+          .to receive(:ineligible).and_return(true)
         user.ineligible
       end
 
@@ -204,6 +238,7 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user, :completed) }
 
       before do
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
         user.incomplete
       end
 
@@ -222,6 +257,7 @@ RSpec.describe User, type: :model do
 
       before do
         allow(user).to receive(:hacktoberfest_ended?).and_return(false)
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
         user.incomplete
       end
 
@@ -240,6 +276,8 @@ RSpec.describe User, type: :model do
 
       before do
         allow(user).to receive(:hacktoberfest_ended?).and_return(true)
+        expect(UserStateTransitionSegmentService)
+          .to receive(:incomplete).and_return(true)
         user.incomplete
       end
 
