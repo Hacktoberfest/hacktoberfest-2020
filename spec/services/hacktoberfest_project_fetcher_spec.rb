@@ -257,10 +257,10 @@ RSpec.describe HacktoberfestProjectFetcher do
         second_response = double(:response, body: second_json_response_body)
         client = Hacktoberfest.client
         allow(client).to receive(:post)
-          .with(anything, string_excluding(/after:/), anything)
+          .with(anything, string_excluding(/#{end_cursor_1}/), anything)
           .and_return(first_response)
         allow(client).to receive(:post)
-          .with(anything, /after:\\"#{end_cursor_1}\\"/, anything)
+          .with(anything, /#{end_cursor_1}/, anything)
           .and_return(second_response)
         api_client = GithubGraphqlApiClient.new(access_token: '123', client: client)
         fetcher = HacktoberfestProjectFetcher.new(api_client: api_client)

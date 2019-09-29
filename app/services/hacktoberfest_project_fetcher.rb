@@ -13,9 +13,11 @@ class HacktoberfestProjectFetcher
     @end_cursor = nil
     @projects = []
     @errors = nil
+    @query_string = nil
   end
 
-  def fetch!
+  def fetch!(query_string = nil)
+    @query_string = query_string
     while fetching_incomplete?
       @started = true
       fetch_next_page
@@ -28,13 +30,9 @@ class HacktoberfestProjectFetcher
     !@started || @has_next_page
   end
 
-  def api_request_with_retries
+  def api_request_with_retries(query)
     retry_count = 0
     begin
-      query = HacktoberfestProjectQueryComposer.compose(
-        results_per_page: NODE_LIMIT,
-        cursor: @last_cursor
-      )
       response = @api_client.request(query)
     rescue Faraday::ClientError => e
       if e.response[:status] == 502
@@ -52,7 +50,13 @@ class HacktoberfestProjectFetcher
   end
 
   def fetch_next_page
-    response = api_request_with_retries
+    query = HacktoberfestProjectQueryComposer.compose(
+      query_string: @query_string,
+      results_per_page: NODE_LIMIT,
+      cursor: @last_cursor
+    )
+
+    response = api_request_with_retries(query)
 
     if response_invalid?(response)
       raise HacktoberfestProjectFetcherError.new(

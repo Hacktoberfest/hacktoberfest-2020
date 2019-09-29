@@ -14,7 +14,7 @@ class GithubGraphqlApiClient
   end
 
   def request(query, variables = {})
-    query, variables = normalize_hash_args(query, variables)
+    query, variables = normalize_hash_args(query.dup, variables.dup)
     response = client.post(GITHUB_GRAPHQL_API_URL,
                            { query: query, variables: variables }.to_json,
                            'Authorization': "bearer #{@access_token}",
