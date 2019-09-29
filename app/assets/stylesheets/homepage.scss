@@ -228,13 +228,17 @@ main.home {
     box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
   }
 
-#reset-filter {
-  display: none;
-}
+  #reset-filter {
+    display: none;
+  }
 
-.language-filter {
-  padding-bottom: 20px;
-}
+  .language-filter {
+    padding-bottom: 20px;
+  }
+
+  select {
+    width: 27vw;
+  }
 
   .eventMonth {
     font-family: Space Mono;
