@@ -237,43 +237,50 @@ main.home {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
 
     @media screen and (max-width: $break-small) {
       display: block;
     }
 
     #projects-message {
-      flex-grow: 1;
       margin: 0;
     }
 
-    .field {
-      margin: 0;
+    .right {
+      display: flex;
+      flex-direction: column;
 
-      .select {
-        display: block;
+      .field {
+        margin: 0;
 
-        select {
-          width: 27vw;
-          background-color: $grey-darker;
-          color: #fff;
-          border-color: $grey-darker;
+        .select {
+          display: block;
 
-          @media screen and (max-width: $break-small) {
-            width: 100%;
-            margin: .5em 0 0;
+          select {
+            width: 27vw;
+            background-color: $grey-darker;
+            color: #fff;
+            border-color: $grey-darker;
+
+            @media screen and (max-width: $break-small) {
+              width: 100%;
+              margin: .5em 0 0;
+            }
           }
         }
       }
-    }
 
-    #reset-filter {
-      display: none;
-      margin: 0 0 0 .5em;
-      padding: 0.3em 1em;
-
-      @media screen and (max-width: $break-small) {
+      #reset-filter {
+        opacity: 0;
+        pointer-events: none;
         margin: .5em 0 0;
+        padding: 0.3em 1em;
+
+        &.active {
+          opacity: 1;
+          pointer-events: initial;
+        }
       }
     }
   }

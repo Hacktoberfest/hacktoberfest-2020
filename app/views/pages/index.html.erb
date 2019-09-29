@@ -43,14 +43,16 @@
     </p>
     <div class="level language-filter">
       <p id="projects-message">Displaying all Hacktoberfest projects</p>
-      <div class="field">
-        <div class="control">
-          <div class="select">
-            <%= collection_select(:language, :id, Language.all, :id, :name, prompt: "Select language", html_options: { class: 'language-dropdown'}) %>
+      <div class="right">
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <%= collection_select(:language, :id, Language.all, :id, :name, prompt: "Select language", html_options: { class: 'language-dropdown'}) %>
+            </div>
           </div>
         </div>
+        <button type="button" class="button button-small" id="reset-filter">Remove filter</button>
       </div>
-      <button type="button" class="button button-small" id="reset-filter">Remove filter</button>
     </div>
     <div class="grid" id="project-list">
       <%= render partial: 'languages/all_projects', locals: { projects: @projects } %>

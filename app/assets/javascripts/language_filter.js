@@ -14,7 +14,7 @@ $(function () {
                 $list.html($(htmlData).find('div.box.projects'));
             }
         });
-        $reset.hide();
+        $reset.removeClass('active');
         $message.text(defaultMessage);
         $id.val("");
     }
@@ -32,7 +32,7 @@ $(function () {
             }
         });
         $message.text('Displaying ' + $id.find("option:selected").text() + ' projects only');
-        $reset.show();
+        $reset.addClass('active');
     }
 
     // Deal with browsers remembering last state of select
