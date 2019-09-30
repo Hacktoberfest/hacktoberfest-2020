@@ -1,6 +1,6 @@
 var days, hours, minutes, seconds;
 
-function countdownTimers (elements, date) {
+function countdownTimers (element, date) {
   setInterval(function () {
     // find the amount of "seconds" between now and target
     var current_date = new Date().getTime()
@@ -14,8 +14,6 @@ function countdownTimers (elements, date) {
     minutes = parseInt(seconds_left / 60);
     seconds = parseInt(seconds_left % 60);
     countdown = days + "d:" + hours + "h:" + minutes + "m:" + seconds + "s";
-    elements[0].innerHTML = "🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in "
-    elements[1].innerHTML =  countdown
-    elements[2].innerHTML =  " — which means you’ll have officially completed this year’s challenge! 🎉"
+    element.innerHTML =  countdown
   }, 1000);
 }

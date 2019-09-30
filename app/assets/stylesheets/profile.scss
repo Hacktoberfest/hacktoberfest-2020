@@ -4,13 +4,13 @@ $grey-dark: hsl(223.33, 32.14%, 32.94%);
 $grey-darker: hsl(222.5, 43.64%, 21.57%);
 $red: hsl(320, 100%, 50%);
 
-.avatar {
-  padding-left: 30px;
-}
+  .avatar {
+    padding-left: 30px;
+  }
 
-.container.profile {
-  text-align: center;
-  margin: 0 auto;
+  .container.profile {
+    text-align: center;
+    margin: 0 auto;
 
   .congratulations-txt {
     padding-left: 40px;
@@ -323,6 +323,18 @@ $red: hsl(320, 100%, 50%);
 
 }
 
-.pink-highlight {
-  color: $red
-}
+  .icon-block {
+    margin: auto;
+  }
+
+  .PR-data {
+    float:left;
+    margin-right: 3vw;
+  }
+
+  .pink-highlight {
+    color: $red
+  }
+  .winning-msg {
+    margin: 20px 20px 20px 20px
+  }

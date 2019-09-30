@@ -11,7 +11,9 @@
       <% scoring_pull_requests.map do |pr| %>
         <tr>
           <td class="icon-block">
-            <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
+            <div class="PR-data">
+              <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
+            </div>
             <div>
               <div class="timeline-date">
                 <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
@@ -27,9 +29,13 @@
       <% if scoring_pull_requests.count == 4 %>
       <tr>
         <td>
-          <span class="title is-2 highlight" id="countdown-msg"></span>
-          <span class="title is-2 pink-highlight" id="countdown"></span>
-          <span class="title is-2 highlight" id="countdown-msg-2"></span>
+          <div class="winning-msg">
+            <p id="waiting_date"><%= user.waiting_since.to_formatted_s(:long) %></p>
+            <h1 class="title is-1 pink-highlight"> You're almost there!</h1>
+            <span class="title is-2 highlight">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in</span>
+            <span class="title is-2 pink-highlight" id="countdown"></span>
+            <span class="title is-2 highlight"> — which means you’ll have officially completed this year’s challenge! 🎉</span>
+          </div>
         </td>
       </tr>
       <% end %>
@@ -37,7 +43,9 @@
         <% non_scoring_pull_requests.map do |pr| %>
           <tr>
             <td class="icon-block">
-              <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
+              <div class="PR-data">
+                <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
+              </div>
               <div>
                 <div class="timeline-date">
                   <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
@@ -56,9 +64,9 @@
   <% end %>
   <% if user.waiting? %>
   <script type="text/javascript">
-    var elements = [document.getElementById('countdown-msg'), document.getElementById('countdown'),document.getElementById('countdown-msg-2')]
+    var element = document.getElementById('countdown')
     var date = "<%= @presenter.waiting_since_for_js %>"
-    countdownTimers(elements, date)
+    countdownTimers(element, date)
   </script>
   <% end %>
 </div>
