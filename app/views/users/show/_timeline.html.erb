@@ -46,7 +46,7 @@
       <% if pull_requests.any? %>
         <script type="text/javascript">
             var elements = document.getElementsByClassName('countdown')
-            var date = "<%= @presenter.user.waiting_since %>"
+            var date = "<%= @presenter.user.waiting_since.httpdate %>"
             countdownTimers(elements, date)
         </script>
       <% end %>
