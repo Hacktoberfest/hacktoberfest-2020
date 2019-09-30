@@ -40,11 +40,13 @@ main.home {
 
   .hero-body {
     padding-top: 0;
-    padding-left: 0;
     max-width: 620px;
     margin-bottom: 130px;
     @media screen and (max-width: $break-small) {
       margin: 0 auto;
+    }
+    @media screen and (min-width: $break-small) {
+      padding-left: 0;
     }
   }
 
@@ -187,7 +189,7 @@ main.home {
       }
     }
     @media screen and (max-width: $break-small) {
-      width: 85vw;
+      width: 100%;
     }
 
   }
