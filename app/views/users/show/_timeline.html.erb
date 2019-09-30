@@ -32,10 +32,10 @@
           <% end %>
         </tr>
       <% end %>
-      <% if pull_requests.any? %>
+      <% if user.waiting? %>
         <script type="text/javascript">
             var elements = document.getElementsByClassName('countdown')
-            var date = "<%= @presenter.user.waiting_since.httpdate %>"
+            var date = "<%= @presenter.waiting_since_for_js %>"
             countdownTimers(elements, date)
         </script>
       <% end %>
