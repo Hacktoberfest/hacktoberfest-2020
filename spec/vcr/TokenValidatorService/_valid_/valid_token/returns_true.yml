@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/applications/2a86dccabd1ede1c7b03/tokens/<TEST_USER_GITHUB_TOKEN>
+    uri: https://api.github.com/rate_limit
     body:
       encoding: US-ASCII
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       Authorization:
-      - Basic MmE4NmRjY2FiZDFlZGUxYzdiMDM6ZWYxZjhhYWU5OGZmMGI5MDUxM2VhZTFlMWE0M2FiMDFmMWNlYzdjYg==
+      - token <TEST_USER_GITHUB_TOKEN>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 30 Sep 2019 09:29:18 GMT
+      - Mon, 30 Sep 2019 21:28:14 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -35,16 +35,15 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4999'
+      - '5000'
       X-Ratelimit-Reset:
-      - '1569839358'
+      - '1569882494'
       Cache-Control:
-      - public, max-age=60, s-maxage=60
-      Vary:
-      - Accept
-      - Accept-Encoding
-      Etag:
-      - W/"853f2178d6126d795d0b3588f4a3090d"
+      - no-cache
+      X-Oauth-Scopes:
+      - ''
+      X-Accepted-Oauth-Scopes:
+      - ''
       X-Github-Media-Type:
       - github.v3; format=json
       Access-Control-Expose-Headers:
@@ -65,11 +64,13 @@ http_interactions:
       - origin-when-cross-origin, strict-origin-when-cross-origin
       Content-Security-Policy:
       - default-src 'none'
+      Vary:
+      - Accept-Encoding
       X-Github-Request-Id:
-      - CF7C:2A8C:20DCB2:3B172B:5D91CAEE
+      - EE3E:5C39:7EEE7:CC3D0:5D92736D
     body:
       encoding: ASCII-8BIT
-      string: '{"id":334163599,"url":"https://api.github.com/authorizations/334163599","app":{"name":"hacktoberfest","url":"http://localhost:3000","client_id":"2a86dccabd1ede1c7b03"},"token":"<TEST_USER_GITHUB_TOKEN>","hashed_token":"c9c2e8d91be4b9cbfdc8cb2d93527c3c23f5b2b35041fd06a3f21ceeca07263a","token_last_eight":"98c4955f","note":null,"note_url":null,"created_at":"2019-09-30T07:31:43Z","updated_at":"2019-09-30T07:31:44Z","scopes":["user:email"],"fingerprint":null,"user":{"login":"johndbritton","id":123345,"node_id":"MDQ6VXNlcjEyMzM0NQ==","avatar_url":"https://avatars3.githubusercontent.com/u/123345?v=4","gravatar_id":"","url":"https://api.github.com/users/johndbritton","html_url":"https://github.com/johndbritton","followers_url":"https://api.github.com/users/johndbritton/followers","following_url":"https://api.github.com/users/johndbritton/following{/other_user}","gists_url":"https://api.github.com/users/johndbritton/gists{/gist_id}","starred_url":"https://api.github.com/users/johndbritton/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/johndbritton/subscriptions","organizations_url":"https://api.github.com/users/johndbritton/orgs","repos_url":"https://api.github.com/users/johndbritton/repos","events_url":"https://api.github.com/users/johndbritton/events{/privacy}","received_events_url":"https://api.github.com/users/johndbritton/received_events","type":"User","site_admin":false}}'
+      string: '{"resources":{"core":{"limit":5000,"remaining":5000,"reset":1569882494},"search":{"limit":30,"remaining":30,"reset":1569878954},"graphql":{"limit":5000,"remaining":5000,"reset":1569882494},"integration_manifest":{"limit":5000,"remaining":5000,"reset":1569882494}},"rate":{"limit":5000,"remaining":5000,"reset":1569882494}}'
     http_version:
-  recorded_at: Mon, 30 Sep 2019 09:29:18 GMT
+  recorded_at: Mon, 30 Sep 2019 21:28:14 GMT
 recorded_with: VCR 5.0.0

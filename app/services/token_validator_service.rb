@@ -6,17 +6,14 @@ class TokenValidatorService
   end
 
   def valid?
-    client.check_application_authorization(@token).present?
-  rescue Octokit::NotFound
+    client.rate_limit!.remaining > 0
+  rescue Octokit::Unauthorized
     false
   end
 
   private
 
   def client
-    Octokit::Client.new(
-      client_id: ENV['GITHUB_CLIENT_ID'],
-      client_secret: ENV['GITHUB_CLIENT_SECRET']
-    )
+    Octokit::Client.new(access_token: @token)
   end
 end
