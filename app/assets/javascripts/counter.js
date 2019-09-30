@@ -4,7 +4,7 @@ function countdownTimers (elements, date) {
   setInterval(function () {
     // find the amount of "seconds" between now and target
     var current_date = new Date().getTime()
-    var target_date = new Date(date).getTime() + 7 * 24 * 60 * 60 * 1000
+    var target_date = Date.parse(date) + 7 * 24 * 60 * 60 * 1000
     var seconds_left = (target_date - current_date) / 1000;
     // do some time calculations
     days = parseInt(seconds_left / 86400);
