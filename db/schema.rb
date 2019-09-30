@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_22_161515) do
+ActiveRecord::Schema.define(version: 2019_09_30_021307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(version: 2019_09_22_161515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["gh_database_id"], name: "index_repositories_on_gh_database_id", unique: true
+  end
+
+  create_table "shirt_coupons", force: :cascade do |t|
+    t.string "code", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_shirt_coupons_on_user_id", unique: true
+  end
+
+  create_table "sticker_coupons", force: :cascade do |t|
+    t.string "code", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_sticker_coupons_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

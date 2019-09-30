@@ -36,6 +36,16 @@ FactoryBot.define do
       end
     end
 
+    trait :won_shirt do
+      state { 'won_shirt' }
+      shirt_coupon
+    end
+
+    trait :won_sticker do
+      state { 'won_sticker' }
+      sticker_coupon
+    end
+
     after :build do |user|
       allow(user).to receive(:github_emails).and_return([user.email])
     end

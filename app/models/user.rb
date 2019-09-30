@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_one :sticker_coupon
+  has_one :shirt_coupon
+
+  validate :only_one_coupon
+
   # rubocop:disable Metrics/BlockLength, Layout/MultilineHashBraceLayout
   state_machine initial: :new do
     event :register do
@@ -15,18 +20,31 @@ class User < ApplicationRecord
       transition waiting: :completed
     end
 
+    event :won do
+      transition completed: :won_shirt, if: -> (user) { user.shirt_coupon }
+      transition completed: :won_sticker, if: -> (user) { user.sticker_coupon }
+    end
+
     event :incomplete do
       transition registered: :incompleted
     end
 
     event :ineligible do
-      transition waiting: :registered
+      transition waiting: :registered, if: -> (user) { user.score < 4 }
     end
 
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
       validates_inclusion_of :email, in: :github_emails
+    end
+
+    state all - [:won_shirt] do
+      validates :shirt_coupon, absence: true
+    end
+
+    state all - [:won_sticker] do
+      validates :sticker_coupon, absence: true
     end
 
     state :waiting do
@@ -37,6 +55,19 @@ class User < ApplicationRecord
     state :completed do
       validates :won_hacktoberfest?, inclusion: {
         in: [true], message: 'user has not met all winning conditions' }
+
+      def win
+        assign_coupon
+        won
+      end
+    end
+
+    state :won_shirt do
+      validates :shirt_coupon, presence: true
+    end
+
+    state :won_sticker do
+      validates :sticker_coupon, presence: true
     end
 
     state :incompleted do
@@ -94,13 +125,27 @@ class User < ApplicationRecord
     waiting_since < (Date.today - 7.days)
   end
 
+  def assign_coupon
+    coupon_service.assign_coupon
+  end
+
   private
 
   def github_emails
     UserEmailService.new(self).emails
   end
 
+  def only_one_coupon
+    if shirt_coupon && sticker_coupon
+      errors.add(:user, "can only have one type of coupon")
+    end
+  end
+
   def pull_request_service
     @pull_request_service ||= PullRequestService.new(self)
+  end
+
+  def coupon_service
+    @coupon_service ||= CouponService.new(self)
   end
 end
