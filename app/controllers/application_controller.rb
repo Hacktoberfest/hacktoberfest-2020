@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user_logged_in!
-    return if logged_in?
+    return if logged_in? && valid_token?
 
     session[:destination] = request.path
     redirect_to login_path
@@ -34,5 +34,11 @@ class ApplicationController < ActionController::Base
     return unless logged_in? && !@current_user.new?
 
     redirect_to profile_path
+  end
+
+  private
+
+  def valid_token?
+    ValidUserTokenService.new(@current_user).valid?
   end
 end

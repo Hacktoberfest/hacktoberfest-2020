@@ -14,6 +14,11 @@ RSpec.describe UsersController, type: :request do
   let(:pr_service) { PullRequestService.new(current_user) }
   let(:controller) { UsersController.new }
 
+  before do
+    allow_any_instance_of(ValidUserTokenService).
+      to receive(:valid?).and_return(true)
+  end
+
   describe '#show' do
     before do
       mock_authentication(uid: user.uid)
