@@ -20,20 +20,17 @@ class User < ApplicationRecord
       transition waiting: :completed
     end
 
+    event :won do
+      transition completed: :won_shirt, if: -> (user) { user.shirt_coupon }
+      transition completed: :won_sticker, if: -> (user) { user.sticker_coupon }
+    end
+
     event :incomplete do
       transition registered: :incompleted
     end
 
     event :ineligible do
       transition waiting: :registered
-    end
-
-    event :won_shirt do
-      transition completed: :won_shirt
-    end
-
-    event :won_sticker do
-      transition completed: :won_sticker
     end
 
     state all - [:new] do
@@ -58,6 +55,11 @@ class User < ApplicationRecord
     state :completed do
       validates :won_hacktoberfest?, inclusion: {
         in: [true], message: 'user has not met all winning conditions' }
+
+      def win
+        assign_coupon
+        won
+      end
     end
 
     state :won_shirt do
@@ -71,14 +73,6 @@ class User < ApplicationRecord
     state :incompleted do
       validates :hacktoberfest_ended?, inclusion: {
         in: [true], message: 'hacktoberfest has not yet ended' }
-    end
-
-    before_transition to: :won_shirt do
-      shirt_coupon = ShirtCoupon.first_available
-    end
-
-    before_transition to: :won_sticker do
-      shirt_coupon = StickerCoupon.first_available
     end
 
     before_transition do |user, _transition|
@@ -131,6 +125,10 @@ class User < ApplicationRecord
     waiting_since < (Date.today - 7.days)
   end
 
+  def assign_coupon
+    coupon_service.assign_coupon
+  end
+
   private
 
   def github_emails
@@ -145,5 +143,9 @@ class User < ApplicationRecord
 
   def pull_request_service
     @pull_request_service ||= PullRequestService.new(self)
+  end
+
+  def coupon_service
+    @coupon_service ||= CouponService.new(self)
   end
 end

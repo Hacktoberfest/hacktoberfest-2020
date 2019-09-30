@@ -291,4 +291,40 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#win' do
+    context 'the user is in the completed state' do
+      let(:user) { FactoryBot.create(:user, :completed) }
+
+      context 'shirt and sticker coupons available' do
+        before do
+          FactoryBot.create(:shirt_coupon)
+          FactoryBot.create(:sticker_coupon)
+        end
+
+        it 'transitions the user to the won_shirt state' do
+          user.win
+          expect(user.state).to eq('won_shirt')
+        end
+      end
+
+      context 'sticker coupon available' do
+        before do
+          FactoryBot.create(:sticker_coupon)
+        end
+
+        it 'transitions the user to the won_sticker state' do
+          user.win
+          expect(user.state).to eq('won_sticker')
+        end
+      end
+
+      context 'no coupons available' do
+        it 'does not transition the user' do
+          user.win
+          expect(user.state).to eq('completed')
+        end
+      end
+    end
+  end
 end
