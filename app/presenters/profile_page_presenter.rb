@@ -16,7 +16,7 @@ class ProfilePagePresenter
   end
 
   def timeline_pull_requests
-    @user.timeline_pull_requests
+    @user.pull_requests
   end
 
   def score
