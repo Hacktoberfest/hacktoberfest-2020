@@ -56,6 +56,11 @@ main.home {
     background-position: top 530px right 164px, top 380px right 0px;
   }
 
+  @media screen and (max-width: $break-mobile) {
+    background-position: top 730px right 64px, top 640px right 0px;
+    background-size: 100%;
+  }
+
   .hero-body {
     padding-top: 0;
     max-width: 620px;
