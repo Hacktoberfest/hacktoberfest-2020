@@ -5,7 +5,7 @@ class ShirtCoupon < ApplicationRecord
   validates_associated :user
   validates :code, presence: true
 
-  def first_available
-    ShirtCoupon.where(user_id: nil).first
+  def self.first_available
+    where(user_id: nil).first
   end
 end
