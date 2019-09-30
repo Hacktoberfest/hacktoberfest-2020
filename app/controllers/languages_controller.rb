@@ -2,6 +2,11 @@
 
 class LanguagesController < ApplicationController
   def projects
-    @projects = ProjectService.language_sample(params['language_id'].to_i, 9)
+    if params[:language_id].present? &&
+       (language = Language.find_by_id(params[:language_id]))
+      @projects = ProjectService.language_sample(language, 9)
+    else
+      @projects = ProjectService.sample(9)
+    end
   end
 end
