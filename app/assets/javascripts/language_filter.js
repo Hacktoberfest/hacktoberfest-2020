@@ -7,22 +7,13 @@ window.setupLanguageFilter = function () {
 
   // Handle resetting the filter to all
   function reset() {
-    $.ajax({
-      type: 'GET',
-      url: '/',
-      success: function (htmlData) {
-        $list.html($(htmlData).find('div.box.projects'));
-      }
-    });
-    $reset.removeClass('active');
-    $message.text(defaultMessage);
-    $id.val("");
+    $id.val('');
+    change();
   }
 
   // Handle the filter selection changing
   function change() {
     var languageId = $id.val();
-    if (languageId === "") return reset(); // Reset if default selected
     var url = '/languages/projects/' + languageId;
     $.ajax({
       type: 'GET',
@@ -31,8 +22,14 @@ window.setupLanguageFilter = function () {
         $list.html($(htmlData).find('div.box.projects'));
       }
     });
-    $message.text('Displaying ' + $id.find("option:selected").text() + ' projects only');
-    $reset.addClass('active');
+    // Empty string means 'Select Language'
+    if (languageId === "") {
+      $reset.removeClass('active');
+      $message.text(defaultMessage);
+    } else {
+      $message.text('Displaying ' + $id.find("option:selected").text() + ' projects only');
+      $reset.addClass('active');
+    }
   }
 
   // Detect the select change event
