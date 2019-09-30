@@ -8,5 +8,5 @@ $(document).on('turbolinks:load', function() {
     $('#main-home').addClass(`mainImg${index}`);
   }
 
-  setInterval(updateImage, 20000);
+  setInterval(updateImage, 10000);
 });
