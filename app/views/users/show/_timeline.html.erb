@@ -1,5 +1,5 @@
 <div class="timeline-container">
-  <% if @presenter.timeline_pull_requests.empty? %>
+  <% if scoring_pull_requests.empty? %>
     <div class="container pre-launch-container">
       <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
       <%= link_to "Get started", details_path, anchor: "getting-started", class: "button" %>
@@ -8,15 +8,10 @@
     <h3 class="title is-3">Your contributions</h3><br/>
     <table class="table is-narrow is-fullwidth">
       <tbody>
-      <% eligible_count = 0 %>
-      <% pull_requests.map do |pr| %>
-      <% if pr.eligible? && eligible_count < 4 %>
-        <% eligible_count += 1  %>
-        <% eligible_count %>
-      <% end %>
+      <% scoring_pull_requests.map do |pr| %>
         <tr>
-          <td class="icon-block"><%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %></td>
-          <td>
+          <td class="icon-block">
+            <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
             <div>
               <div class="timeline-date">
                 <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
@@ -28,22 +23,42 @@
             </div>
           </td>
         </tr>
-        <% if eligible_count == 4 %>
-        <tr>
-          <td>
-              <span id="countdown"></span>
-          </td>
-        </tr>
-        <% end %>
       <% end %>
-      <% if user.waiting? %>
-        <script type="text/javascript">
-            var element = document.getElementById('countdown')
-            var date = "<%= @presenter.waiting_since_for_js %>"
-            countdownTimers(element, date)
-        </script>
+      <% if scoring_pull_requests.count == 4 %>
+      <tr>
+        <td>
+          <span class="title is-2 highlight" id="countdown-msg"></span>
+          <span class="title is-2 pink-highlight" id="countdown"></span>
+          <span class="title is-2 highlight" id="countdown-msg-2"></span>
+        </td>
+      </tr>
+      <% end %>
+      <% if non_scoring_pull_requests.any? %>
+        <% non_scoring_pull_requests.map do |pr| %>
+          <tr>
+            <td class="icon-block">
+              <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
+              <div>
+                <div class="timeline-date">
+                  <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
+                  <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
+                </div>
+                <h4 class="title is-4">
+                  You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
+                </h4>
+              </div>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
       </tbody>
     </table>
+  <% end %>
+  <% if user.waiting? %>
+  <script type="text/javascript">
+    var elements = [document.getElementById('countdown-msg'), document.getElementById('countdown'),document.getElementById('countdown-msg-2')]
+    var date = "<%= @presenter.waiting_since_for_js %>"
+    countdownTimers(elements, date)
+  </script>
   <% end %>
 </div>
