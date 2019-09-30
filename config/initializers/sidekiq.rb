@@ -35,8 +35,8 @@ Sidekiq.configure_server do |config|
   # Periodic job setup
   # See: https://github.com/mperham/sidekiq/wiki/Ent-Periodic-Jobs
   config.periodic do |mgr|
-    # first arg is chron tab syntax for "every day at 1 am"
-    mgr.register('0 1 * * *', TransitionAllUsersJob, retry: 3, queue: :critical)
+    # Every hour
+    mgr.register('0 * * * *', TransitionAllUsersJob, retry: 3, queue: :critical)
     # Every day at 3AM
     mgr.register('0 3 * * *', UpdateAllIssuesJob, retry: 3, queue: :critical)
     # Every day at 5AM
