@@ -17,9 +17,9 @@
                 <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
                 <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
               </div>
-              <h3 class="title is-3">
+              <h4 class="title is-4">
                 You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
-              </h3>
+              </h4>
             </div>
           </td>
           <% if pr.eligible? && user.waiting? %>

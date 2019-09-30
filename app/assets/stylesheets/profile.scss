@@ -97,6 +97,7 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
           }
 
           td {
+            padding-bottom: 20px;
             @media screen and (max-width: $break-small) {
               &:last-child {
                 padding-bottom: 1.5em;
@@ -116,6 +117,10 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
             .timeline-date {
               display: flex;
               flex-direction: row;
+
+              @media screen and (max-width: $break-small) {
+                margin-bottom: 20px;
+              }
 
               .icon-box {
                 display: none;
