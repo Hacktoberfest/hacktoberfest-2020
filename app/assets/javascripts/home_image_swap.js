@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+  window.setupHomeImageSwap= function () {
   var index = 0;
   $('#main-home').addClass('mainImg0');
 
@@ -9,4 +9,4 @@ $(document).on('turbolinks:load', function() {
   }
 
   setInterval(updateImage, 10000);
-});
+};
