@@ -34,5 +34,17 @@ RSpec.describe TryUserTransitionFromWaitingService do
         expect(user.state).to eq('registered')
       end
     end
+
+    context 'The user needs to continue waiting' do
+      before do
+        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user).to receive(:waiting_since).and_return(Date.today - 3)
+        TryUserTransitionFromWaitingService.call(user)
+      end
+
+      it 'does not transition the user' do
+        expect(user.state).to eq('waiting')
+      end
+    end
   end
 end
