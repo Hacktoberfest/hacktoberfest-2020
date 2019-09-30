@@ -31,8 +31,8 @@ RSpec.describe PullRequestService do
     context 'a new user with no eligible pull requests' do
       before { stub_helper(PR_DATA[:invalid_array]) }
 
-      it 'returns all ineligible prs', vcr: { record: :new_episodes } do
-        expect(pr_service.all.count).to eq(4)
+      it 'returns no ineligible prs', vcr: { record: :new_episodes } do
+        expect(pr_service.all.count).to eq(0)
       end
     end
 
@@ -75,7 +75,7 @@ RSpec.describe PullRequestService do
         before { stub_helper(PR_DATA[:invalid_array]) }
 
         it 'filters & returns an empty array', vcr: { record: :new_episodes } do
-          expect(pr_service.eligible_prs.length).to eq(2)
+          expect(pr_service.eligible_prs.length).to eq(0)
         end
       end
     end
