@@ -87,7 +87,7 @@
     min-width: 150px;
 
     @media screen and (max-width: $break-med) {
-      display: none;
+      display: block;
     }
 
     @media screen and (max-width: $break-small) {
