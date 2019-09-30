@@ -19,7 +19,7 @@ window.setupLanguageFilter = function () {
       type: 'GET',
       url: url,
       success: function (htmlData) {
-        $list.html($(htmlData).find('div.box.projects'));
+        $list.html(htmlData);
       }
     });
     // Empty string means 'Select Language'
