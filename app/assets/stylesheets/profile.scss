@@ -1,3 +1,4 @@
+$break-med: 1366px;
 $break-small: 1024px;
 $grey-dark: hsl(223.33, 32.14%, 32.94%);
 $grey-darker: hsl(222.5, 43.64%, 21.57%);
@@ -12,17 +13,33 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
 
   .congratulations-txt {
     padding-left: 40px;
+    padding-top: 20px;
+    text-align: left;
   }
+
   .code-button {
     height: 68px !important;
     width: 105px;
-    margin-right: 155px;
+    margin-right: 13vw;
     float: right !important;
+    @media screen and (max-width: $break-small) {
+      display:inline-block;
+    }
   }
 
   .code-textarea {
     background-color: $grey-dark !important;
     float: left !important;
+    overflow: auto;
+
+    @media screen and (max-width: $break-small) {
+      width: 60vw;
+      display:inline-block;
+    }
+    @media screen and (max-width: $break-med) {
+      width: 40vw;
+      display:inline-block;
+    }
   }
 
   .profile-container {
@@ -80,6 +97,7 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
           }
 
           td {
+            padding-bottom: 20px;
             @media screen and (max-width: $break-small) {
               &:last-child {
                 padding-bottom: 1.5em;
@@ -99,6 +117,10 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
             .timeline-date {
               display: flex;
               flex-direction: row;
+
+              @media screen and (max-width: $break-small) {
+                margin-bottom: 20px;
+              }
 
               .icon-box {
                 display: none;
@@ -210,7 +232,8 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
   }
 
   .center-icon {
-    margin-left: 10px;
+    margin-left: 9px;
+    margin-top: 8px;
   }
 
   .icon-box {
@@ -219,7 +242,7 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
 
   .hacktoberfest-winner {
     background-image: url('profile-hexagon.png');
-    background-color: #1f2d4f;
+    background-color: #223257;
     background-position: left top -150px;
   }
 
@@ -297,4 +320,8 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
     }
   }
 
+}
+
+.winning-msg {
+  text-align: left;
 }
