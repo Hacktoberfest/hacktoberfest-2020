@@ -1,4 +1,4 @@
-$(function () {
+window.setupLanguageFilter = function () {
     var $reset = $('#reset-filter'),
         $id = $('#language_id'),
         $list = $('#project-list'),
@@ -47,4 +47,4 @@ $(function () {
     $reset.click(function () {
         reset();
     })
-});
+};
