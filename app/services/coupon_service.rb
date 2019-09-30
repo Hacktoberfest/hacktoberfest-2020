@@ -6,18 +6,20 @@ class CouponService
   end
 
   def assign_coupon
-    assign_shirt_coupon
-    assign_sticker_coupon
+    if coupon = shirt_coupon
+      @user.shirt_coupon = coupon
+    elsif coupon = sticker_coupon
+      @user.sticker_coupon = coupon
+    end
   end
 
-  def assign_shirt_coupon
-    coupon = ShirtCoupon.first_available
-    coupon.user = @user
+  private
+
+  def shirt_coupon
+    ShirtCoupon.first_available
   end
 
-  def assign_sticker_coupon
-    coupon = StickerCoupon.first_available
-    coupon.user = @user
+  def sticker_coupon
+    StickerCoupon.first_available
   end
-
 end
