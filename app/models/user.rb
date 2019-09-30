@@ -3,7 +3,9 @@
 class User < ApplicationRecord
   has_one :sticker_coupon
   has_one :shirt_coupon
+
   validate :only_one_coupon
+
   # rubocop:disable Metrics/BlockLength, Layout/MultilineHashBraceLayout
   state_machine initial: :new do
     event :register do
@@ -58,16 +60,10 @@ class User < ApplicationRecord
         in: [true], message: 'user has not met all winning conditions' }
     end
 
-    before_transition to: :won_shirt do
-      shirt_coupon = ShirtCoupon.first_available
-    end
     state :won_shirt do
       validates :shirt_coupon, presence: true
     end
 
-    before_transition to: :won_sticker do
-      shirt_coupon = StickerCoupon.first_available
-    end
     state :won_sticker do
       validates :sticker_coupon, presence: true
     end
@@ -75,6 +71,14 @@ class User < ApplicationRecord
     state :incompleted do
       validates :hacktoberfest_ended?, inclusion: {
         in: [true], message: 'hacktoberfest has not yet ended' }
+    end
+
+    before_transition to: :won_shirt do
+      shirt_coupon = ShirtCoupon.first_available
+    end
+
+    before_transition to: :won_sticker do
+      shirt_coupon = StickerCoupon.first_available
     end
 
     before_transition do |user, _transition|
