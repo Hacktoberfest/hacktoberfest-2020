@@ -26,4 +26,8 @@ class ProfilePagePresenter
   def name
     @user.name
   end
+
+  def waiting_since_for_js
+    @user.waiting_since&.httpdate
+  end
 end
