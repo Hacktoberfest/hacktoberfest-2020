@@ -6,6 +6,9 @@ class UserTransitionJob
 
   def perform(user_id)
     user = User.find(user_id)
+
+    return unless TokenValidatorService.new(user.provider_token).valid?
+
     TryUserTransitionService.call(user)
   end
 end
