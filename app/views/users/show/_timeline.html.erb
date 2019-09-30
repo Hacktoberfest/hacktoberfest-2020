@@ -6,7 +6,7 @@
     </div>
   <% else %>
     <h3 class="title is-3">Your contributions</h3><br/>
-    <table class="table is-narrow is-narrow is-fullwidth ">
+    <table class="table is-narrow is-full">
       <tbody>
       <% pull_requests.map do |pr| %>
         <tr>
@@ -32,17 +32,6 @@
           <% end %>
         </tr>
       <% end %>
-      <tr>
-        <td>
-          <div>
-            <% if pull_requests.count > 10 %>
-              <div class="indigo-button container is-full">
-                <h3 class="title is-3 center">Load more</h3>
-              </div>
-            <% end %>
-          </div>
-        </td>
-      </tr>
       <% if pull_requests.any? %>
         <script type="text/javascript">
             var elements = document.getElementsByClassName('countdown')
