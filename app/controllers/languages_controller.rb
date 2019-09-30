@@ -8,5 +8,6 @@ class LanguagesController < ApplicationController
     else
       @projects = ProjectService.sample(9)
     end
+    render partial: 'languages/all_projects', locals: { projects: @projects }
   end
 end
