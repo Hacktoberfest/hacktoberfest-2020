@@ -2,6 +2,7 @@ $break-med: 1366px;
 $break-small: 1024px;
 $grey-dark: hsl(223.33, 32.14%, 32.94%);
 $grey-darker: hsl(222.5, 43.64%, 21.57%);
+$red: hsl(320, 100%, 50%);
 
 .avatar {
   padding-left: 30px;
@@ -322,6 +323,6 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
 
 }
 
-.winning-msg {
-  text-align: left;
+.pink-highlight {
+  color: $red
 }
