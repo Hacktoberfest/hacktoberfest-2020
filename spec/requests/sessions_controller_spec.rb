@@ -57,6 +57,21 @@ RSpec.describe SessionsController, type: :request do
         get profile_path
         expect(response).to be_successful
       end
+
+      context 'the user is destroyed' do
+        before do
+          registered_user.destroy
+          get profile_path
+        end
+
+        it 'destroys the session' do
+          expect(session[:current_user_id]).to be_nil
+        end
+  
+        it 'redirects to the root_path' do
+          expect(response).to redirect_to(root_path)
+        end
+      end
     end
 
     context 'user is logged in and the user is not registered' do
