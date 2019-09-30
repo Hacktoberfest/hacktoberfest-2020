@@ -272,22 +272,44 @@ RSpec.describe User, type: :model do
     end
 
     context 'hacktoberfest has ended', :vcr do
-      let(:user) { FactoryBot.create(:user) }
+      context 'user has insufficient eligible prs' do
+        let(:user) { FactoryBot.create(:user) }
 
-      before do
-        allow(user).to receive(:hacktoberfest_ended?).and_return(true)
-        expect(UserStateTransitionSegmentService)
-          .to receive(:incomplete).and_return(true)
-        user.incomplete
+        before do
+          allow(user).to receive(:hacktoberfest_ended?).and_return(true)
+          allow(user).to receive(:sufficient_eligible_prs?).and_return(false)
+          expect(UserStateTransitionSegmentService)
+            .to receive(:incomplete).and_return(true)
+          user.incomplete
+        end
+
+        it 'transitions the user to the incomplete state', :vcr do
+          expect(user.state).to eq('incompleted')
+        end
+
+        it 'persists the incompleted state', :vcr do
+          user.reload
+          expect(user.state).to eq('incompleted')
+        end
       end
 
-      it 'transitions the user to the incomplete state', :vcr do
-        expect(user.state).to eq('incompleted')
-      end
+      context 'user has too many eligible prs' do
+        let(:user) { FactoryBot.create(:user, :waiting) }
 
-      it 'persists the registered state', :vcr do
-        user.reload
-        expect(user.state).to eq('incompleted')
+        before do
+          allow(user).to receive(:hacktoberfest_ended?).and_return(true)
+          allow(user).to receive(:sufficient_eligible_prs?).and_return(true)
+          user.incomplete
+        end
+
+        it 'does not transition the user to the incomplete state', :vcr do
+          expect(user.state).to eq('waiting')
+        end
+
+        it 'persists the waiting state', :vcr do
+          user.reload
+          expect(user.state).to eq('waiting')
+        end
       end
     end
   end

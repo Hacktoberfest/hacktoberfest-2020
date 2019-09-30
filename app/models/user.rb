@@ -73,6 +73,8 @@ class User < ApplicationRecord
     state :incompleted do
       validates :hacktoberfest_ended?, inclusion: {
         in: [true], message: 'hacktoberfest has not yet ended' }
+      validates :sufficient_eligible_prs?, inclusion: {
+        in: [false], message: 'user has too many sufficient eligible prs' }
     end
 
     before_transition do |user, _transition|
