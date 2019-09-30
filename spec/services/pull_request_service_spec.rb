@@ -31,7 +31,7 @@ RSpec.describe PullRequestService do
     context 'a new user with no eligible pull requests' do
       before { stub_helper(PR_DATA[:invalid_array]) }
 
-      it 'returns no ineligible prs', vcr: { record: :new_episodes } do
+      it 'returns no ineligible prs' do
         expect(pr_service.all.count).to eq(0)
       end
     end
@@ -39,7 +39,7 @@ RSpec.describe PullRequestService do
     context 'a user with eligible pull requests' do
       before { stub_helper(PR_DATA[:valid_array]) }
 
-      it 'returns all the prs', vcr: { record: :new_episodes } do
+      it 'returns all the prs' do
         expect(pr_service.all.count).to eq(5)
       end
     end
@@ -50,7 +50,7 @@ RSpec.describe PullRequestService do
       context 'pull requests with valid dates and valid labels' do
         before { stub_helper(PR_DATA[:valid_array]) }
 
-        it 'filters and returns all 5 PRs', vcr: { record: :new_episodes } do
+        it 'filters and returns all 5 PRs' do
           expect(pr_service.eligible_prs.length).to eq(5)
         end
       end
@@ -58,7 +58,7 @@ RSpec.describe PullRequestService do
       context 'pull requests with 2 invalid dates & valid labels' do
         before { stub_helper(PR_DATA[:array_with_invalid_dates]) }
 
-        it 'filters and returns 2 of the PRs', vcr: { record: :new_episodes } do
+        it 'filters and returns 2 of the PRs' do
           expect(pr_service.eligible_prs.length).to eq(2)
         end
       end
@@ -66,7 +66,7 @@ RSpec.describe PullRequestService do
       context '7 pull_requests with valid dates & 2 invalid labels' do
         before { stub_helper(PR_DATA[:array_with_invalid_labels]) }
 
-        it 'filters and returns 5 of the PRs', vcr: { record: :new_episodes } do
+        it 'filters and returns 5 of the PRs' do
           expect(pr_service.eligible_prs.length).to eq(5)
         end
       end
@@ -74,7 +74,7 @@ RSpec.describe PullRequestService do
       context 'pull_requests with 4 invalid dates & invalid labels' do
         before { stub_helper(PR_DATA[:invalid_array]) }
 
-        it 'filters & returns an empty array', vcr: { record: :new_episodes } do
+        it 'filters & returns an empty array' do
           expect(pr_service.eligible_prs.length).to eq(0)
         end
       end
@@ -84,14 +84,14 @@ RSpec.describe PullRequestService do
   describe '#scoring_pull_requests' do
     context 'a user with more than 4 eligible pull requests' do
       before { stub_helper(PR_DATA[:valid_array]) }
-      it 'returns initial 4 eligible_prs', vcr: { record: :new_episodes } do
+      it 'returns initial 4 eligible_prs' do
         expect(pr_service.scoring_pull_requests.count).to eq(4)
       end
     end
 
     context 'a user with with 2 eligible pull requests' do
       before { stub_helper(PR_DATA[:valid_array].first(2)) }
-      it 'returns only 2 eligible_prs', vcr: { record: :new_episodes } do
+      it 'returns only 2 eligible_prs' do
         expect(pr_service.scoring_pull_requests.count).to eq(2)
       end
     end
