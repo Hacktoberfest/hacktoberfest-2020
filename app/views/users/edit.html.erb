@@ -1,30 +1,9 @@
-
-<section class="section">
-<div class="registration-steps">
-  <div class="step one">
-    <span class="pink circle">1</span>
-    <p>Register with GitHub</p>
-  </div>
-  <div class="pink-line"></div> <%# css line %>
-  <div class="step two">
-    <span class="yellow circle">2</span>
-    <p>About You</p>
-  </div>
-   <div class="right-bar"></div> <%# css line %>
-   <div class="step three">
-    <span class="pink-open circle">3</span>
-    <p>Start Contributing</p>
-  </div>
-</div>
-</section>
 <section class="section reg-content">
   <div>
     <h1 class="title is-1">About you</h1>
     <p>
       Please select which email address you'd like
-      to use for Hacktoberfest, and read the
-      <a target="_blank" href="/details#participation-rules">Hacktoberfest
-      rules and values</a>.
+      to use for Hacktoberfest:
     </p>
     <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
 
@@ -37,31 +16,7 @@
         </div>
       </div>
 
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <%= f.check_box :marketing_emails %>
-            Send me updates related to the Hacktoberfest community,
-            open source, and products from DigitalOcean.
-          </label>
-        </div>
-      </div>
-
-      <% if @current_user.errors.messages[:terms_acceptance].include?("must be accepted")  %>
-         <p class="error">You must accept the terms and conditions to participate in Hactoberfest.</p>
-      <% end %>
-
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <%= f.check_box :terms_acceptance %>
-            I have read and understand the
-            <a target="_blank" href="/details#participation-rules">Rules and Values</a>.
-          </label>
-        </div>
-      </div>
-
-      <%= f.submit 'Start Hacking', :class => 'button'%>
+      <%= f.submit 'Update email', :class => 'button'%>
 
     <% end %>
   </div>

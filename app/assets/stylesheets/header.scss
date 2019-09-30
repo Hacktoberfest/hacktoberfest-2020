@@ -87,10 +87,7 @@ $navColor: rgba(0, 0, 0, 0);
         }
       }
 
-      .button.navLink {
-        height: auto;
-        min-height: auto;
-        padding: 0.5em 1em;
+      .button.button-small.navLink {
         color: white; /* .button has this, .navLink overriding it */
         margin-top: -0.5em; /* Keep all link text aligned */
         @media screen and (max-width: $break-small) {

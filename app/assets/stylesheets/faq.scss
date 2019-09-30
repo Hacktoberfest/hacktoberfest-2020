@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .fluid-content-page{
+  .faq-toc{
+    margin-top: 3rem;
+    p {
+      margin: 1rem 0;
+    }
+  }
+
   .title.is-1{
     font-size: 2.5rem;
   }
@@ -88,6 +95,71 @@
 
     @media screen and (max-width: $break-med) {
       display: block;
+    }
+
+    @media screen and (max-width: $break-small) {
+      display: none;
+    }
+  }
+
+  #back-to-top {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 1;
+
+    @media screen and (max-width: $break-med) {
+      display: none;
+    }
+
+    @media screen and (max-width: $break-small) {
+      display: none;
+    }
+  }
+
+  .hidden{
+    display: none;
+  }
+
+  .show{
+    display: block;
+  }
+
+  .chevron{
+    color: $cyan;
+    display: flex;
+    justify-content: right;
+    position: relative;
+    top: -29px;
+    right: 0px;
+
+    @media screen and (max-width: $break-med) {
+      display: block;
+        margin-top: 40px;
+      // justify-content: right;
+      // position: relative;
+      // top: -29px;
+      // right: 0px;
+    }
+
+    @media screen and (max-width: $break-small) {
+      display: block;
+      margin-top: 40px;
+      // justify-content: right;
+      // position: relative;
+      // top: -29px;
+      // right: 0px;
+    }
+  }
+
+  .ex-col-all{
+    position: relative;
+    right: 90;
+    padding: 1%;
+    margin-bottom: 40px;
+
+    @media screen and (max-width: $break-med) {
+      display: none;
     }
 
     @media screen and (max-width: $break-small) {

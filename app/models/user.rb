@@ -26,6 +26,7 @@ class User < ApplicationRecord
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
+      validates_inclusion_of :email, in: :github_emails
     end
 
     state :waiting do
@@ -94,6 +95,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def github_emails
+    UserEmailService.new(self).emails
+  end
 
   def pull_request_service
     @pull_request_service ||= PullRequestService.new(self)

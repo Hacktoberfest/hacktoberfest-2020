@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in!
   before_action :require_user_registered!, only: :show
-  before_action :disallow_registered_user!, only: :edit
+  before_action :disallow_registered_user!, only: :registration
 
   # render current user profile
   def show
@@ -12,19 +12,35 @@ class UsersController < ApplicationController
   end
 
   # action to save registration
-  def update
+  def register
     @current_user.assign_attributes(params_for_registration)
     if save_or_register(@current_user)
-      render 'users/update'
+      render 'users/registered'
     else
       set_user_emails
-      render 'users/edit'
+      render 'users/registration'
     end
   end
 
   # action to render register form
+  def registration
+    set_user_emails
+  end
+
   def edit
     set_user_emails
+  end
+
+  def update
+    @current_user.assign_attributes(params_for_update)
+    if @current_user.save
+      segment = SegmentService.new(@current_user)
+      segment.identify(email: @current_user.email)
+      redirect_to profile_path
+    else
+      set_user_emails
+      render 'users/edit'
+    end
   end
 
   private
@@ -43,5 +59,9 @@ class UsersController < ApplicationController
 
   def params_for_registration
     params.require(:user).permit(:email, :terms_acceptance, :marketing_emails)
+  end
+
+  def params_for_update
+    params.require(:user).permit(:email)
   end
 end
