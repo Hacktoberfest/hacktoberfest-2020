@@ -137,6 +137,12 @@ RSpec.describe User, type: :model do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
         allow(user).to receive(:waiting_since).and_return(Date.today - 8)
+
+        prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+          PullRequest.new(pr)
+        end
+
+        allow(user).to receive(:timeline_pull_requests).and_return(prs)
         expect(UserStateTransitionSegmentService)
           .to receive(:complete).and_return(true)
 
@@ -150,6 +156,10 @@ RSpec.describe User, type: :model do
       it 'persists the completed state', :vcr do
         user.reload
         expect(user.state).to eq('completed')
+      end
+
+      it 'saves a receipt of the scoring prs' do
+        expect(user.receipt).to eq(JSON.parse(user.timeline_pull_requests.to_json))
       end
     end
 
