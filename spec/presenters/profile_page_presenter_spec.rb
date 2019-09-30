@@ -53,4 +53,5 @@ describe ProfilePagePresenter do
       expect(profile_presenter.display_pre_launch?).to eq(false)
     end
   end
+
 end
