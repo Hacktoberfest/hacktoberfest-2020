@@ -7,7 +7,7 @@ class TokenValidatorService
 
   def valid?
     client.check_application_authorization(@token).present?
-  rescue Octokit::Error
+  rescue Octokit::NotFound
     false
   end
 
