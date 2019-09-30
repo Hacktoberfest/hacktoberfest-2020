@@ -9,6 +9,12 @@ RSpec.describe TryUserTransitionFromWaitingService do
     before do
       allow(UserStateTransitionSegmentService).to receive(:call)
       allow(UserPullRequestSegmentUpdaterService).to receive(:call)
+
+      prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+        PullRequest.new(pr)
+      end
+
+      allow(user).to receive(:timeline_pull_requests).and_return(prs)
     end
 
     context 'The user has enough eligible PRs to transition and has been waiting 7+ days' do
