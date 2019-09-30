@@ -36,12 +36,8 @@ window.setupLanguageFilter = function () {
   }
 
   // Detect the select change event
-  $id.change(function () {
-    change();
-  });
+  $id.change(change);
 
   // Detect the reset button being clicked
-  $reset.click(function () {
-    reset();
-  })
+  $reset.click(reset);
 };
