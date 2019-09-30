@@ -21,12 +21,30 @@ $tile-padding: 0;
 $tile-width: 150%;
 $box-color: rgba(0, 0, 0, 0);
 
+$mainImg1: asset-url('polygon-photo-1.png');
+$mainImg2: asset-url('polygon-photo-2.png');
+$mainImg3: asset-url('polygon-photo-3.png');
+$mainImg4: asset-url('polygon-photo-4.png');
+$mainImg5: asset-url('polygon-photo-5.png');
+$mainImg6: asset-url('polygon-photo-6.png');
+
+main.home.mainImg0 {
+  background-image: $mainImg1, $mainImg2;
+}
+main.home.mainImg1 {
+  background-image: $mainImg3, $mainImg4;
+}
+
+main.home.mainImg2 {
+  background-image: $mainImg5, $mainImg6;
+}
+
 main.home {
   text-align: left;
-  background-image: asset-url('polygon-photo-1.png'),
-    asset-url('polygon-photo-2.png');
   background-repeat: no-repeat;
   background-position: top 110px right 164px, top -20px right 0px;
+  opacity: 1;
+  transition: background-image 1.5s linear;
 
   .p {
     max-width: 620px;
@@ -191,7 +209,6 @@ main.home {
     @media screen and (max-width: $break-small) {
       width: 100%;
     }
-
   }
 
   .eventUnion {
@@ -267,7 +284,7 @@ main.home {
 
             @media screen and (max-width: $break-small) {
               width: 100%;
-              margin: .5em 0 0;
+              margin: 0.5em 0 0;
             }
           }
         }
@@ -276,7 +293,7 @@ main.home {
       #reset-filter {
         opacity: 0;
         pointer-events: none;
-        margin: .5em 0 0;
+        margin: 0.5em 0 0;
         padding: 0.3em 1em;
 
         &.active {
