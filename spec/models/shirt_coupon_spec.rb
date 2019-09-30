@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+require 'rails_helper'
+
+RSpec.describe ShirtCoupon, type: :model do
+  describe '.first_available' do
+    context 'coupons available' do
+      before do
+        FactoryBot.create(described_class.name.underscore.to_sym)
+      end
+
+      it 'returns an unused coupon' do
+        coupon = described_class.first_available
+        expect(coupon.user).to be(nil)
+      end
+    end
+
+    context 'all coupons consumed' do
+      before do
+        FactoryBot.create(described_class.name.underscore.to_sym, :consumed)
+      end
+
+      it 'returns nil' do
+        coupon = described_class.first_available
+        expect(coupon).to be(nil)
+      end
+    end
+  end
+end
