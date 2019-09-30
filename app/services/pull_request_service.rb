@@ -30,7 +30,7 @@ class PullRequestService
   end
 
   def non_scoring_pull_requests
-    all.shift(scoring_pull_requests.count)
+    all.drop(scoring_pull_requests.count)
   end
 
   protected
