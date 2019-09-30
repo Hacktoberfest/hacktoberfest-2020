@@ -14,14 +14,14 @@ module ProjectService
     projects
   end
 
-  def language_sample(language_id, sample_size = 1)
-    language = Language.find(language_id)
+  def language_sample(language, sample_size = 1)
     issues = Issue
-             .open_issues_with_unique_permitted_repositories
+      .open_issues_for_language_with_unique_permitted_repositories(language.id)
              .includes(repository: :language)
              .order(quality: :desc)
+             .limit(sample_size * 10)
+             .sample(sample_size)
     projects = issues.map { |issue| Project.new(issue) }
-    projects.select { |project| project.language == language.name }
-            .sample(sample_size)
+    projects
   end
 end
