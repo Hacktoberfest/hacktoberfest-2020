@@ -15,8 +15,12 @@ class ProfilePagePresenter
     Hacktoberfest.ended? && @user.won_hacktoberfest?
   end
 
-  def timeline_pull_requests
-    @user.pull_requests
+  def scoring_pull_requests
+    @user.scoring_pull_requests
+  end
+
+  def non_scoring_pull_requests
+    @user.non_scoring_pull_requests
   end
 
   def score
