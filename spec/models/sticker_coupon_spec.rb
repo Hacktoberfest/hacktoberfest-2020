@@ -17,7 +17,8 @@ RSpec.describe StickerCoupon, type: :model do
 
     context 'all coupons consumed' do
       before do
-        FactoryBot.create(described_class.name.underscore.to_sym, :consumed)
+        FactoryBot.create(:user, :won_shirt)
+        FactoryBot.create(:user, :won_sticker)
       end
 
       it 'returns nil' do
