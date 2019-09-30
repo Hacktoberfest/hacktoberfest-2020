@@ -98,14 +98,6 @@ class User < ApplicationRecord
     score > 4 ? 4 : score
   end
 
-  protected
-
-  def only_one_coupon
-    if self.shirt_coupon && self.sticker_coupon
-      errors.add(:user, "can only have one type of coupon")
-    end
-  end
-
   def eligible_pull_requests_count
     pull_request_service.eligible_prs.count
   end
@@ -139,6 +131,12 @@ class User < ApplicationRecord
 
   def github_emails
     UserEmailService.new(self).emails
+  end
+
+  def only_one_coupon
+    if self.shirt_coupon && self.sticker_coupon
+      errors.add(:user, "can only have one type of coupon")
+    end
   end
 
   def pull_request_service
