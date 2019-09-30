@@ -15,7 +15,7 @@ function countdownTimers (elements, date) {
     seconds = parseInt(seconds_left % 60);
     for(i=0; i < elements.length; i++) {
       var element = elements[i];
-      countdown = days + "d: " + hours + "h: " + minutes + "m: " + seconds + "s";
+      countdown = days + "d:" + hours + "h:" + minutes + "m:" + seconds + "s";
       element.innerHTML = countdown
     }
   }, 1000);
