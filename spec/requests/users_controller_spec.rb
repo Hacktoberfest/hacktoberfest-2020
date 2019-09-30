@@ -15,7 +15,7 @@ RSpec.describe UsersController, type: :request do
   let(:controller) { UsersController.new }
 
   before do
-    allow_any_instance_of(ValidUserTokenService).
+    allow_any_instance_of(TokenValidatorService).
       to receive(:valid?).and_return(true)
   end
 

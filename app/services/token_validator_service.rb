@@ -1,21 +1,17 @@
 # frozen_string_literal: true
 
-class ValidUserTokenService
-  def initialize(user)
-    @user = user
+class TokenValidatorService
+  def initialize(token)
+    @token = token
   end
 
   def valid?
-    client.check_application_authorization(user_token).present?
+    client.check_application_authorization(@token).present?
   rescue Octokit::Error
     false
   end
 
   private
-
-  def user_token
-    @user.provider_token
-  end
 
   def client
     Octokit::Client.new(

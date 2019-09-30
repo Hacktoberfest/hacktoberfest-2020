@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe ValidUserTokenService do
+RSpec.describe TokenValidatorService do
   describe '#valid?' do
     let(:user) { FactoryBot.create(:user) }
-    subject { described_class.new(user) }
+    subject { described_class.new(user.provider_token) }
 
     context 'valid token' do
       it 'returns true', :vcr do

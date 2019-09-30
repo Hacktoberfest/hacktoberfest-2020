@@ -39,6 +39,6 @@ class ApplicationController < ActionController::Base
   private
 
   def valid_token?
-    ValidUserTokenService.new(@current_user).valid?
+    TokenValidatorService.new(@current_user.provider_token).valid?
   end
 end
