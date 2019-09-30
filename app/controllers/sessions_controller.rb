@@ -20,8 +20,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout
-    redirect_to '/'
+    reset_session
+    redirect_to root_path
   end
 
   def impersonate
@@ -39,9 +39,5 @@ class SessionsController < ApplicationController
 
   def auth_hash
     request.env['omniauth.auth']
-  end
-
-  def logout
-    session[:current_user_id] = nil
   end
 end
