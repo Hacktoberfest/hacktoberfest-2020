@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
     event :ineligible do
       transition waiting: :registered,
-       unless: -> (user) { user.sufficient_eligible_prs? }
+        unless: -> (user) { user.sufficient_eligible_prs? }
     end
 
     state all - [:new] do
