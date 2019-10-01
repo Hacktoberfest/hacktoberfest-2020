@@ -213,31 +213,32 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
     }
   }
 
-  .eligible-box {
-    width: 30px;
-    height: 30px;
-    background-color: #ff00aa;
-  }
-
-  .pending-box {
-    width: 30px;
-    height: 30px;
-    background-color: #39486e;
-  }
-
-  .ineligible-box {
-    width: 30px;
-    height: 30px;
-    background-color: #ff4e4e;
-  }
-
-  .center-icon {
-    margin-left: 9px;
-    margin-top: 8px;
-  }
-
   .icon-box {
     padding-top: 30px;
+
+    > div {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.eligible-box {
+        background-color: #ff00aa;
+      }
+
+      &.pending-box {
+        background-color: #39486e;
+      }
+
+      &.spammy-box {
+        background-color: #454954;
+      }
+
+      &.ineligible-box {
+        background-color: #ff4e4e;
+      }
+    }
   }
 
   .hacktoberfest-winner {
