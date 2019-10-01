@@ -30,48 +30,49 @@
     <%= render 'shared/segment' %>
   </head>
   <body>
-  <div class="top-bgs">
-    <%= render 'shared/header' %>
-    <%= yield %>
-  </div>
-  <%= render 'shared/footer' %>
-  <!-- Header Logo Tilt -->
-  <script type="text/javascript">
-  	VanillaTilt.init(document.getElementById("header-logo"), {
-  		max: 5,
-  		speed: 300
-    });
-    // <!-- Footer Logo Tilt -->
-  	VanillaTilt.init(document.getElementById("footer-logo"), {
-  		max: 7,
-  		speed: 300
-  	});
-  </script>
-
-  <% if Rails.env.production? %>
+    <div class="top-bgs">
+      <%= render 'shared/header' %>
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
+    <!-- Header Logo Tilt -->
     <script type="text/javascript">
-      window.cookieDomain = ".digitalocean.com";
-    </script>
-  <% else %>
-    <script type="text/javascript">
-      window.cookieDomain = window.location.hostname;
-    </script>
-  <% end %>
-
-  <script src="https://assets.digitalocean.com/cookieConsent/cookieConsent.js"></script>
-
-  <% if Rails.env.production? %>
-    <script>
-      window.addEventListener('cookieconsent_statuschange', function(e) {
-        if(e.detail.status === 'deny') { return; }
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-KHWBBT');
+    	VanillaTilt.init(document.getElementById("header-logo"), {
+    		max: 5,
+    		speed: 300
       });
+      // <!-- Footer Logo Tilt -->
+    	VanillaTilt.init(document.getElementById("footer-logo"), {
+    		max: 7,
+    		speed: 300
+    	});
     </script>
-  <% end %>
 
+    <% if Rails.env.production? %>
+      <script type="text/javascript">
+        window.cookieDomain = ".digitalocean.com";
+      </script>
+    <% else %>
+      <script type="text/javascript">
+        window.cookieDomain = window.location.hostname;
+      </script>
+    <% end %>
+
+    <script src="https://assets.digitalocean.com/cookieConsent/cookieConsent.js"></script>
+
+    <% if Rails.env.production? %>
+      <script>
+        window.addEventListener('cookieconsent_statuschange', function(e) {
+          if(e.detail.status === 'deny') { return; }
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-KHWBBT');
+        });
+      </script>
+    <% end %>
+
+    <script type="text/javascript" src="language_param_URL.js"></script>
   </body>
 </html>
