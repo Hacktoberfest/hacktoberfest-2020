@@ -322,6 +322,11 @@ $red: hsl(320, 100%, 50%);
   }
 
 }
+  .winning-msg {
+    @media screen and (max-width: $break-small) {
+      font-size: 1.25rem !important;
+    }
+  }
 
   .icon-block {
     margin: auto;
@@ -333,8 +338,8 @@ $red: hsl(320, 100%, 50%);
   }
 
   .pink-highlight {
-    color: $red
+    color: $red;
   }
-  .winning-msg {
+  .winning-msg-cont {
     margin: 20px 20px 20px 20px
   }

@@ -29,12 +29,12 @@
       <% if show_timer %>
       <tr>
         <td>
-          <div class="winning-msg">
+          <div class="winning-msg-cont">
             <p id="waiting_date"><%= user.waiting_since.to_formatted_s(:long) %></p>
-            <h1 class="title is-1 pink-highlight"> You're almost there!</h1>
-            <span class="title is-2 highlight">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in</span>
-            <span class="title is-2 pink-highlight" id="countdown"></span>
-            <span class="title is-2 highlight"> — which means you’ll have officially completed this year’s challenge! 🎉</span>
+            <h1 class="title is-1 pink-highlight winning-msg"> You're almost there!</h1>
+            <span class="title is-2 highlight winning-msg">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in</span>
+            <span class="title is-2 pink-highlight winning-msg" id="countdown"></span>
+            <span class="title is-2 highlight winning-msg"> — which means you’ll have officially completed this year’s challenge! 🎉</span>
           </div>
         </td>
       </tr>
