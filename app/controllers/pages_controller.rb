@@ -2,6 +2,7 @@
 
 class PagesController < ApplicationController
   before_action :disallow_registered_user!, only: :start
+  before_action :require_user_logged_in!, only: :report
 
   def index
     @events = all_events.select(&:featured?).first(4)
@@ -29,6 +30,9 @@ class PagesController < ApplicationController
   end
 
   def event_kit
+  end
+
+  def report
   end
 
   private

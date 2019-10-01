@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get '/thanks', to: 'pages#thanks'
   get '/webinars', to: 'pages#webinars'
   get '/languages/projects(/:language_id)', to: 'languages#projects'
+  get '/report', to: 'pages#report'
 
   # Sidekiq
   if Rails.env.production?
