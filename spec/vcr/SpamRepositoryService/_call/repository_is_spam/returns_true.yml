@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.airtable.com/v0/app64BSrmnmi11kBF/Spam%20Repos
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer keyXZo7XVNxc3qFVT
+      User-Agent:
+      - Airrecord/1.0.2
+      X-Api-Version:
+      - 0.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - authorization,content-length,content-type,user-agent,x-airtable-application-id,x-airtable-user-agent,x-api-version,x-requested-with
+      Access-Control-Allow-Methods:
+      - DELETE,GET,OPTIONS,PATCH,POST,PUT
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 01 Oct 2019 02:50:13 GMT
+      Etag:
+      - W/"3ec-meVeSsqhx2lbXfuM+jKUeRFSwm0"
+      Server:
+      - Tengine
+      Set-Cookie:
+      - brw=brwEgaJhZ9jJaLnKA; path=/; expires=Thu, 01 Oct 2020 02:50:13 GMT; domain=.airtable.com;
+        secure; httponly
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '1004'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"records":[{"id":"rec3KuulgZm9r5c6W","fields":{"Repo Link":"https://github.com/Dhroov7/HacktoberFest2019","Repo
+        ID":"152433556"},"createdTime":"2019-09-03T17:49:21.000Z"},{"id":"rec5W89OYEOg1sXB1","fields":{"Repo
+        ID":"105825987","Repo Link":"https://github.com/AliceWonderland/hacktoberfest"},"createdTime":"2019-09-03T17:49:21.000Z"},{"id":"recMSDhlGDMzVAbXS","fields":{"Repo
+        ID":"211158925","Repo Link":"https://github.com/bolorundurovj/Hacktoberfest_SignIn_2019"},"createdTime":"2019-09-30T19:33:04.000Z"},{"id":"recTn52jTKxNchDIT","fields":{"Repo
+        ID":"206600482","Repo Link":"https://github.com/ambujraj/hacktoberfest2019"},"createdTime":"2019-09-30T19:32:26.000Z"},{"id":"recmgdtpI6IWXaeTw","fields":{"Repo
+        Link":"https://github.com/ambujraj/hacktoberfest2018","Repo ID":"127184470"},"createdTime":"2019-09-03T17:49:25.000Z"},{"id":"recrbE1DenKJOxdWy","fields":{"Repo
+        ID":"151148643","Repo Link":"https://github.com/s-bridges/Hacktoberfest-Sign-In-2019"},"createdTime":"2019-09-03T17:49:21.000Z"}]}'
+    http_version:
+  recorded_at: Tue, 01 Oct 2019 02:50:13 GMT
+recorded_with: VCR 5.0.0

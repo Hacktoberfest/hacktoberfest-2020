@@ -30,6 +30,8 @@ RSpec.describe UsersController, type: :request do
 
       allow_any_instance_of(UserEmailService).to receive(:emails).and_return("test@mail.com")
 
+      allow_any_instance_of(PullRequest).to receive(:spammy?).and_return(false)
+
       login
     end
 

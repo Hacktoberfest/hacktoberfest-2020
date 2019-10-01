@@ -25,9 +25,6 @@ class PullRequest
   end
 
   def spammy?
-    repo = Repository.find_by_gh_database_id(repo_id)
-    return false unless repo
-
-    repo.banned?
+    SpamRepositoryService.call(repo_id)
   end
 end
