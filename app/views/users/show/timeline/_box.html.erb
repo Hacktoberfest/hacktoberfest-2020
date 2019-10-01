@@ -1,19 +1,9 @@
-<div class="icon-box">
-  <% if pr.eligible? & user.completed? %>
-    <div class="eligible-box">
-      <%= image_tag 'eligible.png' %>
-    </div>
-  <% elsif pr.spammy? %>
-    <div class="spammy-box">
-      <%= image_tag 'ineligible.png' %>
-    </div>
-  <% elsif pr.eligible? %>
-    <div class="pending-box">
-      <%= image_tag 'pending.png' %>
-    </div>
-  <% else %>
-    <div class="ineligible-box">
-      <%= image_tag 'ineligible.png' %>
-    </div>
-  <% end %>
-</div>
+<% if pr.eligible? & user.completed? %>
+  <%= render partial: 'users/show/timeline/boxes/eligible' %>
+<% elsif pr.spammy? %>
+  <%= render partial: 'users/show/timeline/boxes/spammy' %>
+<% elsif pr.eligible? %>
+  <%= render partial: 'users/show/timeline/boxes/pending' %>
+<% else %>
+  <%= render partial: 'users/show/timeline/boxes/ineligible' %>
+<% end %>

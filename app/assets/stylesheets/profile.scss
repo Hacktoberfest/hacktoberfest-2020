@@ -347,3 +347,38 @@ $red: hsl(320, 100%, 50%);
     }
   }
 }
+
+.legend {
+  margin: 3rem 0 0;
+
+  h4 {
+    margin: 0 0 1.25rem;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 .5em;
+
+    .icon-name {
+      display: flex;
+      flex-direction: row;
+
+      .icon-box {
+        padding: 0;
+        margin: 0 .5em 0 0;
+      }
+
+      p {
+        flex-grow: 1;
+        margin: 0;
+        font-size: .95em;
+      }
+    }
+
+    > p {
+      margin: .2em 0 .8em;
+      font-size: .8em;
+    }
+  }
+}
