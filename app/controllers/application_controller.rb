@@ -6,7 +6,12 @@ class ApplicationController < ActionController::Base
   def current_user
     return unless logged_in?
 
-    User.find(session[:current_user_id])
+    if (user = User.find_by_id(session[:current_user_id]))
+      user
+    else
+      reset_session
+      redirect_to root_path
+    end
   end
 
   def logged_in?
