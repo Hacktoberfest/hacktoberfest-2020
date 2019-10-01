@@ -9,26 +9,11 @@
     <table class="table is-narrow is-fullwidth">
       <tbody>
       <% scoring_pull_requests.map do |pr| %>
-        <tr>
-          <td class="icon-block">
-            <div class="PR-data">
-              <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
-            </div>
-            <div>
-              <div class="timeline-date">
-                <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
-                <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
-              </div>
-              <h4 class="title is-4">
-                You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
-              </h4>
-            </div>
-          </td>
-        </tr>
+        <%= render partial: 'users/show/timeline/pr', locals: {pr: pr, user: user} %>
       <% end %>
       <% if show_timer %>
       <tr>
-        <td>
+        <td colspan="2">
           <div class="winning-msg-cont">
             <p id="waiting_date"><%= user.waiting_since.to_formatted_s(:long) %></p>
             <h1 class="title is-1 pink-highlight winning-msg"> You're almost there!</h1>
@@ -41,22 +26,7 @@
       <% end %>
       <% if non_scoring_pull_requests.any? %>
         <% non_scoring_pull_requests.map do |pr| %>
-          <tr>
-            <td class="icon-block">
-              <div class="PR-data">
-                <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
-              </div>
-              <div>
-                <div class="timeline-date">
-                  <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
-                  <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
-                </div>
-                <h4 class="title is-4">
-                  You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
-                </h4>
-              </div>
-            </td>
-          </tr>
+          <%= render partial: 'users/show/timeline/pr', locals: {pr: pr, user: user} %>
         <% end %>
       <% end %>
       </tbody>
