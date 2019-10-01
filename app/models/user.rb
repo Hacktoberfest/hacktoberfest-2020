@@ -103,8 +103,12 @@ class User < ApplicationRecord
     pull_request_service.eligible_prs.count
   end
 
-  def timeline_pull_requests
-    pull_request_service.timeline_pull_requests
+  def scoring_pull_requests
+    pull_request_service.scoring_pull_requests
+  end
+
+  def non_scoring_pull_requests
+    pull_request_service.non_scoring_pull_requests
   end
 
   def sufficient_eligible_prs?

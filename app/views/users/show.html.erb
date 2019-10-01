@@ -27,10 +27,9 @@
         </div>
       <% end %>
       <div class="container box">
-        <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, pull_requests: @presenter.timeline_pull_requests }  %>
+        <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, scoring_pull_requests: @presenter.scoring_pull_requests, non_scoring_pull_requests: @presenter.non_scoring_pull_requests, show_timer: @presenter.show_timer? }  %>
       </div>
     <% end %>
-
     <%= link_to "Log out @#{@presenter.name}", logout_path, :class => "button" %>
   </div>
 </div>

@@ -1,6 +1,6 @@
 var days, hours, minutes, seconds;
 
-function countdownTimers (elements, date) {
+function countdownTimers (element, date) {
   setInterval(function () {
     // find the amount of "seconds" between now and target
     var current_date = new Date().getTime()
@@ -13,10 +13,7 @@ function countdownTimers (elements, date) {
     seconds_left = seconds_left % 3600;
     minutes = parseInt(seconds_left / 60);
     seconds = parseInt(seconds_left % 60);
-    for(i=0; i < elements.length; i++) {
-      var element = elements[i];
-      countdown = days + "d:" + hours + "h:" + minutes + "m:" + seconds + "s";
-      element.innerHTML = countdown
-    }
+    countdown = days + "d:" + hours + "h:" + minutes + "m:" + seconds + "s";
+    element.innerHTML =  countdown
   }, 1000);
 }

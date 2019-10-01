@@ -2,6 +2,7 @@ $break-med: 1366px;
 $break-small: 1024px;
 $grey-dark: hsl(223.33, 32.14%, 32.94%);
 $grey-darker: hsl(222.5, 43.64%, 21.57%);
+$red: hsl(320, 100%, 50%);
 
 .avatar {
   padding-left: 30px;
@@ -23,7 +24,7 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
     margin-right: 13vw;
     float: right !important;
     @media screen and (max-width: $break-small) {
-      display:inline-block;
+      display: inline-block;
     }
   }
 
@@ -34,11 +35,11 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
 
     @media screen and (max-width: $break-small) {
       width: 60vw;
-      display:inline-block;
+      display: inline-block;
     }
     @media screen and (max-width: $break-med) {
       width: 40vw;
-      display:inline-block;
+      display: inline-block;
     }
   }
 
@@ -323,6 +324,26 @@ $grey-darker: hsl(222.5, 43.64%, 21.57%);
 
 }
 
-.winning-msg {
-  text-align: left;
+.pink-highlight {
+  color: $red;
+}
+
+.winning-msg-cont {
+  margin: 1.25em;
+
+  @media screen and (max-width: $break-small) {
+    margin: 0;
+  }
+
+  span.title {
+    @media screen and (max-width: $break-small) {
+      font-size: 1.25rem;
+    }
+  }
+
+  h1.title {
+    @media screen and (max-width: $break-small) {
+      font-size: 1.5rem;
+    }
+  }
 }

@@ -21,12 +21,16 @@ class PullRequestService
     all.select(&:eligible?)
   end
 
-  def timeline_pull_requests
+  def scoring_pull_requests
     counter = 0
     all.take_while do |pr|
       counter += 1 if pr.eligible?
       counter <= 4
     end
+  end
+
+  def non_scoring_pull_requests
+    all.drop(scoring_pull_requests.count)
   end
 
   protected

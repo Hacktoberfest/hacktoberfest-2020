@@ -8,14 +8,16 @@ ARRAY_WITH_INVALID_DATES = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
     'createdAt' => '2015-10-13T00:46:43Z',
-    'labels' => { 'edges' => [] } },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
     'createdAt' => '2015-11-20T22:49:53Z',
-    'labels' => { 'edges' => [] } },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 }  },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -23,7 +25,8 @@ ARRAY_WITH_INVALID_DATES = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     'createdAt' => '2019-10-08T06:24:38Z',
-    'labels' => { 'edges' => [] } },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 }  },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -31,7 +34,8 @@ ARRAY_WITH_INVALID_DATES = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => '2019-10-25T19:59:18Z',
-    'labels' => { 'edges' => [] } }
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 }  }
 ].freeze
 
 ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
@@ -80,14 +84,18 @@ ARRAY_WITH_INVALID_LABEL = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
     'createdAt' => '2019-10-13T00:46:43Z',
-    'labels' => { 'edges' => [{ 'node': { 'name': 'Invalid' } }] } },
+    'labels' => { 'edges' => [{ 'node': { 'name': 'Invalid' } }] },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
     'createdAt' => '2019-10-20T22:49:53Z',
-    'labels' => { 'edges' => [] } },
+    'labels' => { 'edges' => [] },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -95,7 +103,9 @@ ARRAY_WITH_INVALID_LABEL = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     'createdAt' => '2019-10-08T06:24:38Z',
-    'labels' => { 'edges': [] } },
+    'labels' => { 'edges': [] },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -103,7 +113,9 @@ ARRAY_WITH_INVALID_LABEL = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => '2019-10-25T19:59:18Z',
-    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] } },
+    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Timeline Feature',
     'body' =>
@@ -111,7 +123,9 @@ ARRAY_WITH_INVALID_LABEL = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => '2019-10-28T19:59:18Z',
-    'labels' => { 'edges' => [] } }
+    'labels' => { 'edges' => [] },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } }
 ].freeze
 
 VALID_ARRAY = [

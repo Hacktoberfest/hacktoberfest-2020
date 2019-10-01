@@ -1,5 +1,5 @@
 <div class="timeline-container">
-  <% if @presenter.timeline_pull_requests.empty? %>
+  <% if scoring_pull_requests.empty? %>
     <div class="container pre-launch-container">
       <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
       <%= link_to "Get started", details_path, anchor: "getting-started", class: "button" %>
@@ -8,38 +8,35 @@
     <h3 class="title is-3">Your contributions</h3><br/>
     <table class="table is-narrow is-fullwidth">
       <tbody>
-      <% pull_requests.map do |pr| %>
-        <tr>
-          <td class="icon-block"><%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %></td>
-          <td>
-            <div>
-              <div class="timeline-date">
-                <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
-                <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
-              </div>
-              <h4 class="title is-4">
-                You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
-              </h4>
-            </div>
-          </td>
-          <% if pr.eligible? && user.waiting? %>
-            <td>
-              <div class="timeline-mature">
-                <p>Mature in:</p>
-                <span class="countdown"></span>
-              </div>
-            </td>
-          <% end %>
-        </tr>
+      <% scoring_pull_requests.map do |pr| %>
+        <%= render partial: 'users/show/timeline/pr', locals: {pr: pr, user: user} %>
       <% end %>
-      <% if user.waiting? %>
-        <script type="text/javascript">
-            var elements = document.getElementsByClassName('countdown')
-            var date = "<%= @presenter.waiting_since_for_js %>"
-            countdownTimers(elements, date)
-        </script>
+      <% if show_timer %>
+      <tr>
+        <td colspan="2">
+          <div class="winning-msg-cont">
+            <p id="waiting_date"><%= user.waiting_since.to_formatted_s(:long) %></p>
+            <h1 class="title is-2 pink-highlight"> You're almost there!</h1>
+            <span class="title is-3">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in</span>
+            <span class="title is-3 pink-highlight" id="countdown"></span>
+            <span class="title is-3"> — which means you’ll have officially completed this year’s challenge!</span>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+      <% if non_scoring_pull_requests.any? %>
+        <% non_scoring_pull_requests.map do |pr| %>
+          <%= render partial: 'users/show/timeline/pr', locals: {pr: pr, user: user} %>
+        <% end %>
       <% end %>
       </tbody>
     </table>
+  <% end %>
+  <% if user.waiting? %>
+  <script type="text/javascript">
+    var element = document.getElementById('countdown')
+    var date = "<%= @presenter.waiting_since_for_js %>"
+    countdownTimers(element, date)
+  </script>
   <% end %>
 </div>

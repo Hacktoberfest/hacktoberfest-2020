@@ -15,8 +15,12 @@ class ProfilePagePresenter
     Hacktoberfest.ended? && @user.won_hacktoberfest?
   end
 
-  def timeline_pull_requests
-    @user.timeline_pull_requests
+  def scoring_pull_requests
+    @user.scoring_pull_requests
+  end
+
+  def non_scoring_pull_requests
+    @user.non_scoring_pull_requests
   end
 
   def score
@@ -29,5 +33,9 @@ class ProfilePagePresenter
 
   def waiting_since_for_js
     @user.waiting_since&.httpdate
+  end
+
+  def show_timer?
+    @user.waiting?
   end
 end

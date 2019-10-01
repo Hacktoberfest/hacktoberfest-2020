@@ -1,0 +1,14 @@
+<tr>
+  <td class="icon-block"><%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %></td>
+  <td>
+    <div>
+      <div class="timeline-date">
+        <%= render partial: 'users/show/timeline/box', locals: {pr: pr, user: user} %>
+        <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
+      </div>
+      <h4 class="title is-4">
+        You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
+      </h4>
+    </div>
+  </td>
+</tr>
