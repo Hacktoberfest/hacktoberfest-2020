@@ -1,11 +1,9 @@
-<div class="icon-box">
-  <% if pr.eligible? & user.completed? %>
-    <%= render partial: 'users/show/timeline/boxes/eligible' %>
-  <% elsif pr.spammy? %>
-    <%= render partial: 'users/show/timeline/boxes/spammy' %>
-  <% elsif pr.eligible? %>
-    <%= render partial: 'users/show/timeline/boxes/pending' %>
-  <% else %>
-    <%= render partial: 'users/show/timeline/boxes/ineligible' %>
-  <% end %>
-</div>
+<% if pr.eligible? & user.completed? %>
+  <%= render partial: 'users/show/timeline/boxes/eligible' %>
+<% elsif pr.spammy? %>
+  <%= render partial: 'users/show/timeline/boxes/spammy' %>
+<% elsif pr.eligible? %>
+  <%= render partial: 'users/show/timeline/boxes/pending' %>
+<% else %>
+  <%= render partial: 'users/show/timeline/boxes/ineligible' %>
+<% end %>
