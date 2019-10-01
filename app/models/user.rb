@@ -30,7 +30,8 @@ class User < ApplicationRecord
     end
 
     event :ineligible do
-      transition waiting: :registered, if: -> (user) { user.score < 4 }
+      transition waiting: :registered,
+        unless: -> (user) { user.sufficient_eligible_prs? }
     end
 
     state all - [:new] do
