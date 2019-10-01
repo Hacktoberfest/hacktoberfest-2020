@@ -34,4 +34,8 @@ class ProfilePagePresenter
   def waiting_since_for_js
     @user.waiting_since&.httpdate
   end
+
+  def show_timer?
+    @user.waiting?
+  end
 end
