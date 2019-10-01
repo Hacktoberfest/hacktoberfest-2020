@@ -6,8 +6,9 @@
       <%= render partial: 'users/show/timeline/boxes/pending' %>
       <p>Pending</p>
     </div>
-    <p>We're waiting for you to reach four or more pull requests, or your PR is currently maturing in the
-      review period.</p>
+    <p>
+      We're waiting for you to reach four or more pull requests, or your PR is currently within the review period.
+    </p>
   </div>
 
   <div>
@@ -15,7 +16,9 @@
       <%= render partial: 'users/show/timeline/boxes/ineligible' %>
       <p>Invalid</p>
     </div>
-    <p>Your PR has been labeled as "invalid" by a maintainer and won't count toward winning Hacktoberfest.</p>
+    <p>
+      Your PR has been labeled as "invalid" by a maintainer and won't count toward winning Hacktoberfest.
+    </p>
   </div>
 
   <div>
@@ -23,7 +26,10 @@
       <%= render partial: 'users/show/timeline/boxes/spammy' %>
       <p>Spam Repository</p>
     </div>
-    <p>Your PR was submitted to a repository that we've excluded from Hacktoberfest as it doesn't align with our core values.</p>
+    <p>
+      Your PR was submitted to a repository that we've excluded from Hacktoberfest as it doesn't align with our core
+      values.
+    </p>
   </div>
 
   <div>
@@ -31,6 +37,8 @@
       <%= render partial: 'users/show/timeline/boxes/eligible' %>
       <p>Eligible</p>
     </div>
-    <p>Good job! Your PR has passed the review period and is counting toward you winning Hacktoberfest.</p>
+    <p>
+      Good job! Your PR has passed the review period and counts toward completing the Hacktoberfest challenge!
+    </p>
   </div>
 </div>
