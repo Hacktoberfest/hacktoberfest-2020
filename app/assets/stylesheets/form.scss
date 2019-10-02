@@ -1,0 +1,20 @@
+$break-small: 1024px;
+
+.airtable-form {
+ min-height: 80vh;
+ max-width: 40vw;
+
+ @media screen and (max-width: $break-small) {
+   max-width: 60vw !important;
+   min-height: 60vh;
+ }
+}
+
+.report-form-container {
+ margin-left: 30vw;
+
+ @media screen and (max-width: $break-small) {
+   margin-left: 22vw;
+ }
+
+}
