@@ -8,30 +8,211 @@
     <h3 class="title is-3">Your contributions</h3><br/>
     <table class="table is-narrow is-fullwidth">
       <tbody>
-      <% scoring_pull_requests.map do |pr| %>
-        <%= render partial: 'users/show/timeline/pr', locals: {pr: pr, user: user} %>
-      <% end %>
-      <% if show_timer %>
-      <tr>
-        <td colspan="2">
-          <div class="winning-msg-cont">
-            <p id="waiting_date"><%= user.waiting_since.to_formatted_s(:long) %></p>
-            <h1 class="title is-2 pink-highlight"> You're almost there!</h1>
-            <span class="title is-3">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in</span>
-            <span class="title is-3 pink-highlight" id="countdown"></span>
-            <span class="title is-3"> — which means you’ll have officially completed this year’s challenge!</span>
-          </div>
-        </td>
-      </tr>
-      <% end %>
-      <% if non_scoring_pull_requests.any? %>
-        <% non_scoring_pull_requests.map do |pr| %>
-          <%= render partial: 'users/show/timeline/pr', locals: {pr: pr, user: user} %>
+        <% scoring_pull_requests.map do |pr| %>
+          <tr>
+            <td class="icon-block">
+              <% if pr.eligible? & user.completed? %>
+                <div class="icon-box">
+                  <div class="eligible-box">
+                    <%= image_tag 'eligible.png' %>
+                  </div>
+                </div>
+              <% elsif pr.spammy? %>
+                <div class="icon-box">
+                  <div class="spammy-box">
+                    <%= image_tag 'ineligible.png' %>
+                  </div>
+                </div>
+              <% elsif pr.eligible? %>
+                <div class="icon-box">
+                  <div class="pending-box">
+                    <%= image_tag 'pending.png' %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="icon-box">
+                  <div class="ineligible-box">
+                    <%= image_tag 'ineligible.png' %>
+                  </div>
+                </div>
+              <% end %>
+            </td>
+            <td>
+              <div>
+                <div class="timeline-date">
+                  <% if pr.eligible? & user.completed? %>
+                    <div class="icon-box">
+                      <div class="eligible-box">
+                        <%= image_tag 'eligible.png' %>
+                      </div>
+                    </div>
+                  <% elsif pr.spammy? %>
+                    <div class="icon-box">
+                      <div class="spammy-box">
+                        <%= image_tag 'ineligible.png' %>
+                      </div>
+                    </div>
+                  <% elsif pr.eligible? %>
+                    <div class="icon-box">
+                      <div class="pending-box">
+                        <%= image_tag 'pending.png' %>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="icon-box">
+                      <div class="ineligible-box">
+                        <%= image_tag 'ineligible.png' %>
+                      </div>
+                    </div>
+                  <% end %>
+                  <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
+                </div>
+                <h4 class="title is-4">
+                  You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
+                </h4>
+              </div>
+            </td>
+          </tr>
         <% end %>
-      <% end %>
+        <% if show_timer %>
+          <tr>
+            <td colspan="2">
+              <div class="winning-msg-cont">
+                <p id="waiting_date"><%= user.waiting_since.to_formatted_s(:long) %></p>
+                <h1 class="title is-2 pink-highlight"> You're almost there!</h1>
+                <span class="title is-3">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in</span>
+                <span class="title is-3 pink-highlight" id="countdown"></span>
+                <span class="title is-3"> — which means you’ll have officially completed this year’s challenge!</span>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        <% if non_scoring_pull_requests.any? %>
+          <% non_scoring_pull_requests.map do |pr| %>
+            <tr>
+              <td class="icon-block">
+                <% if pr.eligible? & user.completed? %>
+                  <div class="icon-box">
+                    <div class="eligible-box">
+                      <%= image_tag 'eligible.png' %>
+                    </div>
+                  </div>
+                <% elsif pr.spammy? %>
+                  <div class="icon-box">
+                    <div class="spammy-box">
+                      <%= image_tag 'ineligible.png' %>
+                    </div>
+                  </div>
+                <% elsif pr.eligible? %>
+                  <div class="icon-box">
+                    <div class="pending-box">
+                      <%= image_tag 'pending.png' %>
+                    </div>
+                  </div>
+                <% else %>
+                  <div class="icon-box">
+                    <div class="ineligible-box">
+                      <%= image_tag 'ineligible.png' %>
+                    </div>
+                  </div>
+                <% end %>
+              </td>
+              <td>
+                <div>
+                  <div class="timeline-date">
+                    <% if pr.eligible? & user.completed? %>
+                      <div class="icon-box">
+                        <div class="eligible-box">
+                          <%= image_tag 'eligible.png' %>
+                        </div>
+                      </div>
+                    <% elsif pr.spammy? %>
+                      <div class="icon-box">
+                        <div class="spammy-box">
+                          <%= image_tag 'ineligible.png' %>
+                        </div>
+                      </div>
+                    <% elsif pr.eligible? %>
+                      <div class="icon-box">
+                        <div class="pending-box">
+                          <%= image_tag 'pending.png' %>
+                        </div>
+                      </div>
+                    <% else %>
+                      <div class="icon-box">
+                        <div class="ineligible-box">
+                          <%= image_tag 'ineligible.png' %>
+                        </div>
+                      </div>
+                    <% end %>
+                    <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
+                  </div>
+                  <h4 class="title is-4">
+                    You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
+                  </h4>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
       </tbody>
     </table>
-    <%= render partial: 'users/show/timeline/legend' %>
+    <div class="legend box has-text-white">
+      <h4 class="title is-4">Legend</h4>
+      <div>
+        <div class="icon-name">
+          <div class="icon-box">
+            <div class="pending-box">
+              <%= image_tag 'pending.png' %>
+            </div>
+          </div>
+          <p>Pending</p>
+        </div>
+        <p>
+          We're waiting for you to reach four or more pull requests, or your PR is currently within the review period.
+        </p>
+      </div>
+      <div>
+        <div class="icon-name">
+          <div class="icon-box">
+            <div class="ineligible-box">
+              <%= image_tag 'ineligible.png' %>
+            </div>
+          </div>
+          <p>Invalid</p>
+        </div>
+        <p>
+          Your PR has been labeled as "invalid" by a maintainer and won't count toward winning Hacktoberfest.
+        </p>
+      </div>
+      <div>
+        <div class="icon-name">
+          <div class="icon-box">
+            <div class="spammy-box">
+              <%= image_tag 'ineligible.png' %>
+            </div>
+          </div>
+          <p>Ineligible Repository</p>
+        </div>
+        <p>
+          Your PR was submitted to a repository that we've excluded from Hacktoberfest as it doesn't align with our core
+          values.
+        </p>
+      </div>
+      <div>
+        <div class="icon-name">
+          <div class="icon-box">
+            <div class="eligible-box">
+              <%= image_tag 'eligible.png' %>
+            </div>
+          </div>
+          <p>Eligible</p>
+        </div>
+        <p>
+          Good job! Your PR has passed the review period and counts toward completing the Hacktoberfest challenge!
+        </p>
+      </div>
+    </div>
   <% end %>
   <% if user.waiting? %>
   <script type="text/javascript">
