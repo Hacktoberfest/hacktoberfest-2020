@@ -38,14 +38,26 @@ class GithubPullRequestService
   end
 
   def pull_requests
-    client = GithubGraphqlApiClient.new(access_token: @user.provider_token)
-    response = client.request(PULL_REQUEST_QUERY, nodeId: user_graphql_node_id)
-    response.data.node.pullRequests.nodes.map do |pr|
+    return @pull_requests if @pull_requests.present?
+
+    response = Rails.cache.fetch(cache_key, expires_in: 15.minutes) do
+      client.request(PULL_REQUEST_QUERY, nodeId: user_graphql_node_id)
+    end
+
+    @pull_requests = response.data.node.pullRequests.nodes.map do |pr|
       GithubPullRequest.new(pr)
     end
   end
 
   private
+
+  def cache_key
+    "user/#{@user.id}/github_pull_request_service/response"
+  end
+
+  def client
+    @client ||= GithubGraphqlApiClient.new(access_token: @user.provider_token)
+  end
 
   def user_graphql_node_id
     encode_string = "04:User#{@user.uid}"
