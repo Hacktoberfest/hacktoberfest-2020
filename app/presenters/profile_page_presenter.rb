@@ -38,4 +38,13 @@ class ProfilePagePresenter
   def show_timer?
     @user.waiting?
   end
+
+  def show_coupon
+    if @user.state == 'won_shirt'
+      coupon = @user.shirt_coupon
+    else
+      coupon = @user.sticker_coupon
+    end
+    coupon
+  end
 end
