@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 
   # render current user profile
   def show
-    TryUserTransitionService.call(current_user)
-    @presenter = ProfilePagePresenter.new(current_user)
+    TryUserTransitionService.call(@current_user)
+    @presenter = ProfilePagePresenter.new(@current_user)
   end
 
   # action to save registration
