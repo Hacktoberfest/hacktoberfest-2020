@@ -14,4 +14,12 @@ VCR.configure do |c|
   c.filter_sensitive_data('<TEST_SEGMENT_WRITE_KEY>') do
     segment_write_key
   end
+
+  c.filter_sensitive_data('<TEST_AIRTABLE_API_KEY>') do
+    ENV.fetch('AIRTABLE_API_KEY')
+  end
+
+  c.filter_sensitive_data('<TEST_AIRTABLE_APP_ID>') do
+    ENV.fetch('AIRTABLE_APP_ID')
+  end
 end
