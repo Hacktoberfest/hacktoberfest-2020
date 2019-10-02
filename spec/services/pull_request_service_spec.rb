@@ -46,37 +46,35 @@ RSpec.describe PullRequestService do
   end
 
   describe '#eligible_prs' do
-    context 'given an array of 5 pull requests' do
-      context 'pull requests with valid dates and valid labels' do
-        before { stub_helper(PR_DATA[:valid_array]) }
+    context '5 pull requests with valid dates and valid labels' do
+      before { stub_helper(PR_DATA[:valid_array]) }
 
-        it 'filters and returns all 5 PRs' do
-          expect(pr_service.eligible_prs.length).to eq(5)
-        end
+      it 'filters and returns all 5 PRs' do
+        expect(pr_service.eligible_prs.length).to eq(5)
       end
+    end
 
-      context 'pull requests with 2 invalid dates & valid labels' do
-        before { stub_helper(PR_DATA[:array_with_invalid_dates]) }
+    context '4 pull requests with 2 invalid dates' do
+      before { stub_helper(PR_DATA[:array_with_invalid_dates]) }
 
-        it 'filters and returns 2 of the PRs' do
-          expect(pr_service.eligible_prs.length).to eq(2)
-        end
+      it 'filters and returns 2 of the PRs' do
+        expect(pr_service.eligible_prs.length).to eq(2)
       end
+    end
 
-      context '7 pull_requests with valid dates & 2 invalid labels' do
-        before { stub_helper(PR_DATA[:array_with_invalid_labels]) }
+    context '5 pull requests with valid dates & 2 invalid labels' do
+      before { stub_helper(PR_DATA[:array_with_invalid_labels]) }
 
-        it 'filters and returns 5 of the PRs' do
-          expect(pr_service.eligible_prs.length).to eq(5)
-        end
+      it 'filters and returns 3 of the PRs' do
+        expect(pr_service.eligible_prs.length).to eq(3)
       end
+    end
 
-      context 'pull_requests with 4 invalid dates & invalid labels' do
-        before { stub_helper(PR_DATA[:invalid_array]) }
+    context '4 pull_requests with 4 invalid dates & invalid labels' do
+      before { stub_helper(PR_DATA[:invalid_array]) }
 
-        it 'filters & returns an empty array' do
-          expect(pr_service.eligible_prs.length).to eq(0)
-        end
+      it 'filters & returns an empty array' do
+        expect(pr_service.eligible_prs.length).to eq(0)
       end
     end
   end
