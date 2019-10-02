@@ -21,9 +21,9 @@
         <%= render partial: 'users/show/pre_launch' %>
       </div>
     <% else %>
-      <% if @presenter.display_results? %>
+      <% if !@presenter.display_results? %>
         <div class="hacktoberfest-winner">
-          <%= render partial: 'users/show/hacktoberfest_results' %>
+          <%= render partial: 'users/show/hacktoberfest_results', locals: { show_coupon: @presenter.show_coupon } %>
         </div>
       <% end %>
       <div class="container box">
