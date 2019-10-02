@@ -11,8 +11,12 @@ class ProfilePagePresenter
     Hacktoberfest.pre_launch?
   end
 
-  def display_results?
+  def display_winner?
     Hacktoberfest.ended? && @user.won_hacktoberfest?
+  end
+
+  def display_participant?
+      Hacktoberfest.ended? && (@user.incomplete ||  @user.complete)
   end
 
   def scoring_pull_requests
