@@ -11,6 +11,10 @@ VCR.configure do |c|
     user_github_token
   end
 
+  c.filter_sensitive_data('<TEST_GITHUB_CLIENT_ID') do
+    ENV.fetch('GITHUB_CLIENT_ID')
+  end
+
   c.filter_sensitive_data('<TEST_SEGMENT_WRITE_KEY>') do
     segment_write_key
   end
