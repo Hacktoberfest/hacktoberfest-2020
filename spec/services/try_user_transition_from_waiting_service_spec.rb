@@ -14,7 +14,7 @@ RSpec.describe TryUserTransitionFromWaitingService do
         PullRequest.new(pr)
       end
 
-      allow(user).to receive(:timeline_pull_requests).and_return(prs)
+      allow(user).to receive(:scoring_pull_requests).and_return(prs)
     end
 
     context 'The user has enough eligible PRs to transition and has been waiting 7+ days' do

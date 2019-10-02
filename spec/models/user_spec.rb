@@ -138,7 +138,7 @@ RSpec.describe User, type: :model do
         PullRequest.new(pr)
       end
 
-      allow(user).to receive(:timeline_pull_requests).and_return(prs)
+      allow(user).to receive(:scoring_pull_requests).and_return(prs)
     end
 
     context 'the user has 4 eligible PRs and has been waiting for 7 days' do
@@ -162,7 +162,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'saves a receipt of the scoring prs' do
-        expect(user.receipt).to eq(JSON.parse(user.timeline_pull_requests.to_json))
+        expect(user.receipt).to eq(JSON.parse(user.scoring_pull_requests.to_json))
       end
     end
 

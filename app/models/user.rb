@@ -87,7 +87,7 @@ class User < ApplicationRecord
     end
 
     before_transition to: :completed do |user, _transition|
-      user.receipt = user.timeline_pull_requests
+      user.receipt = user.scoring_pull_requests
     end
 
     after_transition to: :waiting, do: :update_waiting_since
