@@ -5,15 +5,15 @@ $break-small: 1024px;
    max-width: 40vw;
 
   @media screen and (max-width: $break-small) {
-    max-width: 60vw !important;
-    min-height: 60vh;
+    max-width: 100%;
   }
 }
 
 .report-form-container {
-  margin-left: 30vw;
+  display: flex;
+  justify-content: center;
 
   @media screen and (max-width: $break-small) {
-    margin-left: 22vw;
+    margin: 0 30px;
   }
 }
