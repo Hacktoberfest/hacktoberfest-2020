@@ -24,7 +24,7 @@ class PullRequestService
   def scoring_pull_requests
     counter = 0
     all.take_while do |pr|
-      counter += 1 if pr.eligible?
+      counter += 1 if pr.eligible? && !pr.spammy?
       counter <= 4
     end
   end
