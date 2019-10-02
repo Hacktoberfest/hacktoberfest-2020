@@ -11,11 +11,11 @@ class ProfilePagePresenter
     Hacktoberfest.pre_launch?
   end
 
-  def display_winner?
+  def display_winners?
     Hacktoberfest.ended? && @user.won_hacktoberfest?
   end
 
-  def display_participant?
+  def display_participants?
       Hacktoberfest.ended? && (@user.incomplete ||  @user.complete)
   end
 
