@@ -351,6 +351,11 @@ $red: hsl(320, 100%, 50%);
 .legend {
   margin: 3rem 0 0;
 
+  @media screen and (max-width: $break-small) {
+    padding: 0;
+    box-shadow: none;
+  }
+
   h4 {
     margin: 0 0 1.25rem;
   }
