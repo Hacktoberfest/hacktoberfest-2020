@@ -30,8 +30,10 @@ $red: hsl(320, 100%, 50%);
 
   .code-textarea {
     background-color: $grey-dark !important;
-    float: left !important;
+    flex: 1;
     overflow: auto;
+    width:auto;
+    height: auto;
 
     @media screen and (max-width: $break-small) {
       width: 60vw;
@@ -399,4 +401,8 @@ $red: hsl(320, 100%, 50%);
   @media screen and (max-width: $break-small) {
     margin: 5rem 1.5rem 0 1.5rem;
   }
+}
+
+.coupon-box {
+  display: flex;
 }
