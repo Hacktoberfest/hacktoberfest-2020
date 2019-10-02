@@ -49,6 +49,6 @@ class ProfilePagePresenter
     else
       coupon = @user.sticker_coupon
     end
-    coupon
+    coupon.code
   end
 end
