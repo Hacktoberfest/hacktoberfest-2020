@@ -7,6 +7,7 @@ RSpec.describe CouponService do
   let(:coupon_service) { CouponService.new(user) }
 
   describe '#assign_coupon' do
+    before { allow(UserCouponSegmentService).to receive(:call) }
     context 'there are only shirt coupons available' do
       before do
         FactoryBot.create(:shirt_coupon)

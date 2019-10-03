@@ -315,6 +315,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#win' do
+    before { allow(UserCouponSegmentService).to receive(:call) }
     context 'the user is in the completed state' do
       let(:user) { FactoryBot.create(:user, :completed) }
 
