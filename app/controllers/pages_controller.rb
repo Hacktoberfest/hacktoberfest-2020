@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   before_action :disallow_registered_user!, only: :start
 
   def index
-    @events = all_events.select(&:featured?).first(4)
+    @events = front_page_events
     @projects = ProjectService.sample(9)
     @climate_repository = ClimateProjectService.sample(3)
   end
@@ -40,6 +40,16 @@ class PagesController < ApplicationController
       rescue AirtableEventPresenter::ParseError
         #Ignore invalid events
       end.compact
+    end
+  end
+
+  def current_events
+    all_events.select(&:current?)
+  end
+
+  def front_page_events
+    current_events.shuffle.first(4).sort_by do |e|
+      e.date
     end
   end
 end
