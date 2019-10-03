@@ -1,5 +1,49 @@
 
 window.onload = function() {
+
+  // functionality from language_filter.js file
+  var $reset = $('#reset-filter'),
+      $id = $('#language_id'),
+      $list = $('#project-list'),
+      $message = $('#projects-message'),
+      defaultMessage = $message.text();
+
+  // Handle resetting the filter to all
+  function reset() {
+    $id.val('');
+    change();
+  }
+
+  // Handle the filter selection changing
+  function change() {
+    var languageId = $id.val();
+    var url = '/languages/projects/' + languageId;
+    $.ajax({
+      type: 'GET',
+      url: url,
+      success: function (htmlData) {
+        $list.html(htmlData);
+      }
+    });
+    // Empty string means 'Select Language'
+    if (languageId === "") {
+      $reset.removeClass('active');
+      $message.text(defaultMessage);
+    } else {
+      $message.text('Displaying ' + $id.find("option:selected").text() + ' projects only');
+      $reset.addClass('active');
+    }
+  }
+
+  // Detect the select change event
+  $id.change(change);
+
+  // Detect the reset button being clicked
+  $reset.click(reset);
+
+
+  //////////  LANGUAGE QUERY PARAM CODE BELOW //////////
+
   var current = window.location.href;
   // take URL turn into string, split after '?', convert any '%20" to whtiespace', trim/remove whitespace
   var convertURL = current.toString().toLowerCase().split("?")[1].replace(/%20/g, " ").trim().replace(/\s/g, '');
@@ -57,6 +101,8 @@ window.onload = function() {
         url.search = search_params.toString();
         var new_url = url.toString();
         history.pushState(null, " ", new_url);
+
+        change();
       }else{
         // if no match - do nothing
       }
