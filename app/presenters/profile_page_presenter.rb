@@ -16,7 +16,7 @@ class ProfilePagePresenter
   end
 
   def display_participants?
-      Hacktoberfest.ended? && (@user.incomplete ||  @user.complete)
+    Hacktoberfest.ended? && (@user.incompleted? ||  @user.completed?)
   end
 
   def scoring_pull_requests
