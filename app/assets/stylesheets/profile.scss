@@ -2,6 +2,7 @@ $break-med: 1366px;
 $break-small: 1024px;
 $grey-dark: hsl(223.33, 32.14%, 32.94%);
 $grey-darker: hsl(222.5, 43.64%, 21.57%);
+$cyan: hsl(191.56, 100%, 78.63%);
 $red: hsl(320, 100%, 50%);
 
 .avatar {
@@ -16,6 +17,7 @@ $red: hsl(320, 100%, 50%);
     padding-left: 40px;
     padding-top: 20px;
     text-align: left;
+    max-width: 60%;
   }
 
   .code-button {
@@ -405,4 +407,14 @@ $red: hsl(320, 100%, 50%);
 
 .coupon-box {
   display: flex;
+  margin-top: 50px;
+  min-width: 48vw;
+}
+
+#winner-code {
+  font-size: 1rem;
+  background-color: #39486f;
+  border: none;
+  color: $cyan;
+  width: 25vw;
 }
