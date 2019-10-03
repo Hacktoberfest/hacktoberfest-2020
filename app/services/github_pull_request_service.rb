@@ -40,7 +40,7 @@ class GithubPullRequestService
   def pull_requests
     return @pull_requests if @pull_requests.present?
 
-    response = Rails.cache.fetch(cache_key, expires_in: 15.minutes) do
+    response = Rails.cache.fetch(cache_key, expires_in: 1.minute) do
       client.request(PULL_REQUEST_QUERY, nodeId: user_graphql_node_id)
     end
 
