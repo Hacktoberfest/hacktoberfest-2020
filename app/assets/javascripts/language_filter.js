@@ -3,7 +3,8 @@ window.setupLanguageFilter = function () {
       $id = $('#language_id'),
       $list = $('#project-list'),
       $message = $('#projects-message'),
-      defaultMessage = $message.text();
+      defaultMessage = $message.text(),
+      $refresh = $("#refresh");
 
   // Handle resetting the filter to all
   function reset() {
@@ -25,11 +26,13 @@ window.setupLanguageFilter = function () {
     // Empty string means 'Select Language'
     if (languageId === "") {
       $reset.removeClass('active');
+      $refresh.removeClass('active');
+
       $message.text(defaultMessage);
     } else {
       $message.text('Displaying ' + $id.find("option:selected").text() + ' projects only');
       $reset.addClass('active');
-    }
+      $refresh.addClass('active');
   }
 
   // Detect the select change event
@@ -37,4 +40,5 @@ window.setupLanguageFilter = function () {
 
   // Detect the reset button being clicked
   $reset.click(reset);
-};
+  };
+}
