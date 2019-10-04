@@ -44,8 +44,12 @@ window.setupLanguageFilter = function () {
     if (languageId === "") {
       $reset.removeClass('active');
       $refresh.removeClass('active');
-
       $message.text(defaultMessage);
+
+      // reset URL to remove original query when filter is removed
+      var removeQueryURL = current.split("?")[0];
+      console.log(removeQueryURL);
+      history.pushState(null, " ", removeQueryURL);
     } else {
       $message.text('Displaying ' + $id.find("option:selected").text() + ' projects only');
       $reset.addClass('active');
@@ -53,7 +57,7 @@ window.setupLanguageFilter = function () {
 
       var changed_url = $id.find("option:selected").text();
       var new_lang_url = changed_url.toLowerCase();
-      history.pushState(null, " ", "language=" + new_lang_url);
+      history.pushState(null, " ", "?language=" + new_lang_url);
   }
 }
 
