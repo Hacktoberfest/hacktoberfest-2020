@@ -94,7 +94,7 @@ window.setupLanguageFilter = function () {
           issues.scrollIntoView();
 
           //change URL based on lang query
-          var url = new URL("http://localhost:3000/");
+          var url = new URL(current);
           var query_string = url.search;
           var search_params = new URLSearchParams(query_string);
           search_params.set("language", final[i]);
