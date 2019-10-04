@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :set_current_user
+  rescue_from Faraday::ClientError, with: :api_error
 
   def current_user
     return unless logged_in?
@@ -45,5 +46,11 @@ class ApplicationController < ActionController::Base
 
   def valid_token?
     TokenValidatorService.new(@current_user.provider_token).valid?
+  end
+
+  def api_error(error)
+    raise error unless error.response&.status == 502
+
+    render 'pages/api_error', status: 500
   end
 end
