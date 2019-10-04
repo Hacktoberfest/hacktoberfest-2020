@@ -35,6 +35,9 @@ class PagesController < ApplicationController
   def report
   end
 
+  def api_error
+  end
+
   private
 
   def all_events
