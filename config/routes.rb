@@ -2,7 +2,6 @@
 
 require 'sidekiq-ent/web'
 
-
 Rails.application.routes.draw do
   # Sessions
   get '/auth/:provider/callback', to: 'sessions#create'
@@ -26,6 +25,7 @@ Rails.application.routes.draw do
   get '/faq', to: 'pages#faqs'
   get '/thanks', to: 'pages#thanks'
   get '/webinars', to: 'pages#webinars'
+  get '/api-error', to: 'pages#api_error'
   get '/languages/projects(/:language_id)', to: 'languages#projects'
   get '/report', to: 'pages#report'
 
