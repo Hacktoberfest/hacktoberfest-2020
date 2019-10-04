@@ -46,8 +46,7 @@ class PagesController < ApplicationController
   def front_page_events
     all_events
       .select(&:current?)
-      .shuffle
-      .first(4)
+      .sample(4)
       .sort_by { |e| e.date }
   end
 end
