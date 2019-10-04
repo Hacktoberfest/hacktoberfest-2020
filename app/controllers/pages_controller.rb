@@ -43,13 +43,11 @@ class PagesController < ApplicationController
     end
   end
 
-  def current_events
-    all_events.select(&:current?)
-  end
-
   def front_page_events
-    current_events.shuffle.first(4).sort_by do |e|
-      e.date
-    end
+    all_events
+      .select(&:current?)
+      .shuffle
+      .first(4)
+      .sort_by { |e| e.date }
   end
 end
