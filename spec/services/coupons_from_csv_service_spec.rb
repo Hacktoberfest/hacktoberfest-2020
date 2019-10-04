@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe CouponsFromCSVService do
   describe '.call' do
     context 'valid CSV path' do
-      let!(:path) { Rails.root.join('spec','fixtures','dummy-shirt.csv') }
+      let!(:path) { Rails.root.join('spec','fixtures','coupons.csv') }
 
       context 'importing shirt coupons' do
         before do

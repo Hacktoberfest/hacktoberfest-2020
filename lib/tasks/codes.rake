@@ -5,7 +5,7 @@ require 'csv'
 namespace :import do
   desc 'import Hacktoberfest t-shirt codes'
   task shirt_codes: :environment do
-    location = Rails.root.join('tmp','t-shirt.csv')
+    location = Rails.root.join('tmp','shirt.csv')
     
     CouponsFromCSVService.call(location, ShirtCoupon)
   end
