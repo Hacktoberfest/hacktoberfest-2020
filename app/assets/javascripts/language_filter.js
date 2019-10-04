@@ -50,18 +50,24 @@ window.setupLanguageFilter = function () {
       $message.text('Displaying ' + $id.find("option:selected").text() + ' projects only');
       $reset.addClass('active');
       $refresh.addClass('active');
+
+      var changed_url = $id.find("option:selected").text();
+      var new_lang_url = changed_url.toLowerCase();
+      history.pushState(null, " ", "language=" + new_lang_url);
   }
+}
 
   // Detect the select change event
   $id.change(change);
 
   // Detect the reset button being clicked
   $reset.click(reset);
-  };
 
-    // Detect the refresh button being clicked
-    $refresh.click(refresh);
 
+  // Detect the refresh button being clicked
+  $refresh.click(refresh);
+
+  // };
 
   //////////  LANGUAGE QUERY PARAM CODE BELOW //////////
 
@@ -94,7 +100,8 @@ window.setupLanguageFilter = function () {
           issues.scrollIntoView();
 
           //change URL based on lang query
-          var url = new URL(current);
+          var remove_query = current.split("?")[0];
+          var url = new URL(remove_query);
           var query_string = url.search;
           var search_params = new URLSearchParams(query_string);
           search_params.set("language", final[i]);
