@@ -11,12 +11,16 @@ class ProfilePagePresenter
     Hacktoberfest.pre_launch?
   end
 
-  def display_winner?
-    Hacktoberfest.ended? && @user.won_hacktoberfest?
+  def display_coupon?
+    @user.won_shirt? || @user.won_sticker?
+  end
+
+  def display_waiting_for_prize?
+    @user.completed?
   end
 
   def display_thank_you?
-    Hacktoberfest.ended? && (@user.incompleted? ||  @user.completed?)
+    @user.incompleted?
   end
 
   def scoring_pull_requests
@@ -44,11 +48,10 @@ class ProfilePagePresenter
   end
 
   def code
-    if @user.state == 'won_shirt'
-      coupon = @user.shirt_coupon
-    else
-      coupon = @user.sticker_coupon
+    if coupon = @user.shirt_coupon
+      coupon.code
+    elsif coupon = @user.sticker_coupon
+      coupon.code
     end
-    coupon.code
   end
 end
