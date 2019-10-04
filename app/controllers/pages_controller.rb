@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   before_action :require_user_logged_in!, only: :report
 
   def index
-    @events = all_events.select(&:featured?).first(4)
+    @events = front_page_events
     @projects = ProjectService.sample(9)
     @climate_repository = ClimateProjectService.sample(3)
   end
@@ -45,5 +45,12 @@ class PagesController < ApplicationController
         #Ignore invalid events
       end.compact
     end
+  end
+
+  def front_page_events
+    all_events
+      .select(&:current?)
+      .sample(4)
+      .sort_by { |e| e.date }
   end
 end
