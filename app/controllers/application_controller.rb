@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
 
   def api_error(error)
-    raise error unless error.response&.status == 502
+    raise error unless error.response&.fetch(:status) == 502
 
     render 'pages/api_error', status: 500
   end
