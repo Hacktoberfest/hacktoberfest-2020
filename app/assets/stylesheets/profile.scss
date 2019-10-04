@@ -387,3 +387,16 @@ $red: hsl(320, 100%, 50%);
     }
   }
 }
+
+.winning-msg {
+  text-align: left;
+}
+
+.report-spam-cont {
+  padding: 1rem;
+  margin-top: 8rem;
+
+  @media screen and (max-width: $break-small) {
+    margin: 5rem 1.5rem 0 1.5rem;
+  }
+}

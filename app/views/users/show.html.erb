@@ -32,4 +32,7 @@
     <% end %>
     <%= link_to "Log out @#{@presenter.name}", logout_path, :class => "button" %>
   </div>
+  <div class="box report-spam-cont">
+     <h5 class="title is-5">Have you seen a repository that you don't think aligns with the <%= link_to "Hacktoberfest values", details_path %>? Please <%= link_to "report it to us", report_path %> so we can take a look.  </h5>
+   </div>
 </div>
