@@ -46,6 +46,7 @@ RSpec.describe PullRequestService do
   end
 
   describe '#eligible_prs' do
+    before { allow(SpamRepositoryService).to receive(:call).and_return(false) }
     context '5 pull requests with valid dates and valid labels' do
       before { stub_helper(PR_DATA[:valid_array]) }
 
@@ -80,6 +81,7 @@ RSpec.describe PullRequestService do
   end
 
   describe '#scoring_pull_requests' do
+    before { allow(SpamRepositoryService).to receive(:call).and_return(false) }
     context 'a user with more than 4 eligible pull requests' do
       before { stub_helper(PR_DATA[:valid_array]) }
       it 'returns initial 4 eligible_prs' do
@@ -96,6 +98,7 @@ RSpec.describe PullRequestService do
   end
 
   describe '#non_scoring_pull_requests' do
+    before { allow(SpamRepositoryService).to receive(:call).and_return(false) }
     context 'a user with more than 4 eligible pull requests' do
       before { stub_helper(PR_DATA[:valid_array]) }
       it 'returns the all PRs minus scoring_pull_requests' do
