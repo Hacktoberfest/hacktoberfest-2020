@@ -11,7 +11,6 @@ class CouponService
     elsif coupon = sticker_coupon
       @user.association(:sticker_coupon).replace(coupon, false)
     end
-    UserCouponSegmentService.call(@user)
   end
 
   private

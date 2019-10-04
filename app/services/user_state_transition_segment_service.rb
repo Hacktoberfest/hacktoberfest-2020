@@ -12,6 +12,7 @@ module UserStateTransitionSegmentService
     when :complete then complete(user)
     when :incomplete then incomplete(user)
     when :ineligible then ineligible(user)
+    when :won then won(user)
     end
   end
 
@@ -42,6 +43,22 @@ module UserStateTransitionSegmentService
   def ineligible(user)
     segment(user).track('user_ineligible')
     segment(user).identify(state: 'ineligible')
+  end
+
+  def won(user)
+    if user.shirt_coupon.present?
+      segment(user).track('user_won_shirt')
+      segment(user).identify(
+        state: 'won_shirt',
+        shirt_coupon: user.shirt_coupon
+      )
+    elsif user.sticker_coupon.present?
+      segment(user).track('user_won_sticker')
+      segment(user).identify(
+        state: 'won_sticker',
+        sticker_coupon: user.sticker_coupon
+      )
+    end
   end
 
   def segment(user)

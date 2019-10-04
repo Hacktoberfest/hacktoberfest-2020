@@ -86,7 +86,7 @@ class User < ApplicationRecord
       UserStateTransitionSegmentService.call(user, transition)
     end
 
-    after_transition to: :waiting, do: :update_waiting_since
+    after_transition to: :waiting, do: :update_waiting_since    
   end
   # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
