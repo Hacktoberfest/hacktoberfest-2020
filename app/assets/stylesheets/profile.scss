@@ -247,9 +247,10 @@ $red: hsl(320, 100%, 50%);
   }
 
   .hacktoberfest-winner {
-    background-image: url('profile-hexagon.png');
+    background-image: url('bg-right.png');
     background-color: #223257;
-    background-position: left top -150px;
+    background-position: bottom center;
+    background-size: cover;
   }
 
   .image {
