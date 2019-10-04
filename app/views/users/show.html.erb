@@ -21,11 +21,11 @@
         <%= render partial: 'users/show/pre_launch' %>
       </div>
     <% else %>
-      <% if @presenter.display_winners? %>
+      <% if @presenter.display_winner? %>
         <div class="hacktoberfest-winner">
-          <%= render partial: 'users/show/hacktoberfest_winners', locals: { show_coupon: @presenter.show_coupon } %>
+          <%= render partial: 'users/show/hacktoberfest_winners', locals: { code: @presenter.code } %>
         </div>
-      <% elsif @presenter.display_participants? %>
+      <% elsif @presenter.display_thank_you? %>
         <div class="hacktoberfest-winner">
           <%= render partial: 'users/show/hacktoberfest_participants', locals: { user: @presenter.user } %>
         </div>

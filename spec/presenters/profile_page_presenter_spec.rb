@@ -9,7 +9,7 @@ describe ProfilePagePresenter do
   let(:profile_presenter) { ProfilePagePresenter.new(user) }
   let(:won_shirt_presenter) { ProfilePagePresenter.new(shirt_winner) }
   let(:won_sticker_presenter) { ProfilePagePresenter.new(sticker_winner) }
-  let(:incomplete_user_presenter) { ProfilePagePresenter.new(incomplete_user) }
+  let(:incompleted_user_presenter) { ProfilePagePresenter.new(incomplete_user) }
 
   context 'Hacktoberfest is in pre launch' do
     before do
@@ -17,16 +17,17 @@ describe ProfilePagePresenter do
       allow(Hacktoberfest).to receive(:active?).and_return(false)
       allow(Hacktoberfest).to receive(:ended?).and_return(false)
     end
+
     it 'displays the pre_launch partial' do
       expect(profile_presenter.display_pre_launch?).to eq(true)
     end
 
     it 'does not display the winners partial' do
-      expect(profile_presenter.display_winners?).to eq(false)
+      expect(profile_presenter.display_winner?).to eq(false)
     end
 
     it 'does not display the participants partial' do
-      expect(profile_presenter.display_participants?).to eq(false)
+      expect(profile_presenter.display_thank_you?).to eq(false)
     end
   end
 
@@ -39,11 +40,11 @@ describe ProfilePagePresenter do
     end
 
     it 'displays the winners partial' do
-      expect(profile_presenter.display_winners?).to eq(true)
+      expect(profile_presenter.display_winner?).to eq(true)
     end
 
     it 'does not display participant partial', vcr: { record: :new_episodes } do
-      expect(profile_presenter.display_participants?).to eq(false)
+      expect(profile_presenter.display_thank_you?).to eq(false)
     end
 
     it 'does not display the pre_launch partial' do
@@ -52,22 +53,22 @@ describe ProfilePagePresenter do
   end
 
   context 'the user has won a shirt' do
-    it 'assigns the user a shirt coupon' do
+    it 'displays a shirt coupon' do
       expect(shirt_winner.shirt_coupon).to_not be(nil)
     end
 
     it 'returns a coupon code for the user' do
-      expect(won_shirt_presenter.show_coupon).to_not be(nil)
+      expect(won_shirt_presenter.code).to_not be(nil)
     end
   end
 
   context 'the user has won a sticker' do
-    it 'assigns the user a sticker coupon' do
+    it 'displays a sticker coupon' do
       expect(sticker_winner.sticker_coupon).to_not be(nil)
     end
 
     it 'returns a coupon code for the user' do
-      expect(won_sticker_presenter.show_coupon).to_not be(nil)
+      expect(won_sticker_presenter.code).to_not be(nil)
     end
   end
 
@@ -83,15 +84,15 @@ describe ProfilePagePresenter do
     end
 
     it 'displays the participants partial', vcr: { record: :new_episodes } do
-      expect(incomplete_user_presenter.display_participants?).to eq(true)
+      expect(incompleted_user_presenter.display_thank_you?).to eq(true)
     end
 
     it 'does not display the results_partial' do
-      expect(incomplete_user_presenter.display_winners?).to eq(false)
+      expect(incompleted_user_presenter.display_winner?).to eq(false)
     end
 
     it 'does not display the pre_launch partial' do
-      expect(incomplete_user_presenter.display_pre_launch?).to eq(false)
+      expect(incompleted_user_presenter.display_pre_launch?).to eq(false)
     end
   end
 end

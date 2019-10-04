@@ -11,11 +11,11 @@ class ProfilePagePresenter
     Hacktoberfest.pre_launch?
   end
 
-  def display_winners?
+  def display_winner?
     Hacktoberfest.ended? && @user.won_hacktoberfest?
   end
 
-  def display_participants?
+  def display_thank_you?
     Hacktoberfest.ended? && (@user.incompleted? ||  @user.completed?)
   end
 
@@ -43,7 +43,7 @@ class ProfilePagePresenter
     @user.waiting?
   end
 
-  def show_coupon
+  def code
     if @user.state == 'won_shirt'
       coupon = @user.shirt_coupon
     else
