@@ -113,31 +113,4 @@ describe ProfilePagePresenter do
       expect(incompleted_user_presenter.display_pre_launch?).to eq(false)
     end
   end
-
-  context 'Hacktoberfest has ended the user is in waiting period' do
-    before do
-      allow(Hacktoberfest).to receive(:end_date).and_return(Date.today - 7)
-      allow(Hacktoberfest).to receive(:ended?).and_return(true)
-      allow(Hacktoberfest).to receive(:pre_launch?).and_return(false)
-      allow(Hacktoberfest).to receive(:active?).and_return(false)
-      allow(waiting_user).to receive(:hacktoberfest_ended?).and_return(true)
-      allow(waiting_user).to receive(:won_hacktoberfest?).and_return(false)
-    end
-
-    it 'displays the thank you partail'  do
-      expect(waiting_user_presenter.display_thank_you?).to eq(true)
-    end
-
-    it 'does not display the the waiting for prize partial' do
-      expect(waiting_user_presenter.display_waiting_for_prize?).to eq(false)
-    end
-
-    it 'does not display the winners partial' do
-      expect(waiting_user_presenter.display_coupon?).to eq(false)
-    end
-
-    it 'does not display the pre_launch partial' do
-      expect(waiting_user_presenter.display_pre_launch?).to eq(false)
-    end
-  end
 end

@@ -20,7 +20,7 @@ class ProfilePagePresenter
   end
 
   def display_thank_you?
-    Hacktoberfest.ended? && (@user.incompleted? || @user.waiting?)
+    @user.incompleted? 
   end
 
   def scoring_pull_requests
