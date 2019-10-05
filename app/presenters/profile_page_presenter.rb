@@ -20,7 +20,7 @@ class ProfilePagePresenter
   end
 
   def display_thank_you?
-    @user.incompleted?
+    @user.incompleted? || @user.waiting?
   end
 
   def scoring_pull_requests
@@ -32,7 +32,7 @@ class ProfilePagePresenter
   end
 
   def score
-    @user.score
+    @user.score || 0
   end
 
   def name
