@@ -26,7 +26,7 @@
       <% if @presenter.display_waiting_for_prize? %>
           <%= render partial: 'users/show/waiting_for_prize', locals: { code: @presenter.code } %>
       <% end %>
-      <% if !@presenter.display_thank_you? %>
+      <% if @presenter.display_thank_you? %>
           <%= render partial: 'users/show/thank_you', locals: { user: @presenter.user } %>
       <% end %>
     </div>
