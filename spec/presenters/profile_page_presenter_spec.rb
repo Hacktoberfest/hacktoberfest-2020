@@ -25,11 +25,11 @@ describe ProfilePagePresenter do
       expect(profile_presenter.display_pre_launch?).to eq(true)
     end
 
-    it 'does not display the winners partial' do
+    it 'does not display the coupons partial' do
       expect(profile_presenter.display_coupon?).to eq(false)
     end
 
-    it 'does not display the participants partial' do
+    it 'does not display the thank you partial' do
       expect(profile_presenter.display_thank_you?).to eq(false)
     end
 
@@ -46,11 +46,11 @@ describe ProfilePagePresenter do
       allow(shirt_winner).to receive(:won_hacktoberfest?).and_return(true)
     end
 
-    it 'displays the winners partial for a shirt winner' do
+    it 'displays the coupons partial for a shirt winner' do
       expect(won_shirt_presenter.display_coupon?).to eq(true)
     end
 
-    it 'displays the winners partial for a sticker winner' do
+    it 'displays the coupons partial for a sticker winner' do
       expect(won_sticker_presenter.display_coupon?).to eq(true)
     end
 
@@ -68,22 +68,14 @@ describe ProfilePagePresenter do
   end
 
   context 'the user has won a shirt' do
-    it 'displays a shirt coupon' do
-      expect(shirt_winner.shirt_coupon).to_not be(nil)
-    end
-
     it 'returns a coupon code for the user' do
-      expect(won_shirt_presenter.code).to_not be(nil)
+      expect(won_shirt_presenter.code).to be_a(String)
     end
   end
 
   context 'the user has won a sticker' do
-    it 'displays a sticker coupon' do
-      expect(sticker_winner.sticker_coupon).to_not be(nil)
-    end
-
     it 'returns a coupon code for the user' do
-      expect(won_sticker_presenter.code).to_not be(nil)
+      expect(won_sticker_presenter.code).to be_a(String)
     end
   end
 
@@ -97,11 +89,11 @@ describe ProfilePagePresenter do
       allow(incomplete_user).to receive(:won_hacktoberfest?).and_return(false)
     end
 
-    it 'displays the participants partial' do
+    it 'displays the thank you partial' do
       expect(incompleted_user_presenter.display_thank_you?).to eq(true)
     end
 
-    it 'does not display the winners partial' do
+    it 'does not display the coupons partial' do
       expect(incompleted_user_presenter.display_coupon?).to eq(false)
     end
 
