@@ -20,7 +20,7 @@ class ProfilePagePresenter
   end
 
   def display_thank_you?
-    @user.incompleted? 
+    @user.incompleted?
   end
 
   def scoring_pull_requests
