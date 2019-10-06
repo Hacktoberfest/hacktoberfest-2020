@@ -24,11 +24,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def webinars
-    webinars = AirrecordTable.new.table('Webinar Listings').all
-    @webinars = webinars.sort_by { |w| w['Event Start Date/Time'] }
-  end
-
   def event_kit
   end
 
