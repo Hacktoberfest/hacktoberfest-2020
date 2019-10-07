@@ -328,6 +328,12 @@ RSpec.describe User, type: :model do
   end
 
   describe '#win' do
+    before do
+      allow(UserStateTransitionSegmentService)
+        .to receive(:won).and_return(true)
+
+      user.register
+    end
     context 'the user is in the completed state' do
       let(:user) { FactoryBot.create(:user, :completed) }
 
