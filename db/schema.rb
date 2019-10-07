@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_082651) do
+ActiveRecord::Schema.define(version: 2019_09_30_174234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_082651) do
     t.boolean "marketing_emails", default: false
     t.string "state"
     t.datetime "waiting_since"
+    t.jsonb "receipt"
   end
 
 end

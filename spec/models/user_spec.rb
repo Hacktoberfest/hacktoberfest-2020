@@ -133,10 +133,19 @@ RSpec.describe User, type: :model do
   describe '#complete' do
     let(:user) { FactoryBot.create(:user, :waiting) }
 
+    before do
+      prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+        PullRequest.new(pr)
+      end
+
+      allow(user).to receive(:scoring_pull_requests).and_return(prs)
+    end
+
     context 'the user has 4 eligible PRs and has been waiting for 7 days' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
         allow(user).to receive(:waiting_since).and_return(Date.today - 8)
+
         expect(UserStateTransitionSegmentService)
           .to receive(:complete).and_return(true)
 
@@ -150,6 +159,10 @@ RSpec.describe User, type: :model do
       it 'persists the completed state', :vcr do
         user.reload
         expect(user.state).to eq('completed')
+      end
+
+      it 'saves a receipt of the scoring prs' do
+        expect(user.receipt).to eq(JSON.parse(user.scoring_pull_requests.to_json))
       end
     end
 
