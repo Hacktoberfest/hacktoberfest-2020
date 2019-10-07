@@ -84,14 +84,14 @@ RSpec.describe UserStateTransitionSegmentService do
           expect_any_instance_of(SegmentService).to receive(:identify).with(
             state: 'won_shirt'
           )
-          allow_any_instance_of(SegmentService).to receive(:track).with(
+          expect_any_instance_of(SegmentService).to receive(:track).with(
             'user_won_shirt'
           )
           UserStateTransitionSegmentService.call(user, transition)
         end
 
         it 'calls SegmentService#track with proper arguments' do
-          allow_any_instance_of(SegmentService).to receive(:identify).with(
+          expect_any_instance_of(SegmentService).to receive(:identify).with(
             state: 'won_shirt'
           )
           expect_any_instance_of(SegmentService).to receive(:track).with(
@@ -112,14 +112,14 @@ RSpec.describe UserStateTransitionSegmentService do
           expect_any_instance_of(SegmentService).to receive(:identify).with(
             state: 'won_sticker'
           )
-          allow_any_instance_of(SegmentService).to receive(:track).with(
+          expect_any_instance_of(SegmentService).to receive(:track).with(
             'user_won_sticker'
           )
           UserStateTransitionSegmentService.call(user, transition)
         end
 
         it 'calls SegmentService#track with proper arguments' do
-          allow_any_instance_of(SegmentService).to receive(:identify).with(
+          expect_any_instance_of(SegmentService).to receive(:identify).with(
             state: 'won_sticker'
           )
           expect_any_instance_of(SegmentService).to receive(:track).with(
