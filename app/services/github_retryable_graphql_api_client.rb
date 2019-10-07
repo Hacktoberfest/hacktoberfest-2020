@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class GithubRetryableGraphqlApiClient
+  # Workaround for github bug where graphql queries return 502 inexplicably for
+  # some otherwise valid user auth tokens
+  BACKUP_TOKEN_USER_IDS = [1, 10, 12].freeze
 
   def initialize(access_token:, retries: 0)
     @access_token = access_token
@@ -26,6 +29,10 @@ class GithubRetryableGraphqlApiClient
   private
 
   def change_access_token
-    @access_token = GithubTokenService.random
+    # @access_token = GithubTokenService.random
+    # Select our known good auth tokens as backup
+    @access_token = User.where(id: BACKUP_TOKEN_USER_IDS )
+                        .pluck(:provider_token)
+                        .sample
   end
 end
