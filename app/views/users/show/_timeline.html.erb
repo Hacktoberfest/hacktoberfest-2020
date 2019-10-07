@@ -11,28 +11,16 @@
         <% scoring_pull_requests.map do |pr| %>
           <tr>
             <td class="icon-block">
-              <% if pr.eligible? & user.completed? %>
+              <% if user.completed? %>
                 <div class="icon-box">
                   <div class="eligible-box">
                     <%= image_tag 'eligible.png' %>
                   </div>
                 </div>
-              <% elsif pr.spammy? %>
-                <div class="icon-box">
-                  <div class="spammy-box">
-                    <%= image_tag 'spam.png' %>
-                  </div>
-                </div>
-              <% elsif pr.eligible? %>
+              <% else %>
                 <div class="icon-box">
                   <div class="pending-box">
                     <%= image_tag 'pending.png' %>
-                  </div>
-                </div>
-              <% else %>
-                <div class="icon-box">
-                  <div class="ineligible-box">
-                    <%= image_tag 'ineligible.png' %>
                   </div>
                 </div>
               <% end %>
@@ -40,31 +28,6 @@
             <td>
               <div>
                 <div class="timeline-date">
-                  <% if pr.eligible? & user.completed? %>
-                    <div class="icon-box">
-                      <div class="eligible-box">
-                        <%= image_tag 'eligible.png' %>
-                      </div>
-                    </div>
-                  <% elsif pr.spammy? %>
-                    <div class="icon-box">
-                      <div class="spammy-box">
-                        <%= image_tag 'spam.png' %>
-                      </div>
-                    </div>
-                  <% elsif pr.eligible? %>
-                    <div class="icon-box">
-                      <div class="pending-box">
-                        <%= image_tag 'pending.png' %>
-                      </div>
-                    </div>
-                  <% else %>
-                    <div class="icon-box">
-                      <div class="ineligible-box">
-                        <%= image_tag 'ineligible.png' %>
-                      </div>
-                    </div>
-                  <% end %>
                   <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
                 </div>
                 <h4 class="title is-4">
@@ -91,7 +54,7 @@
           <% non_scoring_pull_requests.map do |pr| %>
             <tr>
               <td class="icon-block">
-                <% if pr.eligible? & user.completed? %>
+                <% if pr.eligible? && user.completed? %>
                   <div class="icon-box">
                     <div class="eligible-box">
                       <%= image_tag 'eligible.png' %>
@@ -107,6 +70,12 @@
                   <div class="icon-box">
                     <div class="pending-box">
                       <%= image_tag 'pending.png' %>
+                    </div>
+                  </div>
+                <% elsif pr.bonus? %>
+                  <div class="icon-box">
+                    <div class="bonus-box">
+                      <%= image_tag 'bonus.png' %>
                     </div>
                   </div>
                 <% else %>
@@ -211,6 +180,17 @@
         <p>
           Good job! Your PR has passed the review period and counts toward completing the Hacktoberfest challenge!
         </p>
+      </div>
+      <div>
+        <div class="icon-name">
+          <div class="icon-box">
+            <div class="bonus-box">
+              <%= image_tag 'bonus.png' %>
+            </div>
+          </div>
+          <p>Bonus</p>
+        </div>
+        <p> Outstanding! You’ve gone above and beyond this Hacktoberfest.</p>
       </div>
     </div>
   <% end %>
