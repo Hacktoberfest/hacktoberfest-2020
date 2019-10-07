@@ -232,6 +232,10 @@ $red: hsl(320, 100%, 50%);
         background-color: #ff00aa;
       }
 
+      &.bonus-box {
+        background-color: #328927;
+      }
+
       &.pending-box {
         background-color: #39486e;
       }
@@ -419,3 +423,6 @@ $red: hsl(320, 100%, 50%);
   color: $cyan;
   width: 25vw;
 }
+
+
+// #c871abfc
