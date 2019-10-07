@@ -7,11 +7,21 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.configure_rspec_metadata!
 
-  c.filter_sensitive_data('<TEST_USER_GITHUB_TOKEN>') do
-    user_github_token
-  end
+  vars_to_obscure = [
+    'TEST_USER_GITHUB_TOKEN',
+    'GITHUB_CLIENT_SECRET',
+    'GITHUB_CLIENT_ID',
+    'SEGMENT_WRITE_KEY',
+    'AIRTABLE_API_KEY',
+    'AIRTABLE_APP_ID'
+  ]
 
-  c.filter_sensitive_data('<TEST_SEGMENT_WRITE_KEY>') do
-    segment_write_key
+  vars_to_obscure.map do |var|
+    obfuscation_text = var.dup
+    obfuscation_text.prepend('<TEST_').concat('>')
+
+    c.filter_sensitive_data(obfuscation_text) do
+      ENV.fetch(var)
+    end
   end
 end
