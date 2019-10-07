@@ -11,16 +11,28 @@
         <% scoring_pull_requests.map do |pr| %>
           <tr>
             <td class="icon-block">
-              <% if user.completed? %>
+              <% if pr.eligible? && user.completed? %>
                 <div class="icon-box">
                   <div class="eligible-box">
                     <%= image_tag 'eligible.png' %>
                   </div>
                 </div>
-              <% else %>
+              <% elsif pr.spammy? %>
+                <div class="icon-box">
+                  <div class="spammy-box">
+                     <%= image_tag 'spam.png' %>
+                  </div>
+                </div>
+              <% elsif pr.eligible? %>
                 <div class="icon-box">
                   <div class="pending-box">
                     <%= image_tag 'pending.png' %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="icon-box">
+                  <div class="ineligible-box">
+                    <%= image_tag 'ineligible.png' %>
                   </div>
                 </div>
               <% end %>
@@ -28,6 +40,31 @@
             <td>
               <div>
                 <div class="timeline-date">
+                  <% if pr.eligible? & user.completed? %>
+                    <div class="icon-box">
+                      <div class="eligible-box">
+                        <%= image_tag 'eligible.png' %>
+                      </div>
+                    </div>
+                  <% elsif pr.spammy? %>
+                    <div class="icon-box">
+                      <div class="spammy-box">
+                        <%= image_tag 'spam.png' %>
+                      </div>
+                    </div>
+                  <% elsif pr.eligible? %>
+                    <div class="icon-box">
+                      <div class="pending-box">
+                        <%= image_tag 'pending.png' %>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="icon-box">
+                      <div class="ineligible-box">
+                        <%= image_tag 'ineligible.png' %>
+                      </div>
+                    </div>
+                  <% end %>
                   <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
                 </div>
                 <h4 class="title is-4">
@@ -50,6 +87,16 @@
             </td>
           </tr>
         <% end %>
+        <% if show_congratulations %>
+          <tr>
+            <td colspan="2">
+              <div class="winning-msg-cont">
+                <h1 class="title is-2 pink-highlight"> You did it! 🎉 </h1>
+                <span class="title is-3">You’ve submitted the four eligible PRs for the Hacktoberfest — which means you officially completed this year’s challenge!</span>
+              </div>
+            </td>
+          </tr>
+        <% end %>
         <% if non_scoring_pull_requests.any? %>
           <% non_scoring_pull_requests.map do |pr| %>
             <tr>
@@ -57,7 +104,7 @@
                 <% if pr.eligible? && user.completed? %>
                   <div class="icon-box">
                     <div class="eligible-box">
-                      <%= image_tag 'eligible.png' %>
+                      <%= image_tag 'bonus.png' %>
                     </div>
                   </div>
                 <% elsif pr.spammy? %>
@@ -70,12 +117,6 @@
                   <div class="icon-box">
                     <div class="pending-box">
                       <%= image_tag 'pending.png' %>
-                    </div>
-                  </div>
-                <% elsif pr.bonus? %>
-                  <div class="icon-box">
-                    <div class="bonus-box">
-                      <%= image_tag 'bonus.png' %>
                     </div>
                   </div>
                 <% else %>
@@ -190,7 +231,7 @@
           </div>
           <p>Bonus</p>
         </div>
-        <p> Outstanding! You’ve gone above and beyond this Hacktoberfest.</p>
+        <p>Outstanding! You’ve gone above and beyond this Hacktoberfest.</p>
       </div>
     </div>
   <% end %>
