@@ -133,7 +133,7 @@ class User < ApplicationRecord
 
   def waiting_for_week?
     return false if waiting_since.nil?
-    waiting_since < (Date.today - 7.days)
+    waiting_since < (Time.now - 7.days)
   end
 
   def assign_coupon
