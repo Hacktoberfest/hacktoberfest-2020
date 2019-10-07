@@ -20,7 +20,7 @@
               <% elsif pr.spammy? %>
                 <div class="icon-box">
                   <div class="spammy-box">
-                     <%= image_tag 'spam.png' %>
+                    <%= image_tag 'spam.png' %>
                   </div>
                 </div>
               <% elsif pr.eligible? %>
@@ -103,7 +103,7 @@
               <td class="icon-block">
                 <% if pr.eligible? && user.completed? %>
                   <div class="icon-box">
-                    <div class="eligible-box">
+                    <div class="bonus-box">
                       <%= image_tag 'bonus.png' %>
                     </div>
                   </div>
