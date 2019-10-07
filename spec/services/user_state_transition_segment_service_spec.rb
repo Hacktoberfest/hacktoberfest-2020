@@ -77,7 +77,7 @@ RSpec.describe UserStateTransitionSegmentService do
         let(:coupon) { FactoryBot.create(:shirt_coupon) }
 
         before do
-          user.association(:shirt_coupon).replace(coupon, false)
+          allow(transition).to receive(:to).and_return('won_shirt')
         end
 
         it 'calls SegmentService#identify with proper arguments' do
@@ -107,7 +107,7 @@ RSpec.describe UserStateTransitionSegmentService do
         let(:coupon) { FactoryBot.create(:sticker_coupon) }
 
         before do
-          user.association(:sticker_coupon).replace(coupon, false)
+          allow(transition).to receive(:to).and_return('won_sticker')
         end
 
         it 'calls SegmentService#identify with proper arguments' do
