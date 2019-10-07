@@ -82,8 +82,7 @@ RSpec.describe UserStateTransitionSegmentService do
 
         it 'calls SegmentService#identify with proper arguments' do
           expect_any_instance_of(SegmentService).to receive(:identify).with(
-            state: 'won_shirt',
-            shirt_coupon: user.shirt_coupon
+            state: 'won_shirt'
           )
           allow_any_instance_of(SegmentService).to receive(:track).with(
             'user_won_shirt'
@@ -93,8 +92,7 @@ RSpec.describe UserStateTransitionSegmentService do
 
         it 'calls SegmentService#track with proper arguments' do
           allow_any_instance_of(SegmentService).to receive(:identify).with(
-            state: 'won_shirt',
-            shirt_coupon: user.shirt_coupon
+            state: 'won_shirt'
           )
           expect_any_instance_of(SegmentService).to receive(:track).with(
             'user_won_shirt'
@@ -112,8 +110,7 @@ RSpec.describe UserStateTransitionSegmentService do
 
         it 'calls SegmentService#identify with proper arguments' do
           expect_any_instance_of(SegmentService).to receive(:identify).with(
-            state: 'won_sticker',
-            sticker_coupon: user.sticker_coupon
+            state: 'won_sticker'
           )
           allow_any_instance_of(SegmentService).to receive(:track).with(
             'user_won_sticker'
@@ -123,8 +120,7 @@ RSpec.describe UserStateTransitionSegmentService do
 
         it 'calls SegmentService#track with proper arguments' do
           allow_any_instance_of(SegmentService).to receive(:identify).with(
-            state: 'won_sticker',
-            sticker_coupon: user.sticker_coupon
+            state: 'won_sticker'
           )
           expect_any_instance_of(SegmentService).to receive(:track).with(
             'user_won_sticker'

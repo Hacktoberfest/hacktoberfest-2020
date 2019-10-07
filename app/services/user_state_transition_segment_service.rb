@@ -49,14 +49,12 @@ module UserStateTransitionSegmentService
     if transition.to == 'won_shirt'
       segment(user).track('user_won_shirt')
       segment(user).identify(
-        state: 'won_shirt',
-        shirt_coupon: user.shirt_coupon
+        state: 'won_shirt'
       )
     elsif transition.to == 'won_sticker'
       segment(user).track('user_won_sticker')
       segment(user).identify(
-        state: 'won_sticker',
-        sticker_coupon: user.sticker_coupon
+        state: 'won_sticker'
       )
     end
   end
