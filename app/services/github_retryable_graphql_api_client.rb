@@ -31,7 +31,7 @@ class GithubRetryableGraphqlApiClient
   def change_access_token
     # @access_token = GithubTokenService.random
     # Select our known good auth tokens as backup
-    @access_token = User.where(id: BACKUP_TOKEN_USER_IDS )
+    @access_token = User.where(id: BACKUP_TOKEN_USER_IDS)
                         .pluck(:provider_token)
                         .sample
   end
