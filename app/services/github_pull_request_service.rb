@@ -56,7 +56,7 @@ class GithubPullRequestService
   end
 
   def client
-    @client ||= GithubGraphqlApiClient.new(access_token: @user.provider_token)
+    @client ||= GithubRetryableGraphqlApiClient.new(access_token: @user.provider_token, retries: 2)
   end
 
   def user_graphql_node_id
