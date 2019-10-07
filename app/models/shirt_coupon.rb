@@ -3,7 +3,7 @@
 class ShirtCoupon < ApplicationRecord
   belongs_to :user, optional: true
 
-  validates :code, presence: true, uniqueness: true
+  validates :code, presence: true
   validates_associated :user
 
   def self.first_available
