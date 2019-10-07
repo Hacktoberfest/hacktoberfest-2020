@@ -2,6 +2,7 @@ $break-med: 1366px;
 $break-small: 1024px;
 $grey-dark: hsl(223.33, 32.14%, 32.94%);
 $grey-darker: hsl(222.5, 43.64%, 21.57%);
+$cyan: hsl(191.56, 100%, 78.63%);
 $red: hsl(320, 100%, 50%);
 
 .avatar {
@@ -16,6 +17,7 @@ $red: hsl(320, 100%, 50%);
     padding-left: 40px;
     padding-top: 20px;
     text-align: left;
+    max-width: 60%;
   }
 
   .code-button {
@@ -30,8 +32,10 @@ $red: hsl(320, 100%, 50%);
 
   .code-textarea {
     background-color: $grey-dark !important;
-    float: left !important;
+    flex: 1;
     overflow: auto;
+    width:auto;
+    height: auto;
 
     @media screen and (max-width: $break-small) {
       width: 60vw;
@@ -242,10 +246,11 @@ $red: hsl(320, 100%, 50%);
     }
   }
 
-  .hacktoberfest-winner {
-    background-image: url('profile-hexagon.png');
+  .hacktoberfest-results-box {
+    background-image: url('bg-right.png');
     background-color: #223257;
-    background-position: left top -150px;
+    background-position: bottom center;
+    background-size: cover;
   }
 
   .image {
@@ -399,4 +404,18 @@ $red: hsl(320, 100%, 50%);
   @media screen and (max-width: $break-small) {
     margin: 5rem 1.5rem 0 1.5rem;
   }
+}
+
+.coupon-box {
+  display: flex;
+  margin-top: 50px;
+  min-width: 48vw;
+}
+
+#winner-code {
+  font-size: 1rem;
+  background-color: #39486f;
+  border: none;
+  color: $cyan;
+  width: 25vw;
 }

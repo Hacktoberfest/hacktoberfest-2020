@@ -36,6 +36,15 @@ FactoryBot.define do
       end
     end
 
+    trait :incompleted do
+      state { 'incompleted' }
+
+      after :build do |user|
+        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        allow(user).to receive(:waiting_since).and_return(Date.today - 8)
+      end
+    end
+
     trait :won_shirt do
       state { 'won_shirt' }
       shirt_coupon

@@ -11,8 +11,16 @@ class ProfilePagePresenter
     Hacktoberfest.pre_launch?
   end
 
-  def display_results?
-    Hacktoberfest.ended? && @user.won_hacktoberfest?
+  def display_coupon?
+    @user.won_shirt? || @user.won_sticker?
+  end
+
+  def display_waiting_for_prize?
+    @user.completed?
+  end
+
+  def display_thank_you?
+    @user.incompleted?
   end
 
   def scoring_pull_requests
@@ -24,7 +32,7 @@ class ProfilePagePresenter
   end
 
   def score
-    @user.score
+    @user.score || 0
   end
 
   def name
@@ -37,5 +45,13 @@ class ProfilePagePresenter
 
   def show_timer?
     @user.waiting?
+  end
+
+  def code
+    if coupon = @user.shirt_coupon
+      coupon.code
+    elsif coupon = @user.sticker_coupon
+      coupon.code
+    end
   end
 end
