@@ -5,9 +5,8 @@ module BanAllReposService
 
   def call
     repo_ids_to_ban.map do |repo_id|
-      if repo = Repository.find_by(gh_database_id: repo_id)
-        repo.update(banned: true)
-      end
+      repo = Repository.find_by(gh_database_id: repo_id)
+      repo&.update(banned: true)
     end
   end
 

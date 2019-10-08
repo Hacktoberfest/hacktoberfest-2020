@@ -141,7 +141,7 @@ class User < ApplicationRecord
   end
 
   def only_one_coupon
-    return unless shirt_coupon && sticker_coupo
+    return unless shirt_coupon && sticker_coupon
 
     errors.add(:user, 'can only have one type of coupon')
   end
