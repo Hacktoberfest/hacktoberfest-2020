@@ -23,7 +23,7 @@ Rails.application.configure do
   else
     config.action_controller.perform_caching = false
 
-    config.cache_store = :null_store
+    # config.cache_store = :null_store
   end
 
   config.active_storage.service = :local
@@ -38,9 +38,19 @@ Rails.application.configure do
 
   config.active_record.verbose_query_logs = true
 
-  config.assets.debug = true
+  config.assets.debug = false
 
-  config.assets.quiet = true
+  config.assets.digest = false
+
+  config.assets.js_compressor = Uglifier.new(harmony: true)
+
+  config.assets.css_compressor = :sass
+
+  config.assets.compile = true
+
+  config.assets.precompile += %w(.svg)
+
+  # config.assets.quiet = true
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end

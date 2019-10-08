@@ -39,7 +39,7 @@ describe AirtableEventPresenter do
 
         expect(event_presenter.name).to eq event['Event Name']
         expect(event_presenter.date)
-          .to eq Date.strptime(event['Event Start Date'],'%Y-%m-%d')
+          .to eq Date.strptime(event['Event Start Date'], '%Y-%m-%d')
         expect(event_presenter.state).to eq event['Event State']
         expect(event_presenter.country).to eq event['Event Country']
         expect(event_presenter.location).to include(

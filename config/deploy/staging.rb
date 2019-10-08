@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -6,8 +8,6 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-
-
 
 # role-based syntax
 # ==================
@@ -31,8 +31,6 @@ role :app, %w{deploy@167.99.59.27}
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
-
 
 # Custom SSH Options
 # ==================
@@ -62,12 +60,11 @@ role :app, %w{deploy@167.99.59.27}
 #   }
 
 # Staging specific options for capistrano/puma
-set :puma_threads, [0, 16]
-set :puma_workers, 8
+set :puma_threads, [0, 8]
+set :puma_workers, 16
 
 # Staging specific options for capistrano/sidekiq
 # Use as many cores (processes) as possible while under 100 total threads due to
 # license requirements
 set :sidekiq_processes, 8
 set :sidekiq_concurrency, 10
-

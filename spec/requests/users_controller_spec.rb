@@ -15,8 +15,8 @@ RSpec.describe UsersController, type: :request do
   let(:controller) { UsersController.new }
 
   before do
-    allow_any_instance_of(TokenValidatorService).
-      to receive(:valid?).and_return(true)
+    allow_any_instance_of(TokenValidatorService)
+      .to receive(:valid?).and_return(true)
   end
 
   describe '#show' do
@@ -28,7 +28,7 @@ RSpec.describe UsersController, type: :request do
       allow(Hacktoberfest).to receive(:ended?).and_return(:false)
       allow(Hacktoberfest).to receive(:active?).and_return(:true)
 
-      allow_any_instance_of(UserEmailService).to receive(:emails).and_return("test@mail.com")
+      allow_any_instance_of(UserEmailService).to receive(:emails).and_return('test@mail.com')
 
       allow_any_instance_of(PullRequest).to receive(:spammy?).and_return(false)
 

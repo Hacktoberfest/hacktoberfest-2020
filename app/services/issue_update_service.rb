@@ -10,7 +10,7 @@ module IssueUpdateService
     begin
       state = issue_state_fetcher.fetch!(issue)
       IssueStateUpdater.update(issue: issue, state: state)
-    rescue IssueStateFetcherInvalidRepoError => fetch_error
+    rescue IssueStateFetcherInvalidRepoError => e
       issue.destroy
     end
   end

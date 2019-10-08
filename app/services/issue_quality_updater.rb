@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IssueQualityUpdater
   def self.update_all
     issue_quality_calculator = IssueQualityCalculator.new
@@ -10,7 +12,7 @@ class IssueQualityUpdater
         issue_timeline_events: issue.timeline_events,
         repository_forks: repository.forks,
         repository_stars: repository.stars,
-        repository_watchers: repository.watchers,
+        repository_watchers: repository.watchers
       )
       issue.quality = issue_quality_calculator.calculate_quality_progressively
       issue.save

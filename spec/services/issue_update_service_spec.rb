@@ -15,9 +15,9 @@ RSpec.describe IssueUpdateService do
         .with(api_client: api_client)
         .and_return(issue_state_fetcher)
       exception = IssueStateFetcherInvalidRepoError.new(
-        "Error...",
-        errors: [ { "some" => "error" } ],
-        query: "some query",
+        'Error...',
+        errors: [{ 'some' => 'error' }],
+        query: 'some query'
       )
       allow(issue_state_fetcher).to receive(:fetch!)
         .and_raise(exception)

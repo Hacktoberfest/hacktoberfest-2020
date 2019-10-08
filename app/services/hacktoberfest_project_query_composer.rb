@@ -68,7 +68,7 @@ module HacktoberfestProjectQueryComposer
   def compose_query_string(query_string = nil)
     search_clauses = [
       'state:open',
-      'label:hacktoberfest',
+      'label:hacktoberfest'
     ]
     search_clauses.push(query_string) if query_string.present?
     search_clauses.join(' ')
@@ -79,7 +79,7 @@ module HacktoberfestProjectQueryComposer
       queryString: compose_query_string(query_string),
       first: results_per_page
     }
-    variables.merge!(after: "#{cursor}") if cursor.present?
+    variables.merge!(after: cursor.to_s) if cursor.present?
     variables
   end
 

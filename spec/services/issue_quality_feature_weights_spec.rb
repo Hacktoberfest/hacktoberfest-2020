@@ -1,8 +1,10 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe IssueQualityFeatureWeights do
-  describe ".new" do
-    it "returns an object with feature weights" do
+  describe '.new' do
+    it 'returns an object with feature weights' do
       feature_weights = IssueQualityFeatureWeights.new
 
       expect(feature_weights).to respond_to :code_of_conduct
@@ -14,8 +16,8 @@ RSpec.describe IssueQualityFeatureWeights do
     end
   end
 
-  describe ".default_weights" do
-    it "returns an object with certain default feature weights" do
+  describe '.default_weights' do
+    it 'returns an object with certain default feature weights' do
       weights = IssueQualityFeatureWeights.default_weights
 
       expect(weights.code_of_conduct).to eq IssueQualityFeatureWeights::CODE_OF_CONDUCT

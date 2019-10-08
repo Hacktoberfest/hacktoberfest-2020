@@ -21,8 +21,8 @@ class User < ApplicationRecord
     end
 
     event :won do
-      transition completed: :won_shirt, if: -> (user) { user.shirt_coupon }
-      transition completed: :won_sticker, if: -> (user) { user.sticker_coupon }
+      transition completed: :won_shirt, if: ->(user) { user.shirt_coupon }
+      transition completed: :won_sticker, if: ->(user) { user.sticker_coupon }
     end
 
     event :incomplete do
@@ -31,13 +31,13 @@ class User < ApplicationRecord
 
     event :ineligible do
       transition waiting: :registered,
-        unless: -> (user) { user.sufficient_eligible_prs? }
+                 unless: ->(user) { user.sufficient_eligible_prs? }
     end
 
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
-      validates_inclusion_of :email, in: :github_emails
+      validates :email, inclusion: { in: :github_emails }
     end
 
     state all - [:won_shirt] do
@@ -107,13 +107,9 @@ class User < ApplicationRecord
     pull_request_service.eligible_prs.count
   end
 
-  def scoring_pull_requests
-    pull_request_service.scoring_pull_requests
-  end
+  delegate :scoring_pull_requests, to: :pull_request_service
 
-  def non_scoring_pull_requests
-    pull_request_service.non_scoring_pull_requests
-  end
+  delegate :non_scoring_pull_requests, to: :pull_request_service
 
   def sufficient_eligible_prs?
     eligible_pull_requests_count >= 4
@@ -133,12 +129,11 @@ class User < ApplicationRecord
 
   def waiting_for_week?
     return false if waiting_since.nil?
-    waiting_since < (Time.now - 7.days)
+
+    waiting_since < (Time.zone.now - 7.days)
   end
 
-  def assign_coupon
-    coupon_service.assign_coupon
-  end
+  delegate :assign_coupon, to: :coupon_service
 
   private
 
@@ -148,7 +143,7 @@ class User < ApplicationRecord
 
   def only_one_coupon
     if shirt_coupon && sticker_coupon
-      errors.add(:user, "can only have one type of coupon")
+      errors.add(:user, 'can only have one type of coupon')
     end
   end
 
