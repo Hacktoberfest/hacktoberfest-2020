@@ -24,6 +24,8 @@ class PagesController < ApplicationController
 
   def event_kit; end
 
+  def start; end
+
   def report; end
 
   def api_error; end
@@ -31,13 +33,15 @@ class PagesController < ApplicationController
   private
 
   def all_events
-    if AirrecordTable.new.table('Meetups').all.present?
-      AirrecordTable.new.table('Meetups').all.map do |e|
-        AirtableEventPresenter.new(e)
-      rescue AirtableEventPresenter::ParseError
-        # Ignore invalid events
-      end.compact
-    end
+    return if AirrecordTable.new.table('Meetups').all.blank?
+
+    AirrecordTable.new.table('Meetups').all.map do |e|
+      AirtableEventPresenter.new(e)
+    # rubocop:disable Lint/HandleExceptions
+    rescue AirtableEventPresenter::ParseError
+      # Ignore invalid events
+      # rubocop:enable Lint/HandleExceptions
+    end.compact
   end
 
   def front_page_events

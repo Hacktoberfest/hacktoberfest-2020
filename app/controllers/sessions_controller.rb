@@ -25,14 +25,11 @@ class SessionsController < ApplicationController
   end
 
   def impersonate
-    if Rails.env.production?
-      raise ActionController::RoutingError, 'Not Found'
-    else
-      if @user = User.find_by(id: params[:id])
-        session[:current_user_id] = @user.id
-      end
-      redirect_to '/'
-    end
+    raise ActionController::RoutingError, 'Not Found' if Rails.env.production?
+
+    @user = User.find_by(id: params[:id])
+    session[:current_user_id] = @user.id if @user
+    redirect_to '/'
   end
 
   protected
