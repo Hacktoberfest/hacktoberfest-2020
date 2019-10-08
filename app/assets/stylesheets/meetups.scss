@@ -1,5 +1,14 @@
 .event-table {
   margin-top: 50px;
+
+  @media screen and (max-width: $break-small) {
+    .mobile-date {
+      display: block;
+    }
+    .date {
+      display: none;
+    }
+  }
 }
 .search {
   margin-bottom: 30px;
@@ -35,14 +44,63 @@ td {
   min-width: 90px;
 }
 
-
-#mobile-table {
-  margin-top: 0%;
+.hidden {
+  display: none;
 }
 
-#mobile-sort {
-  padding: 6%;
-  // margin-right: 40px;
-  background-color: hsl(223, 32%, 33%);
-  color: hsl(0, 0%, 100%);
-}
+ @media screen and (max-width: $break-small) {
+
+ }
+
+
+// #mobile-table{
+//   display: none;
+// }
+
+// @media screen and (max-width: $break-small) {
+//
+//   #mobile-table {
+//     margin-top: 0%;
+//     display: block;
+//   }
+//
+//   #mobile-sort {
+//     display: block;
+//     padding: 5.9%;
+//     float: left;
+//     background-color: hsl(223, 32%, 33%);
+//     color: hsl(0, 0%, 100%);
+//   }
+//
+//   .desktop-table {
+//     display: none;
+//   }
+//
+//   .sort {
+//     cursor: pointer;
+//   }
+//   .past{
+//     .event_name:before{
+//       content: "(Past event)";
+//       color: rgb(210, 210, 210);
+//     }
+//   }
+//   .emphasis {
+//     color: #FFF;
+//   }
+//   .sort {
+//     cursor: pointer;
+//     &.asc, &.desc {
+//       &::after {
+//           margin-left: .25em;
+//           text-decoration: none;
+//       }
+//     }
+//     &.asc::after {
+//       content: "▲";
+//     }
+//     &.desc::after {
+//       content: "▼";
+//     }
+//   }
+// }
