@@ -24,27 +24,37 @@ RSpec.describe GithubRetryableGraphqlApiClient do
           .to receive(:request) do
             v = response_values.shift
             if v == :raise
-              e = Faraday::ClientError
-                  .new('the server responded with status 502', status: 502)
+              e = Faraday::ClientError.new(
+                'the server responded with status 502',
+                status: 502
+              )
               raise(e)
             else
               v
             end
           end
 
-        allow(GithubTokenService).to receive(:random).and_return('random-one', 'random-two', 'random-three')
+        allow(GithubTokenService).to receive(:random)
+          .and_return('random-one', 'random-two', 'random-three')
       end
 
       context 'retries is set to zero' do
-        let(:client) { GithubRetryableGraphqlApiClient.new(access_token: 'some-token') }
+        let(:client) do
+          GithubRetryableGraphqlApiClient.new(access_token: 'some-token')
+        end
 
         it 'raises an error' do
-          expect { client.request(mock_query) }.to raise_error(Faraday::ClientError)
+          expect { client.request(mock_query) }
+            .to raise_error(Faraday::ClientError)
         end
       end
 
       context 'retries is set to three' do
-        let(:client) { GithubRetryableGraphqlApiClient.new(access_token: 'some-token', retries: 3) }
+        let(:client) do
+          GithubRetryableGraphqlApiClient.new(
+            access_token: 'some-token', retries: 3
+          )
+        end
 
         it 'returns the results from the API' do
           response = client.request(mock_query)
@@ -68,22 +78,32 @@ RSpec.describe GithubRetryableGraphqlApiClient do
             end
           end
 
-        allow(GithubTokenService).to receive(:random).and_return('random-one', 'random-two', 'random-three')
+        allow(GithubTokenService).to receive(:random)
+          .and_return('random-one', 'random-two', 'random-three')
       end
 
       context 'retries is set to zero' do
-        let(:client) { GithubRetryableGraphqlApiClient.new(access_token: 'some-token') }
+        let(:client) do
+          GithubRetryableGraphqlApiClient.new(access_token: 'some-token')
+        end
 
         it 'raises an error' do
-          expect { client.request(mock_query) }.to raise_error(Faraday::ClientError)
+          expect { client.request(mock_query) }
+            .to raise_error(Faraday::ClientError)
         end
       end
 
       context 'retries is set to three' do
-        let(:client) { GithubRetryableGraphqlApiClient.new(access_token: 'some-token', retries: 3) }
+        let(:client) do
+          GithubRetryableGraphqlApiClient.new(
+            access_token: 'some-token',
+            retries: 3
+          )
+        end
 
         it 'raises an error' do
-          expect { client.request(mock_query) }.to raise_error(Faraday::ClientError)
+          expect { client.request(mock_query) }
+            .to raise_error(Faraday::ClientError)
         end
       end
     end

@@ -57,7 +57,8 @@ describe AirtableEventPresenter do
       let(:event) { 'test' }
 
       it 'raises a parse error and does not instantiate the presenter' do
-        expect { AirtableEventPresenter.new(event) }.to raise_error(AirtableEventPresenter::ParseError)
+        expect { AirtableEventPresenter.new(event) }
+          .to raise_error(AirtableEventPresenter::ParseError)
       end
     end
 
@@ -76,7 +77,8 @@ describe AirtableEventPresenter do
       end
 
       it 'raises a parse error and does not instantiate the presenter' do
-        expect { AirtableEventPresenter.new(event) }.to raise_error(AirtableEventPresenter::ParseError)
+        expect { AirtableEventPresenter.new(event) }
+          .to raise_error(AirtableEventPresenter::ParseError)
       end
     end
   end

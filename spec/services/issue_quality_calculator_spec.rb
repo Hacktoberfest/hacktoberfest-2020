@@ -21,7 +21,8 @@ RSpec.describe IssueQualityCalculator do
         )
         quality_calculator = IssueQualityCalculator.new
         quality_calculator.set_features(
-          is_repository_code_of_conduct_present: repository.code_of_conduct_url.present?,
+          is_repository_code_of_conduct_present: repository
+            .code_of_conduct_url.present?,
           issue_participants: issue.participants,
           issue_timeline_events: issue.timeline_events,
           repository_forks: repository.forks,
@@ -67,7 +68,8 @@ RSpec.describe IssueQualityCalculator do
           repository_watchers: some_small_number
         )
         small_score = quality_calculator.calculate_quality
-        small_progressive_score = quality_calculator.calculate_quality_progressively
+        small_progressive_score = quality_calculator
+                                  .calculate_quality_progressively.to_f
         quality_calculator.set_features(
           is_repository_code_of_conduct_present: true,
           issue_participants: some_large_number,
@@ -76,7 +78,8 @@ RSpec.describe IssueQualityCalculator do
           repository_stars: some_large_number,
           repository_watchers: some_large_number
         )
-        large_progressive_score = quality_calculator.calculate_quality_progressively
+        large_progressive_score = quality_calculator
+                                  .calculate_quality_progressively
         quality_calculator.set_features(
           is_repository_code_of_conduct_present: true,
           issue_participants: some_giant_number,
@@ -85,15 +88,17 @@ RSpec.describe IssueQualityCalculator do
           repository_stars: some_giant_number,
           repository_watchers: some_giant_number
         )
-        giant_score = quality_calculator.calculate_quality
-        giant_progressive_score = quality_calculator.calculate_quality_progressively
+        giant_score = quality_calculator.calculate_quality.to_f
+        giant_progressive_score = quality_calculator
+                                  .calculate_quality_progressively.to_f
 
         expect(giant_progressive_score).to be > large_progressive_score
         expect(large_progressive_score).to be > small_progressive_score
-        minimum_desired_disparity_reduction = 100.0
-        original_quality_disparity = giant_score.to_f / small_score.to_f
-        progressive_quality_disparity = giant_progressive_score.to_f / small_progressive_score.to_f
-        expect(progressive_quality_disparity).to be < original_quality_disparity / minimum_desired_disparity_reduction
+        min_desired_disparity_reduction = 100.0
+        original_quality_disparity = giant_score / small_score
+        progressive_quality_disparity = giant_progressive_score / small_progressive_score
+        expect(progressive_quality_disparity)
+          .to be < original_quality_disparity / min_desired_disparity_reduction
       end
     end
   end
