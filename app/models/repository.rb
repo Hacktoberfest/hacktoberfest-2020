@@ -27,13 +27,6 @@ class Repository < ApplicationRecord
     where.not("lower(full_name) LIKE '%hacktoberfest%'")
   end
 
-  def self.total_count
-    joins(:pull_requests)
-      .where(pull_requests: { is_valid: true })
-      .distinct
-      .count
-  end
-
   private
 
   def truncate_description

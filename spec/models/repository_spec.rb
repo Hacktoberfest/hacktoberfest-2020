@@ -71,19 +71,4 @@ RSpec.describe Repository, type: :model do
       expect(result).to eq [good_repo]
     end
   end
-
-  describe '.total_count' do
-    xit 'returns total count of all repositories with valid pull requests' do
-      repo_with_valid_prs = create(:repository)
-      repos_with_valid_prs = [repo_with_valid_prs]
-      repo_without_valid_prs = create(:repository)
-      user = create(:user)
-      create(:pull_request, user: user, repo: repo_with_valid_prs,
-                            is_valid: true)
-      create(:pull_request, user: user, repo: repo_without_valid_prs,
-                            is_valid: false)
-
-      expect(Repository.total_count).to eql repos_with_valid_prs.count
-    end
-  end
 end
