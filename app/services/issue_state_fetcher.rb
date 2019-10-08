@@ -33,7 +33,8 @@ class IssueStateFetcher
   private
 
   def response_is_invalid_due_to_missing_repo?(response)
-    response['errors'].present? && response['errors'].first['type'] == 'NOT_FOUND'
+    response['errors'].present? && response['errors']
+      .first['type'] == 'NOT_FOUND'
   end
 
   def response_is_invalid?(response)

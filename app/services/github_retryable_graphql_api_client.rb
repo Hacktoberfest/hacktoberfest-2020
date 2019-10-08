@@ -17,13 +17,11 @@ class GithubRetryableGraphqlApiClient
   def request(query, variables = {})
     client(access_token: @access_token).request(query, variables)
   rescue Faraday::ClientError => e
-    if e.response[:status] == 502 && @retries > 0
-      @retries -= 1
-      change_access_token
-      retry
-    else
-      raise e
-    end
+    raise e unless e.response[:status] == 502 && @retries.positive?
+
+    @retries -= 1
+    change_access_token
+    retry
   end
 
   private

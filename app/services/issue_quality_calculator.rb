@@ -7,6 +7,7 @@ class IssueQualityCalculator
     @feature_weights = feature_weights
   end
 
+  # rubocop:disable Metrics/ParameterLists
   def set_features(
     is_repository_code_of_conduct_present:,
     issue_participants:,
@@ -15,6 +16,8 @@ class IssueQualityCalculator
     repository_stars:,
     repository_watchers:
   )
+    # rubocop:enable Metrics/ParameterLists
+
     @code_of_conduct_score = if is_repository_code_of_conduct_present
                                1
                              else
