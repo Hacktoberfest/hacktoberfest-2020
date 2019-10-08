@@ -1,15 +1,6 @@
 .event-table {
   margin-top: 50px;
-
-  // @media screen and (max-width: $break-small) {
-  //   .mobile-date {
-  //     display: block;
-  //   }
-    // .date {
-    //   display: none;
-    // }
 }
-
 .search {
   margin-bottom: 30px;
 }
@@ -44,120 +35,55 @@ td {
   min-width: 90px;
 }
 
-// .hidden {
-//   display: none;
-// }
+.table-mobile-cards {
+  @media screen and (max-width: $break-small) {
+    .event-table {
+      border: 0;
+      margin-top: 0px;
+      background-color: transparent !important;
+    }
 
- @media screen and (max-width: $break-small) {
-   .event-table {
-     border: 0;
-     margin-top: 0px;
-     background-color: transparent !important;
-     // background-color: #152347;
-   }
+    .sort-container {
+      width: 100%;
+    }
 
-   .sort-container {
-     width: 100%;
-   }
+    .thead-sort {
+      display: none;
+    }
 
-   .thead-sort {
-     background-color: hsl(223, 32%, 33%) !important;
-   }
+    tr {
+      display: block;
+      margin-bottom: .7em;
+      border: 1px solid $grey-dark;
+      background-color: $grey-darker;
+    }
 
-   .sort {
-     border: none;
-     float: left;
-     padding: 2%;
-     margin-left: 10px;
-   }
+    td {
+      display: block;
+      font-size: .8em;
+      color: $white;
+      text-align: right !important;
+    }
 
-   tr {
-     display: block;
-     margin-bottom: .7em;
-     border: 1px solid hsl(223, 32%, 33%);
-     background-color: #1d2c4e;
-   }
+    table td::before {
+      border: none;
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-right: 20px;
+    }
 
-   td {
-     display: block;
-     font-size: .8em;
-     text-align: right;
-     border: none;
-   }
+    table tbody tr:last-child td {
+      border-bottom-width: 1px;
+    }
 
-   table td {
-     border: none !important;
-   }
-
-   table td::before {
-     border: none;
-     /*
-     * aria-label has no advantage, it won't be read inside a table
-     content: attr(aria-label);
-     */
-     content: attr(data-label);
-     float: left;
-     font-weight: bold;
-     text-transform: uppercase;
-   }
-
-   table td:last-child {
-     border-bottom: 0;
-   }
-
-   .is-hidden {
-     border: none;
-   }
- }
-
-// #mobile-table{
-//   display: none;
-// }
-
-// @media screen and (max-width: $break-small) {
-//
-//   #mobile-table {
-//     margin-top: 0%;
-//     display: block;
-//   }
-//
-//   #mobile-sort {
-//     display: block;
-//     padding: 5.9%;
-//     float: left;
-//     background-color: hsl(223, 32%, 33%);
-//     color: hsl(0, 0%, 100%);
-//   }
-//
-//   .desktop-table {
-//     display: none;
-//   }
-//
-//   .sort {
-//     cursor: pointer;
-//   }
-//   .past{
-//     .event_name:before{
-//       content: "(Past event)";
-//       color: rgb(210, 210, 210);
-//     }
-//   }
-//   .emphasis {
-//     color: #FFF;
-//   }
-//   .sort {
-//     cursor: pointer;
-//     &.asc, &.desc {
-//       &::after {
-//           margin-left: .25em;
-//           text-decoration: none;
-//       }
-//     }
-//     &.asc::after {
-//       content: "▲";
-//     }
-//     &.desc::after {
-//       content: "▼";
-//     }
-//   }
-// }
+    .is-hidden {
+      border: none;
+    }
+  }
+}

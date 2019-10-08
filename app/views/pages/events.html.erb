@@ -1,14 +1,14 @@
 <section class="section">
   <h1 class="title is-1">Events</h1>
 
-<div id="meetups" class="desktop-table">
+<div id="meetups" class="table-mobile-cards">
   <input name="filter" class="search input" placeholder="Search for events" />
 
   <h2 class="highlight">Showing <span data-js="visible_event_count"> all <%= @events.length %></span> Events</h2>
 
   <table class="table is-narrow is-narrow is-fullwidth event-table is-fluid">
     <thead class="thead-sort">
-    <tr class= "sort-container level">
+    <tr class= "sort-container">
       <th class="sort" data-sort="location">Location</th>
       <th class="sort" data-sort="event_name">Event</th>
       <th class="sort " data-sort="date">Date</th>
@@ -26,65 +26,18 @@
               <%= e.country %>
               <%= e.date.strftime("%m %d") %>
             </td>
-            <td class="location"><%= e.location %></td>
-            <td class="event_name">
+            <td class="location" data-label="location"><%= e.location %></td>
+            <td class="event_name" data-label="event">
               <a class="emphasis" href="<%= e.url %>" target="blank" rel="noopener"><%= e.name %></a>
               <br/>
               by <%= e.organizer %>
             </td>
             <td class="date is-hidden"><%= e.date %></td>
-            <td><%= e.date.strftime("%b %e") %></td>
+            <td data-label="date"><%= e.date.strftime("%b %e") %></td>
           </tr>
       <% end %>
     </table>
   </div>
-
-
-  <!-- <div id="meetups"  class="mobile-table hidden">
-    <input name="filter" class="search input mobile" placeholder="Search for events" />
-
-    <h2 class="highlight mobile">Showing <span data-js="mobile_visible_event_count"> all <%= @events.length %></span> Events</h2>
-
-    <table id="mobile-table" class="table is-narrow is-narrow is-narrow is-narrow event-table mobile">
-      <div class="filter-container">
-        <span id="mobile-sort" class="sort mobile" data-sort="location">Location</span>
-        <span id="mobile-sort" class="sort mobile" data-sort="event_name">Event</span>
-        <span id="mobile-sort" class="sort mobile" data-sort="date">Date</span>
-      </div>
-      <tbody class="list mobile">
-        <% @events.map do |e| %>
-          <% if e.current? %>
-            <tr>
-          <% else %>
-            <tr class="past mobile">
-          <% end %>
-          <tr>
-            <td>
-              <div class="multisort is-hidden mobile">
-                <%= e.current? ? 'Future' : 'Past'%>
-                <%= e.country %>
-                <%= e.date.strftime("%m %d") %>
-              </div>
-              <br/>
-              <div class="location mobile"><%= e.location %></div>
-                <br/>
-              <div class="event_name mobile">
-                <a class="emphasis mobile" href="<%= e.url %>" target="blank" rel="noopener"><%= e.name %></a>
-                <br/>
-                by <%= e.organizer %>
-              </div>
-                <br/>
-              <div>
-                <div class="date is-hidden mobile"><%= e.date %></div>
-                <div><%= e.date.strftime("%b %e") %></div>
-              </div>
-              <br/>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div> -->
   <p>
     New events will be added throughout Hacktoberfest – please check back soon!
   </p>
@@ -121,26 +74,3 @@
     event_count_display.innerText = meetupsList.visibleItems.length;
   });
 </script>
-
-<!-- <script type="text/javascript">
-
-var mobile_event_count_display = document.querySelector('*[data-js="mobile_visible_event_count"]'),
-  mobile_meetupsList = new List('meetups', {
-  valueNames: ['multisort', 'location', 'event_name', 'date']
-});
-console.log(mobile_meetupsList);
-  var event_count_display = document.querySelector('*[data-js="visible_event_count"]'),
-  meetupsList = new List('meetups', {
-    valueNames: ['multisort', 'location', 'event_name', 'date']
-  });
-  console.log(meetupsList);
-
-  function sortLists(list, count_display) {
-    list.sort('multisort', { order: "asc" });
-    list.on('updated', function(){
-      count_display.innerText = meetupsList.visibleItems.length;
-    });
-  }
-  sortLists(meetupsList, event_count_display);
-  sortLists(mobile_meetupsList, mobile_event_count_display);
-</script> -->
