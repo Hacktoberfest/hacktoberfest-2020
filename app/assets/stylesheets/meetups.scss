@@ -1,15 +1,15 @@
 .event-table {
   margin-top: 50px;
 
-  @media screen and (max-width: $break-small) {
-    .mobile-date {
-      display: block;
-    }
-    .date {
-      display: none;
-    }
-  }
+  // @media screen and (max-width: $break-small) {
+  //   .mobile-date {
+  //     display: block;
+  //   }
+    // .date {
+    //   display: none;
+    // }
 }
+
 .search {
   margin-bottom: 30px;
 }
@@ -44,14 +44,71 @@ td {
   min-width: 90px;
 }
 
-.hidden {
-  display: none;
-}
+// .hidden {
+//   display: none;
+// }
 
  @media screen and (max-width: $break-small) {
+   .event-table {
+     border: 0;
+     margin-top: 0px;
+     background-color: transparent !important;
+     // background-color: #152347;
+   }
 
+   .sort-container {
+     width: 100%;
+   }
+
+   .thead-sort {
+     background-color: hsl(223, 32%, 33%) !important;
+   }
+
+   .sort {
+     border: none;
+     float: left;
+     padding: 2%;
+     margin-left: 10px;
+   }
+
+   tr {
+     display: block;
+     margin-bottom: .7em;
+     border: 1px solid hsl(223, 32%, 33%);
+     background-color: #1d2c4e;
+   }
+
+   td {
+     display: block;
+     font-size: .8em;
+     text-align: right;
+     border: none;
+   }
+
+   table td {
+     border: none !important;
+   }
+
+   table td::before {
+     border: none;
+     /*
+     * aria-label has no advantage, it won't be read inside a table
+     content: attr(aria-label);
+     */
+     content: attr(data-label);
+     float: left;
+     font-weight: bold;
+     text-transform: uppercase;
+   }
+
+   table td:last-child {
+     border-bottom: 0;
+   }
+
+   .is-hidden {
+     border: none;
+   }
  }
-
 
 // #mobile-table{
 //   display: none;
