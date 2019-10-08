@@ -47,7 +47,7 @@
         <div class="field">
           <div class="control">
             <div class="select">
-              <%= collection_select(:language, :id, Language.all, :id, :name, prompt: "Select language", html_options: { class: 'language-dropdown'}) %>
+              <%= collection_select(:language, :id, Language.all.sort_by(&:name), :id, :name, prompt: "Select language", html_options: {class: 'language-dropdown'}) %>
             </div>
           </div>
         </div>
