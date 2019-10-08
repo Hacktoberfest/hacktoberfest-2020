@@ -24,7 +24,7 @@ class ReportSpamService
   end
 
   private
-  
+
   def name_with_owner
     if name_with_owner_matches
       name_with_owner_matches[1]

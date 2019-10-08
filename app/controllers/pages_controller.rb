@@ -26,8 +26,6 @@ class PagesController < ApplicationController
 
   def start; end
 
-  def report; end
-
   def api_error; end
 
   private

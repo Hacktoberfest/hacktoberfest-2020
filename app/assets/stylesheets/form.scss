@@ -1,19 +1,33 @@
 $break-small: 1024px;
 
-.airtable-form {
-  height: 568px;
-  max-width: 40vw;
-
-  @media screen and (max-width: $break-small) {
-    max-width: 100%;
-  }
-}
-
 .report-form-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 
   @media screen and (max-width: $break-small) {
     margin: 0 30px;
+  }
+
+  .star {
+    color: hsl(320, 100%, 50%);
+    margin: 4px;
+  }
+
+  .form-label {
+    margin: 4px;
+  }
+
+  .form-inner {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    padding: 10px;
+
+    .input {
+      width: 350px;
+      margin: 2px;
+    }
   }
 }
