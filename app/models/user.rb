@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/LineLength, Metrics/BlockLength, Layout/MultilineHashBraceLayout, Metrics/ClassLength
 class User < ApplicationRecord
-  has_one :sticker_coupon
-  has_one :shirt_coupon
+  has_one :sticker_coupon, dependent: :destroy
+  has_one :shirt_coupon, dependent: :destroy
 
   validate :only_one_coupon
 
-  # rubocop:disable Metrics/BlockLength, Layout/MultilineHashBraceLayout
   state_machine initial: :new do
     event :register do
       transition new: :registered
@@ -92,7 +92,6 @@ class User < ApplicationRecord
 
     after_transition to: :waiting, do: :update_waiting_since
   end
-  # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
   def pull_requests
     pull_request_service.all
@@ -142,9 +141,9 @@ class User < ApplicationRecord
   end
 
   def only_one_coupon
-    if shirt_coupon && sticker_coupon
-      errors.add(:user, 'can only have one type of coupon')
-    end
+    return unless shirt_coupon && sticker_coupo
+
+    errors.add(:user, 'can only have one type of coupon')
   end
 
   def pull_request_service
@@ -155,3 +154,4 @@ class User < ApplicationRecord
     @coupon_service ||= CouponService.new(self)
   end
 end
+# rubocop:enable  Metrics/LineLength, Metrics/BlockLength, Layout/MultilineHashBraceLayout, Metrics/ClassLength
