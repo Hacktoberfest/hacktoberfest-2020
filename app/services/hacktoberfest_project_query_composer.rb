@@ -69,6 +69,7 @@ module HacktoberfestProjectQueryComposer
     search_clauses = [
       'state:open',
       'label:hacktoberfest',
+      'no:assignee'
     ]
     search_clauses.push(query_string) if query_string.present?
     search_clauses.join(' ')
