@@ -11,7 +11,7 @@
         <% scoring_pull_requests.map do |pr| %>
           <tr>
             <td class="icon-block">
-              <% if pr.eligible? & user.completed? %>
+              <% if pr.eligible? && user.completed? %>
                 <div class="icon-box">
                   <div class="eligible-box">
                     <%= image_tag 'eligible.png' %>
@@ -87,14 +87,24 @@
             </td>
           </tr>
         <% end %>
+        <% if show_congratulations %>
+          <tr>
+            <td colspan="2">
+              <div class="winning-msg-cont">
+                <h1 class="title is-2 pink-highlight"> You did it! 🎉 </h1>
+                <span class="title is-3">You’ve submitted the four eligible PRs for the Hacktoberfest — which means you officially completed this year’s challenge!</span>
+              </div>
+            </td>
+          </tr>
+        <% end %>
         <% if non_scoring_pull_requests.any? %>
           <% non_scoring_pull_requests.map do |pr| %>
             <tr>
               <td class="icon-block">
-                <% if pr.eligible? & user.completed? %>
+                <% if pr.eligible? && user.completed? %>
                   <div class="icon-box">
-                    <div class="eligible-box">
-                      <%= image_tag 'eligible.png' %>
+                    <div class="bonus-box">
+                      <%= image_tag 'bonus.png' %>
                     </div>
                   </div>
                 <% elsif pr.spammy? %>
@@ -122,8 +132,8 @@
                   <div class="timeline-date">
                     <% if pr.eligible? & user.completed? %>
                       <div class="icon-box">
-                        <div class="eligible-box">
-                          <%= image_tag 'eligible.png' %>
+                        <div class="bonus-box">
+                          <%= image_tag 'bonus.png' %>
                         </div>
                       </div>
                     <% elsif pr.spammy? %>
@@ -211,6 +221,17 @@
         <p>
           Good job! Your PR has passed the review period and counts toward completing the Hacktoberfest challenge!
         </p>
+      </div>
+      <div>
+        <div class="icon-name">
+          <div class="icon-box">
+            <div class="bonus-box">
+              <%= image_tag 'bonus.png' %>
+            </div>
+          </div>
+          <p>Bonus</p>
+        </div>
+        <p>Outstanding! You’ve gone above and beyond this Hacktoberfest.</p>
       </div>
     </div>
   <% end %>
