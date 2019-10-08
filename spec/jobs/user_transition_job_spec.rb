@@ -9,8 +9,8 @@ RSpec.describe UserTransitionJob, type: :job do
 
   context 'user token is valid' do
     before do
-      allow_any_instance_of(TokenValidatorService).
-        to receive(:valid?).and_return(true)
+      allow_any_instance_of(TokenValidatorService)
+        .to receive(:valid?).and_return(true)
     end
 
     it 'tries to transition the user' do
@@ -21,8 +21,8 @@ RSpec.describe UserTransitionJob, type: :job do
 
   context 'user token  is invalid' do
     before do
-      allow_any_instance_of(TokenValidatorService).
-        to receive(:valid?).and_return(false)
+      allow_any_instance_of(TokenValidatorService)
+        .to receive(:valid?).and_return(false)
     end
 
     it 'tries does not try to transition the user' do

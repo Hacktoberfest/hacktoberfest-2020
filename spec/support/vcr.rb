@@ -7,13 +7,13 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.configure_rspec_metadata!
 
-  vars_to_obscure = [
-    'TEST_USER_GITHUB_TOKEN',
-    'GITHUB_CLIENT_SECRET',
-    'GITHUB_CLIENT_ID',
-    'SEGMENT_WRITE_KEY',
-    'AIRTABLE_API_KEY',
-    'AIRTABLE_APP_ID'
+  vars_to_obscure = %w[
+    TEST_USER_GITHUB_TOKEN
+    GITHUB_CLIENT_SECRET
+    GITHUB_CLIENT_ID
+    SEGMENT_WRITE_KEY
+    AIRTABLE_API_KEY
+    AIRTABLE_APP_ID
   ]
 
   vars_to_obscure.map do |var|

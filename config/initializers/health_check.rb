@@ -1,5 +1,6 @@
-HealthCheck.setup do |config|
+# frozen_string_literal: true
 
+HealthCheck.setup do |config|
   # uri prefix (no leading slash)
   config.uri = 'healthy'
 
@@ -25,7 +26,7 @@ HealthCheck.setup do |config|
   # config.buckets = {'bucket_name' => [:R, :W, :D]}
 
   # You can customize which checks happen on a standard health check, eg to set an explicit list use:
-  config.standard_checks = [ 'database', 'sidekiq-redis', 'mem_cache']
+  config.standard_checks = %w[database sidekiq-redis mem_cache]
 
   # Or to exclude one check:
   # config.standard_checks -= [ 'emailconf' ]

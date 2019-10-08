@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module IssueStates
-  CLOSED="CLOSED".freeze
-  OPEN="OPEN".freeze
-  ALL=[CLOSED, OPEN]
+  CLOSED = 'CLOSED'
+  OPEN = 'OPEN'
+  ALL = [CLOSED, OPEN].freeze
 end

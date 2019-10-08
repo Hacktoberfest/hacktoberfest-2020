@@ -1,21 +1,23 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe IssueQualityCalculator do
-  describe "#calculate_quality" do
-    context "Given a set of features" do
-      it "calculates a quality score" do
+  describe '#calculate_quality' do
+    context 'Given a set of features' do
+      it 'calculates a quality score' do
         repository = create(
           :repository,
           forks: 100,
           stars: 500,
           watchers: 10,
-          code_of_conduct_url: "https://example.com/code_of_conduct",
+          code_of_conduct_url: 'https://example.com/code_of_conduct'
         )
         issue = create(
           :issue,
           timeline_events: 5,
           participants: 2,
-          repository: repository,
+          repository: repository
         )
         quality_calculator = IssueQualityCalculator.new
         quality_calculator.set_features(
@@ -24,7 +26,7 @@ RSpec.describe IssueQualityCalculator do
           issue_timeline_events: issue.timeline_events,
           repository_forks: repository.forks,
           repository_stars: repository.stars,
-          repository_watchers: repository.watchers,
+          repository_watchers: repository.watchers
         )
 
         quality = quality_calculator.calculate_quality
@@ -49,12 +51,12 @@ RSpec.describe IssueQualityCalculator do
     end
   end
 
-  describe "#calculate_quality_progressively" do
-    context "Given a wide disparity in calculated issue quality" do
-      it "reduces the disparity while preserving the rank ordering" do
+  describe '#calculate_quality_progressively' do
+    context 'Given a wide disparity in calculated issue quality' do
+      it 'reduces the disparity while preserving the rank ordering' do
         some_small_number = 1
         some_large_number = 100
-        some_giant_number = 10000
+        some_giant_number = 10_000
         quality_calculator = IssueQualityCalculator.new
         quality_calculator.set_features(
           is_repository_code_of_conduct_present: true,
@@ -62,7 +64,7 @@ RSpec.describe IssueQualityCalculator do
           issue_timeline_events: some_small_number,
           repository_forks: some_small_number,
           repository_stars: some_small_number,
-          repository_watchers: some_small_number,
+          repository_watchers: some_small_number
         )
         small_score = quality_calculator.calculate_quality
         small_progressive_score = quality_calculator.calculate_quality_progressively
@@ -72,7 +74,7 @@ RSpec.describe IssueQualityCalculator do
           issue_timeline_events: some_large_number,
           repository_forks: some_large_number,
           repository_stars: some_large_number,
-          repository_watchers: some_large_number,
+          repository_watchers: some_large_number
         )
         large_progressive_score = quality_calculator.calculate_quality_progressively
         quality_calculator.set_features(
@@ -81,7 +83,7 @@ RSpec.describe IssueQualityCalculator do
           issue_timeline_events: some_giant_number,
           repository_forks: some_giant_number,
           repository_stars: some_giant_number,
-          repository_watchers: some_giant_number,
+          repository_watchers: some_giant_number
         )
         giant_score = quality_calculator.calculate_quality
         giant_progressive_score = quality_calculator.calculate_quality_progressively
@@ -91,7 +93,7 @@ RSpec.describe IssueQualityCalculator do
         minimum_desired_disparity_reduction = 100.0
         original_quality_disparity = giant_score.to_f / small_score.to_f
         progressive_quality_disparity = giant_progressive_score.to_f / small_progressive_score.to_f
-        expect(progressive_quality_disparity).to be < original_quality_disparity/minimum_desired_disparity_reduction
+        expect(progressive_quality_disparity).to be < original_quality_disparity / minimum_desired_disparity_reduction
       end
     end
   end

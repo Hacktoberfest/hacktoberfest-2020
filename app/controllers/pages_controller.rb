@@ -19,28 +19,23 @@ class PagesController < ApplicationController
   end
 
   def events
-    unless all_events.blank?
-      @events = all_events.select(&:published?)
-    end
+    @events = all_events.select(&:published?) if all_events.present?
   end
 
-  def event_kit
-  end
+  def event_kit; end
 
-  def report
-  end
+  def report; end
 
-  def api_error
-  end
+  def api_error; end
 
   private
 
   def all_events
-    unless AirrecordTable.new.table('Meetups').all.blank?
+    if AirrecordTable.new.table('Meetups').all.present?
       AirrecordTable.new.table('Meetups').all.map do |e|
         AirtableEventPresenter.new(e)
       rescue AirtableEventPresenter::ParseError
-        #Ignore invalid events
+        # Ignore invalid events
       end.compact
     end
   end
@@ -49,6 +44,6 @@ class PagesController < ApplicationController
     all_events
       .select(&:current?)
       .sample(4)
-      .sort_by { |e| e.date }
+      .sort_by(&:date)
   end
 end

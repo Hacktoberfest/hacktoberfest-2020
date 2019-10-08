@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IssueQualityFeatureWeights
   CODE_OF_CONDUCT = 1000
   ISSUE_PARTICIPANTS = 2
@@ -12,7 +14,7 @@ class IssueQualityFeatureWeights
     :issue_timeline_events,
     :repository_forks,
     :repository_stars,
-    :repository_watchers,
+    :repository_watchers
   )
 
   def self.default_weights

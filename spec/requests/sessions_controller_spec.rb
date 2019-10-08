@@ -5,11 +5,11 @@ require 'rails_helper'
 RSpec.describe SessionsController, type: :request do
   before do
     mock_authentication
-    allow_any_instance_of(TokenValidatorService).
-      to receive(:valid?).and_return(true)
+    allow_any_instance_of(TokenValidatorService)
+      .to receive(:valid?).and_return(true)
     allow_any_instance_of(SegmentService).to receive(:identify)
     allow_any_instance_of(SegmentService).to receive(:track)
-    allow_any_instance_of(UserEmailService).to receive(:emails).and_return("test@mail.com")
+    allow_any_instance_of(UserEmailService).to receive(:emails).and_return('test@mail.com')
   end
 
   describe 'signup and login' do
@@ -69,7 +69,7 @@ RSpec.describe SessionsController, type: :request do
         it 'destroys the session' do
           expect(session[:current_user_id]).to be_nil
         end
-  
+
         it 'redirects to the root_path' do
           expect(response).to redirect_to(root_path)
         end
@@ -107,16 +107,16 @@ RSpec.describe SessionsController, type: :request do
     let(:user) { FactoryBot.create(:user) }
 
     context 'the app is in production mode' do
-      before { allow(Rails).to receive(:env) { "production".inquiry } }
+      before { allow(Rails).to receive(:env) { 'production'.inquiry } }
 
       it 'returns a 404' do
-        expect{ get impersonate_path(user) }.
-          to raise_error(ActionController::RoutingError)
+        expect { get impersonate_path(user) }
+          .to raise_error(ActionController::RoutingError)
       end
     end
 
     context 'the app is in development mode' do
-      before { allow(Rails).to receive(:env) { "development".inquiry } }
+      before { allow(Rails).to receive(:env) { 'development'.inquiry } }
 
       it 'impersonates the user' do
         get impersonate_path(user)

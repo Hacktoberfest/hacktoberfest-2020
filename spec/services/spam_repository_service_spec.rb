@@ -6,7 +6,7 @@ RSpec.describe SpamRepositoryService do
   describe '.call' do
     context 'repository is spam', :vcr do
       it 'returns true' do
-        expect(SpamRepositoryService.call(152433556)).to eq(true)
+        expect(SpamRepositoryService.call(152_433_556)).to eq(true)
       end
     end
 

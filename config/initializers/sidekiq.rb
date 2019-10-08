@@ -9,7 +9,7 @@ if (redis_url = ENV.fetch('HACKTOBERFEST_REDIS_URL', nil))
     url: redis_url,
     password: ENV.fetch('HACKTOBERFEST_REDIS_PASSWORD', nil)
     # namespace: #Consider using a namespace to separate sidekiq fro app cache
-  }
+  }.freeze
 end
 
 # Custom Error message reporting a job death to airbrake
@@ -21,7 +21,7 @@ module Sidekiq
     end
 
     def message
-      "#{@job['class']} #{@job["jid"]} died with error #{@ex.message}."
+      "#{@job['class']} #{@job['jid']} died with error #{@ex.message}."
     end
   end
 end
@@ -45,12 +45,12 @@ Sidekiq.configure_server do |config|
     mgr.register('0 * * * *', BanAllReposJob, retry: 3, queue: :default)
   end
 
-  config.death_handlers << ->(job, ex) do
-    error = Sidekiq::JobDeathError.new(job,ex)
+  config.death_handlers << lambda { |job, ex|
+    error = Sidekiq::JobDeathError.new(job, ex)
     Airbrake.notify(error) do |notice|
       notice[:context][:component] = 'sidekiq'
     end
-  end
+  }
 end
 
 Sidekiq.configure_client do |config|

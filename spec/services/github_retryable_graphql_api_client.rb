@@ -6,8 +6,8 @@ RSpec.describe GithubRetryableGraphqlApiClient do
   describe '#request' do
     context 'the first request is successful' do
       before do
-        allow_any_instance_of(GithubGraphqlApiClient).
-          to receive(:request).and_return(Hashie::Mash.new)
+        allow_any_instance_of(GithubGraphqlApiClient)
+          .to receive(:request).and_return(Hashie::Mash.new)
       end
 
       it 'returns the results from the API' do
@@ -20,12 +20,12 @@ RSpec.describe GithubRetryableGraphqlApiClient do
     context 'the first two requests fail with 502 and the third succeeds' do
       before do
         response_values = [:raise, :raise, Hashie::Mash.new]
-        allow_any_instance_of(GithubGraphqlApiClient).
-          to receive(:request) do
+        allow_any_instance_of(GithubGraphqlApiClient)
+          .to receive(:request) do
             v = response_values.shift
             if v == :raise
-              e = Faraday::ClientError.
-                new("the server responded with status 502", { status: 502 } )
+              e = Faraday::ClientError
+                  .new('the server responded with status 502', status: 502)
               raise(e)
             else
               v
@@ -56,12 +56,12 @@ RSpec.describe GithubRetryableGraphqlApiClient do
     context 'the first two requests fail with 500 and the third succeeds' do
       before do
         response_values = [:raise, :raise, Hashie::Mash.new]
-        allow_any_instance_of(GithubGraphqlApiClient).
-          to receive(:request) do
+        allow_any_instance_of(GithubGraphqlApiClient)
+          .to receive(:request) do
             v = response_values.shift
             if v == :raise
-              e = Faraday::ClientError.
-                new("the server responded with status 500", { status: 500 } )
+              e = Faraday::ClientError
+                  .new('the server responded with status 500', status: 500)
               raise(e)
             else
               v

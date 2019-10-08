@@ -58,7 +58,7 @@ module ClimateProjectService
       language: 'Jupyter Notebook',
       description: 'Pangeo website + discussion of general issues related to the project.'
     }
-  ]
+  ].freeze
 
   def sample(sample_size = 1)
     projects = PROJECTS.shuffle

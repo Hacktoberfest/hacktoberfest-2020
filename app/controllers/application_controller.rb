@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def current_user
     return unless logged_in?
 
-    if (user = User.find_by_id(session[:current_user_id]))
+    if (user = User.find_by(id: session[:current_user_id]))
       user
     else
       reset_session
@@ -51,6 +51,6 @@ class ApplicationController < ActionController::Base
   def api_error(error)
     raise error unless error.response&.fetch(:status) == 502
 
-    render 'pages/api_error', status: 500
+    render 'pages/api_error', status: :internal_server_error
   end
 end

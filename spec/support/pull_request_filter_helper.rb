@@ -17,7 +17,7 @@ ARRAY_WITH_INVALID_DATES = [
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
     'createdAt' => '2015-11-20T22:49:53Z',
     'labels' => { 'edges' => [] },
-    'repository' => { 'databaseId' => 123 }  },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -26,7 +26,7 @@ ARRAY_WITH_INVALID_DATES = [
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     'createdAt' => '2019-10-08T06:24:38Z',
     'labels' => { 'edges' => [] },
-    'repository' => { 'databaseId' => 123 }  },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -35,7 +35,7 @@ ARRAY_WITH_INVALID_DATES = [
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => '2019-10-25T19:59:18Z',
     'labels' => { 'edges' => [] },
-    'repository' => { 'databaseId' => 123 }  }
+    'repository' => { 'databaseId' => 123 } }
 ].freeze
 
 ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [

@@ -16,7 +16,7 @@ module ProjectService
 
   def language_sample(language, sample_size = 1)
     issues = Issue
-      .open_issues_for_language_with_unique_permitted_repositories(language.id)
+             .open_issues_for_language_with_unique_permitted_repositories(language.id)
              .includes(repository: :language)
              .order(quality: :desc)
              .limit(sample_size * 10)

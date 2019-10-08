@@ -54,7 +54,7 @@ RSpec.describe HacktoberfestProjectQueryComposer do
           query: HacktoberfestProjectQueryComposer::PROJECT_IMPORT_QUERY,
           variables: {
             queryString: "state:open label:hacktoberfest #{query_string}",
-            first: results_per_page,
+            first: results_per_page
           }
         }
 

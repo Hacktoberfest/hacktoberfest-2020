@@ -17,10 +17,10 @@ RSpec.describe TryUserTransitionFromWaitingService do
       allow(user).to receive(:scoring_pull_requests).and_return(prs)
     end
 
-    context 'The user has enough eligible PRs to transition and has been waiting 7+ days' do
+    context 'The user has enough eligible PRs & has been waiting 7+ days' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
-        allow(user).to receive(:waiting_since).and_return(Date.today - 8)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
         TryUserTransitionFromWaitingService.call(user)
       end
 

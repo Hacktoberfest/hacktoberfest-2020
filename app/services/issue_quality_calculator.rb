@@ -1,7 +1,9 @@
-require "matrix"
+# frozen_string_literal: true
+
+require 'matrix'
 
 class IssueQualityCalculator
-  def initialize(feature_weights=IssueQualityFeatureWeights.default_weights)
+  def initialize(feature_weights = IssueQualityFeatureWeights.default_weights)
     @feature_weights = feature_weights
   end
 
@@ -13,11 +15,11 @@ class IssueQualityCalculator
     repository_stars:,
     repository_watchers:
   )
-    if is_repository_code_of_conduct_present
-      @code_of_conduct_score = 1
-    else
-      @code_of_conduct_score = 0
-    end
+    @code_of_conduct_score = if is_repository_code_of_conduct_present
+                               1
+                             else
+                               0
+                             end
     @issue_participants = issue_participants
     @issue_timeline_events = issue_timeline_events
     @repository_forks = repository_forks

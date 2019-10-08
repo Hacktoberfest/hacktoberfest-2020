@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
     if Rails.env.production?
       raise ActionController::RoutingError, 'Not Found'
     else
-      if @user = User.find_by_id(params[:id])
+      if @user = User.find_by(id: params[:id])
         session[:current_user_id] = @user.id
       end
       redirect_to '/'
