@@ -1,12 +1,12 @@
 <section class="section">
   <h1 class="title is-1">Events</h1>
 
-<div id="meetups">
+<!-- <div id="meetups" class="desktop-table">
   <input name="filter" class="search input" placeholder="Search for events" />
-  
+
   <h2 class="highlight">Showing <span data-js="visible_event_count"> all <%= @events.length %></span> Events</h2>
 
-  <table class="table is-narrow is-narrow is-fullwidth event-table">
+  <table class="table is-narrow is-narrow is-fullwidth event-table is-fluid">
     <thead>
     <tr>
       <th class="sort" data-sort="location">Location</th>
@@ -23,7 +23,7 @@
         <% end %>
             <td class="multisort is-hidden">
               <%= e.current? ? 'Future' : 'Past'%>
-              <%= e.country %> 
+              <%= e.country %>
               <%= e.date.strftime("%m %d") %>
             </td>
             <td class="location"><%= e.location %></td>
@@ -37,12 +37,60 @@
           </tr>
       <% end %>
   </table>
-  </div>
+  </div> -->
 
+
+  <div id="meetups"  class="mobile-table">
+    <input name="filter" class="search input mobile" placeholder="Search for events" />
+
+    <h2 class="highlight mobile">Showing <span data-js="visible_event_count"> all <%= @events.length %></span> Events</h2>
+
+    <table id="mobile-table" class="table is-narrow is-narrow is-narrow is-narrow event-table mobile">
+      <thead>
+      <tr>
+        <span id="mobile-sort" class="sort mobile" data-sort="location">Location</span>
+        <span id="mobile-sort" class="sort mobile" data-sort="event_name">Event</span>
+        <span id="mobile-sort" class="sort mobile" data-sort="date">Date</span>
+      </tr>
+      </thead>
+      <tbody class="list mobile">
+        <% @events.map do |e| %>
+          <% if e.current? %>
+            <tr>
+          <% else %>
+            <tr class="past mobile">
+          <% end %>
+          <tr>
+            <td>
+              <div class="multisort is-hidden mobile">
+                <%= e.current? ? 'Future' : 'Past'%>
+                <%= e.country %>
+                <%= e.date.strftime("%m %d") %>
+              </div>
+              <br/>
+              <div class="location mobile"><%= e.location %></div>
+                <br/>
+              <div class="event_name mobile">
+                <a class="emphasis mobile" href="<%= e.url %>" target="blank" rel="noopener"><%= e.name %></a>
+                <br/>
+                by <%= e.organizer %>
+              </div>
+                <br/>
+              <div>
+                <div class="date is-hidden mobile"><%= e.date %></div>
+                <div><%= e.date.strftime("%b %e") %></div>
+              </div>
+              <br/>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
   <p>
     New events will be added throughout Hacktoberfest – please check back soon!
   </p>
-  
+
   <section>
     <br/>
     <br/>
