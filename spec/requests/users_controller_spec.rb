@@ -72,9 +72,9 @@ RSpec.describe UsersController, type: :request do
 
       include_examples 'tries transition'
 
-      xit 'returns the complete progress bar', :vcr do
+      it 'displays a complete progress bar', :vcr do
         get profile_path
-        body.should have_css('div.progress-bar')
+        expect(response.body).to include('progress-state-4')
         expect(response).to be_successful
       end
 
@@ -102,9 +102,9 @@ RSpec.describe UsersController, type: :request do
 
       include_examples 'tries transition'
 
-      xit 'only displays progress', :vcr do
+      it 'displays an empty progress bar', :vcr do
         get profile_path
-        body.should have_css('div.progress-bar')
+        expect(response.body).to include('progress-state-0')
       end
 
       it 'keeps the user in the registered state', :vcr do
@@ -122,18 +122,18 @@ RSpec.describe UsersController, type: :request do
         prs = pull_request_data(PR_DATA[:invalid_array]).map do |pr|
           PullRequest.new(pr)
         end
-        allow_any_instance_of(User).to receive(:pull_requests).and_return(prs)
+        allow_any_instance_of(PullRequestService).to receive(:all).and_return(prs)
         allow_any_instance_of(User).to receive(:score).and_return(3)
       end
 
       include_examples 'tries transition'
 
-      xit 'calculates score of 3 valid PRs', :vcr do
+      it 'displays a progress bar of 75%', :vcr do
         get profile_path
-        body.should have_css('div.progress-bar')
+        expect(response.body).to include('progress-state-3')
       end
 
-      xit 'returns all pull requests', :vcr do
+      it 'returns all pull requests', :vcr do
         get profile_path
         invalid_pr = PR_DATA[:invalid_array].first
         expect(response.body).to include(invalid_pr['title'])
