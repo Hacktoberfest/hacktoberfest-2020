@@ -56,12 +56,10 @@ class ProfilePagePresenter
   end
 
   def code
-    coupon = @user.shirt_coupon
-    if @user.shirt_coupon
-      coupon = @user.shirt_coupon
-    else
-      coupon = @user.sticker_coupon
+    if (coupon = @user.shirt_coupon)
+      coupon.code
+    elsif (coupon = @user.sticker_coupon)
+      coupon.code
     end
-    coupon.code
   end
 end
