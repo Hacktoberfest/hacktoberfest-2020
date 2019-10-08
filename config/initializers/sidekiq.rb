@@ -15,9 +15,9 @@ end
 # Custom Error message reporting a job death to airbrake
 module Sidekiq
   class JobDeathError < StandardError
-    def initialize(job, ex)
+    def initialize(job, exec)
       @job = job
-      @ex = ex
+      @ex = exec
     end
 
     def message
@@ -46,10 +46,10 @@ Sidekiq.configure_server do |config|
     mgr.register('0 3 * * *', UpdateAllIssuesJob, retry: 3, queue: :critical)
     # Every day at 5AM
     mgr.register('0 5 * * *',
-      UpdateAllIssuesQualityJob,
-      retry: 3,
-      queue: :default
-    )
+                 UpdateAllIssuesQualityJob,
+                 retry: 3,
+                 queue: :default
+                )
     # Every hour. 1 hour max latency when updating banned repos in airtable
     mgr.register('0 * * * *', BanAllReposJob, retry: 3, queue: :default)
   end
