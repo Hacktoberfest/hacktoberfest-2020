@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/LineLength
 class IssueStateQueryComposer
   def self.compose(owner_name:, repo_name:, issue_number:)
     {
@@ -12,3 +13,4 @@ class IssueStateQueryComposer
     }
   end
 end
+# rubocop:enable Metrics/LineLength

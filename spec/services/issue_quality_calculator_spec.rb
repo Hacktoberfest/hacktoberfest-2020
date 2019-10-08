@@ -96,8 +96,8 @@ RSpec.describe IssueQualityCalculator do
         expect(large_progressive_score).to be > small_progressive_score
         min_desired_disparity_reduction = 100.0
         original_quality_disparity = giant_score / small_score
-        progressive_quality_disparity = giant_progressive_score / small_progressive_score
-        expect(progressive_quality_disparity)
+        progressiv_disparity = giant_progressive_score / small_progressive_score
+        expect(progressiv_disparity)
           .to be < original_quality_disparity / min_desired_disparity_reduction
       end
     end

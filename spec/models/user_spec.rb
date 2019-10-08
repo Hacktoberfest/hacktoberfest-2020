@@ -163,7 +163,7 @@ RSpec.describe User, type: :model do
 
       it 'saves a receipt of the scoring prs' do
         expect(user.receipt)
-        .to eq(JSON.parse(user.scoring_pull_requests.to_json))
+          .to eq(JSON.parse(user.scoring_pull_requests.to_json))
       end
     end
 

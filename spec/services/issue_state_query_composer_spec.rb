@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/LineLength
 RSpec.describe IssueStateQueryComposer do
   describe '.compose' do
     it 'returns the correct query to get the state of the given issue' do
@@ -23,3 +24,4 @@ RSpec.describe IssueStateQueryComposer do
     end
   end
 end
+# rubocop:enable Metrics/LineLength

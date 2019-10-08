@@ -44,7 +44,7 @@ RSpec.describe TryUserTransitionFromWaitingService do
     context 'The user needs to continue waiting' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
-        allow(user).to receive(:waiting_since).and_return(Date.today - 3)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 3)
         TryUserTransitionFromWaitingService.call(user)
       end
 

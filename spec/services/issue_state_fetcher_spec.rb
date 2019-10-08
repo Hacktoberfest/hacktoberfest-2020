@@ -119,7 +119,7 @@ RSpec.describe IssueStateFetcher do
         bad_query = 'find me the repository of all repositories'
         allow(IssueStateQueryComposer).to receive(:compose)
           .and_return(bad_query)
-        error_message = "Could not resolve to a Repository with the name 'Paradox'."
+        error_message = "Couldn't resolve to a Repository with name 'Paradox'."
         errors = [
           {
             'message' => error_message,
@@ -185,7 +185,10 @@ RSpec.describe IssueStateFetcher do
         response = {
           'data' => {
             'rateLimit' => {
-              'cost' => 1, 'limit' => 5000, 'remaining' => 4063, 'resetAt' => '2017-09-26T22:03:51Z'
+              'cost' => 1,
+              'limit' => 5000,
+              'remaining' => 4063,
+              'resetAt' => '2017-09-26T22:03:51Z'
             },
             'repository' => nil
           },
