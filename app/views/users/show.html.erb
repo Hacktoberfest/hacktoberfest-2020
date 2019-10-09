@@ -13,6 +13,14 @@
         <div class="level-right">
           <p class='progress-msg'>YOUR PROGRESS</p>
           <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
+          <% if @presenter.bonus_score > 0 %>
+            <div class="icon-box">
+              <div class="bonus-box">
+                <%= image_tag 'bonus.png' %>
+                <span><%= @presenter.bonus_score %></span>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
