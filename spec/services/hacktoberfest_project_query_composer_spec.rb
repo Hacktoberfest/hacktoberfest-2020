@@ -49,17 +49,17 @@ RSpec.describe HacktoberfestProjectQueryComposer do
     context 'When given a query string' do
       it 'returns a project graphql json query with the query string' do
         results_per_page = 1_000_000
-        query_string = 'language:Ruby'
+        q_str = 'language:Ruby'
         graphql_json_query_with_pagination = {
           query: HacktoberfestProjectQueryComposer::PROJECT_IMPORT_QUERY,
           variables: {
-            queryString: "state:open label:hacktoberfest #{query_string}",
+            queryString: "state:open label:hacktoberfest no:assignee #{q_str}",
             first: results_per_page
           }
         }
 
         query = HacktoberfestProjectQueryComposer.compose(
-          query_string: query_string,
+          query_string: q_str,
           results_per_page: results_per_page,
           cursor: nil
         )
