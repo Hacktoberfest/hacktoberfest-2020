@@ -35,6 +35,10 @@ class ProfilePagePresenter
     @user.score || 0
   end
 
+  def bonus_score
+    (@user.eligible_pull_requests_count || 0) - @user.score
+  end
+
   def name
     @user.name
   end

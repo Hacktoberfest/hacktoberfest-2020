@@ -43,7 +43,7 @@ $red: hsl(320, 100%, 50%);
     background-color: $grey-dark !important;
     flex: 1;
     overflow: auto;
-    width:auto;
+    width: auto;
     height: auto;
 
     @media screen and (max-width: $break-small) {
@@ -214,6 +214,40 @@ $red: hsl(320, 100%, 50%);
 
       .level-right {
         margin-bottom: 15px;
+
+        .icon-box {
+          margin: 6px 20px 4px -8px;
+          padding: 0;
+          /* padding: 2px;
+          background: linear-gradient(90deg, $red 0%, $purple 90%, $purple 100%); */
+          transform: rotate(5deg);
+
+          @media screen and (max-width: $break-small) {
+            margin: 10px 0;
+          }
+
+          .bonus-box {
+            width: auto;
+            padding: 0 0.65em;
+            margin: 0;
+            display: inline-flex;
+            background: $purple;
+            position: relative;
+
+            img {
+              height: 0.65em;
+              width: auto;
+            }
+
+            span {
+              padding-left: 0.15em;
+              font-weight: 900;
+              font-size: 1.1em;
+              transform: rotate(2.5deg);
+              color: #fff;
+            }
+          }
+        }
       }
     }
   }
