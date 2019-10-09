@@ -1,85 +1,104 @@
 .event-table {
   margin-top: 50px;
 }
+
 .search {
   margin-bottom: 30px;
 }
+
 .sort {
   cursor: pointer;
 }
-.past{
-  .event_name:before{
+
+.past {
+  .event_name:before {
     content: "(Past event)";
     color: rgb(210, 210, 210);
   }
 }
+
 .emphasis {
   color: #FFF;
 }
+
 .sort {
   cursor: pointer;
+
   &.asc, &.desc {
     &::after {
-        margin-left: .25em;
-        text-decoration: none;
+      margin-left: .25em;
+      text-decoration: none;
     }
   }
+
   &.asc::after {
     content: "▲";
   }
+
   &.desc::after {
     content: "▼";
   }
 }
+
 td {
   min-width: 90px;
 }
 
 .table-mobile-cards {
   @media screen and (max-width: $break-small) {
-    .event-table {
+    table.event-table {
       border: 0;
-      margin-top: 0px;
+      margin-top: 0;
       background-color: transparent !important;
-    }
 
-    .sort-container {
-      width: 100%;
+      tbody {
+        box-shadow: none;
+
+        tr {
+          display: block;
+          margin-bottom: .7em;
+          border: 0;
+          background-color: $grey-darker;
+          padding: .625rem;
+          box-shadow: $box-shadow;
+
+          td {
+            display: block;
+            font-size: .8em;
+            color: $white;
+            text-align: right !important;
+            border: solid $grey-dark;
+            border-width: 0 0 1px;
+            padding: 0.75em 0.5em;
+
+            &:last-child {
+              border-bottom-width: 0;
+            }
+
+            &::before {
+              border: none;
+              /*
+              * aria-label has no advantage, it won't be read inside a table
+              content: attr(aria-label);
+              */
+              content: attr(data-label);
+              float: left;
+              text-transform: capitalize;
+              color: $grey;
+              margin-right: 20px;
+            }
+
+            .emphasis {
+              color: $cyan;
+              font-size: 1.1em;
+            }
+          }
+        }
+      }
     }
 
     .thead-sort {
       display: none;
-    }
-
-    tr {
-      display: block;
-      margin-bottom: .7em;
-      border: 1px solid $grey-dark;
-      background-color: $grey-darker;
-    }
-
-    td {
-      display: block;
-      font-size: .8em;
-      color: $white;
-      text-align: right !important;
-    }
-
-    table td::before {
-      border: none;
-      /*
-      * aria-label has no advantage, it won't be read inside a table
-      content: attr(aria-label);
-      */
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-right: 20px;
-    }
-
-    table tbody tr:last-child td {
-      border-bottom-width: 1px;
     }
 
     .is-hidden {
