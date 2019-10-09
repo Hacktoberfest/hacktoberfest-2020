@@ -5,11 +5,10 @@
 
 # Redis config shared between client and server
 if (redis_url = ENV.fetch('HACKTOBERFEST_REDIS_URL', nil))
-  REDIS_CONFIG = {
+  redis_config = {
     url: redis_url,
     password: ENV.fetch('HACKTOBERFEST_REDIS_PASSWORD', nil)
-    # namespace: #Consider using a namespace to separate sidekiq fro app cache
-  }.freeze
+  }
 end
 
 # Custom Error message reporting a job death to airbrake
@@ -27,7 +26,7 @@ module Sidekiq
 end
 
 Sidekiq.configure_server do |config|
-  config.redis = REDIS_CONFIG if defined?(REDIS_CONFIG)
+  config.redis = redis_config if defined?(redis_config)
 
   # https://github.com/mperham/sidekiq/wiki/Reliability#using-super_fetch
   config.super_fetch!
@@ -69,5 +68,5 @@ Sidekiq.configure_server do |config|
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = REDIS_CONFIG if defined?(REDIS_CONFIG)
+  config.redis = redis_config if defined?(redis_config)
 end
