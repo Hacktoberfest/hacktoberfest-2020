@@ -127,7 +127,8 @@ RSpec.describe UsersController, type: :request do
         prs = pull_request_data(PR_DATA[:invalid_array]).map do |pr|
           PullRequest.new(pr)
         end
-        allow_any_instance_of(PullRequestService).to receive(:all).and_return(prs)
+        allow_any_instance_of(PullRequestService)
+          .to receive(:all).and_return(prs)
         allow_any_instance_of(User).to receive(:score).and_return(3)
       end
 
