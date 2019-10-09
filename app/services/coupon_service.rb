@@ -6,11 +6,10 @@ class CouponService
   end
 
   def assign_coupon
-    if shirt_coupon
+    if (coupon = shirt_coupon)
       coupon = shirt_coupon
       @user.association(:shirt_coupon).replace(coupon, false)
-    elsif sticker_coupon
-      coupon = sticker_coupon
+    elsif (coupon = sticker_coupon)
       @user.association(:sticker_coupon).replace(coupon, false)
     end
   end

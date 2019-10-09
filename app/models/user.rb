@@ -2,8 +2,8 @@
 
 # rubocop:disable Metrics/LineLength, Metrics/BlockLength, Layout/MultilineHashBraceLayout, Metrics/ClassLength
 class User < ApplicationRecord
-  has_one :sticker_coupon, dependent: :destroy
-  has_one :shirt_coupon, dependent: :destroy
+  has_one :sticker_coupon, dependent: :nullify
+  has_one :shirt_coupon, dependent: :nullify
 
   validate :only_one_coupon
 

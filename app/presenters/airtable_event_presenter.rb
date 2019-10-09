@@ -5,7 +5,7 @@ class AirtableEventPresenter
 
   def initialize(event)
     @event = event
-    raise(ParseError, 'Event not provided.') unless event
+    raise(ParseError, 'Event not provided.') unless @event
 
     validate
   end
