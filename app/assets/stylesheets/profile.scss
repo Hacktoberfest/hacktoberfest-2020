@@ -207,7 +207,7 @@ $red: hsl(320, 100%, 50%);
         margin-bottom: 15px;
 
         .icon-box {
-          margin: 5px 20px 5px 10px;
+          margin: 6px 20px 4px -8px;
           padding: 0;
           /* padding: 2px;
           background: linear-gradient(90deg, $red 0%, $purple 90%, $purple 100%); */
@@ -310,7 +310,7 @@ $red: hsl(320, 100%, 50%);
     width: 330px;
     max-width: 100%;
     border: 2px solid $progress-color;
-    margin: 0 0 0 20px;
+    margin: 0 20px;
 
     @media screen and (max-width: $break-small) {
       margin: 0 auto;
