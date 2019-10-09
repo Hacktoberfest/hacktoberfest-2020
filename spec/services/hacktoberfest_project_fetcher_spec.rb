@@ -309,7 +309,7 @@ RSpec.describe HacktoberfestProjectFetcher do
     end
 
     context 'When data for the first request is blank' do
-      xit 'stops processing' do
+      it 'stops processing' do
         bad_response_data = {
           'data' => nil
         }
@@ -324,7 +324,7 @@ RSpec.describe HacktoberfestProjectFetcher do
     end
 
     context 'When data for a subsequent request is blank' do
-      xit 'stops processing after the blank request' do
+      it 'stops processing after the blank request' do
         good_response_data = {
           'data' => {
             'rateLimit' => {
@@ -395,82 +395,8 @@ RSpec.describe HacktoberfestProjectFetcher do
       end
     end
 
-    context 'When data for a subsequent request is blank due to an expected error' do
-      xit 'stops processing but does not raise an exception' do
-        good_response_data = {
-          'data' => {
-            'rateLimit' => {
-              'cost' => 1,
-              'limit' => 5000,
-              'remaining' => 4999,
-              'resetAt' => '2017-09-11T21:30:28Z'
-            },
-            'search' => {
-              'issueCount' => 1,
-              'pageInfo' => {
-                'endCursor' => 'someCursor',
-                'hasNextPage' => true
-              },
-              'edges' => [
-                {
-                  'node' => {
-                    'bodyText' => 'issue body',
-                    'databaseId' => 123,
-                    'number' => 1,
-                    'title' => 'title',
-                    'url' => 'https://github.com/owner/repo/issues/1',
-                    'participants' => {
-                      'totalCount' => 1
-                    },
-                    'timeline' => {
-                      'totalCount' => 1
-                    },
-                    'repository' => {
-                      'databaseId' => 987,
-                      'description' => 'description',
-                      'name' => 'repo',
-                      'nameWithOwner' => 'owner/repo',
-                      'url' => 'https://github.com/owner/repo',
-                      'primaryLanguage' => {
-                        'name' => 'Java'
-                      },
-                      'stargazers' => {
-                        'totalCount' => 1
-                      },
-                      'watchers' => {
-                        'totalCount' => 1
-                      },
-                      'forks' => {
-                        'totalCount' => 1
-                      },
-                      'codeOfConduct' => {
-                        'url' => 'https://example.com/code_of_conduct'
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        }
-        expected_error_message = 'Something went wrong while executing your query. This is most likely a GitHub bug. Please include `1234:1234:1234567:1234567:12345678` when reporting this issue.'
-        bad_response_data = {
-          'data' => nil,
-          'errors' => [{ 'message' => expected_error_message }]
-        }
-        api_client = double(:api_client)
-        allow(api_client).to receive(:request)
-          .and_return(good_response_data, bad_response_data)
-        fetcher = HacktoberfestProjectFetcher.new(api_client: api_client)
-
-        expect { fetcher.fetch! }.not_to raise_error
-
-        expect(fetcher.projects.count).to eq 1
-      end
-    end
-
     context 'When errors are returned' do
-      xit 'raises an exception with the errors and the query' do
+      it 'raises an exception with the errors and the query' do
         query = 'some query that will return errors'
         allow(HacktoberfestProjectQueryComposer).to receive(:compose)
           .and_return(query)
