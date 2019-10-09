@@ -37,10 +37,8 @@ class PagesController < ApplicationController
 
     AirrecordTable.new.table('Meetups').all.map do |e|
       AirtableEventPresenter.new(e)
-    # rubocop:disable Lint/HandleExceptions
     rescue AirtableEventPresenter::ParseError
       # Ignore invalid events
-      # rubocop:enable Lint/HandleExceptions
     end.compact
   end
 
