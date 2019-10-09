@@ -5,7 +5,7 @@
   });
 
   airbrake.addFilter(function(notice) {
-    notice.context.environment = "<%= Rails.env %>";
+    notice.context.environment = "<%= Rails.env %>-js";
     return notice;
   });
 </script>
