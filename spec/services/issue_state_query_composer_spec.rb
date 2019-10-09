@@ -2,7 +2,6 @@
 
 require 'rails_helper'
 
-# rubocop:disable Metrics/LineLength
 RSpec.describe IssueStateQueryComposer do
   describe '.compose' do
     it 'returns the correct query to get the state of the given issue' do
@@ -17,11 +16,14 @@ RSpec.describe IssueStateQueryComposer do
       )
 
       expected_query = {
-        query: 'query GetIssueState($ownerName: String!, $repoName: String!, $issueNumber: Int!) { rateLimit { cost limit remaining resetAt } repository(owner: $ownerName, name: $repoName) { issue(number: $issueNumber) { state } } }',
-        variables: { ownerName: owner_name, repoName: repo_name, issueNumber: issue_number }
+        query: IssueStateQueryComposer::ISSUE_STATE_QUERY,
+        variables: {
+          ownerName: owner_name,
+          repoName: repo_name,
+          issueNumber: issue_number
+        }
       }
       expect(query).to eq expected_query
     end
   end
 end
-# rubocop:enable Metrics/LineLength
