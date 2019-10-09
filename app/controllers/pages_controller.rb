@@ -19,7 +19,7 @@ class PagesController < ApplicationController
   end
 
   def events
-    @events = all_events.select(&:published?) if all_events.present?
+    @events = all_events.select(&:published?)
   end
 
   def event_kit; end
@@ -33,9 +33,10 @@ class PagesController < ApplicationController
   private
 
   def all_events
-    return if AirrecordTable.new.table('Meetups').all.blank?
+    all_meetups = AirrecordTable.new.table('Meetups').all
+    return [] if all_meetups.blank?
 
-    AirrecordTable.new.table('Meetups').all.map do |e|
+    all_meetups.map do |e|
       AirtableEventPresenter.new(e)
     rescue AirtableEventPresenter::ParseError
       # Ignore invalid events
