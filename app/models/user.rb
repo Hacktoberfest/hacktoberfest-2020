@@ -108,9 +108,8 @@ class User < ApplicationRecord
     pull_request_service.eligible_prs.count
   end
 
-  delegate :scoring_pull_requests, to: :pull_request_service
-
-  delegate :non_scoring_pull_requests, to: :pull_request_service
+  delegate :scoring_pull_requests, :non_scoring_pull_requests,
+           to: :pull_request_service
 
   def sufficient_eligible_prs?
     eligible_pull_requests_count >= 4
