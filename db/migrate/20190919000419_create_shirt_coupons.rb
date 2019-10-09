@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Rails/CreateTableWithTimestamps
 class CreateShirtCoupons < ActiveRecord::Migration[5.2]
   def change
     create_table :shirt_coupons do |t|
@@ -8,3 +9,4 @@ class CreateShirtCoupons < ActiveRecord::Migration[5.2]
     end
   end
 end
+# rubocop:enable Rails/CreateTableWithTimestamps
