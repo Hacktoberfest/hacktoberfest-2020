@@ -107,9 +107,10 @@ class HacktoberfestProjectFetcher
   end
 
   def issue_invalid?(issue)
-    issue.blank? || issue_language_blank?(issue) || repo_description_blank?(
-      issue
-    ) || issue_body_blank?(issue)
+    issue.blank? ||
+      issue_language_blank?(issue) ||
+      repo_description_blank?(issue) ||
+      issue_body_blank?(issue)
   end
 
   def issue_body_blank?(issue)
