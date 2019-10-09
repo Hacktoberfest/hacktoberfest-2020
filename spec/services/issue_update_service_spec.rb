@@ -30,7 +30,24 @@ RSpec.describe IssueUpdateService do
   end
 
   context 'When the issue has an updated state' do
-    xit 'updates the issue state' do
+    let(:issue) { FactoryBot.create(:issue) }
+    it 'updates the issue state' do
+      allow(GithubTokenService).to receive(:random)
+        .and_return('123')
+      api_client = double(:api_client)
+      allow(GithubGraphqlApiClient).to receive(:new)
+        .and_return(api_client)
+      issue_state_fetcher = double(:issue_state_fetcher)
+      allow(IssueStateFetcher).to receive(:new)
+        .with(api_client: api_client)
+        .and_return(issue_state_fetcher)
+
+      allow(issue_state_fetcher).to receive(:fetch!)
+        .and_return('CLOSED')
+
+      IssueUpdateService.call(issue)
+
+      expect(issue.open).to eq(false)
     end
   end
 end
