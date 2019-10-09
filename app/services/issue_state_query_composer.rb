@@ -1,10 +1,27 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/LineLength
 class IssueStateQueryComposer
   def self.compose(owner_name:, repo_name:, issue_number:)
+    query = <<~GRAPHQL
+      query GetIssueState($ownerName: String!,
+                          $repoName: String!,
+                          $issueNumber: Int!) {
+        rateLimit {
+          cost
+          limit
+          remaining
+          resetAt
+          }
+          repository(owner: $ownerName,
+            name: $repoName) {
+              issue(number: $issueNumber) {
+                state
+              }
+          }
+      }'
+    GRAPHQL
     {
-      query: 'query GetIssueState($ownerName: String!, $repoName: String!, $issueNumber: Int!) { rateLimit { cost limit remaining resetAt } repository(owner: $ownerName, name: $repoName) { issue(number: $issueNumber) { state } } }',
+      query: query,
       variables: {
         ownerName: owner_name,
         repoName: repo_name,
@@ -13,4 +30,3 @@ class IssueStateQueryComposer
     }
   end
 end
-# rubocop:enable Metrics/LineLength
