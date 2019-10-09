@@ -52,7 +52,12 @@ Sidekiq.configure_server do |config|
       queue: :default
     )
     # Every hour. 1 hour max latency when updating banned repos in airtable
-    mgr.register('0 * * * *', BanAllReposJob, retry: 3, queue: :default)
+    mgr.register(
+      '0 * * * *',
+      BanAllReposJob,
+      retry: 3,
+      queue: :default
+    )
   end
 
   config.death_handlers << lambda { |job, ex|
