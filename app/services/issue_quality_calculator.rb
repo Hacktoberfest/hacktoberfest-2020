@@ -18,11 +18,7 @@ class IssueQualityCalculator
   )
     # rubocop:enable Metrics/ParameterLists
 
-    @code_of_conduct_score = if is_repository_code_of_conduct_present
-                               1
-                             else
-                               0
-                             end
+    @code_of_conduct_score = is_repository_code_of_conduct_present ? 1 : 0
     @issue_participants = issue_participants
     @issue_timeline_events = issue_timeline_events
     @repository_forks = repository_forks
