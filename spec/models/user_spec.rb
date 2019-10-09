@@ -144,7 +144,7 @@ RSpec.describe User, type: :model do
     context 'the user has 4 eligible PRs and has been waiting for 7 days' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
-        allow(user).to receive(:waiting_since).and_return(Date.today - 8)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
 
         expect(UserStateTransitionSegmentService)
           .to receive(:complete).and_return(true)
@@ -162,14 +162,15 @@ RSpec.describe User, type: :model do
       end
 
       it 'saves a receipt of the scoring prs' do
-        expect(user.receipt).to eq(JSON.parse(user.scoring_pull_requests.to_json))
+        expect(user.receipt)
+          .to eq(JSON.parse(user.scoring_pull_requests.to_json))
       end
     end
 
     context 'the user has 4 eligible PRs but has not been waiting for 7 days' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
-        allow(user).to receive(:waiting_since).and_return(Date.today - 2)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 2)
         expect(UserStateTransitionSegmentService).to_not receive(:call)
 
         user.complete
@@ -185,10 +186,10 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'the user has been waiting for 7 days but has less than 4 eligible prs' do
+    context 'user has been waiting for 7 days & has less than 4 eligible prs' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(3)
-        allow(user).to receive(:waiting_since).and_return(Date.today - 8)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
         expect(UserStateTransitionSegmentService).to_not receive(:call)
 
         user.complete
@@ -207,7 +208,7 @@ RSpec.describe User, type: :model do
     context 'the user neither 4 eligible PRs nor has been waiting for 7 days' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(3)
-        allow(user).to receive(:waiting_since).and_return(Date.today - 2)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 2)
         expect(UserStateTransitionSegmentService).to_not receive(:call)
 
         user.complete

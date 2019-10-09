@@ -1,5 +1,6 @@
-HealthCheck.setup do |config|
+# frozen_string_literal: true
 
+HealthCheck.setup do |config|
   # uri prefix (no leading slash)
   config.uri = 'healthy'
 
@@ -10,37 +11,46 @@ HealthCheck.setup do |config|
   config.smtp_timeout = 30.0
 
   # http status code used when plain text error message is output
-  # Set to 200 if you want your want to distinguish between partial (text does not include success) and
+  # Set to 200 if you want your want to distinguish between partial
+  # (text does not include success) and
   # total failure of rails application (http status of 500 etc)
 
   config.http_status_for_error_text = 500
 
   # http status code used when an error object is output (json or xml)
-  # Set to 200 if you want your want to distinguish between partial (healthy property == false) and
+  # Set to 200 if you want your want to distinguish between partial
+  #  (healthy property == false) and
   # total failure of rails application (http status of 500 etc)
 
   config.http_status_for_error_object = 500
 
-  # bucket names to test connectivity - required only if s3 check used, access permissions can be mixed
+  # bucket names to test connectivity - required only if s3 check used,
+  # access permissions can be mixed
   # config.buckets = {'bucket_name' => [:R, :W, :D]}
 
-  # You can customize which checks happen on a standard health check, eg to set an explicit list use:
-  config.standard_checks = [ 'database', 'sidekiq-redis', 'mem_cache']
+  # You can customize which checks happen on a standard health check,
+  # eg to set an explicit list use:
+  config.standard_checks = %w[database sidekiq-redis mem_cache]
 
   # Or to exclude one check:
   # config.standard_checks -= [ 'emailconf' ]
 
   # You can set what tests are run with the 'full' or 'all' parameter
-  # config.full_checks = ['database', 'migrations', 'custom', 'email', 'cache', 'redis', 'resque-redis', 'sidekiq-redis', 's3']
+  # config.full_checks = ['database', 'migrations', 'custom', 'email', 'cache',
+  #  'redis', 'resque-redis', 'sidekiq-redis', 's3']
 
-  # Add one or more custom checks that return a blank string if ok, or an error message if there is an error
+  # Add one or more custom checks that return a blank string if ok, or an error
+  #  message if there is an error
   # config.add_custom_check do
-  #   CustomHealthCheck.perform_check # any code that returns blank on success and non blank string upon failure
+  #   CustomHealthCheck.perform_check # any code that returns blank on success
+  # and non blank string upon failure
   # end
 
-  # Add another custom check with a name, so you can call just specific custom checks. This can also be run using
+  # Add another custom check with a name, so you can call just specific custom
+  # checks. This can also be run using
   # the standard 'custom' check.
-  # You can define multiple tests under the same name - they will be run one after the other.
+  # You can define multiple tests under the same name - they will be run one
+  # after the other.
   config.add_custom_check('mem_cache') do
     # Success if mem_mache is not being used
     if (mem_cache_url = ENV.fetch('MEM_CACHE_URL', nil))

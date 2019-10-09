@@ -126,17 +126,17 @@ RSpec.describe HacktoberfestProjectFetcher do
         repo_stars = 2
         repo_watchers = 3
         repo_url = "https://github.com/#{repo_name_with_owner}"
-        issue_database_id_1 = 1111
-        issue_database_id_2 = 2222
+        issue_database_id1 = 1111
+        issue_database_id2 = 2222
         issue_number = 13
         issue_participants = 4
         issue_timeline_events = 5
         issue_title = 'Something is broken'
         issue_url = "#{repo_url}/issues/#{issue_number}"
-        has_next_page_1 = true
-        has_next_page_2 = false
-        end_cursor_1 = 'someEndCursorToUse'
-        end_cursor_2 = 'someEndCursorToIgnore'
+        has_next_page1 = true
+        has_next_page2 = false
+        end_cursor1 = 'someEndCursorToUse'
+        end_cursor2 = 'someEndCursorToIgnore'
         first_json_response_body = <<~FIRST_JSON_RESPONSE_BODY
           {
             "data": {
@@ -149,14 +149,14 @@ RSpec.describe HacktoberfestProjectFetcher do
               "search": {
                 "issueCount": 2,
                 "pageInfo": {
-                  "endCursor": "#{end_cursor_1}",
-                  "hasNextPage": #{has_next_page_1}
+                  "endCursor": "#{end_cursor1}",
+                  "hasNextPage": #{has_next_page1}
                 },
                 "edges": [
                   {
                     "node": {
                       "bodyText": "issue body",
-                      "databaseId": #{issue_database_id_1},
+                      "databaseId": #{issue_database_id1},
                       "number": #{issue_number},
                       "title": "#{issue_title}",
                       "url": "#{issue_url}",
@@ -207,14 +207,14 @@ RSpec.describe HacktoberfestProjectFetcher do
               "search": {
                 "issueCount": 2,
                 "pageInfo": {
-                  "endCursor": "#{end_cursor_2}",
-                  "hasNextPage": #{has_next_page_2}
+                  "endCursor": "#{end_cursor2}",
+                  "hasNextPage": #{has_next_page2}
                 },
                 "edges": [
                   {
                     "node": {
                       "bodyText": "issue body",
-                      "databaseId": #{issue_database_id_2},
+                      "databaseId": #{issue_database_id2},
                       "number": #{issue_number},
                       "title": "#{issue_title}",
                       "url": "#{issue_url}",
@@ -257,19 +257,22 @@ RSpec.describe HacktoberfestProjectFetcher do
         second_response = double(:response, body: second_json_response_body)
         client = Hacktoberfest.client
         allow(client).to receive(:post)
-          .with(anything, string_excluding(/#{end_cursor_1}/), anything)
+          .with(anything, string_excluding(/#{end_cursor1}/), anything)
           .and_return(first_response)
         allow(client).to receive(:post)
-          .with(anything, /#{end_cursor_1}/, anything)
+          .with(anything, /#{end_cursor1}/, anything)
           .and_return(second_response)
-        api_client = GithubGraphqlApiClient.new(access_token: '123', client: client)
+        api_client = GithubGraphqlApiClient.new(
+          access_token: '123',
+          client: client
+        )
         fetcher = HacktoberfestProjectFetcher.new(api_client: api_client)
 
         fetcher.fetch!
 
         expect(fetcher.projects).to eq [
           {
-            issue_database_id: issue_database_id_1,
+            issue_database_id: issue_database_id1,
             issue_number: issue_number,
             issue_participants: issue_participants,
             issue_timeline_events: issue_timeline_events,
@@ -287,7 +290,7 @@ RSpec.describe HacktoberfestProjectFetcher do
             repo_watchers: repo_watchers
           },
           {
-            issue_database_id: issue_database_id_2,
+            issue_database_id: issue_database_id2,
             issue_number: issue_number,
             issue_participants: issue_participants,
             issue_timeline_events: issue_timeline_events,
@@ -317,7 +320,8 @@ RSpec.describe HacktoberfestProjectFetcher do
         allow(api_client).to receive(:request).and_return(bad_response_data)
         fetcher = HacktoberfestProjectFetcher.new(api_client: api_client)
 
-        expect { fetcher.fetch! }.to raise_error(HacktoberfestProjectFetcherError)
+        expect { fetcher.fetch! }
+          .to raise_error(HacktoberfestProjectFetcherError)
 
         expect(fetcher.projects.count).to eq 0
       end
@@ -389,7 +393,8 @@ RSpec.describe HacktoberfestProjectFetcher do
           .and_return(good_response_data, bad_response_data)
         fetcher = HacktoberfestProjectFetcher.new(api_client: api_client)
 
-        expect { fetcher.fetch! }.to raise_error(HacktoberfestProjectFetcherError)
+        expect { fetcher.fetch! }
+          .to raise_error(HacktoberfestProjectFetcherError)
 
         expect(fetcher.projects.count).to eq 1
       end
@@ -421,7 +426,8 @@ RSpec.describe HacktoberfestProjectFetcher do
 
         fetcher = HacktoberfestProjectFetcher.new(api_client: api_client)
 
-        expect { fetcher.fetch! }.to raise_error(HacktoberfestProjectFetcherError)
+        expect { fetcher.fetch! }
+          .to raise_error(HacktoberfestProjectFetcherError)
         expect(HacktoberfestProjectFetcherError).to have_received(:new)
           .with(
             expected_error_message,

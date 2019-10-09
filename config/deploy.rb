@@ -1,21 +1,24 @@
-# config valid for current version and patch releases of Capistrano
-lock "~> 3.11.1"
+# frozen_string_literal: true
 
-set :application, "hacktoberfest"
-set :repo_url, "git@github.com:raise-dev/hacktoberfest.git"
+# config valid for current version and patch releases of Capistrano
+lock '~> 3.11.1'
+
+set :application, 'hacktoberfest'
+set :repo_url, 'git@github.com:raise-dev/hacktoberfest.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/deploy/hacktoberfest"
+set :deploy_to, '/home/deploy/hacktoberfest'
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
-# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
+# set :format_options, command_output: true, log_file: "log/capistrano.log",
+# color: :auto, truncate: :auto
 
 # Default value for :pty is false
 # set :pty, true
@@ -24,7 +27,8 @@ set :deploy_to, "/home/deploy/hacktoberfest"
 # append :linked_files, "config/database.yml"
 
 # Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets",
+# "public/system"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -35,13 +39,13 @@ set :deploy_to, "/home/deploy/hacktoberfest"
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-# Uncomment the following to require manually verifying the host key before first deploy.
+# Uncomment the following to require manually verifying the host key before
+# first deploy.
 # set :ssh_options, verify_host_key: :secure
 
 # Options for capistrano-bundler
 # See: https://github.com/capistrano/bundler
 append :linked_dirs, '.bundle', 'tmp/pids', 'tmp/sockets', 'log'
-
 
 # Options for capistrano-rails
 # See: https://github.com/capistrano/rails
@@ -68,7 +72,6 @@ namespace :dotenv do
   # before :check, :setup_dotenv
 end
 
-
 # Shared options for capistrano/puma
 # See: https://github.com/seuros/capistrano-puma
 set :puma_nginx, :app
@@ -81,12 +84,11 @@ set :puma_control_app, false
 # set :puma_workers, 8
 after 'puma:config', 'puma:phased-restart'
 
-
 namespace :nginx do
   %w[restart start stop].map do |command|
     desc "#{command} nginx"
     task command do
-      on roles (fetch(:puma_role)) do
+      on roles fetch(:puma_role) do
         execute :sudo, :service, :nginx, command
       end
     end
@@ -95,11 +97,9 @@ end
 
 after 'puma:nginx_config', 'nginx:restart'
 
-
 # Shared options for capistrano/sidekiq
 # See: https://github.com/seuros/capistrano-sidekiq
 set :sidekiq_roles, :job
 # Worker and thread count options in stage specific config
 # set :sidekiq_processes, 8
 # set :sidekiq_concurrency, 10
-

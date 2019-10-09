@@ -19,36 +19,34 @@ class PagesController < ApplicationController
   end
 
   def events
-    unless all_events.blank?
-      @events = all_events.select(&:published?)
-    end
+    @events = all_events.select(&:published?)
   end
 
-  def event_kit
-  end
+  def event_kit; end
 
-  def report
-  end
+  def start; end
 
-  def api_error
-  end
+  def report; end
+
+  def api_error; end
 
   private
 
   def all_events
-    unless AirrecordTable.new.table('Meetups').all.blank?
-      AirrecordTable.new.table('Meetups').all.map do |e|
-        AirtableEventPresenter.new(e)
-      rescue AirtableEventPresenter::ParseError
-        #Ignore invalid events
-      end.compact
-    end
+    all_meetups = AirrecordTable.new.table('Meetups').all
+    return [] if all_meetups.blank?
+
+    all_meetups.map do |e|
+      AirtableEventPresenter.new(e)
+    rescue AirtableEventPresenter::ParseError
+      # Ignore invalid events
+    end.compact
   end
 
   def front_page_events
     all_events
       .select(&:current?)
       .sample(4)
-      .sort_by { |e| e.date }
+      .sort_by(&:date)
   end
 end

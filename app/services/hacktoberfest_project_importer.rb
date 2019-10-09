@@ -20,7 +20,9 @@ class HacktoberfestProjectImporter
   end
 
   def import_repository(project, language)
-    repository = Repository.find_or_initialize_by(gh_database_id: project[:repo_database_id])
+    repository = Repository.find_or_initialize_by(
+      gh_database_id: project[:repo_database_id]
+    )
     unless repository.persisted?
       repository.code_of_conduct_url = project[:repo_code_of_conduct_url]
       repository.description = project[:repo_description]
@@ -42,7 +44,9 @@ class HacktoberfestProjectImporter
   end
 
   def import_issue(project, repository)
-    issue = Issue.find_or_initialize_by(gh_database_id: project[:issue_database_id])
+    issue = Issue.find_or_initialize_by(
+      gh_database_id: project[:issue_database_id]
+    )
     unless issue.persisted?
       issue = Issue.new
       issue.gh_database_id = project[:issue_database_id]

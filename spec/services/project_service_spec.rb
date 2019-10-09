@@ -39,7 +39,8 @@ RSpec.describe ProjectService do
 
         ProjectService.sample
 
-        expect(Issue).to have_received(:open_issues_with_unique_permitted_repositories)
+        expect(Issue)
+          .to have_received(:open_issues_with_unique_permitted_repositories)
       end
     end
   end

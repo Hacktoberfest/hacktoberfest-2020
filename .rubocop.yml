@@ -8,16 +8,19 @@ AllCops:
     - 'bin/**/*'
     - 'vendor/**/*'
 Metrics/BlockLength:
+  Max: 50
   Enabled: true
   Exclude:
     - 'spec/**/*'
     - 'Guardfile'
 Metrics/MethodLength:
   Max: 35
+Lint/HandleExceptions:
+  AllowComments: true
 Style/PercentLiteralDelimiters:
   Enabled: false
 Metrics/AbcSize:
-    Max: 20
+    Max: 35
 Rails:
   Enabled: true
 Documentation:

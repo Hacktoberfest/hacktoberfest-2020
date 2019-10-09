@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# frozen_string_literal=>true
-
 require 'rails_helper'
 
 describe AirtableEventPresenter do
@@ -39,7 +37,7 @@ describe AirtableEventPresenter do
 
         expect(event_presenter.name).to eq event['Event Name']
         expect(event_presenter.date)
-          .to eq Date.strptime(event['Event Start Date'],'%Y-%m-%d')
+          .to eq Date.strptime(event['Event Start Date'], '%Y-%m-%d')
         expect(event_presenter.state).to eq event['Event State']
         expect(event_presenter.country).to eq event['Event Country']
         expect(event_presenter.location).to include(
@@ -57,7 +55,8 @@ describe AirtableEventPresenter do
       let(:event) { 'test' }
 
       it 'raises a parse error and does not instantiate the presenter' do
-        expect { AirtableEventPresenter.new(event) }.to raise_error(AirtableEventPresenter::ParseError)
+        expect { AirtableEventPresenter.new(event) }
+          .to raise_error(AirtableEventPresenter::ParseError)
       end
     end
 
@@ -76,7 +75,8 @@ describe AirtableEventPresenter do
       end
 
       it 'raises a parse error and does not instantiate the presenter' do
-        expect { AirtableEventPresenter.new(event) }.to raise_error(AirtableEventPresenter::ParseError)
+        expect { AirtableEventPresenter.new(event) }
+          .to raise_error(AirtableEventPresenter::ParseError)
       end
     end
   end

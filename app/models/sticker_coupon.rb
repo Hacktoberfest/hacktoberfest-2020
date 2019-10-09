@@ -7,6 +7,6 @@ class StickerCoupon < ApplicationRecord
   validates_associated :user
 
   def self.first_available
-    where(user_id: nil).first
+    find_by(user_id: nil)
   end
 end

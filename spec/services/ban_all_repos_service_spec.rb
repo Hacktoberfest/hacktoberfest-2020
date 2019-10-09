@@ -8,7 +8,8 @@ RSpec.describe BanAllReposService do
 
     context 'Airtable provides a repo to ban' do
       before do
-        allow(BanAllReposService).to receive(:repo_ids_to_ban).and_return([repo_to_ban.gh_database_id])
+        allow(BanAllReposService).to receive(:repo_ids_to_ban)
+          .and_return([repo_to_ban.gh_database_id])
         BanAllReposService.call
       end
 

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class HacktoberfestProjectFetcher
   NODE_LIMIT = 100
   MAX_RETRIES = ENV.fetch('IMPORT_MAX_RETRIES', 7).to_i
@@ -106,7 +107,10 @@ class HacktoberfestProjectFetcher
   end
 
   def issue_invalid?(issue)
-    issue.blank? || issue_language_blank?(issue) || repo_description_blank?(issue) || issue_body_blank?(issue)
+    issue.blank? ||
+      issue_language_blank?(issue) ||
+      repo_description_blank?(issue) ||
+      issue_body_blank?(issue)
   end
 
   def issue_body_blank?(issue)
@@ -121,3 +125,4 @@ class HacktoberfestProjectFetcher
     issue['repository']['description'].blank?
   end
 end
+# rubocop:enable Metrics/ClassLength
