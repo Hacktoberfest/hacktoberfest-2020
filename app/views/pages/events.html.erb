@@ -1,14 +1,14 @@
 <section class="section">
   <h1 class="title is-1">Events</h1>
 
-<div id="meetups">
+<div id="meetups" class="table-mobile-cards">
   <input name="filter" class="search input" placeholder="Search for events" />
-  
+
   <h2 class="highlight">Showing <span data-js="visible_event_count"> all <%= @events.length %></span> Events</h2>
 
-  <table class="table is-narrow is-narrow is-fullwidth event-table">
-    <thead>
-    <tr>
+  <table class="table is-narrow is-narrow is-fullwidth event-table is-fluid">
+    <thead class="thead-sort">
+    <tr class= "sort-container">
       <th class="sort" data-sort="location">Location</th>
       <th class="sort" data-sort="event_name">Event</th>
       <th class="sort" data-sort="date">Date</th>
@@ -23,26 +23,25 @@
         <% end %>
             <td class="multisort is-hidden">
               <%= e.current? ? 'Future' : 'Past'%>
-              <%= e.country %> 
+              <%= e.country %>
               <%= e.date.strftime("%m %d") %>
             </td>
-            <td class="location"><%= e.location %></td>
-            <td class="event_name">
+            <td class="location" data-label="location"><%= e.location %></td>
+            <td class="event_name" data-label="event">
               <a class="emphasis" href="<%= e.url %>" target="blank" rel="noopener"><%= e.name %></a>
               <br/>
               by <%= e.organizer %>
             </td>
             <td class="date is-hidden"><%= e.date %></td>
-            <td><%= e.date.strftime("%b %e") %></td>
+            <td data-label="date"><%= e.date.strftime("%b %e") %></td>
           </tr>
       <% end %>
-  </table>
+    </table>
   </div>
-
   <p>
     New events will be added throughout Hacktoberfest – please check back soon!
   </p>
-  
+
   <section>
     <br/>
     <br/>
