@@ -11,7 +11,7 @@
         <% scoring_pull_requests.map do |pr| %>
           <tr>
             <td class="icon-block">
-              <% if pr.eligible? && user.completed? %>
+              <% if pr.eligible? && show_congratulations %>
                 <div class="icon-box">
                   <div class="eligible-box">
                     <%= image_tag 'eligible.png' %>
@@ -40,7 +40,7 @@
             <td>
               <div>
                 <div class="timeline-date">
-                  <% if pr.eligible? & user.completed? %>
+                  <% if pr.eligible? && show_congratulations %>
                     <div class="icon-box">
                       <div class="eligible-box">
                         <%= image_tag 'eligible.png' %>
@@ -101,7 +101,7 @@
           <% non_scoring_pull_requests.map do |pr| %>
             <tr>
               <td class="icon-block">
-                <% if pr.eligible? && user.completed? %>
+                <% if pr.eligible? && show_congratulations %>
                   <div class="icon-box">
                     <div class="bonus-box">
                       <%= image_tag 'bonus.png' %>
@@ -130,7 +130,7 @@
               <td>
                 <div>
                   <div class="timeline-date">
-                    <% if pr.eligible? & user.completed? %>
+                    <% if pr.eligible? && show_congratulations %>
                       <div class="icon-box">
                         <div class="bonus-box">
                           <%= image_tag 'bonus.png' %>
