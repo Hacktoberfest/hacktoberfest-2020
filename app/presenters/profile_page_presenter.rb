@@ -47,6 +47,10 @@ class ProfilePagePresenter
     @user.waiting?
   end
 
+  def show_congratulations?
+    @user.won_shirt? || @user.won_sticker? || @user.completed?
+  end
+
   def code
     if coupon = @user.shirt_coupon
       coupon.code

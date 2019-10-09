@@ -14,10 +14,19 @@ $red: hsl(320, 100%, 50%);
   margin: 0 auto;
 
   .congratulations-txt {
-    padding-left: 40px;
-    padding-top: 20px;
+    padding: 1.25rem;
     text-align: left;
     max-width: 60%;
+
+    @media screen and (max-width: $break-small - 1) {
+      max-width: 100%;
+
+      // This font size decrease was made to fit the "Congradulations!" word on
+      // one line on common mobile screen sizes
+      .thanks-text{
+        font-size: 2rem;
+      }
+    }
   }
 
   .code-button {
@@ -251,7 +260,7 @@ $red: hsl(320, 100%, 50%);
   }
 
   .hacktoberfest-results-box {
-    background-image: url('bg-right.png');
+    background-image: asset-url('bg-right.png');
     background-color: #223257;
     background-position: bottom center;
     background-size: cover;
@@ -338,10 +347,10 @@ $red: hsl(320, 100%, 50%);
 }
 
 .winning-msg-cont {
-  margin: 1.25em;
+  margin: 1.25rem;
 
   @media screen and (max-width: $break-small) {
-    margin: 0;
+    margin: 1.25rem 0px 0px 0px;
   }
 
   span.title {
