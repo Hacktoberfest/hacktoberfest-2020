@@ -198,9 +198,9 @@ $red: hsl(320, 100%, 50%);
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        margin-top: 15px;
 
         @media screen and (max-width: $break-small) {
+          margin-top: 15px;
           justify-content: center;
         }
       }
@@ -213,8 +213,6 @@ $red: hsl(320, 100%, 50%);
       }
 
       .level-right {
-        margin-bottom: 15px;
-
         .icon-box {
           margin: 6px 20px 4px -8px;
           padding: 0;
