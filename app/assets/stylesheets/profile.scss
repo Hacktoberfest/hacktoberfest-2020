@@ -347,10 +347,10 @@ $red: hsl(320, 100%, 50%);
 }
 
 .winning-msg-cont {
-  margin: 1.25em;
+  margin: 1.25rem;
 
   @media screen and (max-width: $break-small) {
-    margin: 0;
+    margin: 1.25rem 0px 0px 0px;
   }
 
   span.title {
