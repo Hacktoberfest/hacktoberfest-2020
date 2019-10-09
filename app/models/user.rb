@@ -87,7 +87,7 @@ class User < ApplicationRecord
       UserStateTransitionSegmentService.call(user, transition)
     end
 
-    before_transition to: :completed do |user, _transition|
+    after_transition to: :completed do |user, _transition|
       user.receipt = user.scoring_pull_requests
     end
 
