@@ -68,8 +68,11 @@ $navColor: rgba(0, 0, 0, 0);
 
   ul.navbar-end {
     @media screen and (max-width: $break-small) {
-      margin-top: 20px;
+      margin: 20px 0 0;
+      flex-direction: column;
+      align-items: center;
     }
+
     li {
       margin-bottom: 10px;
       text-align: center;
@@ -108,6 +111,7 @@ $navColor: rgba(0, 0, 0, 0);
           display: flex;
           flex-direction: column;
           position: relative;
+          top: 0;
           padding-top: 0;
         }
 
