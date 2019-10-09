@@ -260,7 +260,7 @@ $red: hsl(320, 100%, 50%);
   }
 
   .hacktoberfest-results-box {
-    background-image: url('bg-right.png');
+    background-image: asset-url('bg-right.png');
     background-color: #223257;
     background-position: bottom center;
     background-size: cover;
