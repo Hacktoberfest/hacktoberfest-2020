@@ -2,8 +2,8 @@
 
 # rubocop:disable Metrics/ClassLength
 class User < ApplicationRecord
-  has_one :sticker_coupon, dependent: :nullify
-  has_one :shirt_coupon, dependent: :nullify
+  has_one :sticker_coupon, dependent: :restrict_with_exception
+  has_one :shirt_coupon, dependent: :restrict_with_exception
 
   validate :only_one_coupon
 
