@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/LineLength, Metrics/BlockLength, Layout/MultilineHashBraceLayout, Metrics/ClassLength
+# rubocop:disable Metrics/ClassLength
 class User < ApplicationRecord
   has_one :sticker_coupon, dependent: :nullify
   has_one :shirt_coupon, dependent: :nullify
 
   validate :only_one_coupon
 
+  # rubocop:disable Metrics/BlockLength, Layout/MultilineHashBraceLayout
   state_machine initial: :new do
     event :register do
       transition new: :registered
@@ -92,6 +93,7 @@ class User < ApplicationRecord
 
     after_transition to: :waiting, do: :update_waiting_since
   end
+  # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
   def pull_requests
     pull_request_service.all
@@ -154,4 +156,4 @@ class User < ApplicationRecord
     @coupon_service ||= CouponService.new(self)
   end
 end
-# rubocop:enable  Metrics/LineLength, Metrics/BlockLength, Layout/MultilineHashBraceLayout, Metrics/ClassLength
+# rubocop:enable Metrics/ClassLength
