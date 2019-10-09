@@ -8,7 +8,6 @@ if (redis_url = ENV.fetch('HACKTOBERFEST_REDIS_URL', nil))
   redis_config = {
     url: redis_url,
     password: ENV.fetch('HACKTOBERFEST_REDIS_PASSWORD', nil)
-    # namespace: #Consider using a namespace to separate sidekiq fro app cache
   }
 end
 
