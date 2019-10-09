@@ -27,6 +27,7 @@ RSpec.describe IssueQualityUpdater do
           participants: 3,
           timeline_events: 4
         )
+        repo_coc_present = repository.code_of_conduct_url.present?
         issue_1_quality = 1
         issue_2_quality = 9000
         issue_quality_calculator = instance_double(IssueQualityCalculator.to_s)
@@ -41,8 +42,7 @@ RSpec.describe IssueQualityUpdater do
 
         expect(issue_quality_calculator).to have_received(:set_features)
           .with(
-            is_repository_code_of_conduct_present: repository
-            .code_of_conduct_url.present?,
+            is_repository_code_of_conduct_present: repo_coc_present,
             issue_participants: issue1.participants,
             issue_timeline_events: issue1.timeline_events,
             repository_forks: repository.forks,
@@ -51,8 +51,7 @@ RSpec.describe IssueQualityUpdater do
           ).ordered
         expect(issue_quality_calculator).to have_received(:set_features)
           .with(
-            is_repository_code_of_conduct_present: repository
-            .code_of_conduct_url.present?,
+            is_repository_code_of_conduct_present: repo_coc_present,
             issue_participants: issue2.participants,
             issue_timeline_events: issue2.timeline_events,
             repository_forks: repository.forks,
