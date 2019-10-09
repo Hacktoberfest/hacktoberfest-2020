@@ -14,10 +14,19 @@ $red: hsl(320, 100%, 50%);
   margin: 0 auto;
 
   .congratulations-txt {
-    padding-left: 40px;
-    padding-top: 20px;
+    padding: 1.25rem;
     text-align: left;
     max-width: 60%;
+
+    @media screen and (max-width: $break-small - 1) {
+      max-width: 100%;
+
+      // This font size decrease was made to fit the "Congradulations!" word on
+      // one line on common mobile screen sizes
+      .thanks-text{
+        font-size: 2rem;
+      }
+    }
   }
 
   .code-button {
