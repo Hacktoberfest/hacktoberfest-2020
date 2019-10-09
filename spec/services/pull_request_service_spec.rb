@@ -6,6 +6,8 @@ RSpec.describe PullRequestService do
   let(:user) { FactoryBot.create(:user) }
   let(:pr_service) { PullRequestService.new(user) }
 
+  before { allow(SpamRepositoryService).to receive(:call).and_return(false) }
+
   describe '.new' do
     context 'valid arguments' do
       it 'returns a UserScoreBoard' do
