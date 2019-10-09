@@ -10,7 +10,7 @@ RSpec.describe HacktoberfestProjectQueryComposer do
         graphql_json_query_without_pagination = {
           query: HacktoberfestProjectQueryComposer::PROJECT_IMPORT_QUERY,
           variables: {
-            queryString: 'state:open label:hacktoberfest',
+            queryString: 'state:open label:hacktoberfest no:assignee',
             first: results_per_page
           }
         }
@@ -31,7 +31,7 @@ RSpec.describe HacktoberfestProjectQueryComposer do
         graphql_json_query_with_pagination = {
           query: HacktoberfestProjectQueryComposer::PROJECT_IMPORT_QUERY,
           variables: {
-            queryString: 'state:open label:hacktoberfest',
+            queryString: 'state:open label:hacktoberfest no:assignee',
             first: results_per_page,
             after: cursor
           }
