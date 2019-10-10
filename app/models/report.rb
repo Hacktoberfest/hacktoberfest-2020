@@ -10,8 +10,14 @@ class Report
 
   validates :url, format: { with: GITHUB_REPO_URL_REGEX }
 
+  def github_repo_identifier
+    url.match(GITHUB_REPO_URL_REGEX)[1]
+  end
+
   def save
     return false unless valid?
+
+    ReportSpamService.new(self).report
 
     true
   end

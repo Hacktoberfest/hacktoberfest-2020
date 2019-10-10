@@ -3,15 +3,13 @@
 class ReportSpamService
   NAME_WITH_OWNER_REGEX = /github.com\/([\w.-]+\/[\w.-]+)/
 
-  def initialize(url)
-    @url = url.strip
+  def initialize(report)
+    @report = report
   end
 
   def report
-    return unless valid?
-
     begin
-      if (repository = github_client.repository(name_with_owner))
+      if (repository = github_client.repository(@report.github_repo_identifier))
         return if SpamRepositoryService.call(repository.id)
 
         # mark it as spam
@@ -25,23 +23,9 @@ class ReportSpamService
 
   private
 
-  def name_with_owner
-    if name_with_owner_matches
-      name_with_owner_matches[1]
-    else
-      nil
-    end
-  end
-
-  def name_with_owner_matches
-    @name_with_owner_matches ||= @url.match(NAME_WITH_OWNER_REGEX)
-  end
-
-  def valid?
-    name_with_owner.present?
-  end
-
   def github_client
-    @github_client ||= Octokit::Client.new(access_token: GithubTokenService.random)
+    @github_client ||= Octokit::Client.new(
+      access_token: GithubTokenService.random
+    )
   end
 end
