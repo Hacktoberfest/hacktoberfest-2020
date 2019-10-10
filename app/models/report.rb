@@ -15,4 +15,10 @@ class Report
 
   validates :url, format: { with: GITHUB_REPO_URL_REGEX,
                             message: INVALID_URL_MESSAGE }
+
+  def save
+    return false unless valid?
+
+    true
+  end
 end
