@@ -130,7 +130,7 @@ class User < ApplicationRecord
   def waiting_for_week?
     return false if waiting_since.nil?
 
-    waiting_since < (Time.zone.now - 7.days)
+    waiting_since <= (Time.zone.now - 7.days)
   end
 
   delegate :assign_coupon, to: :coupon_service
