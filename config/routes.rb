@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   get '/thanks', to: 'pages#thanks'
   get '/api-error', to: 'pages#api_error'
   get '/languages/projects(/:language_id)', to: 'languages#projects'
-  resources :reports, only: [:new, :create]
+  get '/report', to: 'reports#new', as: :report_form
+  post '/report', to: 'reports#create'
 
   # Sidekiq
   if Rails.env.production?
