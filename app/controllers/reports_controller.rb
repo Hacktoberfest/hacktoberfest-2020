@@ -1,7 +1,16 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
-  def new; end
+  def new
+    @report = Report.new
+  end
 
   def create
-    ReportSpamService.new(params['repository']['url']).report
+    @report = Report.new(params.require(:report))
+    if @report.save
+      render :create
+    else
+      render :new
+    end
   end
 end
