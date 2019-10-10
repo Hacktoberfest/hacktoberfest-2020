@@ -3,4 +3,5 @@
 tap 'github/bootstrap'
 
 brew 'rbenv'
+brew 'redis'
 brew 'terminal-notifier'
