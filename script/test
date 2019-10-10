@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# script/test: Run test suite for application. Optionally pass in a path to an
+#              individual test file to run a single test.
+
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+[ -z "$DEBUG" ] || set -x
+
+export RAILS_ENV="test" RACK_ENV="test"
+
+script/update
+
+echo "==> Running tests…"
+
+bundle exec rspec
+bundle exec rubocop
