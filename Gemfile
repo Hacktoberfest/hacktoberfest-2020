@@ -1,11 +1,11 @@
+
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.5'
 
-gem 'dotenv-rails', require: 'dotenv/rails-now',  group: [:development, :test]
 
 gem 'airbrake', '~> 9.4'
-
 gem 'airrecord'
 
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -36,15 +36,17 @@ gem 'puma', '~> 4.0'
 gem 'rails', '~> 5.2.3'
 
 gem 'sass-rails', '~> 5.0'
+
 gem 'sidekiq', '< 6.0'
 
-source "https://enterprise.contribsys.com/" do
-  gem 'sidekiq-pro'
-  gem 'sidekiq-ent'
+install_if -> { require 'dotenv'; Dotenv.load['BUNDLE_ENTERPRISE__CONTRIBSYS__COM'] } do
+  source "https://enterprise.contribsys.com/" do
+    gem 'sidekiq-pro'
+    gem 'sidekiq-ent'
+  end
 end
 
 gem 'state_machines'
-
 gem 'state_machines-activerecord'
 
 gem 'pg'
@@ -59,6 +61,8 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'dotenv-rails'
 
   gem 'factory_bot_rails'
 
