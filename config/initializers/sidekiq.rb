@@ -4,12 +4,14 @@
 # See: https://github.com/mperham/sidekiq
 
 # Redis config shared between client and server
+# rubocop:disable Style/MutableConstant
 if (redis_url = ENV.fetch('HACKTOBERFEST_REDIS_URL', nil))
-  redis_config = {
+  REDIS_CONFIG = {
     url: redis_url,
     password: ENV.fetch('HACKTOBERFEST_REDIS_PASSWORD', nil)
   }
 end
+# rubocop:enable Style/MutableConstant
 
 # Custom Error message reporting a job death to airbrake
 module Sidekiq
@@ -26,7 +28,7 @@ module Sidekiq
 end
 
 Sidekiq.configure_server do |config|
-  config.redis = redis_config if defined?(redis_config)
+  config.redis = REDIS_CONFIG if defined?(REDIS_CONFIG)
 
   # https://github.com/mperham/sidekiq/wiki/Reliability#using-super_fetch
   config.super_fetch!
@@ -68,5 +70,5 @@ Sidekiq.configure_server do |config|
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = redis_config if defined?(redis_config)
+  config.redis = REDIS_CONFIG if defined?(REDIS_CONFIG)
 end
