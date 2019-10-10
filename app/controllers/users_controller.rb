@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   # render current user profile
   def show
+    binding.pry
     TryUserTransitionService.call(@current_user)
     @presenter = ProfilePagePresenter.new(@current_user)
   end
