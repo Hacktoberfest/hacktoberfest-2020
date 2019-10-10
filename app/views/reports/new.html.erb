@@ -6,7 +6,7 @@
   <div class="form-inner">
     <p class="form-label">Repository url</p><p class="star">*  </p>
     <br>
-    <%= form_for :repository, url: reports_path, method: :post do |f| %>
+    <%= form_for @report do |f| %>
       <%= f.text_field :url, class: "search input", placeholder: 'https://github.com/owner/repo' %>
     <%= f.submit "Submit", class: "button button-small" %>
   <% end %>
