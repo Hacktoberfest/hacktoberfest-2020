@@ -6,8 +6,16 @@
   <div class="form-inner">
     <p class="form-label">Repository url</p><p class="star">*  </p>
     <br>
-    <%= form_for @report do |f| %>
-      <%= f.text_field :url, class: "search input", placeholder: 'https://github.com/owner/repo' %>
+    <%= form_for @report, url: {action: :create} do |f| %>
+      <% if @report.errors.messages[:url].present? %>
+        <p class="error">
+          The GitHub repository url is invalid. Please include the full url of
+          the repository including the name and owners. Example:
+          "https://github.com/user/repository"
+        </p>
+      <% end %>
+      <%= f.text_field :url, class: "search input",
+                       placeholder: 'https://github.com/owner/repo' %>
     <%= f.submit "Submit", class: "button button-small" %>
   <% end %>
   </div>
