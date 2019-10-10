@@ -18,7 +18,7 @@ class Report
   def save
     return false unless valid?
 
-    ReportSpamService.new(self).report
+    ReportAirtableUpdaterService.call(self)
 
     true
   end

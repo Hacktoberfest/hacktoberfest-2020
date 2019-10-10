@@ -13,7 +13,7 @@ describe ReportAirtableUpdaterService do
       let(:report) { Report.new(url: 'https://www.example.com/owner/repo') }
 
       it 'does not write to airtable', :vcr do
-        ReportAirtableUpdaterService.new(report).report
+        ReportAirtableUpdaterService.call(report)
         expect(a_request(:post, AIRTABLE_URI_REGEX)).to_not have_been_made
       end
     end
@@ -27,7 +27,7 @@ describe ReportAirtableUpdaterService do
         before do
           allow(SpamRepositoryService)
             .to receive(:call).with(any_args).and_return(true)
-          ReportAirtableUpdaterService.new(report).report
+          ReportAirtableUpdaterService.call(report)
         end
 
         it 'does not write to airtable', :vcr do
@@ -39,7 +39,7 @@ describe ReportAirtableUpdaterService do
         before do
           allow(SpamRepositoryService)
             .to receive(:call).with(any_args).and_return(false)
-          ReportAirtableUpdaterService.new(report).report
+          ReportAirtableUpdaterService.call(report)
         end
 
         it 'writes to airtable' , :vcr do

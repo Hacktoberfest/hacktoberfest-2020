@@ -1,31 +1,21 @@
 # frozen_string_literal: true
 
-class ReportAirtableUpdaterService
-  NAME_WITH_OWNER_REGEX = /github.com\/([\w.-]+\/[\w.-]+)/
+module ReportAirtableUpdaterService
+  module_function
 
-  def initialize(report)
-    @report = report
-  end
+  def call(report)
+    if (repository = github_client.repository(report.github_repo_identifier))
+      return if SpamRepositoryService.call(repository.id)
 
-  def report
-    begin
-      if (repository = github_client.repository(@report.github_repo_identifier))
-        return if SpamRepositoryService.call(repository.id)
-
-        # mark it as spam
-        new_record =  { "Repo ID": repository.id.to_s, "Repo Link": @url }
-        AirrecordTable.new.table("Spam Repos").create(new_record)
-      end
-    rescue Octokit::NotFound, Octokit::InvalidRepository
-      # do nothing
+      # mark it as spam
+      new_record =  { "Repo ID": repository.id.to_s, "Repo Link": report.url }
+      AirrecordTable.new.table("Spam Repos").create(new_record)
     end
+  rescue Octokit::NotFound, Octokit::InvalidRepository
+    # do nothing
   end
-
-  private
 
   def github_client
-    @github_client ||= Octokit::Client.new(
-      access_token: GithubTokenService.random
-    )
+    Octokit::Client.new(access_token: GithubTokenService.random)
   end
 end
