@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report = Report.new(params.require(:report))
+    @report = Report.new(params.require(:report).permit(:url))
     if @report.save
       render :create
     else
