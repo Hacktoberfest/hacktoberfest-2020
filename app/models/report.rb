@@ -11,7 +11,8 @@ class Report
   validates :url, format: { with: GITHUB_REPO_URL_REGEX }
 
   def github_repo_identifier
-    url.match(GITHUB_REPO_URL_REGEX)[1]
+    match_data = url.match(GITHUB_REPO_URL_REGEX)
+    match_data[1] if match_data.present?
   end
 
   def save
