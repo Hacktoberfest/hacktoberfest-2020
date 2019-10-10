@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ReportSpamService
+class ReportAirtableUpdaterService
   NAME_WITH_OWNER_REGEX = /github.com\/([\w.-]+\/[\w.-]+)/
 
   def initialize(report)
