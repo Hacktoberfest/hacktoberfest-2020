@@ -3,6 +3,5 @@ class ReportsController < ApplicationController
 
   def create
     ReportSpamService.new(params['repository']['url']).report
-    render 'pages/report_thanks'
   end
 end
