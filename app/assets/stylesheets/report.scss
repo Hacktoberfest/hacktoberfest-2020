@@ -1,0 +1,26 @@
+.section.report-form{
+  text-align: left;
+
+  .error{
+    margin-bottom: 20px;
+  }
+
+  .field-body{
+    align-items: center;
+  }
+
+  .field-label{
+    text-align: left;
+  }
+
+  input.input{
+    margin-top: 0px;
+  }
+}
+
+.report-thank-you{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
