@@ -37,4 +37,12 @@ class AirrecordTable
       at.client.connection = faraday_connection
     end
   end
+
+  def airtable_key_present?
+    @api_key.present?
+  end
+
+  def self.log_airbrake_warning
+    Rails.logger.warn '===> No AIRTABLE ENV keys are set, returning empty array'
+  end
 end
