@@ -56,6 +56,6 @@ class ApplicationController < ActionController::Base
   end
 
   def github_unauthorized_error
-    render 'pages/github_unauthorized_error', status: 401
+    render 'pages/github_unauthorized_error', status: :unauthorized
   end
 end
