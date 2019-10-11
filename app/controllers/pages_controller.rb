@@ -2,7 +2,6 @@
 
 class PagesController < ApplicationController
   before_action :disallow_registered_user!, only: :start
-  before_action :require_user_logged_in!, only: :report
 
   def index
     @events = front_page_events
