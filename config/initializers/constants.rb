@@ -15,6 +15,10 @@ module Hacktoberfest
     @pull_request_maturation_days ||= ENV.fetch('MATURATION_DAYS', 7).to_i.days
   end
 
+  def airtable_key_present?
+    AirrecordTable.new.airtable_key_present?
+  end
+
   def pre_launch?
     Time.zone.today < start_date
   end
