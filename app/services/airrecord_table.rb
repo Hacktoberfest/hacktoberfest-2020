@@ -45,7 +45,10 @@ class AirrecordTable
         PlaceholderEventsService.call
       elsif table_name == 'FAQ' do
         PlaceholderFaqService.call
+      else
+        []
       end
+    end
   end
 
   def airtable_key_present?
