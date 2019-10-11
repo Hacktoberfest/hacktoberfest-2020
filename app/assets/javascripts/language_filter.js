@@ -32,6 +32,9 @@ window.setupLanguageFilter = function () {
     }
   }
 
+  // Deal with browsers remembering last state of select
+  change();
+
   // Detect the select change event
   $id.change(change);
 
