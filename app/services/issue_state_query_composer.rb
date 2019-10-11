@@ -19,7 +19,7 @@ module IssueStateQueryComposer
               state
             }
         }
-    }'
+    }
   GRAPHQL
 
   def compose(owner_name:, repo_name:, issue_number:)
