@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe ReportAirtableUpdaterService do
-  AIRTABLE_URI_REGEX = /https:\/\/api\.airtable\.com\/v0\/.*\/Spam%20Repos/
+  AIRTABLE_URI_REGEX = %r{https://api\.airtable\.com/v0/.*/Spam%20Repos}.freeze
 
   describe '.call' do
     # Needed to create an access token
@@ -42,7 +42,7 @@ describe ReportAirtableUpdaterService do
           ReportAirtableUpdaterService.call(report)
         end
 
-        it 'writes to airtable' , :vcr do
+        it 'writes to airtable', :vcr do
           expect(a_request(:post, AIRTABLE_URI_REGEX)).to have_been_made
         end
       end

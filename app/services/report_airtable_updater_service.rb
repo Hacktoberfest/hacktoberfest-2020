@@ -8,8 +8,8 @@ module ReportAirtableUpdaterService
       return if SpamRepositoryService.call(repository.id)
 
       # mark it as spam
-      new_record =  { "Repo ID": repository.id.to_s, "Repo Link": report.url }
-      AirrecordTable.new.table("Spam Repos").create(new_record)
+      new_record = { "Repo ID": repository.id.to_s, "Repo Link": report.url }
+      AirrecordTable.new.table('Spam Repos').create(new_record)
     end
   rescue Octokit::NotFound, Octokit::InvalidRepository
     # do nothing
