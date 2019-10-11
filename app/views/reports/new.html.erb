@@ -1,0 +1,33 @@
+<div class="section report-form">
+  <h1 class="title is-1">Report a repository</h1>
+  <br>
+  <h3>Thank you for helping Hacktoberfest 2019 reduce spam!</h3>
+  <br>
+  <div class="form-inner">
+    <% if @report.errors.messages[:url].present? %>
+      <div class="error">
+        The GitHub repository url is invalid. Please include the full url of
+        the repository including the user or organization name. Example:
+        <code>https://github.com/owner/repository</code>
+      </div>
+    <% end %>
+    <%= form_for @report, url: {action: :create} do |f| %>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="form-label highlight" for="report_url">Repository url<span class="star">*</span></label>
+        </div>
+        <div class="field-body">
+          <div class="field is-expanded">
+            <div class="control is-expanded">
+              <%= f.text_field :url, class: "input",
+                   placeholder: 'https://github.com/owner/repo' %>
+            </div>
+          </div>
+          <div class="control">
+            <%= f.submit "Submit", class: "button button-small" %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  </div>
+</div>
