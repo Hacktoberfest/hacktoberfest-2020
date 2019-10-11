@@ -16,7 +16,7 @@ module Hacktoberfest
   end
 
   def airtable_key_present?
-    AirrecordTable.new.airtable_key_present?
+    ENV.fetch('AIRTABLE_API_KEY').present?
   end
 
   def sidekiq_enterprise_available?
