@@ -11,13 +11,9 @@ module BanAllReposService
   end
 
   def repo_ids_to_ban
-    if AirrecordTable.new.airtable_key_present?
-      repos = AirrecordTable.new.table('Spam Repos')
-      repos.all.map do |repo|
-        repo.fields['Repo ID']&.to_i if repo.fields['Verified?']
-      end.compact
-    else
-      AirrecordTable.log_airbrake_warning
-      []
+    repos = AirrecordTable.new.table('Spam Repos')
+    repos.all.map do |repo|
+      repo.fields['Repo ID']&.to_i if repo.fields['Verified?']
+    end.compact
   end
 end
