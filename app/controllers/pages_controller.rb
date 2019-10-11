@@ -12,10 +12,10 @@ class PagesController < ApplicationController
 
   def faqs
     faq =  AirrecordTable.new.all_records('FAQ')
-    @faqs_rules = faq.select { |q| q.fields['Category'] == 'Rules' }
-    @faqs_general = faq.select { |q| q.fields['Category'] == 'General' }
-    @faqs_events = faq.select { |q| q.fields['Category'] == 'Events' }
-    @faqs_shipping = faq.select { |q| q.fields['Category'] == 'Shipping' }
+    @faqs_rules = faq.select { |q| q['Category'] == 'Rules' }
+    @faqs_general = faq.select { |q| q['Category'] == 'General' }
+    @faqs_events = faq.select { |q| q['Category'] == 'Events' }
+    @faqs_shipping = faq.select { |q| q['Category'] == 'Shipping' }
   end
 
   def events

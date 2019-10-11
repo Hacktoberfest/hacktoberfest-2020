@@ -40,16 +40,6 @@ module PlaceholderFaqService
        'Category' => 'Events' },
      { 'Question' => 'How do I return or exchange an item?',
        'Answer' =>
-         "If you believe your order was shipped incorrectly, contact us with
-         the order number from the email subject line,
-         plus an explanation of the incorrect item you received.
-         Otherwise, if it’s still within 30 days of the original purchase,
-         follow the instructions at
-         [kotisdesign.com/returns](https://kotisdesign.com/returns).
-         You will be responsible for shipping the item back to us.",
-       'Category' => 'Shipping' },
-     { 'Question' => 'How do I change my T-shirt size?',
-       'Answer' =>
          "Please email [Hacktoberfest@DigitalOcean.com]
          (mailto:hacktoberfest@digitalocean.com)
          within two days of placing your order.
@@ -72,6 +62,7 @@ module PlaceholderFaqService
          "No, they will still count unless they are spam,
          irrelevant, or labeled as
          **invalid**.",
-       'Category' => 'Rules' }]
+       'Category' => 'Rules' }
+    ]
   end
 end
