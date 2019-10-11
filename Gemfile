@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby '2.5.5'
+ruby File.read(File.expand_path("../.ruby-version", __FILE__)).chomp
 
 gem 'airbrake', '~> 9.4'
 gem 'airrecord'
