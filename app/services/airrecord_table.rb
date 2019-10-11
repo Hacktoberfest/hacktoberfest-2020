@@ -4,8 +4,8 @@ class AirrecordTable
   attr_accessor :api_key, :app_id
 
   def initialize
-    @api_key = ENV['AIRTABLE_API_KEY']
-    @app_id = ENV['AIRTABLE_APP_ID']
+    @api_key = ENV.fetch('AIRTABLE_API_KEY')
+    @app_id = ENV.fetch('AIRTABLE_APP_ID')
   end
 
   def faraday_connection
@@ -32,27 +32,15 @@ class AirrecordTable
     end
   end
 
-
-
   def all_records(table_name)
-    if airtable_key_present?
+    if Hacktoberfest.airtable_key_present?
       Airrecord.table(api_key, app_id, table_name).tap do |at|
         at.client.connection = faraday_connection
       end.all
     else
       log_airbrake_warning
-      if table_name == 'Meetups' do
-        PlaceholderEventsService.call
-      elsif table_name == 'FAQ' do
-        PlaceholderFaqService.call
-      else
-        []
-      end
+      AirtablePlaceholderService.call(table_name)
     end
-  end
-
-  def airtable_key_present?
-    @api_key.present?
   end
 
   def log_airtable_warning
