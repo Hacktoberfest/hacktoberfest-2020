@@ -19,6 +19,10 @@ module Hacktoberfest
     AirrecordTable.new.airtable_key_present?
   end
 
+  def sidekiq_enterprise_available?
+    ENV.fetch('BUNDLE_ENTERPRISE__CONTRIBSYS__COM').present?
+  end
+
   def pre_launch?
     Time.zone.today < start_date
   end
