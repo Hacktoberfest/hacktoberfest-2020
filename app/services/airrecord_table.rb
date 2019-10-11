@@ -38,7 +38,7 @@ class AirrecordTable
         at.client.connection = faraday_connection
       end.all
     else
-      log_airbrake_warning
+      log_airtable_warning
       AirtablePlaceholderService.call(table_name)
     end
   end
