@@ -11,6 +11,7 @@ script/bootstrap
 
 echo "==> Setting up DB…"
 # reset database to a fresh state.
-bin/rake db:create db:reset
+bundle exec rake db:create
+bundle exec rake db:reset
 
 echo "==> Hacktoberfest is now ready to go!"
