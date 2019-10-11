@@ -4,10 +4,6 @@ class PagesController < ApplicationController
   before_action :disallow_registered_user!, only: :start
   before_action :require_user_logged_in!, only: :report
 
-  def airtable_key_present?
-    AirrecordTable.new.airtable_key_present?
-  end
-
   def index
     @events = front_page_events
     @projects = ProjectService.sample(9)
@@ -15,13 +11,7 @@ class PagesController < ApplicationController
   end
 
   def faqs
-    faq =
-      if airtable_key_present?
-        AirrecordTable.new.table('FAQ')
-      else
-        AirrecordTable.log_airbrake_warning
-        []
-      end
+    faq =  AirrecordTable.new.all_records('FAQ')
     @faqs_rules = faq.select { |q| q.fields['Category'] == 'Rules' }
     @faqs_general = faq.select { |q| q.fields['Category'] == 'General' }
     @faqs_events = faq.select { |q| q.fields['Category'] == 'Events' }
@@ -44,17 +34,13 @@ class PagesController < ApplicationController
   private
 
   def all_events
-    if airtable_key_present?
-      unless AirrecordTable.new.table('Meetups').all.blank?
-        AirrecordTable.new.table('Meetups').all.map do |e|
-          AirtableEventPresenter.new(e)
-        rescue AirtableEventPresenter::ParseError
-          #Ignore invalid events
-        end.compact
-      end
-    else
-      AirrecordTable.log_airbrake_warning
-      []
+    airtable = AirrecordTable.new
+    unless airtable.all_records('Meetups').blank?
+      airtable.all_records('Meetups').map do |e|
+        AirtableEventPresenter.new(e)
+      rescue AirtableEventPresenter::ParseError
+        #Ignore invalid events
+      end.compact
     end
   end
 
