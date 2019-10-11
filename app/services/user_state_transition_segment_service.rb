@@ -2,6 +2,7 @@
 
 # This class relays the appropiate data to Segment for specific
 # user state transitions.
+# rubocop:disable Metrics/CyclomaticComplexity
 module UserStateTransitionSegmentService
   module_function
 
@@ -63,3 +64,4 @@ module UserStateTransitionSegmentService
     SegmentService.new(user)
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity

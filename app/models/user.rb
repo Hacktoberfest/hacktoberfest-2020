@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class User < ApplicationRecord
-  has_one :sticker_coupon
-  has_one :shirt_coupon
+  has_one :sticker_coupon, dependent: :restrict_with_exception
+  has_one :shirt_coupon, dependent: :restrict_with_exception
 
   validate :only_one_coupon
 
@@ -21,8 +22,8 @@ class User < ApplicationRecord
     end
 
     event :won do
-      transition completed: :won_shirt, if: -> (user) { user.shirt_coupon }
-      transition completed: :won_sticker, if: -> (user) { user.sticker_coupon }
+      transition completed: :won_shirt, if: ->(user) { user.shirt_coupon }
+      transition completed: :won_sticker, if: ->(user) { user.sticker_coupon }
     end
 
     event :incomplete do
@@ -31,13 +32,13 @@ class User < ApplicationRecord
 
     event :ineligible do
       transition waiting: :registered,
-        unless: -> (user) { user.sufficient_eligible_prs? }
+                 unless: ->(user) { user.sufficient_eligible_prs? }
     end
 
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
-      validates_inclusion_of :email, in: :github_emails
+      validates :email, inclusion: { in: :github_emails }
     end
 
     state all - [:won_shirt] do
@@ -86,7 +87,7 @@ class User < ApplicationRecord
       UserStateTransitionSegmentService.call(user, transition)
     end
 
-    before_transition to: :completed do |user, _transition|
+    after_transition to: :completed do |user, _transition|
       user.receipt = user.scoring_pull_requests
     end
 
@@ -107,13 +108,8 @@ class User < ApplicationRecord
     pull_request_service.eligible_prs.count
   end
 
-  def scoring_pull_requests
-    pull_request_service.scoring_pull_requests
-  end
-
-  def non_scoring_pull_requests
-    pull_request_service.non_scoring_pull_requests
-  end
+  delegate :scoring_pull_requests, :non_scoring_pull_requests,
+           to: :pull_request_service
 
   def sufficient_eligible_prs?
     eligible_pull_requests_count >= 4
@@ -133,12 +129,11 @@ class User < ApplicationRecord
 
   def waiting_for_week?
     return false if waiting_since.nil?
-    waiting_since < (Time.now - 7.days)
+
+    waiting_since <= (Time.zone.now - 7.days)
   end
 
-  def assign_coupon
-    coupon_service.assign_coupon
-  end
+  delegate :assign_coupon, to: :coupon_service
 
   private
 
@@ -147,9 +142,9 @@ class User < ApplicationRecord
   end
 
   def only_one_coupon
-    if shirt_coupon && sticker_coupon
-      errors.add(:user, "can only have one type of coupon")
-    end
+    return unless shirt_coupon && sticker_coupon
+
+    errors.add(:user, 'can only have one type of coupon')
   end
 
   def pull_request_service
@@ -160,3 +155,4 @@ class User < ApplicationRecord
     @coupon_service ||= CouponService.new(self)
   end
 end
+# rubocop:enable Metrics/ClassLength

@@ -4,11 +4,9 @@ class AirtableEventPresenter
   class ParseError < StandardError; end
 
   def initialize(event)
-    if event
-      @event = event
-    else
-      raise(ParseError, 'Event not provided.')
-    end
+    @event = event
+    raise(ParseError, 'Event not provided.') unless @event
+
     validate
   end
 

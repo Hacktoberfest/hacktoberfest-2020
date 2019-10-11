@@ -126,11 +126,17 @@ $red: hsl(320, 100%, 50%);
               @media screen and (max-width: $break-small) {
                 display: none;
               }
+
+              .icon-box {
+                padding: 40px 10px 0;
+              }
             }
 
             .timeline-date {
               display: flex;
               flex-direction: row;
+              align-items: center;
+              margin-top: 30px;
 
               @media screen and (max-width: $break-small) {
                 margin-bottom: 20px;
@@ -260,7 +266,7 @@ $red: hsl(320, 100%, 50%);
   }
 
   .icon-box {
-    padding-top: 30px;
+    padding: 0;
 
     > div {
       width: 30px;
@@ -288,6 +294,10 @@ $red: hsl(320, 100%, 50%);
       &.ineligible-box {
         background-color: #ff4e4e;
       }
+    }
+
+    + p {
+      margin-top: 0;
     }
   }
 

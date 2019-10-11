@@ -81,7 +81,7 @@ describe ProfilePagePresenter do
 
   context 'Hacktoberfest has ended the user is incomplete' do
     before do
-      allow(Hacktoberfest).to receive(:end_date).and_return(Date.today - 7)
+      allow(Hacktoberfest).to receive(:end_date).and_return(Time.zone.today - 7)
       allow(Hacktoberfest).to receive(:ended?).and_return(true)
       allow(Hacktoberfest).to receive(:pre_launch?).and_return(false)
       allow(Hacktoberfest).to receive(:active?).and_return(false)

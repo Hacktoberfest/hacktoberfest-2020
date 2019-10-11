@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IssueStateUpdater
   def self.update(issue:, state:)
     if issue.open && state == IssueStates::CLOSED

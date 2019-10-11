@@ -164,31 +164,31 @@ describe HacktoberfestProjectImporter do
         other_repo_url = "https://github.com/#{other_repo_name_with_owner}"
         other_repo_watchers = 26
         other_repo_language = 'Python'
-        shared_issue_database_id_1 = 42
-        shared_issue_title_1 = 'Something is broken'
-        shared_issue_number_1 = 101
-        shared_issue_participants_1 = 11
-        shared_issue_timeline_events_1 = 12
-        shared_issue_url_1 = "#{shared_repo_url}/issues/#{shared_issue_number_1}"
-        shared_issue_database_id_2 = 43
-        shared_issue_number_2 = 102
-        shared_issue_participants_2 = 22
-        shared_issue_timeline_events_2 = 21
-        shared_issue_title_2 = 'Something else is broken'
-        shared_issue_url_2 = "#{shared_repo_url}/issues/#{shared_issue_number_2}"
+        shared_issue_database_id1 = 42
+        shared_issue_title1 = 'Something is broken'
+        shared_issue_number1 = 101
+        shared_issue_participants1 = 11
+        shared_issue_timeline_events1 = 12
+        shared_issue_url1 = "#{shared_repo_url}/issues/#{shared_issue_number1}"
+        shared_issue_database_id2 = 43
+        shared_issue_number2 = 102
+        shared_issue_participants2 = 22
+        shared_issue_timeline_events2 = 21
+        shared_issue_title2 = 'Something else is broken'
+        shared_issue_url2 = "#{shared_repo_url}/issues/#{shared_issue_number2}"
         other_issue_database_id = 9999
         other_issue_participants = 9
         other_issue_timeline_events = 91
         other_issue_title = 'Something unrelated is broken'
         other_issue_number = 99
         other_issue_url = "#{other_repo_url}/issues/#{other_issue_number}"
-        shared_project_1 = {
-          issue_database_id: shared_issue_database_id_1,
-          issue_number: shared_issue_number_1,
-          issue_participants: shared_issue_participants_1,
-          issue_timeline_events: shared_issue_timeline_events_1,
-          issue_title: shared_issue_title_1,
-          issue_url: shared_issue_url_1,
+        shared_project1 = {
+          issue_database_id: shared_issue_database_id1,
+          issue_number: shared_issue_number1,
+          issue_participants: shared_issue_participants1,
+          issue_timeline_events: shared_issue_timeline_events1,
+          issue_title: shared_issue_title1,
+          issue_url: shared_issue_url1,
           repo_code_of_conduct_url: shared_repo_code_of_conduct_url,
           repo_database_id: shared_repo_database_id,
           repo_description: shared_repo_description,
@@ -200,13 +200,13 @@ describe HacktoberfestProjectImporter do
           repo_url: shared_repo_url,
           repo_watchers: shared_repo_watchers
         }
-        shared_project_2 = {
-          issue_database_id: shared_issue_database_id_2,
-          issue_number: shared_issue_number_2,
-          issue_participants: shared_issue_participants_2,
-          issue_timeline_events: shared_issue_timeline_events_2,
-          issue_title: shared_issue_title_2,
-          issue_url: shared_issue_url_2,
+        shared_project2 = {
+          issue_database_id: shared_issue_database_id2,
+          issue_number: shared_issue_number2,
+          issue_participants: shared_issue_participants2,
+          issue_timeline_events: shared_issue_timeline_events2,
+          issue_title: shared_issue_title2,
+          issue_url: shared_issue_url2,
           repo_code_of_conduct_url: shared_repo_code_of_conduct_url,
           repo_database_id: shared_repo_database_id,
           repo_description: shared_repo_description,
@@ -236,14 +236,21 @@ describe HacktoberfestProjectImporter do
           repo_url: other_repo_url,
           repo_watchers: other_repo_watchers
         }
-        projects = [shared_project_1, shared_project_2, other_project]
+        projects = [shared_project1, shared_project2, other_project]
 
         importer = HacktoberfestProjectImporter.new
         importer.import_all(projects)
 
-        expect(Language.all.map(&:name)).to match_array [shared_repo_language, other_repo_language]
-        expect(Repository.all.map(&:gh_database_id)).to match_array [shared_repo_database_id, other_repo_database_id]
-        expect(Issue.all.map(&:gh_database_id)).to match_array [shared_issue_database_id_1, shared_issue_database_id_2, other_issue_database_id]
+        expect(Language.all.map(&:name))
+          .to match_array [shared_repo_language, other_repo_language]
+        expect(Repository.all.map(&:gh_database_id))
+          .to match_array [shared_repo_database_id, other_repo_database_id]
+        expect(Issue.all.map(&:gh_database_id))
+          .to match_array [
+            shared_issue_database_id1,
+            shared_issue_database_id2,
+            other_issue_database_id
+          ]
       end
     end
   end

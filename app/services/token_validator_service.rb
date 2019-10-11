@@ -6,7 +6,7 @@ class TokenValidatorService
   end
 
   def valid?
-    client.rate_limit!.remaining > 0
+    client.rate_limit!.remaining.positive?
   rescue Octokit::Unauthorized
     false
   end

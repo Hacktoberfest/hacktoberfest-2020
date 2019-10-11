@@ -2,7 +2,7 @@
 
 class BoomError < StandardError
   def message
-    "Boom!"
+    'Boom!'
   end
 end
 

@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe CouponsFromCSVService do
   describe '.call' do
     context 'valid CSV path' do
-      let!(:path) { Rails.root.join('spec','fixtures','coupons.csv') }
+      let!(:path) { Rails.root.join('spec', 'fixtures', 'coupons.csv') }
 
       context 'importing shirt coupons' do
         before do
@@ -41,10 +41,11 @@ RSpec.describe CouponsFromCSVService do
     end
 
     context 'invalid CSV path' do
-      let!(:path) { Rails.root.join('spec','fixtures','invalid.csv') }
+      let!(:path) { Rails.root.join('spec', 'fixtures', 'invalid.csv') }
 
       it 'raises an invalid path error' do
-        expect { CouponsFromCSVService.call(path, StickerCoupon) }.to raise_error(CouponsFromCSVService::InvalidPath)
+        expect { CouponsFromCSVService.call(path, StickerCoupon) }
+          .to raise_error(CouponsFromCSVService::InvalidPath)
       end
     end
   end

@@ -3,11 +3,12 @@
 class ApplicationController < ActionController::Base
   before_action :set_current_user
   rescue_from Faraday::ClientError, with: :api_error
+  rescue_from Octokit::Unauthorized, with: :github_unauthorized_error
 
   def current_user
     return unless logged_in?
 
-    if (user = User.find_by_id(session[:current_user_id]))
+    if (user = User.find_by(id: session[:current_user_id]))
       user
     else
       reset_session
@@ -51,6 +52,10 @@ class ApplicationController < ActionController::Base
   def api_error(error)
     raise error unless error.response&.fetch(:status) == 502
 
-    render 'pages/api_error', status: 500
+    render 'pages/api_error', status: :internal_server_error
+  end
+
+  def github_unauthorized_error
+    render 'pages/github_unauthorized_error', status: 401
   end
 end

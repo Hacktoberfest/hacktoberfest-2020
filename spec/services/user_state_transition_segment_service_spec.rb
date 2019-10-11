@@ -66,7 +66,7 @@ RSpec.describe UserStateTransitionSegmentService do
       end
     end
 
-    context 'the transition event is won and the user is completed'
+    context 'the transition event is won and the user is completed' do
       let(:user) { FactoryBot.create(:user, :completed) }
 
       before do
@@ -129,4 +129,5 @@ RSpec.describe UserStateTransitionSegmentService do
         end
       end
     end
+  end
 end

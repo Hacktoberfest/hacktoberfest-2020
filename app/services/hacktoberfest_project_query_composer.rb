@@ -80,7 +80,7 @@ module HacktoberfestProjectQueryComposer
       queryString: compose_query_string(query_string),
       first: results_per_page
     }
-    variables.merge!(after: "#{cursor}") if cursor.present?
+    variables.merge!(after: cursor.to_s) if cursor.present?
     variables
   end
 
