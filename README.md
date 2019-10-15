@@ -107,11 +107,24 @@ For this, you will have to create a Github OAuth App (https://developer.github.c
 ### Start Date & End Date
 
 Hacktoberfest is officially active from October 1st - November 1st
-So your ENV variables for these should be as follows:
+
+The app can be in three different states:
+
+* Pre-launch 
+  - Users can sign up and all pages are reachable, but the profile page is not yet tracking pull requests
+* Active
+  - All pages are active and the profile is tracking PRs
+* Finished
+  - Hacktoberfest has declared its winners
+
+So your dates can look something like this if you're developing in October 2019 and you want the app in the Active state.
 ```
  START_DATE="2019-10-01 00:00:00 UTC"
  END_DATE="2019-11-01 00:00:00 UTC"
 ```
+
+If you want to work on the app in the `Pre-Launch` state, set the start date to a future date.
+If you want to work on the app in the `Finished` state, set the end date to a past date.
 
 ### Airtable API Key & Airtable App ID
 
