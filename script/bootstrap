@@ -21,6 +21,11 @@ if [ -f ".ruby-version" ] && [ -z "$(rbenv version-name 2>/dev/null)" ]; then
   rbenv rehash
 fi
 
+if [ ! -f .env ]; then
+  echo "Copying .env.template into .env..."
+  cp .env.template .env
+fi
+
 if [ -f "Gemfile" ]; then
   echo "==> Installing gem dependencies…"
   bundle install --quiet --without production
