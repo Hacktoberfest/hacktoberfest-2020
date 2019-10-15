@@ -16,5 +16,4 @@ script/update
 
 echo "==> Running tests…"
 
-bundle exec rspec
-bundle exec rubocop
+bundle exec rspec && rubocop
