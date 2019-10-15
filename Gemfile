@@ -37,6 +37,7 @@ gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq', '< 6.0'
 
+# Convential method of early loading dotenv was not working. Instead, load it in this proc
 install_if -> { require 'dotenv'; Dotenv.load['BUNDLE_ENTERPRISE__CONTRIBSYS__COM'] } do
   source 'https://enterprise.contribsys.com/' do
     gem 'sidekiq-pro'
