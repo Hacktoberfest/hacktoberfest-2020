@@ -22,8 +22,8 @@ if [ -f ".ruby-version" ] && [ -z "$(rbenv version-name 2>/dev/null)" ]; then
 fi
 
 if [ ! -f .env ]; then
-  echo "Copying .env.template into .env..."
-  cp .env.template .env
+  echo "==> Copying dotenv.template into .env..."
+  cp config/dotenv.template .env
 fi
 
 if [ -f "Gemfile" ]; then
