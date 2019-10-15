@@ -36,7 +36,6 @@ class PagesController < ApplicationController
 
   def all_events
     airtable = AirrecordTable.new
-    return if airtable.all_records('Meetups').blank?
 
     airtable.all_records('Meetups').map do |e|
       AirtableEventPresenter.new(e)
