@@ -28,7 +28,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 - Ensure your os is the latest MacOS
 
-- Have brew installed (Run the following command in a mac os terminal to install)
+- Have brew installed (Run the following command in a mac os terminal to install):
 
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -36,13 +36,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-clone the repo
+clone the repo:
 
 ```
 git clone https://github.com/raise-dev/hacktoberfest
 ```
 
-In your local repository, run script/setup, which will install all necessary dependencies for you
+In your local repository, run script/setup, which will install all necessary dependencies for you:
 
 ```
 script/setup
@@ -52,16 +52,16 @@ script/setup
 
 There are two commands you will need for running the project.
 
-First, spin up the rails server locally
+First, spin up the rails server locally:
 
 ```
 script/server
 ```
 
-If you will be running any background jobs through sidekiq, run the following command which will spin up both redis and sidekiq
+If you will be running any background jobs through sidekiq, run the following command in a separate terminal window from `script/server` which will spin up both redis and sidekiq:
 
 ```
-script/console
+script/sidekiq
 ```
 
 ## ENV Variables
