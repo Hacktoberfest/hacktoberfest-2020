@@ -50,31 +50,31 @@ script/console
 
 You will need to set your github authorizaiton token as an environment variable in order to have many aspects of the site work properly. For example, the homepage attempts pulling in github projects using that very token.
 
-To find your token: Start off by going to your [GitHub Settings page] (https://github.com/settings/profile)
+To find your token: Start off by going to your [GitHub Settings page](https://github.com/settings/profile):
 
-![GitHub Settings] (/images/settings.jpeg)
+![GitHub Settings](/images/settings.jpeg)
 
-In the sidebar, click [Developer settings] (https://github.com/settings/apps)
+In the sidebar, click [Developer settings](https://github.com/settings/apps):
 
-![Developer Settings] (/images/developer-settings.png)
+![Developer Settings](/images/developer-settings.png)
 
-In this sidebar, click [Personal access tokens] (https://github.com/settings/tokens)
+In this sidebar, click [Personal access tokens](https://github.com/settings/tokens):
 
-![Personal access tokens] (/images/personal-access-tokens-menu.png)
+![Personal access tokens](/images/personal-access-tokens-menu.png)
 
-Now, if you don't already have a token to use, click [Generate new token] (https://github.com/settings/tokens/new)
+Now, if you don't already have a token to use, click [Generate new token](https://github.com/settings/tokens/new):
 
-![Generating personal access token] (/images/personal-access-tokens-page)
+![Generating personal access token](/images/personal-access-tokens-page.png)
 
-Scroll all the way to the bottom and hit Generate token. You don't need to check off any of the boxes
+Scroll all the way to the bottom and hit Generate token. You don't need to check off any of the boxes.
 
-![Generating personal access token] (/images/generate-token-page)
+![Generating personal access token](/images/generate-token-page.png)
 
-On the next page, copy the token given (blanked out in the screenshot) a
+On the next page, copy the token given (blanked out in the screenshot):
 
-![personal access token generated] (/images/generated-token)
+![personal access token generated](/images/generated-token.png)
 
-Finally, paste it into your .env under `GITHUB_ACCESS_TOKEN`
+Finally, paste it into your .env under `GITHUB_ACCESS_TOKEN`.
 
 ### Github Client ID & Github Client Secret
 
