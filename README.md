@@ -66,36 +66,6 @@ script/sidekiq
 
 ## ENV Variables
 
-### Github Access Token
-
-You will need to set your github authorizaiton token as an environment variable in order to have many aspects of the site work properly. For example, the homepage attempts pulling in github projects using that very token.
-
-To find your token: Start off by going to your [GitHub Settings page](https://github.com/settings/profile):
-
-![GitHub Settings](/images/settings.jpeg)
-
-In the sidebar, click [Developer settings](https://github.com/settings/apps):
-
-![Developer Settings](/images/developer-settings.png)
-
-In this sidebar, click [Personal access tokens](https://github.com/settings/tokens):
-
-![Personal access tokens](/images/personal-access-tokens-menu.png)
-
-Now, if you don't already have a token to use, click [Generate new token](https://github.com/settings/tokens/new):
-
-![Generating personal access token](/images/personal-access-tokens-page.png)
-
-Scroll all the way to the bottom and hit Generate token. You don't need to check off any of the boxes.
-
-![Generating personal access token](/images/generate-token-page.png)
-
-On the next page, copy the token given (blanked out in the screenshot):
-
-![personal access token generated](/images/generated-token.png)
-
-Finally, paste it into your .env under `GITHUB_ACCESS_TOKEN`.
-
 ### Github Client ID & Github Client Secret
 
 Hacktoberfest uses `GITHUB_CLIENT_ID` & `GITHUB_CLIENT_SECRET` variables to configure OmniAuth.
@@ -103,6 +73,27 @@ Hacktoberfest uses `GITHUB_CLIENT_ID` & `GITHUB_CLIENT_SECRET` variables to conf
 This allows users to be authorized for Hacktoberfest via Github.
 
 For this, you will have to create a Github OAuth App (https://developer.github.com/apps/building-oauth-apps)
+
+Be sure your OAuth app is configured with the following URLs
+
+![Oauth Config](https://user-images.githubusercontent.com/7976757/66855839-fd259980-ef51-11e9-808b-26a9251841bf.png)
+
+The Client ID and Client Secret are right above this congiguration, use them to set the following ENV variables: 
+
+```
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+```
+
+With these set, you can click the "Start Hacking" button on the nav bar and login with your github account (to your own app you just created).
+
+This will create your user in the DB and therefore add your access token to the pool used by the app whenever it hits the GitHub API. 
+
+This means you can run the rake command to import repositories looking for help through hacktoberfest (these are displayed on the homepage). If you don't run the task, there simply won't be any repositories on the homepage aside from the hard-coded climate change repos.
+
+```bash
+bin/rails github:fetch_popular_languages_projects
+```
 
 ### Start Date & End Date
 
@@ -118,7 +109,8 @@ The app can be in three different states:
   - Hacktoberfest has declared its winners
 
 So your dates can look something like this if you're developing in October 2019 and you want the app in the Active state.
-```
+
+```bash
  START_DATE="2019-10-01 00:00:00 UTC"
  END_DATE="2019-11-01 00:00:00 UTC"
 ```
