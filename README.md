@@ -34,6 +34,14 @@ These instructions will get you a copy of the project up and running on your loc
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
+## Application Setup
+
+1) [Install and Setup](#installing)
+2) [Setup Oauth Token](#setup-oauth-token)
+3) [Configure remaining environment variales](#env-variables)
+4) [Create first user](#create-first-user)
+5) [Import Projects](#import-projects)
+
 ### Installing
 
 clone the repo:
@@ -48,25 +56,7 @@ In your local repository, run script/setup, which will install all necessary dep
 script/setup
 ```
 
-### Running the project
-
-There are two commands you will need for running the project.
-
-First, spin up the rails server locally:
-
-```
-script/server
-```
-
-If you will be running any background jobs through sidekiq, run the following command in a separate terminal window from `script/server` which will spin up both redis and sidekiq:
-
-```
-script/sidekiq
-```
-
-## ENV Variables
-
-### Github Client ID & Github Client Secret
+### Setup Oauth Token
 
 Hacktoberfest uses `GITHUB_CLIENT_ID` & `GITHUB_CLIENT_SECRET` variables to configure OmniAuth.
 
@@ -78,24 +68,16 @@ Be sure your OAuth app is configured with the following URLs
 
 ![Oauth Config](https://user-images.githubusercontent.com/7976757/66855839-fd259980-ef51-11e9-808b-26a9251841bf.png)
 
-The Client ID and Client Secret are right above this congiguration, use them to set the following ENV variables: 
+The Client ID and Client Secret are right above this configuration. Use them to set the following ENV variables: 
 
 ```
 GITHUB_CLIENT_ID=
 GITHUB_CLIENT_SECRET=
 ```
 
-With these set, you can click the "Start Hacking" button on the nav bar and login with your github account (to your own app you just created).
+### ENV Variables
 
-This will create your user in the DB and therefore add your access token to the pool used by the app whenever it hits the GitHub API. 
-
-This means you can run the rake command to import repositories looking for help through hacktoberfest (these are displayed on the homepage). If you don't run the task, there simply won't be any repositories on the homepage aside from the hard-coded climate change repos.
-
-```bash
-bin/rails github:fetch_popular_languages_projects
-```
-
-### Start Date & End Date
+#### Start Date & End Date
 
 Hacktoberfest is officially active from October 1st - November 1st
 
@@ -118,7 +100,7 @@ So your dates can look something like this if you're developing in October 2019 
 If you want to work on the app in the `Pre-Launch` state, set the start date to a future date.
 If you want to work on the app in the `Finished` state, set the end date to a past date.
 
-### Airtable API Key & Airtable App ID
+#### Airtable API Key & Airtable App ID
 
 Hacktoberfest uses Airtable as a CMS to hold useful data such as:
   - Events
@@ -150,6 +132,52 @@ This service will be used as default.
 
 You can find this service in `app/services/airtable_placehoder_service.rb`
 
+### Create First User
+
+1) Spin up the server by running `script/server`
+
+2) Now, open your browser of choice and visit `localhost:3000`
+
+3) Click `START HACKING` on the top right of the navigation bar
+
+![start hacking](https://user-images.githubusercontent.com/7976757/66863220-8e9c0800-ef60-11e9-8100-87af508fdf3d.png)
+
+4) Log in with your github account
+
+5) Agree to the terms and conditions and continue
+
+### Import Projects
+
+This task imports repositories to the hacktoberfest app(these are displayed on the homepage). If you don't run the task, there simply won't be any repositories on the homepage aside from the hard-coded climate change repos.
+
+1) Spin up sidekiq:
+
+```
+script/sidekiq
+```
+
+2) In a separate terminal window, run the import script:
+
+```bash
+bin/rails github:fetch_popular_languages_projects
+```
+
+## Running the project
+
+There are two commands you will need for running the project.
+
+First, spin up the rails server locally:
+
+```
+script/server
+```
+
+If you will be running any background jobs through sidekiq, run the following command in a separate terminal window from `script/server` which will spin up both redis and sidekiq:
+
+```
+script/sidekiq
+```
+
 ## Contributing
 Hacktoberfest is open source and we welcome contributions. See [CONTRIBUTING.md](/CONTRIBUTING.md) for more info.
 
@@ -164,4 +192,3 @@ The full license text is available in [LICENSE.md](/LICENSE.md).
 
 * [Rails](https://github.com/rails/rails) - The server framework used
 * [bundler](https://github.com/bundler/bundler) - Dependency Management
-The app used to run the annual [Hacktoberfest](https://hacktoberfest.digitalocean.com) open source challenge.
