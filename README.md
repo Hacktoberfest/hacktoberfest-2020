@@ -170,6 +170,6 @@ The full license text is available in [LICENSE.md](/LICENSE.md).
 
 ## Built With
 
-* [Rails] (https://github.com/rails/rails) - The server framework used
+* [Rails](https://github.com/rails/rails) - The server framework used
 * [bundler](https://github.com/bundler/bundler) - Dependency Management
 The app used to run the annual [Hacktoberfest](https://hacktoberfest.digitalocean.com) open source challenge.
