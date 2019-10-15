@@ -16,11 +16,11 @@ module Hacktoberfest
   end
 
   def airtable_key_present?
-    ENV.fetch('AIRTABLE_API_KEY').present?
+    ENV.fetch('AIRTABLE_API_KEY', nil).present?
   end
 
   def sidekiq_enterprise_available?
-    ENV.fetch('BUNDLE_ENTERPRISE__CONTRIBSYS__COM').present?
+    ENV.fetch('BUNDLE_ENTERPRISE__CONTRIBSYS__COM', nil).present?
   end
 
   def pre_launch?
