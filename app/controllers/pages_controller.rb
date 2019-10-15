@@ -35,9 +35,7 @@ class PagesController < ApplicationController
   private
 
   def all_events
-    airtable = AirrecordTable.new
-
-    airtable.all_records('Meetups').map do |e|
+    AirrecordTable.new.all_records('Meetups').map do |e|
       AirtableEventPresenter.new(e)
     rescue AirtableEventPresenter::ParseError
       # Ignore invalid events
