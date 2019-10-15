@@ -3,7 +3,7 @@
 if Hacktoberfest.sidekiq_enterprise_available?
   require 'sidekiq-ent/web'
 else
-  require 'sidekiq'
+  require 'sidekiq/web'
 end
 
 Rails.application.routes.draw do
