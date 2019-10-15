@@ -9,6 +9,12 @@ cd "$(dirname "$0")/.."
 
 script/bootstrap
 
+echo "==> Setting up ENV..."
+if [ ! -f .env ]; then
+  echo "Copying .env.template into .env..."
+  cp .env.template .env
+fi
+
 echo "==> Setting up DB…"
 # reset database to a fresh state.
 bundle exec rake db:create
