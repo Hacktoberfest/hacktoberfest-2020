@@ -8,5 +8,5 @@ set -e
 cd "$(dirname "$0")/.."
 
 # boot redis and sidekiq
-redis-server
+redis-server &
 bundle exec sidekiq
