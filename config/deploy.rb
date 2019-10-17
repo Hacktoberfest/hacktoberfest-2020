@@ -79,6 +79,7 @@ set :puma_nginx, :app
 set :puma_preload_app, false
 set :puma_init_active_record, false
 set :puma_control_app, false
+set :puma_bind, 'unix:///home/deploy/hacktoberfest/shared/tmp/sockets/puma.sock?backlog=4096'
 # Worker and thread count options in stage specific config
 # set :puma_threads, [0, 16]
 # set :puma_workers, 8
