@@ -64,12 +64,12 @@ namespace :dotenv do
   task :config do
     invoke 'dotenv:read'
     invoke 'dotenv:setup'
-    invoke 'puma:phased-restart'
     invoke 'sidekiq:restart'
+    # Restarting puma via puma:restart or phased-restart does not capture ENV
+    # variable updates.
+    invoke 'puma:stop'
+    invoke 'puma:start'
   end
-
-  # We do not want to always upload a new .env file
-  # before :check, :setup_dotenv
 end
 
 # Shared options for capistrano/puma
