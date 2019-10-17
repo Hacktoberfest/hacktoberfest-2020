@@ -66,8 +66,8 @@ role :app, %w{deploy@157.245.211.5 deploy@157.245.215.59}
 set :nginx_use_ssl, true
 set :nginx_config_name, 'hacktoberfest_production'
 set :nginx_downstream_uses_ssl, true
-set :puma_threads, [0, 16]
-set :puma_workers, 16
+set :puma_threads, [0, 8]
+set :puma_workers, 50
 
 # Production specific options for capistrano/sidekiq
 # Use as many cores (processes) as possible while under 100 total threads due to
