@@ -24,8 +24,8 @@
 # other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
-role :job, %w{deploy@167.99.62.109}
-role :app, %w{deploy@167.99.59.27}
+role :app, ENV.fetch('CAP_STAGING_APP_SERVERS').split(',').map(&:strip)
+role :job, ENV.fetch('CAP_STAGING_JOB_SERVERS').split(',').map(&:strip)
 
 # Configuration
 # =============

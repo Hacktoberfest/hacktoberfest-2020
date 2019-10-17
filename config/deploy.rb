@@ -64,12 +64,9 @@ namespace :dotenv do
   task :config do
     invoke 'dotenv:read'
     invoke 'dotenv:setup'
-    invoke 'puma:phased-restart'
     invoke 'sidekiq:restart'
+    invoke 'puma:restart'
   end
-
-  # We do not want to always upload a new .env file
-  # before :check, :setup_dotenv
 end
 
 # Shared options for capistrano/puma
@@ -79,10 +76,11 @@ set :puma_nginx, :app
 set :puma_preload_app, false
 set :puma_init_active_record, false
 set :puma_control_app, false
+set :puma_bind, 'unix:///home/deploy/hacktoberfest/shared/tmp/sockets/puma.sock?backlog=4096'
 # Worker and thread count options in stage specific config
 # set :puma_threads, [0, 16]
 # set :puma_workers, 8
-after 'puma:config', 'puma:phased-restart'
+after 'puma:config', 'puma:restart'
 
 namespace :nginx do
   %w[restart start stop].map do |command|
