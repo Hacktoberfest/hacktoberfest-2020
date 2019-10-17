@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # Sessions
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: :logout
-  get '/login', to: redirect('/auth/github'), as: :login
+  post '/login', to: redirect('/auth/github'), as: :login
 
   # Sign up
   unless Hacktoberfest.ended?
