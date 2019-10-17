@@ -65,10 +65,7 @@ namespace :dotenv do
     invoke 'dotenv:read'
     invoke 'dotenv:setup'
     invoke 'sidekiq:restart'
-    # Restarting puma via puma:restart or phased-restart does not capture ENV
-    # variable updates.
-    invoke 'puma:stop'
-    invoke 'puma:start'
+    invoke 'puma:restart'
   end
 end
 
@@ -83,7 +80,7 @@ set :puma_bind, 'unix:///home/deploy/hacktoberfest/shared/tmp/sockets/puma.sock?
 # Worker and thread count options in stage specific config
 # set :puma_threads, [0, 16]
 # set :puma_workers, 8
-after 'puma:config', 'puma:phased-restart'
+after 'puma:config', 'puma:restart'
 
 namespace :nginx do
   %w[restart start stop].map do |command|
