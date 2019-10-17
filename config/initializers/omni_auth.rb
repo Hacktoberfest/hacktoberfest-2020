@@ -5,3 +5,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
            callback_path: '/auth/github/callback',
            scope: 'user:email'
 end
+
+OmniAuth.config.allowed_request_methods = [:post]
