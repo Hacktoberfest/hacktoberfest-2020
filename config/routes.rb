@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   # Sessions
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: :logout
-  # post '/login', to: redirect('/auth/github'), as: :login
-  post '/login', to: 'sessions#new', as: :login
+  get '/login', to: redirect('/auth/github'),
+      as: :login, constraints: lambda { |r| binding.pry }
+  # post '/login', to: 'sessions#new'
 
   # Sign up
   unless Hacktoberfest.ended?

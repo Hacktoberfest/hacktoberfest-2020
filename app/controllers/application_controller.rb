@@ -28,6 +28,8 @@ class ApplicationController < ActionController::Base
     return if logged_in? && valid_token?
 
     session[:destination] = request.path
+    session[:login_key] = 'stuff'
+    flash[:notice] = 'asasdasd'
     redirect_to login_path
   end
 
