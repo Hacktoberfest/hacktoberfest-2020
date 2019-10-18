@@ -2,7 +2,7 @@
 
 ## Data in Hacktoberfest
 
-There are two main paradigms governing data flow from GitHub within the Hacktoberfest app. The two are opposites. 
+There are two main paradigms governing data flow from GitHub within the Hacktoberfest app. The two are opposites.
 
 ### Imports to the DB
 
@@ -14,4 +14,4 @@ For pull requests, we fetch from the GitHub API every time we need them. Pull re
 
 ## Github tokens
 
-Github requires a personal access token to be used for each query to its API. It's not important _whose_ access token we use in our queries, because we only query public data. So, we use the access token taken from a random user in our DB eafor each query. The `GithubTokenService` fetches that random token. 
+The GitHub API has a restrictive rate limit that can be overcome by making authenticated requests using OAuth access tokens even when requesting public data. In some cases, when tokens are revoked by users we need to fall back on an alternate valid token for the app to function.
