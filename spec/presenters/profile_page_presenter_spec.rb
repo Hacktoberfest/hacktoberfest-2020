@@ -17,7 +17,6 @@ describe ProfilePagePresenter do
   context 'Hacktoberfest is in pre launch' do
     before do
       allow(Hacktoberfest).to receive(:pre_launch?).and_return(true)
-      allow(Hacktoberfest).to receive(:active?).and_return(false)
       allow(Hacktoberfest).to receive(:ended?).and_return(false)
     end
 
@@ -42,7 +41,6 @@ describe ProfilePagePresenter do
     before do
       allow(Hacktoberfest).to receive(:ended?).and_return(true)
       allow(Hacktoberfest).to receive(:pre_launch?).and_return(false)
-      allow(Hacktoberfest).to receive(:active?).and_return(false)
       allow(shirt_winner).to receive(:won_hacktoberfest?).and_return(true)
     end
 
@@ -84,7 +82,6 @@ describe ProfilePagePresenter do
       allow(Hacktoberfest).to receive(:end_date).and_return(Time.zone.today - 7)
       allow(Hacktoberfest).to receive(:ended?).and_return(true)
       allow(Hacktoberfest).to receive(:pre_launch?).and_return(false)
-      allow(Hacktoberfest).to receive(:active?).and_return(false)
       allow(incomplete_user).to receive(:hacktoberfest_ended?).and_return(true)
       allow(incomplete_user).to receive(:won_hacktoberfest?).and_return(false)
     end
