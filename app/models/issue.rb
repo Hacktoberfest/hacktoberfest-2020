@@ -30,12 +30,12 @@ class Issue < ApplicationRecord
           FROM issues
           INNER JOIN "repositories" ON "repositories"."id" = issues.repository_id
           WHERE issues.open = TRUE AND "repositories"."banned" = FALSE
-            AND "repositories"."language_id" = #{language_id}
+            AND "repositories"."language_id" = ?
           ORDER BY "repositories"."id", RANDOM()
         ) random_unique_repo_issues
       SQL
 
-      select('*').from(Arel.sql(random_unique_repo_issues))
+      select('*').from(sanitize_sql([random_unique_repo_issues, language_id]))
     end
 
     def open_issues_with_permitted_repositories
