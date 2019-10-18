@@ -32,11 +32,15 @@ class AirrecordTable
     end
   end
 
+  def table(table_name)
+    Airrecord.table(api_key, app_id, table_name).tap do |at|
+      at.client.connection = faraday_connection
+    end
+  end
+
   def all_records(table_name)
     if Hacktoberfest.airtable_key_present?
-      Airrecord.table(api_key, app_id, table_name).tap do |at|
-        at.client.connection = faraday_connection
-      end.all
+      table(table_name).all
     else
       log_airtable_warning
       AirtablePlaceholderService.call(table_name)

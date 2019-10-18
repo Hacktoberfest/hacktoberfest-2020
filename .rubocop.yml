@@ -7,6 +7,7 @@ AllCops:
     - 'script/**/*'
     - 'bin/**/*'
     - 'vendor/**/*'
+    - 'config/deploy.rb'
 Metrics/BlockLength:
   Max: 50
   Enabled: true
