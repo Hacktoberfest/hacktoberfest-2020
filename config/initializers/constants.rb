@@ -30,8 +30,4 @@ module Hacktoberfest
   def ended?
     Time.zone.now > end_date
   end
-
-  def active?
-    Time.zone.today > start_date && Time.zone.today < end_date
-  end
 end
