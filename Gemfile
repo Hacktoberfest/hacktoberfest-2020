@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby '2.5.5'
+ruby File.read(File.expand_path("../.ruby-version", __FILE__)).chomp
 
 gem 'airbrake', '~> 9.4'
-
 gem 'airrecord'
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem "bulma-rails", "~> 0.7.5"
+gem 'bulma-rails', '~> 0.7.5'
 
 gem 'coffee-rails', '~> 4.2'
 
@@ -16,7 +17,7 @@ gem 'dalli', '~> 2.7'
 gem 'faraday'
 gem 'faraday_middleware'
 
-gem "health_check"
+gem 'health_check'
 
 gem 'jbuilder', '~> 2.5'
 
@@ -36,21 +37,21 @@ gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq', '< 6.0'
 
-source "https://enterprise.contribsys.com/" do
-  gem 'sidekiq-pro'
-  gem 'sidekiq-ent'
+# Convential method of early loading dotenv was not working. Instead, load it in this proc
+install_if -> { require 'dotenv'; Dotenv.load['BUNDLE_ENTERPRISE__CONTRIBSYS__COM'] } do
+  source 'https://enterprise.contribsys.com/' do
+    gem 'sidekiq-pro'
+    gem 'sidekiq-ent'
+  end
 end
 
 gem 'state_machines'
-
 gem 'state_machines-activerecord'
 
 gem 'pg'
-
 gem 'pry'
 
 gem 'turbolinks', '~> 5'
-
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'uglifier', '>= 1.3.0'
@@ -63,7 +64,6 @@ group :development, :test do
   gem 'factory_bot_rails'
 
   gem 'rspec-rails'
-
   gem 'rubocop-rails'
 
   gem 'shoulda-matchers'
@@ -74,11 +74,11 @@ group :development, :test do
 end
 
 group :development do
-  gem "capistrano", "~> 3.11", require: false
+  gem 'capistrano', '~> 3.11', require: false
   gem 'capistrano-bundler', '~> 1.6', require: false
   gem 'capistrano-dotenv', require: false
-  gem "capistrano-rails", "~> 1.4", require: false
-  gem 'capistrano3-puma', "~> 4.0", require: false
+  gem 'capistrano-rails', '~> 1.4', require: false
+  gem 'capistrano3-puma', '~> 4.0', require: false
   gem 'capistrano-sidekiq', require: false
 
   gem 'guard-rspec', require: false

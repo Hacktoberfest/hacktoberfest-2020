@@ -10,14 +10,16 @@ class PagesController < ApplicationController
   end
 
   def faqs
-    faq = AirrecordTable.new.table('FAQ').all(view: 'Grid view')
-    @faqs_rules = faq.select { |q| q.fields['Category'] == 'Rules' }
-    @faqs_general = faq.select { |q| q.fields['Category'] == 'General' }
-    @faqs_events = faq.select { |q| q.fields['Category'] == 'Events' }
-    @faqs_shipping = faq.select { |q| q.fields['Category'] == 'Shipping' }
+    faq = AirrecordTable.new.all_records('FAQ')
+    @faqs_rules = faq.select { |q| q['Category'] == 'Rules' }
+    @faqs_general = faq.select { |q| q['Category'] == 'General' }
+    @faqs_events = faq.select { |q| q['Category'] == 'Events' }
+    @faqs_shipping = faq.select { |q| q['Category'] == 'Shipping' }
   end
 
   def events
+    return @events = [] if all_events.blank?
+
     @events = all_events.select(&:published?)
   end
 
@@ -30,10 +32,7 @@ class PagesController < ApplicationController
   private
 
   def all_events
-    all_meetups = AirrecordTable.new.table('Meetups').all
-    return [] if all_meetups.blank?
-
-    all_meetups.map do |e|
+    AirrecordTable.new.all_records('Meetups').map do |e|
       AirtableEventPresenter.new(e)
     rescue AirtableEventPresenter::ParseError
       # Ignore invalid events

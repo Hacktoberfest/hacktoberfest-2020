@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
-require 'sidekiq-ent/web'
+if Hacktoberfest.sidekiq_enterprise_available?
+  require 'sidekiq-ent/web'
+else
+  require 'sidekiq/web'
+end
 
 Rails.application.routes.draw do
   # Sessions
@@ -39,7 +43,7 @@ Rails.application.routes.draw do
         .secure_compare(::Digest::SHA256.hexdigest(password),
                         ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_PASSWORD']))
     end
-    mount Sidekiq::Web, at: '/sidekiq' if ENV['SIDEKIQ_PASSWORD'].present?
+    mount Sidekiq::Web, '/sidekiq' if ENV['SIDEKIQ_PASSWORD'].present?
   else
     mount Sidekiq::Web, at: '/sidekiq'
   end
