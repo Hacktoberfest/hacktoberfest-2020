@@ -24,11 +24,11 @@ module Hacktoberfest
   end
 
   def pre_launch?
-    Time.zone.today < start_date
+    Time.zone.now < start_date
   end
 
   def ended?
-    Time.zone.today > end_date
+    Time.zone.now > end_date
   end
 
   def active?
