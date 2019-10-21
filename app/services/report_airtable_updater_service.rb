@@ -20,9 +20,11 @@ module ReportAirtableUpdaterService
   end
 
   def spammy_repo_report_exists?(repo_id)
-    spam_repo_ids = AirrecordTable.new.all_records('Spam Repos').map do |repo|
+    previously_reported_repo_ids = AirrecordTable.new.all_records(
+      'Spam Repos'
+    ).map do |repo|
       repo['Repo ID']&.to_i if repo['Verified?'] || repo['Permitted?']
     end.compact
-    spam_repo_ids.include?(repo_id)
+    previously_reported_repo_ids.include?(repo_id)
   end
 end
