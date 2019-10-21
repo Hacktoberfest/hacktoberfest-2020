@@ -89,6 +89,8 @@ class User < ApplicationRecord
 
     after_transition to: :completed do |user, _transition|
       user.receipt = user.scoring_pull_requests
+      # !!!
+      # this may be where you set score to 100% and pull from db instead of github
     end
 
     after_transition to: :waiting, do: :update_waiting_since
