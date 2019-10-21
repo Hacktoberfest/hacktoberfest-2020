@@ -5,7 +5,7 @@ module SpamRepositoryService
 
   def call(repo_id)
     spam_repo_ids = AirrecordTable.new.all_records('Spam Repos').map do |repo|
-      repo['Repo ID']&.to_i if repo['Verified?'] || repo['Permitted?']
+      repo['Repo ID']&.to_i if repo['Verified?']
     end.compact
     spam_repo_ids.include?(repo_id)
   end
