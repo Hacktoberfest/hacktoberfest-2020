@@ -1,6 +1,7 @@
 # Hacktoberfest
 
 ## Features
+
 * Static pages
 * Airtable backed events and FAQs
 * Issue discovery by language
@@ -11,6 +12,7 @@
 * Prize distribution
 
 ## Components
+
 There are three major components that are entirely separate from one another:
 
 1. Issue discovery - Fetches issues from GitHub with the label `hacktoberfest` and persists them in the database to be featured on the homepage based on a randomized quality filter.
@@ -44,7 +46,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-clone the repo:
+Clone the repo:
 
 ```
 git clone https://github.com/raise-dev/hacktoberfest
@@ -68,6 +70,9 @@ Be sure your OAuth app is configured with the following URLs
 
 ![Oauth Config](https://user-images.githubusercontent.com/7976757/66855839-fd259980-ef51-11e9-808b-26a9251841bf.png)
 
+> Homepage URL: `http:///localhost:3000`\
+> Authorization callback URL: `http:///localhost:3000/auth/github/callback`
+
 The Client ID and Client Secret are right above this configuration. Use them to set the following ENV variables: 
 
 ```
@@ -79,7 +84,7 @@ GITHUB_CLIENT_SECRET=
 
 #### Start Date & End Date
 
-Hacktoberfest is officially active from October 1st - November 1st
+Hacktoberfest is officially active from October 1st - October 31st (in any timezone)
 
 The app can be in three different states:
 
@@ -93,9 +98,11 @@ The app can be in three different states:
 So your dates can look something like this if you're developing in October 2019 and you want the app in the Active state.
 
 ```bash
- START_DATE="2019-10-01 00:00:00 UTC"
- END_DATE="2019-11-01 00:00:00 UTC"
+ START_DATE="2019-09-30 10:00:00 UTC"
+ END_DATE="2019-11-01 12:00:00 UTC"
 ```
+
+(These timestamps account for the furthest positive UTC offset (+14 in Kiribati), where they’ll see 1st Oct 00:00 on 30th Sept 10:00 UTC and the furthest negative UTC offset (-12 in the US Outlying Islands), where they’ll see 1st Nov 00:00 on 1st Nov 12:00 UTC).
 
 If you want to work on the app in the `Pre-Launch` state, set the start date to a future date.
 If you want to work on the app in the `Finished` state, set the end date to a past date.
@@ -179,12 +186,15 @@ script/sidekiq
 ```
 
 ## Contributing
+
 Hacktoberfest is open source and we welcome contributions. See [CONTRIBUTING.md](/CONTRIBUTING.md) for more info.
 
 ## Code of Conduct
+
 This project uses the Contributor Covenant Code of Conduct. See [CODE_OF_CONDUCT.md](/CODE_OF_CONDUCT.md) for more info.
 
 ## License
+
 Licensed under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
 The full license text is available in [LICENSE.md](/LICENSE.md).
 
