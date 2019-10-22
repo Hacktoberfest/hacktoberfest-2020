@@ -22,7 +22,6 @@ describe ReportAirtableUpdaterService do
       let(:report) do
         Report.new(url: 'https://github.com/raise-dev/hacktoberfest-test')
       end
-      let(:github_client) { ReportAirtableUpdaterService.github_client }
 
       context 'the repository is already known to be spam' do
         before do
