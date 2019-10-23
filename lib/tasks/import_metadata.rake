@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 namespace :github do
-  desc 'Import all github related metadata to the tb'
+  desc 'Import all github related metadata to the db'
   task import_metadata: :environment do
-    ImportAllMetadataJob.perform_async
+    ImportAllMetadataService.call
   end
 end

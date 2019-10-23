@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-class ImportAllMetadataJob
-  include Sidekiq::Worker
-  sidekiq_options queue: :default, retry: 3
+module ImportAllMetadataService
+  module_function
 
-  def perform
+  def call
     User.select(:id).find_in_batches do |group|
       group.each do |user|
         ImportUserMetadataJob.perform_async(user.id)
