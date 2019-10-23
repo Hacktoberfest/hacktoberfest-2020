@@ -57,6 +57,7 @@ class User < ApplicationRecord
     state :completed do
       validates :won_hacktoberfest?, inclusion: {
         in: [true], message: 'user has not met all winning conditions' }
+      validates :receipt, presence: true
 
       def win
         assign_coupon
@@ -87,7 +88,7 @@ class User < ApplicationRecord
       UserStateTransitionSegmentService.call(user, transition)
     end
 
-    after_transition to: :completed do |user, _transition|
+    before_transition to: :completed do |user, _transition|
       user.receipt = user.scoring_pull_requests
     end
 

@@ -29,6 +29,7 @@ FactoryBot.define do
 
     trait :completed do
       state { 'completed' }
+      receipt { {"test": "test" }.to_json }
 
       after :build do |user|
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)

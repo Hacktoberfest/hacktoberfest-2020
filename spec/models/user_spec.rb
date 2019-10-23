@@ -161,7 +161,8 @@ RSpec.describe User, type: :model do
         expect(user.state).to eq('completed')
       end
 
-      it 'saves a receipt of the scoring prs' do
+      it 'persists a receipt of the scoring prs' do
+        user.reload
         expect(user.receipt)
           .to eq(JSON.parse(user.scoring_pull_requests.to_json))
       end
