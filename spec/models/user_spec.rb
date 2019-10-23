@@ -168,6 +168,25 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context 'the user has 4 eligible PRs and has been waiting for 7 days but no receipt' do
+      before do
+        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+        allow(user).to receive(:receipt).and_return(nil)
+
+        user.complete
+      end
+
+      it 'disallows the user to enter the completed state', :vcr do
+        expect(user.state).to eq('waiting')
+      end
+
+      it 'adds the correct errors to user', :vcr do
+        expect(user.errors.messages[:receipt].first)
+          .to include("can't be blank")
+      end
+    end
+
     context 'the user has 4 eligible PRs but has not been waiting for 7 days' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
