@@ -26,5 +26,7 @@ class PullRequest
 
   def spammy?
     SpamRepositoryService.call(repo_id)
+  rescue
+    false
   end
 end
