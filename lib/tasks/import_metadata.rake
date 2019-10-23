@@ -3,6 +3,8 @@
 namespace :github do
   desc 'Import all github related metadata to the db'
   task import_metadata: :environment do
-    ImportAllMetadataService.call
+    job_count = ImportAllMetadataService.call
+
+    puts "Enqueued #{job_count} jobs"
   end
 end
