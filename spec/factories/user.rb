@@ -29,6 +29,8 @@ FactoryBot.define do
 
     trait :completed do
       state { 'completed' }
+
+      # just setting receipt data here for validations, else the create fails
       receipt { {"test": "test" }.to_json }
 
       after :build do |user|
