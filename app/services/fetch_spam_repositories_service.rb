@@ -9,7 +9,7 @@ module FetchSpamRepositoriesService
     end.compact
 
     spam_repo_ids.each do |spam_repo_id|
-      SpamRepositry.first_or_create(github_id: spam_repo_id)
+      SpamRepository.where(github_id: spam_repo_id).first_or_create
     end
   end
 end
