@@ -7,6 +7,7 @@ class PagesController < ApplicationController
     @events = front_page_events
     @projects = ProjectService.sample(9)
     @climate_repository = ClimateProjectService.sample(3)
+    @global_stats = global_stats
   end
 
   def faqs
@@ -44,5 +45,14 @@ class PagesController < ApplicationController
       .select(&:current?)
       .sample(4)
       .sort_by(&:date)
+  end
+
+  def global_stats
+    stats_arr = [
+      { amount: '31,000', title: 'CHALLENGE COMPLETIONS' },
+      { amount: '231,000', title: 'PULL REQUESTS OPENED' },
+      { amount: '31,000', title: 'PARTICIPATING REPOSITORIES' }
+    ]
+    stats_arr = stats_arr.map { |s| Hashie::Mash.new(s) }
   end
 end
