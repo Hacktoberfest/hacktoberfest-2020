@@ -16,7 +16,11 @@ class AirrecordTable
         'User-Agent' => "Airrecord/#{Airrecord::VERSION}",
         'X-API-VERSION' => '0.1.0'
       },
-      request: { params_encoder: Airrecord::QueryString }
+      request: {
+        params_encoder: Airrecord::QueryString,
+        open_timeout: 3,
+        timeout: 10
+      }
     ) do |conn|
       unless Rails.configuration.cache_store == :null_store
         conn.response :caching do
