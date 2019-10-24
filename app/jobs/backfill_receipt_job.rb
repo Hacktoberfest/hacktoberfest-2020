@@ -2,7 +2,7 @@
 
 class BackfillReceiptJob
   include Sidekiq::Worker
-  sidekiq_options queue: :bulk, retry: 4
+  sidekiq_options queue: :default, retry: 4
 
   def perform(user_id)
     user = User.find(user_id)
