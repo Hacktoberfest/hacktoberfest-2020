@@ -30,6 +30,9 @@ FactoryBot.define do
     trait :completed do
       state { 'completed' }
 
+      # setting receipt data here for validations, else the create fails
+      receipt { {"test": "test" }.to_json }
+
       after :build do |user|
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
         allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
@@ -38,6 +41,7 @@ FactoryBot.define do
 
     trait :incompleted do
       state { 'incompleted' }
+      receipt { {"test": "test" }.to_json }
 
       after :build do |user|
         allow(user).to receive(:eligible_pull_requests_count).and_return(3)
@@ -47,11 +51,13 @@ FactoryBot.define do
 
     trait :won_shirt do
       state { 'won_shirt' }
+      receipt { {"test": "test" }.to_json }
       shirt_coupon
     end
 
     trait :won_sticker do
       state { 'won_sticker' }
+      receipt { {"test": "test" }.to_json }
       sticker_coupon
     end
 
