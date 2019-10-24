@@ -59,6 +59,8 @@ Sidekiq.configure_server do |config|
       retry: 3,
       queue: :default
     )
+
+    mgr.register(
     # Every 15 minutes.
       '*/15 * * * *',
       FetchSpamRepositoriesJob,
