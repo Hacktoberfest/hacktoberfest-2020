@@ -307,6 +307,17 @@ RSpec.describe User, type: :model do
 
     context 'hacktoberfest has ended', :vcr do
       context 'user has insufficient eligible prs' do
+        before do
+          prs = pull_request_data(
+            [PR_DATA[:mature_array][0],
+            PR_DATA[:mature_array][1]]
+          ).map do |pr|
+            PullRequest.new(pr)
+          end
+    
+          allow(user).to receive(:scoring_pull_requests).and_return(prs)
+        end
+
         let(:user) { FactoryBot.create(:user) }
 
         before do
@@ -324,6 +335,33 @@ RSpec.describe User, type: :model do
         it 'persists the incompleted state', :vcr do
           user.reload
           expect(user.state).to eq('incompleted')
+        end
+
+        it 'persists a receipt of the scoring prs', :vcr do
+          user.reload
+          expect(user.receipt)
+            .to eq(JSON.parse(user.scoring_pull_requests.to_json))
+        end
+      end
+
+      context 'user has insufficient eligible prs but no receipt' do
+        let(:user) { FactoryBot.create(:user, :waiting) }
+
+        before do
+          allow(user).to receive(:hacktoberfest_ended?).and_return(true)
+          allow(user).to receive(:sufficient_eligible_prs?).and_return(true)
+          allow(user).to receive(:receipt).and_return(nil)
+
+          user.incomplete
+        end
+
+        it 'does not transition the user to the incomplete state', :vcr do
+          expect(user.state).to eq('waiting')
+        end
+
+        it 'persists the waiting state', :vcr do
+          user.reload
+          expect(user.state).to eq('waiting')
         end
       end
 

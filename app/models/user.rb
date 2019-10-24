@@ -49,6 +49,10 @@ class User < ApplicationRecord
       validates :sticker_coupon, absence: true
     end
 
+    state all - [:new, :registered, :waiting] do
+      validates :receipt, presence: true
+    end
+
     state :waiting do
       validates :sufficient_eligible_prs?, inclusion: {
         in: [true], message: 'user does not have sufficient eligible prs' }
@@ -57,7 +61,6 @@ class User < ApplicationRecord
     state :completed do
       validates :won_hacktoberfest?, inclusion: {
         in: [true], message: 'user has not met all winning conditions' }
-      validates :receipt, presence: true
 
       def win
         assign_coupon
@@ -88,7 +91,7 @@ class User < ApplicationRecord
       UserStateTransitionSegmentService.call(user, transition)
     end
 
-    before_transition to: :completed do |user, _transition|
+    before_transition to: [:completed, :incompleted] do |user, _transition|
       user.receipt = user.scoring_pull_requests
     end
 
