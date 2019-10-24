@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_143211) do
+ActiveRecord::Schema.define(version: 2019_10_24_164232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 2019_10_02_143211) do
     t.integer "lock_version", default: 0
     t.index ["code"], name: "index_shirt_coupons_on_code", unique: true
     t.index ["user_id"], name: "index_shirt_coupons_on_user_id", unique: true
+  end
+
+  create_table "spam_repositories", force: :cascade do |t|
+    t.integer "github_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["github_id"], name: "index_spam_repositories_on_github_id", unique: true
   end
 
   create_table "sticker_coupons", force: :cascade do |t|

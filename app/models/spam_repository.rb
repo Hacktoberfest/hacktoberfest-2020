@@ -1,0 +1,2 @@
+class SpamRepository < ApplicationRecord
+end
