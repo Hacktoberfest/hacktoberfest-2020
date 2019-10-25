@@ -6,7 +6,14 @@
     </h1>
      <!-- update button as soon as blog post is live -->
     <%# <%= link_to 'Read the HF2019 Recap', blog_link, :class => 'button' %>
-    <p>Hacktoberfest 2019 was presented by Digital Ocean and Dev</p>
+    <div class="level">
+      <p>Hacktoberfest 2019 was presented by</p>
+      <div class="level logos-cont">
+        <a href="https://www.digitalocean.com"><img src="<%= asset_path('do-footer-logo.svg')%>" alt="DigitalOcean Logo" ></a>
+        <p class="title is-6">Digital Ocean &  </p>
+        <a href="https://www.dev.to"><img class="dev-logo" src="<%= asset_path('dev-footer-logo.svg')  %>" alt="Dev Logo"></a>
+      </div>
+    </div>
   </div>
   <div class="section2 space">
     <div class="line-br">
@@ -15,18 +22,18 @@
     </div>
   </div>
   <h2 class="title is-2 is-spaced">Global stats</h2>
-    <section class="eventUnion">
+  <section class="eventUnion">
     <% @global_stats.map do |s| %>
-    <div class="box grow-shadow">
-      <span class="eventDay">
-        <%= s.amount %>
-      </span>
-      <div>
-        <span class="eventTitle">
-          <%= s.title %>
+      <div class="box grow-shadow">
+        <span class="eventDay">
+          <%= s.amount %>
         </span>
+        <div>
+          <span class="eventTitle">
+            <%= s.title %>
+          </span>
+        </div>
       </div>
-    </div>
     <% end %>
   </section>
   <section>
@@ -34,6 +41,25 @@
       <p class='title is-6'> PULL REQUESTS OPENED </p>
     </div>
   </section>
+  <div class="section2 space">
+    <div class="line-br">
+      <span class="line-br-1">-</span>
+      <span class="line-br-2">-</span>
+    </div>
+  </div>
+  <section>
+    <div class="">
+      <h1 class="title is-3">Sign up to get notified about Hacktoberfest</h1>
+      <input type="email" name="" value="What is your email adress?" class="input">
+      <input type="submit" name="" value="Update me" class="button">
+    </div>
+  </section>
+  <div class="section2 space">
+    <div class="line-br">
+      <span class="line-br-1">-</span>
+      <span class="line-br-2">-</span>
+    </div>
+  </div>
 </section>
 </main>
 <script type="text/javascript">
