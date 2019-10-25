@@ -81,6 +81,11 @@ main.home {
     margin-bottom: 50px;
   }
 
+  .logos-cont * {
+    padding: 3px 2px 2px 0px;
+    color: $grey;
+  }
+
   .section2 {
     margin-top: 0;
     padding-top: 40px;
@@ -225,8 +230,12 @@ main.home {
     .box {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      min-height: 100%;
+      // Below are changes for this union to represent Global stats union
+      // justify-content: space-between;
+      // min-height: 100%;
+      padding-top: 40px;
+
+
     }
 
     @media screen and (max-width: $break-small) {
