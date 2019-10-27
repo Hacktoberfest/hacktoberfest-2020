@@ -81,9 +81,36 @@ main.home {
     margin-bottom: 50px;
   }
 
-  .logos-cont * {
-    padding: 3px 2px 2px 0px;
-    color: $grey;
+  .presented-cont {
+    width: 55vw;
+
+    @media screen and (max-width: $break-small) {
+      width: 70vw;
+    }
+  }
+
+  .logos-cont {
+    margin-right: 200px;
+    margin-top: 14px;
+
+    * {
+      padding-right: 5px;
+      padding-left: 2.5px;
+      color: $grey;
+    }
+
+    p {
+      margin-bottom: 13px;
+    }
+
+    img {
+      padding-top: 5px;
+    }
+
+    @media screen and (max-width: $break-small) {
+      margin-right: 0;
+      margin-left: 0;
+    }
   }
 
   .section2 {
@@ -359,6 +386,25 @@ main.home {
     /* identical to box height */
     text-align: center;
     color: #ffffff;
+  }
+
+  .notify-cont {
+    width: 50vw;
+    display: flex;
+
+    @media screen and (max-width: $break-small) {
+      width: 100vw;;
+    }
+  }
+
+  .notify-input {
+    height: 60px;
+  }
+
+  .notify-button {
+    float: right;
+    width: 110px;
+    margin-top: 30px;
   }
 
   .sponsors {
