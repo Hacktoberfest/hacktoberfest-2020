@@ -17,45 +17,45 @@ window.setupPRsOpenedChart = function () {
 
     var maxValue = 915;
 
-    var pink = "#ff00aa";
-    var text = "#c3cce2";
-    var lightGrey = "#37476F";
-    var darkGrey = "#1d2c4e";
+    var pink = '#ff00aa';
+    var text = '#c3cce2';
+    var lightGrey = '#37476F';
+    var darkGrey = '#1d2c4e';
 
-    var chart = new CanvasJS.Chart("prsOpenedChart", {
-        backgroundColor: "transparent",
+    var chart = new CanvasJS.Chart('prsOpenedChart', {
+        backgroundColor: 'transparent',
         axisX: {
             gridThickness: 0,
             lineThickness: 0,
             tickThickness: 0,
             labelFormatter: function () {
-                return "";
+                return '';
             }
         },
         axisY: {
             minimum: 0,
             maximum: maxValue * 1.1,
             interval: maxValue / 5,
-            valueFormatString: "#,###,###,###",
+            valueFormatString: '#,###,###,###',
             gridColor: lightGrey,
             gridThickness: 2,
             lineThickness: 0,
             tickThickness: 0,
             labelFontColor: lightGrey,
-            labelFontWeight: "bold",
-            labelFontFamily: "monospace"
+            labelFontWeight: 'bold',
+            labelFontFamily: 'monospace'
         },
         toolTip: {
             borderThickness: 3,
             backgroundColor: darkGrey,
             fontColor: text,
-            fontStyle: "normal",
-            fontFamily: "Space Mono, monospace"
+            fontStyle: 'normal',
+            fontFamily: 'Space Mono, monospace'
         },
         data: [
             {
-                type: "spline",
-                toolTipContent: "{y} PRs",
+                type: 'spline',
+                toolTipContent: '{y} PRs',
                 markerSize: 10,
                 markerColor: darkGrey,
                 markerBorderColor: pink,
