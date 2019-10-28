@@ -6,8 +6,9 @@ class PagesController < ApplicationController
   def index
     @events = front_page_events
     @projects = ProjectService.sample(9)
-    @climate_repository = ClimateProjectService.sample(3)
+    @climate_repositories = ClimateProjectService.sample(3)
     @global_stats = global_stats
+    @hacktoberfest_ended = Hacktoberfest.ended?
   end
 
   def faqs
