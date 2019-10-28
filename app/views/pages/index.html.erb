@@ -37,8 +37,9 @@
     <% end %>
   </section>
   <section>
-    <div class="box">
+    <div class="box stats-cont">
       <p class='title is-6'> PULL REQUESTS OPENED </p>
+      <img src="<%= asset_path('PR-stats-visual.png')%>" alt="Pull request stats">
     </div>
   </section>
   <div class="section2 space">
@@ -50,9 +51,8 @@
   <section>
     <h1 class="title is-3">Sign up to get notified about Hacktoberfest</h1>
     <div class="notify-cont">
-      <input type="email" value="What is your email address?" class="input notify-input">
-      <input type="submit" value="Update me" class="button notify-button">
-    </div>
+      <input type="email" value="What is your email address?" class="input notify-input" id="email-input" onclick="clearInput()">
+      <input type="submit" value="Update me" class="button notify-button" onclick="notifyUserEmail()">
   </section>
 </main>
 <script type="text/javascript">
