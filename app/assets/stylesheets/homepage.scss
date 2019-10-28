@@ -1,10 +1,10 @@
 // Place all the styles related to the Homepage controller here (index page).
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$break-tiny: 812px;
 $break-small: 1024px;
 $break-med: 1350px;
 $break-big: 1500px;
-$break-large: 2520px;
 $yellow: hsl(58.37, 100%, 56.67%);
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
@@ -121,14 +121,11 @@ main.home {
   }
 
   .box.stats-cont {
-    width: 100%;
+    width: 99%;
     text-align: left !important;
 
     p {
       margin-left: 10px;
-    }
-    @media screen and (min-width: $break-large) {
-      margin-left: 5vw;
     }
   }
 
@@ -306,6 +303,41 @@ main.home {
     box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
   }
 
+  .statUnion {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: baseline;
+    margin-bottom: 60px;
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media screen and (max-width: $break-small) {
+      flex-direction: column;
+    }
+    .box span {
+      width: 100%;
+      float: left;
+    }
+  }
+
+  .statUnion .box:nth-child(3n + 1) {
+    background: linear-gradient(76.04deg, #febd3b -0.33%, #ff9353 100.08%);
+    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  .statUnion .box:nth-child(3n + 2) {
+    background: linear-gradient(76.04deg, #ff8c57 -0.33%, #ff646f 100.08%);
+    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+  }
+  .statUnion .box:nth-child(3n + 3) {
+    background: linear-gradient(76.04deg, #ff5d73 -0.33%, #ff358b 100.08%);
+    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+  }
+
   .language-filter {
     padding-bottom: 20px;
     display: flex;
@@ -407,12 +439,18 @@ main.home {
     display: flex;
 
     @media screen and (max-width: $break-small) {
-      width: 100vw;;
+      width: 100vw;
     }
   }
 
   .notify-input {
     height: 60px;
+
+    @media screen and (max-width: $break-small) {
+      width: 53vw;
+      margin-left: 4%;
+      font-size: x-small;
+    }
   }
 
   .notify-button {
