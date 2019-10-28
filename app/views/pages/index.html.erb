@@ -1,5 +1,5 @@
 <main class="home" id="main-home">
-  <% if !@hacktoberfest_ended %>
+  <% if @hacktoberfest_ended %>
     <%= render partial: 'pages/homepage/closing_homepage', locals: { global_stats: @global_stats } %>
   <% else %>
     <%= render partial: 'pages/homepage/active_homepage', locals: { projects: @projects, climate_repositories: @climate_repositories, events: @events } %>
