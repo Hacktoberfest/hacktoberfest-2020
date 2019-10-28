@@ -8,7 +8,7 @@ module ImportUserMetadataService
   def call(user)
     client = OctokitRetryableAPIClient.new(access_token: user.provider_token)
 
-    user_data = client.request(:user, name=user.name)
+    user_data = client.request(:user, name=user.name).to_hash
 
     UserStat.where(user_id: user.id).first_or_create(data: user_data)
   end
