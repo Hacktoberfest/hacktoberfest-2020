@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $break-small: 1024px;
 $break-med: 1350px;
-$break-large: 2530px;
+$break-big: 1500px;
+$break-large: 2520px;
 $yellow: hsl(58.37, 100%, 56.67%);
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
@@ -89,6 +90,10 @@ main.home {
     @media screen and (max-width: $break-small) {
       width: 70vw;
     }
+
+    @media screen and (min-width: $break-big) {
+      width: 133%;
+    }
   }
 
   .logos-cont {
@@ -112,10 +117,6 @@ main.home {
     @media screen and (max-width: $break-small) {
       margin-right: 0;
       margin-left: 0;
-    }
-
-    @media screen and (min-width: $break-large) {
-      margin-right: 32vw;
     }
   }
 
