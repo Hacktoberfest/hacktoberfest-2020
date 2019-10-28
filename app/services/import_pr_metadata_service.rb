@@ -7,7 +7,6 @@ module ImportPRMetadataService
     pr_data = user.pull_requests
 
     pr_data.map do |pr|
-      binding.pry
       PRStat.where(pr_id: pr.id).first_or_create(data: pr)
     end
   end
