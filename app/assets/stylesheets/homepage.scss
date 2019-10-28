@@ -119,8 +119,8 @@ main.home {
     }
   }
 
-  .stats-cont {
-    min-width: 78vw;
+  .box.stats-cont {
+    width: 100%;
     text-align: left !important;
 
     p {
@@ -206,8 +206,8 @@ main.home {
   }
 
   .box {
-    text-align: center;
-    width: 340px;
+    text-align: left;
+    width: 33%;
     min-height: 226px;
     margin-right: 30px;
     margin-bottom: 0;
@@ -275,12 +275,7 @@ main.home {
     .box {
       display: flex;
       flex-direction: column;
-      // Below are changes for this union to represent Global stats union
-      // justify-content: space-between;
-      // min-height: 100%;
-      padding-top: 40px;
-
-
+      justify-content: center;
     }
 
     @media screen and (max-width: $break-small) {
@@ -382,7 +377,7 @@ main.home {
     font-size: 48px;
     line-height: 71px;
     /* identical to box height */
-    text-align: center;
+    text-align: left;
     color: #ffffff;
   }
 

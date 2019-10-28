@@ -38,8 +38,8 @@
   </section>
   <section>
     <div class="box stats-cont">
-      <p class='title is-6'> PULL REQUESTS OPENED </p>
-      <img src="<%= asset_path('PR-stats-visual.png')%>" alt="Pull request stats">
+      <p class="title is-6">PULL REQUESTS OPENED</p>
+      <div id="prsOpenedChart" style="height: 350px; width: 100%;"></div>
     </div>
   </section>
   <div class="section2 space">
@@ -53,9 +53,12 @@
     <div class="notify-cont">
       <input type="email" value="What is your email address?" class="input notify-input" id="email-input" onclick="clearInput()">
       <input type="submit" value="Update me" class="button notify-button" onclick="notifyUserEmail()">
+    </div>
   </section>
+</section>
 </main>
 <script type="text/javascript">
   setupHomeImageSwap();
   setupLanguageFilter();
+  setupPRsOpenedChart();
 </script>
