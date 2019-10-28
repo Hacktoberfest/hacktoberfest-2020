@@ -43,14 +43,14 @@ window.setupPRsOpenedChart = function () {
             tickThickness: 0,
             labelFontColor: lightGrey,
             labelFontWeight: "bold",
-            labelFontFamily: "sans-serif"
+            labelFontFamily: "monospace"
         },
         toolTip: {
             borderThickness: 3,
             backgroundColor: darkGrey,
             fontColor: text,
             fontStyle: "normal",
-            fontFamily: "sans-serif"
+            fontFamily: "Space Mono, monospace"
         },
         data: [
             {
@@ -65,8 +65,11 @@ window.setupPRsOpenedChart = function () {
                 lineThickness: 3,
                 dataPoints: data
             }
-        ]
+        ],
+        creditColor: lightGrey
     });
 
     chart.render();
+    document.querySelector('.canvasjs-chart-credit').style.color = lightGrey;
+    document.querySelector('.canvasjs-chart-credit').style.fontFamily = '';
 };
