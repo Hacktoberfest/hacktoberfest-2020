@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $break-small: 1024px;
 $break-med: 1350px;
+$break-large: 2530px;
 $yellow: hsl(58.37, 100%, 56.67%);
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
@@ -83,6 +84,7 @@ main.home {
 
   .presented-cont {
     width: 55vw;
+    margin-top: 15vh;
 
     @media screen and (max-width: $break-small) {
       width: 70vw;
@@ -110,6 +112,22 @@ main.home {
     @media screen and (max-width: $break-small) {
       margin-right: 0;
       margin-left: 0;
+    }
+
+    @media screen and (min-width: $break-large) {
+      margin-right: 32vw;
+    }
+  }
+
+  .stats-cont {
+    min-width: 78vw;
+    text-align: left !important;
+
+    p {
+      margin-left: 10px;
+    }
+    @media screen and (min-width: $break-large) {
+      margin-left: 5vw;
     }
   }
 
