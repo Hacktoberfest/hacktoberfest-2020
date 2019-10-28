@@ -2,5 +2,5 @@
 
 class PRStat < ApplicationRecord
   validates :data, presence: true
-  validates :user_id, presence: true, uniqueness: true
+  validates :pr_id, presence: true, uniqueness: true
 end
