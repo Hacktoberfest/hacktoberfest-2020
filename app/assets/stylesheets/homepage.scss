@@ -338,6 +338,28 @@ main.home {
     box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
   }
 
+  .statAmount {
+    font-family: Space Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 71px;
+    /* identical to box height */
+    text-align: left;
+    color: #ffffff;
+  }
+
+  .statTitle {
+    font-family: Space Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 160%;
+    /* identical to box height, or 29px */
+    color: #ffffff;
+  }
+
+
   .language-filter {
     padding-bottom: 20px;
     display: flex;
