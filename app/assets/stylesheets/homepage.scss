@@ -264,21 +264,24 @@ main.home {
     }
   }
 
-  .eventUnion {
+  .eventUnion,
+  .statUnion {
     display: flex;
     justify-content: space-between;
     vertical-align: baseline;
     margin-bottom: 60px;
 
+    @media screen and (max-width: $break-small) {
+      flex-direction: column;
+    }
+
     .box {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
     }
 
-    @media screen and (max-width: $break-small) {
-      flex-direction: column;
-    }
     .box span {
       width: 100%;
       float: left;
@@ -287,55 +290,27 @@ main.home {
 
   .eventUnion .box:nth-child(4n + 1) {
     background: linear-gradient(76.04deg, #febd3b -0.33%, #ff9353 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
   }
 
   .eventUnion .box:nth-child(4n + 2) {
     background: linear-gradient(76.04deg, #ff8c57 -0.33%, #ff646f 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
   }
   .eventUnion .box:nth-child(4n + 3) {
     background: linear-gradient(76.04deg, #ff5d73 -0.33%, #ff358b 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
   }
   .eventUnion .box:nth-child(4n + 4) {
     background: linear-gradient(76.04deg, #ff2e90 -0.33%, #ff06a6 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
-  }
-
-  .statUnion {
-    display: flex;
-    justify-content: space-between;
-    vertical-align: baseline;
-    margin-bottom: 60px;
-
-    .box {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    @media screen and (max-width: $break-small) {
-      flex-direction: column;
-    }
-    .box span {
-      width: 100%;
-      float: left;
-    }
   }
 
   .statUnion .box:nth-child(3n + 1) {
-    background: linear-gradient(76.04deg, #febd3b -0.33%, #ff9353 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(76.04deg, #febd3b -0.33%, #ff865b 100.08%);
   }
 
   .statUnion .box:nth-child(3n + 2) {
-    background: linear-gradient(76.04deg, #ff8c57 -0.33%, #ff646f 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(76.04deg, #ff815f -0.33%, #ff4282 100.08%);
   }
   .statUnion .box:nth-child(3n + 3) {
-    background: linear-gradient(76.04deg, #ff5d73 -0.33%, #ff358b 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(76.04deg, #ff3e86 -0.33%, #ff00a9 100.08%);
   }
 
   .statAmount {
@@ -358,7 +333,6 @@ main.home {
     /* identical to box height, or 29px */
     color: #ffffff;
   }
-
 
   .language-filter {
     padding-bottom: 20px;
