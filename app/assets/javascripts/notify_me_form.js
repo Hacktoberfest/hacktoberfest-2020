@@ -1,4 +1,4 @@
 function clearInput() {
-  var emailInput = document.getElementById('email-input');
+  var emailInput = document.getElementById('Email');
   emailInput.value = ''
 }

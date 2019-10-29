@@ -449,6 +449,10 @@ main.home {
   display:flex;
 }
 
+.mktoForm label {
+  display: none;
+}
+
 .mktoForm input {
   justify-content: flex-start;
   background-color: $grey-dark;
@@ -456,13 +460,18 @@ main.home {
   border-radius: 0;
   border: none;
   color: $white;
+  font-family: 'Space Mono Bold';
   margin-top: 30px;
   height: 60px;
   width: 30vw !important;
+
+  @media screen and (max-width: $break-small) {
+    width: 82vw !important;
+    height: 8vh !important;
+  }
 }
 .mktoForm.input::placeholder {
   color: $white;
-  opacity: 1;
 }
 
 .mktoForm .mktoButtonWrap.mktoSimple .mktoButton {
@@ -477,7 +486,7 @@ main.home {
   border: none !important;
   background: $purple !important;
   color: $white;
-  margin-top: 6px;
+  margin-top: 5px;
 
   &:hover {
     background: $cyan !important;
