@@ -8,7 +8,11 @@ class PagesController < ApplicationController
     @projects = ProjectService.sample(9)
     @climate_repositories = ClimateProjectService.sample(3)
     @global_stats = global_stats
-    @hacktoberfest_ended = Hacktoberfest.ended?
+    if Hacktoberfest.ended?
+      render 'pages/homepage/closing_homepage'
+    else
+      render 'pages/homepage/active_homepage'
+    end
   end
 
   def faqs
@@ -54,6 +58,6 @@ class PagesController < ApplicationController
       { amount: '231,000', title: 'PULL REQUESTS OPENED' },
       { amount: '31,000', title: 'PARTICIPATING REPOSITORIES' }
     ]
-    stats_arr = stats_arr.map { |s| Hashie::Mash.new(s) }
+    stats_arr.map { |s| Hashie::Mash.new(s) }
   end
 end
