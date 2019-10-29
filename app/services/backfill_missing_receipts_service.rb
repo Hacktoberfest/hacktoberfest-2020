@@ -4,7 +4,13 @@ module BackfillMissingReceiptsService
   module_function
 
   def call
-    User.where(state: 'completed', receipt: nil).select(:id).find_in_batches do |group|
+    users = User.
+      where(state: 'waiting').
+      or(User.where(state: 'completed')).
+      or(User.where(state:'won_shirt')).
+      or(User.where(state:'won_sticker'))
+
+    users.where(receipt: nil).select(:id).find_in_batches do |group|
       group.each { |user| BackfillReceiptJob.perform_async(user.id) }
     end
   end
