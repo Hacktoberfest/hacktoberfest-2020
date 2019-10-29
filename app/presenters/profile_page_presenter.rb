@@ -24,7 +24,6 @@ class ProfilePagePresenter
   end
 
   def scoring_pull_requests
-    # if user has a receipt, run persisted method to display their stored PR info
     if @user.receipt
       persisted_winning_pull_requests.select(&:eligible?)
     else
@@ -33,10 +32,6 @@ class ProfilePagePresenter
   end
 
   def persisted_winning_pull_requests
-    # User receipt is not being persisted in completed state
-    # pr object coming in has additional "github_pull_request" key and
-    # "graphql_hash" keys, object needs to be identical to
-    # @current_user.scoring_pull_requests
     @user.receipt.map do |pr|
       hashie_prs = Hashie::Mash.new(pr).github_pull_request.graphql_hash
       PullRequest.new(GithubPullRequest.new(hashie_prs))
@@ -48,7 +43,6 @@ class ProfilePagePresenter
   end
 
   def score
-    # ignore state and just check to see if receipt exists & use eligible PRs in receipt to calculate score
     if @user.receipt
       persisted_winning_pull_requests.select(&:eligible?).count
     else
