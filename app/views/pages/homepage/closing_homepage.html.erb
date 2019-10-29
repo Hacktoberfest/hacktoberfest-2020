@@ -7,12 +7,18 @@
        <!-- update button as soon as blog post is live -->
       <%# <%= link_to 'Read the HF2019 Recap', blog_link, :class => 'button' %>
       <div class="level presented-cont">
-        <p>Hacktoberfest 2019 was presented by</p>
-        <div class="level logos-cont">
-          <a href="https://www.digitalocean.com"><img src="<%= asset_path('DO-logo-gray.png')%>" alt="DigitalOcean Logo"></a>
-          <p>&</p>
-          <a href="https://www.dev.to"><img class="dev-logo" src="<%= asset_path('DEV-logo-gray.png')%>" alt="Dev Logo"></a>
-        </div>
+        <p>
+          Hacktoberfest 2019 was presented by
+          <span class="logos-cont">
+            <a href="https://www.digitalocean.com">
+              <img class="do-logo" src="<%= asset_path('DO-logo-gray.png')%>" alt="DigitalOcean Logo">
+            </a>
+            &
+            <a href="https://www.dev.to">
+              <img class="dev-logo" src="<%= asset_path('DEV-logo-gray.png')%>" alt="Dev Logo">
+            </a>
+          </span>
+        </p>
       </div>
     </div>
     <div class="section2 space">

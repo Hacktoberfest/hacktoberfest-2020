@@ -84,39 +84,16 @@ main.home {
   }
 
   .presented-cont {
-    width: 55vw;
     margin-top: 15vh;
-
-    @media screen and (max-width: $break-small) {
-      width: 70vw;
-    }
-
-    @media screen and (min-width: $break-big) {
-      width: 133%;
-    }
   }
 
   .logos-cont {
-    margin-right: 200px;
-    margin-top: 14px;
-
-    * {
-      padding-right: 5px;
-      padding-left: 2.5px;
-      color: $grey;
-    }
-
-    p {
-      margin-bottom: 13px;
-    }
-
-    img {
+    .do-logo {
       padding-top: 5px;
     }
 
-    @media screen and (max-width: $break-small) {
-      margin-right: 0;
-      margin-left: 0;
+    .dev-logo {
+      padding-top: 2px;
     }
   }
 
