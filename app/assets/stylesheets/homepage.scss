@@ -316,6 +316,19 @@ main.home {
     margin-right: 0;
   }
 
+  .eventMonth {
+    font-family: Space Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .eventDay,
   .statAmount {
     font-family: Space Mono;
     font-style: normal;
@@ -323,10 +336,10 @@ main.home {
     font-size: 48px;
     line-height: 71px;
     /* identical to box height */
-    text-align: left;
     color: #ffffff;
   }
 
+  .eventTitle,
   .statTitle {
     font-family: Space Mono;
     font-style: normal;
@@ -335,6 +348,21 @@ main.home {
     line-height: 160%;
     /* identical to box height, or 29px */
     color: #ffffff;
+  }
+
+  .eventLocation {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height */
+    color: #ffffff;
+  }
+
+  .eventDay,
+  .eventTitle,
+  .eventLocation {
+    text-align: center;
   }
 
   .language-filter {
@@ -388,49 +416,6 @@ main.home {
         }
       }
     }
-  }
-
-  .eventMonth {
-    font-family: Space Mono;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 27px;
-    /* identical to box height */
-    text-align: center;
-    text-transform: uppercase;
-    color: #ffffff;
-  }
-
-  .eventDay {
-    font-family: Space Mono;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 71px;
-    /* identical to box height */
-    text-align: center;
-    color: #ffffff;
-  }
-
-  .eventTitle {
-    font-family: Space Mono;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 160%;
-    /* identical to box height, or 29px */
-    color: #ffffff;
-  }
-
-  .eventLocation {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 18px;
-    /* identical to box height */
-    text-align: center;
-    color: #ffffff;
   }
 
   .notify-cont {
