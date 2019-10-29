@@ -121,8 +121,9 @@ main.home {
   }
 
   .box.stats-cont {
-    width: 99%;
+    width: 100%;
     text-align: left !important;
+    margin: 0;
 
     p {
       margin-left: 10px;
@@ -300,6 +301,7 @@ main.home {
   }
   .eventUnion .box:nth-child(4n + 4) {
     background: linear-gradient(76.04deg, #ff2e90 -0.33%, #ff06a6 100.08%);
+    margin-right: 0;
   }
 
   .statUnion .box:nth-child(3n + 1) {
@@ -311,6 +313,7 @@ main.home {
   }
   .statUnion .box:nth-child(3n + 3) {
     background: linear-gradient(76.04deg, #ff3e86 -0.33%, #ff00a9 100.08%);
+    margin-right: 0;
   }
 
   .statAmount {
