@@ -206,7 +206,7 @@ main.home {
 
   .box {
     text-align: left;
-    width: 33%;
+    width: 340px;
     min-height: 226px;
     margin-right: 30px;
     margin-bottom: 0;
@@ -277,6 +277,9 @@ main.home {
     }
 
     .box {
+      flex-basis: 100%;
+      flex-grow: 1;
+      width: auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
