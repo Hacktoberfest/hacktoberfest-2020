@@ -89,35 +89,6 @@ main.home {
         margin-left: 10px;
       }
     }
-
-    .notify-cont {
-      width: 50%;
-      display: flex;
-
-      @media screen and (max-width: $break-med) {
-        width: 75%;
-      }
-
-      @media screen and (max-width: $break-small) {
-        width: 100%;
-        flex-wrap: wrap;
-      }
-    }
-
-    .notify-input {
-      height: 60px;
-      padding: 15px 20px;
-    }
-
-    .notify-button {
-      float: right;
-      margin-top: 30px;
-
-      @media screen and (max-width: $break-small) {
-        width: 100%;
-        margin-top: 0;
-      }
-    }
   }
 
   .p {
