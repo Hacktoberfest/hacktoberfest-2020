@@ -8,6 +8,7 @@ $break-big: 1500px;
 $yellow: hsl(58.37, 100%, 56.67%);
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
+$grey-dark: hsl(223, 32%, 33%); // button hover text
 $grey-darker: hsl(222, 45%, 21%); // box dark blue
 $white: hsl(0, 0%, 100%);
 $cyan: hsl(191.56, 100%, 78.63%);
@@ -87,6 +88,82 @@ main.home {
 
       p {
         margin-left: 10px;
+      }
+    }
+
+    .mktoForm {
+      display: flex;
+      flex-wrap: wrap;
+      width: auto !important;
+
+      @media screen and (max-width: $break-small) {
+        width: 100% !important;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      label,
+      .mktoOffset,
+      .mktoGutter {
+        display: none;
+      }
+
+      .mktoFormRow .mktoFormCol .mktoField,
+      .mktoButtonWrap .mktoButton {
+        color: $white;
+        font-family: 'Space Mono Bold', monospace;
+        font-size: 1rem;
+        margin: 0;
+        height: auto;
+        line-height: 30px;
+        padding: 15px 20px;
+        border-radius: 0;
+        border: none;
+      }
+
+      .mktoFormCol,
+      .mktoFieldWrap {
+        float: unset !important;
+      }
+
+      .mktoFormRow {
+        @media screen and (max-width: $break-small) {
+          flex-grow: 1;
+          width: 100%;
+        }
+
+        .mktoFormCol {
+          margin: 0 !important;
+
+          .mktoFieldWrap {
+            .mktoField {
+              justify-content: flex-start;
+              background-color: $grey-dark;
+              box-shadow: 0px 30px 60px hsla(0, 0%, 0%, 0.2);
+              width: 33vw !important;
+
+              @media screen and (max-width: $break-small) {
+                width: 100% !important;
+              }
+            }
+          }
+        }
+      }
+
+      .mktoButtonWrap {
+        margin: 0 !important;
+
+        .mktoButton {
+          float: left;
+          background: $purple;
+          color: $white;
+          white-space: nowrap;
+
+          &:hover {
+            background: $cyan;
+            color: $grey-dark;
+          }
+        }
       }
     }
   }
@@ -443,48 +520,4 @@ main.home {
 
 .form-cont {
   display:flex;
-}
-
-.mktoForm label {
-  display: none;
-}
-
-.mktoForm input {
-  justify-content: flex-start;
-  background-color: $grey-dark;
-  box-shadow: 0px 30px 60px hsla(0, 0%, 0%, 0.2);
-  border-radius: 0;
-  border: none;
-  color: $white;
-  font-family: 'Space Mono Bold';
-  margin-top: 30px;
-  height: 60px;
-  width: 30vw !important;
-
-  @media screen and (max-width: $break-small) {
-    width: 82vw !important;
-    height: 8vh !important;
-  }
-}
-.mktoForm.input::placeholder {
-  color: $white;
-}
-
-.mktoForm .mktoButtonWrap.mktoSimple .mktoButton {
-  float: left;
-  min-height: 60px;
-  border: none;
-  border-radius: 0px;
-  font-size: 16px;
-  padding-bottom: 2em;
-  padding-top: 1.125em;
-  font-family: 'Space Mono Bold';
-  border: none !important;
-  background: $purple !important;
-  color: $white;
-  margin-top: 2px;
-
-  &:hover {
-    background: $cyan !important;
-  }
 }
