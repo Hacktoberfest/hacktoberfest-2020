@@ -26,7 +26,8 @@ class ProfilePagePresenter
   def scoring_pull_requests
     # if user has a receipt, run persisted method to display their stored PR info
     if @user.receipt
-      persisted_winning_pull_requests
+      binding.pry
+      persisted_winning_pull_requests.select(&:eligible?)
     else
       @user.scoring_pull_requests
     end
@@ -50,7 +51,7 @@ class ProfilePagePresenter
   def score
     # ignore state and just check to see if receipt exists & use eligible PRs in receipt to calculate score
     if @user.receipt
-      persisted_winning_pull_requests.count
+      persisted_winning_pull_requests.select(&:eligible?).count
     else
       @user.score || 0
     end
