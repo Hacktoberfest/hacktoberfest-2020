@@ -33,8 +33,8 @@ class ProfilePagePresenter
 
   def persisted_winning_pull_requests
     @user.receipt.map do |pr|
-      hashie_pr = Hashie::Mash.new(pr).github_pull_request.graphql_hash
-      PullRequest.new(GithubPullRequest.new(hashie_pr))
+      graphql_hashie = Hashie::Mash.new(pr).github_pull_request.graphql_hash
+      PullRequest.new(GithubPullRequest.new(graphql_hashie))
     end
   end
 
@@ -43,8 +43,8 @@ class ProfilePagePresenter
   end
 
   def score
-    if @user.receipt
-      persisted_winning_pull_requests.select(&:eligible?).count
+    if @user.completed? || @user.won_shirt? || @user.won_sticker?
+      4
     else
       @user.score || 0
     end
