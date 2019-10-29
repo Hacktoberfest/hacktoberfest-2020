@@ -38,7 +38,6 @@ class User < ApplicationRecord
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
-      validates :email, inclusion: { in: :github_emails }
     end
 
     state all - [:won_shirt] do
@@ -51,6 +50,10 @@ class User < ApplicationRecord
 
     state all - [:new, :registered, :waiting] do
       validates :receipt, presence: true
+    end
+
+    state :registered do
+      validates :email, inclusion: { in: :github_emails }
     end
 
     state :waiting do
