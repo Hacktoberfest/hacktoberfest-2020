@@ -15,8 +15,10 @@ class SessionsController < ApplicationController
   end
 
   def store_user_info
-    @user.update(provider_token: auth_hash.credentials.token,
-                 name: auth_hash.info.nickname)
+    @user.update_columns(
+      provider_token: auth_hash.credentials.token,
+      name: auth_hash.info.nickname
+    )
   end
 
   def destroy
