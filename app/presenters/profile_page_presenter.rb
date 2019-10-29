@@ -44,7 +44,7 @@ class ProfilePagePresenter
 
   def score
     if @user.receipt
-      persisted_winning_pull_requests.select(&:eligible?).count
+      4
     else
       @user.score || 0
     end
