@@ -5,8 +5,7 @@ module BackfillMissingReceiptsService
 
   def call
     users = User.
-      where(state: 'waiting').
-      or(User.where(state: 'completed')).
+      where(state: 'completed').
       or(User.where(state:'won_shirt')).
       or(User.where(state:'won_sticker'))
 
