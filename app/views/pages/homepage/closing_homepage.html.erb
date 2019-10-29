@@ -1,0 +1,64 @@
+<main class="home" id="main-home">
+  <section class="section">
+    <div class="hero-body">
+      <p>Open source is changing the world – one pull request at a time.</p>
+      <h1 class="title is-1 is-spaced">We'll see you <span class="highlight"> next year</span>!
+      </h1>
+       <!-- update button as soon as blog post is live -->
+      <%# <%= link_to 'Read the HF2019 Recap', blog_link, :class => 'button' %>
+      <div class="level presented-cont">
+        <p>Hacktoberfest 2019 was presented by</p>
+        <div class="level logos-cont">
+          <a href="https://www.digitalocean.com"><img src="<%= asset_path('DO-logo-gray.png')%>" alt="DigitalOcean Logo"></a>
+          <p>&</p>
+          <a href="https://www.dev.to"><img class="dev-logo" src="<%= asset_path('DEV-logo-gray.png')%>" alt="Dev Logo"></a>
+        </div>
+      </div>
+    </div>
+    <div class="section2 space">
+      <div class="line-br">
+        <span class="line-br-1">-</span>
+        <span class="line-br-2">-</span>
+      </div>
+    </div>
+    <h2 class="title is-2 is-spaced">Global stats</h2>
+    <section class="statUnion">
+      <% @global_stats.map do |s| %>
+        <div class="box grow-shadow">
+          <span class="statAmount">
+            <%= s.amount %>
+          </span>
+          <div>
+            <span class="statTitle">
+              <%= s.title %>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    </section>
+    <section>
+      <div class="box stats-cont">
+        <p class="title is-6">PULL REQUESTS OPENED</p>
+        <div id="prsOpenedChart" style="height: 350px; width: 100%;"></div>
+      </div>
+    </section>
+    <div class="section2 space">
+      <div class="line-br">
+        <span class="line-br-1">-</span>
+        <span class="line-br-2">-</span>
+      </div>
+    </div>
+    <section>
+      <h1 class="title is-3">Sign up to get notified about Hacktoberfest</h1>
+      <div class="notify-cont">
+        <input type="email" value="What is your email address?" class="input notify-input" id="email-input" onclick="clearInput()">
+        <input type="submit" value="Update me" class="button notify-button" onclick="notifyUserEmail()">
+      </div>
+    </section>
+  </section>
+</main>
+<script type="text/javascript">
+  setupHomeImageSwap();
+  setupLanguageFilter();
+  setupPRsOpenedChart();
+</script>
