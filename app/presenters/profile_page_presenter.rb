@@ -46,6 +46,10 @@ class ProfilePagePresenter
   end
 
   def score
+    if user.incompleted?
+      return persisted_winning_pull_requests.select(&:eligible?).count
+    end
+
     @user.score || 0
   end
 
