@@ -10,8 +10,8 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
       allow(UserStateTransitionSegmentService).to receive(:call)
       allow(UserPullRequestSegmentUpdaterService).to receive(:call)
 
-      # to allow receipt to attempt to be set on the incomplete transition
-      allow(user).to receive(:scoring_pull_requests).and_return({"test": "test"}) 
+      # needed for receipt presence validation to pass
+      allow(user).to receive(:scoring_pull_requests).and_return({"test": "test"})
     end
 
     context 'The user has enough PRs to transition' do
