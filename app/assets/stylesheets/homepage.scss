@@ -411,28 +411,32 @@ main.home {
   }
 
   .notify-cont {
-    width: 50vw;
+    width: 50%;
     display: flex;
 
+    @media screen and (max-width: $break-med) {
+      width: 75%;
+    }
+
     @media screen and (max-width: $break-small) {
-      width: 100vw;
+      width: 100%;
+      flex-wrap: wrap;
     }
   }
 
   .notify-input {
     height: 60px;
-
-    @media screen and (max-width: $break-small) {
-      width: 53vw;
-      margin-left: 4%;
-      font-size: x-small;
-    }
+    padding: 15px 20px;
   }
 
   .notify-button {
     float: right;
-    width: 110px;
     margin-top: 30px;
+
+    @media screen and (max-width: $break-small) {
+      width: 100%;
+      margin-top: 0;
+    }
   }
 
   .sponsors {
