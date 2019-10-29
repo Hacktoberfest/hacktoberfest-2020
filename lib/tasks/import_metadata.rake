@@ -14,4 +14,11 @@ namespace :github do
 
     puts "Enqueued #{job_count} jobs"
   end
+
+  desc 'Count PRs per day and outpiut the results'
+  task count_daily_prs: :environment do
+    results = CountDailyPrsService.call
+
+    puts results
+  end
 end
