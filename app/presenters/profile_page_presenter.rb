@@ -25,7 +25,7 @@ class ProfilePagePresenter
 
   def scoring_pull_requests
     if @user.receipt
-      persisted_winning_pull_requests.select(&:eligible?)
+      persisted_winning_pull_requests
     else
       @user.scoring_pull_requests
     end
