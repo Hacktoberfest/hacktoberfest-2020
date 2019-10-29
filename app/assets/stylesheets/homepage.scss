@@ -205,7 +205,7 @@ main.home {
   }
 
   .box {
-    text-align: left;
+    text-align: center;
     width: 340px;
     min-height: 226px;
     margin-right: 30px;
@@ -352,10 +352,9 @@ main.home {
     /* identical to box height */
   }
 
-  .eventDay,
-  .eventTitle,
-  .eventLocation {
-    text-align: center;
+  .statAmount,
+  .statTitle {
+    text-align: left;
   }
 
   .language-filter {
