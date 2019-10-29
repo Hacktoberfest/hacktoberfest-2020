@@ -281,6 +281,9 @@ main.home {
       flex-direction: column;
       justify-content: center;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      font-family: Space Mono, monospace;
+      font-style: normal;
+      color: #ffffff;
     }
 
     .box span {
@@ -292,7 +295,6 @@ main.home {
   .eventUnion .box:nth-child(4n + 1) {
     background: linear-gradient(76.04deg, #febd3b -0.33%, #ff9353 100.08%);
   }
-
   .eventUnion .box:nth-child(4n + 2) {
     background: linear-gradient(76.04deg, #ff8c57 -0.33%, #ff646f 100.08%);
   }
@@ -307,7 +309,6 @@ main.home {
   .statUnion .box:nth-child(3n + 1) {
     background: linear-gradient(76.04deg, #febd3b -0.33%, #ff865b 100.08%);
   }
-
   .statUnion .box:nth-child(3n + 2) {
     background: linear-gradient(76.04deg, #ff815f -0.33%, #ff4282 100.08%);
   }
@@ -317,46 +318,35 @@ main.home {
   }
 
   .eventMonth {
-    font-family: Space Mono;
-    font-style: normal;
     font-weight: bold;
     font-size: 18px;
     line-height: 27px;
     /* identical to box height */
     text-align: center;
     text-transform: uppercase;
-    color: #ffffff;
   }
 
   .eventDay,
   .statAmount {
-    font-family: Space Mono;
-    font-style: normal;
     font-weight: bold;
     font-size: 48px;
     line-height: 71px;
     /* identical to box height */
-    color: #ffffff;
   }
 
   .eventTitle,
   .statTitle {
-    font-family: Space Mono;
-    font-style: normal;
     font-weight: normal;
     font-size: 18px;
     line-height: 160%;
     /* identical to box height, or 29px */
-    color: #ffffff;
   }
 
   .eventLocation {
-    font-style: normal;
     font-weight: normal;
     font-size: 12px;
     line-height: 18px;
     /* identical to box height */
-    color: #ffffff;
   }
 
   .eventDay,
