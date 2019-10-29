@@ -51,7 +51,11 @@ class ProfilePagePresenter
   end
 
   def bonus_score
-    (@user.persisted_winning_pull_requests.select(&:eligible?).count || 0) - @user.score
+    if @user.receipt
+      (@user.persisted_winning_pull_requests.select(&:eligible?).count || 0) - @user.score
+    else
+      (@user.eligible_pull_requests_count || 0) - @user.score
+    end
   end
 
   def name
