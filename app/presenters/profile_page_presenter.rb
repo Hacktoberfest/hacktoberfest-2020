@@ -24,7 +24,7 @@ class ProfilePagePresenter
   end
 
   def scoring_pull_requests
-    if display_waiting_for_prize? || display_coupon?
+    if display_waiting_for_prize? || display_coupon? || @user.incompleted?
       persisted_winning_pull_requests
     else
       @user.scoring_pull_requests
