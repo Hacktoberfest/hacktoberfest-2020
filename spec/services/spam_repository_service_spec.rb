@@ -5,11 +5,12 @@ require 'rails_helper'
 RSpec.describe SpamRepositoryService do
   describe '.call' do
     context 'repository is spam' do
-      before do
-        spam_repository = FactoryBot.create(:spam_repository)
+      let!(:spam_repository) do
+        FactoryBot.create(:spam_repository, github_id: 123_456)
       end
+
       it 'returns true' do
-        expect(SpamRepositoryService.call(spam_repository.id)).to eq(true)
+        expect(SpamRepositoryService.call(123_456)).to eq(true)
       end
     end
 
