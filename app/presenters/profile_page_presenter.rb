@@ -24,7 +24,21 @@ class ProfilePagePresenter
   end
 
   def scoring_pull_requests
-    @user.scoring_pull_requests
+    if display_waiting_for_prize? || display_coupon?
+      persisted_winning_pull_requests
+    else
+      @user.scoring_pull_requests
+    end
+  end
+
+  def persisted_winning_pull_requests
+    #User receipt is not being persisted in completed state
+    # pr object coming in has additional "github_pull_request" key and
+    # "graphql_hash" keys, object needs to be identical to
+    # @current_user.scoring_pull_requests.first
+     @user.receipt.map do |pr|
+       PullRequest.new(GithubPullRequest.new(Hashie::Mash.new(pr).github_pull_request.graphql_hash))
+     end
   end
 
   def non_scoring_pull_requests
