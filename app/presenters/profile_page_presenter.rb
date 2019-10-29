@@ -33,8 +33,8 @@ class ProfilePagePresenter
 
   def persisted_winning_pull_requests
     @user.receipt.map do |pr|
-      graphql_hashie = Hashie::Mash.new(pr).github_pull_request.graphql_hash
-      PullRequest.new(GithubPullRequest.new(graphql_hashie))
+      github_hash = Hashie::Mash.new(pr).github_pull_request.graphql_hash
+      PullRequest.new(GithubPullRequest.new(github_hash))
     end
   end
 
