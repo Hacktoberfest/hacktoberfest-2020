@@ -59,6 +59,14 @@ Sidekiq.configure_server do |config|
       retry: 3,
       queue: :default
     )
+
+    # Every 15 minutes
+    mgr.register(
+      '*/15 * * * *',
+      FetchSpamRepositoriesJob,
+      retry: 3,
+      queue: :default
+    )
   end
 
   config.death_handlers << lambda { |job, ex|
