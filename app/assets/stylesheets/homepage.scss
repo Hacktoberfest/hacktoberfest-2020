@@ -410,31 +410,6 @@ main.home {
     }
   }
 
-  .notify-cont {
-    width: 50vw;
-    display: flex;
-
-    @media screen and (max-width: $break-small) {
-      width: 100vw;
-    }
-  }
-
-  .notify-input {
-    height: 60px;
-
-    @media screen and (max-width: $break-small) {
-      width: 53vw;
-      margin-left: 4%;
-      font-size: x-small;
-    }
-  }
-
-  .notify-button {
-    float: right;
-    width: 110px;
-    margin-top: 30px;
-  }
-
   .sponsors {
     text-align: left;
     margin-top: 40px;
@@ -470,13 +445,20 @@ main.home {
   }
 }
 
+.form-cont {
+  display:flex;
+}
+
 .mktoForm input {
+  justify-content: flex-start;
   background-color: $grey-dark;
   box-shadow: 0px 30px 60px hsla(0, 0%, 0%, 0.2);
   border-radius: 0;
   border: none;
   color: $white;
   margin-top: 30px;
+  height: 60px;
+  width: 30vw !important;
 }
 .mktoForm.input::placeholder {
   color: $white;
@@ -484,16 +466,20 @@ main.home {
 }
 
 .mktoForm .mktoButtonWrap.mktoSimple .mktoButton {
+  float: left;
   min-height: 60px;
   border: none;
   border-radius: 0px;
   font-size: 16px;
   padding-bottom: 2em;
   padding-top: 1.125em;
-  background-color: $purple !important;
+  font-family: 'Space Mono Bold';
+  border: none !important;
+  background: $purple !important;
   color: $white;
+  margin-top: 6px;
 
   &:hover {
-    background-color: $cyan !important;
+    background: $cyan !important;
   }
 }
