@@ -4,12 +4,14 @@ module FetchSpamRepositoriesService
   module_function
 
   def call
-    spam_repo_ids = AirrecordTable.new.all_records('Spam Repos').map do |repo|
-      repo['Repo ID']&.to_i if repo['Verified?']
-    end.compact
-
     create_new_spam_repos(spam_repo_ids)
     remove_absent_repos(spam_repo_ids)
+  end
+
+  def spam_repo_ids
+    AirrecordTable.new.all_records('Spam Repos').map do |repo|
+      repo['Repo ID']&.to_i if repo['Verified?']
+    end.compact
   end
 
   def create_new_spam_repos(spam_repo_ids)
@@ -19,8 +21,10 @@ module FetchSpamRepositoriesService
   end
 
   def remove_absent_repos(spam_repo_ids)
-    SpamRepository.all.map do |spam_repo|
-      spam_repo.destroy unless spam_repo_ids.include?(spam_repo.github_id)
+    SpamRepository.find_in_batches do |group|
+      group.each do |spam_repo|
+        spam_repo.destroy unless spam_repo_ids.include?(spam_repo.github_id)
+      end
     end
   end
 end
