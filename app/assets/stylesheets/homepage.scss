@@ -13,6 +13,7 @@ $white: hsl(0, 0%, 100%);
 $cyan: hsl(191.56, 100%, 78.63%);
 $purple: hsl(286.79, 73.68%, 44.71%);
 $padding-left: 0;
+$size-0: 4rem;
 $size-1: 2.5rem;
 $size-3: 1.5rem;
 $size-4: 1.25rem;
@@ -36,7 +37,6 @@ main.home.mainImg0 {
 main.home.mainImg1 {
   background-image: $mainImg3, $mainImg4;
 }
-
 main.home.mainImg2 {
   background-image: $mainImg5, $mainImg6;
 }
@@ -44,9 +44,81 @@ main.home.mainImg2 {
 main.home {
   text-align: left;
   background-repeat: no-repeat;
-  background-position: top 110px right 164px, top -20px right 0px;
+  background-position: top 10px right 164px, top -120px right 0px;
   opacity: 1;
   transition: background-image 1.5s linear;
+
+  &.closing {
+    .hero-body {
+      .title {
+        font-size: $size-0;
+      }
+
+      .subtitle {
+        font-size: $size-3;
+        color: $grey;
+      }
+    }
+
+    .presented-cont {
+      margin-top: 10rem;
+
+      @media screen and (max-width: $break-small) {
+        margin-top: 1.25rem;
+      }
+    }
+
+    .logos-cont {
+      white-space: nowrap;
+
+      .do-logo {
+        padding-top: 5px;
+      }
+
+      .dev-logo {
+        padding-top: 2px;
+      }
+    }
+
+    .box.stats-cont {
+      width: 100%;
+      text-align: left !important;
+      margin: 0;
+
+      p {
+        margin-left: 10px;
+      }
+    }
+
+    .notify-cont {
+      width: 50%;
+      display: flex;
+
+      @media screen and (max-width: $break-med) {
+        width: 75%;
+      }
+
+      @media screen and (max-width: $break-small) {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+    }
+
+    .notify-input {
+      height: 60px;
+      padding: 15px 20px;
+    }
+
+    .notify-button {
+      float: right;
+      margin-top: 30px;
+
+      @media screen and (max-width: $break-small) {
+        width: 100%;
+        margin-top: 0;
+      }
+    }
+  }
 
   .p {
     max-width: 620px;
@@ -81,53 +153,6 @@ main.home {
     padding-left: $padding-left;
     padding-top: 0;
     margin-bottom: 50px;
-  }
-
-  .presented-cont {
-    width: 55vw;
-    margin-top: 15vh;
-
-    @media screen and (max-width: $break-small) {
-      width: 70vw;
-    }
-
-    @media screen and (min-width: $break-big) {
-      width: 133%;
-    }
-  }
-
-  .logos-cont {
-    margin-right: 200px;
-    margin-top: 14px;
-
-    * {
-      padding-right: 5px;
-      padding-left: 2.5px;
-      color: $grey;
-    }
-
-    p {
-      margin-bottom: 13px;
-    }
-
-    img {
-      padding-top: 5px;
-    }
-
-    @media screen and (max-width: $break-small) {
-      margin-right: 0;
-      margin-left: 0;
-    }
-  }
-
-  .box.stats-cont {
-    width: 100%;
-    text-align: left !important;
-    margin: 0;
-
-    p {
-      margin-left: 10px;
-    }
   }
 
   .section2 {
@@ -486,7 +511,7 @@ main.home {
   border: none !important;
   background: $purple !important;
   color: $white;
-  margin-top: 5px;
+  margin-top: 4px;
 
   &:hover {
     background: $cyan !important;
