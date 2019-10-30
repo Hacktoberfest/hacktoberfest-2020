@@ -97,18 +97,56 @@ RSpec.describe PullRequestService do
     end
   end
 
+
+
+
   describe '#non_scoring_pull_requests' do
-    context 'a user with more than 4 eligible pull requests' do
-      before { stub_helper(PR_DATA[:valid_array]) }
-      it 'returns the all PRs minus scoring_pull_requests' do
-        expect(pr_service.non_scoring_pull_requests.count).to eq(1)
+    context 'a user that has not completed or won' do
+      context 'a user with more than 4 eligible pull requests' do
+        before { stub_helper(PR_DATA[:valid_array]) }
+        it 'returns the all PRs minus scoring_pull_requests' do
+          expect(pr_service.non_scoring_pull_requests.count).to eq(1)
+        end
+      end
+
+      context 'a user with with 2 eligible pull requests' do
+        before { stub_helper(PR_DATA[:valid_array].first(2)) }
+        it 'returns an empty array' do
+          expect(pr_service.non_scoring_pull_requests.count).to eq(0)
+        end
       end
     end
+  end
 
-    context 'a user with with 2 eligible pull requests' do
-      before { stub_helper(PR_DATA[:valid_array].first(2)) }
-      it 'returns an empty array' do
-        expect(pr_service.non_scoring_pull_requests.count).to eq(0)
+  describe '#persisted_winning_pull_requests' do
+    context 'a winning or completed user receipt is taken' do
+      let(:user) { FactoryBot.create(:user, :winner_with_receipt) }
+      let(:pr_service) { PullRequestService.new(user) }
+
+      it 'returns an array of PullRequests from receipt' do
+        expect(user.receipt.count)
+          .to eq(pr_service.persisted_winning_pull_requests.count)
+      end
+    end
+  end
+
+  describe '#non_scoring_pull_requests_for_completed_or_won' do
+    context 'all pull requests are filtered out if they exist in receipt' do
+      let(:user) { FactoryBot.create(:user, :winner_with_receipt) }
+      let(:pr_service) { PullRequestService.new(user) }
+      before do
+        allow(pr_service).to receive(:all)
+          .and_return(pull_request_data(PR_DATA[:array_for_receipt_logic]))
+      end
+
+      it 'returns a new filtered array from user receipt PRs' do
+        expect(pr_service.all.count)
+          .to_not eq(pr_service.non_scoring_pull_requests_for_completed_or_won
+                    .count)
+      end
+
+      it 'filters out the 5 PRs in receipt from all 7 PRs' do
+        expect(non_scoring_pull_requests_for_completed_or_won.count).to eq(2)
       end
     end
   end
