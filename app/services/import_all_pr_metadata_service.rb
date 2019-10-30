@@ -5,7 +5,7 @@ module ImportAllPrMetadataService
 
   def call
     job_counter = 0
-    
+
     User.select(:id).find_in_batches do |group|
       group.each do |user|
         ImportPrMetadataJob.perform_async(user.id)

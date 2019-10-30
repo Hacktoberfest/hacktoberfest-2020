@@ -57,17 +57,17 @@ class GithubPullRequestService
   end
 
   def client
-    if @randomize_token == true
-      @client ||= GithubRetryableGraphqlApiClient.new(
-        access_token: GithubTokenService.random,
-        retries: 0
-      )
-    else
-      @client ||= GithubRetryableGraphqlApiClient.new(
-        access_token: @user.provider_token,
-        retries: 2
-      )
-    end
+    @client ||= if @randomize_token == true
+                  GithubRetryableGraphqlApiClient.new(
+                    access_token: GithubTokenService.random,
+                    retries: 0
+                  )
+                else
+                  GithubRetryableGraphqlApiClient.new(
+                    access_token: @user.provider_token,
+                    retries: 2
+                  )
+                end
   end
 
   def user_graphql_node_id
