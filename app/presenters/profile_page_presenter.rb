@@ -43,7 +43,7 @@ class ProfilePagePresenter
   end
 
   def score
-    if @user.completed? || @user.won_shirt? || @user.won_sticker?
+    if @user.completed_or_won?
       4
     else
       @user.score || 0
@@ -67,7 +67,7 @@ class ProfilePagePresenter
   end
 
   def show_congratulations?
-    @user.won_shirt? || @user.won_sticker? || @user.completed?
+    @user.completed_or_won?
   end
 
   def code
