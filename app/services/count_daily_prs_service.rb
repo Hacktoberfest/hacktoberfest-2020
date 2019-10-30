@@ -8,12 +8,14 @@ module CountDailyPrsService
 
     PRStat.find_in_batches do |group|
       group.each do |pr_stat|
-        date = Date.parse(pr_stat.data["github_pull_request"]["graphql_hash"]["createdAt"])
-      
-        if results[date.to_s] == nil
+        date = Date.parse(
+          pr_stat.data['github_pull_request']['graphql_hash']['createdAt']
+        )
+
+        if results[date.to_s].nil?
           results[date.to_s] = 1
         else
-          results[date.to_s] +=1
+          results[date.to_s] += 1
         end
       end
     end
