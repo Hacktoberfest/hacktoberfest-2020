@@ -4,7 +4,9 @@ module ImportRepoMetadataService
   module_function
 
   def call(user)
-    pr_data = user.pull_requests
+    pr_service = PullRequestService.new(user, randomize_token: true)
+    pr_data = pr_service.all
+    
     access_token = GithubTokenService.random
     api_client = Octokit::client.new(access_token: access_token)
 
