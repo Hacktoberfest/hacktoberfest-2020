@@ -8,7 +8,7 @@ RSpec.describe ImportReposMetadataService do
     context 'The user has no PRs' do
       before do
         allow_any_instance_of(PullRequestService)
-            .to receive(:all).and_return(nil)
+            .to receive(:all).and_return([])
       end
       
       it 'enqueues no ImportRepoMetadataJobs' do
