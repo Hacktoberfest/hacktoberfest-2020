@@ -101,6 +101,19 @@ RSpec.describe PullRequestService do
 
 
   describe '#non_scoring_pull_requests' do
+    context 'a user that has completed or won' do
+      let(:user) { FactoryBot.create(:user, :winner_with_receipt) }
+      let(:pr_service) { PullRequestService.new(user) }
+      before do
+        allow(pr_service).to receive(:all)
+          .and_return(pull_request_data(PR_DATA[:array_for_receipt_logic]))
+      end
+
+      it 'calls non_scoring_pull_requests' do
+        expect(pr_service.non_scoring_pull_requests).to eq(pr_service.non_scoring_pull_requests_for_completed_or_won)
+      end
+    end
+
     context 'a user that has not completed or won' do
       context 'a user with more than 4 eligible pull requests' do
         before { stub_helper(PR_DATA[:valid_array]) }
@@ -146,7 +159,8 @@ RSpec.describe PullRequestService do
       end
 
       it 'filters out the 5 PRs in receipt from all 7 PRs' do
-        expect(non_scoring_pull_requests_for_completed_or_won.count).to eq(2)
+        expect(pr_service.non_scoring_pull_requests_for_completed_or_won.count)
+          .to eq(2)
       end
     end
   end
