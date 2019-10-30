@@ -41,17 +41,17 @@ class PullRequestService
     persisted_prs_ids = persisted_winning_pull_requests.map(&:id)
     non_scoring_prs = []
     all.select do |pr|
-      non_scoring_prs << pr if !persisted_prs_ids.include?(pr.id)
+      non_scoring_prs << pr unless persisted_prs_ids.include?(pr.id)
     end
     non_scoring_prs
   end
 
-   def persisted_winning_pull_requests
-     @user.receipt.map do |pr|
-       github_hash = Hashie::Mash.new(pr).github_pull_request.graphql_hash
-       PullRequest.new(GithubPullRequest.new(github_hash))
-     end
-   end
+  def persisted_winning_pull_requests
+    @user.receipt.map do |pr|
+      github_hash = Hashie::Mash.new(pr).github_pull_request.graphql_hash
+      PullRequest.new(GithubPullRequest.new(github_hash))
+    end
+  end
 
   protected
 
