@@ -23,6 +23,12 @@ RSpec.describe ImportRepoMetadataService do
 
         expect(RepoStat.last.repo_id).to eq("1")
       end
+
+      it 'creates a repostat with the correct data' do
+        ImportRepoMetadataService.call(1)
+
+        expect(RepoStat.last.data).to eq({"test"=> 1})
+      end
     end
 
     context 'The repo already exists as a RepoStat' do
