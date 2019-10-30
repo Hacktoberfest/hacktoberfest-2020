@@ -30,8 +30,12 @@ class PullRequestService
   end
 
   def non_scoring_pull_requests
-    all.drop(scoring_pull_requests.count)
- end
+    if @user.completed_or_won?
+      all.select { |pr| !persisted_winning_pull_requests.include?(pr.id) }
+    else
+      all.drop(scoring_pull_requests.count)
+    end
+  end
 
  def persisted_winning_pull_requests
    @user.receipt.map do |pr|
