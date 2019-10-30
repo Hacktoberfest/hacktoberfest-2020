@@ -5,7 +5,10 @@ require 'rails_helper'
 RSpec.describe PullRequestService do
   let(:user) { FactoryBot.create(:user) }
   let(:pr_service) { PullRequestService.new(user) }
-
+  let(:user_with_receipt) { FactoryBot.create(:user, :winner_with_receipt) }
+  let(:pr_service_for_user_w_receipt) do
+    PullRequestService.new(user_with_receipt)
+  end
   before { allow(SpamRepositoryService).to receive(:call).and_return(false) }
 
   describe '.new' do
@@ -97,20 +100,17 @@ RSpec.describe PullRequestService do
     end
   end
 
-
-
-
   describe '#non_scoring_pull_requests' do
     context 'a user that has completed or won' do
-      let(:user) { FactoryBot.create(:user, :winner_with_receipt) }
-      let(:pr_service) { PullRequestService.new(user) }
       before do
-        allow(pr_service).to receive(:all)
+        allow(pr_service_for_user_w_receipt).to receive(:all)
           .and_return(pull_request_data(PR_DATA[:array_for_receipt_logic]))
       end
 
       it 'calls non_scoring_pull_requests' do
-        expect(pr_service.non_scoring_pull_requests).to eq(pr_service.non_scoring_pull_requests_for_completed_or_won)
+        expect(pr_service_for_user_w_receipt.non_scoring_pull_requests)
+          .to eq(pr_service_for_user_w_receipt
+                .non_scoring_pull_requests_for_completed_or_won)
       end
     end
 
@@ -133,34 +133,30 @@ RSpec.describe PullRequestService do
 
   describe '#persisted_winning_pull_requests' do
     context 'a winning or completed user receipt is taken' do
-      let(:user) { FactoryBot.create(:user, :winner_with_receipt) }
-      let(:pr_service) { PullRequestService.new(user) }
-
       it 'returns an array of PullRequests from receipt' do
-        expect(user.receipt.count)
-          .to eq(pr_service.persisted_winning_pull_requests.count)
+        expect(user_with_receipt.receipt.count)
+          .to eq(pr_service_for_user_w_receipt
+                  .persisted_winning_pull_requests.count)
       end
     end
   end
 
   describe '#non_scoring_pull_requests_for_completed_or_won' do
     context 'all pull requests are filtered out if they exist in receipt' do
-      let(:user) { FactoryBot.create(:user, :winner_with_receipt) }
-      let(:pr_service) { PullRequestService.new(user) }
       before do
-        allow(pr_service).to receive(:all)
+        allow(pr_service_for_user_w_receipt).to receive(:all)
           .and_return(pull_request_data(PR_DATA[:array_for_receipt_logic]))
       end
 
       it 'returns a new filtered array from user receipt PRs' do
-        expect(pr_service.all.count)
-          .to_not eq(pr_service.non_scoring_pull_requests_for_completed_or_won
-                    .count)
+        expect(pr_service_for_user_w_receipt.all.count)
+          .to_not eq(pr_service_for_user_w_receipt
+                      .non_scoring_pull_requests_for_completed_or_won.count)
       end
 
       it 'filters out the 5 PRs in receipt from all 7 PRs' do
-        expect(pr_service.non_scoring_pull_requests_for_completed_or_won.count)
-          .to eq(2)
+        expect(pr_service_for_user_w_receipt
+                .non_scoring_pull_requests_for_completed_or_won.count).to eq(2)
       end
     end
   end
