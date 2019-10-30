@@ -140,6 +140,10 @@ class User < ApplicationRecord
     waiting_since <= (Time.zone.now - 7.days)
   end
 
+  def completed_or_won?
+    completed? || won_shirt? || won_sticker?
+  end
+
   delegate :assign_coupon, to: :coupon_service
 
   private
