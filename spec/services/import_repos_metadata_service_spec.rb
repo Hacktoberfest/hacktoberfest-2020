@@ -10,7 +10,7 @@ RSpec.describe ImportReposMetadataService do
         allow_any_instance_of(PullRequestService)
             .to receive(:all).and_return([])
       end
-      
+
       it 'enqueues no ImportRepoMetadataJobs' do
         ImportReposMetadataService.call(user)
 

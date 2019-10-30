@@ -19,7 +19,7 @@ RSpec.describe ImportUserMetadataService do
           expect(UserStat.count).to eq(1)
         end
       end
-      
+
       context 'the user is present in the user stats table' do
         let!(:existing_stat) do
           UserStat.create(user_id: user.id, data: { "test": 1 })

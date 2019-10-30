@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe ImportPRMetadataService do
   describe '.call' do
     let(:user) { FactoryBot.create(:user) }
-    
+
     context 'The user has PRs' do
       before do
         prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|

@@ -11,7 +11,7 @@ RSpec.describe ImportRepoMetadataService do
         allow_any_instance_of(Octokit::Client)
             .to receive(:repo).and_return({"test": 1})
       end
-      
+
       it 'creates one repostat' do
         ImportRepoMetadataService.call(1)
 
@@ -38,7 +38,7 @@ RSpec.describe ImportRepoMetadataService do
 
         RepoStat.create(repo_id: 1, data: {"test": 1})
       end
-      
+
       it 'does not create the repostat' do
         ImportRepoMetadataService.call(1)
 
