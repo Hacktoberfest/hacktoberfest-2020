@@ -102,15 +102,30 @@ RSpec.describe PullRequestService do
 
   describe '#non_scoring_pull_requests' do
     context 'a user that has completed or won' do
-      before do
-        allow(pr_service_for_user_w_receipt).to receive(:all)
-          .and_return(pull_request_data(PR_DATA[:array_for_receipt_logic]))
+      context 'the user has 6 eligible PRs' do
+        before do
+          allow(pr_service_for_user_w_receipt).to receive(:all)
+            .and_return(pull_request_data(PR_DATA[:array_for_receipt_logic]))
+        end
+
+        it 'returns the 2 filtered out PRs from a receipt' do
+          expect(pr_service_for_user_w_receipt
+            .non_scoring_pull_requests.count).to eq(2)
+        end
       end
 
-      it 'calls non_scoring_pull_requests' do
-        expect(pr_service_for_user_w_receipt.non_scoring_pull_requests)
-          .to eq(pr_service_for_user_w_receipt
-                .non_scoring_pull_requests_for_completed_or_won)
+      context 'From the original 6 eligible PRs- a winning PR is now invalid' do
+        before do
+          allow(pr_service_for_user_w_receipt).to receive(:all)
+            .and_return(pull_request_data(
+                          PR_DATA[:updated_array_for_receipt_logic]
+                        ))
+        end
+
+        it 'returns the 2 filtered out PRs from receipt despite invalid PR' do
+          expect(pr_service_for_user_w_receipt.non_scoring_pull_requests.count)
+            .to eq(2)
+        end
       end
     end
 

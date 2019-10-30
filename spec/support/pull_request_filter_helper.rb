@@ -238,6 +238,59 @@ IMMATURE_ARRAY = [
     'labels' => { 'edges' => [] } }
 ].freeze
 
+UPDATED_ARRAY_FOR_RECEIPT_LOGIC = [
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0MzI1NDc3OTA3',
+    'url' => 'https://github.com/raise-dev/hacktoberfest-test/pull/18',
+    'body' => '',
+    'title' => 'Peculiar branch',
+    'labels' => { 'edges' => [] },
+    'createdAt' => '2019-10-07T20:23:23Z',
+    'repository' => { 'databaseId' => 211_178_535 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0MzI1NDc3OTY1',
+    'url' => 'https://github.com/raise-dev/hacktoberfest-test/pull/19',
+    'body' => '',
+    'title' => 'Fun branch',
+    'labels' => { 'edges' => [] },
+    'createdAt' => '2019-10-07T20:23:33Z',
+    'repository' => { 'databaseId' => 211_178_535 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0MzI1NDc4MDIy',
+    'url' => 'https://github.com/raise-dev/hacktoberfest-test/pull/20',
+    'body' => '',
+    'title' => 'Super branch',
+    'labels' => { 'edges' => [] },
+    'createdAt' => '2019-10-07T20:23:42Z',
+    'repository' => { 'databaseId' => 211_178_535 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0MzI1NDc4MDc2',
+    'url' => 'https://github.com/raise-dev/hacktoberfest-test/pull/21',
+    'body' => '',
+    'title' => 'readme addition',
+    'labels' => { 'edges' => [{ 'node' => { 'name' => 'invalid' } }] },
+    'createdAt' => '2019-10-07T20:23:51Z',
+    'repository' => { 'databaseId' => 211_178_535 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0MzI1NDgxMzA4',
+    'url' => 'https://github.com/raise-dev/hacktoberfest-test/pull/22',
+    'body' => '',
+    'title' => 'Fakerson',
+    'labels' => { 'edges' => [{ 'node' => { 'name' => 'invalid' } }] },
+    'createdAt' => '2019-10-07T20:32:11Z',
+    'repository' => { 'databaseId' => 211_178_535 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
+    'title' => 'Results by cookie',
+    'body' =>
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/peek/peek/pull/79',
+    'createdAt' => '2019-10-11T00:46:43Z',
+    'labels' => { 'edges' => [] } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
+    'title' => 'Update README.md',
+    'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
+    'createdAt' => '2019-10-11T22:49:53Z',
+    'labels' => { 'edges' => [] } }
+].freeze
+
 ARRAY_FOR_RECEIPT_LOGIC = [
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0MzI1NDc3OTA3',
     'url' => 'https://github.com/raise-dev/hacktoberfest-test/pull/18',
@@ -301,7 +354,8 @@ PR_DATA = {
   mature_array: MATURE_ARRAY,
   immature_array: IMMATURE_ARRAY,
   mixed_maturity_array: MIXED_MATURITY_ARRAY,
-  array_for_receipt_logic: ARRAY_FOR_RECEIPT_LOGIC
+  array_for_receipt_logic: ARRAY_FOR_RECEIPT_LOGIC,
+  updated_array_for_receipt_logic: UPDATED_ARRAY_FOR_RECEIPT_LOGIC
 }.freeze
 
 module PullRequestFilterHelper
