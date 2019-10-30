@@ -115,14 +115,14 @@ RSpec.describe PullRequestService do
     end
 
     context 'a user that has not completed or won' do
-      context 'a user with more than 4 eligible pull requests' do
+      context 'with more than 4 eligible pull requests' do
         before { stub_helper(PR_DATA[:valid_array]) }
         it 'returns the all PRs minus scoring_pull_requests' do
           expect(pr_service.non_scoring_pull_requests.count).to eq(1)
         end
       end
 
-      context 'a user with with 2 eligible pull requests' do
+      context 'with with 2 eligible pull requests' do
         before { stub_helper(PR_DATA[:valid_array].first(2)) }
         it 'returns an empty array' do
           expect(pr_service.non_scoring_pull_requests.count).to eq(0)
@@ -132,7 +132,7 @@ RSpec.describe PullRequestService do
   end
 
   describe '#persisted_winning_pull_requests' do
-    context 'a winning or completed user receipt is taken' do
+    context 'with a winning or completed user receipt' do
       it 'returns an array of PullRequests from receipt' do
         expect(user_with_receipt.receipt.count)
           .to eq(pr_service_for_user_w_receipt
@@ -142,7 +142,7 @@ RSpec.describe PullRequestService do
   end
 
   describe '#non_scoring_pull_requests_for_completed_or_won' do
-    context 'all pull requests are filtered out if they exist in receipt' do
+    context 'pull requests from PullRequestService.all exist in user receipt' do
       before do
         allow(pr_service_for_user_w_receipt).to receive(:all)
           .and_return(pull_request_data(PR_DATA[:array_for_receipt_logic]))
