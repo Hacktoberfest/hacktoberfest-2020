@@ -24,7 +24,18 @@ class ProfilePagePresenter
   end
 
   def scoring_pull_requests
-    @user.scoring_pull_requests
+    if @user.receipt
+      persisted_winning_pull_requests
+    else
+      @user.scoring_pull_requests
+    end
+  end
+
+  def persisted_winning_pull_requests
+    @user.receipt.map do |pr|
+      github_hash = Hashie::Mash.new(pr).github_pull_request.graphql_hash
+      PullRequest.new(GithubPullRequest.new(github_hash))
+    end
   end
 
   def non_scoring_pull_requests
@@ -32,7 +43,11 @@ class ProfilePagePresenter
   end
 
   def score
-    @user.score || 0
+    if @user.completed_or_won?
+      4
+    else
+      @user.score || 0
+    end
   end
 
   def bonus_score
@@ -52,7 +67,7 @@ class ProfilePagePresenter
   end
 
   def show_congratulations?
-    @user.won_shirt? || @user.won_sticker? || @user.completed?
+    @user.completed_or_won?
   end
 
   def code
