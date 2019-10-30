@@ -11,7 +11,8 @@ RSpec.describe ImportPRMetadataService do
           PullRequest.new(pr)
         end
 
-        allow(user).to receive(:pull_requests).and_return(prs)
+        allow_any_instance_of(PullRequestService)
+          .to receive(:all).and_return(prs)
       end
       context 'the PRs are absent in the pr stats table' do
         it 'creates a UserStat' do
@@ -21,7 +22,7 @@ RSpec.describe ImportPRMetadataService do
         end
       end
       context 'the PRs are present in the pr stats table' do
-        it 'does not create another PRStat' do
+        it 'does not create more PRStats' do
           prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
             pull_request = PullRequest.new(pr)
             PRStat.create(pr_id: pull_request.id, data: pull_request)
@@ -35,6 +36,16 @@ RSpec.describe ImportPRMetadataService do
     end
 
     context 'The user has no PRs' do
+      before do
+        allow_any_instance_of(PullRequestService)
+            .to receive(:all).and_return(nil)
+      end
+      
+      it 'does not create PRStats' do
+        ImportPRMetadataService.call(user)
+
+        expect(PRStat.count).to eq(0)
+      end
     end
   end
 end
