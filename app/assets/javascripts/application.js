@@ -17,4 +17,5 @@
 //= require vanilla-tilt
 //= require list
 //= require airbrake
+//= require canvasjs
 //= require_tree .

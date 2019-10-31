@@ -1,16 +1,20 @@
 // Place all the styles related to the Homepage controller here (index page).
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$break-tiny: 812px;
 $break-small: 1024px;
 $break-med: 1350px;
+$break-big: 1500px;
 $yellow: hsl(58.37, 100%, 56.67%);
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
+$grey-dark: hsl(223, 32%, 33%); // button hover text
 $grey-darker: hsl(222, 45%, 21%); // box dark blue
 $white: hsl(0, 0%, 100%);
 $cyan: hsl(191.56, 100%, 78.63%);
 $purple: hsl(286.79, 73.68%, 44.71%);
 $padding-left: 0;
+$size-0: 4rem;
 $size-1: 2.5rem;
 $size-3: 1.5rem;
 $size-4: 1.25rem;
@@ -34,7 +38,6 @@ main.home.mainImg0 {
 main.home.mainImg1 {
   background-image: $mainImg3, $mainImg4;
 }
-
 main.home.mainImg2 {
   background-image: $mainImg5, $mainImg6;
 }
@@ -42,9 +45,128 @@ main.home.mainImg2 {
 main.home {
   text-align: left;
   background-repeat: no-repeat;
-  background-position: top 110px right 164px, top -20px right 0px;
+  background-position: top 10px right 164px, top -120px right 0px;
   opacity: 1;
   transition: background-image 1.5s linear;
+
+  &.closing {
+    .hero-body {
+      .title {
+        font-size: $size-0;
+      }
+
+      .subtitle {
+        font-size: $size-3;
+        color: $grey;
+      }
+    }
+
+    .presented-cont {
+      margin-top: 10rem;
+
+      @media screen and (max-width: $break-small) {
+        margin-top: 1.25rem;
+      }
+    }
+
+    .logos-cont {
+      white-space: nowrap;
+
+      .do-logo {
+        padding-top: 5px;
+      }
+
+      .dev-logo {
+        padding-top: 2px;
+      }
+    }
+
+    .box.stats-cont {
+      width: 100%;
+      text-align: left !important;
+      margin: 0;
+
+      p {
+        margin-left: 10px;
+      }
+    }
+
+    .mktoForm {
+      display: flex;
+      flex-wrap: wrap;
+      width: auto !important;
+
+      @media screen and (max-width: $break-small) {
+        width: 100% !important;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      label,
+      .mktoOffset,
+      .mktoGutter {
+        display: none;
+      }
+
+      .mktoFormRow .mktoFormCol .mktoField,
+      .mktoButtonWrap .mktoButton {
+        color: $white;
+        font-family: 'Space Mono Bold', monospace;
+        font-size: 1rem;
+        margin: 0;
+        height: auto;
+        line-height: 30px;
+        padding: 15px 20px;
+        border-radius: 0;
+        border: none;
+      }
+
+      .mktoFormCol,
+      .mktoFieldWrap {
+        float: unset !important;
+      }
+
+      .mktoFormRow {
+        @media screen and (max-width: $break-small) {
+          flex-grow: 1;
+          width: 100%;
+        }
+
+        .mktoFormCol {
+          margin: 0 !important;
+
+          .mktoFieldWrap {
+            .mktoField {
+              justify-content: flex-start;
+              background-color: $grey-dark;
+              box-shadow: 0px 30px 60px hsla(0, 0%, 0%, 0.2);
+              width: 33vw !important;
+
+              @media screen and (max-width: $break-small) {
+                width: 100% !important;
+              }
+            }
+          }
+        }
+      }
+
+      .mktoButtonWrap {
+        margin: 0 !important;
+
+        .mktoButton {
+          float: left;
+          background: $purple;
+          color: $white;
+          white-space: nowrap;
+
+          &:hover {
+            background: $cyan;
+            color: $grey-dark;
+          }
+        }
+      }
+    }
+  }
 
   .p {
     max-width: 620px;
@@ -216,22 +338,30 @@ main.home {
     }
   }
 
-  .eventUnion {
+  .eventUnion,
+  .statUnion {
     display: flex;
     justify-content: flex-start;
     vertical-align: baseline;
     margin-bottom: 60px;
 
-    .box {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 100%;
-    }
-
     @media screen and (max-width: $break-small) {
       flex-direction: column;
     }
+
+    .box {
+      flex-basis: 100%;
+      flex-grow: 1;
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      font-family: Space Mono, monospace;
+      font-style: normal;
+      color: #ffffff;
+    }
+
     .box span {
       width: 100%;
       float: left;
@@ -240,20 +370,64 @@ main.home {
 
   .eventUnion .box:nth-child(4n + 1) {
     background: linear-gradient(76.04deg, #febd3b -0.33%, #ff9353 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
   }
-
   .eventUnion .box:nth-child(4n + 2) {
     background: linear-gradient(76.04deg, #ff8c57 -0.33%, #ff646f 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
   }
   .eventUnion .box:nth-child(4n + 3) {
     background: linear-gradient(76.04deg, #ff5d73 -0.33%, #ff358b 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
   }
   .eventUnion .box:nth-child(4n + 4) {
     background: linear-gradient(76.04deg, #ff2e90 -0.33%, #ff06a6 100.08%);
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+    margin-right: 0;
+  }
+
+  .statUnion .box:nth-child(3n + 1) {
+    background: linear-gradient(76.04deg, #febd3b -0.33%, #ff865b 100.08%);
+  }
+  .statUnion .box:nth-child(3n + 2) {
+    background: linear-gradient(76.04deg, #ff815f -0.33%, #ff4282 100.08%);
+  }
+  .statUnion .box:nth-child(3n + 3) {
+    background: linear-gradient(76.04deg, #ff3e86 -0.33%, #ff00a9 100.08%);
+    margin-right: 0;
+  }
+
+  .eventMonth {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .eventDay,
+  .statAmount {
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 71px;
+    /* identical to box height */
+  }
+
+  .eventTitle,
+  .statTitle {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 160%;
+    /* identical to box height, or 29px */
+  }
+
+  .eventLocation {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height */
+  }
+
+  .statAmount,
+  .statTitle {
+    text-align: left;
   }
 
   .language-filter {
@@ -309,49 +483,6 @@ main.home {
     }
   }
 
-  .eventMonth {
-    font-family: Space Mono;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 27px;
-    /* identical to box height */
-    text-align: center;
-    text-transform: uppercase;
-    color: #ffffff;
-  }
-
-  .eventDay {
-    font-family: Space Mono;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 71px;
-    /* identical to box height */
-    text-align: center;
-    color: #ffffff;
-  }
-
-  .eventTitle {
-    font-family: Space Mono;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 160%;
-    /* identical to box height, or 29px */
-    color: #ffffff;
-  }
-
-  .eventLocation {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 18px;
-    /* identical to box height */
-    text-align: center;
-    color: #ffffff;
-  }
-
   .sponsors {
     text-align: left;
     margin-top: 40px;
@@ -385,4 +516,8 @@ main.home {
     top: -0.2em;
     padding-right: 2px;
   }
+}
+
+.form-cont {
+  display:flex;
 }
