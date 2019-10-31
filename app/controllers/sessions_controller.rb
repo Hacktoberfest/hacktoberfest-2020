@@ -15,10 +15,12 @@ class SessionsController < ApplicationController
   end
 
   def store_user_info
+    # rubocop:disable Rails/SkipsModelValidations
     @user.update_columns(
       provider_token: auth_hash.credentials.token,
       name: auth_hash.info.nickname
     )
+    # rubocop:enable Rails/SkipsModelValidations
   end
 
   def destroy
