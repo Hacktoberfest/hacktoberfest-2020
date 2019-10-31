@@ -24,7 +24,8 @@ RSpec.describe FetchSpamRepositoriesService do
     end
 
     it 'removes unnecessary SpamRepository records' do
-      expect(SpamRepository.where(github_id: existing_spam_repository.github_id).first).to eq(nil)
+      expect(SpamRepository.where(github_id: existing_spam_repository.github_id)
+              .first).to eq(nil)
     end
   end
 end
