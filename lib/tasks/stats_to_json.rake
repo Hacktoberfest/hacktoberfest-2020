@@ -13,6 +13,6 @@ namespace :export do
 
   desc 'Export all RepoStats to a csv'
   task repo_stats: :environment do
-    CsvForRepoStatsService.call
+    JsonForRepoStatsService.call
   end
 end
