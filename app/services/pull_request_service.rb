@@ -31,7 +31,27 @@ class PullRequestService
   end
 
   def non_scoring_pull_requests
-    all.drop(scoring_pull_requests.count)
+    if @user.completed_or_won?
+      non_scoring_pull_requests_for_completed_or_won
+    else
+      all.drop(scoring_pull_requests.count)
+    end
+  end
+
+  def non_scoring_pull_requests_for_completed_or_won
+    persisted_prs_ids = persisted_winning_pull_requests.map(&:id)
+    non_scoring_prs = []
+    all.select do |pr|
+      non_scoring_prs << pr unless persisted_prs_ids.include?(pr.id)
+    end
+    non_scoring_prs
+  end
+
+  def persisted_winning_pull_requests
+    @user.receipt.map do |pr|
+      github_hash = Hashie::Mash.new(pr).github_pull_request.graphql_hash
+      PullRequest.new(GithubPullRequest.new(github_hash))
+    end
   end
 
   protected

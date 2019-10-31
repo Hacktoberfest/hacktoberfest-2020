@@ -5,7 +5,10 @@ require 'rails_helper'
 RSpec.describe PullRequestService do
   let(:user) { FactoryBot.create(:user) }
   let(:pr_service) { PullRequestService.new(user) }
-
+  let(:user_with_receipt) { FactoryBot.create(:user, :winner_with_receipt) }
+  let(:pr_service_for_user_w_receipt) do
+    PullRequestService.new(user_with_receipt)
+  end
   before { allow(SpamRepositoryService).to receive(:call).and_return(false) }
 
   describe '.new' do
@@ -98,17 +101,77 @@ RSpec.describe PullRequestService do
   end
 
   describe '#non_scoring_pull_requests' do
-    context 'a user with more than 4 eligible pull requests' do
-      before { stub_helper(PR_DATA[:valid_array]) }
-      it 'returns the all PRs minus scoring_pull_requests' do
-        expect(pr_service.non_scoring_pull_requests.count).to eq(1)
+    context 'a user that has completed or won' do
+      context 'the user has 6 eligible PRs' do
+        before do
+          allow(pr_service_for_user_w_receipt).to receive(:all)
+            .and_return(pull_request_data(PR_DATA[:array_for_receipt_logic]))
+        end
+
+        it 'returns the 2 filtered out PRs from a receipt' do
+          expect(pr_service_for_user_w_receipt
+            .non_scoring_pull_requests.count).to eq(2)
+        end
+      end
+
+      context 'From the original 6 eligible PRs- a winning PR is now invalid' do
+        before do
+          allow(pr_service_for_user_w_receipt).to receive(:all)
+            .and_return(pull_request_data(
+                          PR_DATA[:updated_array_for_receipt_logic]
+                        ))
+        end
+
+        it 'returns the 2 filtered out PRs from receipt despite invalid PR' do
+          expect(pr_service_for_user_w_receipt.non_scoring_pull_requests.count)
+            .to eq(2)
+        end
       end
     end
 
-    context 'a user with with 2 eligible pull requests' do
-      before { stub_helper(PR_DATA[:valid_array].first(2)) }
-      it 'returns an empty array' do
-        expect(pr_service.non_scoring_pull_requests.count).to eq(0)
+    context 'a user that has not completed or won' do
+      context 'with more than 4 eligible pull requests' do
+        before { stub_helper(PR_DATA[:valid_array]) }
+        it 'returns the all PRs minus scoring_pull_requests' do
+          expect(pr_service.non_scoring_pull_requests.count).to eq(1)
+        end
+      end
+
+      context 'with with 2 eligible pull requests' do
+        before { stub_helper(PR_DATA[:valid_array].first(2)) }
+        it 'returns an empty array' do
+          expect(pr_service.non_scoring_pull_requests.count).to eq(0)
+        end
+      end
+    end
+  end
+
+  describe '#persisted_winning_pull_requests' do
+    context 'with a winning or completed user receipt' do
+      it 'returns an array of PullRequests from receipt' do
+        expect(user_with_receipt.receipt.count)
+          .to eq(pr_service_for_user_w_receipt
+                  .persisted_winning_pull_requests.count)
+      end
+    end
+  end
+
+  describe '#non_scoring_pull_requests_for_completed_or_won' do
+    context 'pull requests from PullRequestService.all exist in user receipt' do
+      before do
+        allow(pr_service_for_user_w_receipt).to receive(:all)
+          .and_return(pull_request_data(PR_DATA[:array_for_receipt_logic]))
+      end
+
+      it 'returns a new filtered array from user receipt PRs' do
+        expect(pr_service_for_user_w_receipt.all.count)
+          .to_not eq(pr_service_for_user_w_receipt
+                      .non_scoring_pull_requests_for_completed_or_won.count)
+      end
+
+      it 'filters out the 5 PRs in receipt from all 7 PRs' do
+        expect(pr_service_for_user_w_receipt
+                .non_scoring_pull_requests_for_completed_or_won.count).to eq(2)
       end
     end
   end
