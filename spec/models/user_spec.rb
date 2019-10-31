@@ -310,11 +310,11 @@ RSpec.describe User, type: :model do
         before do
           prs = pull_request_data(
             [PR_DATA[:mature_array][0],
-            PR_DATA[:mature_array][1]]
+             PR_DATA[:mature_array][1]]
           ).map do |pr|
             PullRequest.new(pr)
           end
-    
+
           allow(user).to receive(:scoring_pull_requests).and_return(prs)
         end
 

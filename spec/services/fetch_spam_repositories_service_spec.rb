@@ -9,8 +9,8 @@ RSpec.describe FetchSpamRepositoriesService do
     end
 
     before do
-      allow(FetchSpamRepositoriesService).
-        to receive(:spam_repo_ids).and_return([123, 456, 789])
+      allow(FetchSpamRepositoriesService)
+        .to receive(:spam_repo_ids).and_return([123, 456, 789])
 
       FetchSpamRepositoriesService.call
     end
