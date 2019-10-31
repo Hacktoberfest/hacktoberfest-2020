@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSpamRepositories < ActiveRecord::Migration[5.2]
   def change
     create_table :spam_repositories do |t|

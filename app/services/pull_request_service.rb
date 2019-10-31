@@ -4,8 +4,9 @@
 class PullRequestService
   attr_reader :user
 
-  def initialize(user)
+  def initialize(user, randomize_token: false)
     @user = user
+    @randomize_token = randomize_token
   end
 
   def all
@@ -36,7 +37,10 @@ class PullRequestService
   protected
 
   def github_pull_requests
-    @github_pull_requests ||= GithubPullRequestService.new(user).pull_requests
+    @github_pull_requests ||=
+      GithubPullRequestService.new(
+        user, randomize_token: @randomize_token
+      ).pull_requests
   end
 
   def filtered_github_pull_requests(prs)

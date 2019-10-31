@@ -33,8 +33,9 @@ class GithubPullRequestService
     }
   GRAPHQL
 
-  def initialize(user)
+  def initialize(user, randomize_token: false)
     @user = user
+    @randomize_token = randomize_token
   end
 
   def pull_requests
@@ -56,10 +57,17 @@ class GithubPullRequestService
   end
 
   def client
-    @client ||= GithubRetryableGraphqlApiClient.new(
-      access_token: @user.provider_token,
-      retries: 2
-    )
+    @client ||= if @randomize_token == true
+                  GithubRetryableGraphqlApiClient.new(
+                    access_token: GithubTokenService.random,
+                    retries: 0
+                  )
+                else
+                  GithubRetryableGraphqlApiClient.new(
+                    access_token: @user.provider_token,
+                    retries: 2
+                  )
+                end
   end
 
   def user_graphql_node_id
