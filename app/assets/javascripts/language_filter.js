@@ -7,7 +7,6 @@ window.setupLanguageFilter = function () {
       $refresh = $("#refresh");
       var current = window.location.href;
 
-
   // Handle resetting the filter to all
   function reset() {
     $id.val('');
@@ -33,7 +32,7 @@ window.setupLanguageFilter = function () {
 
   // Handle the filter selection changing
   function change() {
-    var languageId = $id.val();
+    var languageId = $id.val()
     var url = '/languages/projects/' + languageId;
     $.ajax({
       type: 'GET',
@@ -49,7 +48,6 @@ window.setupLanguageFilter = function () {
       $message.text(defaultMessage);
       // reset URL to remove original query when filter is removed
       var removeQueryURL = current.split("?")[0];
-      console.log(removeQueryURL);
       history.pushState(null, " ", removeQueryURL);
     } else {
       $message.text('Displaying ' + $id.find("option:selected").text() + ' projects only');
@@ -60,8 +58,6 @@ window.setupLanguageFilter = function () {
       history.pushState(null, " ", "?language=" + new_lang_url);
     }
   }
-  // Deal with browsers remembering last state of select
-  change();
 
   // Detect the select change event
   $id.change(change);
@@ -87,10 +83,9 @@ window.setupLanguageFilter = function () {
 
   // compare query_param to items in final text array
   function languageURL() {
-      for(var i=1; i<final.length;i++){
+      for(var i=0; i<final.length;i++){
         //keep track of index of match
         count++;
-
         if(query_param == final[i]){
           var indexNum = count - 1;
           var selectedOption = indexNum;
@@ -108,7 +103,7 @@ window.setupLanguageFilter = function () {
           var search_params = new URLSearchParams(query_string);
           search_params.set("language", final[i]);
           url.search = search_params.toString();
-          var new_url = url.toString();
+          new_url = url.toString();
           history.pushState(null, " ", new_url);
 
           change();
@@ -121,27 +116,26 @@ window.setupLanguageFilter = function () {
   }
   //end of languageURL function
 
-function extractLang() {
-  if(convertURL.includes("language=") == true){
-    let extract = convertURL.slice(9);
-    query_param = extract;
-    languageURL();
-  }else{
+  function extractLang() {
+    if(convertURL.includes("language=") == true){
+      let extract = convertURL.slice(9);
+      query_param = extract;
+      languageURL();
+    }else{
     // there is no 'language=' in the URL so there is no need to extract the query
     // go straight to calling comparison function
     languageURL();
+    }
   }
-}
 
   function convertText() {
-    for(var k=0; k<textArr.length; k++){
+    for(var k=1; k<textArr.length; k++){
       // turn option items into lowercase
-      var lowercase_opt = textArr[k].toLowerCase();
+      var lowercase_opt = textArr[k - 1].toLowerCase();
       // remove any whitespace
       var no_space = lowercase_opt.replace(/\s/g, '');
       // final result to compare against query_param
       final.push(no_space);
-      console.log(final);
     }
     extractLang();
   }
@@ -149,7 +143,6 @@ function extractLang() {
   function storeOptionText() {
     for(var j=0; j<lang_option.length; j++){
       textArr.push(lang_option[j].text);
-      console.log(textArr);
     }
     convertText();
   }
