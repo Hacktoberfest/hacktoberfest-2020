@@ -34,7 +34,7 @@ window.setupPRsOpenedChart = function () {
         {x: new Date(2019, 10, 31), y: 9050}
     ];
 
-    var maxValue = 915;
+    var maxValue = 29900;
 
     var pink = '#ff00aa';
     var text = '#c3cce2';
