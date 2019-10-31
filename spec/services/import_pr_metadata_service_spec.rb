@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ImportPRMetadataService do
+RSpec.describe ImportPrMetadataService do
   describe '.call' do
     let(:user) { FactoryBot.create(:user) }
 
@@ -18,7 +18,7 @@ RSpec.describe ImportPRMetadataService do
 
       context 'the PRs are absent in the pr stats table' do
         it 'creates a PRStat' do
-          ImportPRMetadataService.call(user)
+          ImportPrMetadataService.call(user)
 
           expect(PRStat.count).to eq(4)
         end
@@ -31,7 +31,7 @@ RSpec.describe ImportPRMetadataService do
             PRStat.create(pr_id: pull_request.id, data: pull_request)
           end
 
-          ImportPRMetadataService.call(user)
+          ImportPrMetadataService.call(user)
 
           expect(PRStat.count).to eq(4)
         end
@@ -45,7 +45,7 @@ RSpec.describe ImportPRMetadataService do
       end
 
       it 'does not create PRStats' do
-        ImportPRMetadataService.call(user)
+        ImportPrMetadataService.call(user)
 
         expect(PRStat.count).to eq(0)
       end

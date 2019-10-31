@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class ImportPRMetadataJob
+class ImportPrMetadataJob
   include Sidekiq::Worker
   sidekiq_options queue: :default, retry: 7
 
   def perform(user_id)
     user = User.find(user_id)
 
-    ImportPRMetadataService.call(user)
+    ImportPrMetadataService.call(user)
   end
 end
