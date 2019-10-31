@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ImportPRMetadataService
+module ImportPrMetadataService
   module_function
 
   def call(user)
