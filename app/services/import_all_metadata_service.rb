@@ -10,7 +10,7 @@ module ImportAllMetadataService
       group.each do |user|
         ImportUserMetadataJob.perform_async(user.id)
         ImportPrMetadataJob.perform_async(user.id)
-        ImportRepoMetadataJob.perform_async(user.id)
+        ImportReposMetadataJob.perform_async(user.id)
 
         job_counter += 3
       end
