@@ -48,7 +48,7 @@ class User < ApplicationRecord
       validates :sticker_coupon, absence: true
     end
 
-    state all - [:new, :registered, :waiting] do
+    state all - %i[new registered waiting] do
       validates :receipt, presence: true
     end
 
@@ -94,7 +94,7 @@ class User < ApplicationRecord
       UserStateTransitionSegmentService.call(user, transition)
     end
 
-    before_transition to: [:completed, :incompleted] do |user, _transition|
+    before_transition to: %i[completed incompleted] do |user, _transition|
       user.receipt = user.scoring_pull_requests
     end
 
