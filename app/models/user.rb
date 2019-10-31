@@ -99,6 +99,10 @@ class User < ApplicationRecord
     end
 
     after_transition to: :waiting, do: :update_waiting_since
+
+    after_transition to: :completed do |user, _transition|
+      user.win
+    end
   end
   # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
