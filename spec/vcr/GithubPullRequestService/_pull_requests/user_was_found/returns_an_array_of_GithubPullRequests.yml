@@ -1,0 +1,87 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.github.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query($nodeId:ID!){\n  node(id:$nodeId) {\n    ... on User
+        {\n      pullRequests(states: [OPEN, MERGED, CLOSED] last: 100) {\n        nodes
+        {\n          id\n          title\n          body\n          url\n          createdAt\n          repository{\n            databaseId\n          }\n          labels(first:
+        100) {\n            edges {\n              node {\n                name\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n","variables":{"nodeId":"MDQ6VXNlcjc5NzY3NTc="}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - bearer <TEST_TEST_USER_GITHUB_TOKEN>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Fri, 01 Nov 2019 16:15:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-cache
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v4; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4996'
+      X-Ratelimit-Reset:
+      - '1572628545'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - C80A:3129:18583E:2B0564:5DBC5A31
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"node":{"pullRequests":{"nodes":[{"id":"MDExOlB1bGxSZXF1ZXN0MzIxMDEzNjE5","title":"WIP","body":"Test","url":"https://github.com/jhaff/dotfiles/pull/1","createdAt":"2019-09-25T00:30:54Z","repository":{"databaseId":176804829},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzIxOTAyMDc1","title":"test
+        commit","body":"test description","url":"https://github.com/raise-dev/hacktoberfest-test/pull/1","createdAt":"2019-09-26T20:50:42Z","repository":{"databaseId":211178535},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzIyNTQxNzE2","title":"Second
+        test PR","body":"Pretty cool","url":"https://github.com/raise-dev/hacktoberfest-test/pull/7","createdAt":"2019-09-29T21:14:54Z","repository":{"databaseId":211178535},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzIyNTQyMDQx","title":"Pr
+        soon to be invalid","body":"bad pr!","url":"https://github.com/raise-dev/hacktoberfest-test/pull/8","createdAt":"2019-09-29T21:18:09Z","repository":{"databaseId":211178535},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzIyNTQyODQ4","title":"Good
+        test pr","body":"this is good","url":"https://github.com/raise-dev/hacktoberfest-test/pull/9","createdAt":"2019-09-29T21:28:42Z","repository":{"databaseId":211178535},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzIyNTQzODAx","title":"Another
+        test pr","body":"anotha one","url":"https://github.com/raise-dev/hacktoberfest-test/pull/10","createdAt":"2019-09-29T21:41:23Z","repository":{"databaseId":211178535},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzMyMTIxMzMw","title":"Readme
+        addition","body":"testing","url":"https://github.com/raise-dev/hacktoberfest-test/pull/28","createdAt":"2019-10-24T15:51:10Z","repository":{"databaseId":211178535},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzMyNjA0MTQ1","title":"Testing
+        again","body":"testin","url":"https://github.com/raise-dev/hacktoberfest-test/pull/34","createdAt":"2019-10-25T17:17:17Z","repository":{"databaseId":211178535},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzMyNjA0Nzgx","title":"Doperbranch","body":"yup","url":"https://github.com/raise-dev/hacktoberfest-test/pull/35","createdAt":"2019-10-25T17:19:12Z","repository":{"databaseId":211178535},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzMyNjA1MTM1","title":"so
+        much test","body":"wow","url":"https://github.com/raise-dev/hacktoberfest-test/pull/36","createdAt":"2019-10-25T17:20:26Z","repository":{"databaseId":211178535},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzMyNjA1NDgy","title":"Test
+        wow","body":"seeing how wow is wow","url":"https://github.com/raise-dev/hacktoberfest-test/pull/37","createdAt":"2019-10-25T17:21:41Z","repository":{"databaseId":211178535},"labels":{"edges":[]}},{"id":"MDExOlB1bGxSZXF1ZXN0MzMyNjA3MDA1","title":"Test
+        omg","body":"shouldn''t see this","url":"https://github.com/raise-dev/hacktoberfest-test/pull/38","createdAt":"2019-10-25T17:26:32Z","repository":{"databaseId":211178535},"labels":{"edges":[]}}]}}}}'
+    http_version: 
+  recorded_at: Fri, 01 Nov 2019 16:15:45 GMT
+recorded_with: VCR 5.0.0

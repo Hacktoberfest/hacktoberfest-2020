@@ -3,6 +3,7 @@
 # Fetches Pull Requests for a user from the GitHub API
 # Returns an array of GraphqlPullRequest instances
 class GithubPullRequestService
+  class UserDeletedError < StandardError; end
   attr_reader :user
 
   PULL_REQUEST_QUERY = <<~GRAPHQL
@@ -43,6 +44,12 @@ class GithubPullRequestService
 
     response = Rails.cache.fetch(cache_key, expires_in: 1.minute) do
       client.request(PULL_REQUEST_QUERY, nodeId: user_graphql_node_id)
+    end
+
+    if response['errors']
+      if response['errors'][0]['type'] == 'NOT_FOUND'
+        raise UserDeletedError
+      end
     end
 
     @pull_requests = response.data.node.pullRequests.nodes.map do |pr|

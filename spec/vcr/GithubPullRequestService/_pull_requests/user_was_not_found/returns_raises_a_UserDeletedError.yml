@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.github.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query($nodeId:ID!){\n  node(id:$nodeId) {\n    ... on User
+        {\n      pullRequests(states: [OPEN, MERGED, CLOSED] last: 100) {\n        nodes
+        {\n          id\n          title\n          body\n          url\n          createdAt\n          repository{\n            databaseId\n          }\n          labels(first:
+        100) {\n            edges {\n              node {\n                name\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n","variables":{"nodeId":"MDQ6VXNlcjU2MjA1ODcx"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - bearer <TEST_TEST_USER_GITHUB_TOKEN>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Fri, 01 Nov 2019 16:13:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-cache
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v4; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4997'
+      X-Ratelimit-Reset:
+      - '1572628389'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - C7E2:64C2:4707AE:806A46:5DBC5995
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"node":null},"errors":[{"type":"NOT_FOUND","path":["node"],"locations":[{"line":2,"column":3}],"message":"Could
+        not resolve to a node with the global id of ''MDQ6VXNlcjU2MjA1ODcx''."}]}'
+    http_version: 
+  recorded_at: Fri, 01 Nov 2019 16:13:09 GMT
+recorded_with: VCR 5.0.0
