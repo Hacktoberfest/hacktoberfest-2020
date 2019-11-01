@@ -225,14 +225,29 @@ main.home {
   .section2.space {
     margin-bottom: 180px;
   }
-
-  .section2-closing.space {
-    margin-bottom: 80px;
-    margin-top: 35vh !important;
-  }
   .space {
     @media screen and (max-width: $break-small) {
       margin-top: 620px;
+    }
+  }
+
+  .section2-closing {
+    margin-top: 0;
+    padding-top: 40px;
+    margin-bottom: 200px;
+
+    @media screen and (max-width: $break-small) {
+      text-align: left;
+      margin-bottom: 140px;
+    }
+  }
+
+  .section2-closing.space {
+    margin-bottom: 80px;
+    margin-top: 200px;
+
+    @media screen and (max-width: $break-small) {
+      margin-top: 220px;
     }
   }
 
