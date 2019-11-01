@@ -5,7 +5,15 @@ module ImportPrMetadataService
 
   def call(user)
     pr_service = PullRequestService.new(user, randomize_token: true)
-    pr_data = pr_service.all
+
+    begin
+      pr_data = pr_service.all
+    rescue GithubPullRequestService::UserDeletedError
+      user_stat = UserStat.where(user_id: user.id).first_or_create(data: user)
+
+      user_stat.update(deleted: true)
+      return
+    end
 
     pr_data.map do |pr|
       ImportOnePrMetadataJob.perform_async(pr.url)
