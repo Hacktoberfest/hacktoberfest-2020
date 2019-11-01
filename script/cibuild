@@ -14,5 +14,11 @@ date "+%H:%M:%S"
 echo "Running tests…"
 date "+%H:%M:%S"
 
-# run tests.
 script/test
+
+ # If rspec & rubocop fail with exit status != 0 -> ci fails
+ exitStatus=$?
+ if [ $exitStatus -ne 0 ]; then
+     echo "Some errors ocurred"
+ fi
+ exit $exitStatus
