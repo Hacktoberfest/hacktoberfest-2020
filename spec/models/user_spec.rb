@@ -168,7 +168,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'the user has 4 eligible PRs and has been waiting for 7 days but no receipt' do
+    context 'user has 4 eligible PRs, has been waiting 7 days - no receipt' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
         allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
