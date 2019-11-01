@@ -168,7 +168,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'the user has 4 eligible PRs and has been waiting for 7 days but no receipt' do
+    context 'user has 4 eligible PRs, has been waiting 7 days - no receipt' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
         allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
@@ -310,11 +310,11 @@ RSpec.describe User, type: :model do
         before do
           prs = pull_request_data(
             [PR_DATA[:mature_array][0],
-            PR_DATA[:mature_array][1]]
+             PR_DATA[:mature_array][1]]
           ).map do |pr|
             PullRequest.new(pr)
           end
-    
+
           allow(user).to receive(:scoring_pull_requests).and_return(prs)
         end
 

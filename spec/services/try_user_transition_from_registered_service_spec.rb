@@ -11,7 +11,7 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
       allow(UserPullRequestSegmentUpdaterService).to receive(:call)
 
       # needed for receipt presence validation to pass
-      allow(user).to receive(:scoring_pull_requests).and_return({"test": "test"})
+      allow(user).to receive(:scoring_pull_requests).and_return("test": 'test')
     end
 
     context 'The user has enough PRs to transition' do
