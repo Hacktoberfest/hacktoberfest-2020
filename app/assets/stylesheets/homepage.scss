@@ -560,9 +560,3 @@ main.home {
 .form-cont {
   display:flex;
 }
-
-.canvasjs-chart-canvas {
-  @media screen and(min-width: $break-large) {
-    width: 1300px;
-  }
-}
