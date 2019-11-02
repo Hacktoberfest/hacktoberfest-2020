@@ -260,12 +260,6 @@ main.home {
     }
   }
 
-  .main-closing-section {
-    @media screen and (max-width: $break-large) {
-      max-width: 60vw;
-    }
-  }
-
   .is-spaced {
     padding-top: 20px;
   }
