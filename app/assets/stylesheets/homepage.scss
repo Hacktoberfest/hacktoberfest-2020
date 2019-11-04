@@ -266,7 +266,6 @@ main.home {
 
     @media screen and (max-width: $break-small) {
       text-align: left;
-      margin-bottom: 140px;
     }
   }
   .space {
@@ -275,6 +274,7 @@ main.home {
 
     @media screen and (max-width: $break-small) {
       margin-top: 0px;
+      margin-bottom: 60px !important;
     }
   }
 
