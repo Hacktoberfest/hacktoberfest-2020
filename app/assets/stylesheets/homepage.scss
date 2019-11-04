@@ -278,6 +278,11 @@ main.home {
     }
   }
 
+  .left-title-mob {
+    @media screen and (max-width: $break-small) {
+      text-align: left;
+    }
+  }
 
   .is-spaced {
     padding-top: 20px;
