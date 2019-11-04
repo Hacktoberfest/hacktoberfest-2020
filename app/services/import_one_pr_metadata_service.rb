@@ -11,7 +11,7 @@ module ImportOnePrMetadataService
     number = url.split('/').last
 
     pr_data = api_client.pull_request(repo, number).to_hash
-    
+
     pr = PRStat.where(pr_id: pr_data[:node_id]).first_or_create(data: pr_data)
     pr.update(data: pr_data)
   end
