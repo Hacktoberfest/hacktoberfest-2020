@@ -1,0 +1,3 @@
+language: ruby
+rbenv:
+  - 1.1.2
