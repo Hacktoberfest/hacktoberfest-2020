@@ -12,6 +12,8 @@ module ImportOnePrMetadataService
 
     pr_data = api_client.pull_request(repo, number).to_hash
 
+    # using node_id here because that's what we
+    # used previously as the pr_id in a PRStat. This way the data is consistent
     pr = PRStat.where(pr_id: pr_data[:node_id]).first_or_create(data: pr_data)
     pr.update(data: pr_data)
   end
