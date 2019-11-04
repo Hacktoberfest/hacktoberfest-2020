@@ -4,11 +4,7 @@ module ImportOnePrMetadataService
   module_function
 
   def call(url)
-    pull_request_args = pull_request_args_from_url(url)
-
-    pr_data = client.pull_request(
-      pull_request_args[0], pull_request_args[1]
-    ).to_hash
+    pr_data = client.pull_request(*pull_request_args_from_url(url)).to_hash
 
     # using node_id here because that's what we
     # used previously as the pr_id in a PRStat. This way the data is consistent
