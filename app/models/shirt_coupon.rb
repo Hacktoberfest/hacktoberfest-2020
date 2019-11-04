@@ -7,6 +7,6 @@ class ShirtCoupon < ApplicationRecord
   validates_associated :user
 
   def self.first_available
-    where(user_id: nil).order('RANDOM()').sample
+    where(user_id: nil).order(Arel.sql('RANDOM()')).sample
   end
 end
