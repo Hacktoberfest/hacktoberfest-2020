@@ -3,25 +3,31 @@ name: Ruby
 on: [push]
 
 jobs:
-  build:
-
+  verify:
+    name: Build
     runs-on: ubuntu-latest
 
-  services:
-    postgres:
-      image: postgres:11.3
-      options: >-
-        --health-cmd pg_isready
-        --health-interval 10s
-        --health-timeout 5s
-        --health-retries 5
+    services:
+      postgres:
+        image: postgres:11.3
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
     - uses: actions/checkout@v1
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.6.x
-    - name: Build and test with Rake
+        ruby-version: 2.5.5
+    - name: Setup test database
+      env:
+        RAILS_ENV: test
+        PGHOST: localhost
+        PGUSER: scout
+
+    - name: Build and test with script/cibuild
       run: |
         script/clibuild
