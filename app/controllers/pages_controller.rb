@@ -56,9 +56,9 @@ class PagesController < ApplicationController
 
   def global_stats
     stats_arr = [
-      { amount: '60,408', title: 'CHALLENGE COMPLETIONS' },
-      { amount: '457,085', title: 'PULL REQUESTS OPENED' },
-      { amount: '152,820', title: 'PARTICIPATING REPOSITORIES' }
+      { amount: '61,956', title: 'CHALLENGE COMPLETIONS' },
+      { amount: '482,182', title: 'PULL REQUESTS OPENED' },
+      { amount: '154,466', title: 'PARTICIPATING REPOSITORIES' }
     ]
     stats_arr.map { |s| Hashie::Mash.new(s) }
   end
