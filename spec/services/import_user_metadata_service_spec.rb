@@ -22,13 +22,19 @@ RSpec.describe ImportUserMetadataService do
 
       context 'the user is present in the user stats table' do
         let!(:existing_stat) do
-          UserStat.create(user_id: user.id, data: { "test": 1 })
+          UserStat.create(user_id: user.id, data: { "test": 0 })
         end
 
         it 'does not create another UserStat' do
           ImportUserMetadataService.call(user)
 
           expect(UserStat.count).to eq(1)
+        end
+
+        it 'updates the UserStat' do
+          ImportUserMetadataService.call(user)
+
+          expect(UserStat.last.data).to eq('test' => 1)
         end
       end
     end
