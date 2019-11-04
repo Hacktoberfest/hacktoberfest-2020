@@ -20,7 +20,7 @@
       <% if @current_user %>
         <li><%= link_to "profile", profile_path, :class => active_path_class?(profile_path, '') + " button button-small navLink"  %></li>
       <% else %>
-        <li><%= link_to "start hacking", profile_path, :class => "button button-small navLink"  %></li>
+        <li><%= link_to Hacktoberfest.ended? ? "see your profile" : "start hacking", profile_path, :class => "button button-small navLink"  %></li>
       <% end %>
     </ul>
   </nav>
