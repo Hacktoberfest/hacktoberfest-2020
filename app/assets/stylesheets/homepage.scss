@@ -448,6 +448,10 @@ main.home {
   .statUnion .box:nth-child(3n + 3) {
     background: linear-gradient(76.04deg, #ff3e86 -0.33%, #ff00a9 100.08%);
     margin-right: 0;
+
+    @media screen and (max-width: $break-small) {
+      margin-right: 26px;
+    }
   }
 
   .eventMonth {
