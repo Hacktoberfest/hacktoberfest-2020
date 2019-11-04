@@ -17,8 +17,10 @@ date "+%H:%M:%S"
 script/test
 
  # If rspec & rubocop fail with exit status != 0 -> ci fails
- exitStatus=$?
- if [ $exitStatus -ne 0 ]; then
-     echo "Some errors ocurred"
- fi
- exit $exitStatus
+echo $exitStatus
+if [ $exitStatus -ne 0 ]; then
+  echo "Some errors ocurred"
+else
+  echo "Success ✨"
+fi
+exit $exitStatus
