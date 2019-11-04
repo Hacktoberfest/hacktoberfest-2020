@@ -22,12 +22,10 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.5.5
-    - name: Setup test database
+    - name: Build and test with script/cibuild
       env:
         RAILS_ENV: test
         PGHOST: localhost
         PGUSER: scout
-
-    - name: Build and test with script/cibuild
       run: |
         script/clibuild
