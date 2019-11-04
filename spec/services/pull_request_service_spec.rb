@@ -6,7 +6,15 @@ RSpec.describe PullRequestService do
   let(:user) { FactoryBot.create(:user) }
   let(:pr_service) { PullRequestService.new(user) }
 
-  before { allow(SpamRepositoryService).to receive(:call).and_return(false) }
+  before do
+    allow(SpamRepositoryService).to receive(:call).and_return(false)
+
+    # stubbing these due to the later stubs with hard coded PR_DATA
+    allow(Hacktoberfest)
+      .to receive(:start_date).and_return(Date.parse('2019-10-01'))
+    allow(Hacktoberfest)
+      .to receive(:end_date).and_return(Date.parse('2019-11-01'))
+  end
 
   describe '.new' do
     context 'valid arguments' do
