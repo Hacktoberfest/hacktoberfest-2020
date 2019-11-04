@@ -34,15 +34,21 @@ RSpec.describe ImportRepoMetadataService do
     context 'The repo already exists as a RepoStat' do
       before do
         allow_any_instance_of(Octokit::Client)
-          .to receive(:repo).and_return("test": 1)
+          .to receive(:repo).and_return("test": 2)
 
         RepoStat.create(repo_id: 1, data: { "test": 1 })
       end
 
-      it 'does not create the repostat' do
+      it 'does not create a new repostat' do
         ImportRepoMetadataService.call(1)
 
         expect(RepoStat.count).to eq(1)
+      end
+
+      it 'updates the repostat' do
+        ImportRepoMetadataService.call(1)
+
+        expect(RepoStat.last.data).to eq({"test"=>2})
       end
     end
   end
