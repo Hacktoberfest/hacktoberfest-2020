@@ -34,6 +34,9 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+ENV['START_DATE'] = 2.weeks.ago.to_s
+ENV['END_DATE'] = 2.weeks.from_now.to_s
+
 def user_github_token
   ENV.fetch('TEST_USER_GITHUB_TOKEN') { SecureRandom.hex(20) }
 end

@@ -45,7 +45,8 @@ class PullRequestService
 
   def filtered_github_pull_requests(prs)
     prs.select do |e|
-      e.created_at >= ENV['START_DATE'] && e.created_at <= ENV['END_DATE']
+      e.created_at >= Hacktoberfest.start_date.to_s &&
+        e.created_at <= Hacktoberfest.end_date.to_s
     end
   end
 end
