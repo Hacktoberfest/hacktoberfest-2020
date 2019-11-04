@@ -241,7 +241,6 @@ main.home {
   }
 
   .section2-closing {
-    margin-top: 0;
     padding-top: 40px;
     margin-bottom: 200px;
 
@@ -259,6 +258,26 @@ main.home {
       margin-top: 500px;
     }
   }
+
+
+  .section3-closing {
+    padding-top: 40px;
+    margin-bottom: 200px;
+
+    @media screen and (max-width: $break-small) {
+      text-align: left;
+      margin-bottom: 140px;
+    }
+  }
+  .space {
+    padding-top: 200px;
+    margin-bottom: 200px;
+
+    @media screen and (max-width: $break-small) {
+      margin-top: 0px;
+    }
+  }
+
 
   .is-spaced {
     padding-top: 20px;
