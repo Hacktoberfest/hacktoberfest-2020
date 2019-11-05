@@ -27,7 +27,7 @@ jobs:
     - name: Build and test with script/cibuild
       env:
         RAILS_ENV: test
-        PGHOST: postgres
+        PGHOST: localhost
         PGUSER: postgres
         PGDATABASE: hacktoberfest_test
         END_DATE: "2019-10-01 00:00:00 UTC"
