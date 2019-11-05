@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   get '/login', to: redirect('/auth/github'), as: :login
 
   # Sign up
-  get '/start', to: 'pages#start', as: :start
-  get '/register', to: 'users#registration', as: :register_form
-  patch '/register', to: 'users#register', as: :register
+  unless Hacktoberfest.ended?
+    get '/start', to: 'pages#start', as: :start
+    get '/register', to: 'users#registration', as: :register_form
+    patch '/register', to: 'users#register', as: :register
+  end
 
   # Users
   get '/profile', to: 'users#show', as: :profile

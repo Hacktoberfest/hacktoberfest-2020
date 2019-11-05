@@ -34,7 +34,11 @@ class ApplicationController < ActionController::Base
   def require_user_registered!
     return if logged_in? && !@current_user.new?
 
-    redirect_to start_path
+    if Hacktoberfest.ended?
+      render 'pages/hacktoberfest_ended'
+    else
+      redirect_to start_path
+    end
   end
 
   def disallow_registered_user!
