@@ -4,7 +4,6 @@
 $break-tiny: 812px;
 $break-small: 1024px;
 $break-med: 1350px;
-$break-big: 1500px;
 $break-large: 1920px;
 $yellow: hsl(58.37, 100%, 56.67%);
 $grey: hsl(221.54, 14.61%, 65.1%);
@@ -255,7 +254,7 @@ main.home {
     margin-top: 200px;
 
     @media screen and (max-width: $break-small) {
-      margin-top: 500px;
+      margin-top: 45vh;
     }
   }
 
@@ -581,4 +580,8 @@ main.home {
 
 .form-cont {
   display:flex;
+
+  @media screen and (max-width: $break-small) {
+    margin-left: -4%;
+  }
 }
