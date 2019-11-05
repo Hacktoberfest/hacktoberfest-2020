@@ -108,6 +108,7 @@ main.home {
         width: 100% !important;
         flex-direction: column;
         align-items: flex-start;
+        padding: 0;
       }
 
       label,
@@ -581,11 +582,7 @@ main.home {
 .form-cont {
   display:flex;
 
-  @media screen and (max-width: $break-tiny) {
-    margin-left: -4%;
-  }
-
-  @media screen and (min-width: 760px) {
-    margin-left: 0%;
+  @media screen and (max-width: $break-small) {
+    margin-left: 0;
   }
 }
