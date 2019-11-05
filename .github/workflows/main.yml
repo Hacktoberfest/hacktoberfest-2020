@@ -28,4 +28,4 @@ jobs:
         PGHOST: localhost
         PGUSER: scout
       run: |
-        script/clibuild
+        script/cibuild
