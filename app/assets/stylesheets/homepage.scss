@@ -581,7 +581,11 @@ main.home {
 .form-cont {
   display:flex;
 
-  @media screen and (max-width: $break-small) {
+  @media screen and (max-width: $break-tiny) {
     margin-left: -4%;
+  }
+
+  @media screen and (min-width: 760px) {
+    margin-left: 0%;
   }
 }
