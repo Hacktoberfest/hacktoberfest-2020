@@ -28,7 +28,6 @@ jobs:
         PGHOST: postgress
         PGUSER: postgress
         PGDATABASE: postgres
-        PGPORT: ${{ job.services.postgres.ports[5432] }
         END_DATE: "2019-10-01 00:00:00 UTC"
         START_DATE: "2019-11-01 00:00:00 UTC"
       run: |
