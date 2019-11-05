@@ -10,6 +10,8 @@ jobs:
     services:
       postgres:
         image: postgres:11.3
+        ports:
+          - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -30,7 +32,5 @@ jobs:
         PGDATABASE: postgres
         END_DATE: "2019-10-01 00:00:00 UTC"
         START_DATE: "2019-11-01 00:00:00 UTC"
-    ports:
-    - 5432:5432
       run: |
         script/cibuild
