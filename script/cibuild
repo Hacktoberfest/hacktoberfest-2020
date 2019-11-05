@@ -8,6 +8,8 @@ set -e
 cd "$(dirname "$0")/.."
 
 sudo apt-get install libpq-dev
+ruby -v
+rbenv version
 gem install bundler dotenv
 bundle install --jobs 4 --retry 3
 
