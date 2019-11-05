@@ -35,6 +35,8 @@ jobs:
         TEST_USER_GITHUB_TOKEN: ${{ secrets.TEST_USER_GITHUB_TOKEN }}
         GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
         GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
+        AIRTABLE_APP_ID: ${{ secrets.AIRTABLE_APP_ID }}
+        AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
 
       run: |
         script/cibuild
