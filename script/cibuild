@@ -15,7 +15,7 @@ echo "Tests started at…"
 date "+%H:%M:%S"
 
 # run tests
-echo "Running tests…"
+echo "Running RSpec and Rubocop tests…"
 date "+%H:%M:%S"
 
 script/test
