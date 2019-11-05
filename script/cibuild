@@ -11,6 +11,9 @@ sudo apt-get install libpq-dev
 gem install bundler dotenv
 bundle install --jobs 4 --retry 3
 
+echo "Setting up db"
+script/setup
+
 echo "Tests started at…"
 date "+%H:%M:%S"
 
