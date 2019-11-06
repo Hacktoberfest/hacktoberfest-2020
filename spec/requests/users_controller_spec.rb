@@ -144,5 +144,26 @@ RSpec.describe UsersController, type: :request do
         expect(response.body).to include(invalid_pr['title'])
       end
     end
+
+    context 'a new user' do
+      let(:user) { FactoryBot.create(:user, :new) }
+      context 'hacktoberfest is active' do
+        it 'redirects to the start_path' do
+          get profile_path
+          expect(response).to redirect_to(start_path)
+        end
+      end
+
+      context 'hacktoberfest has ended' do
+        before do
+          allow(Hacktoberfest).to receive(:ended?).and_return(true)
+        end
+
+        it 'renders the the hacktoberfest ended page' do
+          get profile_path
+          expect(response.body).to include('Registrations are now closed.')
+        end
+      end
+    end
   end
 end
