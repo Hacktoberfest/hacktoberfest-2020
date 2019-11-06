@@ -38,6 +38,62 @@ RSpec.describe UserStateTransitionSegmentService do
       end
     end
 
+    context 'the transition event is complete and the user is waiting' do
+      let(:user) { FactoryBot.create(:user, :waiting) }
+
+      before do
+        allow(transition).to receive(:event).and_return(:complete)
+      end
+
+      it 'calls SegmentService#identify with proper arguments' do
+        allow_any_instance_of(SegmentService).to receive(:track).with(
+                                                   'user_completed'
+                                                 )
+        expect_any_instance_of(SegmentService).to receive(:identify).with(
+                                                    state: 'completed'
+                                                  )
+        UserStateTransitionSegmentService.call(user, transition)
+      end
+
+      it 'calls SegmentService#track with proper arguments' do
+        allow_any_instance_of(SegmentService).to receive(:identify).with(
+                                                   state: 'completed'
+                                                 )
+        expect_any_instance_of(SegmentService).to receive(:track).with(
+                                                    'user_completed'
+                                                  )
+        UserStateTransitionSegmentService.call(user, transition)
+      end
+    end
+
+    context 'the event is retry_complete and the user is incompleted' do
+      let(:user) { FactoryBot.create(:user, :incompleted) }
+
+      before do
+        allow(transition).to receive(:event).and_return(:retry_complete)
+      end
+
+      it 'calls SegmentService#identify with proper arguments' do
+        allow_any_instance_of(SegmentService).to receive(:track).with(
+                                                   'user_completed'
+                                                 )
+        expect_any_instance_of(SegmentService).to receive(:identify).with(
+                                                    state: 'completed'
+                                                  )
+        UserStateTransitionSegmentService.call(user, transition)
+      end
+
+      it 'calls SegmentService#track with proper arguments' do
+        allow_any_instance_of(SegmentService).to receive(:identify).with(
+                                                   state: 'completed'
+                                                 )
+        expect_any_instance_of(SegmentService).to receive(:track).with(
+                                                    'user_completed'
+                                                  )
+        UserStateTransitionSegmentService.call(user, transition)
+      end
+    end
+
     context 'the transition event is ineligible and the user is waiting' do
       let(:user) { FactoryBot.create(:user, :waiting) }
 
