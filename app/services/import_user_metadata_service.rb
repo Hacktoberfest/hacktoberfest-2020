@@ -11,6 +11,7 @@ module ImportUserMetadataService
 
     user_data = api_client.user(user.uid).to_hash
 
-    UserStat.where(user_id: user.id).first_or_create(data: user_data)
+    user_stat = UserStat.where(user_id: user.id).first_or_create(data: user_data)
+    user_stat.update(data: user_data)
   end
 end

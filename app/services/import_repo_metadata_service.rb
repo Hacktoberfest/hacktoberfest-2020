@@ -8,6 +8,7 @@ module ImportRepoMetadataService
     api_client = Octokit::Client.new(access_token: access_token)
 
     repo = api_client.repo(repo_id).to_hash
-    RepoStat.where(repo_id: repo_id).first_or_create(data: repo)
+    repo_stat = RepoStat.where(repo_id: repo_id).first_or_create(data: repo)
+    repo_stat.update(data: repo)
   end
 end
