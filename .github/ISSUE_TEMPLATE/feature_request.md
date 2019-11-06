@@ -8,4 +8,3 @@ labels: feature-request
 <!--
 Please provide a description of the feature you would like Hacktoberfest to have
 -->
-_Please provide a description of the feature you would like Hacktoberfest to have_
