@@ -2,7 +2,12 @@
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'active_support/core_ext/numeric/time'
+
 ENV['RAILS_ENV'] ||= 'test'
+ENV['START_DATE'] = 2.weeks.ago.to_s
+ENV['END_DATE'] = 2.weeks.from_now.to_s
+
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails env is running in production mode!') if Rails.env.production?
@@ -33,9 +38,6 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
-
-ENV['START_DATE'] = 2.weeks.ago.to_s
-ENV['END_DATE'] = 2.weeks.from_now.to_s
 
 def user_github_token
   ENV.fetch('TEST_USER_GITHUB_TOKEN') { SecureRandom.hex(20) }
