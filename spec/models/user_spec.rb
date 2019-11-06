@@ -267,6 +267,121 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '#retry_complete' do
+    let(:user) { FactoryBot.create(:user, :incompleted) }
+
+    before do
+      prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+        PullRequest.new(pr)
+      end
+
+      allow(user).to receive(:scoring_pull_requests).and_return(prs)
+    end
+
+    context 'the user has 4 eligible PRs and has been waiting for 7 days' do
+      before do
+        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+
+        expect(UserStateTransitionSegmentService)
+          .to receive(:complete).and_return(true)
+
+        user.retry_complete
+      end
+
+      it 'allows the user to enter the completed state', :vcr do
+        expect(user.state).to eq('completed')
+      end
+
+      it 'persists the completed state', :vcr do
+        user.reload
+        expect(user.state).to eq('completed')
+      end
+
+      it 'persists a receipt of the scoring prs' do
+        user.reload
+        expect(user.receipt)
+          .to eq(JSON.parse(user.scoring_pull_requests.to_json))
+      end
+    end
+
+    context 'user has 4 eligible PRs, has been waiting 7 days - no receipt' do
+      before do
+        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+        allow(user).to receive(:receipt).and_return(nil)
+
+        user.retry_complete
+      end
+
+      it 'disallows the user to enter the completed state', :vcr do
+        expect(user.state).to eq('incompleted')
+      end
+
+      it 'adds the correct errors to user', :vcr do
+        expect(user.errors.messages[:receipt].first)
+          .to include("can't be blank")
+      end
+    end
+
+    context 'the user has 4 eligible PRs but has not been waiting for 7 days' do
+      before do
+        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 2)
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
+
+        user.retry_complete
+      end
+
+      it 'disallows the user to enter the completed state', :vcr do
+        expect(user.state).to eq('incompleted')
+      end
+
+      it 'adds the correct errors to user', :vcr do
+        expect(user.errors.messages[:won_hacktoberfest?].first)
+          .to include('user has not met all winning conditions')
+      end
+    end
+
+    context 'user has been waiting for 7 days & has less than 4 eligible prs' do
+      before do
+        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
+
+        user.retry_complete
+      end
+
+      it 'disallows the user to enter the completed state', :vcr do
+        expect(user.state).to eq('incompleted')
+      end
+
+      it 'adds the correct errors to user', :vcr do
+        expect(user.errors.messages[:won_hacktoberfest?].first)
+          .to include('user has not met all winning conditions')
+      end
+    end
+
+    context 'the user neither 4 eligible PRs nor has been waiting for 7 days' do
+      before do
+        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 2)
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
+
+        user.retry_complete
+      end
+
+      it 'disallows the user to enter the completed state', :vcr do
+        expect(user.state).to eq('incompleted')
+      end
+
+      it 'adds the correct errors to user', :vcr do
+        expect(user.errors.messages[:won_hacktoberfest?].first)
+          .to include('user has not met all winning conditions')
+      end
+    end
+  end
+
   describe '#incomplete' do
     context 'the user is in the complete state' do
       let(:user) { FactoryBot.create(:user, :completed) }
