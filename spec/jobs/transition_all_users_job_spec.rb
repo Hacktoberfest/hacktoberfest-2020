@@ -10,6 +10,7 @@ RSpec.describe TransitionAllUsersJob, type: :job do
   end
 
   it 'calls the UserTransitionJob for all users' do
+    puts User.count
     expect(UserTransitionJob).to receive(:perform_async).twice
     TransitionAllUsersJob.perform_async
   end
