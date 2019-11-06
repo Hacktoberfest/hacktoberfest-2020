@@ -4,11 +4,11 @@ module Hacktoberfest
   module_function
 
   def start_date
-    @start_date ||= Date.parse(ENV.fetch('START_DATE'))
+    @start_date ||= Time.parse(ENV.fetch('START_DATE')).utc
   end
 
   def end_date
-    @end_date ||= Date.parse(ENV.fetch('END_DATE'))
+    @end_date ||= Time.parse(ENV.fetch('END_DATE')).utc
   end
 
   def pull_request_maturation_days
