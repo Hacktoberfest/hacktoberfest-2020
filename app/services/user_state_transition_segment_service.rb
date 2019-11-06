@@ -11,6 +11,7 @@ module UserStateTransitionSegmentService
     when :register then register(user)
     when :wait then wait(user)
     when :complete then complete(user)
+    when :retry_complete then complete(user)
     when :incomplete then incomplete(user)
     when :ineligible then ineligible(user)
     when :won then won(user, transition)
