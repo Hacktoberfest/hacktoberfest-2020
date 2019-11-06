@@ -4,7 +4,6 @@
 $break-tiny: 812px;
 $break-small: 1024px;
 $break-med: 1350px;
-$break-big: 1500px;
 $break-large: 1920px;
 $yellow: hsl(58.37, 100%, 56.67%);
 $grey: hsl(221.54, 14.61%, 65.1%);
@@ -109,6 +108,7 @@ main.home {
         width: 100% !important;
         flex-direction: column;
         align-items: flex-start;
+        padding: 0;
       }
 
       label,
@@ -241,7 +241,6 @@ main.home {
   }
 
   .section2-closing {
-    margin-top: 0;
     padding-top: 40px;
     margin-bottom: 200px;
 
@@ -256,7 +255,31 @@ main.home {
     margin-top: 200px;
 
     @media screen and (max-width: $break-small) {
-      margin-top: 500px;
+      margin-top: 45vh;
+    }
+  }
+
+  .section3-closing {
+    padding-top: 40px;
+    margin-bottom: 200px;
+
+    @media screen and (max-width: $break-small) {
+      text-align: left;
+    }
+  }
+  .space {
+    padding-top: 200px;
+    margin-bottom: 200px;
+
+    @media screen and (max-width: $break-small) {
+      margin-top: 0px;
+      margin-bottom: 60px !important;
+    }
+  }
+
+  .left-title-mob {
+    @media screen and (max-width: $break-small) {
+      text-align: left;
     }
   }
 
@@ -424,6 +447,10 @@ main.home {
   .statUnion .box:nth-child(3n + 3) {
     background: linear-gradient(76.04deg, #ff3e86 -0.33%, #ff00a9 100.08%);
     margin-right: 0;
+
+    @media screen and (max-width: $break-small) {
+      margin-right: 26px;
+    }
   }
 
   .eventMonth {
@@ -553,4 +580,8 @@ main.home {
 
 .form-cont {
   display:flex;
+
+  @media screen and (max-width: $break-small) {
+    margin-left: 0;
+  }
 }
