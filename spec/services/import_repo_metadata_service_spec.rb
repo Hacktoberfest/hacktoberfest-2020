@@ -48,7 +48,7 @@ RSpec.describe ImportRepoMetadataService do
       it 'updates the repostat' do
         ImportRepoMetadataService.call(1)
 
-        expect(RepoStat.last.data).to eq({"test"=>2})
+        expect(RepoStat.last.data).to eq('test' => 2)
       end
     end
   end
