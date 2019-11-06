@@ -10,6 +10,10 @@ namespace :users do
   task retry_complete: :environment do
     User.where(state: 'incompleted')
         .where.not(waiting_since: nil)
-        .each(&:retry_complete)
+        .each do |user|
+      user.retry_complete
+    rescue Faraday::ClientError
+      # No retries in this case
+    end
   end
 end
