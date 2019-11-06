@@ -37,6 +37,6 @@ jobs:
         GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
         AIRTABLE_APP_ID: ${{ secrets.AIRTABLE_APP_ID }}
         AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-
+        SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
       run: |
         script/cibuild
