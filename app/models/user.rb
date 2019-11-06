@@ -30,6 +30,10 @@ class User < ApplicationRecord
       transition registered: :incompleted
     end
 
+    event :retry_complete do
+      transition incompleted: :completed
+    end
+
     event :ineligible do
       transition waiting: :registered,
                  unless: ->(user) { user.sufficient_eligible_prs? }
