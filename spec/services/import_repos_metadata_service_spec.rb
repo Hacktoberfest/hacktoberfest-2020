@@ -22,7 +22,7 @@ RSpec.describe ImportReposMetadataService do
       before do
         allow_any_instance_of(GithubPullRequestService)
           .to receive(:pull_requests)
-          .and_raise(GithubPullRequestService::UserDeletedError.new)
+          .and_raise(GithubPullRequestService::UserNotFoundOnGithubError.new)
       end
 
       it 'destroys the UserStat' do

@@ -8,7 +8,7 @@ module ImportPrMetadataService
 
     begin
       pr_data = pr_service.all
-    rescue GithubPullRequestService::UserDeletedError
+    rescue GithubPullRequestService::UserNotFoundOnGithubError
       user_stat = UserStat.where(user_id: user.id).first
 
       user_stat.destroy

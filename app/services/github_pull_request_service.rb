@@ -3,7 +3,7 @@
 # Fetches Pull Requests for a user from the GitHub API
 # Returns an array of GraphqlPullRequest instances
 class GithubPullRequestService
-  class UserDeletedError < StandardError; end
+  class UserNotFoundOnGithubError < StandardError; end
   attr_reader :user
 
   PULL_REQUEST_QUERY = <<~GRAPHQL
@@ -48,7 +48,7 @@ class GithubPullRequestService
 
     if response['errors']
       if response['errors'][0]['type'] == 'NOT_FOUND'
-        raise UserDeletedError
+        raise UserNotFoundOnGithubError
       end
     end
 

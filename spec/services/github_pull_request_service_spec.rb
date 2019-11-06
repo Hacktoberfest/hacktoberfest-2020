@@ -18,9 +18,9 @@ RSpec.describe GithubPullRequestService do
       let(:user) { FactoryBot.create(:user, uid: 56_205_871) }
       let(:github_pull_request_service) { GithubPullRequestService.new(user) }
 
-      it 'raises a UserDeletedError', :vcr do
+      it 'raises a UserNotFoundOnGithubError', :vcr do
         expect { github_pull_request_service.pull_requests }
-          .to raise_error(GithubPullRequestService::UserDeletedError)
+          .to raise_error(GithubPullRequestService::UserNotFoundOnGithubError)
       end
     end
   end
