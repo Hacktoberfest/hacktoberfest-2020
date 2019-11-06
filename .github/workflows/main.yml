@@ -19,6 +19,11 @@ jobs:
           --health-retries 5
 
     steps:
+    - uses: actions/checkout@master
+      if: github.event.pull_request.merged == true
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+        fetch-depth: 1
     - uses: actions/checkout@v1
     - name: Set up Ruby 2.5.5
       uses: actions/setup-ruby@v1
@@ -40,7 +45,3 @@ jobs:
         SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
       run: |
         script/cibuild
-      - name: Pull request merged
-        if: github.event.pull_request.merged == true
-        run: |
-          script/cibuild
