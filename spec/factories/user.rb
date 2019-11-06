@@ -44,6 +44,7 @@ FactoryBot.define do
       receipt { { "test": 'test' }.to_json }
 
       after :build do |user|
+        allow(user).to receive(:hacktoberfest_ended?).and_return(true)
         allow(user).to receive(:eligible_pull_requests_count).and_return(3)
         allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
       end
