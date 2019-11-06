@@ -3,6 +3,9 @@ name: Bug report
 about: Create a report to help us improve Hacktoberfest
 
 ---
+<!--
+To report a bug in Hacktoberfest, please complete all of the following fields before submitting.
+-->
 
 **Describe the bug**
 A clear and concise description of what the bug is.
