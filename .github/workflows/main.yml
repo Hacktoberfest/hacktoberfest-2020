@@ -40,8 +40,7 @@ jobs:
         SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
       run: |
         script/cibuild
-    steps:
-    - name: Pull request merged
-      if: github.event.pull_request.merged == true
-      run: |
-        script/cibuild
+      - name: Pull request merged
+        if: github.event.pull_request.merged == true
+        run: |
+          script/cibuild
