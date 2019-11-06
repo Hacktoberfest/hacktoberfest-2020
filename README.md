@@ -197,8 +197,3 @@ This project uses the Contributor Covenant Code of Conduct. See [CODE_OF_CONDUCT
 
 Licensed under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
 The full license text is available in [LICENSE.md](/LICENSE.md).
-
-## Built With
-
-* [Rails](https://github.com/rails/rails) - The server framework used
-* [bundler](https://github.com/bundler/bundler) - Dependency Management
