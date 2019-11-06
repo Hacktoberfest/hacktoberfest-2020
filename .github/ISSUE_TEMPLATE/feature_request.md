@@ -1,7 +1,6 @@
 ---
 name: Feature request
 about: Suggest an idea for Hacktoberfest
-
 ---
 
 ### Feature request :sparkles:
