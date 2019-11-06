@@ -11,7 +11,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] Test A
 - [ ] Test B
 
-# Checklist:
+# Requirements to merge
 <!--
 Ensure your pull request meets all the requirements for merging. Place an `x` in each box to indicate that your pull request meets that requirement.
 -->
