@@ -12,7 +12,9 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] Test B
 
 # Checklist:
-
+<!--
+Ensure your pull request meets all the requirements for merging. Place an `x` in each box to indicate that your pull request meets that requirement.
+-->
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
