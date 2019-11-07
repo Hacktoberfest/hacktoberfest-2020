@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   def new
     # This page makes a POST request to /auth/github
     # The POST request has a CSRF token which solves CVE-2015-9284
+    # See https://github.com/raise-dev/hacktoberfest/pull/351
     render 'sessions/new'
   end
 
