@@ -39,6 +39,10 @@ class User < ApplicationRecord
                  unless: ->(user) { user.sufficient_eligible_prs? }
     end
 
+    event :deactivate do
+      transition all => :inactive
+    end
+
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
@@ -88,6 +92,12 @@ class User < ApplicationRecord
         in: [true], message: 'hacktoberfest has not yet ended' }
       validates :sufficient_eligible_prs?, inclusion: {
         in: [false], message: 'user has too many sufficient eligible prs' }
+    end
+
+    state :inactive do
+      validates :last_error, inclusion: {
+        in: ['GithubPullRequestService::UserNotFoundOnGithubError'],
+        message: "user's last_error must be UserNotFoundOnGithubError" }
     end
 
     before_transition do |user, _transition|
