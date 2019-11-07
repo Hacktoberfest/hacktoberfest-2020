@@ -8,6 +8,7 @@ set -e
 cd "$(dirname "$0")/.."
 
 sudo apt-get install libpq-dev
+# Install `dotenv` directly because we use it in the Gemfile for conditionally installing Sidekiq Enterprise
 gem install bundler dotenv
 bundle install --jobs 4 --retry 3
 
