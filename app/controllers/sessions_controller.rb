@@ -2,7 +2,9 @@
 
 class SessionsController < ApplicationController
   def new
-    redirect_to '/auth/github'
+    # This page makes a POST request to /auth/github
+    # The POST request has a CSRF token which solves CVE-2015-9284
+    render 'sessions/new'
   end
 
   def create
