@@ -19,6 +19,5 @@ date "+%H:%M:%S"
 
 # run tests
 echo "Running RSpec and Rubocop tests…"
-date "+%H:%M:%S"
 
 script/test
