@@ -15,7 +15,9 @@ module GithubErrorHandler
   end
 
   def process_github_error(error, user)
+    # rubocop:disable Rails/SkipsModelValidations
     user.update_attribute(:last_error, error.class)
+    # rubocop:enable Rails/SkipsModelValidations
     case error.class.to_s
     when 'Octokit::AccountSuspended'
       process_user_missing_error(error, user)
