@@ -7,7 +7,7 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-if [ $GITHUB_WORKFLOW ]; then
+if [ -z "$GITHUB_WORKFLOW" ]; then
   exit 0
 fi
 
