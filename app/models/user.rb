@@ -96,7 +96,8 @@ class User < ApplicationRecord
 
     state :inactive do
       validates :last_error, inclusion: {
-        in: ['GithubPullRequestService::UserNotFoundOnGithubError'],
+        in: ['GithubPullRequestService::UserNotFoundOnGithubError',
+             'Octokit::AccountSuspended'],
         message: "user's last_error must be UserNotFoundOnGithubError" }
     end
 

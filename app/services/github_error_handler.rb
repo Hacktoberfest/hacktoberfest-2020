@@ -32,5 +32,7 @@ module GithubErrorHandler
     return unless (user_stat = UserStat.where(user_id: user.id).first)
 
     user_stat.destroy
+
+    user.deactivate
   end
 end
