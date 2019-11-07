@@ -96,6 +96,11 @@ RSpec.describe User, type: :model do
         expect(UserStateTransitionSegmentService)
           .to receive(:wait).and_return(true)
 
+        prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+          PullRequest.new(pr)
+        end
+
+        allow(user).to receive(:scoring_pull_requests).and_return(prs)
         user.wait
       end
 

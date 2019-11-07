@@ -139,7 +139,13 @@ class User < ApplicationRecord
   end
 
   def update_waiting_since
-    update(waiting_since: DateTime.now)
+    latest_pr = scoring_pull_requests.max_by do |pr|
+      pr.github_pull_request.created_at
+    end
+
+    update(waiting_since: Time.zone.parse(
+      latest_pr.github_pull_request.created_at
+    ))
   end
 
   def waiting_for_week?
