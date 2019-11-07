@@ -47,21 +47,21 @@ RSpec.describe UserStateTransitionSegmentService do
 
       it 'calls SegmentService#identify with proper arguments' do
         allow_any_instance_of(SegmentService).to receive(:track).with(
-                                                   'user_completed'
-                                                 )
+          'user_completed'
+        )
         expect_any_instance_of(SegmentService).to receive(:identify).with(
-                                                    state: 'completed'
-                                                  )
+          state: 'completed'
+        )
         UserStateTransitionSegmentService.call(user, transition)
       end
 
       it 'calls SegmentService#track with proper arguments' do
         allow_any_instance_of(SegmentService).to receive(:identify).with(
-                                                   state: 'completed'
-                                                 )
+          state: 'completed'
+        )
         expect_any_instance_of(SegmentService).to receive(:track).with(
-                                                    'user_completed'
-                                                  )
+          'user_completed'
+        )
         UserStateTransitionSegmentService.call(user, transition)
       end
     end
@@ -75,21 +75,21 @@ RSpec.describe UserStateTransitionSegmentService do
 
       it 'calls SegmentService#identify with proper arguments' do
         allow_any_instance_of(SegmentService).to receive(:track).with(
-                                                   'user_completed'
-                                                 )
+          'user_completed'
+        )
         expect_any_instance_of(SegmentService).to receive(:identify).with(
-                                                    state: 'completed'
-                                                  )
+          state: 'completed'
+        )
         UserStateTransitionSegmentService.call(user, transition)
       end
 
       it 'calls SegmentService#track with proper arguments' do
         allow_any_instance_of(SegmentService).to receive(:identify).with(
-                                                   state: 'completed'
-                                                 )
+          state: 'completed'
+        )
         expect_any_instance_of(SegmentService).to receive(:track).with(
-                                                    'user_completed'
-                                                  )
+          'user_completed'
+        )
         UserStateTransitionSegmentService.call(user, transition)
       end
     end
