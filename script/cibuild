@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# script/cibuild: Setup environment for CI to run tests. This is primarily
+#                 designed to run on the continuous integration server.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+sudo apt-get install libpq-dev
+# Install `dotenv` directly because we use it in the Gemfile for conditionally installing Sidekiq Enterprise
+gem install bundler dotenv
+bundle install --jobs 4 --retry 3
+
+script/setup
+
+echo "Tests started at…"
+date "+%H:%M:%S"
+
+# run tests
+
+script/test
