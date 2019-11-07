@@ -1,4 +1,4 @@
-name: cibuild
+name: Build Pipeline
 
 on: [pull_request]
 
