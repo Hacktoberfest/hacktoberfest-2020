@@ -17,5 +17,3 @@ script/setup
 export RAILS_ENV="test" RACK_ENV="test"
 
 script/update
-
-bundle exec rspec

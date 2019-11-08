@@ -40,6 +40,7 @@ jobs:
         SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
       run: |
         script/cibuild
+        bundle exec rspec
     - name: Linting with Rubocop
       run: |
         bundle exec rubocop
