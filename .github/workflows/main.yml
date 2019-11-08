@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.5.5
-    - name: Build and test with script/cibuild
+    - name: Build and test with RSpec
       env:
         RAILS_ENV: test
         PGHOST: localhost
@@ -40,3 +40,6 @@ jobs:
         SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
       run: |
         script/cibuild
+    - name: Linting with Rubocop
+      run: |
+        bundle exec rubocop
