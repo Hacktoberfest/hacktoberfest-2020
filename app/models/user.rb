@@ -56,7 +56,7 @@ class User < ApplicationRecord
       validates :sticker_coupon, absence: true
     end
 
-    state all - %i[new registered waiting] do
+    state all - %i[new registered waiting inactive] do
       validates :receipt, presence: true
     end
 
@@ -98,7 +98,8 @@ class User < ApplicationRecord
       validates :last_error, inclusion: {
         in: ['GithubPullRequestService::UserNotFoundOnGithubError',
              'Octokit::AccountSuspended'],
-        message: "user's last_error must be UserNotFoundOnGithubError" }
+        message: "user's last_error must be
+          UserNotFoundOnGithubError or AccountSuspended" }
     end
 
     before_transition do |user, _transition|
