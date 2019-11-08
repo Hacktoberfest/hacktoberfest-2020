@@ -29,10 +29,10 @@ module GithubErrorHandler
   end
 
   def process_user_missing_error(_error, user)
+    user.deactivate
+
     return unless (user_stat = UserStat.where(user_id: user.id).first)
 
     user_stat.destroy
-
-    user.deactivate
   end
 end
