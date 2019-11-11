@@ -14,9 +14,6 @@ bundle install --jobs 4 --retry 3
 
 script/setup
 
-echo "Tests started at…"
-date "+%H:%M:%S"
+export RAILS_ENV="test" RACK_ENV="test"
 
-# run tests
-
-script/test
+script/update
