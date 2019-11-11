@@ -1,0 +1,21 @@
+name: Rubocop Linter
+
+on: [pull_request]
+
+jobs:
+  verify:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Ruby 2.5.5
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.5.5
+    - name: Linting with Rubocop
+      run: |
+        sudo apt-get install libpq-dev
+        gem install bundler dotenv
+        bundle install --jobs 4 --retry 3
+        bundle exec rubocop

@@ -23,12 +23,15 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'kramdown'
 
+gem 'loofah', '>= 2.3.1'
+
 # Must be locked before version 3.0 for use with airrecord gems
 # See: https://github.com/sirupsen/airrecord/issues/63
 gem 'net-http-persistent', '~> 2.9'
 
 gem 'octokit'
 gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
 
 gem 'puma', '~> 4.0'
 
