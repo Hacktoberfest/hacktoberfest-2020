@@ -4,6 +4,13 @@ require 'rails_helper'
 
 RSpec.describe GithubErrorHandler do
   let(:user) { FactoryBot.create(:user) }
+
+  # stub API call that will happen due to User#deactivate
+  before do
+    allow(UserStateTransitionSegmentService)
+      .to receive(:call).and_return(true)
+  end
+
   describe '.process_github_error' do
     context 'The error is UserNotFoundOnGithubError' do
       let(:error) { GithubPullRequestService::UserNotFoundOnGithubError.new }

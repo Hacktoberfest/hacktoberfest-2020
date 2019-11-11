@@ -556,7 +556,7 @@ RSpec.describe User, type: :model do
     describe '#deactivate' do
       before do
         allow(UserStateTransitionSegmentService)
-          .to receive(:deactivate).and_return(true)
+          .to receive(:call).and_return(true)
 
         allow_any_instance_of(User)
           .to receive(:last_error).and_return('Octokit::AccountSuspended')
