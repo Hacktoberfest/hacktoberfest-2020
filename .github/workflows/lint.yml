@@ -17,5 +17,5 @@ jobs:
       run: |
         sudo apt-get install libpq-dev
         gem install bundler dotenv
-        bundle install --jobs 4 --retry 3
+        gem install rubocop
         bundle exec rubocop
