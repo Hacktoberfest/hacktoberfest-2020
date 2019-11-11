@@ -114,6 +114,8 @@ class User < ApplicationRecord
       user.receipt = user.scoring_pull_requests
     end
 
+    before_transition to: :inactive, do: :update_state_before_inactive
+
     after_transition to: :waiting, do: :update_waiting_since
 
     after_transition to: :completed do |user, _transition|
@@ -158,6 +160,10 @@ class User < ApplicationRecord
     update(waiting_since: Time.zone.parse(
       latest_pr.github_pull_request.created_at
     ))
+  end
+
+  def update_state_before_inactive
+    update_attribute(:state_before_inactive, state)
   end
 
   def waiting_for_week?

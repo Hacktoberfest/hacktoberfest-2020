@@ -551,11 +551,28 @@ RSpec.describe User, type: :model do
           expect(user.state).to eq('won_sticker')
         end
       end
+    end
 
-      context 'no coupons available' do
-        it 'does not transition the user' do
-          user.win
-          expect(user.state).to eq('completed')
+    describe '#deactivate' do
+      before do
+        allow(UserStateTransitionSegmentService)
+          .to receive(:deactivate).and_return(true)
+
+        allow_any_instance_of(User)
+          .to receive(:last_error).and_return('Octokit::AccountSuspended')
+      end
+
+      context 'the user is in the any state' do
+        let(:user) { FactoryBot.create(:user) }
+
+        before { user.deactivate }
+
+        it 'transitions the user to the inactive state' do
+          expect(user.state).to eq('inactive')
+        end
+
+        it 'saves the previous state as state_before_inactive' do
+          expect(user.state_before_inactive).to eq('registered')
         end
       end
     end
