@@ -1,10 +1,10 @@
-name: Build Pipeline
+name: RSpec Tests
 
 on: [pull_request]
 
 jobs:
   verify:
-    name:  RSpec Test
+    name:  Build Pipeline
     runs-on: ubuntu-latest
 
     services:
