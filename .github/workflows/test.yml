@@ -17,6 +17,19 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+    env:
+      RAILS_ENV: test
+      PGHOST: localhost
+      PGUSER: postgres
+      PGDATABASE: hacktoberfest_test
+      END_DATE: "2019-10-01 00:00:00 UTC"
+      START_DATE: "2019-11-01 00:00:00 UTC"
+      TEST_USER_GITHUB_TOKEN: ${{ secrets.TEST_USER_GITHUB_TOKEN }}
+      GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
+      GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
+      AIRTABLE_APP_ID: ${{ secrets.AIRTABLE_APP_ID }}
+      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+      SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
 
     steps:
     - uses: actions/checkout@v1
@@ -25,19 +38,6 @@ jobs:
       with:
         ruby-version: 2.5.5
     - name: Build
-      env:
-        RAILS_ENV: test
-        PGHOST: localhost
-        PGUSER: postgres
-        PGDATABASE: hacktoberfest_test
-        END_DATE: "2019-10-01 00:00:00 UTC"
-        START_DATE: "2019-11-01 00:00:00 UTC"
-        TEST_USER_GITHUB_TOKEN: ${{ secrets.TEST_USER_GITHUB_TOKEN }}
-        GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
-        GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
-        AIRTABLE_APP_ID: ${{ secrets.AIRTABLE_APP_ID }}
-        AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
       run: |
         script/cibuild
     - name: Testing with Rspec
