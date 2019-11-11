@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   verify:
-    name:  Build Pipeline
+    name:  Build
     runs-on: ubuntu-latest
 
     services:
