@@ -1,4 +1,4 @@
-name: Build Pipeline & Test
+name: Build Pipeline - RSpec Test
 
 on: [pull_request]
 
