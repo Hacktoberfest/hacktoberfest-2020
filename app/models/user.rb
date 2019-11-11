@@ -114,7 +114,9 @@ class User < ApplicationRecord
       user.receipt = user.scoring_pull_requests
     end
 
-    before_transition to: :inactive, do: :update_state_before_inactive
+    before_transition to: :inactive do |user, transition|
+      user.update_state_before_inactive(transition)
+    end
 
     after_transition to: :waiting, do: :update_waiting_since
 
@@ -162,9 +164,9 @@ class User < ApplicationRecord
     ))
   end
 
-  def update_state_before_inactive
+  def update_state_before_inactive(transition)
     # rubocop:disable Rails/SkipsModelValidations
-    update_attribute(:state_before_inactive, state)
+    update_attribute(:state_before_inactive, transition.from)
     # rubocop:enable Rails/SkipsModelValidations
   end
 
