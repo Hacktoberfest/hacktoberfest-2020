@@ -1,10 +1,10 @@
-name: Build Pipeline - Rubocop Linter
+name: Build Pipeline
 
 on: [pull_request]
 
 jobs:
   verify:
-    name: Build
+    name: Rubocop Linter
     runs-on: ubuntu-latest
 
     services:

@@ -1,10 +1,10 @@
-name: Build Pipeline - RSpec Test
+name: Build Pipeline
 
 on: [pull_request]
 
 jobs:
   verify:
-    name: Build
+    name:  RSpec Test
     runs-on: ubuntu-latest
 
     services:
@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.5.5
-    - name: Hacktoberfest Build
+    - name: Build
       env:
         RAILS_ENV: test
         PGHOST: localhost
