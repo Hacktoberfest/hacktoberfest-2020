@@ -40,11 +40,12 @@ gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq', '< 6.0'
 
-install_if -> {
-  return true if ENV['BUNDLE_ENTERPRISE__CONTRIBSYS__COM']
+unless ENV['RAILS_ENV'] == 'production' || ENV['RAILS_ENV'] == 'staging'
   require 'dotenv'
   Dotenv.load['BUNDLE_ENTERPRISE__CONTRIBSYS__COM']
-  } do
+end
+
+install_if -> { ENV['BUNDLE_ENTERPRISE__CONTRIBSYS__COM'] } do
   source 'https://enterprise.contribsys.com/' do
     gem 'sidekiq-pro'
     gem 'sidekiq-ent'
