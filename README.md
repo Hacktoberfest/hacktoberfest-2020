@@ -193,6 +193,10 @@ Hacktoberfest is open source and we welcome contributions. See [CONTRIBUTING.md]
 
 This project uses the Contributor Covenant Code of Conduct. See [CODE_OF_CONDUCT.md](/CODE_OF_CONDUCT.md) for more info.
 
+## Credits
+
+The Hacktoberfest app is built and maintained for DigitalOcean by developers from [Raise.dev](https://raise.dev).
+
 ## License
 
 Licensed under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
