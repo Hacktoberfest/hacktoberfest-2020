@@ -45,9 +45,11 @@ unless ENV['RAILS_ENV'] == 'production' || ENV['RAILS_ENV'] == 'staging'
   Dotenv.load['BUNDLE_ENTERPRISE__CONTRIBSYS__COM']
 end
 
-source 'https://enterprise.contribsys.com/' do
-  gem 'sidekiq-pro'
-  gem 'sidekiq-ent'
+install_if -> { ENV['BUNDLE_ENTERPRISE__CONTRIBSYS__COM'] } do
+  source 'https://enterprise.contribsys.com/' do
+    gem 'sidekiq-pro'
+    gem 'sidekiq-ent'
+  end
 end
 
 gem 'state_machines'
