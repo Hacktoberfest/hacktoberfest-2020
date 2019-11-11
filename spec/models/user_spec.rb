@@ -564,15 +564,34 @@ RSpec.describe User, type: :model do
 
       context 'the user is in the any state' do
         let(:user) { FactoryBot.create(:user) }
+        context 'the state_before_inactive gets set successfully' do
+          before { user.deactivate }
 
-        before { user.deactivate }
+          it 'transitions the user to the inactive state' do
+            expect(user.state).to eq('inactive')
+          end
 
-        it 'transitions the user to the inactive state' do
-          expect(user.state).to eq('inactive')
+          it 'saves the previous state as state_before_inactive' do
+            expect(user.state_before_inactive).to eq('registered')
+          end
         end
+        context 'the state_before_inactive does not get set' do
+          before do
+            allow(user).to receive(:state_before_inactive).and_return(nil)
+          end
 
-        it 'saves the previous state as state_before_inactive' do
-          expect(user.state_before_inactive).to eq('registered')
+          it 'does not transition the user to the inactive state' do
+            user.deactivate
+
+            expect(user.state).to_not eq('inactive')
+          end
+
+          it 'applies the correct errors to the user object' do
+            user.deactivate
+
+            expect(user.errors.messages[:state_before_inactive].first)
+              .to eq("can't be blank")
+          end
         end
       end
     end

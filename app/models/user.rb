@@ -100,6 +100,8 @@ class User < ApplicationRecord
              'Octokit::AccountSuspended'],
         message: "user's last_error must be
           UserNotFoundOnGithubError or AccountSuspended" }
+
+      validates :state_before_inactive, presence: true
     end
 
     before_transition do |user, _transition|
