@@ -18,10 +18,10 @@ module GithubErrorHandler
     # rubocop:disable Rails/SkipsModelValidations
     user.update_attribute(:last_error, error.class)
     # rubocop:enable Rails/SkipsModelValidations
-    case error.class.to_s
-    when 'Octokit::AccountSuspended'
+    case error
+    when Octokit::AccountSuspended
       process_user_missing_error(error, user)
-    when 'GithubPullRequestService::UserNotFoundOnGithubError'
+    when GithubPullRequestService::UserNotFoundOnGithubError
       process_user_missing_error(error, user)
     else
       raise error
