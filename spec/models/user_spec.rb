@@ -96,11 +96,29 @@ RSpec.describe User, type: :model do
         expect(UserStateTransitionSegmentService)
           .to receive(:wait).and_return(true)
 
+        prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+          PullRequest.new(pr)
+        end
+
+        allow(user).to receive(:scoring_pull_requests).and_return(prs)
         user.wait
       end
 
       it 'allows the user to enter the waiting state', :vcr do
         expect(user.state).to eq('waiting')
+      end
+
+      it 'updates the waiting_since correctly', :vcr do
+        prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+          PullRequest.new(pr)
+        end
+
+        latest_pr = prs.max_by do |pr|
+          pr.github_pull_request.created_at
+        end
+
+        expect(user.waiting_since)
+          .to eq(Time.zone.parse(latest_pr.github_pull_request.created_at))
       end
 
       it 'persists the waiting state', :vcr do
