@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.5.5
-    - name: Build and test with RSpec
+    - name: Hacktoberfest Build
       env:
         RAILS_ENV: test
         PGHOST: localhost
@@ -40,7 +40,6 @@ jobs:
         SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
       run: |
         script/cibuild
-        bundle exec rspec
-    - name: Linting with Rubocop
+    - name: Testing with Rspec
       run: |
-        bundle exec rubocop
+        bundle exec rspec
