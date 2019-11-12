@@ -4,7 +4,6 @@
 # Returns an array of GraphqlPullRequest instances
 class GithubPullRequestService
   class UserNotFoundOnGithubError < StandardError; end
-
   attr_reader :user
 
   PULL_REQUEST_QUERY = <<~GRAPHQL
