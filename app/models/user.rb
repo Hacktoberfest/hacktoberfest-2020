@@ -167,9 +167,7 @@ class User < ApplicationRecord
   end
 
   def update_state_before_inactive(transition)
-    # rubocop:disable Rails/SkipsModelValidations
-    update_attribute(:state_before_inactive, transition.from)
-    # rubocop:enable Rails/SkipsModelValidations
+    self.state_before_inactive = transition.from
   end
 
   def waiting_for_week?
