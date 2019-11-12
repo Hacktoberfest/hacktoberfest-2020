@@ -70,8 +70,8 @@ Be sure your OAuth app is configured with the following URLs
 
 ![Oauth Config](https://user-images.githubusercontent.com/7976757/66855839-fd259980-ef51-11e9-808b-26a9251841bf.png)
 
-> Homepage URL: `http:///localhost:3000`\
-> Authorization callback URL: `http:///localhost:3000/auth/github/callback`
+> Homepage URL: `http://localhost:3000`\
+> Authorization callback URL: `http://localhost:3000/auth/github/callback`
 
 The Client ID and Client Secret are right above this configuration. Use them to set the following ENV variables: 
 
