@@ -67,10 +67,10 @@ set :nginx_use_ssl, true
 set :nginx_config_name, 'hacktoberfest_production'
 set :nginx_downstream_uses_ssl, true
 set :puma_threads, [0, 8]
-set :puma_workers, 50
+set :puma_workers, 8
 
 # Production specific options for capistrano/sidekiq
 # Use as many cores (processes) as possible while under 100 total threads due to
 # license requirements
-set :sidekiq_processes, 32
-set :sidekiq_concurrency, 3
+set :sidekiq_processes, 4
+set :sidekiq_concurrency, 20
