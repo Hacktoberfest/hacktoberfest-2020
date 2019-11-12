@@ -6,7 +6,6 @@ RSpec.describe TransitionAllUsersJob, type: :job do
   Sidekiq::Testing.inline!
 
   before do
-    User.destroy_all
     2.times { FactoryBot.create(:user) }
   end
 
