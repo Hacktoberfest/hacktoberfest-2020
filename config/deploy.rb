@@ -4,7 +4,7 @@
 lock '~> 3.11.1'
 
 set :application, 'hacktoberfest'
-set :repo_url, 'git@github.com:raise-dev/hacktoberfest.git'
+set :repo_url, 'git@github.com:digitalocean/hacktoberfest.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
