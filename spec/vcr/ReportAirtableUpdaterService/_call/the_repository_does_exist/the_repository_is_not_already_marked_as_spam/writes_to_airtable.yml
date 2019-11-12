@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/raise-dev/hacktoberfest-test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TEST_TEST_USER_GITHUB_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 12 Nov 2019 17:03:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4997'
+      X-Ratelimit-Reset:
+      - '1573581780'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      Etag:
+      - W/"4d5eaf5442b451b082007cc90953f67a"
+      Last-Modified:
+      - Fri, 25 Oct 2019 15:21:12 GMT
+      X-Oauth-Scopes:
+      - ''
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - FCD1:663C:937C92:142A504:5DCAE5C4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":211178535,"node_id":"MDEwOlJlcG9zaXRvcnkyMTExNzg1MzU=","name":"hacktoberfest-test","full_name":"raise-dev/hacktoberfest-test","private":false,"owner":{"login":"raise-dev","id":47932424,"node_id":"MDEyOk9yZ2FuaXphdGlvbjQ3OTMyNDI0","avatar_url":"https://avatars2.githubusercontent.com/u/47932424?v=4","gravatar_id":"","url":"https://api.github.com/users/raise-dev","html_url":"https://github.com/raise-dev","followers_url":"https://api.github.com/users/raise-dev/followers","following_url":"https://api.github.com/users/raise-dev/following{/other_user}","gists_url":"https://api.github.com/users/raise-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/raise-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/raise-dev/subscriptions","organizations_url":"https://api.github.com/users/raise-dev/orgs","repos_url":"https://api.github.com/users/raise-dev/repos","events_url":"https://api.github.com/users/raise-dev/events{/privacy}","received_events_url":"https://api.github.com/users/raise-dev/received_events","type":"Organization","site_admin":false},"html_url":"https://github.com/raise-dev/hacktoberfest-test","description":"Testing
+        PRs","fork":false,"url":"https://api.github.com/repos/raise-dev/hacktoberfest-test","forks_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/forks","keys_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/keys{/key_id}","collaborators_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/teams","hooks_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/hooks","issue_events_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/issues/events{/number}","events_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/events","assignees_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/assignees{/user}","branches_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/branches{/branch}","tags_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/tags","blobs_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/git/refs{/sha}","trees_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/git/trees{/sha}","statuses_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/statuses/{sha}","languages_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/languages","stargazers_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/stargazers","contributors_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/contributors","subscribers_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/subscribers","subscription_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/subscription","commits_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/commits{/sha}","git_commits_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/git/commits{/sha}","comments_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/comments{/number}","issue_comment_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/issues/comments{/number}","contents_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/contents/{+path}","compare_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/compare/{base}...{head}","merges_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/merges","archive_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/downloads","issues_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/issues{/number}","pulls_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/pulls{/number}","milestones_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/milestones{/number}","notifications_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/labels{/name}","releases_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/releases{/id}","deployments_url":"https://api.github.com/repos/raise-dev/hacktoberfest-test/deployments","created_at":"2019-09-26T20:46:04Z","updated_at":"2019-10-25T15:21:12Z","pushed_at":"2019-10-30T15:47:47Z","git_url":"git://github.com/raise-dev/hacktoberfest-test.git","ssh_url":"git@github.com:raise-dev/hacktoberfest-test.git","clone_url":"https://github.com/raise-dev/hacktoberfest-test.git","svn_url":"https://github.com/raise-dev/hacktoberfest-test","homepage":null,"size":22,"stargazers_count":0,"watchers_count":0,"language":null,"has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":31,"license":{"key":"unlicense","name":"The
+        Unlicense","spdx_id":"Unlicense","url":"https://api.github.com/licenses/unlicense","node_id":"MDc6TGljZW5zZTE1"},"forks":0,"open_issues":31,"watchers":0,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true},"organization":{"login":"raise-dev","id":47932424,"node_id":"MDEyOk9yZ2FuaXphdGlvbjQ3OTMyNDI0","avatar_url":"https://avatars2.githubusercontent.com/u/47932424?v=4","gravatar_id":"","url":"https://api.github.com/users/raise-dev","html_url":"https://github.com/raise-dev","followers_url":"https://api.github.com/users/raise-dev/followers","following_url":"https://api.github.com/users/raise-dev/following{/other_user}","gists_url":"https://api.github.com/users/raise-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/raise-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/raise-dev/subscriptions","organizations_url":"https://api.github.com/users/raise-dev/orgs","repos_url":"https://api.github.com/users/raise-dev/repos","events_url":"https://api.github.com/users/raise-dev/events{/privacy}","received_events_url":"https://api.github.com/users/raise-dev/received_events","type":"Organization","site_admin":false},"network_count":0,"subscribers_count":1}'
+    http_version: 
+  recorded_at: Tue, 12 Nov 2019 17:03:00 GMT
+- request:
+    method: post
+    uri: https://api.airtable.com/v0/<TEST_AIRTABLE_APP_ID>/Spam%20Repos
+    body:
+      encoding: UTF-8
+      string: '{"fields":{"Repo ID":"211178535","Repo Link":"https://github.com/raise-dev/hacktoberfest-test"}}'
+    headers:
+      Authorization:
+      - Bearer <TEST_AIRTABLE_API_KEY>
+      User-Agent:
+      - Airrecord/1.0.2
+      X-Api-Version:
+      - 0.1.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - authorization,content-length,content-type,user-agent,x-airtable-application-id,x-airtable-user-agent,x-api-version,x-requested-with
+      Access-Control-Allow-Methods:
+      - DELETE,GET,OPTIONS,PATCH,POST,PUT
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 12 Nov 2019 17:03:00 GMT
+      Etag:
+      - W/"a2-qvXcsW9Kd74GPleO78NySyLIYMU"
+      Server:
+      - Tengine
+      Set-Cookie:
+      - brw=brwqpH4KNIvAYsyEO; path=/; expires=Thu, 12 Nov 2020 17:03:00 GMT; domain=.airtable.com;
+        secure; httponly
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '162'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"rec2D2ZbcCeVqqaHL","fields":{"Repo ID":"211178535","Repo Link":"https://github.com/raise-dev/hacktoberfest-test"},"createdTime":"2019-11-12T17:03:01.000Z"}'
+    http_version: 
+  recorded_at: Tue, 12 Nov 2019 17:03:00 GMT
+recorded_with: VCR 5.0.0
