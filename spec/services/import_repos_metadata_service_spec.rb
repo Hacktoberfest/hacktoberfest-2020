@@ -5,6 +5,13 @@ require 'rails_helper'
 RSpec.describe ImportReposMetadataService do
   describe '.call' do
     let(:user) { FactoryBot.create(:user) }
+
+    # stub API call that will happen due to User#deactivate
+    before do
+      allow(UserStateTransitionSegmentService)
+        .to receive(:call).and_return(true)
+    end
+
     context 'The user has no PRs' do
       before do
         allow_any_instance_of(PullRequestService)

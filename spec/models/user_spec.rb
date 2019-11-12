@@ -559,5 +559,49 @@ RSpec.describe User, type: :model do
         end
       end
     end
+
+    describe '#deactivate' do
+      before do
+        allow(UserStateTransitionSegmentService)
+          .to receive(:call).and_return(true)
+
+        allow_any_instance_of(User)
+          .to receive(:last_error).and_return('Octokit::AccountSuspended')
+      end
+
+      context 'the user is in any state' do
+        let(:user) { FactoryBot.create(:user) }
+        context 'the state_before_inactive gets set successfully' do
+          before { user.deactivate }
+
+          it 'transitions the user to the inactive state' do
+            expect(user.state).to eq('inactive')
+          end
+
+          it 'saves the previous state as state_before_inactive' do
+            expect(user.state_before_inactive).to eq('registered')
+          end
+        end
+
+        context 'the state_before_inactive does not get set' do
+          before do
+            allow(user).to receive(:state_before_inactive).and_return(nil)
+          end
+
+          it 'does not transition the user to the inactive state' do
+            user.deactivate
+
+            expect(user.state).to_not eq('inactive')
+          end
+
+          it 'applies the correct errors to the user object' do
+            user.deactivate
+
+            expect(user.errors.messages[:state_before_inactive].first)
+              .to eq("can't be blank")
+          end
+        end
+      end
+    end
   end
 end

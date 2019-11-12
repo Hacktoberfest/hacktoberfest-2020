@@ -39,6 +39,10 @@ class User < ApplicationRecord
                  unless: ->(user) { user.sufficient_eligible_prs? }
     end
 
+    event :deactivate do
+      transition all => :inactive
+    end
+
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
@@ -52,7 +56,7 @@ class User < ApplicationRecord
       validates :sticker_coupon, absence: true
     end
 
-    state all - %i[new registered waiting] do
+    state all - %i[new registered waiting inactive] do
       validates :receipt, presence: true
     end
 
@@ -90,6 +94,16 @@ class User < ApplicationRecord
         in: [false], message: 'user has too many sufficient eligible prs' }
     end
 
+    state :inactive do
+      validates :last_error, inclusion: {
+        in: ['GithubPullRequestService::UserNotFoundOnGithubError',
+             'Octokit::AccountSuspended'],
+        message: "user's last_error must be
+          UserNotFoundOnGithubError or AccountSuspended" }
+
+      validates :state_before_inactive, presence: true
+    end
+
     before_transition do |user, _transition|
       UserPullRequestSegmentUpdaterService.call(user)
     end
@@ -100,6 +114,10 @@ class User < ApplicationRecord
 
     before_transition to: %i[completed incompleted] do |user, _transition|
       user.receipt = user.scoring_pull_requests
+    end
+
+    before_transition to: :inactive do |user, transition|
+      user.update_state_before_inactive(transition)
     end
 
     after_transition to: :waiting, do: :update_waiting_since
@@ -146,6 +164,10 @@ class User < ApplicationRecord
     update(waiting_since: Time.zone.parse(
       latest_pr.github_pull_request.created_at
     ))
+  end
+
+  def update_state_before_inactive(transition)
+    self.state_before_inactive = transition.from
   end
 
   def waiting_for_week?

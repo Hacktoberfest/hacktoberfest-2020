@@ -15,6 +15,7 @@ module UserStateTransitionSegmentService
     when :incomplete then incomplete(user)
     when :ineligible then ineligible(user)
     when :won then won(user, transition)
+    when :deactivate then deactivate(user)
     end
   end
 
@@ -59,6 +60,11 @@ module UserStateTransitionSegmentService
         state: 'won_sticker'
       )
     end
+  end
+
+  def deactivate(user)
+    segment(user).track('user_inactive')
+    segment(user).identify(state: 'inactive')
   end
 
   def segment(user)

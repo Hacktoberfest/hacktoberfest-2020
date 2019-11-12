@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_180239) do
+ActiveRecord::Schema.define(version: 2019_11_11_195936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "daily_pr_counts", force: :cascade do |t|
+    t.date "date", null: false
+    t.integer "count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["date"], name: "index_daily_pr_counts_on_date", unique: true
+  end
 
   create_table "issues", force: :cascade do |t|
     t.string "title", limit: 191, null: false
@@ -104,6 +112,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_180239) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "deleted"
   end
 
   create_table "users", force: :cascade do |t|
@@ -119,6 +128,8 @@ ActiveRecord::Schema.define(version: 2019_10_28_180239) do
     t.string "state"
     t.datetime "waiting_since"
     t.jsonb "receipt"
+    t.string "last_error"
+    t.string "state_before_inactive"
   end
 
 end
