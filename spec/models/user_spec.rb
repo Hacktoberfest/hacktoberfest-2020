@@ -551,6 +551,13 @@ RSpec.describe User, type: :model do
           expect(user.state).to eq('won_sticker')
         end
       end
+
+      context 'no coupons available' do
+        it 'does not transition the user' do
+          user.win
+          expect(user.state).to eq('completed')
+        end
+      end
     end
 
     describe '#deactivate' do
@@ -562,7 +569,7 @@ RSpec.describe User, type: :model do
           .to receive(:last_error).and_return('Octokit::AccountSuspended')
       end
 
-      context 'the user is in the any state' do
+      context 'the user is in any state' do
         let(:user) { FactoryBot.create(:user) }
         context 'the state_before_inactive gets set successfully' do
           before { user.deactivate }
@@ -575,6 +582,7 @@ RSpec.describe User, type: :model do
             expect(user.state_before_inactive).to eq('registered')
           end
         end
+
         context 'the state_before_inactive does not get set' do
           before do
             allow(user).to receive(:state_before_inactive).and_return(nil)
