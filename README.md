@@ -49,7 +49,7 @@ These instructions will get you a copy of the project up and running on your loc
 Clone the repo:
 
 ```
-git clone https://github.com/raise-dev/hacktoberfest
+git clone https://github.com/digitalocean/hacktoberfest
 ```
 
 In your local repository, run script/setup, which will install all necessary dependencies for you:
