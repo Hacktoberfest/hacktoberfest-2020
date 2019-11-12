@@ -37,8 +37,6 @@ prune_bundler
 <% end %>
 
 on_restart do
-  require 'dotenv'
-  Dotenv.overload!
   puts 'Refreshing Gemfile'
   ENV["BUNDLE_GEMFILE"] = "<%= fetch(:bundle_gemfile, "#{current_path}/Gemfile") %>"
 end
