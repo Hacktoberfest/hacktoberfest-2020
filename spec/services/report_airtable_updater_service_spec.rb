@@ -6,8 +6,10 @@ describe ReportAirtableUpdaterService do
   AIRTABLE_URI_REGEX = %r{https://api\.airtable\.com/v0/.*/Spam%20Repos}.freeze
 
   describe '.call' do
-    # Needed to create an access token
-    before { FactoryBot.create(:user) }
+    before do
+      allow(GithubTokenService).to receive(:random)
+        .and_return(ENV.fetch('TEST_USER_GITHUB_TOKEN'))
+    end
 
     context 'the repository does not exist' do
       let(:report) { Report.new(url: 'https://www.example.com/owner/repo') }
