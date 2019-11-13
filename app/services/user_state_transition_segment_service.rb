@@ -15,7 +15,7 @@ module UserStateTransitionSegmentService
     when :incomplete then incomplete(user)
     when :ineligible then ineligible(user)
     when :won then won(user, transition)
-    when :gifted_sticker then gift_sticker(user)
+    when :gift_sticker then gift_sticker(user)
     end
   end
 
