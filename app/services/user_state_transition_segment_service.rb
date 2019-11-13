@@ -7,6 +7,7 @@ module UserStateTransitionSegmentService
   module_function
 
   def call(user, transition)
+    binding.pry
     case transition.event
     when :register then register(user)
     when :wait then wait(user)
@@ -63,10 +64,9 @@ module UserStateTransitionSegmentService
   end
 
   def gift_sticker(user)
+    binding.pry
+    segment(user).identify(state: 'gifted_sticker')
     segment(user).track('user_gifted_sticker')
-    segment(user).identify(
-      state: 'gifted_sticker'
-    )
   end
 
   def segment(user)

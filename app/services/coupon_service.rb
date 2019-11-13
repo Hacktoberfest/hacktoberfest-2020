@@ -13,6 +13,12 @@ class CouponService
     end
   end
 
+  def gift_coupon
+    if sticker_coupon.present?
+      @user.association(:sticker_coupon).replace(sticker_coupon, false)
+    end
+  end
+
   private
 
   def shirt_coupon
