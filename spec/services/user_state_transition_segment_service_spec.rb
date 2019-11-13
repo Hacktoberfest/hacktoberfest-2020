@@ -184,6 +184,34 @@ RSpec.describe UserStateTransitionSegmentService do
           UserStateTransitionSegmentService.call(user, transition)
         end
       end
+
+      context 'the event is gift_sticker and the user is incompleted' do
+        let(:user) { FactoryBot.create(:user, :incompleted) }
+
+        before do
+          allow(transition).to receive(:to).and_return('gifted_sticker')
+        end
+
+        it 'calls SegmentService#identify with proper arguments' do
+          expect_any_instance_of(SegmentService).to receive(:identify).with(
+            state: 'gifted_sticker'
+          )
+          expect_any_instance_of(SegmentService).to receive(:track).with(
+            'user_gifted_sticker'
+          )
+          UserStateTransitionSegmentService.call(user, transition)
+        end
+
+        it 'calls SegmentService#track with proper arguments' do
+          expect_any_instance_of(SegmentService).to receive(:identify).with(
+            state: 'gifted_sticker'
+          )
+          expect_any_instance_of(SegmentService).to receive(:track).with(
+            'user_gifted_sticker'
+          )
+          UserStateTransitionSegmentService.call(user, transition)
+        end
+      end
     end
   end
 end
