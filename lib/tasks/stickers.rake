@@ -4,13 +4,13 @@ namespace :gift do
   desc 'gift remaining stickers to incompleted users'
   task stickers: :environment do
     sticker_coupon_count = StickerCoupon.where(user_id: nil).count
-    
-    incompleted_user_count = User.where(state: "incompleted").count
+
+    incompleted_user_count = User.where(state: 'incompleted').count
 
     message = "There are #{sticker_coupon_count} stickers remaining.
-      There are #{incompleted_user_count} users who are incompleted 
-      and eligible for gift_sticker. 
-      
+      There are #{incompleted_user_count} users who are incompleted
+      and eligible for gift_sticker.
+
       Do you want to gift the remaining coupons to incompleted users? (y/n)"
 
     Rails.logger.info message
