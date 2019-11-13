@@ -92,6 +92,11 @@ class User < ApplicationRecord
         in: [true], message: 'hacktoberfest has not yet ended' }
       validates :sufficient_eligible_prs?, inclusion: {
         in: [false], message: 'user has too many sufficient eligible prs' }
+
+        def gift_sticker_coupon
+          gift_coupon
+          gift_sticker
+        end
     end
 
     state :gifted_sticker do
@@ -166,7 +171,7 @@ class User < ApplicationRecord
     completed? || won_shirt? || won_sticker?
   end
 
-  delegate :assign_coupon, to: :coupon_service
+  delegate :assign_coupon, :gift_coupon, to: :coupon_service
 
   private
 
