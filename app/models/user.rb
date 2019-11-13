@@ -30,6 +30,10 @@ class User < ApplicationRecord
       transition registered: :incompleted
     end
 
+    event :gifted do
+      transition incompleted: :gifted_sticker, if: ->(user) { user.sticker_coupon }
+    end
+
     event :retry_complete do
       transition incompleted: :completed
     end
@@ -88,6 +92,10 @@ class User < ApplicationRecord
         in: [true], message: 'hacktoberfest has not yet ended' }
       validates :sufficient_eligible_prs?, inclusion: {
         in: [false], message: 'user has too many sufficient eligible prs' }
+    end
+
+    state :gifted_sticker do
+      #validation
     end
 
     before_transition do |user, _transition|
