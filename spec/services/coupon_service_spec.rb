@@ -67,4 +67,27 @@ RSpec.describe CouponService do
       end
     end
   end
+
+  describe '#gift_coupon' do
+    context 'there are sticker coupons available' do
+      before do
+        FactoryBot.create(:sticker_coupon)
+        coupon_service.assign_coupon
+      end
+
+      it 'assigns the user a sticker coupon' do
+        expect(user.sticker_coupon).to be_a(StickerCoupon)
+      end
+    end
+
+    context 'there are no sticker coupons available' do
+      before do
+        coupon_service.assign_coupon
+      end
+
+      it 'does not assign the user a sticker coupon' do
+        expect(user.sticker_coupon).to eq(nil)
+      end
+    end
+  end
 end
