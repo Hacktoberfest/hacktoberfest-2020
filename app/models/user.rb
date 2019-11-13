@@ -52,7 +52,7 @@ class User < ApplicationRecord
       validates :shirt_coupon, absence: true
     end
 
-    state all - [:won_sticker, :gifted_sticker] do
+    state all - %i[won_sticker gifted_sticker] do
       validates :sticker_coupon, absence: true
     end
 

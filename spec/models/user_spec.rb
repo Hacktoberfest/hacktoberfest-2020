@@ -526,7 +526,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'the user is in the incompleted state' do
-      let(:user) { FactoryBot.create(:user, :incompleted ) }
+      let(:user) { FactoryBot.create(:user, :incompleted) }
 
       context 'there are sticker coupons available' do
         before do
