@@ -95,8 +95,7 @@ class User < ApplicationRecord
 
       def gift
         assign_coupon
-        gift
-        gift_sticker
+        gifted
       end
     end
 
@@ -172,7 +171,7 @@ class User < ApplicationRecord
     completed? || won_shirt? || won_sticker?
   end
 
-  delegate :assign_coupon, :gift_coupon, to: :coupon_service
+  delegate :assign_coupon, to: :coupon_service
 
   private
 
