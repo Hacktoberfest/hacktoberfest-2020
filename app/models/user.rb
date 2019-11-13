@@ -30,7 +30,7 @@ class User < ApplicationRecord
       transition registered: :incompleted
     end
 
-    event :gift_sticker do
+    event :gifted do
       transition incompleted: :gifted_sticker, if: ->(user) { user.sticker_coupon }
     end
 
