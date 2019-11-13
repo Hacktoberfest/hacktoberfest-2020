@@ -9,7 +9,9 @@ module GiftStickersService
     User.where(state: 'inactive').find_in_batches do |group|
       group.each do |u|
         date = u.receipt.max_by do |receipt|
-          Time.zone.parse(receipt['github_pull_request']['graphql_hash']['createdAt'])
+          Time.zone.parse(
+            receipt['github_pull_request']['graphql_hash']['createdAt']
+          )
         end['github_pull_request']['graphql_hash']['createdAt']
 
         score = u.receipt.count
