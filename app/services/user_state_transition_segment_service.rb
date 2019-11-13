@@ -15,6 +15,7 @@ module UserStateTransitionSegmentService
     when :incomplete then incomplete(user)
     when :ineligible then ineligible(user)
     when :won then won(user, transition)
+    when :gifted_sticker then gift_sticker(user)
     end
   end
 
@@ -59,6 +60,13 @@ module UserStateTransitionSegmentService
         state: 'won_sticker'
       )
     end
+  end
+
+  def gift_sticker(user)
+    segment(user).track('user_gifted_sticker')
+    segment(user).identify(
+      state: 'gifted_sticker'
+    )
   end
 
   def segment(user)
