@@ -20,7 +20,7 @@ class CouponService
   end
 
   def assign_shirt_coupon
-    if user.completed? && shirt_coupon.present?
+    if @user.completed? && shirt_coupon.present?
       @user.association(:shirt_coupon).replace(shirt_coupon, false)
     end
   end
