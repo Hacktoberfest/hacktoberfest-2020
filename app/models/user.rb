@@ -30,7 +30,7 @@ class User < ApplicationRecord
       transition registered: :incompleted
     end
 
-    event :gifted do
+    event :gift_sticker do
       transition incompleted: :gifted_sticker, if: ->(user) { user.sticker_coupon }
     end
 
@@ -52,7 +52,7 @@ class User < ApplicationRecord
       validates :shirt_coupon, absence: true
     end
 
-    state all - [:won_sticker] do
+    state all - [:won_sticker, :gifted_sticker] do
       validates :sticker_coupon, absence: true
     end
 
@@ -95,7 +95,7 @@ class User < ApplicationRecord
     end
 
     state :gifted_sticker do
-      #validation
+      validates :sticker_coupon, presence: true
     end
 
     before_transition do |user, _transition|
