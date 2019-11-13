@@ -93,7 +93,7 @@ class User < ApplicationRecord
       validates :sufficient_eligible_prs?, inclusion: {
         in: [false], message: 'user has too many sufficient eligible prs' }
 
-      def gift_sticker_coupon
+      def gift
         gift_coupon
         gift_sticker
       end
