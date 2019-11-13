@@ -190,7 +190,7 @@ RSpec.describe UserStateTransitionSegmentService do
       let(:user) { FactoryBot.create(:user, :incompleted) }
 
       before do
-        allow(transition).to receive(:to).and_return('gifted_sticker')
+        allow(transition).to receive(:event).and_return(:gift_sticker)
       end
 
       it 'calls SegmentService#identify with proper arguments' do
