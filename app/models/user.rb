@@ -94,7 +94,8 @@ class User < ApplicationRecord
         in: [false], message: 'user has too many sufficient eligible prs' }
 
       def gift
-        gift_coupon
+        assign_coupon
+        gift
         gift_sticker
       end
     end
