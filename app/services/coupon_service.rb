@@ -6,11 +6,7 @@ class CouponService
   end
 
   def assign_coupon
-    if shirt_coupon.present?
-      @user.association(:shirt_coupon).replace(shirt_coupon, false)
-    elsif sticker_coupon.present?
-      @user.association(:sticker_coupon).replace(sticker_coupon, false)
-    end
+    assign_sticker_coupon unless assign_shirt_coupon
   end
 
   private
@@ -21,5 +17,17 @@ class CouponService
 
   def sticker_coupon
     StickerCoupon.first_available
+  end
+
+  def assign_shirt_coupon
+    return if shirt_coupon.blank?
+
+    @user.association(:shirt_coupon).replace(shirt_coupon, false)
+  end
+
+  def assign_sticker_coupon
+    return if sticker_coupon.blank?
+
+    @user.association(:sticker_coupon).replace(sticker_coupon, false)
   end
 end
