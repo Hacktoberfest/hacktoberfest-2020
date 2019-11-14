@@ -7,6 +7,7 @@ RSpec.describe CouponService do
     context 'with a completed user' do
       let(:user) { FactoryBot.create(:user, :completed) }
       let(:coupon_service) { CouponService.new(user) }
+
       context 'there are only shirt coupons available' do
         before do
           FactoryBot.create(:shirt_coupon)
