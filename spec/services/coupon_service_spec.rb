@@ -69,7 +69,7 @@ RSpec.describe CouponService do
       end
     end
 
-    context 'with an incomplete user' do
+    context 'with an incompleted user' do
       let(:user) { FactoryBot.create(:user, :incompleted) }
       let(:coupon_service) { CouponService.new(user) }
 
