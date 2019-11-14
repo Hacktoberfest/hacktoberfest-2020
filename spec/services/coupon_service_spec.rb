@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe CouponService do
-
   describe '#assign_coupon' do
     context 'with a completed user' do
       let(:user) { FactoryBot.create(:user, :completed) }

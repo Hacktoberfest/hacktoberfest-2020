@@ -19,14 +19,16 @@ module GiftStickersService
     end
 
     sorted = user_dates.sort do |a, b|
-      [b[:score], Time.zone.parse(a[:date])] <=> [a[:score], Time.zone.parse(b[:date])]
+      a_date = Time.zone.parse(a[:date])
+      b_date = Time.zone.parse(b[:date])
+      [b[:score], a_date] <=> [a[:score], b_date]
     end
-
-    binding.pry
 
     sorted.each do |user_date|
       u = User.find(user_date[:id])
       u.gift
+      # binding.pry
+      # u
     end
   end
 end
