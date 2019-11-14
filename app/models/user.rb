@@ -33,6 +33,8 @@ class User < ApplicationRecord
     event :gifted do
       transition incompleted: :gifted_sticker,
                  if: ->(user) { user.sticker_coupon }
+     transition incompleted: :gifted_shirt,
+                if: ->(user) { user.shirt_coupon }
     end
 
     event :retry_complete do
@@ -49,7 +51,7 @@ class User < ApplicationRecord
       validates :email, presence: true
     end
 
-    state all - [:won_shirt] do
+    state all - %i[won_shirt gifted_shirt] do
       validates :shirt_coupon, absence: true
     end
 
@@ -102,6 +104,10 @@ class User < ApplicationRecord
 
     state :gifted_sticker do
       validates :sticker_coupon, presence: true
+    end
+
+    state :gifted_shirt do
+      validates :shirt_coupon, presence: true
     end
 
     before_transition do |user, _transition|
