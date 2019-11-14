@@ -4,7 +4,6 @@ require 'rails_helper'
 
 RSpec.describe GiftStickersService do
   describe '.call' do
-
     context 'Users in the incompleted state' do
       let(:user_with_early_receipt_2prs) do
         FactoryBot.create(:user, :incompleted)
@@ -20,10 +19,14 @@ RSpec.describe GiftStickersService do
       end
 
       before do
-        user_with_early_receipt_2prs.update(receipt: UserReceiptHelper.receipt[:early_receipt_2_prs])
-        user_with_early_receipt_3prs.update(receipt: UserReceiptHelper.receipt[:early_receipt_3_prs])
-        user_with_late_receipt_2prs.update(receipt: UserReceiptHelper.receipt[:late_receipt_2_prs])
-        user_with_late_receipt_3prs.update(receipt: UserReceiptHelper.receipt[:late_receipt_3_prs])
+        user_with_early_receipt_2prs
+          .update(receipt: UserReceiptHelper.receipt[:early_receipt_2_prs])
+        user_with_early_receipt_3prs
+          .update(receipt: UserReceiptHelper.receipt[:early_receipt_3_prs])
+        user_with_late_receipt_2prs
+          .update(receipt: UserReceiptHelper.receipt[:late_receipt_2_prs])
+        user_with_late_receipt_3prs
+          .update(receipt: UserReceiptHelper.receipt[:late_receipt_3_prs])
       end
 
       context 'there is 1 sticker coupon' do
@@ -33,7 +36,7 @@ RSpec.describe GiftStickersService do
         end
 
         it 'assigns the coupon to earliest user with most PRS' do
-          binding.pry
+          user_with_early_receipt_3prs.reload
           expect(user_with_early_receipt_3prs.sticker_coupon).to_not eq(nil)
         end
       end
@@ -46,10 +49,12 @@ RSpec.describe GiftStickersService do
         end
 
         it 'assigns a coupon to early user with 3 PRS' do
+          user_with_early_receipt_3prs.reload
           expect(user_with_early_receipt_3prs.sticker_coupon).to_not eq(nil)
         end
 
         it 'assigns a coupon to late user with 3 PRS' do
+          user_with_late_receipt_3prs.reload
           expect(user_with_late_receipt_3prs.sticker_coupon).to_not eq(nil)
         end
       end
@@ -63,14 +68,17 @@ RSpec.describe GiftStickersService do
         end
 
         it 'assigns a coupon to early user with 3 PRS' do
+          user_with_early_receipt_3prs.reload
           expect(user_with_early_receipt_3prs.sticker_coupon).to_not eq(nil)
         end
 
         it 'assigns a coupon to late user with 3 PRS' do
+          user_with_late_receipt_3prs.reload
           expect(user_with_late_receipt_3prs.sticker_coupon).to_not eq(nil)
         end
 
         it 'assigns a coupon to early user with 2 PRs' do
+          user_with_early_receipt_2prs.reload
           expect(user_with_early_receipt_2prs.sticker_coupon).to_not eq(nil)
         end
       end
