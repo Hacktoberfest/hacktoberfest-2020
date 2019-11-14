@@ -19,10 +19,8 @@ class CouponService
     StickerCoupon.first_available
   end
 
-  def assign_shirt_coupon
-    # TODO: Remove this return statement to allow gifting of extra shirt
-    # coupons in future Hacktoberfest events.
-    return unless @user.completed? && shirt_coupon.present?
+  def assign_shirt_coupons
+    return if shirt_coupon.blank?
 
     @user.association(:shirt_coupon).replace(shirt_coupon, false)
   end

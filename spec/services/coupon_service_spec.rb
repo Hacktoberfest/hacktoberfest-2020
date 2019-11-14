@@ -79,9 +79,7 @@ RSpec.describe CouponService do
           coupon_service.assign_coupon
         end
 
-        # TODO: Add this test to allow gifting of extra shirt
-        # coupons in future Hacktoberfest events.
-        xit 'assigns the user a shirt coupon' do
+        it 'assigns the user a shirt coupon' do
           expect(user.shirt_coupon).to be_a(ShirtCoupon)
         end
 
@@ -97,15 +95,11 @@ RSpec.describe CouponService do
           coupon_service.assign_coupon
         end
 
-        # TODO: Add this test to allow gifting of extra shirt
-        # coupons in future Hacktoberfest events.
-        xit 'assigns the user a shirt coupon' do
+        it 'assigns the user a shirt coupon' do
           expect(user.shirt_coupon).to be_a(ShirtCoupon)
         end
 
-        # TODO: Add this test to allow gifting of extra shirt
-        # coupons in future Hacktoberfest events.
-        xit 'does not assign a sticker coupon' do
+        it 'does not assign a sticker coupon' do
           expect(user.sticker_coupon).to eq(nil)
         end
       end
