@@ -528,6 +528,17 @@ RSpec.describe User, type: :model do
     context 'the user is in the incompleted state' do
       let(:user) { FactoryBot.create(:user, :incompleted) }
 
+      context 'there are shirt coupons available' do
+        before do
+          FactoryBot.create(:shirt_coupon)
+        end
+
+        it 'transitions the user to gifted_shirt state' do
+          user.gift
+          expect(user.state).to eq('gifted_shirt')
+        end
+      end
+
       context 'there are sticker coupons available' do
         before do
           FactoryBot.create(:sticker_coupon)
