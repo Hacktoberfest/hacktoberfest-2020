@@ -73,7 +73,44 @@ RSpec.describe CouponService do
       let(:user) { FactoryBot.create(:user, :incompleted) }
       let(:coupon_service) { CouponService.new(user) }
 
-      context 'there are sticker coupons available' do
+      context 'there are only shirt coupons available' do
+        before do
+          FactoryBot.create(:shirt_coupon)
+          coupon_service.assign_coupon
+        end
+
+        # TODO: Add this test to allow gifting of extra shirt
+        # coupons in future Hacktoberfest events.
+        xit 'assigns the user a shirt coupon' do
+          expect(user.shirt_coupon).to be_a(ShirtCoupon)
+        end
+
+        it 'does not assign a sticker coupon' do
+          expect(user.sticker_coupon).to eq(nil)
+        end
+      end
+
+      context 'there are both shirt and sticker coupons available' do
+        before do
+          FactoryBot.create(:shirt_coupon)
+          FactoryBot.create(:sticker_coupon)
+          coupon_service.assign_coupon
+        end
+
+        # TODO: Add this test to allow gifting of extra shirt
+        # coupons in future Hacktoberfest events.
+        xit 'assigns the user a shirt coupon' do
+          expect(user.shirt_coupon).to be_a(ShirtCoupon)
+        end
+
+        # TODO: Add this test to allow gifting of extra shirt
+        # coupons in future Hacktoberfest events.
+        xit 'does not assign a sticker coupon' do
+          expect(user.sticker_coupon).to eq(nil)
+        end
+      end
+
+      context 'there are only sticker coupons available' do
         before do
           FactoryBot.create(:sticker_coupon)
           coupon_service.assign_coupon
@@ -82,11 +119,19 @@ RSpec.describe CouponService do
         it 'assigns the user a sticker coupon' do
           expect(user.sticker_coupon).to be_a(StickerCoupon)
         end
+
+        it 'does not assign a shirt coupon' do
+          expect(user.shirt_coupon).to eq(nil)
+        end
       end
 
-      context 'there are no sticker coupons available' do
+      context 'there are no coupons available' do
         before do
           coupon_service.assign_coupon
+        end
+
+        it 'does not assign a shirt coupon' do
+          expect(user.shirt_coupon).to eq(nil)
         end
 
         it 'does not assign the user a sticker coupon' do
