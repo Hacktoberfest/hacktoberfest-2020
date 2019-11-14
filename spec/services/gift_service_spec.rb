@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe GiftStickersService do
+RSpec.describe GiftService do
   describe '.call' do
     context 'Users in the incompleted state' do
       let(:user_with_early_receipt_2prs) do
@@ -32,7 +32,7 @@ RSpec.describe GiftStickersService do
       context 'there is 1 sticker coupon' do
         before do
           FactoryBot.create(:sticker_coupon)
-          GiftStickersService.call
+          GiftService.call
         end
 
         it 'assigns the coupon to earliest user with most PRS' do
@@ -46,7 +46,7 @@ RSpec.describe GiftStickersService do
         before do
           FactoryBot.create(:sticker_coupon)
           FactoryBot.create(:sticker_coupon)
-          GiftStickersService.call
+          GiftService.call
         end
 
         it 'assigns a coupon to early user with 3 PRS' do
@@ -67,7 +67,7 @@ RSpec.describe GiftStickersService do
           FactoryBot.create(:sticker_coupon)
           FactoryBot.create(:sticker_coupon)
           FactoryBot.create(:sticker_coupon)
-          GiftStickersService.call
+          GiftService.call
         end
 
         it 'assigns a coupon to early user with 3 PRS' do

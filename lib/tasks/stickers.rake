@@ -20,7 +20,7 @@ namespace :gift do
 
     if input == 'y'
       Rails.logger.info 'Gifting coupons...'
-      GiftStickersService.call
+      GiftService.call
     else
       Rails.logger.info 'Terminating.'
     end

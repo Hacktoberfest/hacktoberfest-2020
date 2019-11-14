@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module GiftStickersService
+module GiftService
   module_function
 
   def call
