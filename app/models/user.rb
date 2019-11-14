@@ -34,7 +34,7 @@ class User < ApplicationRecord
       transition incompleted: :gifted_sticker,
                  if: ->(user) { user.sticker_coupon }
       transition incompleted: :gifted_shirt,
-                if: ->(user) { user.shirt_coupon }
+                 if: ->(user) { user.shirt_coupon }
     end
 
     event :retry_complete do
