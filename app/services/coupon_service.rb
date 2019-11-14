@@ -20,7 +20,8 @@ class CouponService
   end
 
   def assign_shirt_coupon
-    # TODO: Remove this return statement to allow gifting of extra shirt coupons in future Hacktoberfest events.
+    # TODO: Remove this return statement to allow gifting of extra shirt
+    # coupons in future Hacktoberfest events.
     return unless @user.completed? && shirt_coupon.present?
 
     @user.association(:shirt_coupon).replace(shirt_coupon, false)

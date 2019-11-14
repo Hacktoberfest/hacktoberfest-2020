@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 namespace :gift do
-  # TODO: Update this rake task to reflect giving users any remaining available shirt coupons when that is implemented in `CouponService`
+  # TODO: Update this rake task to reflect giving users any remaining available
+  # shirt coupons when that is implemented in `CouponService`
   desc 'gift remaining stickers to incompleted users'
   task stickers: :environment do
     sticker_coupon_count = StickerCoupon.where(user_id: nil).count
