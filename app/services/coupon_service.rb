@@ -19,7 +19,7 @@ class CouponService
     StickerCoupon.first_available
   end
 
-  def assign_shirt_coupons
+  def assign_shirt_coupon
     return if shirt_coupon.blank?
 
     @user.association(:shirt_coupon).replace(shirt_coupon, false)
