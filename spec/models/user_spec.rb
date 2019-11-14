@@ -519,7 +519,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#gift_sticker' do
+  describe '#gift' do
     before do
       allow(UserStateTransitionSegmentService)
         .to receive(:gift_sticker).and_return(true)
