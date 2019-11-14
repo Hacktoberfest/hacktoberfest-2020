@@ -6,7 +6,7 @@ module GiftStickersService
   def call
     user_dates = []
 
-    User.where(state: 'inactive').find_in_batches do |group|
+    User.where(state: 'incompleted').find_in_batches do |group|
       group.each do |u|
         date = u.receipt.max_by do |receipt|
           Time.zone.parse(
