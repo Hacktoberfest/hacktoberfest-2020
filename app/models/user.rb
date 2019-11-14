@@ -33,7 +33,7 @@ class User < ApplicationRecord
     event :gifted do
       transition incompleted: :gifted_sticker,
                  if: ->(user) { user.sticker_coupon }
-     transition incompleted: :gifted_shirt,
+      transition incompleted: :gifted_shirt,
                 if: ->(user) { user.shirt_coupon }
     end
 
