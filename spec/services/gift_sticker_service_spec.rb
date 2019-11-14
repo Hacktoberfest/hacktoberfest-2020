@@ -37,7 +37,8 @@ RSpec.describe GiftStickersService do
 
         it 'assigns the coupon to earliest user with most PRS' do
           user_with_early_receipt_3prs.reload
-          expect(user_with_early_receipt_3prs.sticker_coupon).to_not eq(nil)
+          expect(user_with_early_receipt_3prs.sticker_coupon)
+            .to be_a(StickerCoupon)
         end
       end
 
@@ -50,12 +51,14 @@ RSpec.describe GiftStickersService do
 
         it 'assigns a coupon to early user with 3 PRS' do
           user_with_early_receipt_3prs.reload
-          expect(user_with_early_receipt_3prs.sticker_coupon).to_not eq(nil)
+          expect(user_with_early_receipt_3prs.sticker_coupon)
+            .to be_a(StickerCoupon)
         end
 
         it 'assigns a coupon to late user with 3 PRS' do
           user_with_late_receipt_3prs.reload
-          expect(user_with_late_receipt_3prs.sticker_coupon).to_not eq(nil)
+          expect(user_with_late_receipt_3prs.sticker_coupon)
+            .to be_a(StickerCoupon)
         end
       end
 
@@ -69,17 +72,20 @@ RSpec.describe GiftStickersService do
 
         it 'assigns a coupon to early user with 3 PRS' do
           user_with_early_receipt_3prs.reload
-          expect(user_with_early_receipt_3prs.sticker_coupon).to_not eq(nil)
+          expect(user_with_early_receipt_3prs.sticker_coupon)
+            .to be_a(StickerCoupon)
         end
 
         it 'assigns a coupon to late user with 3 PRS' do
           user_with_late_receipt_3prs.reload
-          expect(user_with_late_receipt_3prs.sticker_coupon).to_not eq(nil)
+          expect(user_with_late_receipt_3prs.sticker_coupon)
+            .to be_a(StickerCoupon)
         end
 
         it 'assigns a coupon to early user with 2 PRs' do
           user_with_early_receipt_2prs.reload
-          expect(user_with_early_receipt_2prs.sticker_coupon).to_not eq(nil)
+          expect(user_with_early_receipt_2prs.sticker_coupon)
+            .to be_a(StickerCoupon)
         end
       end
     end
