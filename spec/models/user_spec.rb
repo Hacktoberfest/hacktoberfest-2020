@@ -528,6 +528,18 @@ RSpec.describe User, type: :model do
     context 'the user is in the incompleted state' do
       let(:user) { FactoryBot.create(:user, :incompleted) }
 
+      context 'there are shirt coupons available' do
+        before do
+          FactoryBot.create(:shirt_coupon)
+        end
+
+        # TODO: Edit this spec to allow ability for an incomplete user to
+        # receive a gifted shirt and therefore entering gifted_shirt state.
+        it 'does not transition user to gifted_shirt state' do
+          expect(user.state).to_not eq('gifted_shirt')
+        end
+      end
+
       context 'there are sticker coupons available' do
         before do
           FactoryBot.create(:sticker_coupon)
