@@ -92,6 +92,7 @@ RSpec.configure do |config|
   config.include AuthenticationHelper
   config.include PullRequestFilterHelper
   config.include GraphqlClientHelper
+  config.include UserReceiptHelper
 
   config.infer_spec_type_from_file_location!
 

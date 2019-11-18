@@ -519,12 +519,51 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '#gift' do
+    before do
+      allow(UserStateTransitionSegmentService)
+        .to receive(:gift_sticker).and_return(true)
+    end
+
+    context 'the user is in the incompleted state' do
+      let(:user) { FactoryBot.create(:user, :incompleted) }
+
+      context 'there are shirt coupons available' do
+        before do
+          FactoryBot.create(:shirt_coupon)
+        end
+
+        # TODO: Edit this spec to allow ability for an incomplete user to
+        # receive a gifted shirt and therefore entering gifted_shirt state.
+        it 'does not transition user to gifted_shirt state' do
+          expect(user.state).to_not eq('gifted_shirt')
+        end
+      end
+
+      context 'there are sticker coupons available' do
+        before do
+          FactoryBot.create(:sticker_coupon)
+        end
+
+        it 'transitions the user to gifted_sticker state' do
+          user.gift
+          expect(user.state).to eq('gifted_sticker')
+        end
+      end
+
+      context 'there are no shirt coupons or sticker coupons available' do
+        it 'does not transition the user' do
+          user.gift
+          expect(user.state).to eq('incompleted')
+        end
+      end
+    end
+  end
+
   describe '#win' do
     before do
       allow(UserStateTransitionSegmentService)
         .to receive(:won).and_return(true)
-
-      user.register
     end
     context 'the user is in the completed state' do
       let(:user) { FactoryBot.create(:user, :completed) }
