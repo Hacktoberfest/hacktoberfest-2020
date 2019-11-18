@@ -64,7 +64,7 @@ module UserStateTransitionSegmentService
 
   # TODO: change this to gifted(user, transition) and check transition.to to
   # add case for 'gifted_shirt' 
-  def gift_sticker(user)
+  def gifted(user)
     segment(user).identify(state: 'gifted_sticker')
     segment(user).track('user_gifted_sticker')
   end
