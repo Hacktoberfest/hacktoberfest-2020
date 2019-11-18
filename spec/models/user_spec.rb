@@ -522,7 +522,7 @@ RSpec.describe User, type: :model do
   describe '#gift' do
     before do
       allow(UserStateTransitionSegmentService)
-        .to receive(:gift_sticker).and_return(true)
+        .to receive(:gifted).and_return(true)
     end
 
     context 'the user is in the incompleted state' do
