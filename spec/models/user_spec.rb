@@ -551,7 +551,7 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context 'there are no stickers available' do
+      context 'there are no shirt coupons or sticker coupons available' do
         it 'does not transition the user' do
           user.gift
           expect(user.state).to eq('incompleted')
