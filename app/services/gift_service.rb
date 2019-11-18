@@ -23,6 +23,8 @@ module GiftService
       a_date = Time.zone.parse(a[:date])
       b_date = Time.zone.parse(b[:date])
 
+      # This comparison will prioritize first the score of the objects and then
+      # their dates.
       [b[:score], a_date] <=> [a[:score], b_date]
     end
 
