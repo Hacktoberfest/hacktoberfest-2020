@@ -31,6 +31,9 @@
       <% if @presenter.display_coupon? %>
           <%= render partial: 'users/show/display_coupons', locals: { code: @presenter.code } %>
       <% end %>
+      <% if @presenter.display_sticker_gift? %>
+        <%= render partial: 'users/show/display_sticker_gift', locals: { code: @presenter.code } %>
+      <% end %>
       <% if @presenter.display_waiting_for_prize? %>
           <%= render partial: 'users/show/waiting_for_prize', locals: { code: @presenter.code } %>
       <% end %>

@@ -15,6 +15,10 @@ class ProfilePagePresenter
     @user.won_shirt? || @user.won_sticker?
   end
 
+  def display_sticker_gift?
+    @user.gifted_sticker?
+  end
+
   def display_waiting_for_prize?
     @user.completed?
   end
