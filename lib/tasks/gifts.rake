@@ -15,15 +15,15 @@ namespace :gift do
 
       Do you want to gift the remaining coupons to incompleted users? (y/n)"
 
-    Rails.logger.info message
+    puts message
 
     input = STDIN.gets.strip
 
     if input == 'y'
-      Rails.logger.info 'Gifting coupons...'
+      puts 'Gifting coupons...'
       GiftService.call
     else
-      Rails.logger.info 'Terminating.'
+      puts 'Terminating.'
     end
   end
 end
