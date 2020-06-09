@@ -15,8 +15,6 @@ services:
     env_file: .env  
     environment:
       RAILS_ENV: development
-    ports: 
-      - "3000:3000"
     entrypoint: ./script/docker-entrypoint.sh
     networks:
       - app-network
@@ -58,6 +56,8 @@ services:
       - "80:80"
     depends_on: 
       - app
+    networks:
+      - app-network
 
 volumes:
   db_data:
