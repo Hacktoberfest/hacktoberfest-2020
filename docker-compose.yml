@@ -1,0 +1,70 @@
+version: '3.4'
+
+services:
+  app: 
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - database
+      - redis
+    volumes: 
+      - .:/app:delegated
+      - gem_cache:/vendor/bundle/ruby/2.5.0/gems
+      - node_modules:/app/node_modules
+    env_file: .env  
+    environment:
+      RAILS_ENV: development
+    ports: 
+      - "3000:3000"
+    entrypoint: ./script/docker-entrypoint.sh
+    networks:
+      - app-network
+
+  database:
+    image: postgres:11
+    environment:
+      POSTGRES_USER: $HACKTOBERFEST_DATABASE_USERNAME
+      POSTGRES_PASSWORD: $HACKTOBERFEST_DATABASE_PASSWORD
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  redis:
+    image: redis:5.0
+    networks: 
+      - app-network
+
+  sidekiq:
+    image: hacktoberfest_app
+    depends_on:
+      - app
+    volumes:
+      - gem_cache:/usr/local/bundle/gems
+      - node_modules:/app/node_modules
+    env_file: .env
+    environment:
+      RAILS_ENV: development
+    networks:
+      - app-network
+    entrypoint: ./script/sidekiq-entrypoint.sh
+
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "80:80"
+    depends_on: 
+      - app
+
+volumes:
+  db_data:
+  gem_cache:
+  node_modules:
+
+networks:
+  app-network:
+    driver: bridge
+  
