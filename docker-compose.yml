@@ -11,7 +11,6 @@ services:
     volumes: 
       - .:/app:delegated
       - gem_cache:/vendor/bundle/ruby/2.5.0/gems
-      - node_modules:/app/node_modules
     env_file: .env  
     environment:
       RAILS_ENV: development
@@ -40,7 +39,6 @@ services:
       - app
     volumes:
       - gem_cache:/usr/local/bundle/gems
-      - node_modules:/app/node_modules
     env_file: .env
     environment:
       RAILS_ENV: development
@@ -62,7 +60,6 @@ services:
 volumes:
   db_data:
   gem_cache:
-  node_modules:
 
 networks:
   app-network:
