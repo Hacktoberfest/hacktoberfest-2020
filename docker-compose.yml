@@ -9,7 +9,6 @@ services:
       - database
       - redis
     volumes: 
-      - .:/app:delegated
       - gem_cache:/vendor/bundle/ruby/2.5.0/gems
       - web-root:/app
     env_file: .env  
