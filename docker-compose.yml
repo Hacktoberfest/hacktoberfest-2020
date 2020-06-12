@@ -60,7 +60,7 @@ services:
       - app
     volumes: 
       - web-root:/var/www/html
-      - config/nginx:/etc/nginx/conf.d
+      - ./config/nginx:/etc/nginx/conf.d
       - certbot-etc:/etc/letsencrypt
     networks:
       - app-network
