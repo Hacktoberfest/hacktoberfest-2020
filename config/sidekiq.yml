@@ -8,7 +8,7 @@
     cron: '0 */2 * * * America/New_York'
     class: TransitionAllUsersJob
     queue: critical
-    description: 'This job transitions users every hour'
+    description: 'This job transitions users every two hours'
   :update_all_issues:
     cron: '0 3 * * * America/New_York'
     class: UpdateAllIssuesJob
