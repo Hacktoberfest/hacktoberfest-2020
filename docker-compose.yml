@@ -55,12 +55,14 @@ services:
       dockerfile: Dockerfile-nginx
     ports:
       - "80:80"
+      - "443:443"
     depends_on: 
       - app
     volumes: 
       - web-root:/var/www/html
       - ./config/nginx:/etc/nginx/conf.d
       - certbot-etc:/etc/letsencrypt
+      - dhparam:/etc/ssl/certs
     networks:
       - app-network
   
@@ -79,6 +81,12 @@ volumes:
   gem_cache:
   certbot-etc:
   web-root:
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/sammy/hacktoberfest/dhparam/
+      o: bind
 
 networks:
   app-network:
