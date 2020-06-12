@@ -72,7 +72,7 @@ services:
       - web-root:/var/www/html
     depends_on:
       - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email katy@digitalocean.com --agree-tos --no-eff-email --staging -d hacktoberfest-test.site -d www.hacktoberfest-test.site
+    command: certonly --webroot --webroot-path=/var/www/html --email katy@digitalocean.com --agree-tos --no-eff-email --force-renewal -d hacktoberfest-test.site -d www.hacktoberfest-test.site
 
 volumes:
   db_data:
