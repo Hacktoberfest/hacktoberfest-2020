@@ -11,6 +11,7 @@ services:
     volumes: 
       - .:/app:delegated
       - gem_cache:/vendor/bundle/ruby/2.5.0/gems
+      - web-root:/app
     env_file: .env  
     environment:
       RAILS_ENV: development
@@ -57,12 +58,28 @@ services:
       - "80:80"
     depends_on: 
       - app
+    volumes: 
+      - web-root:/var/www/html
+      - config/nginx:/etc/nginx/conf.d
+      - certbot-etc:/etc/letsencrypt
     networks:
       - app-network
+  
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - webserver
+    command: certonly --webroot --webroot-path=/var/www/html --email katy@digitalocean.com --agree-tos --no-eff-email --staging -d hacktoberfest-test.site -d www.hacktoberfest-test.site
 
 volumes:
   db_data:
   gem_cache:
+  certbot-etc:
+  web-root:
 
 networks:
   app-network:
