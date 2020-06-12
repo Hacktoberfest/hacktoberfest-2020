@@ -30,8 +30,11 @@ services:
 
   redis:
     image: redis:5.0
+    volumes:
+      - ./config/redis/redis.conf:/usr/local/etc/redis/redis.conf
     networks: 
       - app-network
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
 
   sidekiq:
     image: hacktoberfest_app
