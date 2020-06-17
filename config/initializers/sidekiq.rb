@@ -37,47 +37,6 @@ Sidekiq.configure_server do |config|
                    REDIS_LOCAL
                  end
 
-  # https://github.com/mperham/sidekiq/wiki/Reliability#using-super_fetch
-  config.super_fetch! unless defined?(REDIS_LOCAL)
-
-  # Periodic job setup
-  # See: https://github.com/mperham/sidekiq/wiki/Ent-Periodic-Jobs
-  unless defined?(REDIS_LOCAL)
-    config.periodic do |mgr|
-      # Every hour
-      mgr.register(
-        '0 */2 * * *',
-        TransitionAllUsersJob,
-        retry: 3,
-        queue: :critical
-      )
-      # Every day at 3AM
-      mgr.register('0 3 * * *', UpdateAllIssuesJob, retry: 3, queue: :critical)
-      # Every day at 5AM
-      mgr.register(
-        '0 5 * * *',
-        UpdateAllIssuesQualityJob,
-        retry: 3,
-        queue: :default
-      )
-      # Every hour. 1 hour max latency when updating banned repos in airtable
-      mgr.register(
-        '0 * * * *',
-        BanAllReposJob,
-        retry: 3,
-        queue: :default
-      )
-
-      # Every 15 minutes
-      mgr.register(
-        '*/15 * * * *',
-        FetchSpamRepositoriesJob,
-        retry: 3,
-        queue: :default
-      )
-    end
-  end
-
   config.death_handlers << lambda { |job, ex|
     error = Sidekiq::JobDeathError.new(job, ex)
     Airbrake.notify(error) do |notice|
