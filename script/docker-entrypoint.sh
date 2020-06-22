@@ -11,8 +11,13 @@ fi
 
 echo "==> Setting up DB…"
 # reset database to a fresh state.
-bundle exec rake db:setup
+# Change this for docc
+bundle exec rake db:migrate
+
+# Compile assets
+bundle exec rake assets:precompile
 
 echo "==> Hacktoberfest is now ready to go!"
 
-bundle exec rails s -b 0.0.0.0
+# Adding ENV in here for docc first pass test in staging
+bundle exec puma -C config/puma.rb 

@@ -39,6 +39,8 @@ Rails.application.configure do
 
   config.assets.precompile += %w(.svg)
 
+  config.assets.prefix = "/public/static-assets"
+
   # Must include to get inline SVGs to work in deploy
   config.assets.css_compressor = :sass
 end

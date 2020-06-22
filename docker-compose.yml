@@ -4,16 +4,15 @@ services:
   app: 
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     depends_on:
       - database
       - redis
     volumes: 
-      - .:/app:delegated
       - gem_cache:/vendor/bundle/ruby/2.5.0/gems
-    env_file: .env  
+    env_file: .env
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: staging
     entrypoint: ./script/docker-entrypoint.sh
     networks:
       - app-network
@@ -44,7 +43,7 @@ services:
       - gem_cache:/usr/local/bundle/gems
     env_file: .env
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: staging
     networks:
       - app-network
     entrypoint: ./script/sidekiq-entrypoint.sh

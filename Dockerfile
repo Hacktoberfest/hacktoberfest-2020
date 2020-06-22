@@ -1,7 +1,6 @@
 FROM ruby:2.5-slim AS base
 
 ENV BUNDLER_VERSION=2.0.2
-ENV REDIS_HOST=redis
 
 RUN apt-get update && apt-get install -y apt-transport-https bash curl git gnupg2 build-essential libpq-dev \
 && curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
@@ -24,7 +23,7 @@ COPY Gemfile Gemfile.lock ./
 #RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle config --local build.sassc --disable-march-tune-native
 
-RUN bundle check || bundle install --without production
+RUN bundle check || bundle install
 
 ###############################
 FROM ruby:2.5
@@ -35,6 +34,10 @@ COPY --from=base /usr/local/bundle /usr/local/bundle
 WORKDIR /app
 
 COPY --from=base /app /app
+
+# Pull in the rails environment
+ARG RAILS_ENV
+ENV RAILS_ENV ${RAILS_ENV:-development}
 
 ENTRYPOINT ["./script/docker-entrypoint.sh"]
 
