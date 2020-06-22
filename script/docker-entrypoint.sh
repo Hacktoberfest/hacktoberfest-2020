@@ -12,6 +12,7 @@ fi
 echo "==> Setting up DB…"
 # reset database to a fresh state.
 # Change this for docc
+bundle exec rake db:create
 bundle exec rake db:migrate
 
 # Compile assets
