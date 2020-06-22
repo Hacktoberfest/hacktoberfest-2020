@@ -11,7 +11,7 @@ fi
 
 echo "==> Setting up DB…"
 # reset database to a fresh state.
-# Change this for docc
+# Change this for docc. Do setup only for initial run
 bundle exec rake db:create
 bundle exec rake db:migrate
 
