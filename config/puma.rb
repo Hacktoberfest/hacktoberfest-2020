@@ -5,6 +5,8 @@ threads threads_count, threads_count
 workers 16
 worker_timeout 50
 
+port ENV.fetch('PORT') { 3000 }
+
 preload_app!
 
 before_fork do
