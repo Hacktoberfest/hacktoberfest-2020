@@ -17,7 +17,9 @@ Rails.application.configure do
 
   config.active_storage.service = :local
 
-  config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info).to_sym
+  # config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info).to_sym
+  # setting this non-dynamically for docc test
+  config.log_level = :debug
 
   config.log_tags = [:request_id]
 
