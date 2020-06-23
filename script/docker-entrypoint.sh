@@ -11,9 +11,8 @@ fi
 
 echo "==> Setting up DB…"
 # reset database to a fresh state.
-# Change this for docc. Do setup only for initial run
-bundle exec rake db:create
-bundle exec rake db:schema:load
+# Remove db set up for staging test
+# bundle exec rake db:setup
 
 # Compile assets
 bundle exec rake assets:precompile
