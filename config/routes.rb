@@ -9,7 +9,7 @@ end
 
 Rails.application.routes.draw do
   # Sessions
-  get '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/:provider/callback', to: 'sessions#create', via: %i(get post)
   get '/logout', to: 'sessions#destroy', as: :logout
   get '/login', to: 'sessions#new'
 
