@@ -68,5 +68,6 @@ class PullRequest < ApplicationRecord
     pr = self.find_or_create_by(gh_id: ghpr.id)
     pr.set_github_pull_request(ghpr)
     pr.check_state
+    pr
   end
 end

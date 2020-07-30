@@ -11,13 +11,13 @@
         <% scoring_pull_requests.map do |pr| %>
           <tr>
             <td class="icon-block">
-              <% if pr.eligible? && show_congratulations %>
+              <% if pr.invalid? %>
                 <div class="icon-box">
-                  <div class="eligible-box">
-                    <%= image_tag 'eligible.png' %>
+                  <div class="ineligible-box">
+                    <%= image_tag 'ineligible.png' %>
                   </div>
                 </div>
-              <% elsif pr.spammy? %>
+              <% elsif pr.spam? %>
                 <div class="icon-box">
                   <div class="spammy-box">
                     <%= image_tag 'spam.png' %>
@@ -25,14 +25,14 @@
                 </div>
               <% elsif pr.eligible? %>
                 <div class="icon-box">
-                  <div class="pending-box">
-                    <%= image_tag 'pending.png' %>
+                  <div class="eligible-box">
+                    <%= image_tag 'eligible.png' %>
                   </div>
                 </div>
-              <% else %>
+              <% elsif pr.waiting? %>
                 <div class="icon-box">
-                  <div class="ineligible-box">
-                    <%= image_tag 'ineligible.png' %>
+                  <div class="pending-box">
+                    <%= image_tag 'pending.png' %>
                   </div>
                 </div>
               <% end %>
@@ -40,13 +40,13 @@
             <td>
               <div>
                 <div class="timeline-date">
-                  <% if pr.eligible? && show_congratulations %>
+                  <% if pr.invalid? %>
                     <div class="icon-box">
-                      <div class="eligible-box">
-                        <%= image_tag 'eligible.png' %>
+                      <div class="ineligible-box">
+                        <%= image_tag 'ineligible.png' %>
                       </div>
                     </div>
-                  <% elsif pr.spammy? %>
+                  <% elsif pr.spam? %>
                     <div class="icon-box">
                       <div class="spammy-box">
                         <%= image_tag 'spam.png' %>
@@ -54,14 +54,14 @@
                     </div>
                   <% elsif pr.eligible? %>
                     <div class="icon-box">
-                      <div class="pending-box">
-                        <%= image_tag 'pending.png' %>
+                      <div class="eligible-box">
+                        <%= image_tag 'eligible.png' %>
                       </div>
                     </div>
-                  <% else %>
+                  <% elsif pr.waiting? %>
                     <div class="icon-box">
-                      <div class="ineligible-box">
-                        <%= image_tag 'ineligible.png' %>
+                      <div class="pending-box">
+                        <%= image_tag 'pending.png' %>
                       </div>
                     </div>
                   <% end %>
@@ -101,13 +101,13 @@
           <% non_scoring_pull_requests.map do |pr| %>
             <tr>
               <td class="icon-block">
-                <% if pr.eligible? && show_congratulations %>
+                <% if pr.invalid? %>
                   <div class="icon-box">
-                    <div class="bonus-box">
-                      <%= image_tag 'bonus.png' %>
+                    <div class="ineligible-box">
+                      <%= image_tag 'ineligible.png' %>
                     </div>
                   </div>
-                <% elsif pr.spammy? %>
+                <% elsif pr.spam? %>
                   <div class="icon-box">
                     <div class="spammy-box">
                       <%= image_tag 'spam.png' %>
@@ -115,14 +115,14 @@
                   </div>
                 <% elsif pr.eligible? %>
                   <div class="icon-box">
-                    <div class="pending-box">
-                      <%= image_tag 'pending.png' %>
+                    <div class="bonus-box">
+                      <%= image_tag 'bonus.png' %>
                     </div>
                   </div>
-                <% else %>
+                <% elsif pr.waiting? %>
                   <div class="icon-box">
-                    <div class="ineligible-box">
-                      <%= image_tag 'ineligible.png' %>
+                    <div class="pending-box">
+                      <%= image_tag 'pending.png' %>
                     </div>
                   </div>
                 <% end %>
@@ -130,13 +130,13 @@
               <td>
                 <div>
                   <div class="timeline-date">
-                    <% if pr.eligible? && show_congratulations %>
+                    <% if pr.invalid? %>
                       <div class="icon-box">
-                        <div class="bonus-box">
-                          <%= image_tag 'bonus.png' %>
+                        <div class="ineligible-box">
+                          <%= image_tag 'ineligible.png' %>
                         </div>
                       </div>
-                    <% elsif pr.spammy? %>
+                    <% elsif pr.spam? %>
                       <div class="icon-box">
                         <div class="spammy-box">
                           <%= image_tag 'spam.png' %>
@@ -144,14 +144,14 @@
                       </div>
                     <% elsif pr.eligible? %>
                       <div class="icon-box">
-                        <div class="pending-box">
-                          <%= image_tag 'pending.png' %>
+                        <div class="bonus-box">
+                          <%= image_tag 'bonus.png' %>
                         </div>
                       </div>
-                    <% else %>
+                    <% elsif pr.waiting? %>
                       <div class="icon-box">
-                        <div class="ineligible-box">
-                          <%= image_tag 'ineligible.png' %>
+                        <div class="pending-box">
+                          <%= image_tag 'pending.png' %>
                         </div>
                       </div>
                     <% end %>
