@@ -39,7 +39,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Application Setup
 
 1) [Install and Setup](#installing)
-2) [Local Setup With Docker](#docker)
+2) [Local Setup With Docker](#local-setup-with-docker)
 3) [Setup Oauth Token](#setup-oauth-token)
 4) [Configure remaining environment variales](#env-variables)
 5) [Create first user](#create-first-user)
@@ -58,7 +58,7 @@ In your local repository, run script/setup, which will install all necessary dep
 ```
 script/setup
 ```
-### Local Setup with Docker
+### Local Setup With Docker
 
 If you would like to use Docker to work with the application, first make sure that you have Docker and Docker Compose on your local machine.
 
