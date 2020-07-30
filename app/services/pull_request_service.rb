@@ -18,6 +18,10 @@ class PullRequestService
     end
   end
 
+  def waiting_prs
+    all.select(&:waiting?)
+  end
+
   def eligible_prs
     all.select(&:eligible?)
   end
