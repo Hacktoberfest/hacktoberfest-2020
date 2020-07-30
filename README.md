@@ -39,10 +39,11 @@ These instructions will get you a copy of the project up and running on your loc
 ## Application Setup
 
 1) [Install and Setup](#installing)
-2) [Setup Oauth Token](#setup-oauth-token)
-3) [Configure remaining environment variales](#env-variables)
-4) [Create first user](#create-first-user)
-5) [Import Projects](#import-projects)
+2) [Local Setup With Docker](#docker)
+3) [Setup Oauth Token](#setup-oauth-token)
+4) [Configure remaining environment variales](#env-variables)
+5) [Create first user](#create-first-user)
+6) [Import Projects](#import-projects)
 
 ### Installing
 
@@ -57,6 +58,36 @@ In your local repository, run script/setup, which will install all necessary dep
 ```
 script/setup
 ```
+### Local Setup with Docker
+
+If you would like to use Docker to work with the application, first make sure that you have Docker and Docker Compose on your local machine.
+
+Next clone the repo as described in [Step 1](#installing). 
+
+From there, create a local `.env` file, and add fill out the following values, using steps [3](#setup-oauth-token) and [4](#env-variables) to guide you:
+
+```
+HACKTOBERFEST_DATABASE_HOST=database
+HACKTOBERFEST_DATABASE_USERNAME=
+HACKTOBERFEST_DATABASE_PASSWORD=
+REDIS_HOST=redis
+REDIS_PORT=6379
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+START_DATE=
+END_DATE=
+AIRTABLE_API_KEY=
+AIRTABLE_APP_ID=
+```
+**Note**: Use the following values when setting up your Oauth token:
+
+```
+> Homepage URL: `http://localhost`\
+> Authorization callback URL: `http://localhost/auth/github/callback`
+```
+The local Docker setup uses a webserver, in the same way that the application does in staging and production, so it will be reachable on port `80`.
+
+Run `docker-compose up -d` to start your services. 
 
 ### Setup Oauth Token
 
