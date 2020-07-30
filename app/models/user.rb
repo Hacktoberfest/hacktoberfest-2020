@@ -113,7 +113,7 @@ class User < ApplicationRecord
     end
 
     before_transition to: %i[completed incompleted] do |user, _transition|
-      user.receipt = user.scoring_pull_requests
+      user.receipt = user.scoring_pull_requests.map { |pr| pr.github_pull_request.graphql_hash }
     end
 
     after_transition to: :waiting, do: :update_waiting_since
