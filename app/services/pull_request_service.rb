@@ -14,7 +14,7 @@ class PullRequestService
     # in order to lookup all Repo Spammy states in SQL query
     # prs = PullRequestStateLookupService.new(filtered_github_pull_requests)
     filtered_github_pull_requests(github_pull_requests).map do |ghpr|
-      PullRequest.new(ghpr)
+      PullRequest.from_github_pull_request(ghpr)
     end
   end
 

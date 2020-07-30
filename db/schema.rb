@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_180239) do
+ActiveRecord::Schema.define(version: 2020_07_30_161621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,9 +46,11 @@ ActiveRecord::Schema.define(version: 2019_10_28_180239) do
   end
 
   create_table "pull_requests", force: :cascade do |t|
-    t.integer "gh_id"
+    t.string "gh_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "waiting_since"
+    t.string "state"
   end
 
   create_table "repo_stats", force: :cascade do |t|
