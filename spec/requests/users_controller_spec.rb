@@ -38,7 +38,7 @@ RSpec.describe UsersController, type: :request do
     context 'waiting user has 4 eligible PRs & has been waiting for 7+ days' do
       before do
         prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
-          PullRequest.new(pr)
+          PullRequest.from_github_pull_request(pr)
         end
 
         allow_any_instance_of(User).to receive(:scoring_pull_requests)
@@ -67,7 +67,7 @@ RSpec.describe UsersController, type: :request do
     context 'a user has more than 4 eligible pull requests' do
       before do
         prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
-          PullRequest.new(pr)
+          PullRequest.from_github_pull_request(pr)
         end
 
         allow_any_instance_of(User).to receive(:pull_requests).and_return(prs)
@@ -93,7 +93,7 @@ RSpec.describe UsersController, type: :request do
           .to receive(:eligible_pull_requests_count).and_return(4)
 
         prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
-          PullRequest.new(pr)
+          PullRequest.from_github_pull_request(pr)
         end
 
         allow_any_instance_of(User)
@@ -131,7 +131,7 @@ RSpec.describe UsersController, type: :request do
     context 'a user has some eligible and invalid pull_requests' do
       before do
         prs = pull_request_data(PR_DATA[:invalid_array]).map do |pr|
-          PullRequest.new(pr)
+          PullRequest.from_github_pull_request(pr)
         end
         allow_any_instance_of(PullRequestService)
           .to receive(:all).and_return(prs)

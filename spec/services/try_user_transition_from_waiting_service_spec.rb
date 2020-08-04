@@ -11,7 +11,7 @@ RSpec.describe TryUserTransitionFromWaitingService do
       allow(UserPullRequestSegmentUpdaterService).to receive(:call)
 
       prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
-        PullRequest.new(pr)
+        PullRequest.from_github_pull_request(pr)
       end
 
       allow(user).to receive(:scoring_pull_requests).and_return(prs)

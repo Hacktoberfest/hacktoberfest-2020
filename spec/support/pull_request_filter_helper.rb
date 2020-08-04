@@ -178,14 +178,16 @@ MATURE_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
     'createdAt' => '2019-10-11T00:46:43Z',
-    'labels' => { 'edges' => [] } },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
     'createdAt' => '2019-10-11T22:49:53Z',
-    'labels' => { 'edges' => [] } },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -193,7 +195,8 @@ MATURE_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     'createdAt' => '2019-10-08T06:24:38Z',
-    'labels' => { 'edges' => [] } },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -201,7 +204,8 @@ MATURE_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => '2019-10-03T19:59:18Z',
-    'labels' => { 'edges' => [] } }
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } }
 ].freeze
 
 IMMATURE_ARRAY = [
@@ -212,14 +216,16 @@ IMMATURE_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
     'createdAt' => '2019-10-20T00:46:43Z',
-    'labels' => { 'edges' => [] } },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
     'createdAt' => '2019-10-18T22:49:53Z',
-    'labels' => { 'edges' => [] } },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -227,7 +233,8 @@ IMMATURE_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     'createdAt' => '2019-10-17T06:24:38Z',
-    'labels' => { 'edges' => [] } },
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -235,7 +242,8 @@ IMMATURE_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => '2019-10-19T19:59:18Z',
-    'labels' => { 'edges' => [] } }
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } }
 ].freeze
 
 MIXED_MATURITY_ARRAY = IMMATURE_ARRAY[0..1] + MATURE_ARRAY[2..3]

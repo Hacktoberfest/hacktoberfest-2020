@@ -13,7 +13,7 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
       # needed for receipt presence validation to pass
       # and for waiting_since calculation
       prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
-        PullRequest.new(pr)
+        PullRequest.from_github_pull_request(pr)
       end
 
       allow(user).to receive(:scoring_pull_requests).and_return(prs)
