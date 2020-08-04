@@ -47,8 +47,8 @@ RSpec.describe UsersController, type: :request do
           .and_return([])
         allow_any_instance_of(User).to receive(:pull_requests)
           .and_return(prs)
-        allow_any_instance_of(User).to receive(:waiting_since)
-          .and_return(Time.zone.today - 8)
+        # allow_any_instance_of(User).to receive(:waiting_since)
+        #   .and_return(Time.zone.today - 8)
         allow_any_instance_of(User)
           .to receive(:eligible_pull_requests_count).and_return(4)
 
@@ -90,7 +90,7 @@ RSpec.describe UsersController, type: :request do
 
       it 'transitions the user to the waiting state', :vcr do
         allow_any_instance_of(User)
-          .to receive(:eligible_pull_requests_count).and_return(4)
+          .to receive(:waiting_pull_requests_count).and_return(4)
 
         prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
           PullRequest.from_github_pull_request(pr)

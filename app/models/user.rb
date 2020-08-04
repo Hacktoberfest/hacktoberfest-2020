@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
     event :wait do
       transition registered: :waiting,
-                 if: ->(user) { user.sufficient_waiting_prs? }
+                 if: ->(user) { user.sufficient_waiting_or_eligible_prs? }
     end
 
     event :complete do
@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
     event :insufficient do
       transition waiting: :registered,
-                 unless: ->(user) { user.sufficient_waiting_prs? }
+                 unless: ->(user) { user.sufficient_waiting_or_eligible_prs? }
     end
 
     event :won do
@@ -69,8 +69,8 @@ class User < ApplicationRecord
     end
 
     state :waiting do
-      validates :sufficient_waiting_prs?, inclusion: {
-        in: [true], message: 'user does not have sufficient waiting prs' }
+      validates :sufficient_waiting_or_eligible_prs?, inclusion: {
+        in: [true], message: 'user does not have sufficient waiting or eligible prs' }
     end
 
     state :completed do
@@ -139,8 +139,8 @@ class User < ApplicationRecord
     pull_request_service.eligible_prs.count
   end
 
-  def sufficient_waiting_prs?
-    waiting_pull_requests_count >= 4
+  def sufficient_waiting_or_eligible_prs?
+    waiting_pull_requests_count + eligible_pull_requests_count >= 4
   end
 
   def sufficient_eligible_prs?

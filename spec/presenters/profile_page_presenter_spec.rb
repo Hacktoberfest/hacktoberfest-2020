@@ -41,7 +41,7 @@ describe ProfilePagePresenter do
     before do
       allow(Hacktoberfest).to receive(:ended?).and_return(true)
       allow(Hacktoberfest).to receive(:pre_launch?).and_return(false)
-      allow(shirt_winner).to receive(:won_hacktoberfest?).and_return(true)
+      #allow(shirt_winner).to receive(:won_hacktoberfest?).and_return(true)
     end
 
     it 'displays the coupons partial for a shirt winner' do
@@ -83,7 +83,7 @@ describe ProfilePagePresenter do
       allow(Hacktoberfest).to receive(:ended?).and_return(true)
       allow(Hacktoberfest).to receive(:pre_launch?).and_return(false)
       allow(incomplete_user).to receive(:hacktoberfest_ended?).and_return(true)
-      allow(incomplete_user).to receive(:won_hacktoberfest?).and_return(false)
+      #allow(incomplete_user).to receive(:won_hacktoberfest?).and_return(false)
     end
 
     it 'displays the thank you partial' do

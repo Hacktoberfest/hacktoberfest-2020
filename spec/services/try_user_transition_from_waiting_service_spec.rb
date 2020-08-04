@@ -20,7 +20,7 @@ RSpec.describe TryUserTransitionFromWaitingService do
     context 'The user has enough eligible PRs & has been waiting 7+ days' do
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
-        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+        #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
         TryUserTransitionFromWaitingService.call(user)
       end
 
@@ -29,9 +29,10 @@ RSpec.describe TryUserTransitionFromWaitingService do
       end
     end
 
-    context 'The user has dropped below 4 eligible prs' do
+    context 'The user has dropped below 4 waiting prs' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        allow(user).to receive(:waiting_pull_requests_count).and_return(3)
+        allow(user).to receive(:eligible_pull_requests_count).and_return(0)
 
         TryUserTransitionFromWaitingService.call(user)
       end
@@ -43,8 +44,9 @@ RSpec.describe TryUserTransitionFromWaitingService do
 
     context 'The user needs to continue waiting' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
-        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 3)
+        allow(user).to receive(:waiting_pull_requests_count).and_return(1)
+        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 3)
         TryUserTransitionFromWaitingService.call(user)
       end
 

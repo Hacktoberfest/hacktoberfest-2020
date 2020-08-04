@@ -24,7 +24,7 @@ RSpec.describe 'TryUserTransitionService' do
 
       before do
         allow(user).to receive(:eligible_pull_requests_count).and_return(4)
-        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+        #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
       end
 
       it 'calls the appropriate service' do

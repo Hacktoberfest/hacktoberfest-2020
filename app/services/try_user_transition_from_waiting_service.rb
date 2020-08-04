@@ -6,6 +6,6 @@ module TryUserTransitionFromWaitingService
 
     return if user.complete
 
-    user.ineligible
+    user.insufficient
   end
 end

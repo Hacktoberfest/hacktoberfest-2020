@@ -13,7 +13,7 @@ module UserStateTransitionSegmentService
     when :complete then complete(user)
     when :retry_complete then complete(user)
     when :incomplete then incomplete(user)
-    when :ineligible then ineligible(user)
+    when :insufficient then insufficient(user)
     when :won then won(user, transition)
     when :gifted then gifted(user)
     end
@@ -43,9 +43,9 @@ module UserStateTransitionSegmentService
     segment(user).identify(state: 'incomplete')
   end
 
-  def ineligible(user)
-    segment(user).track('user_ineligible')
-    segment(user).identify(state: 'ineligible')
+  def insufficient(user)
+    segment(user).track('user_insufficient')
+    segment(user).identify(state: 'insufficient')
   end
 
   def won(user, transition)
