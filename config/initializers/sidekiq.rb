@@ -11,9 +11,9 @@ if (redis_url = ENV.fetch('HACKTOBERFEST_REDIS_URL', nil))
     password: ENV.fetch('HACKTOBERFEST_REDIS_PASSWORD', nil)
   }
 elsif (redis_url = ENV.fetch('REDIS_HOST', nil))
-  REDIS_LOCAL = { url:  "redis://#{ENV['REDIS_HOST']}:#{ENV['REDIS_PORT']}/12" }
+  REDIS_LOCAL = { url:  "redis://#{redis_url}:#{ENV['REDIS_PORT']}/12" }
 end
-    
+
 # rubocop:enable Style/MutableConstant
 
 # Custom Error message reporting a job death to airbrake
