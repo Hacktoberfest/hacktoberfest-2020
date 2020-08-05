@@ -121,6 +121,11 @@ class User < ApplicationRecord
       user.receipt = user.scoring_pull_requests.map { |pr| pr.github_pull_request.graphql_hash }
     end
 
+    after_transition to: :waiting do |user, _transition|
+      # Some users might be able to go direct to winning if their PRs are already all a week old
+      user.complete
+    end
+
     after_transition to: :completed do |user, _transition|
       user.win
     end

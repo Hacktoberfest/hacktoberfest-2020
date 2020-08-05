@@ -4,7 +4,7 @@ class PullRequest < ApplicationRecord
   attr_reader :github_pull_request
 
   delegate :title, :body, :url, :created_at, :name, :owner, :repo_id,
-           :name_with_owner, :label_names, to: :github_pull_request
+           :name_with_owner, :label_names, :merged?, to: :github_pull_request
 
   state_machine initial: :new do
     event :spam do
@@ -53,6 +53,8 @@ class PullRequest < ApplicationRecord
   end
 
   def labelled_invalid?
+    return false if merged?
+
     label_names.include?('invalid')
   end
 
