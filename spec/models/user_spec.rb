@@ -92,15 +92,17 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:immature_array]))
+
         expect(UserStateTransitionSegmentService)
           .to receive(:wait).and_return(true)
 
-        prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
-          PullRequest.from_github_pull_request(pr)
-        end
-
-        allow(user).to receive(:scoring_pull_requests).and_return(prs)
+        # prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+        #   PullRequest.from_github_pull_request(pr)
+        # end
+        #
+        # allow(user).to receive(:scoring_pull_requests).and_return(prs)
         user.wait
       end
 
@@ -131,7 +133,8 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:immature_array][0...3]))
         expect(UserStateTransitionSegmentService).to_not receive(:call)
 
         user.wait
@@ -151,18 +154,19 @@ RSpec.describe User, type: :model do
   describe '#complete' do
     let(:user) { FactoryBot.create(:user, :waiting) }
 
-    before do
-      prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
-        PullRequest.from_github_pull_request(pr)
-      end
-
-      allow(user).to receive(:scoring_pull_requests).and_return(prs)
-    end
+    # before do
+    #   prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+    #     PullRequest.from_github_pull_request(pr)
+    #   end
+    #
+    #   allow(user).to receive(:scoring_pull_requests).and_return(prs)
+    # end
 
     context 'the user has 4 eligible PRs and has been waiting for 7 days' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(4)
         #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:mature_array]))
 
         expect(UserStateTransitionSegmentService)
           .to receive(:complete).and_return(true)
@@ -188,8 +192,9 @@ RSpec.describe User, type: :model do
 
     context 'user has 4 eligible PRs, has been waiting 7 days - no receipt' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(4)
         #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:mature_array]))
         allow(user).to receive(:receipt).and_return(nil)
 
         user.complete
@@ -207,9 +212,10 @@ RSpec.describe User, type: :model do
 
     context 'the user has 4 eligible PRs but has not been waiting for 7 days' do
       before do
-        allow(user).to receive(:waiting_pull_requests_count).and_return(4)
-        allow(user).to receive(:eligible_pull_requests_count).and_return(0)
+        #allow(user).to receive(:waiting_pull_requests_count).and_return(4)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(0)
         #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 2)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:immature_array]))
         expect(UserStateTransitionSegmentService).to_not receive(:call)
 
         user.complete
@@ -246,8 +252,9 @@ RSpec.describe User, type: :model do
 
     context 'the user neither 4 eligible PRs nor has been waiting for 7 days' do
       before do
-        allow(user).to receive(:waiting_pull_requests_count).and_return(3)
-        allow(user).to receive(:eligible_pull_requests_count).and_return(0)
+        #allow(user).to receive(:waiting_pull_requests_count).and_return(3)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(0)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:immature_array][0...3]))
         #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 2)
         expect(UserStateTransitionSegmentService).to_not receive(:call)
 
@@ -270,7 +277,8 @@ RSpec.describe User, type: :model do
       let(:user) { FactoryBot.create(:user, :waiting) }
 
       before do
-        allow(user).to receive(:waiting_pull_requests_count).and_return(3)
+        #allow(user).to receive(:waiting_pull_requests_count).and_return(3)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:immature_array][0...3]))
         expect(UserStateTransitionSegmentService)
           .to receive(:insufficient).and_return(true)
         user.insufficient
@@ -290,17 +298,18 @@ RSpec.describe User, type: :model do
   describe '#retry_complete' do
     let(:user) { FactoryBot.create(:user, :incompleted) }
 
-    before do
-      prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
-        PullRequest.from_github_pull_request(pr)
-      end
-
-      allow(user).to receive(:scoring_pull_requests).and_return(prs)
-    end
+    # before do
+    #   prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+    #     PullRequest.from_github_pull_request(pr)
+    #   end
+    #
+    #   allow(user).to receive(:scoring_pull_requests).and_return(prs)
+    # end
 
     context 'the user has 4 eligible PRs and has been waiting for 7 days' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:mature_array]))
         #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
 
         expect(UserStateTransitionSegmentService)
@@ -327,7 +336,8 @@ RSpec.describe User, type: :model do
 
     context 'user has 4 eligible PRs, has been waiting 7 days - no receipt' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:mature_array]))
         #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
         allow(user).to receive(:receipt).and_return(nil)
 
@@ -346,8 +356,9 @@ RSpec.describe User, type: :model do
 
     context 'the user has 4 waiting PRs but has not been waiting for 7 days' do
       before do
-        allow(user).to receive(:waiting_pull_requests_count).and_return(4)
-        allow(user).to receive(:eligible_pull_requests_count).and_return(0)
+        #allow(user).to receive(:waiting_pull_requests_count).and_return(4)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(0)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:immature_array]))
         #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 2)
         expect(UserStateTransitionSegmentService).to_not receive(:call)
 
@@ -385,8 +396,9 @@ RSpec.describe User, type: :model do
 
     context 'the user neither 4 waiting PRs nor has been waiting for 7 days' do
       before do
-        allow(user).to receive(:waiting_pull_requests_count).and_return(3)
-        allow(user).to receive(:eligible_pull_requests_count).and_return(0)
+        #allow(user).to receive(:waiting_pull_requests_count).and_return(3)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(0)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:immature_array][0...3]))
         #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 2)
         expect(UserStateTransitionSegmentService).to_not receive(:call)
 
@@ -444,22 +456,23 @@ RSpec.describe User, type: :model do
 
     context 'hacktoberfest has ended', :vcr do
       context 'user has insufficient eligible prs' do
-        before do
-          prs = pull_request_data(
-            [PR_DATA[:mature_array][0],
-             PR_DATA[:mature_array][1]]
-          ).map do |pr|
-            PullRequest.from_github_pull_request(pr)
-          end
-
-          allow(user).to receive(:scoring_pull_requests).and_return(prs)
-        end
+        # before do
+        #   prs = pull_request_data(
+        #     [PR_DATA[:mature_array][0],
+        #      PR_DATA[:mature_array][1]]
+        #   ).map do |pr|
+        #     PullRequest.from_github_pull_request(pr)
+        #   end
+        #
+        #   allow(user).to receive(:scoring_pull_requests).and_return(prs)
+        # end
 
         let(:user) { FactoryBot.create(:user) }
 
         before do
           allow(user).to receive(:hacktoberfest_ended?).and_return(true)
-          allow(user).to receive(:sufficient_eligible_prs?).and_return(false)
+          #allow(user).to receive(:sufficient_eligible_prs?).and_return(false)
+          allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:mature_array][0...3]))
           expect(UserStateTransitionSegmentService)
             .to receive(:incomplete).and_return(true)
           user.incomplete
@@ -486,7 +499,8 @@ RSpec.describe User, type: :model do
 
         before do
           allow(user).to receive(:hacktoberfest_ended?).and_return(true)
-          allow(user).to receive(:sufficient_eligible_prs?).and_return(true)
+          #allow(user).to receive(:sufficient_eligible_prs?).and_return(true)
+          allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:mature_array][0...3]))
           allow(user).to receive(:receipt).and_return(nil)
 
           user.incomplete
@@ -507,7 +521,8 @@ RSpec.describe User, type: :model do
 
         before do
           allow(user).to receive(:hacktoberfest_ended?).and_return(true)
-          allow(user).to receive(:sufficient_eligible_prs?).and_return(true)
+          #allow(user).to receive(:sufficient_eligible_prs?).and_return(true)
+          allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:mature_array]))
           user.incomplete
         end
 

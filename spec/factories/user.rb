@@ -22,7 +22,7 @@ FactoryBot.define do
       state { 'waiting' }
 
       after :build do |user|
-        allow(user).to receive(:waiting_pull_requests_count).and_return(4)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(PullRequestFilterHelper.pull_request_data(PR_DATA[:immature_array]))
       end
     end
 
@@ -33,7 +33,7 @@ FactoryBot.define do
       receipt { { "test": 'test' }.to_json }
 
       after :build do |user|
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(PullRequestFilterHelper.pull_request_data(PR_DATA[:mature_array]))
       end
     end
 
@@ -43,7 +43,7 @@ FactoryBot.define do
 
       after :build do |user|
         allow(user).to receive(:hacktoberfest_ended?).and_return(true)
-        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(PullRequestFilterHelper.pull_request_data(PR_DATA[:mature_array][0...3]))
       end
     end
 

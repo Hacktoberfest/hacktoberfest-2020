@@ -264,4 +264,8 @@ module PullRequestFilterHelper
       GithubPullRequest.new(Hashie::Mash.new(hash))
     end
   end
+
+  class << self
+    include PullRequestFilterHelper
+  end
 end

@@ -12,16 +12,17 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
 
       # needed for receipt presence validation to pass
       # and for waiting_since calculation
-      prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
-        PullRequest.from_github_pull_request(pr)
-      end
-
-      allow(user).to receive(:scoring_pull_requests).and_return(prs)
+      # prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
+      #   PullRequest.from_github_pull_request(pr)
+      # end
+      #
+      # allow(user).to receive(:scoring_pull_requests).and_return(prs)
     end
 
     context 'The user has enough PRs to transition' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(PullRequestFilterHelper.pull_request_data(PR_DATA[:immature_array]))
         TryUserTransitionFromRegisteredService.call(user)
       end
 
@@ -32,7 +33,8 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
 
     context 'The user has insufficient PRs to transition' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(PullRequestFilterHelper.pull_request_data(PR_DATA[:mature_array][0...3]))
         TryUserTransitionFromRegisteredService.call(user)
       end
 
@@ -43,7 +45,8 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
 
     context 'The user has insufficient PRs and Hacktoberfest has ended' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        #allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(PullRequestFilterHelper.pull_request_data(PR_DATA[:mature_array][0...3]))
         allow(user).to receive(:hacktoberfest_ended?).and_return(true)
 
         TryUserTransitionFromRegisteredService.call(user)

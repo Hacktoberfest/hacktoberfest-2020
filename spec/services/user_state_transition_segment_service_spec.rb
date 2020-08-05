@@ -94,29 +94,29 @@ RSpec.describe UserStateTransitionSegmentService do
       end
     end
 
-    context 'the transition event is ineligible and the user is waiting' do
+    context 'the transition event is insufficient and the user is waiting' do
       let(:user) { FactoryBot.create(:user, :waiting) }
 
       before do
-        allow(transition).to receive(:event).and_return(:ineligible)
+        allow(transition).to receive(:event).and_return(:insufficient)
       end
 
       it 'calls SegmentService#identify with proper arguments' do
         allow_any_instance_of(SegmentService).to receive(:track).with(
-          'user_ineligible'
+          'user_insufficient'
         )
         expect_any_instance_of(SegmentService).to receive(:identify).with(
-          state: 'ineligible'
+          state: 'insufficient'
         )
         UserStateTransitionSegmentService.call(user, transition)
       end
 
       it 'calls SegmentService#track with proper arguments' do
         allow_any_instance_of(SegmentService).to receive(:identify).with(
-          state: 'ineligible'
+          state: 'insufficient'
         )
         expect_any_instance_of(SegmentService).to receive(:track).with(
-          'user_ineligible'
+          'user_insufficient'
         )
         UserStateTransitionSegmentService.call(user, transition)
       end

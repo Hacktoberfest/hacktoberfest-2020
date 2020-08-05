@@ -37,20 +37,21 @@ RSpec.describe UsersController, type: :request do
 
     context 'waiting user has 4 eligible PRs & has been waiting for 7+ days' do
       before do
-        prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
-          PullRequest.from_github_pull_request(pr)
-        end
-
-        allow_any_instance_of(User).to receive(:scoring_pull_requests)
-          .and_return(prs)
-        allow_any_instance_of(User).to receive(:non_scoring_pull_requests)
-          .and_return([])
-        allow_any_instance_of(User).to receive(:pull_requests)
-          .and_return(prs)
+        # prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
+        #   PullRequest.from_github_pull_request(pr)
+        # end
+        #
+        # allow_any_instance_of(User).to receive(:scoring_pull_requests)
+        #   .and_return(prs)
+        # allow_any_instance_of(User).to receive(:non_scoring_pull_requests)
+        #   .and_return([])
+        # allow_any_instance_of(User).to receive(:pull_requests)
+        #   .and_return(prs)
         # allow_any_instance_of(User).to receive(:waiting_since)
         #   .and_return(Time.zone.today - 8)
-        allow_any_instance_of(User)
-          .to receive(:eligible_pull_requests_count).and_return(4)
+        # allow_any_instance_of(User)
+        #   .to receive(:eligible_pull_requests_count).and_return(4)
+        allow_any_instance_of(PullRequestService).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:valid_array]))
 
         user.wait
         mock_authentication(uid: user.uid)
@@ -66,12 +67,13 @@ RSpec.describe UsersController, type: :request do
 
     context 'a user has more than 4 eligible pull requests' do
       before do
-        prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
-          PullRequest.from_github_pull_request(pr)
-        end
-
-        allow_any_instance_of(User).to receive(:pull_requests).and_return(prs)
-        allow_any_instance_of(User).to receive(:score).and_return(4)
+        # prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
+        #   PullRequest.from_github_pull_request(pr)
+        # end
+        #
+        # allow_any_instance_of(User).to receive(:pull_requests).and_return(prs)
+        # allow_any_instance_of(User).to receive(:score).and_return(4)
+        allow_any_instance_of(PullRequestService).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:valid_array]))
       end
 
       include_examples 'tries transition'
@@ -154,7 +156,12 @@ RSpec.describe UsersController, type: :request do
 
     context 'a new user' do
       let(:user) { FactoryBot.create(:user, :new) }
+
       context 'hacktoberfest is active' do
+        before do
+          allow(Hacktoberfest).to receive(:ended?).and_return(false)
+        end
+
         it 'redirects to the start_path' do
           get profile_path
           expect(response).to redirect_to(start_path)
