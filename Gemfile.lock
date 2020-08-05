@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://enterprise.contribsys.com/
   specs:
     actioncable (5.2.3)
       actionpack (= 5.2.3)
@@ -101,7 +100,6 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
-    einhorn (0.7.4)
     erubi (1.8.0)
     execjs (2.7.0)
     factory_bot (5.0.2)
@@ -294,13 +292,6 @@ GEM
       rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
-    sidekiq-ent (1.8.1)
-      einhorn (= 0.7.4)
-      sidekiq (>= 5.2.3)
-      sidekiq-pro (>= 4.0.4)
-    sidekiq-pro (5.0.0)
-      concurrent-ruby (>= 1.0.5)
-      sidekiq (>= 5.2.7)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -388,8 +379,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   shoulda-matchers
   sidekiq (< 6.0)
-  sidekiq-ent!
-  sidekiq-pro!
   spring
   spring-watcher-listen (~> 2.0.0)
   state_machines
@@ -403,7 +392,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.5.5p157
+   ruby 2.5.8p224
 
 BUNDLED WITH
-   2.0.2
+   2.1.4
