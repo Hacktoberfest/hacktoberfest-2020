@@ -89,6 +89,14 @@ The local Docker setup uses a webserver, in the same way that the application do
 
 Run `docker-compose up -d` to start your services. 
 
+**Testing**
+
+If you would like to run commands against your app service, you can do that with the following command (using rubocop as an example): 
+
+```
+docker-compose run app --entrypoint "bundle exec rubocop app config db lib spec --safe-auto-correct"
+```
+
 ### Setup Oauth Token
 
 Hacktoberfest uses `GITHUB_CLIENT_ID` & `GITHUB_CLIENT_SECRET` variables to configure OmniAuth.
