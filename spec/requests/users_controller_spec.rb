@@ -91,15 +91,16 @@ RSpec.describe UsersController, type: :request do
       end
 
       it 'transitions the user to the waiting state', :vcr do
-        allow_any_instance_of(User)
-          .to receive(:waiting_pull_requests_count).and_return(4)
-
-        prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
-          PullRequest.from_github_pull_request(pr)
-        end
-
-        allow_any_instance_of(User)
-          .to receive(:scoring_pull_requests).and_return(prs)
+        # allow_any_instance_of(User)
+        #   .to receive(:waiting_pull_requests_count).and_return(4)
+        #
+        # prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
+        #   PullRequest.from_github_pull_request(pr)
+        # end
+        #
+        # allow_any_instance_of(User)
+        #   .to receive(:scoring_pull_requests).and_return(prs)
+        allow_any_instance_of(PullRequestService).to receive(:github_pull_requests).and_return(pull_request_data(PR_DATA[:valid_array]))
 
         get profile_path
         user.reload

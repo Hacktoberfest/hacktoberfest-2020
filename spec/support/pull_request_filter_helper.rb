@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# 4 pull requests with 2 invalid dates
 ARRAY_WITH_INVALID_DATES = [
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
     'title' => 'Results by cookie',
@@ -7,7 +8,7 @@ ARRAY_WITH_INVALID_DATES = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => '2015-10-13T00:46:43Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.years).to_s, # This is before the event
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
@@ -15,7 +16,7 @@ ARRAY_WITH_INVALID_DATES = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => '2015-11-20T22:49:53Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.years + 1.month).to_s, # This is before the event
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -24,7 +25,7 @@ ARRAY_WITH_INVALID_DATES = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => '2019-10-08T06:24:38Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 8.days).to_s, # This is valid, eligible
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
@@ -33,11 +34,12 @@ ARRAY_WITH_INVALID_DATES = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => '2019-10-25T19:59:18Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 9.days).to_s, # This is valid, eligible
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
 
+# 4 pull_requests with 4 invalid dates & 2 invalid labels
 ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
     'title' => 'Results by cookie',
@@ -45,7 +47,7 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => '2015-10-13T00:46:43Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.years).to_s, # This is before the event
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
@@ -53,7 +55,7 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => '2015-11-20T22:49:53Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.years + 1.month).to_s, # This is before the event
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -62,8 +64,8 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => '2016-05-08T06:24:38Z',
-    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 3.years - 5.months).to_s, # This is before the event
+    'labels' => { 'edges': [{ 'node': { 'name': '❌ Invalid' } }] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
@@ -71,11 +73,12 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => '2016-10-25T19:59:18Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 3.years).to_s, # This is before the event
     'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
 
+# 5 pull requests with 3 valid dates & 2 invalid labels
 ARRAY_WITH_INVALID_LABEL = [
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
     'title' => 'Results by cookie',
@@ -83,15 +86,15 @@ ARRAY_WITH_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => '2019-10-13T00:46:43Z',
-    'labels' => { 'edges' => [{ 'node': { 'name': 'Invalid' } }] },
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 8.days).to_s, # This is valid, eligible
+    'labels' => { 'edges' => [{ 'node': { 'name': '❌ Invalid' } }] }, # Invalid label should make it invalid
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => '2019-10-20T22:49:53Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 9.day).to_s, # This is valid, eligible
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -100,7 +103,7 @@ ARRAY_WITH_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => '2019-10-08T06:24:38Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 10.days).to_s, # This is valid, eligible
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
@@ -109,8 +112,8 @@ ARRAY_WITH_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => '2019-10-25T19:59:18Z',
-    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 11.days).to_s, # This is valid, eligible
+    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] }, # Invalid label should make it invalid
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Timeline Feature',
@@ -118,11 +121,12 @@ ARRAY_WITH_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => '2019-10-28T19:59:18Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 12.days).to_s, # This is valid, eligible
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
 
+# 5 pull requests with valid dates and valid labels
 VALID_ARRAY = [
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
     'title' => 'Results by cookie',
@@ -130,7 +134,7 @@ VALID_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => '2019-10-13T00:46:43Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 8.days).to_s, # This is valid, eligible
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
@@ -138,7 +142,7 @@ VALID_ARRAY = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => '2019-10-20T22:49:53Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 9.days).to_s, # This is valid, eligible
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -147,7 +151,7 @@ VALID_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => '2019-10-08T06:24:38Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 10.days).to_s, # This is valid, eligible
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
@@ -156,7 +160,7 @@ VALID_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => '2019-10-25T19:59:18Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 11.days).to_s, # This is valid, eligible
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
@@ -165,11 +169,12 @@ VALID_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => '2019-10-28T19:59:18Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 12.days).to_s, # This is valid, eligible
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
 
+# 4 pull requests all with timestamps older than 7 days, eligible/mature
 MATURE_ARRAY = [
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
     'title' => 'Results by cookie',
@@ -177,7 +182,7 @@ MATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => '2019-10-11T00:46:43Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 8.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
@@ -185,7 +190,7 @@ MATURE_ARRAY = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => '2019-10-11T22:49:53Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 9.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -194,7 +199,7 @@ MATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => '2019-10-08T06:24:38Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 10.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
@@ -203,11 +208,12 @@ MATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => '2019-10-03T19:59:18Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 11.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
 
+# 4 pull requests with timestamps less than 7 days old, maturing
 IMMATURE_ARRAY = [
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
     'title' => 'Results by cookie',
@@ -215,7 +221,7 @@ IMMATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => '2019-10-20T00:46:43Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 2.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
@@ -223,7 +229,7 @@ IMMATURE_ARRAY = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => '2019-10-18T22:49:53Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 3.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -232,7 +238,7 @@ IMMATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => '2019-10-17T06:24:38Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
@@ -241,7 +247,7 @@ IMMATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => '2019-10-19T19:59:18Z',
+    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 5.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze

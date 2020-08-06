@@ -8,12 +8,6 @@ RSpec.describe PullRequestService do
 
   before do
     allow(SpamRepositoryService).to receive(:call).and_return(false)
-
-    # stubbing these due to the later stubs with hard coded PR_DATA
-    allow(Hacktoberfest)
-      .to receive(:start_date).and_return(Date.parse('2019-10-01'))
-    allow(Hacktoberfest)
-      .to receive(:end_date).and_return(Date.parse('2019-11-01'))
   end
 
   describe '.new' do
@@ -50,6 +44,9 @@ RSpec.describe PullRequestService do
       before { stub_helper(PR_DATA[:valid_array]) }
 
       it 'returns all the prs' do
+        p Time.now
+        p Hacktoberfest.start_date
+        p Hacktoberfest.end_date
         expect(pr_service.all.count).to eq(5)
       end
     end

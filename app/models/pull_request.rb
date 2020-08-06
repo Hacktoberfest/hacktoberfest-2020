@@ -55,7 +55,7 @@ class PullRequest < ApplicationRecord
   def labelled_invalid?
     return false if merged?
 
-    label_names.include?('invalid')
+    label_names.select{ |l| l[/\binvalid\b/i] }.any?
   end
 
   def spammy?
