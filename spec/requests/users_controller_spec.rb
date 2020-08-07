@@ -11,7 +11,6 @@ end
 
 RSpec.describe UsersController, type: :request do
   let(:user) { FactoryBot.create(:user) }
-  let(:pr_service) { PullRequestService.new(current_user) }
   let(:controller) { UsersController.new }
 
   before do
@@ -33,7 +32,7 @@ RSpec.describe UsersController, type: :request do
 
     context 'waiting user has 4 eligible PRs & has been waiting for 7+ days' do
       before do
-        pr_stub_helper(user, PR_DATA[:mature_array])
+        stub_helper(PR_DATA[:mature_array])
         user.wait
         mock_authentication(uid: user.uid)
         login
@@ -48,7 +47,7 @@ RSpec.describe UsersController, type: :request do
 
     context 'a user has more than 4 waiting pull requests' do
       before do
-        pr_stub_helper(user, PR_DATA[:large_immature_array])
+        stub_helper(PR_DATA[:large_immature_array])
       end
 
       include_examples 'tries transition'
@@ -68,7 +67,7 @@ RSpec.describe UsersController, type: :request do
 
     context 'a user has no pull_requests' do
       before do
-        pr_stub_helper(user, [])
+        stub_helper([])
       end
 
       include_examples 'tries transition'
@@ -87,7 +86,7 @@ RSpec.describe UsersController, type: :request do
 
     context 'a user has some eligible and invalid pull_requests' do
       before do
-        pr_stub_helper(user, PR_DATA[:array_with_invalid_labels])
+        stub_helper(PR_DATA[:array_with_invalid_labels])
       end
 
       include_examples 'tries transition'
@@ -125,5 +124,12 @@ RSpec.describe UsersController, type: :request do
         after { travel_back }
       end
     end
+  end
+
+  def stub_helper(arr_type)
+    PullRequest.delete_all
+    allow_any_instance_of(PullRequestService)
+        .to receive(:github_pull_requests)
+                .and_return(pull_request_data(arr_type))
   end
 end
