@@ -144,8 +144,12 @@ class User < ApplicationRecord
     pull_request_service.eligible_prs.count
   end
 
+  def waiting_or_eligible_pull_requests_count
+    waiting_pull_requests_count + eligible_pull_requests_count
+  end
+
   def sufficient_waiting_or_eligible_prs?
-    waiting_pull_requests_count + eligible_pull_requests_count >= 4
+    waiting_or_eligible_pull_requests_count >= 4
   end
 
   def sufficient_eligible_prs?
@@ -157,7 +161,7 @@ class User < ApplicationRecord
   end
 
   def score
-    score = eligible_pull_requests_count
+    score = waiting_or_eligible_pull_requests_count
     score > 4 ? 4 : score
   end
 

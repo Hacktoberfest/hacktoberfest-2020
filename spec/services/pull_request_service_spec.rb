@@ -44,9 +44,6 @@ RSpec.describe PullRequestService do
       before { stub_helper(PR_DATA[:valid_array]) }
 
       it 'returns all the prs' do
-        p Time.now
-        p Hacktoberfest.start_date
-        p Hacktoberfest.end_date
         expect(pr_service.all.count).to eq(5)
       end
     end
@@ -119,6 +116,7 @@ RSpec.describe PullRequestService do
   end
 
   def stub_helper(arr_type)
+    PullRequest.delete_all
     allow(pr_service)
       .to receive(:github_pull_requests)
       .and_return(pull_request_data(arr_type))

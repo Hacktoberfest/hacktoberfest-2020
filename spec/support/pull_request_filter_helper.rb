@@ -200,7 +200,8 @@ MATURE_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     'createdAt' => (Time.parse(ENV['NOW_DATE']) - 10.days).to_s,
-    'labels' => { 'edges' => [] },
+    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] }, # Invalid label should make it invalid
+    'merged' => true, # Merged should override the invalid label and make it valid
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
@@ -252,6 +253,45 @@ IMMATURE_ARRAY = [
     'repository' => { 'databaseId' => 123 } }
 ].freeze
 
+# 4 pull requests with timestamps less than 7 days before the end
+LATE_ARRAY = [
+    { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
+      'title' => 'Results by cookie',
+      'body' =>
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+      'url' => 'https://github.com/peek/peek/pull/79',
+      'createdAt' => (Time.parse(ENV['END_DATE']) - 2.days).to_s,
+      'labels' => { 'edges' => [] },
+      'repository' => { 'databaseId' => 123 } },
+    { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
+      'title' => 'Update README.md',
+      'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+      'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
+      'createdAt' => (Time.parse(ENV['END_DATE']) - 3.days).to_s,
+      'labels' => { 'edges' => [] },
+      'repository' => { 'databaseId' => 123 } },
+    { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
+      'title' => 'Add natural layer',
+      'body' =>
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+      'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
+      'createdAt' => (Time.parse(ENV['END_DATE']) - 4.days).to_s,
+      'labels' => { 'edges' => [] },
+      'repository' => { 'databaseId' => 123 } },
+    { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
+      'title' => 'Coercion type systems',
+      'body' =>
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+      'url' => 'https://github.com/intridea/hashie/pull/379',
+      'createdAt' => (Time.parse(ENV['END_DATE']) - 5.days).to_s,
+      'labels' => { 'edges' => [] },
+      'repository' => { 'databaseId' => 123 } }
+].freeze
+
 MIXED_MATURITY_ARRAY = IMMATURE_ARRAY[0..1] + MATURE_ARRAY[2..3]
 
 PR_DATA = {
@@ -261,7 +301,8 @@ PR_DATA = {
   invalid_array: ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL,
   mature_array: MATURE_ARRAY,
   immature_array: IMMATURE_ARRAY,
-  mixed_maturity_array: MIXED_MATURITY_ARRAY
+  mixed_maturity_array: MIXED_MATURITY_ARRAY,
+  late_array: LATE_ARRAY
 }.freeze
 
 module PullRequestFilterHelper

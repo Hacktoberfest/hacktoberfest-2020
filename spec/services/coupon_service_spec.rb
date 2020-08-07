@@ -70,6 +70,7 @@ RSpec.describe CouponService do
     end
 
     context 'with an incompleted user' do
+      before { travel_to Time.parse(ENV['END_DATE']) + 1.day }
       let(:user) { FactoryBot.create(:user, :incompleted) }
       let(:coupon_service) { CouponService.new(user) }
 
@@ -138,6 +139,8 @@ RSpec.describe CouponService do
           expect(user.sticker_coupon).to eq(nil)
         end
       end
+
+      after { travel_back }
     end
   end
 end

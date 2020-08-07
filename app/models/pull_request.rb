@@ -7,13 +7,13 @@ class PullRequest < ApplicationRecord
            :name_with_owner, :label_names, :merged?, to: :github_pull_request
 
   state_machine initial: :new do
-    event :spam do
-      transition %i[new waiting eligible] => :spam,
+    event :spam_repo do
+      transition %i[new waiting eligible] => :spam_repo,
                  if: ->(pr) { pr.spammy? }
     end
 
-    event :invalid do
-      transition %i[new waiting eligible] => :invalid,
+    event :invalid_label do
+      transition %i[new waiting eligible] => :invalid_label,
                  if: ->(pr) { pr.labelled_invalid? }
     end
 
@@ -23,22 +23,22 @@ class PullRequest < ApplicationRecord
     end
 
     event :waiting do
-      transition %i[new spam invalid] => :waiting,
+      transition %i[new spam_repo invalid_label] => :waiting,
                  if: ->(pr) { !pr.spammy? && !pr.labelled_invalid? && !pr.older_than_week? }
     end
 
     before_transition to: %i[waiting], from: %i[new] do |pr, _transition|
-      pr.waiting_since = pr.github_pull_request.created_at
+      pr.waiting_since = pr.created_at
     end
 
-    before_transition to: %i[waiting], from: %i[spam invalid] do |pr, _transition|
+    before_transition to: %i[waiting], from: %i[spam_repo invalid_label] do |pr, _transition|
       pr.waiting_since = Time.zone.now
     end
   end
 
   def check_state
-    return if spam
-    return if invalid
+    return if spam_repo
+    return if invalid_label
     return if eligible
     waiting
   end
@@ -60,6 +60,10 @@ class PullRequest < ApplicationRecord
 
   def spammy?
     SpamRepositoryService.call(repo_id)
+  end
+
+  def github_id
+    github_pull_request.id
   end
 
   def set_github_pull_request(ghpr)

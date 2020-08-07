@@ -9,77 +9,14 @@
     <table class="table is-narrow is-fullwidth">
       <tbody>
         <% scoring_pull_requests.map do |pr| %>
-          <tr>
-            <td class="icon-block">
-              <% if pr.invalid? %>
-                <div class="icon-box">
-                  <div class="ineligible-box">
-                    <%= image_tag 'ineligible.png' %>
-                  </div>
-                </div>
-              <% elsif pr.spam? %>
-                <div class="icon-box">
-                  <div class="spammy-box">
-                    <%= image_tag 'spam.png' %>
-                  </div>
-                </div>
-              <% elsif pr.eligible? %>
-                <div class="icon-box">
-                  <div class="eligible-box">
-                    <%= image_tag 'eligible.png' %>
-                  </div>
-                </div>
-              <% elsif pr.waiting? %>
-                <div class="icon-box">
-                  <div class="pending-box">
-                    <%= image_tag 'pending.png' %>
-                  </div>
-                </div>
-              <% end %>
-            </td>
-            <td>
-              <div>
-                <div class="timeline-date">
-                  <% if pr.invalid? %>
-                    <div class="icon-box">
-                      <div class="ineligible-box">
-                        <%= image_tag 'ineligible.png' %>
-                      </div>
-                    </div>
-                  <% elsif pr.spam? %>
-                    <div class="icon-box">
-                      <div class="spammy-box">
-                        <%= image_tag 'spam.png' %>
-                      </div>
-                    </div>
-                  <% elsif pr.eligible? %>
-                    <div class="icon-box">
-                      <div class="eligible-box">
-                        <%= image_tag 'eligible.png' %>
-                      </div>
-                    </div>
-                  <% elsif pr.waiting? %>
-                    <div class="icon-box">
-                      <div class="pending-box">
-                        <%= image_tag 'pending.png' %>
-                      </div>
-                    </div>
-                  <% end %>
-                  <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
-                </div>
-                <h4 class="title is-4">
-                  You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
-                </h4>
-              </div>
-            </td>
-          </tr>
+          <%= render partial: 'users/show/pr/pr', locals: { pr: pr } %>
         <% end %>
+
         <% if show_timer %>
           <tr>
             <td colspan="2">
               <div class="winning-msg-cont">
-                <p id="waiting_date"><%= user.waiting_since.to_formatted_s(:long) %></p>
-                <h1 class="title is-2 pink-highlight"> You're almost there!</h1>
+                <h1 class="title is-2 pink-highlight">You're almost there!</h1>
                 <span class="title is-3">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in</span>
                 <span class="title is-3 pink-highlight" id="countdown"></span>
                 <span class="title is-3"> — which means you’ll have officially completed this year’s challenge!</span>
@@ -87,86 +24,26 @@
             </td>
           </tr>
         <% end %>
+
         <% if show_congratulations %>
           <tr>
             <td colspan="2">
               <div class="winning-msg-cont">
-                <h1 class="title is-2 pink-highlight"> You did it! 🎉 </h1>
+                <h1 class="title is-2 pink-highlight">You did it! 🎉</h1>
                 <span class="title is-3">You've made four eligible PRs for Hacktoberfest — which means you officially completed this year’s challenge!</span>
               </div>
             </td>
           </tr>
         <% end %>
+
         <% if non_scoring_pull_requests.any? %>
           <% non_scoring_pull_requests.map do |pr| %>
-            <tr>
-              <td class="icon-block">
-                <% if pr.invalid? %>
-                  <div class="icon-box">
-                    <div class="ineligible-box">
-                      <%= image_tag 'ineligible.png' %>
-                    </div>
-                  </div>
-                <% elsif pr.spam? %>
-                  <div class="icon-box">
-                    <div class="spammy-box">
-                      <%= image_tag 'spam.png' %>
-                    </div>
-                  </div>
-                <% elsif pr.eligible? %>
-                  <div class="icon-box">
-                    <div class="bonus-box">
-                      <%= image_tag 'bonus.png' %>
-                    </div>
-                  </div>
-                <% elsif pr.waiting? %>
-                  <div class="icon-box">
-                    <div class="pending-box">
-                      <%= image_tag 'pending.png' %>
-                    </div>
-                  </div>
-                <% end %>
-              </td>
-              <td>
-                <div>
-                  <div class="timeline-date">
-                    <% if pr.invalid? %>
-                      <div class="icon-box">
-                        <div class="ineligible-box">
-                          <%= image_tag 'ineligible.png' %>
-                        </div>
-                      </div>
-                    <% elsif pr.spam? %>
-                      <div class="icon-box">
-                        <div class="spammy-box">
-                          <%= image_tag 'spam.png' %>
-                        </div>
-                      </div>
-                    <% elsif pr.eligible? %>
-                      <div class="icon-box">
-                        <div class="bonus-box">
-                          <%= image_tag 'bonus.png' %>
-                        </div>
-                      </div>
-                    <% elsif pr.waiting? %>
-                      <div class="icon-box">
-                        <div class="pending-box">
-                          <%= image_tag 'pending.png' %>
-                        </div>
-                      </div>
-                    <% end %>
-                    <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
-                  </div>
-                  <h4 class="title is-4">
-                    You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
-                  </h4>
-                </div>
-              </td>
-            </tr>
+            <%= render partial: 'users/show/pr/pr', locals: { pr: pr } %>
           <% end %>
         <% end %>
       </tbody>
     </table>
+
     <div class="legend box has-text-white">
       <h4 class="title is-4">Legend</h4>
       <div>
@@ -234,12 +111,5 @@
         <p>Outstanding! You’ve gone above and beyond this Hacktoberfest.</p>
       </div>
     </div>
-  <% end %>
-  <% if user.waiting? %>
-  <script type="text/javascript">
-    var element = document.getElementById('countdown')
-    var date = "<%= @presenter.waiting_since_for_js %>"
-    countdownTimers(element, date)
-  </script>
   <% end %>
 </div>

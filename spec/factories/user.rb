@@ -42,7 +42,6 @@ FactoryBot.define do
       receipt { { "test": 'test' }.to_json }
 
       after :build do |user|
-        allow(user).to receive(:hacktoberfest_ended?).and_return(true)
         allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(PullRequestFilterHelper.pull_request_data(PR_DATA[:mature_array][0...3]))
       end
     end

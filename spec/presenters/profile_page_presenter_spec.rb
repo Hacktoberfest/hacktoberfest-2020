@@ -77,7 +77,6 @@ describe ProfilePagePresenter do
   context 'Hacktoberfest has ended the user is incomplete' do
     before do
       travel_to Time.parse(ENV['END_DATE']) + 8.days
-      allow(incomplete_user).to receive(:won_hacktoberfest?).and_return(false)
     end
 
     it 'displays the thank you partial' do

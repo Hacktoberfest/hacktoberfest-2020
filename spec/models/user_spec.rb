@@ -269,6 +269,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#retry_complete' do
+    before { travel_to Time.parse(ENV['END_DATE']) + 1.day }
     let(:user) { FactoryBot.create(:user, :incompleted) }
 
     context 'the user has 4 eligible PRs and has been waiting for 7 days' do
@@ -316,7 +317,7 @@ RSpec.describe User, type: :model do
 
     context 'the user has 4 waiting PRs but has not been waiting for 7 days' do
       before do
-        pr_stub_helper(user, PR_DATA[:immature_array])
+        pr_stub_helper(user, PR_DATA[:late_array])
         expect(UserStateTransitionSegmentService).to_not receive(:call)
 
         user.retry_complete
@@ -332,28 +333,27 @@ RSpec.describe User, type: :model do
       end
     end
 
-    # context 'user has been waiting for 7 days & has less than 4 eligible prs' do
-    #   before do
-    #     allow(user).to receive(:eligible_pull_requests_count).and_return(3)
-    #     allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
-    #     expect(UserStateTransitionSegmentService).to_not receive(:call)
-    #
-    #     user.retry_complete
-    #   end
-    #
-    #   it 'disallows the user to enter the completed state' do
-    #     expect(user.state).to eq('incompleted')
-    #   end
-    #
-    #   it 'adds the correct errors to user' do
-    #     expect(user.errors.messages[:won_hacktoberfest?].first)
-    #       .to include('user has not met all winning conditions')
-    #   end
-    # end
+    context 'user has been waiting for 7 days & has less than 4 eligible prs' do
+      before do
+        pr_stub_helper(user, PR_DATA[:mature_array][0...3])
+        expect(UserStateTransitionSegmentService).to_not receive(:call)
+
+        user.retry_complete
+      end
+
+      it 'disallows the user to enter the completed state' do
+        expect(user.state).to eq('incompleted')
+      end
+
+      it 'adds the correct errors to user' do
+        expect(user.errors.messages[:sufficient_eligible_prs?].first)
+            .to include('user does not have sufficient eligible prs')
+      end
+    end
 
     context 'the user neither 4 waiting PRs nor has been waiting for 7 days' do
       before do
-        pr_stub_helper(user, PR_DATA[:immature_array][0...3])
+        pr_stub_helper(user, PR_DATA[:late_array][0...3])
         expect(UserStateTransitionSegmentService).to_not receive(:call)
 
         user.retry_complete
@@ -368,6 +368,8 @@ RSpec.describe User, type: :model do
           .to include('user does not have sufficient eligible prs')
       end
     end
+
+    after { travel_back }
   end
 
   describe '#incomplete' do
@@ -486,6 +488,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'the user is in the incompleted state' do
+      before { travel_to Time.parse(ENV['END_DATE']) + 8.days }
       let(:user) { FactoryBot.create(:user, :incompleted) }
 
       context 'there are shirt coupons available' do
@@ -517,6 +520,8 @@ RSpec.describe User, type: :model do
           expect(user.state).to eq('incompleted')
         end
       end
+
+      after { travel_back }
     end
   end
 

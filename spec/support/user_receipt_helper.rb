@@ -47,14 +47,14 @@ LATE_RECEIPT_2_PRS = [
      'body' => '',
      'title' => 'Peculiar bug',
      'labels' => {'edges' => []},
-     'createdAt' => (Time.parse(ENV['START_DATE']) + 27.days).to_s,
+     'createdAt' => (Time.parse(ENV['END_DATE']) - 3.days).to_s,
      'repository' => {'databaseId' => 211_178_535}},
     {'id' => 'MDExOlB1bGxSZXF1ZXN0MzI1NDc4MDIy',
      'url' => 'https://github.com',
      'body' => '',
      'title' => 'CI scripts',
      'labels' => {'edges' => []},
-     'createdAt' => (Time.parse(ENV['START_DATE']) + 29.days).to_s,
+     'createdAt' => (Time.parse(ENV['END_DATE']) - 2.days).to_s,
      'repository' => {'databaseId' => 211_178_535}}
 ].freeze
 
@@ -64,21 +64,21 @@ LATE_RECEIPT_3_PRS = [
      'body' => '',
      'title' => 'Peculiar bug',
      'labels' => {'edges' => []},
-     'createdAt' => (Time.parse(ENV['START_DATE']) + 30.days).to_s,
+     'createdAt' => (Time.parse(ENV['END_DATE']) - 1.day).to_s,
      'repository' => {'databaseId' => 211_178_535}},
     {'id' => 'MDExOlB1bGxSZXF1ZXN0MzI1NDc4MDIy',
      'url' => 'https://github.com/20',
      'body' => '',
      'title' => 'CI scripts',
      'labels' => {'edges' => []},
-     'createdAt' => (Time.parse(ENV['START_DATE']) + 20.days).to_s,
+     'createdAt' => (Time.parse(ENV['END_DATE']) - 4.days).to_s,
      'repository' => {'databaseId' => 211_178_535}},
     {'id' => 'MDExOlB1bGxSZXF1ZXN0MzI1NDc4MDc2',
      'url' => 'https://github.com/21',
      'body' => '',
      'title' => 'readme addition',
      'labels' => {'edges' => []},
-     'createdAt' => (Time.parse(ENV['START_DATE']) + 28.days).to_s,
+     'createdAt' => (Time.parse(ENV['END_DATE']) - 3.days).to_s,
      'repository' => {'databaseId' => 211_178_535}}
 ].freeze
 
