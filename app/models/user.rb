@@ -35,7 +35,7 @@ class User < ApplicationRecord
 
     event :incomplete do
       transition registered: :incompleted,
-                 unless: ->(user) { user.any_waiting_prs? || user.sufficient_eligible_prs? }
+                 unless: ->(user) { user.any_waiting_or_is_eligible? }
     end
 
     event :gifted do
@@ -70,12 +70,14 @@ class User < ApplicationRecord
 
     state :waiting do
       validates :sufficient_waiting_or_eligible_prs?, inclusion: {
-        in: [true], message: 'user does not have sufficient waiting or eligible prs' }
+        in: [true],
+        message: 'user does not have sufficient waiting or eligible prs' }
     end
 
     state :completed do
       validates :sufficient_eligible_prs?, inclusion: {
-        in: [true], message: 'user does not have sufficient eligible prs' }
+        in: [true],
+        message: 'user does not have sufficient eligible prs' }
 
       def win
         assign_coupon
@@ -95,7 +97,7 @@ class User < ApplicationRecord
       validates :hacktoberfest_ended?, inclusion: {
         in: [true], message: 'hacktoberfest has not yet ended' }
       validates :any_waiting_prs?, inclusion: {
-          in: [false], message: 'user has waiting prs' }
+        in: [false], message: 'user has waiting prs' }
       validates :sufficient_eligible_prs?, inclusion: {
         in: [false], message: 'user has too many sufficient eligible prs' }
 
@@ -118,11 +120,12 @@ class User < ApplicationRecord
     end
 
     before_transition to: %i[completed incompleted] do |user, _transition|
-      user.receipt = user.scoring_pull_requests.map { |pr| pr.github_pull_request.graphql_hash }
+      user.receipt = user.scoring_pull_requests_receipt
     end
 
     after_transition to: :waiting do |user, _transition|
-      # Some users might be able to go direct to winning if their PRs are already all a week old
+      # Some users might be able to go direct to winning
+      #  if their PRs are already all a week old
       user.complete
     end
 
@@ -157,7 +160,11 @@ class User < ApplicationRecord
   end
 
   def any_waiting_prs?
-    waiting_pull_requests_count > 0
+    waiting_pull_requests_count.positive?
+  end
+
+  def any_waiting_or_is_eligible?
+    any_waiting_prs? || sufficient_eligible_prs?
   end
 
   def score
@@ -166,7 +173,7 @@ class User < ApplicationRecord
   end
 
   delegate :scoring_pull_requests, :non_scoring_pull_requests,
-           to: :pull_request_service
+           :scoring_pull_requests_receipt, to: :pull_request_service
 
   def hacktoberfest_ended?
     Hacktoberfest.end_date.past?

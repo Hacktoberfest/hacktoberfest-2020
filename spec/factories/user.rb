@@ -42,7 +42,10 @@ FactoryBot.define do
       receipt { { "test": 'test' }.to_json }
 
       after :build do |user|
-        PullRequestFilterHelper.pr_stub_helper(user, PR_DATA[:mature_array][0...3])
+        PullRequestFilterHelper.pr_stub_helper(
+          user,
+          PR_DATA[:mature_array][0...3]
+        )
       end
     end
 

@@ -15,7 +15,7 @@ describe ProfilePagePresenter do
   let(:incompleted_user_presenter) { ProfilePagePresenter.new(incomplete_user) }
 
   context 'Hacktoberfest is in pre launch' do
-    before { travel_to Time.parse(ENV['START_DATE']) - 7.days }
+    before { travel_to Time.zone.parse(ENV['START_DATE']) - 7.days }
 
     it 'displays the pre_launch partial' do
       expect(profile_presenter.display_pre_launch?).to eq(true)
@@ -37,7 +37,7 @@ describe ProfilePagePresenter do
   end
 
   context 'Hacktoberfest has ended and the user has won' do
-    before { travel_to Time.parse(ENV['END_DATE']) + 8.days }
+    before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
     it 'displays the coupons partial for a shirt winner' do
       expect(won_shirt_presenter.display_coupon?).to eq(true)
@@ -75,7 +75,7 @@ describe ProfilePagePresenter do
   end
 
   context 'Hacktoberfest has ended the user is incomplete' do
-    before { travel_to Time.parse(ENV['END_DATE']) + 8.days }
+    before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
     it 'displays the thank you partial' do
       expect(incompleted_user_presenter.display_thank_you?).to eq(true)

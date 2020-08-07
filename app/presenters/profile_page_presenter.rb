@@ -37,7 +37,9 @@ class ProfilePagePresenter
 
   def persisted_winning_pull_requests
     @user.receipt.map do |pr|
-      PullRequest.from_github_pull_request(GithubPullRequest.new(Hashie::Mash.new(pr)))
+      PullRequest.from_github_pull_request(
+        GithubPullRequest.new(Hashie::Mash.new(pr))
+      )
     end
   end
 

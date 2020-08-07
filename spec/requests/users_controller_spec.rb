@@ -114,7 +114,7 @@ RSpec.describe UsersController, type: :request do
       end
 
       context 'hacktoberfest has ended' do
-        before { travel_to Time.parse(ENV['END_DATE']) + 8.days }
+        before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
         it 'renders the the hacktoberfest ended page' do
           get profile_path
@@ -129,7 +129,7 @@ RSpec.describe UsersController, type: :request do
   def stub_helper(arr_type)
     PullRequest.delete_all
     allow_any_instance_of(PullRequestService)
-        .to receive(:github_pull_requests)
-                .and_return(pull_request_data(arr_type))
+      .to receive(:github_pull_requests)
+      .and_return(pull_request_data(arr_type))
   end
 end

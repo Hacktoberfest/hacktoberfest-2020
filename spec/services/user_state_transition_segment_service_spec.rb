@@ -68,7 +68,7 @@ RSpec.describe UserStateTransitionSegmentService do
 
     context 'the event is retry_complete and the user is incompleted' do
       before do
-        travel_to Time.parse(ENV['END_DATE']) + 1.day
+        travel_to Time.zone.parse(ENV['END_DATE']) + 1.day
         allow(transition).to receive(:event).and_return(:retry_complete)
       end
 
@@ -191,7 +191,7 @@ RSpec.describe UserStateTransitionSegmentService do
 
     context 'the event is gifted and the user is incompleted' do
       before do
-        travel_to Time.parse(ENV['END_DATE']) + 1.day
+        travel_to Time.zone.parse(ENV['END_DATE']) + 1.day
         allow(transition).to receive(:event).and_return(:gifted)
       end
 

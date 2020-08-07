@@ -8,7 +8,8 @@ ARRAY_WITH_INVALID_DATES = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.years).to_s, # This is before the event
+    # This is before the event
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.years).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
@@ -16,7 +17,8 @@ ARRAY_WITH_INVALID_DATES = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.years + 1.month).to_s, # This is before the event
+    # This is before the event
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.years + 1.month).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -25,7 +27,8 @@ ARRAY_WITH_INVALID_DATES = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 8.days).to_s, # This is valid, eligible
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 8.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
@@ -34,7 +37,8 @@ ARRAY_WITH_INVALID_DATES = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 9.days).to_s, # This is valid, eligible
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 9.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
@@ -47,7 +51,8 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.years).to_s, # This is before the event
+    # This is before the event
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.years).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
@@ -55,7 +60,8 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.years + 1.month).to_s, # This is before the event
+    # This is before the event
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.years + 1.month).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -64,7 +70,8 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 3.years - 5.months).to_s, # This is before the event
+    # This is before the event
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 3.years - 5.months).to_s,
     'labels' => { 'edges': [{ 'node': { 'name': '❌ Invalid' } }] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
@@ -73,7 +80,8 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 3.years).to_s, # This is before the event
+    # This is before the event
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 3.years).to_s,
     'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
@@ -86,15 +94,18 @@ ARRAY_WITH_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 8.days).to_s, # This is valid, eligible
-    'labels' => { 'edges' => [{ 'node': { 'name': '❌ Invalid' } }] }, # Invalid label should make it invalid
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 8.days).to_s,
+    # Invalid label should make it invalid
+    'labels' => { 'edges' => [{ 'node': { 'name': '❌ Invalid' } }] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 9.day).to_s, # This is valid, eligible
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 9.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -103,7 +114,8 @@ ARRAY_WITH_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 10.days).to_s, # This is valid, eligible
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 10.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
@@ -112,8 +124,10 @@ ARRAY_WITH_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 11.days).to_s, # This is valid, eligible
-    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] }, # Invalid label should make it invalid
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 11.days).to_s,
+    # Invalid label should make it invalid
+    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Timeline Feature',
@@ -121,7 +135,8 @@ ARRAY_WITH_INVALID_LABEL = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 12.days).to_s, # This is valid, eligible
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 12.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
@@ -134,7 +149,8 @@ VALID_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 8.days).to_s, # This is valid, eligible
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 8.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
@@ -142,7 +158,8 @@ VALID_ARRAY = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 9.days).to_s, # This is valid, eligible
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 9.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -151,7 +168,8 @@ VALID_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 10.days).to_s, # This is valid, eligible
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 10.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
@@ -160,7 +178,8 @@ VALID_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 11.days).to_s, # This is valid, eligible
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 11.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
@@ -169,7 +188,8 @@ VALID_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 12.days).to_s, # This is valid, eligible
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 12.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
@@ -182,7 +202,7 @@ MATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 8.days).to_s,
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 8.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
@@ -190,7 +210,7 @@ MATURE_ARRAY = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 9.days).to_s,
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 9.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -199,9 +219,11 @@ MATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 10.days).to_s,
-    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] }, # Invalid label should make it invalid
-    'merged' => true, # Merged should override the invalid label and make it valid
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 10.days).to_s,
+    # Invalid label should make it invalid
+    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
+    # Merged should override the invalid label and make it valid
+    'merged' => true,
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
@@ -209,7 +231,7 @@ MATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 11.days).to_s,
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 11.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
@@ -222,7 +244,7 @@ IMMATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 2.days).to_s,
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 2.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
@@ -230,7 +252,7 @@ IMMATURE_ARRAY = [
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 3.days).to_s,
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 3.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
@@ -239,7 +261,7 @@ IMMATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.days).to_s,
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
@@ -248,104 +270,104 @@ IMMATURE_ARRAY = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
-    'createdAt' => (Time.parse(ENV['NOW_DATE']) - 5.days).to_s,
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 5.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } }
 ].freeze
 
 LARGE_IMMATURE_ARRAY = [
-    { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
-      'title' => 'Results by cookie',
-      'body' =>
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-      'url' => 'https://github.com/peek/peek/pull/79',
-      'createdAt' => (Time.parse(ENV['NOW_DATE']) - 1.days).to_s,
-      'labels' => { 'edges' => [] },
-      'repository' => { 'databaseId' => 123 } },
-    { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
-      'title' => 'Results by localstorage',
-      'body' =>
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-      'url' => 'https://github.com/peek/peek/pull/79',
-      'createdAt' => (Time.parse(ENV['NOW_DATE']) - 2.days).to_s,
-      'labels' => { 'edges' => [] },
-      'repository' => { 'databaseId' => 123 } },
-    { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
-      'title' => 'Update README.md',
-      'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-      'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-      'createdAt' => (Time.parse(ENV['NOW_DATE']) - 3.days).to_s,
-      'labels' => { 'edges' => [] },
-      'repository' => { 'databaseId' => 123 } },
-    { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
-      'title' => 'Add natural layer',
-      'body' =>
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-      'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-      'createdAt' => (Time.parse(ENV['NOW_DATE']) - 4.days).to_s,
-      'labels' => { 'edges' => [] },
-      'repository' => { 'databaseId' => 123 } },
-    { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
-      'title' => 'Coercion type systems',
-      'body' =>
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-      'url' => 'https://github.com/intridea/hashie/pull/379',
-      'createdAt' => (Time.parse(ENV['NOW_DATE']) - 5.days).to_s,
-      'labels' => { 'edges' => [] },
-      'repository' => { 'databaseId' => 123 } },
-    { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQB1bG=',
-      'title' => 'Timeline Feature',
-      'body' =>
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-      'url' => 'https://github.com/intridea/hashie/pull/546',
-      'createdAt' => (Time.parse(ENV['NOW_DATE']) - 6.days).to_s,
-      'labels' => { 'edges' => [] },
-      'repository' => { 'databaseId' => 123 } }
+  { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
+    'title' => 'Results by cookie',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/peek/peek/pull/79',
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 1.day).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
+    'title' => 'Results by localstorage',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/peek/peek/pull/79',
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 2.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
+    'title' => 'Update README.md',
+    'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 3.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
+    'title' => 'Add natural layer',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
+    'title' => 'Coercion type systems',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/intridea/hashie/pull/379',
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 5.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQB1bG=',
+    'title' => 'Timeline Feature',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/intridea/hashie/pull/546',
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 6.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } }
 ].freeze
 
 # 4 pull requests with timestamps less than 7 days before the end
 LATE_ARRAY = [
-    { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
-      'title' => 'Results by cookie',
-      'body' =>
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-      'url' => 'https://github.com/peek/peek/pull/79',
-      'createdAt' => (Time.parse(ENV['END_DATE']) - 2.days).to_s,
-      'labels' => { 'edges' => [] },
-      'repository' => { 'databaseId' => 123 } },
-    { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
-      'title' => 'Update README.md',
-      'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-      'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-      'createdAt' => (Time.parse(ENV['END_DATE']) - 3.days).to_s,
-      'labels' => { 'edges' => [] },
-      'repository' => { 'databaseId' => 123 } },
-    { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
-      'title' => 'Add natural layer',
-      'body' =>
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-      'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-      'createdAt' => (Time.parse(ENV['END_DATE']) - 4.days).to_s,
-      'labels' => { 'edges' => [] },
-      'repository' => { 'databaseId' => 123 } },
-    { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
-      'title' => 'Coercion type systems',
-      'body' =>
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-      'url' => 'https://github.com/intridea/hashie/pull/379',
-      'createdAt' => (Time.parse(ENV['END_DATE']) - 5.days).to_s,
-      'labels' => { 'edges' => [] },
-      'repository' => { 'databaseId' => 123 } }
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
+    'title' => 'Results by cookie',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/peek/peek/pull/79',
+    'createdAt' => (Time.zone.parse(ENV['END_DATE']) - 2.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
+    'title' => 'Update README.md',
+    'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
+    'createdAt' => (Time.zone.parse(ENV['END_DATE']) - 3.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
+    'title' => 'Add natural layer',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
+    'createdAt' => (Time.zone.parse(ENV['END_DATE']) - 4.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } },
+  { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
+    'title' => 'Coercion type systems',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/intridea/hashie/pull/379',
+    'createdAt' => (Time.zone.parse(ENV['END_DATE']) - 5.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 } }
 ].freeze
 
 MIXED_MATURITY_ARRAY = IMMATURE_ARRAY[0..1] + MATURE_ARRAY[2..3]
@@ -373,7 +395,9 @@ module PullRequestFilterHelper
 
   def pr_stub_helper(target, pr_data)
     PullRequest.delete_all
-    allow(target.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(pr_data))
+    allow(target.send(:pull_request_service))
+      .to receive(:github_pull_requests)
+      .and_return(pull_request_data(pr_data))
   end
 
   class << self

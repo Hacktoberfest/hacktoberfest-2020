@@ -34,6 +34,12 @@ class PullRequestService
     end
   end
 
+  def scoring_pull_requests_receipt
+    scoring_pull_requests.map do |pr|
+      pr.github_pull_request.graphql_hash
+    end
+  end
+
   def non_scoring_pull_requests
     all.drop(scoring_pull_requests.count)
   end

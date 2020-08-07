@@ -19,19 +19,21 @@ class PullRequest < ApplicationRecord
 
     event :eligible do
       transition %i[new waiting] => :eligible,
-                 if: ->(pr) { !pr.spammy? && !pr.labelled_invalid? && pr.older_than_week? }
+                 if: ->(pr) { !pr.spammy_or_invalid? && pr.older_than_week? }
     end
 
     event :waiting do
       transition %i[new spam_repo invalid_label] => :waiting,
-                 if: ->(pr) { !pr.spammy? && !pr.labelled_invalid? && !pr.older_than_week? }
+                 if: ->(pr) { !pr.spammy_or_invalid? && !pr.older_than_week? }
     end
 
-    before_transition to: %i[waiting], from: %i[new] do |pr, _transition|
+    before_transition to: %i[waiting],
+                      from: %i[new] do |pr, _transition|
       pr.waiting_since = pr.created_at
     end
 
-    before_transition to: %i[waiting], from: %i[spam_repo invalid_label] do |pr, _transition|
+    before_transition to: %i[waiting],
+                      from: %i[spam_repo invalid_label] do |pr, _transition|
       pr.waiting_since = Time.zone.now
     end
   end
@@ -40,11 +42,13 @@ class PullRequest < ApplicationRecord
     return if spam_repo
     return if invalid_label
     return if eligible
+
     waiting
   end
 
   def most_recent_time
     return waiting_since unless waiting_since.nil?
+
     github_pull_request.created_at
   end
 
@@ -55,24 +59,28 @@ class PullRequest < ApplicationRecord
   def labelled_invalid?
     return false if merged?
 
-    label_names.select{ |l| l[/\binvalid\b/i] }.any?
+    label_names.select { |l| l[/\binvalid\b/i] }.any?
   end
 
   def spammy?
     SpamRepositoryService.call(repo_id)
   end
 
+  def spammy_or_invalid?
+    labelled_invalid? || spammy?
+  end
+
   def github_id
     github_pull_request.id
   end
 
-  def set_github_pull_request(ghpr)
+  def define_github_pull_request(ghpr)
     @github_pull_request = ghpr
   end
 
   def self.from_github_pull_request(ghpr)
-    pr = self.find_or_create_by(gh_id: ghpr.id)
-    pr.set_github_pull_request(ghpr)
+    pr = find_or_create_by(gh_id: ghpr.id)
+    pr.define_github_pull_request(ghpr)
     pr.check_state
     pr
   end

@@ -138,7 +138,7 @@ RSpec.describe User, type: :model do
 
       it 'adds the correct errors to the user' do
         expect(user.errors.messages[:state].first)
-            .to include('cannot transition via "wait"')
+          .to include('cannot transition via "wait"')
       end
     end
   end
@@ -167,7 +167,7 @@ RSpec.describe User, type: :model do
       it 'persists a receipt of the scoring prs' do
         user.reload
         expect(user.receipt)
-          .to eq(JSON.parse(user.scoring_pull_requests.map { |pr| pr.github_pull_request.graphql_hash }.to_json))
+          .to eq(JSON.parse(user.scoring_pull_requests_receipt.to_json))
       end
     end
 
@@ -203,28 +203,9 @@ RSpec.describe User, type: :model do
 
       it 'adds the correct errors to user' do
         expect(user.errors.messages[:state].first)
-            .to include('cannot transition via "complete"')
+          .to include('cannot transition via "complete"')
       end
     end
-
-    # context 'user has been waiting for 7 days & has less than 4 eligible prs' do
-    #   before do
-    #     allow(user).to receive(:eligible_pull_requests_count).and_return(3)
-    #     allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
-    #     expect(UserStateTransitionSegmentService).to_not receive(:call)
-    #
-    #     user.complete
-    #   end
-    #
-    #   it 'disallows the user to enter the completed state' do
-    #     expect(user.state).to eq('waiting')
-    #   end
-    #
-    #   it 'adds the correct errors to user' do
-    #     expect(user.errors.messages[:won_hacktoberfest?].first)
-    #       .to include('user has not met all winning conditions')
-    #   end
-    # end
 
     context 'the user neither 4 eligible PRs nor has been waiting for 7 days' do
       before do
@@ -240,7 +221,7 @@ RSpec.describe User, type: :model do
 
       it 'adds the correct errors to user' do
         expect(user.errors.messages[:state].first)
-            .to include('cannot transition via "complete"')
+          .to include('cannot transition via "complete"')
       end
     end
   end
@@ -269,7 +250,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#retry_complete' do
-    before { travel_to Time.parse(ENV['END_DATE']) + 1.day }
+    before { travel_to Time.zone.parse(ENV['END_DATE']) + 1.day }
     let(:user) { FactoryBot.create(:user, :incompleted) }
 
     context 'the user has 4 eligible PRs and has been waiting for 7 days' do
@@ -293,7 +274,7 @@ RSpec.describe User, type: :model do
       it 'persists a receipt of the scoring prs' do
         user.reload
         expect(user.receipt)
-          .to eq(JSON.parse(user.scoring_pull_requests.map { |pr| pr.github_pull_request.graphql_hash }.to_json))
+          .to eq(JSON.parse(user.scoring_pull_requests_receipt.to_json))
       end
     end
 
@@ -347,7 +328,7 @@ RSpec.describe User, type: :model do
 
       it 'adds the correct errors to user' do
         expect(user.errors.messages[:sufficient_eligible_prs?].first)
-            .to include('user does not have sufficient eligible prs')
+          .to include('user does not have sufficient eligible prs')
       end
     end
 
@@ -412,7 +393,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'hacktoberfest has ended' do
-      before { travel_to Time.parse(ENV['END_DATE']) + 8.days }
+      before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
       context 'user has insufficient eligible prs' do
         let(:user) { FactoryBot.create(:user) }
@@ -436,7 +417,7 @@ RSpec.describe User, type: :model do
         it 'persists a receipt of the scoring prs' do
           user.reload
           expect(user.receipt)
-            .to eq(JSON.parse(user.scoring_pull_requests.map { |pr| pr.github_pull_request.graphql_hash }.to_json))
+            .to eq(JSON.parse(user.scoring_pull_requests_receipt.to_json))
         end
       end
 
@@ -488,7 +469,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'the user is in the incompleted state' do
-      before { travel_to Time.parse(ENV['END_DATE']) + 8.days }
+      before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
       let(:user) { FactoryBot.create(:user, :incompleted) }
 
       context 'there are shirt coupons available' do
