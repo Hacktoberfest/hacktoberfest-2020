@@ -9,18 +9,11 @@ RSpec.describe TryUserTransitionFromWaitingService do
     before do
       allow(UserStateTransitionSegmentService).to receive(:call)
       allow(UserPullRequestSegmentUpdaterService).to receive(:call)
-
-      prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
-        PullRequest.from_github_pull_request(pr)
-      end
-
-      allow(user).to receive(:scoring_pull_requests).and_return(prs)
     end
 
     context 'The user has enough eligible PRs & has been waiting 7+ days' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
-        #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+        pr_stub_helper(user, PR_DATA[:mature_array])
         TryUserTransitionFromWaitingService.call(user)
       end
 
@@ -31,9 +24,7 @@ RSpec.describe TryUserTransitionFromWaitingService do
 
     context 'The user has dropped below 4 waiting prs' do
       before do
-        allow(user).to receive(:waiting_pull_requests_count).and_return(3)
-        allow(user).to receive(:eligible_pull_requests_count).and_return(0)
-
+        pr_stub_helper(user, PR_DATA[:immature_array][0...3])
         TryUserTransitionFromWaitingService.call(user)
       end
 
@@ -44,9 +35,7 @@ RSpec.describe TryUserTransitionFromWaitingService do
 
     context 'The user needs to continue waiting' do
       before do
-        allow(user).to receive(:waiting_pull_requests_count).and_return(1)
-        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
-        #allow(user).to receive(:waiting_since).and_return(Time.zone.today - 3)
+        pr_stub_helper(user, PR_DATA[:mixed_maturity_array])
         TryUserTransitionFromWaitingService.call(user)
       end
 

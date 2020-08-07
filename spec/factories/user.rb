@@ -22,7 +22,7 @@ FactoryBot.define do
       state { 'waiting' }
 
       after :build do |user|
-        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(PullRequestFilterHelper.pull_request_data(PR_DATA[:immature_array]))
+        PullRequestFilterHelper.pr_stub_helper(user, PR_DATA[:immature_array])
       end
     end
 
@@ -33,7 +33,7 @@ FactoryBot.define do
       receipt { { "test": 'test' }.to_json }
 
       after :build do |user|
-        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(PullRequestFilterHelper.pull_request_data(PR_DATA[:mature_array]))
+        PullRequestFilterHelper.pr_stub_helper(user, PR_DATA[:mature_array])
       end
     end
 
@@ -42,7 +42,7 @@ FactoryBot.define do
       receipt { { "test": 'test' }.to_json }
 
       after :build do |user|
-        allow(user.send(:pull_request_service)).to receive(:github_pull_requests).and_return(PullRequestFilterHelper.pull_request_data(PR_DATA[:mature_array][0...3]))
+        PullRequestFilterHelper.pr_stub_helper(user, PR_DATA[:mature_array][0...3])
       end
     end
 

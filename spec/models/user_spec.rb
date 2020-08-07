@@ -565,9 +565,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-  def pr_stub_helper(target, pr_data)
-    PullRequest.delete_all
-    allow(target.send(:pull_request_service)).to receive(:github_pull_requests).and_return(pull_request_data(pr_data))
-  end
 end
