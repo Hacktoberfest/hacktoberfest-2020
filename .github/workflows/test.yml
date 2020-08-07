@@ -30,6 +30,8 @@ jobs:
       AIRTABLE_APP_ID: ${{ secrets.AIRTABLE_APP_ID }}
       AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
       SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
 
     steps:
     - uses: actions/checkout@v1

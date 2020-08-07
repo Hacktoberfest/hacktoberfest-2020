@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GithubPullRequest
+  attr_accessor :graphql_hash
+
   def initialize(hash)
     @graphql_hash = hash
   end

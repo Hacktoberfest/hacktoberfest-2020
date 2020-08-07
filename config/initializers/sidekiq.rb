@@ -10,7 +10,10 @@ if (redis_url = ENV.fetch('HACKTOBERFEST_REDIS_URL', nil))
     url: redis_url,
     password: ENV.fetch('HACKTOBERFEST_REDIS_PASSWORD', nil)
   }
+elsif (redis_url = ENV.fetch('REDIS_HOST', nil))
+  REDIS_LOCAL = { url:  "redis://#{redis_url}:#{ENV['REDIS_PORT']}/12" }
 end
+
 # rubocop:enable Style/MutableConstant
 
 # Custom Error message reporting a job death to airbrake
@@ -28,46 +31,11 @@ module Sidekiq
 end
 
 Sidekiq.configure_server do |config|
-  config.redis = REDIS_CONFIG if defined?(REDIS_CONFIG)
-
-  # https://github.com/mperham/sidekiq/wiki/Reliability#using-super_fetch
-  config.super_fetch!
-
-  # Periodic job setup
-  # See: https://github.com/mperham/sidekiq/wiki/Ent-Periodic-Jobs
-  config.periodic do |mgr|
-    # Every hour
-    mgr.register(
-      '0 */2 * * *',
-      TransitionAllUsersJob,
-      retry: 3,
-      queue: :critical
-    )
-    # Every day at 3AM
-    mgr.register('0 3 * * *', UpdateAllIssuesJob, retry: 3, queue: :critical)
-    # Every day at 5AM
-    mgr.register(
-      '0 5 * * *',
-      UpdateAllIssuesQualityJob,
-      retry: 3,
-      queue: :default
-    )
-    # Every hour. 1 hour max latency when updating banned repos in airtable
-    mgr.register(
-      '0 * * * *',
-      BanAllReposJob,
-      retry: 3,
-      queue: :default
-    )
-
-    # Every 15 minutes
-    mgr.register(
-      '*/15 * * * *',
-      FetchSpamRepositoriesJob,
-      retry: 3,
-      queue: :default
-    )
-  end
+  config.redis = if defined?(REDIS_CONFIG)
+                   REDIS_CONFIG
+                 elsif defined?(REDIS_LOCAL)
+                   REDIS_LOCAL
+                 end
 
   config.death_handlers << lambda { |job, ex|
     error = Sidekiq::JobDeathError.new(job, ex)
@@ -78,5 +46,9 @@ Sidekiq.configure_server do |config|
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = REDIS_CONFIG if defined?(REDIS_CONFIG)
+  config.redis = if defined?(REDIS_CONFIG)
+                   REDIS_CONFIG
+                 elsif defined?(REDIS_LOCAL)
+                   REDIS_LOCAL
+                 end
 end

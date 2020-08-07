@@ -2,3 +2,30 @@
   - ["critical", 3]
   - ["default", 2]
   - ["bulk", 1]
+
+:schedule:
+  :transition_all_users:
+    cron: '0 */2 * * * America/New_York'
+    class: TransitionAllUsersJob
+    queue: critical
+    description: 'This job transitions users every two hours'
+  :update_all_issues:
+    cron: '0 3 * * * America/New_York'
+    class: UpdateAllIssuesJob
+    queue: critical
+    description: 'This job updates all issues every day at 3AM'
+  :update_all_issues_quality:
+    cron: '0 5 * * * America/New_York'
+    class: UpdateAllIssuesQualityJob
+    queue: default
+    description: 'This job updates issues for quality standards every day at 5AM'
+  :ban_all_repos:
+    every: ['1h']
+    class: BanAllReposJob
+    queue: default
+    description: 'Ban repos every hour'
+  :fetch_spam_repositories:
+    cron: '*/15 * * * * America/New_York'
+    class: FetchSpamRepositoriesJob
+    queue: default
+    description: 'Updates spam repos every 15 minutes'
