@@ -11,7 +11,7 @@ RSpec.describe PullRequest, type: :model do
         expect(pr.labelled_invalid?).to eq(true)
       end
 
-      context "Pull request is merged" do
+      context 'Pull request is merged' do
         let(:pr) { pr_helper(ELIGIBLE_INVALID_MERGED_PR) }
 
         it 'is not considered labelled invalid' do
@@ -38,7 +38,7 @@ RSpec.describe PullRequest, type: :model do
   end
 
   describe '#spam_repo' do
-    # TODO -- need to stub SpamRepositoryService
+    # TODO: need to stub SpamRepositoryService
     # PR is in spam repo initially
     # PR is waiting, then becomes in spam repo
     # PR is eligible, then becomes in spam repo
@@ -62,7 +62,7 @@ RSpec.describe PullRequest, type: :model do
 
       context 'Pull request becomes labelled invalid' do
         before do
-          stub_helper(pr, INVALID_LABEL_PR, { 'id' => pr.github_id })
+          stub_helper(pr, INVALID_LABEL_PR, 'id' => pr.github_id)
           pr.check_state
         end
 
@@ -94,7 +94,7 @@ RSpec.describe PullRequest, type: :model do
 
       context 'Pull request becomes labelled invalid' do
         before do
-          stub_helper(pr, INVALID_LABEL_PR, { 'id' => pr.github_id })
+          stub_helper(pr, INVALID_LABEL_PR, 'id' => pr.github_id)
           pr.check_state
         end
 
@@ -106,7 +106,7 @@ RSpec.describe PullRequest, type: :model do
   end
 
   describe '#waiting' do
-    context "Pull request is valid and created less than seven days ago" do
+    context 'Pull request is valid and created less than seven days ago' do
       let(:pr) { pr_helper(IMMATURE_PR) }
 
       it 'is put it in the waiting state' do
@@ -118,11 +118,11 @@ RSpec.describe PullRequest, type: :model do
       end
     end
 
-    context "Pull request is in an invalid repo initially" do
-      # TODO -- need to stub SpamRepositoryService
+    context 'Pull request is in an invalid repo initially' do
+      # TODO: need to stub SpamRepositoryService
     end
 
-    context "Pull request is labelled invalid initially" do
+    context 'Pull request is labelled invalid initially' do
       let(:pr) { pr_helper(INVALID_LABEL_PR) }
 
       it 'is in the invalid_label state initially' do
@@ -137,7 +137,7 @@ RSpec.describe PullRequest, type: :model do
         before do
           freeze_time
 
-          stub_helper(pr, IMMATURE_PR, { 'id' => pr.github_id })
+          stub_helper(pr, IMMATURE_PR, 'id' => pr.github_id)
           pr.check_state
         end
 
@@ -154,7 +154,7 @@ RSpec.describe PullRequest, type: :model do
       end
     end
 
-    context "Pull request is labelled invalid initially" do
+    context 'Pull request is labelled invalid initially' do
       let(:pr) { pr_helper(INVALID_LABEL_PR) }
 
       it 'is in the invalid_label state initially' do
@@ -169,8 +169,7 @@ RSpec.describe PullRequest, type: :model do
         before do
           freeze_time
 
-          stub_helper(pr, IMMATURE_INVALID_MERGED_PR,
-                      { 'id' => pr.github_id })
+          stub_helper(pr, IMMATURE_INVALID_MERGED_PR, 'id' => pr.github_id)
           pr.check_state
         end
 
@@ -189,7 +188,7 @@ RSpec.describe PullRequest, type: :model do
   end
 
   describe '#eligible' do
-    context "Pull request is valid and created over seven days ago" do
+    context 'Pull request is valid and created over seven days ago' do
       let(:pr) { pr_helper(ELIGIBLE_PR) }
 
       it 'is put it in the eligible state' do
@@ -197,7 +196,7 @@ RSpec.describe PullRequest, type: :model do
       end
     end
 
-    context "Pull request is valid and created less than seven days ago" do
+    context 'Pull request is valid and created less than seven days ago' do
       let(:pr) { pr_helper(IMMATURE_PR) }
 
       it 'is put it in the waiting state' do
@@ -208,7 +207,7 @@ RSpec.describe PullRequest, type: :model do
         expect(pr.waiting_since).to eq(pr.created_at)
       end
 
-      context "Seven days pass from pull request creation" do
+      context 'Seven days pass from pull request creation' do
         before do
           travel_to pr.waiting_since + 7.days
           pr.check_state
@@ -230,6 +229,6 @@ RSpec.describe PullRequest, type: :model do
 
   def stub_helper(target, hash, merge = {})
     allow(target).to receive(:github_pull_request)
-     .and_return(github_pull_request(hash.merge(merge)))
+      .and_return(github_pull_request(hash.merge(merge)))
   end
 end
