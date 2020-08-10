@@ -8,12 +8,12 @@ class PullRequest < ApplicationRecord
 
   state_machine initial: :new do
     event :spam_repo do
-      transition %i[new waiting eligible] => :spam_repo,
+      transition %i[new waiting] => :spam_repo,
                  if: ->(pr) { pr.spammy? }
     end
 
     event :invalid_label do
-      transition %i[new waiting eligible] => :invalid_label,
+      transition %i[new waiting] => :invalid_label,
                  if: ->(pr) { pr.labelled_invalid? }
     end
 
@@ -30,11 +30,13 @@ class PullRequest < ApplicationRecord
     before_transition to: %i[waiting],
                       from: %i[new] do |pr, _transition|
       pr.waiting_since = pr.created_at
+      pr.save!
     end
 
     before_transition to: %i[waiting],
                       from: %i[spam_repo invalid_label] do |pr, _transition|
       pr.waiting_since = Time.zone.now
+      pr.save!
     end
   end
 

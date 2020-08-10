@@ -86,28 +86,66 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'repository' => { 'databaseId' => 123 } }
 ].freeze
 
-# 5 pull requests with 3 valid dates & 2 invalid labels
-ARRAY_WITH_INVALID_LABEL = [
-  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
+INVALID_EMOJI_LABEL_PR = {
+    'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
     'title' => 'Results by cookie',
     'body' =>
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 8.days).to_s,
     # Invalid label should make it invalid
     'labels' => { 'edges' => [{ 'node': { 'name': '❌ Invalid' } }] },
-    'repository' => { 'databaseId' => 123 } },
-  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
+    'repository' => { 'databaseId' => 123 }
+}.freeze
+
+INVALID_LABEL_PR = {
+    'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
+    'title' => 'Coercion type systems',
+    'body' =>
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/intridea/hashie/pull/379',
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 11.days).to_s,
+    # Invalid label should make it invalid
+    'labels' => { 'edges' => [{ 'node': { 'name': 'Invalid' } }] },
+    'repository' => { 'databaseId' => 123 }
+}.freeze
+
+ELIGIBLE_PR = {
+    'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
-    'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'body' =>
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 9.days).to_s,
     'labels' => { 'edges' => [] },
-    'repository' => { 'databaseId' => 123 } },
+    'repository' => { 'databaseId' => 123 }
+}.freeze
+
+ELIGIBLE_INVALID_MERGED_PR = {
+    'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
+    'title' => 'Add natural layer',
+    'body' =>
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 10.days).to_s,
+    # Invalid label should make it invalid
+    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
+    # Merged should override the invalid label and make it valid
+    'merged' => true,
+    'repository' => { 'databaseId' => 123 }
+}.freeze
+
+# 5 pull requests with 3 valid dates & 2 invalid labels
+ARRAY_WITH_INVALID_LABEL = [
+  INVALID_EMOJI_LABEL_PR,
+  ELIGIBLE_PR,
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -118,17 +156,7 @@ ARRAY_WITH_INVALID_LABEL = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 10.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
-  { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
-    'title' => 'Coercion type systems',
-    'body' =>
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-    'url' => 'https://github.com/intridea/hashie/pull/379',
-    # This is valid, eligible
-    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 11.days).to_s,
-    # Invalid label should make it invalid
-    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
-    'repository' => { 'databaseId' => 123 } },
+  INVALID_LABEL_PR,
   { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Timeline Feature',
     'body' =>
@@ -213,18 +241,7 @@ MATURE_ARRAY = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 9.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
-  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
-    'title' => 'Add natural layer',
-    'body' =>
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-    'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
-    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 10.days).to_s,
-    # Invalid label should make it invalid
-    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
-    # Merged should override the invalid label and make it valid
-    'merged' => true,
-    'repository' => { 'databaseId' => 123 } },
+  ELIGIBLE_INVALID_MERGED_PR,
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -236,17 +253,36 @@ MATURE_ARRAY = [
     'repository' => { 'databaseId' => 123 } }
 ].freeze
 
-# 4 pull requests with timestamps less than 7 days old, maturing
-IMMATURE_ARRAY = [
-  { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
+IMMATURE_PR = {
+    'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
     'title' => 'Results by cookie',
     'body' =>
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 2.days).to_s,
     'labels' => { 'edges' => [] },
-    'repository' => { 'databaseId' => 123 } },
+    'repository' => { 'databaseId' => 123 }
+}.freeze
+
+IMMATURE_INVALID_MERGED_PR = {
+    'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
+    'title' => 'Add natural layer',
+    'body' =>
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 2.days).to_s,
+    # Invalid label should make it invalid
+    'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
+    # Merged should override the invalid label and make it valid
+    'merged' => true,
+    'repository' => { 'databaseId' => 123 }
+}.freeze
+
+# 4 pull requests with timestamps less than 7 days old, maturing
+IMMATURE_ARRAY = [
+    IMMATURE_PR,
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -389,8 +425,12 @@ module PullRequestFilterHelper
 
   def pull_request_data(pr_array)
     pr_array.map do |hash|
-      GithubPullRequest.new(Hashie::Mash.new(hash))
+      github_pull_request(hash)
     end
+  end
+
+  def github_pull_request(hash)
+    GithubPullRequest.new(Hashie::Mash.new(hash))
   end
 
   def pr_stub_helper(target, pr_data)
