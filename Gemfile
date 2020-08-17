@@ -28,8 +28,8 @@ gem 'loofah', '>= 2.3.1'
 # See: https://github.com/sirupsen/airrecord/issues/63
 gem 'net-http-persistent', '~> 2.9'
 
-gem 'octokit'
-gem 'omniauth-github'
+gem 'octokit', '~> 4.18.0'
+gem 'omniauth-github', '~> 1.4.0'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 
 gem 'puma', '~> 4.0'
