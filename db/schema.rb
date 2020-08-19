@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_174753) do
+ActiveRecord::Schema.define(version: 2020_08_18_205011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 2020_07_30_174753) do
     t.boolean "marketing_emails", default: false
     t.string "state"
     t.jsonb "receipt"
+    t.string "last_error"
+    t.string "state_before_inactive"
   end
 
 end

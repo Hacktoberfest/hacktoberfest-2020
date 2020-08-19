@@ -47,6 +47,10 @@ class User < ApplicationRecord
       transition incompleted: :completed
     end
 
+    event :deactivate do
+      transition all => :inactive
+    end
+
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
@@ -60,7 +64,7 @@ class User < ApplicationRecord
       validates :sticker_coupon, absence: true
     end
 
-    state all - %i[new registered waiting] do
+    state all - %i[new registered waiting inactive] do
       validates :receipt, presence: true
     end
 
@@ -107,6 +111,16 @@ class User < ApplicationRecord
       end
     end
 
+    state :inactive do
+      validates :last_error, inclusion: {
+        in: ['GithubPullRequestService::UserNotFoundOnGithubError',
+             'Octokit::AccountSuspended'],
+        message: "user's last_error must be
+          UserNotFoundOnGithubError or AccountSuspended" }
+
+      validates :state_before_inactive, presence: true
+    end
+
     state :gifted_sticker do
       validates :sticker_coupon, presence: true
     end
@@ -117,6 +131,10 @@ class User < ApplicationRecord
 
     after_transition do |user, transition|
       UserStateTransitionSegmentService.call(user, transition)
+    end
+
+    before_transition to: :inactive do |user, transition|
+      user.update_state_before_inactive(transition)
     end
 
     before_transition to: %i[completed incompleted] do |user, _transition|
@@ -177,6 +195,10 @@ class User < ApplicationRecord
 
   def hacktoberfest_ended?
     Hacktoberfest.end_date.past?
+  end
+
+  def update_state_before_inactive(transition)
+    self.state_before_inactive = transition.from
   end
 
   def completed_or_won?

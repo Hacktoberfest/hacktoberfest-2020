@@ -48,6 +48,8 @@ class GithubPullRequestService
 
     if response['errors']
       if response['errors'][0]['type'] == 'NOT_FOUND'
+        error = UserNotFoundOnGithubError
+        GithubErrorHandler.with_error_handling(@user, error)
         raise UserNotFoundOnGithubError
       end
     end
