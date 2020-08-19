@@ -37,8 +37,9 @@ class ProfilePagePresenter
 
   def persisted_winning_pull_requests
     @user.receipt.map do |pr|
-      github_hash = Hashie::Mash.new(pr).github_pull_request.graphql_hash
-      PullRequest.new(GithubPullRequest.new(github_hash))
+      PullRequest.from_github_pull_request(
+        GithubPullRequest.new(Hashie::Mash.new(pr))
+      )
     end
   end
 
@@ -60,10 +61,6 @@ class ProfilePagePresenter
 
   def name
     @user.name
-  end
-
-  def waiting_since_for_js
-    @user.waiting_since&.httpdate
   end
 
   def show_timer?

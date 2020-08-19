@@ -1,0 +1,26 @@
+<tr>
+  <td class="icon-block">
+    <%= render partial: 'users/show/pr/icon', locals: { pr: pr } %>
+  </td>
+  <td>
+    <div>
+      <div class="timeline-date">
+        <%= render partial: 'users/show/pr/icon', locals: { pr: pr } %>
+        <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
+      </div>
+      <h4 class="title is-4">
+        You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
+      </h4>
+      <% if pr.waiting? %>
+        <p id="<%= pr.github_id %>-waiting-date"><%= pr.waiting_since.to_formatted_s(:long) %></p>
+      <% end %>
+    </div>
+  </td>
+</tr>
+
+<script type="text/javascript">
+    countdownTimers(
+        document.getElementById('<%= pr.github_id %>-waiting-date'),
+        "<%= pr.waiting_since&.httpdate %>",
+    );
+</script>

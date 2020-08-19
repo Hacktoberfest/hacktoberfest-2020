@@ -8,12 +8,6 @@ RSpec.describe PullRequestService do
 
   before do
     allow(SpamRepositoryService).to receive(:call).and_return(false)
-
-    # stubbing these due to the later stubs with hard coded PR_DATA
-    allow(Hacktoberfest)
-      .to receive(:start_date).and_return(Date.parse('2019-10-01'))
-    allow(Hacktoberfest)
-      .to receive(:end_date).and_return(Date.parse('2019-11-01'))
   end
 
   describe '.new' do
@@ -122,6 +116,7 @@ RSpec.describe PullRequestService do
   end
 
   def stub_helper(arr_type)
+    PullRequest.delete_all
     allow(pr_service)
       .to receive(:github_pull_requests)
       .and_return(pull_request_data(arr_type))

@@ -9,19 +9,11 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
     before do
       allow(UserStateTransitionSegmentService).to receive(:call)
       allow(UserPullRequestSegmentUpdaterService).to receive(:call)
-
-      # needed for receipt presence validation to pass
-      # and for waiting_since calculation
-      prs = pull_request_data(PR_DATA[:mature_array]).map do |pr|
-        PullRequest.new(pr)
-      end
-
-      allow(user).to receive(:scoring_pull_requests).and_return(prs)
     end
 
     context 'The user has enough PRs to transition' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        pr_stub_helper(user, PR_DATA[:immature_array])
         TryUserTransitionFromRegisteredService.call(user)
       end
 
@@ -32,7 +24,7 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
 
     context 'The user has insufficient PRs to transition' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
+        pr_stub_helper(user, PR_DATA[:immature_array][0...3])
         TryUserTransitionFromRegisteredService.call(user)
       end
 
@@ -43,15 +35,16 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
 
     context 'The user has insufficient PRs and Hacktoberfest has ended' do
       before do
-        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
-        allow(user).to receive(:hacktoberfest_ended?).and_return(true)
-
+        travel_to Time.zone.parse(ENV['END_DATE']) + 1.day
+        pr_stub_helper(user, PR_DATA[:mature_array][0...3])
         TryUserTransitionFromRegisteredService.call(user)
       end
 
       it 'transitions the user to the incompleted state' do
         expect(user.state).to eq('incompleted')
       end
+
+      after { travel_back }
     end
   end
 end

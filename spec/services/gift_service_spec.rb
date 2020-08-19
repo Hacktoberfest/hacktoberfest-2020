@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe GiftService do
   describe '.call' do
     context 'Users in the incompleted state' do
+      before { travel_to Time.zone.parse(ENV['END_DATE']) + 1.day }
+
       let(:user_with_early_receipt_2prs) do
         FactoryBot.create(:user, :incompleted)
       end
@@ -91,6 +93,8 @@ RSpec.describe GiftService do
             .to be_a(StickerCoupon)
         end
       end
+
+      after { travel_back }
     end
   end
 end

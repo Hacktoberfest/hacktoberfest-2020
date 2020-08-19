@@ -26,4 +26,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
 
   config.active_support.deprecation = :stderr
+
+  config.log_level = :warn
+
+  config.active_record.verbose_query_logs = false
 end

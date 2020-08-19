@@ -10,10 +10,10 @@ module GiftService
       group.each do |u|
         last_pr = u.receipt.max_by do |pr_obj|
           Time.zone.parse(
-            pr_obj['github_pull_request']['graphql_hash']['createdAt']
+            pr_obj['createdAt']
           )
         end
-        date = last_pr['github_pull_request']['graphql_hash']['createdAt']
+        date = last_pr['createdAt']
         score = u.receipt.count
         user_dates << { id: u.id, score: score, date: date }
       end

@@ -4,6 +4,6 @@ module BackfillReceiptService
   module_function
 
   def call(user)
-    user.update(receipt: user.scoring_pull_requests)
+    user.update(receipt: user.scoring_pull_requests_receipt)
   end
 end

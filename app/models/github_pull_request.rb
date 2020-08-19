@@ -31,6 +31,10 @@ class GithubPullRequest
     @graphql_hash.createdAt
   end
 
+  def merged?
+    @graphql_hash.merged
+  end
+
   def label_names
     @graphql_hash.labels.edges.map do |e|
       e.node.name.downcase

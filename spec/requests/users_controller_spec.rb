@@ -11,7 +11,6 @@ end
 
 RSpec.describe UsersController, type: :request do
   let(:user) { FactoryBot.create(:user) }
-  let(:pr_service) { PullRequestService.new(current_user) }
   let(:controller) { UsersController.new }
 
   before do
@@ -25,33 +24,15 @@ RSpec.describe UsersController, type: :request do
       allow_any_instance_of(SegmentService).to receive(:identify)
       allow_any_instance_of(SegmentService).to receive(:track)
 
-      allow(Hacktoberfest).to receive(:ended?).and_return(false)
-
       allow_any_instance_of(UserEmailService).to receive(:emails)
         .and_return(['test@mail.com'])
-
-      allow_any_instance_of(PullRequest).to receive(:spammy?).and_return(false)
 
       login
     end
 
     context 'waiting user has 4 eligible PRs & has been waiting for 7+ days' do
       before do
-        prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
-          PullRequest.new(pr)
-        end
-
-        allow_any_instance_of(User).to receive(:scoring_pull_requests)
-          .and_return(prs)
-        allow_any_instance_of(User).to receive(:non_scoring_pull_requests)
-          .and_return([])
-        allow_any_instance_of(User).to receive(:pull_requests)
-          .and_return(prs)
-        allow_any_instance_of(User).to receive(:waiting_since)
-          .and_return(Time.zone.today - 8)
-        allow_any_instance_of(User)
-          .to receive(:eligible_pull_requests_count).and_return(4)
-
+        stub_helper(PR_DATA[:mature_array])
         user.wait
         mock_authentication(uid: user.uid)
         login
@@ -64,14 +45,9 @@ RSpec.describe UsersController, type: :request do
       end
     end
 
-    context 'a user has more than 4 eligible pull requests' do
+    context 'a user has more than 4 waiting pull requests' do
       before do
-        prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
-          PullRequest.new(pr)
-        end
-
-        allow_any_instance_of(User).to receive(:pull_requests).and_return(prs)
-        allow_any_instance_of(User).to receive(:score).and_return(4)
+        stub_helper(PR_DATA[:large_immature_array])
       end
 
       include_examples 'tries transition'
@@ -82,23 +58,7 @@ RSpec.describe UsersController, type: :request do
         expect(response).to be_successful
       end
 
-      it 'only shows 4 valid pull requests', :vcr do
-        get profile_path
-        fifth_eligible_pr = PR_DATA[:valid_array].last
-        expect(response.body).to_not include(fifth_eligible_pr['title'])
-      end
-
       it 'transitions the user to the waiting state', :vcr do
-        allow_any_instance_of(User)
-          .to receive(:eligible_pull_requests_count).and_return(4)
-
-        prs = pull_request_data(PR_DATA[:valid_array]).map do |pr|
-          PullRequest.new(pr)
-        end
-
-        allow_any_instance_of(User)
-          .to receive(:scoring_pull_requests).and_return(prs)
-
         get profile_path
         user.reload
         expect(user.state).to eq('waiting')
@@ -107,8 +67,7 @@ RSpec.describe UsersController, type: :request do
 
     context 'a user has no pull_requests' do
       before do
-        allow_any_instance_of(User).to receive(:pull_requests).and_return([])
-        allow_any_instance_of(User).to receive(:score).and_return(0)
+        stub_helper([])
       end
 
       include_examples 'tries transition'
@@ -119,9 +78,6 @@ RSpec.describe UsersController, type: :request do
       end
 
       it 'keeps the user in the registered state', :vcr do
-        allow_any_instance_of(User)
-          .to receive(:eligible_pull_requests_count).and_return(0)
-
         get profile_path
         user.reload
         expect(user.state).to eq('registered')
@@ -130,12 +86,7 @@ RSpec.describe UsersController, type: :request do
 
     context 'a user has some eligible and invalid pull_requests' do
       before do
-        prs = pull_request_data(PR_DATA[:invalid_array]).map do |pr|
-          PullRequest.new(pr)
-        end
-        allow_any_instance_of(PullRequestService)
-          .to receive(:all).and_return(prs)
-        allow_any_instance_of(User).to receive(:score).and_return(3)
+        stub_helper(PR_DATA[:array_with_invalid_labels])
       end
 
       include_examples 'tries transition'
@@ -154,6 +105,7 @@ RSpec.describe UsersController, type: :request do
 
     context 'a new user' do
       let(:user) { FactoryBot.create(:user, :new) }
+
       context 'hacktoberfest is active' do
         it 'redirects to the start_path' do
           get profile_path
@@ -162,15 +114,22 @@ RSpec.describe UsersController, type: :request do
       end
 
       context 'hacktoberfest has ended' do
-        before do
-          allow(Hacktoberfest).to receive(:ended?).and_return(true)
-        end
+        before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
         it 'renders the the hacktoberfest ended page' do
           get profile_path
           expect(response.body).to include('Registrations are now closed.')
         end
+
+        after { travel_back }
       end
     end
+  end
+
+  def stub_helper(arr_type)
+    PullRequest.delete_all
+    allow_any_instance_of(PullRequestService)
+      .to receive(:github_pull_requests)
+      .and_return(pull_request_data(arr_type))
   end
 end

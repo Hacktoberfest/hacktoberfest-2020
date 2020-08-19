@@ -14,11 +14,18 @@ class User < ApplicationRecord
     end
 
     event :wait do
-      transition registered: :waiting
+      transition registered: :waiting,
+                 if: ->(user) { user.sufficient_waiting_or_eligible_prs? }
     end
 
     event :complete do
-      transition waiting: :completed
+      transition waiting: :completed,
+                 if: ->(user) { user.sufficient_eligible_prs? }
+    end
+
+    event :insufficient do
+      transition waiting: :registered,
+                 unless: ->(user) { user.sufficient_waiting_or_eligible_prs? }
     end
 
     event :won do
@@ -27,7 +34,8 @@ class User < ApplicationRecord
     end
 
     event :incomplete do
-      transition registered: :incompleted
+      transition registered: :incompleted,
+                 unless: ->(user) { user.any_waiting_or_is_eligible? }
     end
 
     event :gifted do
@@ -37,11 +45,6 @@ class User < ApplicationRecord
 
     event :retry_complete do
       transition incompleted: :completed
-    end
-
-    event :ineligible do
-      transition waiting: :registered,
-                 unless: ->(user) { user.sufficient_eligible_prs? }
     end
 
     state all - [:new] do
@@ -66,13 +69,15 @@ class User < ApplicationRecord
     end
 
     state :waiting do
-      validates :sufficient_eligible_prs?, inclusion: {
-        in: [true], message: 'user does not have sufficient eligible prs' }
+      validates :sufficient_waiting_or_eligible_prs?, inclusion: {
+        in: [true],
+        message: 'user does not have sufficient waiting or eligible prs' }
     end
 
     state :completed do
-      validates :won_hacktoberfest?, inclusion: {
-        in: [true], message: 'user has not met all winning conditions' }
+      validates :sufficient_eligible_prs?, inclusion: {
+        in: [true],
+        message: 'user does not have sufficient eligible prs' }
 
       def win
         assign_coupon
@@ -91,6 +96,8 @@ class User < ApplicationRecord
     state :incompleted do
       validates :hacktoberfest_ended?, inclusion: {
         in: [true], message: 'hacktoberfest has not yet ended' }
+      validates :any_waiting_prs?, inclusion: {
+        in: [false], message: 'user has waiting prs' }
       validates :sufficient_eligible_prs?, inclusion: {
         in: [false], message: 'user has too many sufficient eligible prs' }
 
@@ -113,10 +120,14 @@ class User < ApplicationRecord
     end
 
     before_transition to: %i[completed incompleted] do |user, _transition|
-      user.receipt = user.scoring_pull_requests
+      user.receipt = user.scoring_pull_requests_receipt
     end
 
-    after_transition to: :waiting, do: :update_waiting_since
+    after_transition to: :waiting do |user, _transition|
+      # Some users might be able to go direct to winning
+      #  if their PRs are already all a week old
+      user.complete
+    end
 
     after_transition to: :completed do |user, _transition|
       user.win
@@ -128,44 +139,44 @@ class User < ApplicationRecord
     pull_request_service.all
   end
 
-  def score
-    score = eligible_pull_requests_count
-    score > 4 ? 4 : score
+  def waiting_pull_requests_count
+    pull_request_service.waiting_prs.count
   end
 
   def eligible_pull_requests_count
     pull_request_service.eligible_prs.count
   end
 
-  delegate :scoring_pull_requests, :non_scoring_pull_requests,
-           to: :pull_request_service
+  def waiting_or_eligible_pull_requests_count
+    waiting_pull_requests_count + eligible_pull_requests_count
+  end
+
+  def sufficient_waiting_or_eligible_prs?
+    waiting_or_eligible_pull_requests_count >= 4
+  end
 
   def sufficient_eligible_prs?
     eligible_pull_requests_count >= 4
   end
 
-  def won_hacktoberfest?
-    sufficient_eligible_prs? && waiting_for_week?
+  def any_waiting_prs?
+    waiting_pull_requests_count.positive?
   end
+
+  def any_waiting_or_is_eligible?
+    any_waiting_prs? || sufficient_eligible_prs?
+  end
+
+  def score
+    score = waiting_or_eligible_pull_requests_count
+    score > 4 ? 4 : score
+  end
+
+  delegate :scoring_pull_requests, :non_scoring_pull_requests,
+           :scoring_pull_requests_receipt, to: :pull_request_service
 
   def hacktoberfest_ended?
     Hacktoberfest.end_date.past?
-  end
-
-  def update_waiting_since
-    latest_pr = scoring_pull_requests.max_by do |pr|
-      pr.github_pull_request.created_at
-    end
-
-    update(waiting_since: Time.zone.parse(
-      latest_pr.github_pull_request.created_at
-    ))
-  end
-
-  def waiting_for_week?
-    return false if waiting_since.nil?
-
-    waiting_since <= (Time.zone.now - 7.days)
   end
 
   def completed_or_won?

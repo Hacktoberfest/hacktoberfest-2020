@@ -162,7 +162,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.15.4
       Authorization:
-      - Basic 5l7s5rMYtOwhYCY00Srr3163ZFfGcyeT
+      - Basic <TEST_SEGMENT_WRITE_KEY>
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -192,4 +192,94 @@ http_interactions:
         }
     http_version: 
   recorded_at: Wed, 18 Sep 2019 15:49:24 GMT
+- request:
+    method: put
+    uri: https://api.airbrake.io/api/v5/projects/244344/routes-stats
+    body:
+      encoding: UTF-8
+      string: '{"routes":[{"method":"GET","route":"/boom(.:format)","statusCode":500,"time":"2020-08-05T20:10:00+00:00","count":2,"sum":8.1945,"sumsq":33.83562933,"tdigest":"AAAAAkA0AAAAAAAAAAAAAkBvHec/ONuMAQE="},{"method":"GET","route":"/auth/:provider/callback(.:format)","statusCode":302,"time":"2020-08-05T20:10:00+00:00","count":30,"sum":224.49130000000008,"sumsq":1887.8445024900002,"tdigest":"AAAAAkA0AAAAAAAAAAAAHkBjjVA/QoJBPNdzGTz6rNo8+dsjPgOVgT8MmF8++RaHPgYk3T41jiI/IHX3PNT99D4VTJg79cKPPU4HXz9kwvg9T0HyPZD/lz5Zzgc98AaOPcwvgz4JhfA9p++ePqb2lD8fQfJAFSOjPtVz6z4/fO4+l0vHPuDe0wEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ=="},{"method":"GET","route":"/profile(.:format)","statusCode":200,"time":"2020-08-05T20:10:00+00:00","count":22,"sum":10277.987900000002,"sumsq":7332194.609232931,"tdigest":"AAAAAkA0AAAAAAAAAAAAFkNdRbU/riTdP7FYED9dhE0+YCdSQBzJhkHTCj1AMOIZQXQS1z6mwic/1rhSPz8hLUKhdT9AOt+kQk2VMkAXXClDTniGQBVmz0PG8kQ/9tKJQ2rYUkBLdLwBAQEBAQEBAQEBAQEBAQEBAQEBAQEB"},{"method":"GET","route":"/profile(.:format)","statusCode":500,"time":"2020-08-05T20:10:00+00:00","count":4,"sum":540.8234,"sumsq":127106.88501484001,"tdigest":"AAAAAkA0AAAAAAAAAAAABEGRD8U/6GWVQ2XPq0BOTDABAQEB"}],"environment":"development"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - airbrake-ruby/4.6.0 Ruby/2.5.8
+      Authorization:
+      - Bearer 706287fc6c288d10169d2a8d38577941
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Origin,Content-Type,X-Requested-With
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,PUT,POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - X-RateLimit-Delay
+      Content-Type:
+      - application/json
+      X-Ratelimit-Delay:
+      - '8'
+      X-Ratelimit-Limit:
+      - '10000'
+      X-Ratelimit-Remaining:
+      - '9999'
+      Date:
+      - Wed, 05 Aug 2020 20:10:52 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 05 Aug 2020 20:10:52 GMT
+- request:
+    method: put
+    uri: https://api.airbrake.io/api/v5/projects/244344/routes-breakdowns
+    body:
+      encoding: UTF-8
+      string: '{"routes":[{"method":"GET","route":"/auth/:provider/callback(.:format)","responseType":"html","time":"2020-08-05T20:10:00+00:00","count":30,"sum":290.86199999999997,"sumsq":3059.4987730600005,"tdigest":"AAAAAkA0AAAAAAAAAAAAHkCwhlk/SvTxPYmgJz0DEm8+2802PwQYkz3B8hM7ZWBCPG801z6Nq58+JckdPhPdmD5fIS0+exW1PWdsiz8eKCQ8h/y5PwHyEz8LuYw+/J7tPwn1Wj8QNG48UbcXPnoPkT55WBA/byEtPK9PDj8G4us/rX2/P6C6xwEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ==","groups":{"db":{"count":30,"sum":39.60899985395372,"sumsq":63.533655595939585,"tdigest":"AAAAAkA0AAAAAAAAAAAADz8MCDI9dVmiPMVtYj5eGwo9gqmOPXO2Yj5x3mU9T0HsPZZSwj152yI9Jkw0PqvTwT5ZFoY97swFPzkWhwICAgICAgICAgICAgICAg=="}}},{"method":"GET","route":"/profile(.:format)","responseType":"html","time":"2020-08-05T20:10:00+00:00","count":26,"sum":10867.751299999998,"sumsq":7501084.613202449,"tdigest":"AAAAAkA0AAAAAAAAAAAAGkGdmF8/wscRQ0p7wD9jiGY/o/FBPj6rNj+U7ZE/7Zs9QbzvnkBKLQ4+0PJ8P+HhsUF6z0I/LvNNP39cKT8QW8BCpDtXQAUHyEJOapk/78uSQ08OIj+/AGlDxyeRP7If80NskxlAFzZ6AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQE=","groups":{"db":{"count":26,"sum":83.6636001477018,"sumsq":607.6307301112398,"tdigest":"AAAAAkA0AAAAAAAAAAAADT6ICdY7RJsOPoNG2z3ItDg+mbPRPseuFT73tKU/dEZyPyF1kD4XJGo/9jiIQBC+DkCyO80CAgICAgICAgICAgIC"},"view":{"count":22,"sum":9570.51699992735,"sumsq":6748767.3078613235,"tdigest":"AAAAAkA0AAAAAAAAAAAAC0MseR1BODRuQatlYEGM0iBAPW1dQgndL0KJv8xCE54bQ1ov2UPXxIVDSiYLAgICAgICAgICAgI="}}}],"environment":"development"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - airbrake-ruby/4.6.0 Ruby/2.5.8
+      Authorization:
+      - Bearer 706287fc6c288d10169d2a8d38577941
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Origin,Content-Type,X-Requested-With
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,PUT,POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - X-RateLimit-Delay
+      Content-Type:
+      - application/json
+      X-Ratelimit-Delay:
+      - '7'
+      X-Ratelimit-Limit:
+      - '10000'
+      X-Ratelimit-Remaining:
+      - '9998'
+      Date:
+      - Wed, 05 Aug 2020 20:10:53 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 05 Aug 2020 20:10:53 GMT
 recorded_with: VCR 5.0.0

@@ -15,10 +15,7 @@ describe ProfilePagePresenter do
   let(:incompleted_user_presenter) { ProfilePagePresenter.new(incomplete_user) }
 
   context 'Hacktoberfest is in pre launch' do
-    before do
-      allow(Hacktoberfest).to receive(:pre_launch?).and_return(true)
-      allow(Hacktoberfest).to receive(:ended?).and_return(false)
-    end
+    before { travel_to Time.zone.parse(ENV['START_DATE']) - 7.days }
 
     it 'displays the pre_launch partial' do
       expect(profile_presenter.display_pre_launch?).to eq(true)
@@ -35,14 +32,12 @@ describe ProfilePagePresenter do
     it 'does not display the waiting for prize partial' do
       expect(waiting_user_presenter.display_waiting_for_prize?).to eq(false)
     end
+
+    after { travel_back }
   end
 
   context 'Hacktoberfest has ended and the user has won' do
-    before do
-      allow(Hacktoberfest).to receive(:ended?).and_return(true)
-      allow(Hacktoberfest).to receive(:pre_launch?).and_return(false)
-      allow(shirt_winner).to receive(:won_hacktoberfest?).and_return(true)
-    end
+    before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
     it 'displays the coupons partial for a shirt winner' do
       expect(won_shirt_presenter.display_coupon?).to eq(true)
@@ -63,6 +58,8 @@ describe ProfilePagePresenter do
     it 'does not display the display the waiting for prize partial' do
       expect(waiting_user_presenter.display_waiting_for_prize?).to eq(false)
     end
+
+    after { travel_back }
   end
 
   context 'the user has won a shirt' do
@@ -78,13 +75,7 @@ describe ProfilePagePresenter do
   end
 
   context 'Hacktoberfest has ended the user is incomplete' do
-    before do
-      allow(Hacktoberfest).to receive(:end_date).and_return(Time.zone.today - 7)
-      allow(Hacktoberfest).to receive(:ended?).and_return(true)
-      allow(Hacktoberfest).to receive(:pre_launch?).and_return(false)
-      allow(incomplete_user).to receive(:hacktoberfest_ended?).and_return(true)
-      allow(incomplete_user).to receive(:won_hacktoberfest?).and_return(false)
-    end
+    before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
     it 'displays the thank you partial' do
       expect(incompleted_user_presenter.display_thank_you?).to eq(true)
@@ -101,5 +92,7 @@ describe ProfilePagePresenter do
     it 'does not display the pre_launch partial' do
       expect(incompleted_user_presenter.display_pre_launch?).to eq(false)
     end
+
+    after { travel_back }
   end
 end

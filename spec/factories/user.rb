@@ -20,10 +20,9 @@ FactoryBot.define do
 
     trait :waiting do
       state { 'waiting' }
-      waiting_since { Time.zone.today }
 
       after :build do |user|
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
+        PullRequestFilterHelper.pr_stub_helper(user, PR_DATA[:immature_array])
       end
     end
 
@@ -34,8 +33,7 @@ FactoryBot.define do
       receipt { { "test": 'test' }.to_json }
 
       after :build do |user|
-        allow(user).to receive(:eligible_pull_requests_count).and_return(4)
-        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+        PullRequestFilterHelper.pr_stub_helper(user, PR_DATA[:mature_array])
       end
     end
 
@@ -44,9 +42,10 @@ FactoryBot.define do
       receipt { { "test": 'test' }.to_json }
 
       after :build do |user|
-        allow(user).to receive(:hacktoberfest_ended?).and_return(true)
-        allow(user).to receive(:eligible_pull_requests_count).and_return(3)
-        allow(user).to receive(:waiting_since).and_return(Time.zone.today - 8)
+        PullRequestFilterHelper.pr_stub_helper(
+          user,
+          PR_DATA[:mature_array][0...3]
+        )
       end
     end
 

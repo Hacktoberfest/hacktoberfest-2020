@@ -4,13 +4,12 @@
 require 'spec_helper'
 require 'active_support/core_ext/numeric/time'
 
-ENV['RAILS_ENV'] ||= 'test'
-ENV['START_DATE'] = 2.weeks.ago.to_s
-ENV['END_DATE'] = 2.weeks.from_now.to_s
+ENV['RAILS_ENV'] = 'test'
+ENV['START_DATE'] = (Time.now.utc - 2.weeks).to_s
+ENV['NOW_DATE'] = Time.now.utc.to_s
+ENV['END_DATE'] = (Time.now.utc + 2.weeks).to_s
 
 require File.expand_path('../config/environment', __dir__)
-# Prevent database truncation if the environment is production
-abort('The Rails env is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'sidekiq/testing'
 
@@ -90,6 +89,7 @@ RSpec.configure do |config|
   #
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
+  config.include ActiveSupport::Testing::TimeHelpers
   config.include AuthenticationHelper
   config.include PullRequestFilterHelper
   config.include GraphqlClientHelper
