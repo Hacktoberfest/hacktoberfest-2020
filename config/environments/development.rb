@@ -9,7 +9,8 @@ Rails.application.configure do
 
   logger           = ActiveSupport::Logger.new(STDOUT)
   logger.formatter = config.log_formatter
-  config.logger    = ActiveSupport::TaggedLogging.new(logger)
+  #config.logger    = ActiveSupport::TaggedLogging.new(logger)
+  config.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
 
   config.log_level = :debug
 
