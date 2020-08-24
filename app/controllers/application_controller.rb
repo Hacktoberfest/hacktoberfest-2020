@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
     if Hacktoberfest.ended?
       render 'pages/hacktoberfest_ended'
     else
-      redirect_to start_path
+      redirect_to register_path
     end
   end
 
