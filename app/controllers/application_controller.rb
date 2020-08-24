@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :set_current_user
   rescue_from Faraday::ClientError, with: :api_error
   rescue_from Octokit::Unauthorized, with: :github_unauthorized_error
-  rescue_from Octokit::ServiceUnavailable, with: :api_error
+  rescue_from Octokit::ServerError, with: :api_error
+  rescue_from Octokit::AccountSuspended, with: :github_suspended_error
 
   def current_user
     return unless logged_in?
@@ -62,5 +63,9 @@ class ApplicationController < ActionController::Base
 
   def github_unauthorized_error
     render 'pages/github_unauthorized_error', status: :unauthorized
+  end
+
+  def github_suspended_error
+    render 'pages/github_suspended_error', status: :forbidden
   end
 end
