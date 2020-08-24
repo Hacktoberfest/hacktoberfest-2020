@@ -27,7 +27,7 @@ class AirrecordTable
           ActiveSupport::Cache.lookup_store(
             *Rails.configuration.cache_store,
             namespace: 'airtable',
-            expires_in: 1800 # 30 minutes in seconds
+            expires_in: 3.hours
           )
         end
       end
