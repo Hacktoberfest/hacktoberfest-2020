@@ -47,6 +47,14 @@ class User < ApplicationRecord
       transition incompleted: :completed
     end
 
+    event :ban do
+      transition %i[registered waiting] => :banned
+    end
+
+    event :unban do
+      transition banned: :registered
+    end
+
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
@@ -131,6 +139,19 @@ class User < ApplicationRecord
 
     after_transition to: :completed do |user, _transition|
       user.win
+    end
+
+    after_transition to: :banned do |user, _transition|
+      user.moderator_banned = true
+      user.moderator_banned_at = Date.current
+      user.save!
+    end
+
+    after_transition to: :unbanned do |user, _transition|
+      user.moderator_banned = false
+      user.moderator_banned_at = Date.current
+      user.save!
+      TryUserTransitionService.call(user)
     end
   end
   # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout

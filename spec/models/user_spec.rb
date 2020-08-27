@@ -609,4 +609,17 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#ban' do
+    # Registered -> Banned - Should work, timestamp + bool updated
+    # Waiting -> Banned - Should work, timestamp + bool updated
+    # Won -> Banned - Shouldn't work, timestamp remains nil, bool false
+    # Banned -> Banned -- Shouldn't work, timestamp remains same, bool true
+  end
+
+  describe '#unban' do
+    # Banned -> Unban -> Registered
+    # Banned -> Unban -> Waiting
+    # Banned -> Unban -> Completed/Won
+  end
 end
