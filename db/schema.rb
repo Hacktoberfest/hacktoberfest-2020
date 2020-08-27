@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_174753) do
+ActiveRecord::Schema.define(version: 2020_08_27_143754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,12 @@ ActiveRecord::Schema.define(version: 2020_07_30_174753) do
     t.boolean "marketing_emails", default: false
     t.string "state"
     t.jsonb "receipt"
+    t.boolean "is_moderator", default: false
+    t.boolean "system_flagged", default: false
+    t.datetime "system_flagged_at"
+    t.boolean "moderator_banned", default: false
+    t.datetime "moderator_banned_at"
+    t.text "moderator_notes"
   end
 
 end

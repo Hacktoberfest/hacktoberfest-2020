@@ -139,6 +139,14 @@ class User < ApplicationRecord
     pull_request_service.all
   end
 
+  def spam_repo_pull_requests_count
+    pull_request_service.spam_repo_prs.count
+  end
+
+  def invalid_label_pull_requests_count
+    pull_request_service.invalid_label_prs.count
+  end
+
   def waiting_pull_requests_count
     pull_request_service.waiting_prs.count
   end
@@ -183,9 +191,26 @@ class User < ApplicationRecord
     completed? || won_shirt? || won_sticker?
   end
 
+  def check_flagged_state
+    should_flag = should_be_flagged?
+
+    return if system_flagged == should_flag
+
+    self.system_flagged_at = Date.current
+    self.system_flagged = should_flag
+    save!
+  end
+
   delegate :assign_coupon, to: :coupon_service
 
   private
+
+  def should_be_flagged?
+    invalid_count = invalid_label_pull_requests_count + spam_repo_pull_requests_count
+    total_count = pull_requests.count
+
+    total_count >= 8 && invalid_count.to_f / total_count >= 0.75
+  end
 
   def github_emails
     UserEmailService.new(self).emails

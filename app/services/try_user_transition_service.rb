@@ -10,5 +10,7 @@ module TryUserTransitionService
     when 'completed'
       TryUserTransitionFromCompletedService.call(user)
     end
+
+    user.check_flagged_state
   end
 end

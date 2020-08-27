@@ -546,4 +546,67 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#check_flagged_state' do
+    let(:user) { FactoryBot.create(:user, :waiting) }
+
+    context 'the user has 4 waiting PRs' do
+      it 'has the user not flagged by default' do
+        expect(user.system_flagged).to eq(false)
+      end
+
+      it 'does not flag the user' do
+        user.check_flagged_state
+        expect(user.system_flagged).to eq(false)
+        expect(user.system_flagged_at).to be_nil
+      end
+    end
+
+    context 'the user has 8 PRs, 6 invalid' do
+      context 'the user is not flagged' do
+        before do
+          pr_stub_helper(user, PR_DATA[:invalid_flagged_array])
+
+          expect(UserStateTransitionSegmentService)
+              .to receive(:insufficient).and_return(true)
+          user.insufficient
+
+          freeze_time
+        end
+
+        it 'does flag the user' do
+          user.check_flagged_state
+          expect(user.system_flagged).to eq(true)
+          expect(user.system_flagged_at).to eq(Date.current)
+        end
+
+        after { travel_back }
+      end
+    end
+
+    context 'the user has 9 PRs, 6 invalid' do
+      context 'the user is flagged' do
+        before do
+          pr_stub_helper(user, PR_DATA[:invalid_flagged_array] + [IMMATURE_PR])
+
+          expect(UserStateTransitionSegmentService)
+              .to receive(:insufficient).and_return(true)
+          user.insufficient
+
+          user.system_flagged = true
+          user.system_flagged_at = Date.current
+
+          freeze_time
+        end
+
+        it 'unflags the user' do
+          user.check_flagged_state
+          expect(user.system_flagged).to eq(false)
+          expect(user.system_flagged_at).to eq(Date.current)
+        end
+
+        after { travel_back }
+      end
+    end
+  end
 end
