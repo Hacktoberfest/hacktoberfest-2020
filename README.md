@@ -94,7 +94,13 @@ Run `docker-compose up -d` to start your services.
 If you would like to run commands against your app service, you can do that with the following command (using rubocop as an example): 
 
 ```
-docker-compose run app --entrypoint "bundle exec rubocop app config db lib spec --safe-auto-correct"
+docker-compose exec app bundle exec rubocop app config db lib spec --safe-auto-correct
+```
+
+Or to run a particular spec:
+
+```
+docker-compose exec app bundle exec rspec <your-spec-file>
 ```
 
 ### Setup Oauth Token
