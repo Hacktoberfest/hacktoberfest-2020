@@ -1,0 +1,39 @@
+class MlhTable
+  attr_accessor :api_url
+
+  def initialize
+    @api_url = 'https://organize.mlh.io/api/v2/events?type=hacktoberfest-2020'
+  end
+
+  def faraday_connection
+    @faraday_connection ||= Faraday.new(
+      url: @api_url,
+      request: {
+        open_timeout: 3,
+        timeout: 10
+      }
+    ) do |faraday|
+      faraday.use Faraday::Response::RaiseError
+      faraday.adapter Faraday.default_adapter
+    end
+    response = @faraday_connection.get
+    unless Rails.configuration.cache_store == :null_store
+      response.body do
+          ActiveSupport::Cache.lookup_store(
+          *Rails.configuration.cache_store,
+          namespace: 'mlh',
+          expires_in: 300 # this can be rebased once #463 gets merged
+          )
+      end
+    end
+    if response.success?
+      response.body
+    else
+      AirtablePlaceholderService.call('Meetups')
+    end
+  end
+
+  def records 
+    JSON.parse(faraday_connection)
+  end
+end
