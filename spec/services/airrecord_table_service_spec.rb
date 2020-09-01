@@ -40,4 +40,5 @@ describe AirrecordTable do
       expect(table.first).to have_key('Question')
     end
   end
+  # rubocop:enable Metrics/LineLength
 end

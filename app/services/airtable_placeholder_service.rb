@@ -105,4 +105,6 @@ module AirtablePlaceholderService
       []
     end
   end
+  # rubocop:enable Metrics/MethodLength
 end
+# rubocop:enable Metrics/ModuleLength
