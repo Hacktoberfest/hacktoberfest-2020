@@ -29,7 +29,8 @@ describe AirrecordTable do
 
     it 'returns a non 200 code' do
       VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_unsuccessful/returns_a_non_200_code' do
-        response = airrecord_table.faraday_connection(url = AIRTABLE_API + 'not-a-real-url').get
+        url = AIRTABLE_API + 'not-a-real-url'
+        response = airrecord_table.faraday_connection(url).get
         expect(response.status).to eq(404)
       end
     end
