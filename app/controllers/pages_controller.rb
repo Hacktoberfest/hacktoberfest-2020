@@ -45,11 +45,11 @@ class PagesController < ApplicationController
 
   def front_page_events
     all_events
-      #.select(&:current?)
-      #.select(&:published?)
-      #.select(&:featured?)
-      #.sample(4)
-      #.sort_by(&:date)
+    # .select(&:current?)
+    # .select(&:published?)
+    # .select(&:featured?)
+    # .sample(4)
+    # .sort_by(&:date)
   end
 
   def global_stats

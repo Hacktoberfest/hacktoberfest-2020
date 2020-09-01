@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe AirtableEventPresenter do
+describe MlhEventPresenter do
   describe '#initialize' do
     context 'Given an event with all fields' do
       let(:event) do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MlhTable
   attr_accessor :api_url
 
@@ -19,11 +21,11 @@ class MlhTable
     response = @faraday_connection.get
     unless Rails.configuration.cache_store == :null_store
       response.body do
-          ActiveSupport::Cache.lookup_store(
+        ActiveSupport::Cache.lookup_store(
           *Rails.configuration.cache_store,
           namespace: 'mlh',
           expires_in: 300 # this can be rebased once #463 gets merged
-          )
+        )
       end
     end
     if response.success?
@@ -33,7 +35,11 @@ class MlhTable
     end
   end
 
-  def records 
-    JSON.parse(faraday_connection)
+  def records
+    if faraday_connection.kind_of? String 
+      JSON.parse(faraday_connection)
+    else
+      faraday_connection
+    end
   end
 end

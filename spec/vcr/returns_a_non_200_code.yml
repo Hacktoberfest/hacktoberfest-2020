@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://organize.mlh.io/api/v2/events?type=hacktoberfest-2020not-a-real-url
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 01 Sep 2020 14:23:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d391cf2eb17605245679a5b89fd8fa3681598970220; expires=Thu, 01-Oct-20
+        14:23:40 GMT; path=/; domain=.mlh.io; HttpOnly; SameSite=Lax
+      Vary:
+      - Accept-Encoding, Origin
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 580a0aab-425c-4798-8896-f01aebb15213
+      X-Runtime:
+      - '0.011816'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Via:
+      - 1.1 vegur
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - 04eba665f80000f0c9248e6200000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5cbfa6832bfff0c9-IAD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":404,"title":"Not Found"}]}'
+    http_version: 
+  recorded_at: Tue, 01 Sep 2020 14:23:40 GMT
+recorded_with: VCR 5.0.0
