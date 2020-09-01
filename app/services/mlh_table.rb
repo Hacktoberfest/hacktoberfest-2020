@@ -36,7 +36,7 @@ class MlhTable
   end
 
   def records
-    if faraday_connection.kind_of? String 
+    if faraday_connection.is_a? String
       JSON.parse(faraday_connection)
     else
       faraday_connection

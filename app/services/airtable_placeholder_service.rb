@@ -8,37 +8,37 @@ module AirtablePlaceholderService
   def call(table_name)
     case table_name
     when 'Meetups'
-        {
-          'data' =>
-          [
-            {
-              'attributes' => {
-                'title' => 'Hacktoberfest in Brasilia',
-                'startDate' => '2020-10-16',
-                'location' => {
-                  'city' => 'Brasilia',
-                  'country' => 'Brazil'
-                }
-              },
-              'links' => {
-                'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register'
+      {
+        'data' =>
+        [
+          {
+            'attributes' => {
+              'title' => 'Hacktoberfest in Brasilia',
+              'startDate' => '2020-10-16',
+              'location' => {
+                'city' => 'Brasilia',
+                'country' => 'Brazil'
               }
             },
-            {
-              'attributes' => {
-                'title' => 'Hacktoberfest @IPN',
-                'startDate' => '2020-10-01',
-                'location' => {
-                  'city' => 'Mexico City',
-                  'country' => 'Mexico'
-                }
-              },
-              'links' => {
-                'register' => 'http://organize.mlh.io/participants/events/3924-hacktoberfest-ipn/register'
-              }
+            'links' => {
+              'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register'
             }
-          ]
-        }
+          },
+          {
+            'attributes' => {
+              'title' => 'Hacktoberfest @IPN',
+              'startDate' => '2020-10-01',
+              'location' => {
+                'city' => 'Mexico City',
+                'country' => 'Mexico'
+              }
+            },
+            'links' => {
+              'register' => 'http://organize.mlh.io/participants/events/3924-hacktoberfest-ipn/register'
+            }
+          }
+        ]
+      }
     when 'FAQ'
       [
         { 'Question' =>

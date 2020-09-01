@@ -11,21 +11,21 @@ class MlhEventPresenter
   end
 
   def name
-    @event['attributes']['title']
+    @event.dig('attributes', 'title')
   end
 
   def date
-    Date.strptime(@event['attributes']['startDate'], '%Y-%m-%d')
+    Date.strptime(@event.dig('attributes', 'startDate'), '%Y-%m-%d')
   rescue StandardError
     nil
   end
 
   def city
-    @event['attributes']['location']['city']
+    @event.dig('attributes', 'location', 'city')
   end
 
   def country
-    @event['attributes']['location']['country']
+    @event.dig('attributes', 'location', 'country')
   end
 
   def location
@@ -39,7 +39,7 @@ class MlhEventPresenter
   end
 
   def url
-    @event['links']['register']
+    @event.dig('links', 'register')
   end
 
   #  def featured? # maybe we will re-enable this?

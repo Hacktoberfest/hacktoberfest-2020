@@ -22,7 +22,7 @@ describe MlhTable do
         expect(parsed_response).to be_an_instance_of(Hash)
         expect(parsed_response).to have_key('data')
       end
-    end 
+    end
   end
 
   context 'the call to the API is unsuccessful' do
