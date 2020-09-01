@@ -48,7 +48,7 @@ describe ReportAirtableUpdaterService do
           ReportAirtableUpdaterService.call(report)
         end
 
-        it 'writes to airtable', :vcr do
+        it 'writes to airtable', vcr: { record: :new_episodes } do
           expect(a_request(:post, AIRTABLE_URI_REGEX)).to have_been_made
         end
       end
