@@ -2,4 +2,4 @@
 
 COMPOSE="/usr/local/bin/docker-compose --no-ansi"
 
-$COMPOSE ps 
+$COMPOSE exec app "$@"

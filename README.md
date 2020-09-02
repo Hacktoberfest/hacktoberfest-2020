@@ -89,13 +89,13 @@ AIRTABLE_APP_ID=
 ```
 The local Docker setup uses a webserver, in the same way that the application does in staging and production, so it will be reachable on port `80`.
 
-Run `docker-compose up -d` to start your services.
+Run the startup script, `./script/docker-startup.sh` to start your services.
 
 **Note:** You do not need to use the other startup scripts in the repo if you are using Docker to run the application locally. When using Docker, follow the steps in this section of the README.
 
 **Inspecting and Troubleshooting**
 
-You can inspect whether or not your services have started successfully with `docker-compose ps`. You will see the following output if the services are all running:
+You can inspect whether or not your services have started successfully by running the `check` script: `./script/check.sh`. You will see the following output if the services are all running:
 
 ```
          Name                         Command               State           Ports         
@@ -123,27 +123,54 @@ app_1        | * Environment: development
 app_1        | * Listening on tcp://0.0.0.0:3000
 app_1        | Use Ctrl-C to stop
 ```
-Once the app is running, you can connect to it by navigating to `localhost`. Please note that trying to connect to the app at `localhost` before it is ready will result in `502` Bad Gateway error.
+Once the app is running, you can connect to it by navigating to `localhost`. Please note that trying to connect to the app at `localhost` before it is ready will result in `502` Bad Gateway error, so be sure to check the logs first.
 
 **Testing**
 
 If you would like to run commands against your app service, you can do that with the following command (using rubocop as an example): 
 
 ```
-docker-compose exec app bundle exec rubocop app config db lib spec --safe-auto-correct
+./script/test-command.sh bundle exec rubocop app config db lib spec --safe-auto-correct
 ```
 
 Or to run a particular spec:
 
 ```
-docker-compose exec app bundle exec rspec <your-spec-file>
+./script/test-command.sh bundle exec rspec <your-spec-file>
 ```
+**Running migrations**
+
+In cases where you want to create a migration in the context of your current development, you can use the following command:
+
+```
+docker-compose exec app rails g migration <your migration>
+```
+To run the migration, type:
+
+```
+docker-compose exec app bundle exec rake db:migrate
+```
+In both cases, the relevant files and changes will be available on your host, as well as on your container.
+
+**Reloading the server**
+
+There are cases where you will need to stop and restart the Rails server, in order for things like configuration changes to take effect. 
+
+To do this, run the following script to stop and restart the app: `./script/restart-app.sh`.
+
+This will restart the app and run any pending migrations.
+
+**Adding a new gem to the project**
+
+Another task you may need to accomplish is adding a new gem to the project. Because this local Docker setup depends on a gem volume (to speed up development and boot times), you need to both stop the application and remove this volume for your changes to take effect. 
+
+To do this, run the following script: `./script/rebuild-app.sh`.
 
 **Taking the setup down**
 
-To stop your services and remove the network, run `docker-compose down`.
+To stop your services and remove the network, you can run `docker-compose down`.
 
-If you would like to remove your build cache and volumes as well, run `docker system prune -a --volumes`.
+Or, if you would like to remove your build cache and volumes, you can use the `stop-and-clean` script: `./script/stop-and-clean.sh`. 
 
 ### Setup Oauth Token
 
