@@ -68,8 +68,9 @@ From there, create a local `.env` file, and add fill out the following values, u
 
 ```
 HACKTOBERFEST_DATABASE_HOST=database
-HACKTOBERFEST_DATABASE_USERNAME=
-HACKTOBERFEST_DATABASE_PASSWORD=
+HACKTOBERFEST_DATABASE_USERNAME=hacktoberfest
+HACKTOBERFEST_DATABASE_PASSWORD=sekret
+HACKTOBERFEST_DATABASE_NAME=hacktoberfest
 REDIS_HOST=redis
 REDIS_PORT=6379
 GITHUB_CLIENT_ID=
@@ -87,7 +88,41 @@ AIRTABLE_APP_ID=
 ```
 The local Docker setup uses a webserver, in the same way that the application does in staging and production, so it will be reachable on port `80`.
 
-Run `docker-compose up -d` to start your services. 
+Run `docker-compose up -d` to start your services.
+
+**Note:** You do not need to use the other startup scripts in the repo if you are using Docker to run the application locally. When using Docker, follow the steps in this section of the README.
+
+**Inspecting and Troubleshooting**
+
+You can inspect whether or not your services have started successfully with `docker-compose ps`. You will see the following output if the services are all running:
+
+```
+         Name                         Command               State           Ports         
+-------------------------------------------------------------------------------------------
+hacktoberfest_app_1         ./script/docker-entrypoint.sh    Up      3000/tcp              
+hacktoberfest_database_1    docker-entrypoint.sh postgres    Up      0.0.0.0:5432->5432/tcp
+hacktoberfest_redis_1       docker-entrypoint.sh redis ...   Up      6379/tcp              
+hacktoberfest_sidekiq_1     ./script/sidekiq-entrypoint.sh   Up      3000/tcp              
+hacktoberfest_webserver_1   nginx -g daemon off;             Up      0.0.0.0:80->80/tcp    
+```
+
+In cases where you need to investigate an exit status, you can get the logs of the service with `docker-compose logs <service-name>`.
+
+To check that the application is ready to accept traffic, run `docker-compose logs app`. You should see the following output:
+
+```
+app_1        | ==> Hacktoberfest is now ready to go!
+app_1        | => Booting Puma
+app_1        | => Rails 5.2.3 application starting in development 
+app_1        | => Run `rails server -h` for more startup options
+app_1        | Puma starting in single mode...
+app_1        | * Version 4.1.1 (ruby 2.5.8-p224), codename: Fourth and One
+app_1        | * Min threads: 5, max threads: 5
+app_1        | * Environment: development
+app_1        | * Listening on tcp://0.0.0.0:3000
+app_1        | Use Ctrl-C to stop
+```
+Once the app is running, you can connect to it by navigating to `localhost`. Please note that trying to connect to the app at `localhost` before it is ready will result in `502` Bad Gateway error.
 
 **Testing**
 
@@ -102,6 +137,12 @@ Or to run a particular spec:
 ```
 docker-compose exec app bundle exec rspec <your-spec-file>
 ```
+
+**Taking the setup down**
+
+To stop your services and remove the network, run `docker-compose down`.
+
+If you would like to remove your build cache and volumes as well, run `docker system prune -a --volumes`.
 
 ### Setup Oauth Token
 
