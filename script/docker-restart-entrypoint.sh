@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 
 # Restart application and run migrations Comment out migrations if you don't want them.
 

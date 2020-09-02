@@ -14,6 +14,6 @@ services:
     env_file: .env  
     environment:
       RAILS_ENV: development
-    entrypoint: ./script/restart-entrypoint.sh
+    entrypoint: ./script/docker-restart-entrypoint.sh
     networks:
       - app-network
