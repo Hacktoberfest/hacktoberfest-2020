@@ -107,9 +107,9 @@ RSpec.describe UsersController, type: :request do
       let(:user) { FactoryBot.create(:user, :new) }
 
       context 'hacktoberfest is active' do
-        it 'redirects to the start_path' do
+        it 'redirects to the register_path' do
           get profile_path
-          expect(response).to redirect_to(start_path)
+          expect(response).to redirect_to(register_path)
         end
       end
 
