@@ -3,6 +3,8 @@
 Rails.application.configure do
   config.cache_classes = true
 
+  config.cache_store = :dalli_store, *ENV['DALLI_SERVER']
+
   config.eager_load = true
 
   config.consider_all_requests_local = false
