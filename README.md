@@ -70,7 +70,6 @@ From there, create a local `.env` file, and add fill out the following values, u
 HACKTOBERFEST_DATABASE_HOST=database
 HACKTOBERFEST_DATABASE_USERNAME=hacktoberfest
 HACKTOBERFEST_DATABASE_PASSWORD=sekret
-HACKTOBERFEST_DATABASE_NAME=hacktoberfest
 REDIS_HOST=redis
 REDIS_PORT=6379
 DALLI_SERVER=memcached

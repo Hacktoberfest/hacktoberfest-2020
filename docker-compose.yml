@@ -26,8 +26,6 @@ services:
       POSTGRES_PASSWORD: $HACKTOBERFEST_DATABASE_PASSWORD
     volumes:
       - db_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
     networks:
       - app-network
 
