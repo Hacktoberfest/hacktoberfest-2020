@@ -1,4 +1,5 @@
 GIT_COMMIT = $(shell git rev-parse HEAD 2>/dev/null)
+GIT_BRANCH = $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 ### Stage2 targets
 # A convenience target to allow use of either `deploy-staging` or
