@@ -151,6 +151,8 @@ docker-compose exec app bundle exec rake db:migrate
 ```
 In both cases, the relevant files and changes will be available on your host, as well as on your container.
 
+If the app is currently stopped and you need to run migrations, you can use the `restart-app` script, which will restart the app and run any pending migrations. See the explanation below for more detail.
+
 **Reloading the server**
 
 There are cases where you will need to stop and restart the Rails server, in order for things like configuration changes to take effect. 
