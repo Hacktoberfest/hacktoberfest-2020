@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 class AirrecordTable
-  attr_accessor :api_key, :app_id
+  attr_accessor :api_key, :app_id, :url
 
   def initialize
     @api_key = ENV.fetch('AIRTABLE_API_KEY')
     @app_id = ENV.fetch('AIRTABLE_APP_ID')
+    @url = 'https://api.airtable.com'
   end
 
-  def faraday_connection
+  def faraday_connection(url = @url)
     @faraday_connection ||= Faraday.new(
-      url: 'https://api.airtable.com',
+      url: url,
       headers: {
         'Authorization' => "Bearer #{api_key}",
         'User-Agent' => "Airrecord/#{Airrecord::VERSION}",
@@ -39,6 +40,9 @@ class AirrecordTable
   def table(table_name)
     Airrecord.table(api_key, app_id, table_name).tap do |at|
       at.client.connection = faraday_connection
+      unless at.client.connection.get.status == (200 || 302)
+        AirtablePlaceholderService.call('FAQ')
+      end
     end
   end
 
@@ -47,7 +51,7 @@ class AirrecordTable
       table(table_name).all
     else
       log_airtable_warning
-      AirtablePlaceholderService.call(table_name)
+      AirtablePlaceholderService.call('FAQ')
     end
   end
 
