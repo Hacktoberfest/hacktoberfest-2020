@@ -24,7 +24,7 @@ class MlhTable
         ActiveSupport::Cache.lookup_store(
           *Rails.configuration.cache_store,
           namespace: 'mlh',
-          expires_in: 300 # this can be rebased once #463 gets merged
+          expires_in: 3.hours
         )
       end
     end
