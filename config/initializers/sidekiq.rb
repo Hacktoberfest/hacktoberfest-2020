@@ -6,10 +6,7 @@
 # Redis config shared between client and server
 # rubocop:disable Style/MutableConstant
 if (redis_url = ENV.fetch('HACKTOBERFEST_REDIS_URL', nil))
-  REDIS_CONFIG = {
-    url: redis_url,
-    password: ENV.fetch('HACKTOBERFEST_REDIS_PASSWORD', nil)
-  }
+  REDIS_CONFIG = { url: "redis://#{redis_url}:#{ENV['HACKTOBERFEST_REDIS_PORT']}/12" }
 elsif (redis_url = ENV.fetch('REDIS_HOST', nil))
   REDIS_LOCAL = { url:  "redis://#{redis_url}:#{ENV['REDIS_PORT']}/12" }
 end
