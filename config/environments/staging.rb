@@ -5,8 +5,6 @@ Rails.application.configure do
 
   config.cache_store = :dalli_store, *ENV['DALLI_SERVER']
 
-  config.require_master_key = true
-
   config.eager_load = true
 
   config.consider_all_requests_local = false
