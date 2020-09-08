@@ -8,3 +8,4 @@ coverage/*
 ci/*
 docc/*
 log/*
+config/master.key
