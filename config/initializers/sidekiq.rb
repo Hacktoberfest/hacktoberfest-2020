@@ -5,14 +5,6 @@
 
 # Redis config shared between client and server
 # rubocop:disable Style/MutableConstant
-if (redis = ENV.fetch('HACKTOBERFEST_REDIS_URL', nil))
-  REDIS_CONFIG = {
-    host: redis,
-    port: ENV['HACKTOBERFEST_REDIS_PORT'] || '6379'
-  }
-elsif (redis_url = ENV.fetch('REDIS_HOST', nil))
-  REDIS_LOCAL = { url:  "redis://#{redis_url}:#{ENV['REDIS_PORT']}/12" }
-end
 
 # rubocop:enable Style/MutableConstant
 
@@ -31,11 +23,10 @@ module Sidekiq
 end
 
 Sidekiq.configure_server do |config|
-  config.redis = if defined?(REDIS_CONFIG)
-                   REDIS_CONFIG
-                 elsif defined?(REDIS_LOCAL)
-                   REDIS_LOCAL
-                 end
+  config.redis = {
+    host: ENV['REDIS_HOST'],
+    port: ENV['REDIS_PORT'] || '6379'
+  }
 
   config.death_handlers << lambda { |job, ex|
     error = Sidekiq::JobDeathError.new(job, ex)
@@ -46,9 +37,8 @@ Sidekiq.configure_server do |config|
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = if defined?(REDIS_CONFIG)
-                   REDIS_CONFIG
-                 elsif defined?(REDIS_LOCAL)
-                   REDIS_LOCAL
-                 end
+  config.redis = {
+    host: ENV['REDIS_HOST'],
+    port: ENV['REDIS_PORT'] || '6379'
+  }
 end
