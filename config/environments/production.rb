@@ -5,6 +5,8 @@ Rails.application.configure do
 
   config.cache_store = :dalli_store, *ENV['DALLI_SERVER']
 
+  config.secret_key_base = ENV['SECRET_KEY_BASE']
+
   config.eager_load = true
 
   config.consider_all_requests_local = false
