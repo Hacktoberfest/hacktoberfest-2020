@@ -34,7 +34,9 @@ COPY --from=base /app /app
 ARG RAILS_ENV
 ENV RAILS_ENV ${RAILS_ENV:-development}
 
-RUN bundle exec rake assets:precompile
+ARG RAILS_MASTER_KEY
+
+RUN RAILS_MASTER_KEY=${RAILS_MASTER_KEY} RAILS_ENV=${RAILS_ENV} bundle exec rake assets:precompile
 
 EXPOSE 3000
 
