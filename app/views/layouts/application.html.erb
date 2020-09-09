@@ -47,10 +47,11 @@
   <% end %>
 
   <%# light mode / dark mode %>
-  <script>
+  <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', (event) => {
      ((localStorage.getItem('mode') || 'light') === 'dark') ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')
     })
+     darkmodeImages();
   </script>
 
   <script src="https://assets.digitalocean.com/cookieConsent/cookieConsent.js"></script>
