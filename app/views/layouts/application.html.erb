@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Hacktoberfest presented by DigitalOcean and DEV</title>
+    <title>Hacktoberfest presented by DigitalOcean</title>
     <meta charset="utf-8">
-    <meta name="title" content="Hacktoberfest presented by DigitalOcean and DEV">
+    <meta name="title" content="Hacktoberfest presented by DigitalOcean">
     <meta name="description" content="Open source is changing the world – one pull request at a time.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@hacktoberfest">
     <meta name="twitter:creator" content="@hacktoberfest">
-    <meta name="twitter:title" content="Hacktoberfest presented by DigitalOcean and DEV">
-    <meta name="twitter:image" content="<%= image_url('HF19_social.png') %>">
+    <meta name="twitter:title" content="Hacktoberfest presented by DigitalOcean">
+    <meta name="twitter:image" content="<%= image_url('og-hf20.png') %>">
     <meta name="twitter:url" content="https://hacktoberfest.digitalocean.com/">
-    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Hacktoberfest presented by DigitalOcean and DEV">
+    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Hacktoberfest presented by DigitalOcean">
     <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website">
     <meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US">
     <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Hacktoberfest">
     <meta prefix="og: http://ogp.me/ns#" property="og:description" content="Open source is changing the world – one pull request at a time.">
     <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://hacktoberfest.digitalocean.com/">
-    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="<%= image_url('HF19_social.png') %>">
+    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="<%= image_url('og-hf20.png') %>">
 
     <%= favicon_link_tag asset_path('favicon.png') %>
     <%= csrf_meta_tags %>
@@ -35,18 +35,6 @@
     <%= yield %>
   </div>
   <%= render 'shared/footer' %>
-  <!-- Header Logo Tilt -->
-  <script type="text/javascript">
-  	VanillaTilt.init(document.getElementById("header-logo"), {
-  		max: 5,
-  		speed: 300
-    });
-    // <!-- Footer Logo Tilt -->
-  	VanillaTilt.init(document.getElementById("footer-logo"), {
-  		max: 7,
-  		speed: 300
-  	});
-  </script>
 
   <% if Rails.env.production? %>
     <script type="text/javascript">
@@ -57,6 +45,13 @@
       window.cookieDomain = window.location.hostname;
     </script>
   <% end %>
+
+  <%# light mode / dark mode %>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+     ((localStorage.getItem('mode') || 'light') === 'dark') ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')
+    })
+  </script>
 
   <script src="https://assets.digitalocean.com/cookieConsent/cookieConsent.js"></script>
 

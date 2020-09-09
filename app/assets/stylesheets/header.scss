@@ -21,39 +21,13 @@ header {
 
 $navColor: rgba(0, 0, 0, 0);
 
-// survey block styling
-.survey {
-  position: absolute;
-  width: 100%;
-  min-height: 40px;
-  left: 0px;
-  top: 0px;
-  background: #0a142e;
-  box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
-  font-size: 0.75rem;
-  padding: 10px 10px 10px 135px;
-  color: white;
-
-  @media screen and (max-width: $break-small) {
-    padding-left: 30px;
-    padding-right: 30px;
-    text-align: center;
-  }
-
-  a {
-    color: hsl(320, 100%, 50%);
-  }
-
-  p {
-    margin: 0;
-  }
-}
-
 // Main Nav
 
 #navbar {
+  font-family: "Inter Black", "Helvetica", "Arial", san-serif;
+  font-weight: 900;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0);
   font-weight: 400;
   line-height: 21px;
@@ -66,6 +40,9 @@ $navColor: rgba(0, 0, 0, 0);
     margin: 124px 0 20px 0;
   }
 
+  .header-logo {
+    display: none;
+  }
   ul.navbar-end {
     @media screen and (max-width: $break-small) {
       margin: 20px 0 0;
@@ -182,6 +159,67 @@ $navColor: rgba(0, 0, 0, 0);
           padding-bottom: 7px;
         }
       }
+    }
+  }
+}
+
+// Toggle
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 32px;
+  background: none;
+  border: none;
+  outline: none;
+  height: 32px;
+  width: 64px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  input:checked + span {
+    background-color: #f1f1f1;
+  }
+
+  input:focus + span {
+    box-shadow: 0px 8px 16px rgba(1, 14, 40, 0.05);
+  }
+
+  input:checked + span:before {
+    -webkit-transform: translateX(32px);
+    -ms-transform: translateX(32px);
+    transform: translateX(32px);
+  }
+
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e8ed;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 32px;
+    box-shadow: 0px 4px 16px rgba(1, 14, 40, 0.1);
+
+    :before {
+      position: absolute;
+      content: "";
+      height: 32px;
+      width: 32px;
+      left: 0;
+      bottom: 0px;
+      background-color: white;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+      border-radius: 50%;
     }
   }
 }

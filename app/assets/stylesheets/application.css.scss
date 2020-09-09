@@ -15,23 +15,23 @@
 
 // Loading in fonts
 @font-face {
-  font-family: 'Space Mono Bold';
-  src: font-url('SpaceMono-Bold.ttf');
+  font-family: "Inter Bold";
+  src: font-url("Inter-Bold.ttf");
 }
 
 @font-face {
-  font-family: 'Space Mono Bold Italic';
-  src: font-url('SpaceMono-BoldItalic.ttf');
+  font-family: "Inter Black";
+  src: font-url("Inter-Black.ttf");
 }
 
 @font-face {
-  font-family: 'Space Mono';
-  src: font-url('SpaceMono-Regular.ttf');
+  font-family: "Inter Regular";
+  src: font-url("Inter-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'Space Mono Italic';
-  src: font-url('SpaceMono-RegularItalic.ttf');
+  font-family: "Yellowtail";
+  src: font-url("Yellowtail.ttf");
 }
 
 // Bulma overrides and common definitions
@@ -55,7 +55,7 @@ $size-2: 2rem;
 $size-3: 1.5rem;
 $size-4: 1.25rem;
 $size-5: 1.125rem;
-$family-monospace: 'Space Mono', monospace;
+$family-monospace: "Inter Regular", "Helvetica", "Arial", san-serif;
 
 // Derived Variables
 $primary: $grey-darker;
@@ -196,14 +196,14 @@ body {
 
   // Styles for background images
   .top-bgs::before {
-    content: image-url('bg-left.png');
+    content: image-url("bg-left.png");
     position: absolute;
     top: 0px;
     left: 20;
     z-index: -1;
   }
   .top-bgs::after {
-    content: image-url('bg-right.png');
+    content: image-url("bg-right.png");
     position: absolute;
     top: 80px;
     right: 0;
@@ -248,12 +248,10 @@ body {
     color: hsl(320, 100%, 50%);
   }
 
-  strong{
+  strong {
     color: $yellow;
   }
 }
 
-
-
-@import 'bulma';
-@import '*';
+@import "bulma";
+@import "*";

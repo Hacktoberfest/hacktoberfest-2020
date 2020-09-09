@@ -5,7 +5,7 @@ $break-small: 1024px;
 $break-med: 1288px;
 
 .footer {
-  background-image: image-url('bg-left2.png'), image-url('bg-right2.png');
+  background-image: image-url("bg-left2.png"), image-url("bg-right2.png");
   background-position: bottom left, top right;
   background-repeat: no-repeat;
   min-height: 1040px;
@@ -31,7 +31,7 @@ $break-med: 1288px;
         flex-direction: column;
       }
       a {
-        font-family: 'Space Mono Bold', monospace;
+        font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
         text-transform: uppercase;
         color: hsl(0, 0%, 100%);
         letter-spacing: 3px;
@@ -101,7 +101,7 @@ $break-med: 1288px;
       flex-direction: row;
 
       .dev-logo {
-        transform: rotate(6deg)
+        transform: rotate(6deg);
       }
 
       p {
@@ -115,7 +115,7 @@ $break-med: 1288px;
     }
 
     .footer-company-links a {
-      font-family: 'Space Mono Bold', monospace;
+      font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
       font-style: normal;
       font-weight: 400;
       color: hsl(320, 100%, 50%);
