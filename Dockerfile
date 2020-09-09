@@ -1,7 +1,5 @@
 FROM ruby:2.5-slim AS base
 
-ENV BUNDLER_VERSION=2.0.2
-
 RUN apt-get update && apt-get install -y apt-transport-https bash curl git gnupg2 build-essential libpq-dev \
 && curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
 && echo 'deb https://deb.nodesource.com/node_12.x jessie main' > /etc/apt/sources.list.d/nodesource.list
@@ -20,9 +18,6 @@ RUN gem install bundler -v 2.1.4
 
 COPY Gemfile Gemfile.lock ./
 
-#RUN bundle config build.nokogiri --use-system-libraries
-#RUN bundle config --local build.sassc --disable-march-tune-native
-
 RUN bundle check || bundle install
 
 ###############################
@@ -39,6 +34,8 @@ COPY --from=base /app /app
 ARG RAILS_ENV
 ENV RAILS_ENV ${RAILS_ENV:-development}
 
-ENTRYPOINT ["./script/docker-entrypoint.sh"]
+RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
+
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
