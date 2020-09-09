@@ -9,4 +9,4 @@ if [ -f tmp/pids/server.pid ]; then
   rm tmp/pids/server.pid
 fi
 
-bundle exec sidekiq
+RAILS_MASTER_KEY=${RAILS_MASTER_KEY} bundle exec sidekiq
