@@ -5,9 +5,6 @@ $break-small: 1024px;
 $break-med: 1288px;
 
 .footer {
-  background-image: image-url("bg-left2.png"), image-url("bg-right2.png");
-  background-position: bottom left, top right;
-  background-repeat: no-repeat;
   min-height: 1040px;
 
   @media screen and (max-width: $break-small) {
