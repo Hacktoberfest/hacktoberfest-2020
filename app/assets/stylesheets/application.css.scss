@@ -231,7 +231,6 @@ select {
 body {
   overflow: hidden;
   position: relative;
-  background-color: $light-backgroundColor;
 
   .section {
     padding: 0 120px;
@@ -258,17 +257,17 @@ body {
   // Reuseable
 
   .highlight {
-    color: $yellow;
+    color: $red;
   }
 
   .line-br {
-    color: $yellow;
+    color: $red;
     line-height: 0.4rem;
     position: relative;
     margin-bottom: 10px;
 
     span {
-      background-color: $yellow;
+      background-color: $red;
     }
 
     span.line-br-1 {
@@ -292,6 +291,9 @@ body {
   strong {
     font-family: "Inter Bold", "Helvetica", "Arial", san-serif;
   }
+
+  // light mode
+  background-color: $light-backgroundColor;
 
   // images
   .nav-logo {
