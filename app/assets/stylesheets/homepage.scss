@@ -25,12 +25,12 @@ $tile-padding: 0;
 $tile-width: 150%;
 $box-color: rgba(0, 0, 0, 0);
 
-$mainImg1: asset-url('polygon-photo-1.png');
-$mainImg2: asset-url('polygon-photo-2.png');
-$mainImg3: asset-url('polygon-photo-3.png');
-$mainImg4: asset-url('polygon-photo-4.png');
-$mainImg5: asset-url('polygon-photo-5.png');
-$mainImg6: asset-url('polygon-photo-6.png');
+$mainImg1: asset-url("polygon-photo-1.png");
+$mainImg2: asset-url("polygon-photo-2.png");
+$mainImg3: asset-url("polygon-photo-3.png");
+$mainImg4: asset-url("polygon-photo-4.png");
+$mainImg5: asset-url("polygon-photo-5.png");
+$mainImg6: asset-url("polygon-photo-6.png");
 
 main.home.mainImg0 {
   background-image: $mainImg1, $mainImg2;
@@ -120,7 +120,7 @@ main.home {
       .mktoFormRow .mktoFormCol .mktoField,
       .mktoButtonWrap .mktoButton {
         color: $white;
-        font-family: 'Space Mono Bold', monospace;
+        font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
         font-size: 1rem;
         margin: 0;
         height: auto;
@@ -298,7 +298,7 @@ main.home {
     margin-left: 0px;
     height: 800px;
     width: 100%;
-    background-image: asset-url('bg-map.png');
+    background-image: asset-url("bg-map.png");
     background-position: center;
     background-repeat: no-repeat;
     overflow-x: visible;
@@ -413,7 +413,7 @@ main.home {
       flex-direction: column;
       justify-content: center;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-      font-family: Space Mono, monospace;
+      font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
       font-style: normal;
       color: #ffffff;
     }
@@ -579,7 +579,7 @@ main.home {
 }
 
 .form-cont {
-  display:flex;
+  display: flex;
 
   @media screen and (max-width: $break-small) {
     margin-left: 0;
