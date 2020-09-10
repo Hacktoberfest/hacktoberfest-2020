@@ -65,10 +65,65 @@ $family-primary: $family-sans-serif;
 $link: $cyan;
 $link-hover: $red;
 
-// Generic Variables
+// Custom Variables
+
+$buttonColor: #0069ff;
+$buttonHoverColor: #ff73fa;
+$buttonTextColor: #ffffff;
+$accordionRuleColor: #93c2db;
+$labelColor: #ff8ae2;
+$checkColor: #4551ff;
+$tableHeaderColor: #072540;
+$tableColor: #ffffff;
+$diamondColor: #93c2db;
+$platinumColor: #99a1b3;
+$goldColor: #ffd700;
+$socialHoverColor: #010e2f;
+
+//light mode
+$light-backgroundColor: #ffffff;
+$light-headlineColor: #072540;
+$light-textColor: #5b6987;
+$light-ruleColor: #f3f5f9;
+$light-categoryColor: #183d5d;
+$light-boxColor: #f1f7fa;
+$light-inputBackgroundColor: #e5e8ed;
+$light-inputTextColor: #031b4e;
+$light-inputPlaceholderColor: #031b4e;
+$light-toggleColor: #e5e8ed;
+$light-tableBackgroundColor: #ffffff;
+$light-tableBorderColor: #93c2db;
+$light-tableColor: #183d5d;
+$light-footerBackgroundColor: #f1f7fa;
+$light-footerTextColor: #183d5d;
+$light-navActiveColor: #183d5d;
+$light-navBackgroundColor: #ffffff;
+$light-socialTextColor: #031b4e;
+$light-socialBackgroundColor: #f3f5f9;
+
+//dark mode
+$dark-backgroundColor: #072540;
+$dark-headlineColor: #ffffff;
+$dark-textColor: #93c2db;
+$dark-ruleColor: #183d5d;
+$dark-categoryColor: #93c2db;
+$dark-boxColor: #183d5d;
+$dark-inputBackgroundColor: #183d5d;
+$dark-inputTextColor: #a2b3e9;
+$dark-inputPlaceholderColor: #ffffff;
+$dark-toggleColor: #183d5d;
+$dark-tableBackgroundColor: #183d5d;
+$dark-tableBorderColor: transparent;
+$dark-tableColor: #ffffff;
+$dark-footerBackgroundColor: #010e28;
+$dark-footerTextColor: #93c2db;
+$dark-navActiveColor: #ffffff;
+$dark-navBackgroundColor: #183d5d;
+$dark-socialTextColor: #ffffff;
+$dark-socialBackgroundColor: #183d5d;
 
 // -- general
-$body-background-color: var(--background-color);
+$body-background-color: $light-backgroundColor;
 $body-color: $grey;
 $body-family: $family-sans-serif;
 $body-font-size: $size-5;
@@ -176,6 +231,7 @@ select {
 body {
   overflow: hidden;
   position: relative;
+  background-color: $light-backgroundColor;
 
   .section {
     padding: 0 120px;
@@ -246,69 +302,11 @@ body {
 // Global darkmode styles
 
 body.dark {
+  background-color: $dark-backgroundColor !important;
   // images
   .nav-logo {
     content: url(h-dark.svg) !important;
   }
-}
-
-:root {
-  --buttonColor: "#0069FF";
-  --buttonHoverColor: "#FF73FA";
-  --buttonTextColor: "#FFFFFF";
-  --accordionRuleColor: "#93C2DB";
-  --labelColor: "#FF8AE2";
-  --checkColor: "#4551FF";
-  --tableHeaderColor: "#072540";
-  --tableColor: "#FFFFFF";
-  --diamondColor: "#93C2DB";
-  --platinumColor: "#99A1B3";
-  --goldColor: "#FFD700";
-  --socialHoverColor: "#010E2F";
-
-  //light mode
-  --background-color: "#FFFFFF";
-  --headlineColor: "#072540";
-  --textColor: "#5B6987";
-  --ruleColor: "#F3F5F9";
-  --categoryColor: "#183D5D";
-  --boxColor: "#F1F7FA";
-  --inputBackgroundColor: "#E5E8ED";
-  --inputTextColor: "#031B4E";
-  --inputPlaceholderColor: "#031B4E";
-  --toggleColor: "#E5E8ED";
-  --tableBackgroundColor: "#FFFFFF";
-  --tableBorderColor: "#93C2DB";
-  --tableColor: "#183D5D";
-  --footerBackgroundColor: "#F1F7FA";
-  --footerTextColor: "#183D5D";
-  --navActiveColor: "#183D5D";
-  --navBackgroundColor: "#FFFFFF";
-  --socialTextColor: "#031B4E";
-  --socialBackgroundColor: "#F3F5F9";
-}
-
-:root.dark {
-  //dark mode
-  --background-color: "#072540" !important;
-  --headlineColor: "#FFFFFF" !important;
-  --textColor: "#93C2DB" !important;
-  --ruleColor: "#183D5D" !important;
-  --categoryColor: "#93C2DB" !important;
-  --boxColor: "#183D5D" !important;
-  --inputBackgroundColor: "#183D5D" !important;
-  --inputTextColor: "#A2B3E9" !important;
-  --inputPlaceholderColor: "#FFFFFF" !important;
-  --toggleColor: "#183D5D" !important;
-  --tableBackgroundColor: "#183D5D" !important;
-  --tableBorderColor: "transparent" !important;
-  --tableColor: "#FFFFFF" !important;
-  --footerBackgroundColor: "#010E28" !important;
-  --footerTextColor: "#93C2DB" !important;
-  --navActiveColor: "#FFFFFF" !important;
-  --navBackgroundColor: "#183D5D" !important;
-  --socialTextColor: "#FFFFFF" !important;
-  --socialBackgroundColor: "#183D5D" !important;
 }
 
 @import "bulma";
