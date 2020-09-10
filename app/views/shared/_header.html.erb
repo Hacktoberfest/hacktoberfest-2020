@@ -31,6 +31,7 @@
     <p>Dark Mode </p>
     <label class="toggle-switch">
        <input
+          id="toggle-checkbox"
           type="checkbox"
           onclick="
           localStorage.setItem('mode', (localStorage.getItem('mode') || 'light') === 'light' ? 'dark' : 'light'); 
@@ -43,5 +44,5 @@
   </div>
 </header>
 <script>
-  // renderImage(document.querySelector('#nav-logo'), logoImageSrc(), 'Hacktoberfest logo', 'styled-logo');
+  if(localStorage.getItem('mode') === 'dark') document.getElementById('toggle-checkbox').checked = true
 </script>

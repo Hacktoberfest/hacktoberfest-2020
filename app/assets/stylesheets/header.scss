@@ -162,7 +162,7 @@ $navColor: rgba(0, 0, 0, 0);
 
 // Toggle
 
-.toggle {
+.toggle-switch {
   position: relative;
   display: inline-block;
   width: 64px;
@@ -180,7 +180,7 @@ $navColor: rgba(0, 0, 0, 0);
   }
 
   input:checked + span {
-    background-color: #f1f1f1;
+    background-color: #0069ff;
   }
 
   input:focus + span {
@@ -208,12 +208,12 @@ $navColor: rgba(0, 0, 0, 0);
 
     :before {
       position: absolute;
-      content: "";
+      content: "hi";
       height: 32px;
       width: 32px;
       left: 0;
       bottom: 0px;
-      background-color: white;
+      background-color: red;
       -webkit-transition: 0.4s;
       transition: 0.4s;
       border-radius: 50%;
