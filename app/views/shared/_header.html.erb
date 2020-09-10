@@ -1,48 +1,51 @@
 <header>
   <nav class="navbar" id="navbar">
-  <a href="/" id="nav-logo">
-  <img alt="Hacktoberfest Logo" class="styled-logo" width="109">
-  <%# <img src="<%= asset_path('h-light.svg') %><%#" alt="Hacktoberfest Logo" class="styled-logo" width="109"> %>
-  </a>
-    <ul class="navbar-end">
-      <li><%= link_to "home", root_path, :class => active_path_class?(root_path, '') + " navLink"  %></li>
-      <li><%= link_to "resources", details_path, :class => active_path_class?(details_path, '') + " navLink"  %></li>
-      <li class="dropdown is-hoverable">
-        <div class="dropdown-trigger">
-          <%= link_to "Events", events_path, :class => active_path_class?(events_path, event_kit_path) + " navLink"%>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
-            <%= link_to "View All Events", events_path, :class => "dropdown-item navLink"  %>
-            <hr class="dropdown-divider">
-            <%= link_to "Event Organizer Kit", event_kit_path, :class => "dropdown-item navLink"  %>
+    <div class="navbar-primary">
+      <a href="/" class="logo">
+        <img alt="Hacktoberfest Logo" class="nav-logo">
+      </a>
+      <ul class="navbar-links">
+        <li><%= link_to "home", root_path, :class => active_path_class?(root_path, '') + " navLink"  %></li>
+        <li><%= link_to "resources", details_path, :class => active_path_class?(details_path, '') + " navLink"  %></li>
+        <li class="dropdown is-hoverable">
+          <div class="dropdown-trigger">
+            <%= link_to "Events", events_path, :class => active_path_class?(events_path, event_kit_path) + " navLink"%>
           </div>
-        </div>
-      </li>
-      <li><%= link_to "faq", faq_path, :class => active_path_class?(faq_path, '') + " navLink"  %></li>
-      <% if @current_user %>
-        <li><%= link_to "profile", profile_path, :class => active_path_class?(profile_path, '') + " button button-small navLink"  %></li>
-      <% else %>
-        <li><%= link_to Hacktoberfest.ended? ? "see your profile" : "start hacking", profile_path, :class => "button button-small navLink"  %></li>
-      <% end %>
-    </ul>
-  </nav>
-  <div class="toggle">
-    <p>Dark Mode </p>
-    <label class="toggle-switch">
-       <input
-          id="toggle-checkbox"
-          type="checkbox"
-          onclick="
-          localStorage.setItem('mode', (localStorage.getItem('mode') || 'light') === 'light' ? 'dark' : 'light'); 
-          localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
-          " 
-          title="Dark/light"
-        />
-        <span class="toggle-slider"></span>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <%= link_to "View All Events", events_path, :class => "dropdown-item navLink"  %>
+              <hr class="dropdown-divider">
+              <%= link_to "Event Organizer Kit", event_kit_path, :class => "dropdown-item navLink"  %>
+            </div>
+          </div>
+        </li>
+        <li><%= link_to "faq", faq_path, :class => active_path_class?(faq_path, '') + " navLink"  %></li>
+        <% if @current_user %>
+          <li><%= link_to "profile", profile_path, :class => active_path_class?(profile_path, '') + " button button-small navLink"  %></li>
+        <% else %>
+          <li><%= link_to Hacktoberfest.ended? ? "see your profile" : "start hacking", profile_path, :class => "button button-small navLink"  %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="toggle">
+      <p>Dark Mode </p>
+      <label class="toggle-switch">
+        <input
+            id="toggle-checkbox"
+            type="checkbox"
+            onclick="
+            localStorage.setItem('mode', (localStorage.getItem('mode') || 'light') === 'light' ? 'dark' : 'light'); 
+            localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
+            " 
+            title="Dark/light"
+          />
+          <span class="toggle-slider"></span>
       </label>
-  </div>
+    </div>
+  </nav>
 </header>
 <script>
+document.addEventListener("turbolinks:load", ()=> {
   if(localStorage.getItem('mode') === 'dark') document.getElementById('toggle-checkbox').checked = true
+});
 </script>

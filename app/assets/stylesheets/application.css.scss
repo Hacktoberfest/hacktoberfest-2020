@@ -42,12 +42,13 @@ $break-med: 1288px;
 
 $black: hsl(0, 100%, 0%);
 $white: hsl(0, 0%, 100%);
+$blue: #0069ff;
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
 $grey-darker: hsl(222, 45%, 21%); // box dark blue
 $grey-dark: hsl(223, 32%, 33%); // box lighter blue
 $cyan: hsl(191.56, 100%, 78.63%);
-$red: hsl(320, 100%, 50%);
+$red: #ff8ae2;
 $purple: hsl(286.79, 73.68%, 44.71%);
 $yellow: hsl(58.37, 100%, 56.67%);
 $size-1: 2.25rem;
@@ -55,11 +56,11 @@ $size-2: 2rem;
 $size-3: 1.5rem;
 $size-4: 1.25rem;
 $size-5: 1.125rem;
-$family-monospace: "Inter Regular", "Helvetica", "Arial", san-serif;
+$family-serif: "Inter Regular", "Helvetica", "Arial", san-serif;
 
 // Derived Variables
 $primary: $grey-darker;
-$family-primary: $family-monospace;
+$family-primary: $family-serif;
 $link: $cyan;
 $link-hover: $red;
 
@@ -68,7 +69,7 @@ $link-hover: $red;
 // -- general
 $body-background-color: $black-bis;
 $body-color: $grey;
-$body-family: $family-monospace;
+$body-family: $family-serif;
 $body-font-size: $size-5;
 
 // -- footer
@@ -91,12 +92,12 @@ $box-shadow: 0px 50px 100px rgba($black, 0.2);
 
 // -- button
 $button-color: $white;
-$button-background-color: $purple;
-$button-border-color: $purple;
+$button-background-color: $blue;
+$button-border-color: $blue;
 $button-border-width: 0;
 $button-padding-vertical: 1.125em;
 $button-padding-horizontal: 2em;
-$button-hover-color: $grey-dark;
+$button-hover-color: $red;
 
 // -- modal
 $modal-content-width: 60vw;
@@ -105,21 +106,25 @@ $modal-content-width: 60vw;
 }
 
 .button {
-  min-height: 60px;
-  border: none;
-  border-radius: 0px;
-  font-size: 16px;
-  padding-bottom: 2em;
-  padding-top: 1.125em;
+  border-radius: 48px !important;
+  font-weight: 900;
+  font-size: 14px;
+  padding: 24px 40px;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-transform: uppercase;
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05);
 
   &:hover {
-    background-color: $cyan;
+    background-color: $red;
+    color: $white !important;
+    padding: 10px 20px !important;
   }
 
   &.button-small {
-    height: auto;
-    min-height: auto;
-    padding: 0.5em 1em;
+    height: 100%;
+    padding: 10px 20px !important;
   }
 }
 
@@ -170,7 +175,7 @@ select {
 
 body.dark {
   // images
-  .styled-logo {
+  .nav-logo {
     content: url(h-dark.svg) !important;
   }
 }
@@ -261,7 +266,7 @@ body {
   }
 
   // images
-  .styled-logo {
+  .nav-logo {
     content: url(h-light.svg);
   }
 }
