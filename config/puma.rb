@@ -10,11 +10,11 @@ port ENV.fetch('PORT') { 3000 }
 preload_app!
 
 before_fork do
-  defined?(ActiveRecord::Base) and
+  defined?(ActiveRecord::Base) &&
     ActiveRecord::Base.connection.disconnect!
 end
 
 after_worker_fork do
-  defined?(ActiveRecord::Base) and
+  defined?(ActiveRecord::Base) &&
     ActiveRecord::Base.establish_connection
 end

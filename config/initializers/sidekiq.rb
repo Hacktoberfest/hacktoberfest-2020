@@ -4,9 +4,6 @@
 # See: https://github.com/mperham/sidekiq
 
 # Redis config shared between client and server
-# rubocop:disable Style/MutableConstant
-
-# rubocop:enable Style/MutableConstant
 
 # Custom Error message reporting a job death to airbrake
 module Sidekiq
