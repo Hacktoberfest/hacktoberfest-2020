@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   end
 
   def faqs
-    faq = AirrecordTable.new.all_records('FAQ')
+    faq = AirrecordTable.new.all_records('FAQs')
     @faqs_rules = faq.select { |q| q['Category'] == 'Rules' }
     @faqs_general = faq.select { |q| q['Category'] == 'General' }
     @faqs_events = faq.select { |q| q['Category'] == 'Events' }
