@@ -2,8 +2,9 @@
 
 class ChangeUserMarketingEmailOptions < ActiveRecord::Migration[5.2]
   def change
-    rename_column :users, :marketing_emails, :digitalocean_marketing_emails
-    add_column :users, :intel_marketing_emails, :boolean, :default => false
-    add_column :users, :dev_marketing_emails, :boolean, :default => false
+    change_table :users, bulk: true do |t|
+      t.rename :marketing_emails, :digitalocean_marketing_emails
+      t.boolean :intel_marketing_emails, :dev_marketing_emails, default: false
+    end
   end
 end

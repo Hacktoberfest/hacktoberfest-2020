@@ -58,7 +58,13 @@ class UsersController < ApplicationController
   end
 
   def params_for_registration
-    params.require(:user).permit(:email, :terms_acceptance, :digitalocean_marketing_emails, :intel_marketing_emails, :dev_marketing_emails)
+    params.require(:user).permit(
+      :email,
+      :terms_acceptance,
+      :digitalocean_marketing_emails,
+      :intel_marketing_emails,
+      :dev_marketing_emails
+    )
   end
 
   def params_for_update
