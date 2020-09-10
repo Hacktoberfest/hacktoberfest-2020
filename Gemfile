@@ -40,6 +40,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'sidekiq', '< 6.0'
 gem 'sidekiq-scheduler'
 
+gem 'figaro'
+
 # commenting out these settings since we are not using enterprise sidekiq in local docker dev
 #unless ENV['RAILS_ENV'] == 'production' || ENV['RAILS_ENV'] == 'staging' || ENV['REDIS_HOST'] == 'redis'
 #  require 'dotenv'

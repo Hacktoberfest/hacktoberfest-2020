@@ -18,7 +18,7 @@ RUN gem install bundler -v 2.1.4
 
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle check || bundle install --without production
+RUN bundle check || bundle install
 
 ###############################
 FROM ruby:2.5
@@ -30,6 +30,14 @@ WORKDIR /app
 
 COPY --from=base /app /app
 
-ENTRYPOINT ["./script/docker-entrypoint.sh"]
+# Pull in the rails environment
+ARG RAILS_ENV
+ENV RAILS_ENV ${RAILS_ENV:-development}
+
+ARG RAILS_MASTER_KEY
+
+RUN RAILS_MASTER_KEY=${RAILS_MASTER_KEY} RAILS_ENV=${RAILS_ENV} bundle exec rake assets:precompile
 
 EXPOSE 3000
+
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
