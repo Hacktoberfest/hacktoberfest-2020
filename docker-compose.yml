@@ -55,7 +55,7 @@ services:
   webserver:
     build:
       context: .
-      dockerfile: Dockerfile-nginx
+      dockerfile: Dockerfile-nginx-dev
     ports:
       - "80:80"
     depends_on: 
