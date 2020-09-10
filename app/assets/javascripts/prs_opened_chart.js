@@ -70,7 +70,7 @@ window.setupPRsOpenedChart = function () {
             backgroundColor: darkGrey,
             fontColor: text,
             fontStyle: 'normal',
-            fontFamily: 'Space Mono, monospace'
+            fontFamily: 'Inter Regular, Helvetica, Arial, san-serif'
         },
         data: [
             {

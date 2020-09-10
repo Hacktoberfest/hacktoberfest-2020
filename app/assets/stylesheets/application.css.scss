@@ -43,6 +43,7 @@ $break-med: 1288px;
 $black: hsl(0, 100%, 0%);
 $white: hsl(0, 0%, 100%);
 $blue: #0069ff;
+
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
 $grey-darker: hsl(222, 45%, 21%); // box dark blue
@@ -56,20 +57,20 @@ $size-2: 2rem;
 $size-3: 1.5rem;
 $size-4: 1.25rem;
 $size-5: 1.125rem;
-$family-serif: "Inter Regular", "Helvetica", "Arial", san-serif;
+$family-sans-serif: "Inter Regular", "Helvetica", "Arial", san-serif;
 
 // Derived Variables
 $primary: $grey-darker;
-$family-primary: $family-serif;
+$family-primary: $family-sans-serif;
 $link: $cyan;
 $link-hover: $red;
 
 // Generic Variables
 
 // -- general
-$body-background-color: $black-bis;
+$body-background-color: var(--background-color);
 $body-color: $grey;
-$body-family: $family-serif;
+$body-family: $family-sans-serif;
 $body-font-size: $size-5;
 
 // -- footer
@@ -171,22 +172,13 @@ select {
   border-radius: 0;
 }
 
-// Global darkmode styles
-
-body.dark {
-  // images
-  .nav-logo {
-    content: url(h-dark.svg) !important;
-  }
-}
-
-// Global content styling
+// Global styles (light mode)
 body {
   overflow: hidden;
   position: relative;
 
   .section {
-    padding: 0 135px;
+    padding: 0 120px;
     margin: 0;
 
     @media screen and (max-width: $break-med) {
@@ -201,26 +193,6 @@ body {
 
   .container {
     margin: 0;
-  }
-
-  .navbar-end {
-    align-items: flex-start;
-  }
-
-  // Styles for background images
-  .top-bgs::before {
-    content: image-url("bg-left.png");
-    position: absolute;
-    top: 0px;
-    left: 20;
-    z-index: -1;
-  }
-  .top-bgs::after {
-    content: image-url("bg-right.png");
-    position: absolute;
-    top: 80px;
-    right: 0;
-    z-index: -1;
   }
 
   p {
@@ -262,13 +234,81 @@ body {
   }
 
   strong {
-    color: $yellow;
+    font-family: "Inter Bold", "Helvetica", "Arial", san-serif;
   }
 
   // images
   .nav-logo {
     content: url(h-light.svg);
   }
+}
+
+// Global darkmode styles
+
+body.dark {
+  // images
+  .nav-logo {
+    content: url(h-dark.svg) !important;
+  }
+}
+
+:root {
+  --buttonColor: "#0069FF";
+  --buttonHoverColor: "#FF73FA";
+  --buttonTextColor: "#FFFFFF";
+  --accordionRuleColor: "#93C2DB";
+  --labelColor: "#FF8AE2";
+  --checkColor: "#4551FF";
+  --tableHeaderColor: "#072540";
+  --tableColor: "#FFFFFF";
+  --diamondColor: "#93C2DB";
+  --platinumColor: "#99A1B3";
+  --goldColor: "#FFD700";
+  --socialHoverColor: "#010E2F";
+
+  //light mode
+  --background-color: "#FFFFFF";
+  --headlineColor: "#072540";
+  --textColor: "#5B6987";
+  --ruleColor: "#F3F5F9";
+  --categoryColor: "#183D5D";
+  --boxColor: "#F1F7FA";
+  --inputBackgroundColor: "#E5E8ED";
+  --inputTextColor: "#031B4E";
+  --inputPlaceholderColor: "#031B4E";
+  --toggleColor: "#E5E8ED";
+  --tableBackgroundColor: "#FFFFFF";
+  --tableBorderColor: "#93C2DB";
+  --tableColor: "#183D5D";
+  --footerBackgroundColor: "#F1F7FA";
+  --footerTextColor: "#183D5D";
+  --navActiveColor: "#183D5D";
+  --navBackgroundColor: "#FFFFFF";
+  --socialTextColor: "#031B4E";
+  --socialBackgroundColor: "#F3F5F9";
+}
+
+:root.dark {
+  //dark mode
+  --background-color: "#072540" !important;
+  --headlineColor: "#FFFFFF" !important;
+  --textColor: "#93C2DB" !important;
+  --ruleColor: "#183D5D" !important;
+  --categoryColor: "#93C2DB" !important;
+  --boxColor: "#183D5D" !important;
+  --inputBackgroundColor: "#183D5D" !important;
+  --inputTextColor: "#A2B3E9" !important;
+  --inputPlaceholderColor: "#FFFFFF" !important;
+  --toggleColor: "#183D5D" !important;
+  --tableBackgroundColor: "#183D5D" !important;
+  --tableBorderColor: "transparent" !important;
+  --tableColor: "#FFFFFF" !important;
+  --footerBackgroundColor: "#010E28" !important;
+  --footerTextColor: "#93C2DB" !important;
+  --navActiveColor: "#FFFFFF" !important;
+  --navBackgroundColor: "#183D5D" !important;
+  --socialTextColor: "#FFFFFF" !important;
+  --socialBackgroundColor: "#183D5D" !important;
 }
 
 @import "bulma";

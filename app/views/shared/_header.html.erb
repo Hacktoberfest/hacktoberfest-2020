@@ -20,11 +20,14 @@
           </div>
         </li>
         <li><%= link_to "faq", faq_path, :class => active_path_class?(faq_path, '') + " navLink"  %></li>
-        <% if @current_user %>
-          <li><%= link_to "profile", profile_path, :class => active_path_class?(profile_path, '') + " button button-small navLink"  %></li>
-        <% else %>
-          <li><%= link_to Hacktoberfest.ended? ? "see your profile" : "start hacking", profile_path, :class => "button button-small navLink"  %></li>
-        <% end %>
+        <li>
+          <% if @current_user %>
+            <%= link_to "profile", profile_path, :class => active_path_class?(profile_path, '') + " button button-small navLink"  %>
+          <% else %>
+            <%= link_to 'start hacking', '/auth/github',
+            id: 'github-sign-in', class: 'button button-small navLink', method: :post %>
+          <% end %>
+        </li>
       </ul>
     </div>
     <div class="toggle">
@@ -45,6 +48,7 @@
   </nav>
 </header>
 <script>
+// after turbolinks finishes loading check localStorage mode and check the toggle if it needs to be darkmode
 document.addEventListener("turbolinks:load", ()=> {
   if(localStorage.getItem('mode') === 'dark') document.getElementById('toggle-checkbox').checked = true
 });
