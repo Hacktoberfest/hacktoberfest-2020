@@ -20,6 +20,13 @@
     <meta prefix="og: http://ogp.me/ns#" property="og:image" content="<%= image_url('og-hf20.png') %>">
 
     <script type="text/javascript">
+    // before turbolinks renders remove or add class dark - this is needed to prevent a flash of previous styles
+    document.addEventListener("turbolinks:before-render", (event)=> {
+    if (localStorage.getItem('mode') === 'light') event.data.newBody.classList.remove('dark')
+    if (localStorage.getItem('mode') === 'dark')  event.data.newBody.classList.add('dark')
+    })
+
+    // after turbolinks fully loads readd or remove class dark - this is needed because turbolinks strips all scripts :/
     document.addEventListener("turbolinks:load", ()=> {
       ((localStorage.getItem('mode') || 'light') === 'dark') ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')
     });
