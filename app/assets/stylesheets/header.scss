@@ -40,9 +40,6 @@ $navColor: rgba(0, 0, 0, 0);
     margin: 124px 0 20px 0;
   }
 
-  .header-logo {
-    display: none;
-  }
   ul.navbar-end {
     @media screen and (max-width: $break-small) {
       margin: 20px 0 0;

@@ -1,6 +1,9 @@
 <header>
   <nav class="navbar" id="navbar">
-  <a href="/" id="nav-logo"></a>
+  <a href="/" id="nav-logo">
+  <img alt="Hacktoberfest Logo" class="styled-logo" width="109">
+  <%# <img src="<%= asset_path('h-light.svg') %><%#" alt="Hacktoberfest Logo" class="styled-logo" width="109"> %>
+  </a>
     <ul class="navbar-end">
       <li><%= link_to "home", root_path, :class => active_path_class?(root_path, '') + " navLink"  %></li>
       <li><%= link_to "resources", details_path, :class => active_path_class?(details_path, '') + " navLink"  %></li>
@@ -32,8 +35,7 @@
           onclick="
           localStorage.setItem('mode', (localStorage.getItem('mode') || 'light') === 'light' ? 'dark' : 'light'); 
           localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
-          darkmodeImages();
-          renderImage(logoImage(), document.querySelector('#nav-logo'));" 
+          " 
           title="Dark/light"
         />
         <span class="toggle-slider"></span>
@@ -41,5 +43,5 @@
   </div>
 </header>
 <script>
-  renderImage(logoImage(), document.querySelector('#nav-logo'));
+  // renderImage(document.querySelector('#nav-logo'), logoImageSrc(), 'Hacktoberfest logo', 'styled-logo');
 </script>

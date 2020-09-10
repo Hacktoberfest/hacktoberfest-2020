@@ -19,6 +19,12 @@
     <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://hacktoberfest.digitalocean.com/">
     <meta prefix="og: http://ogp.me/ns#" property="og:image" content="<%= image_url('og-hf20.png') %>">
 
+    <script type="text/javascript">
+    document.addEventListener("turbolinks:load", ()=> {
+      ((localStorage.getItem('mode') || 'light') === 'dark') ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')
+    });
+    </script>
+
     <%= favicon_link_tag asset_path('favicon.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -46,14 +52,6 @@
     </script>
   <% end %>
 
-  <%# light mode / dark mode %>
-  <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', (event) => {
-     ((localStorage.getItem('mode') || 'light') === 'dark') ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')
-    })
-     darkmodeImages();
-  </script>
-
   <script src="https://assets.digitalocean.com/cookieConsent/cookieConsent.js"></script>
 
   <% if Rails.env.production? %>
@@ -68,6 +66,5 @@
       });
     </script>
   <% end %>
-
   </body>
 </html>

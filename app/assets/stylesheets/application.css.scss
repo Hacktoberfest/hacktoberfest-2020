@@ -166,8 +166,16 @@ select {
   border-radius: 0;
 }
 
-// Global content styling
+// Global darkmode styles
 
+body.dark {
+  // images
+  .styled-logo {
+    content: url(h-dark.svg) !important;
+  }
+}
+
+// Global content styling
 body {
   overflow: hidden;
   position: relative;
@@ -250,6 +258,11 @@ body {
 
   strong {
     color: $yellow;
+  }
+
+  // images
+  .styled-logo {
+    content: url(h-light.svg);
   }
 }
 
