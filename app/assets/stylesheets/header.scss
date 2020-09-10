@@ -21,6 +21,34 @@ header {
 
 $navColor: rgba(0, 0, 0, 0);
 
+// survey block styling
+.survey {
+  position: absolute;
+  width: 100%;
+  min-height: 40px;
+  left: 0px;
+  top: 0px;
+  background: #0a142e;
+  box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+  font-size: 0.75rem;
+  padding: 10px 10px 10px 135px;
+  color: white;
+
+  @media screen and (max-width: $break-small) {
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+  }
+
+  a {
+    color: hsl(320, 100%, 50%);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
 // Main Nav
 
 #navbar {

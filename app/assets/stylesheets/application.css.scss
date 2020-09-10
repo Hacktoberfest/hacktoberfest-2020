@@ -43,15 +43,17 @@ $break-med: 1288px;
 $black: hsl(0, 100%, 0%);
 $white: hsl(0, 0%, 100%);
 $blue: #0069ff;
+$red: #ff8ae2;
 
+//TODO: old color variables to be removed and swapped out with custom variables below
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
 $grey-darker: hsl(222, 45%, 21%); // box dark blue
 $grey-dark: hsl(223, 32%, 33%); // box lighter blue
 $cyan: hsl(191.56, 100%, 78.63%);
-$red: #ff8ae2;
 $purple: hsl(286.79, 73.68%, 44.71%);
 $yellow: hsl(58.37, 100%, 56.67%);
+
 $size-1: 2.25rem;
 $size-2: 2rem;
 $size-3: 1.5rem;
