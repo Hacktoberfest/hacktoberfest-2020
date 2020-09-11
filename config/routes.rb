@@ -58,6 +58,9 @@ Rails.application.routes.draw do
     get '/impersonate/:id', to: 'sessions#impersonate', as: :impersonate
   end
 
+  # Partner user state api
+  get '/api/state/:user', to: 'api#state'
+
   # Default
   root to: 'pages#index'
 
