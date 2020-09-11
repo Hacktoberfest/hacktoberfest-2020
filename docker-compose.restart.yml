@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  app: 
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - database
+      - redis
+    volumes: 
+      - .:/app:delegated
+      - gem_cache:/vendor/bundle/ruby/2.5.0/gems
+    env_file: .env  
+    environment:
+      RAILS_ENV: development
+    entrypoint: ./script/docker-restart-entrypoint.sh
+    networks:
+      - app-network

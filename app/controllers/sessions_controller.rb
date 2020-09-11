@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     session[:current_user_id] = @user.id
     store_user_info
     store_segment_user
-    redirect_to session[:destination] || '/'
+    redirect_to session[:destination] || '/profile'
   end
 
   def store_segment_user

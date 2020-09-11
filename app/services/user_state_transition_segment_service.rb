@@ -22,7 +22,9 @@ module UserStateTransitionSegmentService
   def register(user)
     segment(user).identify(
       email: user.email,
-      marketing_emails: user.marketing_emails,
+      digitalocean_marketing_emails: user.digitalocean_marketing_emails,
+      intel_marketing_emails: user.intel_marketing_emails,
+      dev_marketing_emails: user.dev_marketing_emails,
       state: 'register'
     )
     segment(user).track('register')
