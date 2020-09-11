@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   end
 
   # Partner user state api
-  get '/api/state/:user', to: 'api#state'
+  get '/api/state/:user', to: 'api#state', as: :api_state
 
   # Default
   root to: 'pages#index'
