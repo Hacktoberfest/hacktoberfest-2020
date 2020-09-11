@@ -24,7 +24,9 @@ class UsersController < ApplicationController
 
   # action to render register form
   def registration
-    @categories = %w[participant organizer maintainer]
+    @categories = { 'Participant' => 'Participant',
+                    'Event Organizer' => 'organizer',
+                    'Maintainer' => 'maintainer' }
     set_user_emails
   end
 
