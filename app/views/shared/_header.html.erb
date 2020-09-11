@@ -24,8 +24,7 @@
           <% if @current_user %>
             <%= link_to "profile", profile_path, :class => active_path_class?(profile_path, '') + " button button-small navLink"  %>
           <% else %>
-            <%= link_to 'start hacking', '/auth/github',
-            id: 'github-sign-in', class: 'button button-small navLink', method: :post %>
+            <%= link_to Hacktoberfest.ended? ? "profile" : "start hacking", login_path, :class => "button button-small navLink" %>
           <% end %>
         </li>
       </ul>
