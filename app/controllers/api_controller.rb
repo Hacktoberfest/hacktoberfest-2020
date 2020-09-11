@@ -7,15 +7,21 @@ class ApiController < ApplicationController
   def state
     user = User.find_by(uid: params[:user])
     render plain: if user.present?
-                    user.completed_or_won? ? "completed" : "registered"
+                    user.completed_or_won? ? 'completed' : 'registered'
                   else
-                    "not-found"
+                    'not-found'
                   end
   end
 
   private
 
   def require_authentication
-    render plain: "not-authorized", status: 401 unless request.headers['Authorization'] == ENV.fetch('HACKTOBERFEST_API_KEY')
+    return if valid_authentication?
+
+    render plain: 'not-authorized', status: :unauthorized
+  end
+
+  def valid_authentication?
+    request.headers['Authorization'] == ENV.fetch('HACKTOBERFEST_API_KEY')
   end
 end
