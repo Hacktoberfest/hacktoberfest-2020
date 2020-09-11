@@ -1,5 +1,11 @@
 .event-table {
   margin-top: 50px;
+  max-width: 1170px;
+  width: 100%;
+
+  thead {
+    border-radius: 8px 8px 0px 0px;
+  }
 }
 
 .search {
