@@ -70,7 +70,7 @@ From there, create a local `.env` file, and add fill out the following values, u
 HACKTOBERFEST_DATABASE_HOST=database
 HACKTOBERFEST_DATABASE_USERNAME=hacktoberfest
 HACKTOBERFEST_DATABASE_PASSWORD=sekret
-HACKTOBERFEST_API_KEY=
+HACKTOBERFEST_API_KEY=sekret
 REDIS_HOST=redis
 REDIS_PORT=6379
 DALLI_SERVER=memcached
@@ -80,6 +80,7 @@ START_DATE=
 END_DATE=
 AIRTABLE_API_KEY=
 AIRTABLE_APP_ID=
+SEGMENT_WRITE_KEY=
 ```
 **Note**: Use the following values when setting up your Oauth token:
 
