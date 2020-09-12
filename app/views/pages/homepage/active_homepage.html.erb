@@ -1,9 +1,84 @@
 <main class="home" id="main-home"@>
   <section class="section">
     <div class="hero-body">
-      <h1 class="title is-1 is-spaced">Support open source and earn a <span class="highlight">limited edition T-shirt</span>!
+
+ <header>
+       <%# Left Graphics  %>
+      <div class="left-hero-graphics">
+        <img class="left-photo-1"
+          src={heroLeft1}
+          alt="Man holding up DigitalOcean gift cards and doing the peace sign."
+        />
+        <div class="left-top-icons">
+          <div class="left-leaf-icon">
+            <img src="/hero-leaf.svg" alt="Leaf graphic" />
+          </div>
+
+          <div class="left-do-logo">
+            <img src="/hero-do.svg" alt="DigitalOcean logo" />
+          </div>
+        </div>
+
+        <div class="left-intel-logo">
+          <img src="/hero-intel.svg" alt="Dev logo" />
+        </div>
+
+        <img class="left-photo-2"
+          src={heroLeft2}
+          alt="Woman wearing a Hacktoberfest T-shirt resting her arm on a desk next to her open laptop."
+        />
+
+        <div class="left-box-icon">
+          <img src="/hero-box.svg" alt="Box" />
+        </div>
+
+        <div class="left-circle-icon">
+          <img src="/hero-circle.svg" alt="Circle" />
+        </div>
+      </div>
+      <%#  Center Content  %>
+      <div class="hero-content">
+
+          <img class="full-logo" src="/HF-full-logo.svg" alt="Hacktoberfest logo" />
+
+        <h1>
+          Open source is changing the world - 
+          <strong>one pull request</strong> at a time.
+        </h1>
+        <h2>
+          Hacktoberfest encourages participation in the open source community,
+          which grows bigger every year. Complete the 2020 challenge and earn a
+          limited edition T-shirt.
+
+        </h2>
+         <%= link_to "start hacking", login_path, :class => active_path_class?(profile_path, '') + " button" %>
+      </div>
+       <%# Right Graphics  %>
+      <%# <StyledRightGraphics>
+        <StyledDev>
+          <img src="/hero-dev.svg" alt="Dev logo" />
+        </StyledDev>
+        <StyledGit>
+          <img src="/hero-git.svg" alt="git graphic" />
+        </StyledGit>
+        <StyledRightPhoto1
+          src={heroRight1}
+          alt="Woman wearing Hacktoberfest T-shirt holding up Hacktoberfest stickers with a big open mouth smile."
+        />
+        <StyledRightPhoto2
+          src={heroRight2}
+          alt="Close up photo of 2019 Hacktoberfest T-shirt"
+        />
+        <StyledBoxes>
+          <img src="/hero-boxes.svg" alt="Boxes" />
+        </StyledBoxes>
+      </StyledRightGraphics> %>
+    </header>
+
+      <%# <h1 class="title is-1 is-spaced">Support open source and earn a <span class="highlight">limited edition T-shirt</span>!
       </h1>
         <%= link_to "start hacking", login_path, :class => active_path_class?(profile_path, '') + " button" %>
+
     </div>
     <div class="section2 space">
       <div class="line-br">

@@ -8,11 +8,12 @@ class PagesController < ApplicationController
     @projects = ProjectService.sample(9)
     @climate_repositories = ClimateProjectService.sample(3)
     @global_stats = global_stats
-    if Hacktoberfest.ended?
-      render 'pages/homepage/closing_homepage'
-    else
-      render 'pages/homepage/active_homepage'
-    end
+    render 'pages/homepage/active_homepage'
+    # if Hacktoberfest.ended?
+    #   render 'pages/homepage/closing_homepage'
+    # else
+    #   render 'pages/homepage/active_homepage'
+    # end
   end
 
   def faqs
