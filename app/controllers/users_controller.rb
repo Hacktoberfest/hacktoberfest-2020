@@ -24,6 +24,9 @@ class UsersController < ApplicationController
 
   # action to render register form
   def registration
+    @categories = { 'Participant' => 'Participant',
+                    'Event Organizer' => 'organizer',
+                    'Maintainer' => 'maintainer' }
     set_user_emails
   end
 
@@ -63,7 +66,8 @@ class UsersController < ApplicationController
       :terms_acceptance,
       :digitalocean_marketing_emails,
       :intel_marketing_emails,
-      :dev_marketing_emails
+      :dev_marketing_emails,
+      :category
     )
   end
 

@@ -19,6 +19,7 @@ RSpec.describe UserStateTransitionSegmentService do
           digitalocean_marketing_emails: user.digitalocean_marketing_emails,
           intel_marketing_emails: user.intel_marketing_emails,
           dev_marketing_emails: user.dev_marketing_emails,
+          category: user.category,
           state: 'register'
         )
         allow_any_instance_of(SegmentService).to receive(:track).with(
@@ -33,6 +34,7 @@ RSpec.describe UserStateTransitionSegmentService do
           digitalocean_marketing_emails: user.digitalocean_marketing_emails,
           intel_marketing_emails: user.intel_marketing_emails,
           dev_marketing_emails: user.dev_marketing_emails,
+          category: user.category,
           state: 'register'
         )
         expect_any_instance_of(SegmentService).to receive(:track).with(

@@ -299,7 +299,7 @@ body {
 
   // images
   .nav-logo {
-    content: url(h-light.svg);
+    content: asset-url("h-light.svg");
   }
 
   h1 {
@@ -317,7 +317,7 @@ body.dark {
   background-color: $dark-backgroundColor !important;
   // images
   .nav-logo {
-    content: url(h-dark.svg) !important;
+    content: asset-url("h-dark.svg") !important;
   }
 
   h1 {
