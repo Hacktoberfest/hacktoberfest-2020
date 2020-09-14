@@ -38,6 +38,15 @@
       </div>
 
       <div class="field">
+        <label class="label">Role</label>
+        <div class="control">
+          <div class="select">
+            <%= f.select :category, @categories %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
         <div class="control">
           <label class="checkbox">
             <%= f.check_box :digitalocean_marketing_emails %>
