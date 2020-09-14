@@ -130,6 +130,12 @@ $body-color: $grey;
 $body-family: $family-sans-serif;
 $body-font-size: $size-5;
 
+.container {
+  padding-bottom: 64px;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
 // -- footer
 $footer-background-color: none;
 $footer-padding: 130px 135px 20px 135px;
@@ -163,7 +169,7 @@ $button-hover-color: $red;
   border-radius: 48px !important;
   font-weight: 900;
   font-size: 14px;
-  padding: 24px 40px;
+  padding: 24px 40px !important;
   display: inline-flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -173,7 +179,7 @@ $button-hover-color: $red;
   &:hover {
     background-color: $red;
     color: $white !important;
-    padding: 10px 20px !important;
+    padding: 24px 40px !important;
   }
 
   &.button-small {
@@ -321,8 +327,17 @@ body {
     }
   }
 
+  // home page
   .home-hero {
     background-image: asset-url("hero-bg-light.svg");
+  }
+
+  .home-event-details {
+    .bullet {
+      span {
+        color: #5b6987;
+      }
+    }
   }
 }
 
@@ -359,8 +374,17 @@ body.dark {
     }
   }
 
+  // home page
   .home-hero {
     background-image: asset-url("hero-bg.svg");
+  }
+
+  .home-event-details {
+    .bullet {
+      span {
+        color: #93c2db;
+      }
+    }
   }
 }
 

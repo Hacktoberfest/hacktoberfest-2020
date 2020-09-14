@@ -5,6 +5,8 @@ $break-tiny: 812px;
 $break-small: 1024px;
 $break-med: 1350px;
 $break-large: 1920px;
+$red: #ff8ae2;
+
 $yellow: hsl(58.37, 100%, 56.67%);
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
@@ -63,11 +65,16 @@ main.home {
     }
   }
 
+  ul {
+    margin-top: 10px;
+  }
+
   .bullet {
     list-style-type: disc;
-    color: $yellow;
+    color: $red;
     margin-bottom: 30px;
     margin-left: 20px;
+    margin-top: 10px;
   }
 
   .eventsBlock {
