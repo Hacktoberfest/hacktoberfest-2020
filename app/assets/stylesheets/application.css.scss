@@ -294,11 +294,19 @@ body {
   }
 
   strong {
-    font-family: "Inter Bold", "Helvetica", "Arial", san-serif;
+    font-family: "Inter Black", "Helvetica", "Arial", san-serif;
   }
 
   // -------- Global light mode styles --------
   background-color: $light-backgroundColor;
+  color: $light-textColor;
+
+  h1,
+  h2,
+  h3 {
+    color: $light-headlineColor !important;
+    font-family: "Inter Black", "Helvetica", "Arial", san-serif;
+  }
 
   // navigation
   #navbar {
@@ -345,6 +353,13 @@ body {
 
 body.dark {
   background-color: $dark-backgroundColor !important;
+  color: $dark-textColor !important;
+
+  h1,
+  h2,
+  h3 {
+    color: $dark-headlineColor !important;
+  }
 
   // navigation
   #navbar {
