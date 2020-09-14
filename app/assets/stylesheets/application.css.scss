@@ -73,7 +73,7 @@ $buttonColor: #0069ff;
 $buttonHoverColor: #ff73fa;
 $buttonTextColor: #ffffff;
 $accordionRuleColor: #93c2db;
-$labelColor: #ff8ae2;
+$labelColor: $red;
 $checkColor: #4551ff;
 $tableHeaderColor: #072540;
 $tableColor: #ffffff;
@@ -138,7 +138,7 @@ $body-font-size: $size-5;
 
 // -- footer
 $footer-background-color: none;
-$footer-padding: 130px 135px 20px 135px;
+$footer-padding: 0;
 
 // -- title
 $title-color: $white;
@@ -335,6 +335,30 @@ body {
     }
   }
 
+  // footer
+  .footer {
+    .footer-do-logo {
+      content: url(DO-light-logo.svg) !important;
+    }
+
+    .footer-wrapper {
+      background: $light-footerBackgroundColor;
+    }
+
+    .footer-p {
+      color: $light-footerTextColor !important;
+    }
+
+    .footer-links {
+      li {
+        border-right: 1px solid $light-footerTextColor;
+      }
+      a {
+        color: $labelColor !important;
+      }
+    }
+  }
+
   // home page
   .home-hero {
     background-image: asset-url("hero-bg-light.svg");
@@ -385,6 +409,30 @@ body.dark {
         padding: 5px;
         background-color: rgba(7, 37, 64, 0.24);
         color: $white !important;
+      }
+    }
+  }
+
+  // footer
+  .footer {
+    .footer-do-logo {
+      content: url(DO-dark-logo.svg) !important;
+    }
+
+    .footer-wrapper {
+      background: $dark-footerBackgroundColor;
+    }
+
+    .footer-p {
+      color: $dark-footerTextColor !important;
+    }
+
+    .footer-links {
+      li {
+        border-right: 1px solid $dark-footerTextColor;
+      }
+      a {
+        color: $labelColor !important;
       }
     }
   }
