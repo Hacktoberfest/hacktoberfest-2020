@@ -137,16 +137,18 @@ $footer-padding: 130px 135px 20px 135px;
 // -- title
 $title-color: $white;
 $title-size: $size-1;
-.title.is-1,
-.title.is-2 {
-  font-weight: 400;
-}
 
 // -- box
 $box-color: $grey;
 $box-radius: none;
 $box-background-color: $grey-darker;
 $box-shadow: 0px 50px 100px rgba($black, 0.2);
+
+// -- modal
+$modal-content-width: 60vw;
+.modal-card {
+  height: 100vh;
+}
 
 // -- button
 $button-color: $white;
@@ -156,12 +158,6 @@ $button-border-width: 0;
 $button-padding-vertical: 1.125em;
 $button-padding-horizontal: 2em;
 $button-hover-color: $red;
-
-// -- modal
-$modal-content-width: 60vw;
-.modal-card {
-  height: 100vh;
-}
 
 .button {
   border-radius: 48px !important;
@@ -237,6 +233,11 @@ body {
   .section {
     padding: 0 120px;
     margin: 0;
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: 1170px;
 
     @media screen and (max-width: $break-med) {
       padding: 30px 85px 30px 85px;
@@ -248,10 +249,6 @@ body {
     }
   }
 
-  .container {
-    margin: 0;
-  }
-
   p {
     margin-top: 20px;
   }
@@ -259,7 +256,7 @@ body {
   // Reuseable
 
   .highlight {
-    color: $red;
+    color: $red !important;
   }
 
   .line-br {
@@ -294,22 +291,76 @@ body {
     font-family: "Inter Bold", "Helvetica", "Arial", san-serif;
   }
 
-  // light mode
+  // -------- Global light mode styles --------
   background-color: $light-backgroundColor;
 
-  // images
-  .nav-logo {
-    content: asset-url("h-light.svg");
+  // navigation
+  #navbar {
+    .nav-logo {
+      content: asset-url("h-light.svg");
+    }
+    .navLink {
+      color: #5b6987;
+    }
+
+    .navLink:hover,
+    .active {
+      color: #183d5d;
+    }
+
+    .dropdown-menu {
+      .dropdown-content {
+        background-color: $white;
+      }
+
+      .dropdown-item:hover {
+        padding: 5px;
+        background-color: rgb(241, 247, 250);
+        color: #183d5d !important;
+      }
+    }
+  }
+
+  .home-hero {
+    background-image: asset-url("hero-bg-light.svg");
   }
 }
 
-// Global darkmode styles
+// -------- Global darkmode styles --------
 
 body.dark {
   background-color: $dark-backgroundColor !important;
-  // images
-  .nav-logo {
-    content: asset-url("h-dark.svg") !important;
+
+  // navigation
+  #navbar {
+    .nav-logo {
+      content: asset-url("h-dark.svg") !important;
+    }
+
+    .navLink {
+      color: #93c2db;
+    }
+
+    .navLink:hover,
+    .active {
+      color: $white;
+    }
+
+    .dropdown-menu {
+      .dropdown-content {
+        background-color: rgb(24, 61, 93);
+      }
+
+      .dropdown-item:hover {
+        padding: 5px;
+        background-color: rgba(7, 37, 64, 0.24);
+        color: $white !important;
+      }
+    }
+  }
+
+  .home-hero {
+    background-image: asset-url("hero-bg.svg");
   }
 }
 

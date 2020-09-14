@@ -1,209 +1,178 @@
-<main class="home" id="main-home"@>
-  <section class="section">
-    <div class="hero-body">
+<main class="home" @>
 
- <header>
-       <%# Left Graphics  %>
-      <div class="left-hero-graphics">
-        <img class="left-photo-1"
-          src={heroLeft1}
-          alt="Man holding up DigitalOcean gift cards and doing the peace sign."
-        />
-        <div class="left-top-icons">
-          <div class="left-leaf-icon">
-            <img src="/hero-leaf.svg" alt="Leaf graphic" />
-          </div>
-
-          <div class="left-do-logo">
-            <img src="/hero-do.svg" alt="DigitalOcean logo" />
-          </div>
-        </div>
-
-        <div class="left-intel-logo">
-          <img src="/hero-intel.svg" alt="Dev logo" />
-        </div>
-
-        <img class="left-photo-2"
-          src={heroLeft2}
-          alt="Woman wearing a Hacktoberfest T-shirt resting her arm on a desk next to her open laptop."
-        />
-
-        <div class="left-box-icon">
-          <img src="/hero-box.svg" alt="Box" />
-        </div>
-
-        <div class="left-circle-icon">
-          <img src="/hero-circle.svg" alt="Circle" />
-        </div>
-      </div>
-      <%#  Center Content  %>
-      <div class="hero-content">
-
-          <img class="full-logo" src="/HF-full-logo.svg" alt="Hacktoberfest logo" />
-
-        <h1>
-          Open source is changing the world - 
-          <strong>one pull request</strong> at a time.
-        </h1>
-        <h2>
-          Hacktoberfest encourages participation in the open source community,
-          which grows bigger every year. Complete the 2020 challenge and earn a
-          limited edition T-shirt.
-
-        </h2>
-         <%= link_to "start hacking", login_path, :class => active_path_class?(profile_path, '') + " button" %>
-      </div>
-       <%# Right Graphics  %>
-      <%# <StyledRightGraphics>
-        <StyledDev>
-          <img src="/hero-dev.svg" alt="Dev logo" />
-        </StyledDev>
-        <StyledGit>
-          <img src="/hero-git.svg" alt="git graphic" />
-        </StyledGit>
-        <StyledRightPhoto1
-          src={heroRight1}
-          alt="Woman wearing Hacktoberfest T-shirt holding up Hacktoberfest stickers with a big open mouth smile."
-        />
-        <StyledRightPhoto2
-          src={heroRight2}
-          alt="Close up photo of 2019 Hacktoberfest T-shirt"
-        />
-        <StyledBoxes>
-          <img src="/hero-boxes.svg" alt="Boxes" />
-        </StyledBoxes>
-      </StyledRightGraphics> %>
-    </header>
-
-      <%# <h1 class="title is-1 is-spaced">Support open source and earn a <span class="highlight">limited edition T-shirt</span>!
+  <section class="home-hero">
+    <div class="container">
+      <%= image_tag("HF-full-logo.svg", :alt => "Hacktoberfest Logo") %>
+      <h1 class="title is-1">
+        <strong class="highlight">Support open source</strong> and pick a limited edition t-shirt or plant a tree. 
       </h1>
         <%= link_to "start hacking", login_path, :class => active_path_class?(profile_path, '') + " button" %>
-
-    </div>
-    <div class="section2 space">
-      <div class="line-br">
-        <span class="line-br-1">-</span>
-        <span class="line-br-2">-</span>
-      </div>
-      <h2 class="title is-2 is-spaced"> Event details</h2>
-      <p class="p">
-        Hacktoberfest<span class="reg">&reg;</span> is open to everyone in our global community. Whether you’re a developer, student learning to code, event host, or company of any size, you can help drive growth of open source and make positive contributions to an ever-growing community. All backgrounds and skill levels are encouraged to complete the challenge.
-      </p>
-      <ul>
-        <li class="bullet">
-          <span class="p">Hacktoberfest is open to everyone in our global community!</span>
-        </li>
-        <li class="bullet">
-          <span class="p">Pull requests can be made in any GitHub-hosted repositories/projects.</span>
-        </li>
-        <li class="bullet">
-          <span class="p">Sign up anytime between October 1 and October 31.</span>
-        </li>
-      </ul>
-      <h2 class="title is-2 is-spaced">Rules</h2>
-      <p class="p">
-        To qualify for the official limited edition Hacktoberfest shirt, you must register and make four pull requests (PRs) between October 1-31 (in any time zone). PRs can be made to any public repo on GitHub, not only the ones with issues labeled Hacktoberfest. If a maintainer reports your pull request as spam or behavior not in line with the project’s code of conduct, you will be ineligible to participate. This year, the first 50,000 participants who successfully complete the challenge will earn a T-shirt.
-      </p>
-      <p>Read more about <%= link_to 'participation details', details_path, :class => "participation-link" %>.</p>
-    </div>
-    <div class="section2">
-      <div class="line-br">
-        <span class="line-br-1">-</span>
-        <span class="line-br-2">-</span>
-      </div>
-      <a name="projects"></a>
-      <h2 class="title is-2 is-spaced">Hacktoberfest projects</h2>
-      <p class="p">
-        You can contribute to any project on GitHub. Here are a few looking for some help:
-      </p>
-      <div class="level language-filter">
-        <p id="projects-message" class="highlight">Displaying all Hacktoberfest projects</p>
-        <div class="right">
-          <div class="field">
-            <div class="control">
-              <div class="select">
-                <%= collection_select(:language, :id, Language.all.sort_by(&:name), :id, :name, prompt: "Select language", html_options: {class: 'language-dropdown'}) %>
-              </div>
-            </div>
-          </div>
-          <button type="button" class="button button-small" id="reset-filter">Remove filter</button>
-        </div>
-      </div>
-      <div class="grid" id="project-list">
-        <%= render partial: 'languages/all_projects', locals: { projects: @projects } %>
-      </div>
-      <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen+no%3Aassignee+is%3Aissue&type=Issues">
-        <button class="button" type="button" name="button">Browse more on GitHub</button>
-      </a>
-      <a name="climate"></a>
-      <h2 class="title is-2 is-spaced climate">Projects focused on climate change</h2>
-      <p class="p">
-        Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
-      </p>
-      <div class="grid">
-        <% @climate_repositories.map do |repository| %>
-         <a href="<%= repository[:url] %>">
-          <div class="box projects grow-shadow">
-            <div class="title-wrap">
-              <h3 class="repo-name"> <%= repository[:name] %> </h3>
-              <span class="lang"><%= repository[:language] %></span>
-            </div>
-            <p class="description"><%= repository[:description] %></p>
-          </div>
-           </a>
-        <% end %>
-      </div>
-      <a href="https://github.com/topics/climate-change">
-        <button class="button" type="button" name="button">Browse more on GitHub</button>
-      </a>
     </div>
   </section>
+
+  <section class="home-video">
+    <script src="https://fast.wistia.com/embed/medias/rrnq2hxoso.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_rrnq2hxoso videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/rrnq2hxoso/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+  </section>
+
+  <section class="home-event-details">
+
+    <h2 class="title is-2"> Event details</h2>
+    <p>
+      Hacktoberfest<span class="reg">&reg;</span> is open to everyone in our global community. Whether you’re a developer, student learning to code, event host, or company of any size, you can help drive growth of open source and make positive contributions to an ever-growing community. All backgrounds and skill levels are encouraged to complete the challenge.
+    </p>
+    <ul>
+      <li class="bullet">
+        <span>Hacktoberfest is open to everyone in our global community!</span>
+      </li>
+      <li class="bullet">
+        <span>Pull requests can be made in any GitHub-hosted repositories/projects.</span>
+      </li>
+      <li class="bullet">
+        <span>Sign up anytime between October 1 and October 31.</span>
+      </li>
+    </ul>
+    <h2 class="title is-2">Rules</h2>
+    <p>
+      To qualify for the official limited edition Hacktoberfest shirt, you must register and make four pull requests (PRs) between October 1-31 (in any time zone). PRs can be made to any public repo on GitHub, not only the ones with issues labeled Hacktoberfest. If a maintainer reports your pull request as spam or behavior not in line with the project’s code of conduct, you will be ineligible to participate. This year, the first 50,000 participants who successfully complete the challenge will earn a T-shirt.
+    </p>
+    <p>Read more about <%= link_to 'participation details', details_path, :class => "participation-link" %>.</p>
+  </section>
+  
+  <section class="home-projects">
+    <a name="projects"></a>
+    <h2 class="title is-2">Hacktoberfest projects</h2>
+    <p>
+      You can contribute to any project on GitHub. Here are a few looking for some help:
+    </p>
+    <div class="level language-filter">
+      <p id="projects-message" class="highlight">Displaying all Hacktoberfest projects</p>
+      <div class="right">
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <%= collection_select(:language, :id, Language.all.sort_by(&:name), :id, :name, prompt: "Select language", html_options: {class: 'language-dropdown'}) %>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="button button-small" id="reset-filter">Remove filter</button>
+      </div>
+    </div>
+    <div class="grid" id="project-list">
+      <%= render partial: 'languages/all_projects', locals: { projects: @projects } %>
+    </div>
+    <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen+no%3Aassignee+is%3Aissue&type=Issues">
+      <button class="button" type="button" name="button">Browse more on GitHub</button>
+    </a>
+    <a name="climate"></a>
+    <h2 class="title is-2 climate">Projects focused on climate change</h2>
+    <p>
+      Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
+    </p>
+    <div class="grid">
+      <% @climate_repositories.map do |repository| %>
+        <a href="<%= repository[:url] %>">
+        <div class="box projects grow-shadow">
+          <div class="title-wrap">
+            <h3 class="repo-name"> <%= repository[:name] %> </h3>
+            <span class="lang"><%= repository[:language] %></span>
+          </div>
+          <p class="description"><%= repository[:description] %></p>
+        </div>
+          </a>
+      <% end %>
+    </div>
+    <a href="https://github.com/topics/climate-change">
+      <button class="button" type="button" name="button">Browse more on GitHub</button>
+    </a>
+  </section>
+
+  <section class="home-special-projects">
+    <a name="projects"></a>
+    <h2 class="title is-2">Special Projects headline</h2>
+    <p>
+      You can contribute to any project on GitHub. Here are a few looking for some help:
+    </p>
+    <div class="level language-filter">
+      <p id="projects-message" class="highlight">Displaying all Hacktoberfest projects</p>
+      <div class="right">
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <%= collection_select(:language, :id, Language.all.sort_by(&:name), :id, :name, prompt: "Select language", html_options: {class: 'language-dropdown'}) %>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="button button-small" id="reset-filter">Remove filter</button>
+      </div>
+    </div>
+    <div class="grid" id="project-list">
+      <%= render partial: 'languages/all_projects', locals: { projects: @projects } %>
+    </div>
+    <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen+no%3Aassignee+is%3Aissue&type=Issues">
+      <button class="button" type="button" name="button">Browse more on GitHub</button>
+    </a>
+    <a name="climate"></a>
+    <h2 class="title is-2 climate">Projects focused on climate change</h2>
+    <p>
+      Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
+    </p>
+    <div class="grid">
+      <% @climate_repositories.map do |repository| %>
+        <a href="<%= repository[:url] %>">
+        <div class="box projects grow-shadow">
+          <div class="title-wrap">
+            <h3 class="repo-name"> <%= repository[:name] %> </h3>
+            <span class="lang"><%= repository[:language] %></span>
+          </div>
+          <p class="description"><%= repository[:description] %></p>
+        </div>
+          </a>
+      <% end %>
+    </div>
+    <a href="https://github.com/topics/climate-change">
+      <button class="button" type="button" name="button">Browse more on GitHub</button>
+    </a>
+  </section>
+
   <section class="eventsBlock">
     <div class="section events">
-      <div class="line-br">
-        <span class="line-br-1">-</span>
-        <span class="line-br-2">-</span>
-      </div>
-      <h2 class="title is-2 is-spaced">Global events</h2>
-      <p class="p">
+      <h2 class="title is-2">Global events</h2>
+      <p>
         Celebrate and support open source technology by
         <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a>
         or attending a local event.
       </p>
       <!-- FEATURED EVENTS GENERATED HERE -->
-      <section class="eventUnion">
+      <section class="event-union">
         <% @events.map do |e| %>
         <a class="box grow-shadow" href="<%= e.url %>">
-            <span class="eventMonth">
+            <span class="event-month">
               <% formatted_date= e.date.to_formatted_s(:long).split(" ") %>
               <%= formatted_date[0] %>
             </span>
-            <span class="eventDay">
+            <span class="event-day">
               <%= formatted_date[1].split(",")[0] %>
             </span>
             <div>
-            <span class="eventTitle">
+            <span class="event-title">
               <%= e.name %>
             </span>
-            <span class="eventLocation">
+            <span class="event-location">
               <%= e.city %>, <%= e.country %>
             </span>
             </div>
         </a>
         <% end %>
       </section>
-     <%= link_to 'See more events', events_path, :class => 'button' %>
+    <%= link_to 'See more events', events_path, :class => 'button' %>
     </div>
   </section>
-  <section class="section sponsors">
-    <div class="line-br">
-      <span class="line-br-1">-</span>
-      <span class="line-br-2">-</span>
-    </div>
-    <h2 class="title is-2 is-spaced">Words from our sponsors</h2>
+
+  <section class="sponsors">
+    <h2 class="title is-2">Words from our sponsors</h2>
     <section class="tile is-ancestor">
       <section class="tile is-child is-6">
-        <h4 class="title is-4 is-spaced">
+        <h4 class="title is-4">
           <%= image_tag("DO-logo-footer.svg", :alt => "DO Logo") %>
         </h4>
         <p>
@@ -216,7 +185,7 @@
         </p>
       </section>
       <section class="tile is-child is-6">
-        <h4 class="title is-4 is-spaced">
+        <h4 class="title is-4">
           <%= image_tag("DEV-logo-footer.svg", :alt => "DEV Logo", :class => "dev-logo") %>
         </h4>
         <p>
@@ -232,7 +201,6 @@
   </section>
 </main>
 <script type="text/javascript">
-  setupHomeImageSwap();
   setupLanguageFilter();
   setupPRsOpenedChart();
 </script>
