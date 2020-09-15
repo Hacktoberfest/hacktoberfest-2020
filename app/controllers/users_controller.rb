@@ -66,9 +66,7 @@ class UsersController < ApplicationController
   end
 
   def ban
-    p @user
     @user.ban
-    p @user
     redirect_to manage_path(@user.uid)
   end
 

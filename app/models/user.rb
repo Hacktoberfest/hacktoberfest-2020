@@ -10,7 +10,7 @@ class User < ApplicationRecord
   # rubocop:disable Metrics/BlockLength, Layout/MultilineHashBraceLayout
   state_machine initial: :new do
     event :register do
-      transition new: :registered
+      transition %i[new unbanned] => :registered
     end
 
     event :wait do
@@ -52,7 +52,7 @@ class User < ApplicationRecord
     end
 
     event :unban do
-      transition banned: :registered
+      transition banned: :unbanned
     end
 
     state all - [:new] do
@@ -68,7 +68,7 @@ class User < ApplicationRecord
       validates :sticker_coupon, absence: true
     end
 
-    state all - %i[new registered waiting] do
+    state all - %i[new registered waiting banned unbanned] do
       validates :receipt, presence: true
     end
 
@@ -143,14 +143,15 @@ class User < ApplicationRecord
 
     after_transition to: :banned do |user, _transition|
       user.moderator_banned = true
-      user.moderator_banned_at = Date.current
+      user.moderator_banned_at = Time.now
       user.save!
     end
 
     after_transition to: :unbanned do |user, _transition|
       user.moderator_banned = false
-      user.moderator_banned_at = Date.current
+      user.moderator_banned_at = Time.now
       user.save!
+      user.register
       TryUserTransitionService.call(user)
     end
   end
