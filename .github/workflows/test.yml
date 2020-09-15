@@ -30,6 +30,7 @@ jobs:
       AIRTABLE_APP_ID: ${{ secrets.AIRTABLE_APP_ID }}
       AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
       SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
+      HACKTOBERFEST_API_KEY: test
       REDIS_HOST: localhost
       REDIS_PORT: 6379
 

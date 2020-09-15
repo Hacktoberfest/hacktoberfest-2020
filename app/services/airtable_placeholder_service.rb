@@ -8,100 +8,37 @@ module AirtablePlaceholderService
   def call(table_name)
     case table_name
     when 'Meetups'
-      [
-        { 'Event Name' => 'Hacktoberfest@JKLU',
-          'Event City' => 'Jaipur',
-          'Event Country' => 'India',
-          'Event Start Date' => '2019-10-12',
-          'Event URL' => 'https://csi.jklu.edu.in/calendar.php',
-          'Event Organizer' => 'CSI Student Chapter JKLU',
-          'Contact Email' => 'email@example.com',
-          'Contact Name' => 'Pravesh Bisaria',
-          'Agreed to CoC?' => true,
-          'Event State' => 'Rajasthan',
-          'Non-Public Event Note' => 'Open to JKLU Students',
-          'Event Capacity' => 100,
-          'Note' => 'No mention of HF',
-          'Reviewed By' => 'Samantha',
-          'Replied' => '9/20 batch email',
-          'Event Start Time' => '00:00',
-          'Event Start Date/Time' => '2019-10-12T00:00:00.000Z',
-          'Submitted Time' => '2019-09-16T14:53:00.000Z' },
-        { 'Event Name' => 'Hacktoberfest@JKLU',
-          'Event City' => 'Jaipur',
-          'Event Country' => 'India',
-          'Event Start Date' => '2019-10-12',
-          'Event URL' => 'https://csi.jklu.edu.in/calendar.php',
-          'Event Organizer' => 'CSI Student Chapter JKLU',
-          'Contact Email' => 'email@example.com',
-          'Contact Name' => 'Pravesh Bisaria',
-          'Agreed to CoC?' => true,
-          'Event State' => 'Rajasthan',
-          'Non-Public Event Note' => 'Open to JKLU Students',
-          'Event Capacity' => 100,
-          'Note' => 'No mention of HF',
-          'Reviewed By' => 'Samantha',
-          'Replied' => '9/20 batch email',
-          'Event Start Time' => '00:00',
-          'Event Start Date/Time' => '2019-10-12T00:00:00.000Z',
-          'Submitted Time' => '2019-09-16T14:53:00.000Z',
-          'Event Start Date/Time (Real)' => '10/12/2019 00:00' },
-        { 'Event Name' => '<ReactMeetup version={"Hacktoberfest 2019"} />',
-          'Event City' => 'Düsseldorf',
-          'Event Country' => 'Germany',
-          'Event Start Date' => '2019-10-13',
-          'Event URL' => 'https://www.meetup.com/de-DE/ReactJS-Meetup-Dusseldorf/events/265147478/',
-          'Event Organizer' => 'Thomas Frütel, Jonas Sprenger, Flo Becker',
-          'Published?' => true,
-          'Contact Email' => 'email@example.com',
-          'Contact Name' => 'Ravi',
-          'Agreed to CoC?' => true,
-          'Public Event?' => true,
-          'Event Capacity' => 50,
-          'Code Sent' => '9/26',
-          'Reviewed By' => 'Lorraine',
-          'Event Start Time' => '10:00',
-          'Event Start Date/Time' => '2019-10-13T10:00:00.000Z',
-          'Submitted Time' => '2019-09-25T14:16:43.000Z',
-          'Event Start Date/Time (Real)' => '10/13/2019 10:00' },
-        { 'Event Name' => 'Hacktoberfest Night',
-          'Event City' => 'Paris',
-          'Event Country' => 'France',
-          'Event Start Date' => '2019-10-15',
-          'Event URL' => 'https://www.meetup.com/fr-FR/Paris-Open-Source-Talks/',
-          'Event Organizer' =>
-          'Paris Open Source Talks Meetup
-           + Olivier Leplus + Maud Levy + Wassim Chegham',
-          'Published?' => true,
-          'Contact Email' => 'email@example.com',
-          'Contact Name' => 'Olivier Leplus',
-          'Agreed to CoC?' => true,
-          'Public Event?' => true,
-          'Event Capacity' => 40,
-          'Note' => 'no mention of HF',
-          'Reviewed By' => 'Samantha',
-          'Replied' => '9/20 batch email',
-          'Event Start Time' => '00:00',
-          'Event Start Date/Time' => '2019-10-15T00:00:00.000Z',
-          'Submitted Time' => '2019-09-13T15:16:55.000Z',
-          'Event Start Date/Time (Real)' => '10/15/2019 00:00' },
-        { 'Event Name' => 'Hacktoberfest 2019 x Nodes Copenhagen',
-          'Event City' => 'Copenhagen',
-          'Event Country' => 'Denmark',
-          'Event Start Date' => '2019-10-21',
-          'Event URL' => 'https://www.meetup.com/Nodes-Copenhagen/events/265336846/',
-          'Event Organizer' => 'Nodes Copenhagen',
-          'Contact Email' => 'email@example.com',
-          'Contact Name' => 'Narcis Zait',
-          'Agreed to CoC?' => true,
-          'Public Event?' => true,
-          'Event Capacity' => 50,
-          'Note' => "duplicate. don't publish",
-          'Reviewed By' => 'ST',
-          'Replied' => 'batch email 10/5',
-          'Submitted Time' => '2019-10-02T19:28:05.000Z',
-          'Event Start Date/Time (Real)' => '10/21/2019 ' }
-      ]
+      {
+        'data' =>
+        [
+          {
+            'attributes' => {
+              'title' => 'Hacktoberfest in Brasilia',
+              'startDate' => '2020-10-16',
+              'location' => {
+                'city' => 'Brasilia',
+                'country' => 'Brazil'
+              }
+            },
+            'links' => {
+              'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register'
+            }
+          },
+          {
+            'attributes' => {
+              'title' => 'Hacktoberfest @IPN',
+              'startDate' => '2020-10-01',
+              'location' => {
+                'city' => 'Mexico City',
+                'country' => 'Mexico'
+              }
+            },
+            'links' => {
+              'register' => 'http://organize.mlh.io/participants/events/3924-hacktoberfest-ipn/register'
+            }
+          }
+        ]
+      }
     when 'FAQ'
       [
         { 'Question' =>

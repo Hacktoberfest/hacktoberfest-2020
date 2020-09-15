@@ -1,8 +1,5 @@
 FROM ruby:2.5-slim AS base
 
-ENV BUNDLER_VERSION=2.0.2
-ENV REDIS_HOST=redis
-
 RUN apt-get update && apt-get install -y apt-transport-https bash curl git gnupg2 build-essential libpq-dev \
 && curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
 && echo 'deb https://deb.nodesource.com/node_12.x jessie main' > /etc/apt/sources.list.d/nodesource.list

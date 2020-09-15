@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   end
 
   def faqs
-    faq = AirrecordTable.new.all_records('FAQ')
+    faq = AirrecordTable.new.all_records('FAQs')
     @faqs_rules = faq.select { |q| q['Category'] == 'Rules' }
     @faqs_general = faq.select { |q| q['Category'] == 'General' }
     @faqs_events = faq.select { |q| q['Category'] == 'Events' }
@@ -24,9 +24,7 @@ class PagesController < ApplicationController
   end
 
   def events
-    return @events = [] if all_events.blank?
-
-    @events = all_events.select(&:published?)
+    @events = all_events
   end
 
   def event_kit; end
@@ -38,20 +36,20 @@ class PagesController < ApplicationController
   private
 
   def all_events
-    AirrecordTable.new.all_records('Meetups').map do |e|
-      AirtableEventPresenter.new(e)
-    rescue AirtableEventPresenter::ParseError
+    MlhTable.new.records['data'].map do |e|
+      MlhEventPresenter.new(e)
+    rescue MlhEventPresenter::ParseError
       # Ignore invalid events
     end.compact
   end
 
   def front_page_events
     all_events
-      .select(&:current?)
-      .select(&:published?)
-      .select(&:featured?)
-      .sample(4)
-      .sort_by(&:date)
+    # .select(&:current?)
+    # .select(&:published?)
+    # .select(&:featured?)
+    # .sample(4)
+    # .sort_by(&:date)
   end
 
   def global_stats

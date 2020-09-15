@@ -7,7 +7,7 @@ $grey-darker: hsl(222, 45%, 21%); // box dark blue
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
 
 header {
-  margin: 30px 135px 100px 135px;
+  margin: 30px 55px 100px 55px;
   min-height: 160px;
 
   @media screen and (max-width: $break-med) {
@@ -52,136 +52,236 @@ $navColor: rgba(0, 0, 0, 0);
 // Main Nav
 
 #navbar {
+  font-family: "Inter Black", "Helvetica", "Arial", san-serif;
+  font-weight: 900;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0);
-  font-weight: 400;
-  line-height: 21px;
-  letter-spacing: 3px;
-  margin: 74px 0 100px 0;
 
   @media screen and (max-width: $break-small) {
     flex-direction: column;
     align-items: center;
-    margin: 124px 0 20px 0;
+    margin: 64px 0 20px 0;
   }
 
-  ul.navbar-end {
-    @media screen and (max-width: $break-small) {
-      margin: 20px 0 0;
-      flex-direction: column;
-      align-items: center;
+  .navbar-primary {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      min-height: 100px;
+      min-width: 109px;
+    }
+    .nav-logo {
+      max-width: 109px;
     }
 
-    li {
-      margin-bottom: 10px;
-      text-align: center;
+    ul.navbar-links {
+      display: flex;
+      align-items: center;
 
-      .navLink {
-        color: #fff;
-        margin-left: 1.875rem;
-        font-size: 0.875rem;
-        z-index: 1;
-        text-transform: uppercase;
+      @media screen and (max-width: $break-small) {
+        margin: 20px 0 0;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      li {
+        margin-bottom: 10px;
         text-align: center;
 
-        @media screen and (max-width: $break-small) {
-          margin-left: 0;
-        }
-      }
-
-      .button.button-small.navLink {
-        color: white; /* .button has this, .navLink overriding it */
-        margin-top: -0.5em; /* Keep all link text aligned */
-        @media screen and (max-width: $break-small) {
-          margin-top: 10px;
-        }
-      }
-
-      .dropdown-trigger {
-        @media screen and (max-width: $break-small) {
-          display: none;
-        }
-      }
-
-      .dropdown-menu {
-        padding-top: 15px;
-
-        @media screen and (max-width: $break-small) {
-          display: flex;
-          flex-direction: column;
-          position: relative;
-          top: 0;
-          padding-top: 0;
-        }
-
-        .dropdown-content {
-          background-color: $grey-darker;
-          padding: 0;
+        .navLink {
+          color: #93c2db;
+          margin-left: 1.875rem;
+          font-size: 0.875rem;
+          z-index: 1;
+          text-transform: uppercase;
+          text-align: center;
 
           @media screen and (max-width: $break-small) {
-            background: transparent;
-            box-shadow: none;
-
-            :first-child {
-              margin-bottom: 8px;
-            }
-          }
-
-          .navLink {
             margin-left: 0;
-            padding: 10px;
-            font-size: 12px;
+          }
+        }
 
-            @media screen and (max-width: $break-small) {
-              font-size: 0.875rem;
-              padding: 0;
-              text-align: center;
-              height: 25px;
-            }
+        .button.button-small.navLink {
+          color: #fff;
+          @media screen and (max-width: $break-small) {
+            margin-top: 10px;
+          }
+        }
+
+        .button.button-small.navLink:hover {
+          box-shadow: none;
+        }
+
+        .dropdown-trigger {
+          @media screen and (max-width: $break-small) {
+            display: none;
+          }
+        }
+
+        .dropdown-menu {
+          padding-top: 15px;
+
+          @media screen and (max-width: $break-small) {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            top: 0;
+            padding-top: 0;
           }
 
-          .navLink:hover,
-          .dropdown-item:hover {
-            background-color: $black-bis;
-            border-bottom: 0;
+          .dropdown-content {
+            background-color: $grey-darker;
+            padding: 0;
 
             @media screen and (max-width: $break-small) {
-              background-color: transparent;
-              border-bottom: 2px solid #fff922;
+              background: transparent;
+              box-shadow: none;
+
+              :first-child {
+                margin-bottom: 8px;
+              }
             }
-          }
 
-          .dropdown-divider {
-            background-color: $black-bis;
-            margin: 0;
+            .navLink {
+              margin-left: 0;
+              padding: 10px;
+              font-size: 12px;
 
-            @media screen and (max-width: $break-small) {
-              display: none;
+              @media screen and (max-width: $break-small) {
+                font-size: 0.875rem;
+                padding: 0;
+                text-align: center;
+                height: 25px;
+              }
+            }
+
+            .navLink:hover,
+            .dropdown-item:hover {
+              background-color: $black-bis;
+              border-bottom: 0;
+
+              @media screen and (max-width: $break-small) {
+                background-color: transparent;
+                border-bottom: 2px solid #fff922;
+              }
+            }
+
+            .dropdown-divider {
+              background-color: $black-bis;
+              margin: 0;
+
+              @media screen and (max-width: $break-small) {
+                display: none;
+              }
             }
           }
         }
-      }
 
-      .navLink:hover,
-      .active {
-        padding-bottom: 5px;
-        border-bottom: 2px solid #fff922;
-        color: rgb(255, 255, 255);
+        .navLink:hover,
+        .active {
+          padding-bottom: 5px;
+          box-shadow: inset 0 -5px 0 0 #93c2db;
+          text-decoration: none;
+          color: #fff;
 
-        @media screen and (max-width: $break-small) {
-          padding-bottom: 2px;
+          @media screen and (max-width: $break-small) {
+            padding-bottom: 2px;
+          }
+        }
+
+        .button.navLink:hover {
+          color: $grey-darker;
+          border-bottom: 0;
+          @media screen and (max-width: $break-small) {
+            margin-top: 10px;
+            padding-bottom: 7px;
+          }
         }
       }
+    }
+  }
 
-      .button.navLink:hover {
-        color: $grey-darker;
-        border-bottom: 0;
-        @media screen and (max-width: $break-small) {
-          margin-top: 10px;
-          padding-bottom: 7px;
-        }
-      }
+  // Toggle
+
+  .toggle {
+    display: flex;
+    align-items: center;
+    padding-left: 32px;
+    height: 60px;
+    letter-spacing: 0;
+
+    @media (max-width: 1024px) {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    p {
+      text-transform: uppercase;
+      font-size: 14px !important;
+      font-weight: 900;
+      margin: 0 16px 0 0;
+    }
+  }
+
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 32px;
+    background: none;
+    border: none;
+    outline: none;
+    height: 32px;
+    width: 64px;
+
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    input:checked + span {
+      background-color: #0069ff;
+    }
+
+    input:focus + span {
+      box-shadow: 0px 8px 16px rgba(1, 14, 40, 0.05);
+    }
+
+    input:checked + span:before {
+      -webkit-transform: translateX(32px);
+      -ms-transform: translateX(32px);
+      transform: translateX(32px);
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #e5e8ed;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+      border-radius: 32px;
+      box-shadow: 0px 4px 16px rgba(1, 14, 40, 0.1);
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 32px;
+      width: 32px;
+      left: 0;
+      bottom: 0px;
+      background-color: white;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+      border-radius: 50%;
     }
   }
 }

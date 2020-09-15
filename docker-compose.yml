@@ -8,6 +8,7 @@ services:
     depends_on:
       - database
       - redis
+      - memcached
     volumes: 
       - .:/app:delegated
       - gem_cache:/vendor/bundle/ruby/2.5.0/gems
@@ -25,8 +26,8 @@ services:
       POSTGRES_PASSWORD: $HACKTOBERFEST_DATABASE_PASSWORD
     volumes:
       - db_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    ports: 
+      - "5432:5432" # enables access for RubyMine
     networks:
       - app-network
 
@@ -54,11 +55,16 @@ services:
   webserver:
     build:
       context: .
-      dockerfile: Dockerfile-nginx
+      dockerfile: Dockerfile-nginx-dev
     ports:
       - "80:80"
     depends_on: 
       - app
+    networks:
+      - app-network
+
+  memcached:
+    image: memcached:1.6.6-alpine
     networks:
       - app-network
 

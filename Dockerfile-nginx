@@ -1,4 +1,4 @@
-### Config for nginx instance that serves community
+### Config for nginx instance that serves hacktoberfest
 FROM nginx:1.13.12-alpine
 MAINTAINER web-experience@digitalocean.com
 

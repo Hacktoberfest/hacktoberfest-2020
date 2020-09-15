@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Hacktoberfest presented by DigitalOcean and DEV</title>
+    <title>Hacktoberfest presented by DigitalOcean</title>
     <meta charset="utf-8">
-    <meta name="title" content="Hacktoberfest presented by DigitalOcean and DEV">
+    <meta name="title" content="Hacktoberfest presented by DigitalOcean">
     <meta name="description" content="Open source is changing the world – one pull request at a time.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@hacktoberfest">
     <meta name="twitter:creator" content="@hacktoberfest">
-    <meta name="twitter:title" content="Hacktoberfest presented by DigitalOcean and DEV">
-    <meta name="twitter:image" content="<%= image_url('HF19_social.png') %>">
+    <meta name="twitter:title" content="Hacktoberfest presented by DigitalOcean">
+    <meta name="twitter:image" content="<%= image_url('og-hf20.png') %>">
     <meta name="twitter:url" content="https://hacktoberfest.digitalocean.com/">
-    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Hacktoberfest presented by DigitalOcean and DEV">
+    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Hacktoberfest presented by DigitalOcean">
     <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website">
     <meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US">
     <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Hacktoberfest">
     <meta prefix="og: http://ogp.me/ns#" property="og:description" content="Open source is changing the world – one pull request at a time.">
     <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://hacktoberfest.digitalocean.com/">
-    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="<%= image_url('HF19_social.png') %>">
+    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="<%= image_url('og-hf20.png') %>">
+
+    <script type="text/javascript">
+    // before turbolinks renders remove or add class dark - this is needed to prevent a flash of previous styles
+    document.addEventListener("turbolinks:before-render", (event)=> {
+    if (localStorage.getItem('mode') === 'light') event.data.newBody.classList.remove('dark')
+    if (localStorage.getItem('mode') === 'dark')  event.data.newBody.classList.add('dark')
+    })
+
+    // after turbolinks fully loads readd or remove class dark - this is needed because turbolinks strips all scripts :/
+    document.addEventListener("turbolinks:load", ()=> {
+      ((localStorage.getItem('mode') || 'light') === 'dark') ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')
+    });
+    </script>
 
     <%= favicon_link_tag asset_path('favicon.png') %>
     <%= csrf_meta_tags %>
@@ -30,23 +43,11 @@
     <%= render 'shared/segment' %>
   </head>
   <body>
-  <div class="top-bgs">
+  <div>
     <%= render 'shared/header' %>
     <%= yield %>
   </div>
   <%= render 'shared/footer' %>
-  <!-- Header Logo Tilt -->
-  <script type="text/javascript">
-  	VanillaTilt.init(document.getElementById("header-logo"), {
-  		max: 5,
-  		speed: 300
-    });
-    // <!-- Footer Logo Tilt -->
-  	VanillaTilt.init(document.getElementById("footer-logo"), {
-  		max: 7,
-  		speed: 300
-  	});
-  </script>
 
   <% if Rails.env.production? %>
     <script type="text/javascript">
@@ -72,6 +73,5 @@
       });
     </script>
   <% end %>
-
   </body>
 </html>

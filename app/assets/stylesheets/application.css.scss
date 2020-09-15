@@ -15,23 +15,23 @@
 
 // Loading in fonts
 @font-face {
-  font-family: 'Space Mono Bold';
-  src: font-url('SpaceMono-Bold.ttf');
+  font-family: "Inter Bold";
+  src: font-url("Inter-Bold.ttf");
 }
 
 @font-face {
-  font-family: 'Space Mono Bold Italic';
-  src: font-url('SpaceMono-BoldItalic.ttf');
+  font-family: "Inter Black";
+  src: font-url("Inter-Black.ttf");
 }
 
 @font-face {
-  font-family: 'Space Mono';
-  src: font-url('SpaceMono-Regular.ttf');
+  font-family: "Inter Regular";
+  src: font-url("Inter-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'Space Mono Italic';
-  src: font-url('SpaceMono-RegularItalic.ttf');
+  font-family: "Yellowtail";
+  src: font-url("Yellowtail.ttf");
 }
 
 // Bulma overrides and common definitions
@@ -42,33 +42,92 @@ $break-med: 1288px;
 
 $black: hsl(0, 100%, 0%);
 $white: hsl(0, 0%, 100%);
+$blue: #0069ff;
+$red: #ff8ae2;
+
+//TODO: old color variables to be removed and swapped out with custom variables below
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
 $grey-darker: hsl(222, 45%, 21%); // box dark blue
 $grey-dark: hsl(223, 32%, 33%); // box lighter blue
 $cyan: hsl(191.56, 100%, 78.63%);
-$red: hsl(320, 100%, 50%);
 $purple: hsl(286.79, 73.68%, 44.71%);
 $yellow: hsl(58.37, 100%, 56.67%);
+
 $size-1: 2.25rem;
 $size-2: 2rem;
 $size-3: 1.5rem;
 $size-4: 1.25rem;
 $size-5: 1.125rem;
-$family-monospace: 'Space Mono', monospace;
+$family-sans-serif: "Inter Regular", "Helvetica", "Arial", san-serif;
 
 // Derived Variables
 $primary: $grey-darker;
-$family-primary: $family-monospace;
+$family-primary: $family-sans-serif;
 $link: $cyan;
 $link-hover: $red;
 
-// Generic Variables
+// Custom Variables
+
+$buttonColor: #0069ff;
+$buttonHoverColor: #ff73fa;
+$buttonTextColor: #ffffff;
+$accordionRuleColor: #93c2db;
+$labelColor: #ff8ae2;
+$checkColor: #4551ff;
+$tableHeaderColor: #072540;
+$tableColor: #ffffff;
+$diamondColor: #93c2db;
+$platinumColor: #99a1b3;
+$goldColor: #ffd700;
+$socialHoverColor: #010e2f;
+
+//light mode
+$light-backgroundColor: #ffffff;
+$light-headlineColor: #072540;
+$light-textColor: #5b6987;
+$light-ruleColor: #f3f5f9;
+$light-categoryColor: #183d5d;
+$light-boxColor: #f1f7fa;
+$light-inputBackgroundColor: #e5e8ed;
+$light-inputTextColor: #031b4e;
+$light-inputPlaceholderColor: #031b4e;
+$light-toggleColor: #e5e8ed;
+$light-tableBackgroundColor: #ffffff;
+$light-tableBorderColor: #93c2db;
+$light-tableColor: #183d5d;
+$light-footerBackgroundColor: #f1f7fa;
+$light-footerTextColor: #183d5d;
+$light-navActiveColor: #183d5d;
+$light-navBackgroundColor: #ffffff;
+$light-socialTextColor: #031b4e;
+$light-socialBackgroundColor: #f3f5f9;
+
+//dark mode
+$dark-backgroundColor: #072540;
+$dark-headlineColor: #ffffff;
+$dark-textColor: #93c2db;
+$dark-ruleColor: #183d5d;
+$dark-categoryColor: #93c2db;
+$dark-boxColor: #183d5d;
+$dark-inputBackgroundColor: #183d5d;
+$dark-inputTextColor: #a2b3e9;
+$dark-inputPlaceholderColor: #ffffff;
+$dark-toggleColor: #183d5d;
+$dark-tableBackgroundColor: #183d5d;
+$dark-tableBorderColor: transparent;
+$dark-tableColor: #ffffff;
+$dark-footerBackgroundColor: #010e28;
+$dark-footerTextColor: #93c2db;
+$dark-navActiveColor: #ffffff;
+$dark-navBackgroundColor: #183d5d;
+$dark-socialTextColor: #ffffff;
+$dark-socialBackgroundColor: #183d5d;
 
 // -- general
-$body-background-color: $black-bis;
+$body-background-color: $light-backgroundColor;
 $body-color: $grey;
-$body-family: $family-monospace;
+$body-family: $family-sans-serif;
 $body-font-size: $size-5;
 
 // -- footer
@@ -91,12 +150,12 @@ $box-shadow: 0px 50px 100px rgba($black, 0.2);
 
 // -- button
 $button-color: $white;
-$button-background-color: $purple;
-$button-border-color: $purple;
+$button-background-color: $blue;
+$button-border-color: $blue;
 $button-border-width: 0;
 $button-padding-vertical: 1.125em;
 $button-padding-horizontal: 2em;
-$button-hover-color: $grey-dark;
+$button-hover-color: $red;
 
 // -- modal
 $modal-content-width: 60vw;
@@ -105,21 +164,25 @@ $modal-content-width: 60vw;
 }
 
 .button {
-  min-height: 60px;
-  border: none;
-  border-radius: 0px;
-  font-size: 16px;
-  padding-bottom: 2em;
-  padding-top: 1.125em;
+  border-radius: 48px !important;
+  font-weight: 900;
+  font-size: 14px;
+  padding: 24px 40px;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-transform: uppercase;
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05);
 
   &:hover {
-    background-color: $cyan;
+    background-color: $red;
+    color: $white !important;
+    padding: 10px 20px !important;
   }
 
   &.button-small {
-    height: auto;
-    min-height: auto;
-    padding: 0.5em 1em;
+    height: 100%;
+    padding: 10px 20px !important;
   }
 }
 
@@ -166,14 +229,13 @@ select {
   border-radius: 0;
 }
 
-// Global content styling
-
+// Global styles (light mode)
 body {
   overflow: hidden;
   position: relative;
 
   .section {
-    padding: 0 135px;
+    padding: 0 120px;
     margin: 0;
 
     @media screen and (max-width: $break-med) {
@@ -190,26 +252,6 @@ body {
     margin: 0;
   }
 
-  .navbar-end {
-    align-items: flex-start;
-  }
-
-  // Styles for background images
-  .top-bgs::before {
-    content: image-url('bg-left.png');
-    position: absolute;
-    top: 0px;
-    left: 20;
-    z-index: -1;
-  }
-  .top-bgs::after {
-    content: image-url('bg-right.png');
-    position: absolute;
-    top: 80px;
-    right: 0;
-    z-index: -1;
-  }
-
   p {
     margin-top: 20px;
   }
@@ -217,17 +259,17 @@ body {
   // Reuseable
 
   .highlight {
-    color: $yellow;
+    color: $red;
   }
 
   .line-br {
-    color: $yellow;
+    color: $red;
     line-height: 0.4rem;
     position: relative;
     margin-bottom: 10px;
 
     span {
-      background-color: $yellow;
+      background-color: $red;
     }
 
     span.line-br-1 {
@@ -248,12 +290,28 @@ body {
     color: hsl(320, 100%, 50%);
   }
 
-  strong{
-    color: $yellow;
+  strong {
+    font-family: "Inter Bold", "Helvetica", "Arial", san-serif;
+  }
+
+  // light mode
+  background-color: $light-backgroundColor;
+
+  // images
+  .nav-logo {
+    content: asset-url("h-light.svg");
   }
 }
 
+// Global darkmode styles
 
+body.dark {
+  background-color: $dark-backgroundColor !important;
+  // images
+  .nav-logo {
+    content: asset-url("h-dark.svg") !important;
+  }
+}
 
-@import 'bulma';
-@import '*';
+@import "bulma";
+@import "*";

@@ -2,9 +2,19 @@
 
 threads_count = ENV.fetch('RAILS_MAX_THREADS') { 5 }
 threads threads_count, threads_count
+workers 16
+worker_timeout 50
 
 port ENV.fetch('PORT') { 3000 }
 
-environment ENV.fetch('RAILS_ENV') { 'development' }
+preload_app!
 
-plugin :tmp_restart
+before_fork do
+  defined?(ActiveRecord::Base) &&
+    ActiveRecord::Base.connection.disconnect!
+end
+
+after_worker_fork do
+  defined?(ActiveRecord::Base) &&
+    ActiveRecord::Base.establish_connection
+end

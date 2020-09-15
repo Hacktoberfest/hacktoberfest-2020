@@ -38,11 +38,38 @@
       </div>
 
       <div class="field">
+        <label class="label">Role</label>
+        <div class="control">
+          <div class="select">
+            <%= f.select :category, @categories %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
         <div class="control">
           <label class="checkbox">
-            <%= f.check_box :marketing_emails %>
+            <%= f.check_box :digitalocean_marketing_emails %>
             Send me updates related to the Hacktoberfest community,
             open source, and products from DigitalOcean.
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= f.check_box :intel_marketing_emails %>
+            Send me updates from Hacktoberfest partner, Intel.
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= f.check_box :dev_marketing_emails %>
+            Send me updates from Hacktoberfest partner, DEV.
           </label>
         </div>
       </div>

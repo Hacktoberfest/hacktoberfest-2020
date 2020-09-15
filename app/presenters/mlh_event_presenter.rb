@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AirtableEventPresenter
+class MlhEventPresenter
   class ParseError < StandardError; end
 
   def initialize(event)
@@ -11,25 +11,21 @@ class AirtableEventPresenter
   end
 
   def name
-    @event['Event Name']
+    @event.dig('attributes', 'title')
   end
 
   def date
-    Date.strptime(@event['Event Start Date'], '%Y-%m-%d')
+    Date.strptime(@event.dig('attributes', 'startDate'), '%Y-%m-%d')
   rescue StandardError
     nil
   end
 
-  def state
-    @event['Event State']
-  end
-
   def city
-    @event['Event City']
+    @event.dig('attributes', 'location', 'city')
   end
 
   def country
-    @event['Event Country']
+    @event.dig('attributes', 'location', 'country')
   end
 
   def location
@@ -37,28 +33,18 @@ class AirtableEventPresenter
 
     location += "#{city}, " if city.present?
 
-    location += "#{state}, " if state.present?
-
     location += country
 
     location
   end
 
   def url
-    @event['Event URL']
+    @event.dig('links', 'register')
   end
 
-  def organizer
-    @event['Event Organizer']
-  end
-
-  def published?
-    @event['Published?']
-  end
-
-  def featured?
-    @event['Featured?']
-  end
+  #  def featured? # maybe we will re-enable this?
+  #    @event['Featured?']
+  #  end
 
   def current?
     date > Date.yesterday

@@ -7,22 +7,17 @@ Rails.application.configure do
 
   config.consider_all_requests_local = true
 
-  logger           = ActiveSupport::Logger.new(STDOUT)
-  logger.formatter = config.log_formatter
-  config.logger    = ActiveSupport::TaggedLogging.new(logger)
+  # logger           = ActiveSupport::Logger.new(STDOUT)
+  # logger.formatter = config.log_formatter
+  # config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
   config.log_level = :debug
 
-  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+  if ENV['DALLI_SERVER'].presence
+    config.cache_store = :dalli_store, *ENV['DALLI_SERVER']
     config.action_controller.perform_caching = true
-
-    config.cache_store = :file_store, Rails.root.join('tmp', 'cache', 'store')
-    config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
-    }
   else
     config.action_controller.perform_caching = false
-
     config.cache_store = :null_store
   end
 

@@ -6,7 +6,6 @@ $(document).on('turbolinks:load', function() {
 
   $('#tabs li a').click(function() {
     var t = $(this).attr('id');
-    console.log(t);
     $('#tabs li a').removeClass('selected');
 
     if ($(this).hasClass('inactive')) {
