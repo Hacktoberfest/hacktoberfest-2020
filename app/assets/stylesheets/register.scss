@@ -9,6 +9,14 @@ section.reg-content {
     flex-wrap: wrap;
     width: 100%;
 
+    h1 {
+      color: $light-headlineColor;
+      font-family: $family-sans-serif;
+      font-size: $size-1;
+      font-weight: 900;
+      line-height: 44px;
+    }
+
     .registration-left {
       width:50%;
       margin-right: 4%;
@@ -27,18 +35,28 @@ section.reg-content {
         color: $labelColor;
       }
 
+      p {
+        color: $light-categoryColor;
+      }
+
       .select {
         margin: 32px 0;
 
         select {
-          background-color: $dark-boxColor;
-          border-color: transparent;
-          color: $dark-headlineColor;
+          background-color: $light-backgroundColor;
+          border: 1px solid #93C2DB;
+          border-radius: 3px;
+          box-sizing: border-box;
+          color: $light-categoryColor;
         }
       }
 
-      .filed {
-        position: relative;
+      label.checkbox:hover {
+        color: #99a1b3;
+      }
+
+      label.checkbox {
+        color: $light-categoryColor;
       }
 
       .submit-btn {
@@ -58,5 +76,21 @@ section.reg-content {
     .registration-right {
       width: 45%;
     }
+  }
+}
+
+body.dark {
+  h1 {
+    color: $dark-headlineColor !important;
+  }
+
+  section.reg-content .registration-wrapper .registration-left label.checkbox:hover {
+    color: #FFF;
+  }
+
+  section.reg-content .registration-wrapper .registration-left .select select {
+    background-color: $dark-boxColor !important;
+    color: $dark-headlineColor !important;
+    border-color: transparent;
   }
 }
