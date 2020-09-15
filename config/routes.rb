@@ -24,6 +24,11 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show', as: :profile
   get '/profile/edit', to: 'users#edit'
   patch '/profile/edit', to: 'users#update'
+  get '/management', to: 'users#management'
+  get '/manage/:user_uid', to: 'users#manage', as: :manage
+  patch '/manage/:user_uid', to: 'users#manage_patch', as: :manage_patch
+  post '/manage/:user_uid/ban', to: 'users#ban', as: :ban
+  post '/manage/:user_uid/unban', to: 'users#unban', as: :unban
 
   # Pages
   get '/details', to: 'pages#details'
