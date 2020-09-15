@@ -8,7 +8,7 @@
     margin: 0 auto;
 
     a {
-      color: #ff8ae2;
+      color: $labelColor;
     }
 
     a:hover {
@@ -18,12 +18,12 @@
 
   button.create-event {
     border-radius: 48px;
-    background-color: #0069FF;
+    background-color: $buttonColor;
     box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05);
     border: none;
-    color: #FFF;
+    color: $buttonTextColor;
     font-weight: 900;
-    font-size: 14px;
+    font-size: $size-button-text;
     padding: 24px 40px;
     display: inline-flex;
     justify-content: flex-start;
@@ -33,7 +33,7 @@
     margin-top: 30px;
 
     &:hover {
-      background-color: #FF73FA;
+      background-color: $buttonHoverColor;
     }
   }
 }
@@ -50,7 +50,7 @@ table.event-table {
       font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
       font-style: normal;
       font-weight: 500;
-      font-size: 12px;
+      font-size: $size-table-header;
       line-height: 35px;
       padding: 5px 10px;
       border-top: solid 1px rgba(255,255,255,0.25);
@@ -92,7 +92,7 @@ table.event-table {
         font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
         font-style: normal;
         font-weight: normal;
-        font-size: 14px;
+        font-size: $size-button-text;
         line-height: 50px;
         padding: 0 10px;
 
@@ -104,7 +104,7 @@ table.event-table {
           font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
           font-style: normal;
           font-weight: bold;
-          font-size: 14px;
+          font-size: $size-button-text;
           line-height: 50px;
           text-decoration: none;
         }
@@ -113,8 +113,8 @@ table.event-table {
           text-decoration: underline;
         }
 
-        a.rvsp {
-          color: #ff8ae2;
+        a.rsvp {
+          color: $labelColor;
         }
       }
     }
@@ -186,7 +186,7 @@ td {
 .filter-input {
   max-width: 570px;
   width: 100%;
-  font-size: 18px;
+  font-size: $size-4;
   line-height: 30px;
   background-color: $light-inputBackgroundColor;
   border: none;
@@ -212,7 +212,7 @@ td {
 body.dark {
   table.event-table {
     tbody {
-      background-color: #183D5D !important;
+      background-color: $dark-inputBackgroundColor !important;
       tr {
         td {
           color: $dark-tableColor !important;
@@ -244,7 +244,7 @@ body.dark {
   }
 
   .table-mobile-cards table.event-table tbody tr {
-      background-color: $grey-darker !important;
+      background-color: $dark-inputBackgroundColor !important;
     }
 }
 
@@ -270,7 +270,7 @@ body.dark {
 
           td {
             display: block;
-            font-size: .8em;
+            font-size: $size-button-text;
             color: $white;
             text-align: right !important;
             border: solid $grey-dark;
@@ -296,7 +296,7 @@ body.dark {
 
             .emphasis {
               color: $cyan;
-              font-size: 1.1em;
+              font-size: $size-5;
             }
           }
         }

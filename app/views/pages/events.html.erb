@@ -19,7 +19,7 @@
         <th class="sort" data-sort="location">Organizer's Location</th>
         <th class="sort" data-sort="event_name">Event</th>
         <th class="sort" data-sort="date">Date</th>
-        <th data-sort="date">RVSP</th>
+        <th>RSVP</th>
       </tr>
       </thead>
       <tbody class="list">
@@ -41,38 +41,11 @@
               </td>
               <td class="date is-hidden"><%= e.date %></td>
               <td data-label="date"><%= e.date.strftime("%Y/%m/%d") %></td>
-              <td><a class="rvsp" href="<%= e.url %>">RVSP here</a></td>
+              <td><a class="rsvp" href="<%= e.url %>">RSVP here</a></td>
             </tr>
         <% end %>
       </table>
     </div>
-    <p>
-      New events will be added throughout Hacktoberfest – please check back soon!
-    </p>
-
-    <section>
-      <br/>
-      <br/>
-      <div class="line-br">
-        <span class="line-br-1">-</span>
-        <span class="line-br-2">-</span>
-      </div>
-      <br/>
-      <h2 class="title is-2">List your event</h2>
-      <p>
-        To add your Hacktoberfest 2019 event to this page, please <%= link_to 'share the event details here', event_kit_path + "/#form" %>.
-      </p>
-    </section>
-
-    <br/>
-    <br/>
-    <p>
-      <small>
-        Hacktoberfest events are organized by individuals and organizations in your community. (Thank you, everyone!) We kindly ask you to follow the <a href="https://do.co/hacktoberconduct">Hacktoberfest Events Code of Conduct</a> when organizing or attending an event.
-      </small>
-    </p>
-  </span>
-</section>
 <script type="text/javascript">
   var event_count_display = document.querySelector('*[data-js="visible_event_count"]'),
       meetupsList = new List('meetups', {
