@@ -2,153 +2,61 @@ $break-phone: 600px;
 $break-small: 1024px;
 $break-med: 1288px;
 
-.registration-steps {
-  display: flex;
-  justify-content: space-between;
-  max-width: 695px;
-  position: relative;
-  margin: 0 auto;
-
-  @media screen and (max-width: $break-med) {
-    max-width: 500px;
-  }
-
-  @media screen and (max-width: $break-small) {
-    max-width: 300px;
-  }
-
-  @media screen and (max-width: $break-phone) {
-    max-width: 225px;
-    flex-direction: column;
-  }
-
-  .step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 14px;
-    color: #fff;
-    font-weight: 600;
-    position: absolute;
-
-    @media screen and (max-width: $break-phone) {
-      align-items: flex-start;
-      flex-direction: row;
-      position: relative;
-      margin-bottom: 10px;
-
-      p {
-        margin-top: 3px;
-        margin-left: 10px;
-      }
-    }
-
-    .circle {
-      width: 18px;
-      height: 18px;
-      border-radius: 100px;
-      padding: 3px 6px;
-      font-size: 6px;
-    }
-
-    .yellow {
-      background: hsl(58, 100%, 57%);
-      color: hsl(58, 100%, 57%);
-    }
-
-    .pink {
-      background: hsl(320, 100%, 50%);
-      color: hsl(320, 100%, 50%);
-    }
-
-    .pink-open {
-      background: hsl(223.2, 54.35%, 18.04%);
-      border: 3px solid hsl(320, 100%, 50%);
-      color: hsl(223.2, 54.35%, 18.04%);
-    }
-  }
-
-  .step.one {
-    left: -80px;
-    top: -8px;
-    @media screen and (max-width: $break-phone) {
-      left: 0;
-      top: 0;
-    }
-  }
-
-  .step.two {
-    left: 310px;
-    top: -8px;
-    @media screen and (max-width: $break-med) {
-      left: 207px;
-    }
-
-    @media screen and (max-width: $break-small) {
-      left: 122px;
-    }
-
-    @media screen and (max-width: $break-phone) {
-      left: 0;
-      top: 0;
-    }
-  }
-
-  .step.three {
-    right: -80px;
-    top: -8px;
-
-    @media screen and (max-width: $break-phone) {
-      left: 0;
-      top: 0;
-    }
-  }
-
-  div:empty {
-    width: 100%;
-    max-width: 314px;
-    height: 5px;
-    margin-left: 19px;
-    background: hsla(0, 0%, 100%, 0.1);
-    @media screen and (max-width: $break-phone) {
-      display: none;
-    }
-  }
-
-  div.right-bar:empty {
-    margin-left: 0;
-    margin-right: 14px;
-    max-width: 318px;
-  }
-
-  div.pink-line:empty {
-    background: hsl(320, 100%, 50%);
-  }
-}
 
 section.reg-content {
-  & > div {
-    max-width: 695px;
-    margin: 120px auto;
-    @media screen and (max-width: $break-phone) {
-      margin: 0px auto;
-    }
-    p {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .field {
-      margin-bottom: 1.5rem;
-      label {
-        color: #fff922;
-        font-weight: 400;
-        &:hover {
-          color: #fff922;
+  .registration-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .registration-left {
+      width:50%;
+      margin-right: 4%;
+
+      .register-header {
+        color: $dark-textColor;
+        font-family: $family-sans-serif;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 160%;
+        text-transform: uppercase;
+      }
+
+      a {
+        color: $labelColor;
+      }
+
+      .select {
+        margin: 32px 0;
+
+        select {
+          background-color: $dark-boxColor;
+          border-color: transparent;
+          color: $dark-headlineColor;
         }
       }
+
+      .filed {
+        position: relative;
+      }
+
+      .submit-btn {
+        display: flex;
+        flex-direction: row;
+        padding: 21px 40px;
+        position: static;
+        background: #0069FF;
+        border-radius: 48px;
+        border: none;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
     }
-  }
-  .button {
-    margin-top: 40px;
+
+    .registration-right {
+      width: 45%;
+    }
   }
 }
