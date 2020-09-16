@@ -59,6 +59,8 @@ $size-2: 2rem;
 $size-3: 1.5rem;
 $size-4: 1.25rem;
 $size-5: 1.125rem;
+$size-table-header: 0.75rem;
+$size-button-text: 0.875rem;
 $family-sans-serif: "Inter Regular", "Helvetica", "Arial", san-serif;
 
 // Derived Variables
@@ -301,6 +303,14 @@ body {
   .nav-logo {
     content: asset-url("h-light.svg");
   }
+
+  h1 {
+    color: $light-headlineColor;
+    font-family: $family-sans-serif;
+    font-size: $size-1;
+    font-weight: 900;
+    line-height: 44px;
+  }
 }
 
 // Global darkmode styles
@@ -310,6 +320,10 @@ body.dark {
   // images
   .nav-logo {
     content: asset-url("h-dark.svg") !important;
+  }
+
+  h1 {
+    color: $dark-headlineColor !important;
   }
 }
 
