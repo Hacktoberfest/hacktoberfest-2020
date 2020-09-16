@@ -111,10 +111,6 @@ class User < ApplicationRecord
       validates :sticker_coupon, presence: true
     end
 
-    before_transition do |user, _transition|
-      UserPullRequestSegmentUpdaterService.call(user)
-    end
-
     after_transition do |user, transition|
       UserStateTransitionSegmentService.call(user, transition)
     end
