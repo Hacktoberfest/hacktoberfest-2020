@@ -39,8 +39,6 @@ ARG RAILS_CONFIG_KEY
 
 RUN RAILS_MASTER_KEY=${RAILS_MASTER_KEY} RAILS_ENV=${RAILS_ENV} bundle exec rake assets:precompile
 
-RUN printf "${RAILS_CONFIG_KEY}" > config/credentials.yml.enc
-
 EXPOSE 3000
 
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
