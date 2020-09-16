@@ -39,7 +39,7 @@ ARG RAILS_CONFIG_KEY
 
 RUN RAILS_MASTER_KEY=${RAILS_MASTER_KEY} RAILS_ENV=${RAILS_ENV} bundle exec rake assets:precompile
 
-RUN echo "${RAILS_CONFIG_KEY}" > config/credentials.yml.enc
+RUN printf "${RAILS_CONFIG_KEY}" > config/credentials.yml.enc
 
 EXPOSE 3000
 
