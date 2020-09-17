@@ -44,12 +44,11 @@ class PagesController < ApplicationController
   end
 
   def front_page_events
-    all_events
-    # .select(&:current?)
-    # .select(&:published?)
-    # .select(&:featured?)
-    # .sample(4)
-    # .sort_by(&:date)
+    AirrecordTable.new.all_records('Event List').map do |e|
+      FeaturedEventPresenter.new(e)
+    rescue FeaturedEventPresenter::ParseError
+      # Ignore invalid events
+    end.compact.sample(4).sort_by(&:date)
   end
 
   def global_stats
