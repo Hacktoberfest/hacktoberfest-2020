@@ -317,13 +317,6 @@ body {
 
 body.dark {
   background-color: $dark-backgroundColor !important;
-  color: $dark-textColor !important;
-
-  h1,
-  h2,
-  h3 {
-    color: $dark-headlineColor !important;
-  }
   // images
   .nav-logo {
     content: asset-url("h-dark.svg") !important;
