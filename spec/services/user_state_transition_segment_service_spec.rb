@@ -4,7 +4,11 @@ require 'rails_helper'
 
 RSpec.describe UserStateTransitionSegmentService do
   let(:transition) { double }
-  let(:magic_segment_service) { magic_instance_of(SegmentService) }
+
+  before do
+    allow(UserPullRequestSegmentUpdaterService)
+        .to receive(:call).and_return(true)
+  end
 
   describe '.call' do
     context 'the transition event is register and the user is new' do
@@ -15,7 +19,7 @@ RSpec.describe UserStateTransitionSegmentService do
       end
 
       it 'calls SegmentService#identify with proper arguments' do
-        expect(magic_segment_service).to receive(:identify).with(
+        expect_any_instance_of(SegmentService).to receive(:identify).with(
           email: user.email,
           digitalocean_marketing_emails: user.digitalocean_marketing_emails,
           intel_marketing_emails: user.intel_marketing_emails,
@@ -24,14 +28,14 @@ RSpec.describe UserStateTransitionSegmentService do
           state: 'register',
           pull_requests_count: 0
         )
-        allow(magic_segment_service).to receive(:track).with(
+        allow_any_instance_of(SegmentService).to receive(:track).with(
           'register'
         )
         UserStateTransitionSegmentService.call(user, transition)
       end
 
       it 'calls SegmentService#track with proper arguments' do
-        allow(magic_segment_service).to receive(:identify).with(
+        allow_any_instance_of(SegmentService).to receive(:identify).with(
           email: user.email,
           digitalocean_marketing_emails: user.digitalocean_marketing_emails,
           intel_marketing_emails: user.intel_marketing_emails,
@@ -40,7 +44,7 @@ RSpec.describe UserStateTransitionSegmentService do
           state: 'register',
           pull_requests_count: 0
         )
-        expect(magic_segment_service).to receive(:track).with(
+        expect_any_instance_of(SegmentService).to receive(:track).with(
           'register'
         )
         UserStateTransitionSegmentService.call(user, transition)
@@ -55,26 +59,20 @@ RSpec.describe UserStateTransitionSegmentService do
       end
 
       it 'calls SegmentService#identify with proper arguments' do
-        expect(magic_segment_service).to receive(:identify).with(
-          state: 'completed'
-        )
-        expect(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 4
-        )
-        allow(magic_segment_service).to receive(:track).with(
+        allow_any_instance_of(SegmentService).to receive(:track).with(
           'user_completed'
+        )
+        expect_any_instance_of(SegmentService).to receive(:identify).with(
+          state: 'completed'
         )
         UserStateTransitionSegmentService.call(user, transition)
       end
 
       it 'calls SegmentService#track with proper arguments' do
-        allow(magic_segment_service).to receive(:identify).with(
+        allow_any_instance_of(SegmentService).to receive(:identify).with(
           state: 'completed'
         )
-        allow(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 4
-        )
-        expect(magic_segment_service).to receive(:track).with(
+        expect_any_instance_of(SegmentService).to receive(:track).with(
           'user_completed'
         )
         UserStateTransitionSegmentService.call(user, transition)
@@ -90,26 +88,20 @@ RSpec.describe UserStateTransitionSegmentService do
       let(:user) { FactoryBot.create(:user, :incompleted) }
 
       it 'calls SegmentService#identify with proper arguments' do
-        expect(magic_segment_service).to receive(:identify).with(
-          state: 'completed'
-        )
-        expect(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 3
-        )
-        allow(magic_segment_service).to receive(:track).with(
+        allow_any_instance_of(SegmentService).to receive(:track).with(
           'user_completed'
+        )
+        expect_any_instance_of(SegmentService).to receive(:identify).with(
+          state: 'completed'
         )
         UserStateTransitionSegmentService.call(user, transition)
       end
 
       it 'calls SegmentService#track with proper arguments' do
-        allow(magic_segment_service).to receive(:identify).with(
+        allow_any_instance_of(SegmentService).to receive(:identify).with(
           state: 'completed'
         )
-        allow(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 3
-        )
-        expect(magic_segment_service).to receive(:track).with(
+        expect_any_instance_of(SegmentService).to receive(:track).with(
           'user_completed'
         )
         UserStateTransitionSegmentService.call(user, transition)
@@ -126,26 +118,20 @@ RSpec.describe UserStateTransitionSegmentService do
       end
 
       it 'calls SegmentService#identify with proper arguments' do
-        expect(magic_segment_service).to receive(:identify).with(
-          state: 'insufficient'
-        )
-        expect(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 4
-        )
-        allow(magic_segment_service).to receive(:track).with(
+        allow_any_instance_of(SegmentService).to receive(:track).with(
           'user_insufficient'
+        )
+        expect_any_instance_of(SegmentService).to receive(:identify).with(
+          state: 'insufficient'
         )
         UserStateTransitionSegmentService.call(user, transition)
       end
 
       it 'calls SegmentService#track with proper arguments' do
-        allow(magic_segment_service).to receive(:identify).with(
+        allow_any_instance_of(SegmentService).to receive(:identify).with(
           state: 'insufficient'
         )
-        allow(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 4
-        )
-        expect(magic_segment_service).to receive(:track).with(
+        expect_any_instance_of(SegmentService).to receive(:track).with(
           'user_insufficient'
         )
         UserStateTransitionSegmentService.call(user, transition)
@@ -167,26 +153,20 @@ RSpec.describe UserStateTransitionSegmentService do
         end
 
         it 'calls SegmentService#identify with proper arguments' do
-          expect(magic_segment_service).to receive(:identify).with(
+          expect_any_instance_of(SegmentService).to receive(:identify).with(
             state: 'won_shirt'
           )
-          expect(magic_segment_service).to receive(:identify).with(
-            pull_requests_count: 4
-          )
-          allow(magic_segment_service).to receive(:track).with(
+          expect_any_instance_of(SegmentService).to receive(:track).with(
             'user_won_shirt'
           )
           UserStateTransitionSegmentService.call(user, transition)
         end
 
         it 'calls SegmentService#track with proper arguments' do
-          allow(magic_segment_service).to receive(:identify).with(
+          expect_any_instance_of(SegmentService).to receive(:identify).with(
             state: 'won_shirt'
           )
-          allow(magic_segment_service).to receive(:identify).with(
-            pull_requests_count: 4
-          )
-          expect(magic_segment_service).to receive(:track).with(
+          expect_any_instance_of(SegmentService).to receive(:track).with(
             'user_won_shirt'
           )
           UserStateTransitionSegmentService.call(user, transition)
@@ -201,26 +181,20 @@ RSpec.describe UserStateTransitionSegmentService do
         end
 
         it 'calls SegmentService#identify with proper arguments' do
-          expect(magic_segment_service).to receive(:identify).with(
+          expect_any_instance_of(SegmentService).to receive(:identify).with(
             state: 'won_sticker'
           )
-          expect(magic_segment_service).to receive(:identify).with(
-            pull_requests_count: 4
-          )
-          allow(magic_segment_service).to receive(:track).with(
+          expect_any_instance_of(SegmentService).to receive(:track).with(
             'user_won_sticker'
           )
           UserStateTransitionSegmentService.call(user, transition)
         end
 
         it 'calls SegmentService#track with proper arguments' do
-          allow(magic_segment_service).to receive(:identify).with(
+          expect_any_instance_of(SegmentService).to receive(:identify).with(
             state: 'won_sticker'
           )
-          allow(magic_segment_service).to receive(:identify).with(
-            pull_requests_count: 4
-          )
-          expect(magic_segment_service).to receive(:track).with(
+          expect_any_instance_of(SegmentService).to receive(:track).with(
             'user_won_sticker'
           )
           UserStateTransitionSegmentService.call(user, transition)
@@ -237,26 +211,20 @@ RSpec.describe UserStateTransitionSegmentService do
       let(:user) { FactoryBot.create(:user, :incompleted) }
 
       it 'calls SegmentService#identify with proper arguments' do
-        expect(magic_segment_service).to receive(:identify).with(
+        expect_any_instance_of(SegmentService).to receive(:identify).with(
           state: 'gifted_sticker'
         )
-        expect(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 3
-        )
-        allow(magic_segment_service).to receive(:track).with(
+        expect_any_instance_of(SegmentService).to receive(:track).with(
           'user_gifted_sticker'
         )
         UserStateTransitionSegmentService.call(user, transition)
       end
 
       it 'calls SegmentService#track with proper arguments' do
-        allow(magic_segment_service).to receive(:identify).with(
+        expect_any_instance_of(SegmentService).to receive(:identify).with(
           state: 'gifted_sticker'
         )
-        allow(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 3
-        )
-        expect(magic_segment_service).to receive(:track).with(
+        expect_any_instance_of(SegmentService).to receive(:track).with(
           'user_gifted_sticker'
         )
         UserStateTransitionSegmentService.call(user, transition)

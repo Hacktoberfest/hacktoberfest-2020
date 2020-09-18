@@ -47,12 +47,6 @@ def segment_write_key
   ENV.fetch('SEGMENT_WRITE_KEY') { SecureRandom.hex(20) }
 end
 
-def magic_instance_of(klass)
-  instance = instance_double(klass)
-  allow(klass).to receive(:new) { instance }
-  instance
-end
-
 unless ENV['TEST_USER_GITHUB_TOKEN']
   puts <<~ENDWARNING
 
