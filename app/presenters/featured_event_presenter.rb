@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MlhEventPresenter
+class FeaturedEventPresenter
   class ParseError < StandardError; end
 
   def initialize(event)
@@ -11,21 +11,21 @@ class MlhEventPresenter
   end
 
   def name
-    @event.dig('attributes', 'title')
+    @event['Event Named']
   end
 
   def date
-    Date.strptime(@event.dig('attributes', 'startDate'), '%Y-%m-%d')
+    Date.strptime(@event['Date'], '%Y-%m-%d')
   rescue StandardError
     nil
   end
 
   def city
-    @event.dig('attributes', 'location', 'city')
+    @event['Event City']
   end
 
   def country
-    @event.dig('attributes', 'location', 'country')
+    @event['Event Country']
   end
 
   def location
@@ -39,7 +39,7 @@ class MlhEventPresenter
   end
 
   def url
-    @event.dig('links', 'register')
+    @event['Link']
   end
 
   def current?
