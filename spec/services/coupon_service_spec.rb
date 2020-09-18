@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe CouponService do
   before do
     allow(UserPullRequestSegmentUpdaterService)
-        .to receive(:call).and_return(false)
+      .to receive(:call).and_return(false)
   end
 
   describe '#assign_coupon' do

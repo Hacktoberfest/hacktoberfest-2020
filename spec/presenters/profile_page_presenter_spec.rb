@@ -16,7 +16,7 @@ describe ProfilePagePresenter do
 
   before do
     allow(UserPullRequestSegmentUpdaterService)
-        .to receive(:call).and_return(false)
+      .to receive(:call).and_return(false)
   end
 
   context 'Hacktoberfest is in pre launch' do

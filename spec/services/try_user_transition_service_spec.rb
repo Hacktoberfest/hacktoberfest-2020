@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'TryUserTransitionService' do
   before do
     allow(UserPullRequestSegmentUpdaterService)
-        .to receive(:call).and_return(false)
+      .to receive(:call).and_return(false)
   end
 
   describe '.call' do

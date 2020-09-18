@@ -433,8 +433,8 @@ module PullRequestFilterHelper
     GithubPullRequest.new(Hashie::Mash.new(hash))
   end
 
-  def pr_stub_helper(target, pr_data)
-    PullRequest.delete_all
+  def pr_stub_helper(target, pr_data, clear = true)
+    PullRequest.delete_all if clear
     allow(target.send(:pull_request_service))
       .to receive(:github_pull_requests)
       .and_return(pull_request_data(pr_data))
