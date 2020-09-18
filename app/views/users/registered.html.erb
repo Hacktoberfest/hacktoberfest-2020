@@ -1,32 +1,72 @@
-<%# UPDATE PAGE %>
-<section class="section">
-<div class="registration-steps">
-  <div class="step one">
-    <span class="pink circle">1</span>
-    <p>Register with GitHub</p>
-  </div>
-  <div class="pink-line"></div> <%# css line %>
-  <div class="step two">
-    <span class="pink circle">2</span>
-    <p>About You</p>
-  </div>
-    <div class="pink-line right-bar"></div> <%# css line %>
-   <div class="step three">
-    <span class="yellow circle">3</span>
-    <p>Start Contributing</p>
-  </div>
-</div>
-</section>
 <section class="section reg-content">
-  <div>
-    <h1 class="title is-1">All done - happy Hacking!</h1>
-    <p>Here are some resources to help you get started:</p>
+  <div class="registration-wrapper">
 
-    <p> <span class="highlight">●</span> <%= link_to "Review program details", details_path %> </p>
-    <p> <span class="highlight">●</span> <%= link_to "Explore Hacktoberfest projects", root_path(anchor: 'projects') %> </p>
-    <p> <span class="highlight">●</span> <%= link_to "Find helpful tips from our list of resources", faq_path %> </p>
+    <div class="registration-left">
+      <div class="register-header">Register</div>
+      <h1 class="title is-1">About you</h1>
+      <p>
+        Please select which email address you’d like to use for Hacktoberfest and read the <a target="_blank" href="/details#participation-rules">rules and values</a>.
+      </p>
+      <%= form_for :user, url: { action: 'register' }, method: :patch do |f| %>
 
-    <%= link_to "See your profile", profile_path, :class => 'button' %>
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <%= f.select :email, @emails, :include_blank => "Select prefered email address" %>
+            </div>
+          </div>
+        </div>
 
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <%= f.check_box :digitalocean_marketing_emails %>
+              Send me updates related to the Hacktoberfest community,
+              open source, and products from DigitalOcean.
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <%= f.check_box :intel_marketing_emails %>
+              Send me updates from Hacktoberfest partner, Intel.
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <%= f.check_box :dev_marketing_emails %>
+              Send me updates from Hacktoberfest partner, DEV.
+            </label>
+          </div>
+        </div>
+
+        <% if @current_user.errors.messages[:terms_acceptance].include?("must be accepted")  %>
+           <p class="error">You must accept the terms and conditions to participate in Hactoberfest.</p>
+        <% end %>
+
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <%= f.check_box :terms_acceptance %>
+              I have read and understand the
+              <a target="_blank" href="/details#participation-rules">Rules and Values</a>.
+            </label>
+          </div>
+        </div>
+
+        <%= f.submit 'Start Hacking', :class => 'submit-btn'%>
+
+      <% end %>
+    </div>
+
+    <div class="registration-right">
+      <div class="background-img"></div>
+    </div>
+    
   </div>
 </section>

@@ -1,13 +1,314 @@
+.profile-page {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1152px;
+  margin: 0 auto;
+  padding-left: 20px;
+
+  .profile-left {
+    width: 65%;
+    margin-right: 5%;
+    text-align: center;
+    
+    .main-content-wrapper {
+      background-color: $light-backgroundColor;
+      box-shadow: 0px 5.2029px 20.8116px rgba(24, 61, 93, 0.08);
+      margin-bottom: 30px;
+      padding: 30px;
+      width: 100%;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -khtml-border-radius: 8px;
+      border-radius: 8px;
+
+      p, h1, h3 {
+        color: $light-headlineColor;
+      }
+
+      a {
+        color: $labelColor;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      a.button {
+        color: $buttonTextColor;
+      }
+
+      a.button:hover {
+        text-decoration: none;
+      }
+
+      #winner-code {
+        font-size: 1rem;
+        background-color: #F1F7FA;
+        border: none;
+        color: #072540;
+        width: 25vw;
+        padding: 10px;
+        margin-right: 20px;
+      }
+    }
+
+    .account-wrapper {
+      display: flex;
+      position: relative;
+      text-align: left;
+
+      .avatar {
+        display: inline-block;
+
+        .image {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+        }
+      }
+
+      .username {
+        display: inline-block;
+        font-size: $size-3;
+        line-height: 29px;
+        color: white;
+        padding-left: 25px;
+        font-weight: 900;
+      }
+
+      .logout-wrapper {
+        display: inline-block;
+        right: 0;
+        position: absolute;
+
+        .logout {
+          background-color: $buttonColor;
+          color: #fff;
+          font-size: $size-button-text;
+          padding: 5px 20px;
+          -moz-border-radius: 32px;
+          -webkit-border-radius: 32px;
+          -khtml-border-radius: 32px;
+          border-radius: 32px;
+        }
+
+        .logout:hover {
+          background-color: $labelColor;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .pre-launch-container {
+      margin-top: 30px;
+
+      h2 {
+        color: $light-headlineColor;
+        font-size: $size-2;
+        font-weight: 900;
+        line-height: 39px;
+        margin: 44px 0;
+        text-align: center;
+      }
+    }
+  }
+
+  .profile-right {
+    width: 28%;
+
+    .side-headers {
+      font-weight: 900;
+      font-size: $size-button-text;
+      line-height: 17px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      color: $platinumColor;
+    }
+
+    .progress-wrapper, .education-wrapper {
+      background-color: $light-backgroundColor;
+      box-shadow: 0px 5.2029px 20.8116px rgba(24, 61, 93, 0.08);
+      margin-bottom: 30px;
+      padding: 30px;
+      width: 100%;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -khtml-border-radius: 8px;
+      border-radius: 8px;
+
+      p {
+        color: $platinumColor;
+        font-size: $size-button-text;
+        line-height: 170%;
+      }
+
+      .education-section {
+        margin-bottom: 16px;
+        width: 100%;
+
+        h5 {
+          font-weight: bold;
+          font-size: $size-button-text;
+          line-height: 170%;
+          color: $light-tableBorderColor;
+        }
+
+        svg {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        ul {
+          li {
+            list-style-type: disc;
+            margin-left: 20px;
+          }
+        }
+
+        a {
+          color: $buttonColor;
+          display: block;
+          font-size: $size-button-text;
+          font-weight: normal;
+        }
+
+        a.inline {
+          display: inline-block;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+
+
+    }
+  }
+
+  .progress-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: relative;
+    background: $progress-color-light;
+    width: 330px;
+    max-width: 100%;
+    border: 2px solid $progress-color-light;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -khtml-border-radius: 8px;
+    border-radius: 8px;
+
+    @media screen and (max-width: $break-small) {
+      margin: 0 auto;
+    }
+
+    &:before {
+      position: absolute;
+      content: "";
+      display: block;
+      left: 0;
+      height: 100%;
+      background: $progress-bar-before;
+      background: linear-gradient(80deg, $progress-bar-gradient-01 0%, $progress-bar-gradient-02 100%);
+    }
+
+    &.progress-state-0 {
+      &:before {
+        width: 0;
+      }
+    }
+
+    &.progress-state-1 {
+      &:before {
+        width: 25%;
+      }
+    }
+
+    &.progress-state-2 {
+      &:before {
+        width: 50%;
+      }
+    }
+
+    &.progress-state-3 {
+      &:before {
+        width: 75%;
+      }
+    }
+
+    &.progress-state-4 {
+      &:before {
+        width: 100%;
+      }
+    }
+
+    .progress-block {
+      flex-grow: 1;
+      border: 2px solid $progress-color-light;
+      height: 20px;
+      z-index: 1;
+      background: transparent;
+    }
+  }
+}
+
+body.dark {
+  .profile-page .profile-left .main-content-wrapper, .profile-page .profile-right .progress-wrapper, .profile-page .profile-right .education-wrapper {
+    background-color: $dark-inputBackgroundColor !important;
+  }
+
+  .profile-page .profile-left .pre-launch-container h2, .profile-page .profile-left .main-content-wrapper p, .profile-page .profile-left .main-content-wrapper h3 {
+    color: $dark-headlineColor !important;
+  }
+
+  .profile-page .profile-right .progress-wrapper p {
+    color: $light-textColor !important;
+  }
+
+  .profile-page .progress-bar {
+    background: $dark-backgroundColor !important;
+    border: 2px solid $dark-backgroundColor !important;
+  }
+
+  .profile-page .progress-bar .progress-block {
+    border: 2px solid $dark-backgroundColor !important;
+  }
+
+  .profile-page .profile-right .progress-wrapper .education-section a, .profile-page .profile-right .education-wrapper .education-section a {
+    color: $labelColor !important;
+  }
+
+  #winner-code {
+    background-color: #39486f !important;
+    color: #92eaff !important;
+  }
+}
+
+@media screen and (max-width: $break-small) {
+  .profile-page .profile-left, .profile-page .profile-right {
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .profile-page {
+    padding-left: 0;
+  }
+
+  .profile-page .profile-left {
+    margin-right: 0;
+  }
+}
+
+
+
 $break-med: 1366px;
 $break-small: 1024px;
 $grey-dark: hsl(223.33, 32.14%, 32.94%);
 $grey-darker: hsl(222.5, 43.64%, 21.57%);
 $cyan: hsl(191.56, 100%, 78.63%);
 $red: hsl(320, 100%, 50%);
-
-.avatar {
-  padding-left: 30px;
-}
 
 .container.profile {
   text-align: center;

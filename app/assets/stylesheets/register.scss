@@ -75,6 +75,17 @@ section.reg-content {
 
     .registration-right {
       width: 45%;
+      min-height: 380px;
+      display: inherit;
+
+      .background-img {
+        background-image:url('hactoberfest-logo-with-sponsors-light.svg');
+        background-repeat:no-repeat;
+        background-size:contain;
+        background-position:center;
+        display: inline-block;
+        width: 100%;
+      }
     }
   }
 }
@@ -84,13 +95,31 @@ body.dark {
     color: $dark-headlineColor !important;
   }
 
+  section.reg-content .registration-wrapper .registration-right .background-img {
+    background-image:url('hactoberfest-logo-with-sponsors-dark.svg') !important;
+  }
+
+  section.reg-content .registration-wrapper .registration-left label.checkbox, section.reg-content .registration-wrapper .registration-left p {
+    color: #93C2DB !important;
+  }
+
   section.reg-content .registration-wrapper .registration-left label.checkbox:hover {
-    color: #FFF;
+    color: #FFF !important;
   }
 
   section.reg-content .registration-wrapper .registration-left .select select {
     background-color: $dark-boxColor !important;
     color: $dark-headlineColor !important;
     border-color: transparent;
+  }
+}
+
+@media screen and (max-width: $break-small) {
+  section.reg-content .registration-wrapper .registration-right, section.reg-content .registration-wrapper .registration-left {
+    width: 100%;
+  }
+
+  section.reg-content .registration-wrapper .registration-right .background-img {
+    margin-top: 60px;
   }
 }

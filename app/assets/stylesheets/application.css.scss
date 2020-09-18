@@ -83,6 +83,11 @@ $diamondColor: #93c2db;
 $platinumColor: #99a1b3;
 $goldColor: #ffd700;
 $socialHoverColor: #010e2f;
+$progress-color-light: #F1F7FA;
+$progress-bar-before: #ff00aa;
+$progress-bar-gradient-01: #ffc337;
+$progress-bar-gradient-02: #ff00aa;
+
 
 //light mode
 $light-backgroundColor: #ffffff;
@@ -166,9 +171,10 @@ $modal-content-width: 60vw;
 }
 
 .button {
+  color: $buttonTextColor;
   border-radius: 48px !important;
   font-weight: 900;
-  font-size: 14px;
+  font-size: $size-button-text;
   padding: 24px 40px;
   display: inline-flex;
   justify-content: flex-start;
@@ -178,8 +184,6 @@ $modal-content-width: 60vw;
 
   &:hover {
     background-color: $red;
-    color: $white !important;
-    padding: 10px 20px !important;
   }
 
   &.button-small {
