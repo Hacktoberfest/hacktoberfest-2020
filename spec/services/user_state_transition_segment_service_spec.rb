@@ -15,7 +15,7 @@ RSpec.describe UserStateTransitionSegmentService do
       end
 
       it 'calls SegmentService#identify with proper arguments' do
-        expect_any_instance_of(SegmentService).to receive(:identify).with(
+        expect(magic_segment_service).to receive(:identify).with(
           email: user.email,
           digitalocean_marketing_emails: user.digitalocean_marketing_emails,
           intel_marketing_emails: user.intel_marketing_emails,
@@ -24,14 +24,14 @@ RSpec.describe UserStateTransitionSegmentService do
           state: 'register',
           pull_requests_count: 0
         )
-        allow_any_instance_of(SegmentService).to receive(:track).with(
+        allow(magic_segment_service).to receive(:track).with(
           'register'
         )
         UserStateTransitionSegmentService.call(user, transition)
       end
 
       it 'calls SegmentService#track with proper arguments' do
-        allow_any_instance_of(SegmentService).to receive(:identify).with(
+        allow(magic_segment_service).to receive(:identify).with(
           email: user.email,
           digitalocean_marketing_emails: user.digitalocean_marketing_emails,
           intel_marketing_emails: user.intel_marketing_emails,
@@ -40,7 +40,7 @@ RSpec.describe UserStateTransitionSegmentService do
           state: 'register',
           pull_requests_count: 0
         )
-        expect_any_instance_of(SegmentService).to receive(:track).with(
+        expect(magic_segment_service).to receive(:track).with(
           'register'
         )
         UserStateTransitionSegmentService.call(user, transition)
@@ -94,7 +94,7 @@ RSpec.describe UserStateTransitionSegmentService do
           state: 'completed'
         )
         expect(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 3,
+          pull_requests_count: 3
         )
         allow(magic_segment_service).to receive(:track).with(
           'user_completed'
@@ -107,7 +107,7 @@ RSpec.describe UserStateTransitionSegmentService do
           state: 'completed'
         )
         allow(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 3,
+          pull_requests_count: 3
         )
         expect(magic_segment_service).to receive(:track).with(
           'user_completed'
@@ -130,7 +130,7 @@ RSpec.describe UserStateTransitionSegmentService do
           state: 'insufficient'
         )
         expect(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 4,
+          pull_requests_count: 4
         )
         allow(magic_segment_service).to receive(:track).with(
           'user_insufficient'
@@ -143,7 +143,7 @@ RSpec.describe UserStateTransitionSegmentService do
           state: 'insufficient'
         )
         allow(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 4,
+          pull_requests_count: 4
         )
         expect(magic_segment_service).to receive(:track).with(
           'user_insufficient'
@@ -171,7 +171,7 @@ RSpec.describe UserStateTransitionSegmentService do
             state: 'won_shirt'
           )
           expect(magic_segment_service).to receive(:identify).with(
-            pull_requests_count: 4,
+            pull_requests_count: 4
           )
           allow(magic_segment_service).to receive(:track).with(
             'user_won_shirt'
@@ -184,7 +184,7 @@ RSpec.describe UserStateTransitionSegmentService do
             state: 'won_shirt'
           )
           allow(magic_segment_service).to receive(:identify).with(
-            pull_requests_count: 4,
+            pull_requests_count: 4
           )
           expect(magic_segment_service).to receive(:track).with(
             'user_won_shirt'
@@ -205,7 +205,7 @@ RSpec.describe UserStateTransitionSegmentService do
             state: 'won_sticker'
           )
           expect(magic_segment_service).to receive(:identify).with(
-            pull_requests_count: 4,
+            pull_requests_count: 4
           )
           allow(magic_segment_service).to receive(:track).with(
             'user_won_sticker'
@@ -218,7 +218,7 @@ RSpec.describe UserStateTransitionSegmentService do
             state: 'won_sticker'
           )
           allow(magic_segment_service).to receive(:identify).with(
-            pull_requests_count: 4,
+            pull_requests_count: 4
           )
           expect(magic_segment_service).to receive(:track).with(
             'user_won_sticker'
@@ -241,7 +241,7 @@ RSpec.describe UserStateTransitionSegmentService do
           state: 'gifted_sticker'
         )
         expect(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 3,
+          pull_requests_count: 3
         )
         allow(magic_segment_service).to receive(:track).with(
           'user_gifted_sticker'
@@ -254,7 +254,7 @@ RSpec.describe UserStateTransitionSegmentService do
           state: 'gifted_sticker'
         )
         allow(magic_segment_service).to receive(:identify).with(
-          pull_requests_count: 3,
+          pull_requests_count: 3
         )
         expect(magic_segment_service).to receive(:track).with(
           'user_gifted_sticker'

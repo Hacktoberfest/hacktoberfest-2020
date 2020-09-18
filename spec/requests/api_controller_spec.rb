@@ -3,6 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe ApiController, type: :request do
+  before do
+    allow(UserPullRequestSegmentUpdaterService)
+        .to receive(:call).and_return(false)
+  end
+
   describe '#state' do
     context 'unauthenticated' do
       context 'non-existent user' do

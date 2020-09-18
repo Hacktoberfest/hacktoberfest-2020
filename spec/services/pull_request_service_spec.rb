@@ -7,8 +7,10 @@ RSpec.describe PullRequestService do
   let(:pr_service) { PullRequestService.new(user) }
 
   before do
-    allow(UserPullRequestSegmentUpdaterService).to receive(:call).and_return(false)
-    allow(SpamRepositoryService).to receive(:call).and_return(false)
+    allow(UserPullRequestSegmentUpdaterService)
+      .to receive(:call).and_return(false)
+    allow(SpamRepositoryService)
+      .to receive(:call).and_return(false)
   end
 
   describe '.new' do

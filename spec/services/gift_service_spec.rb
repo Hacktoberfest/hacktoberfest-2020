@@ -4,8 +4,10 @@ require 'rails_helper'
 
 RSpec.describe GiftService do
   before do
-    allow(UserPullRequestSegmentUpdaterService).to receive(:call).and_return(false)
-    allow(UserStateTransitionSegmentService).to receive(:call).and_return(false)
+    allow(UserPullRequestSegmentUpdaterService)
+      .to receive(:call).and_return(false)
+    allow(UserStateTransitionSegmentService)
+      .to receive(:call).and_return(false)
   end
 
   describe '.call' do
