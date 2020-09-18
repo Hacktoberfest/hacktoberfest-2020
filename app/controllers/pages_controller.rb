@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+  include PagesHelper
   before_action :disallow_registered_user!, only: :start
 
   def index
@@ -16,11 +17,12 @@ class PagesController < ApplicationController
   end
 
   def faqs
-    faq = AirrecordTable.new.all_records('FAQs')
-    @faqs_rules = faq.select { |q| q['Category'] == 'Rules' }
-    @faqs_general = faq.select { |q| q['Category'] == 'General' }
-    @faqs_events = faq.select { |q| q['Category'] == 'Events' }
-    @faqs_shipping = faq.select { |q| q['Category'] == 'Shipping' }
+    begin
+      faqs = AirrecordTable.new.all_records('FAQs')
+    rescue StandardError
+      faqs = AirtablePlaceholderService.call('FAQs')
+    end
+    present_faqs(faqs)
   end
 
   def events
@@ -44,11 +46,9 @@ class PagesController < ApplicationController
   end
 
   def front_page_events
-    AirrecordTable.new.all_records('Event List').map do |e|
-      FeaturedEventPresenter.new(e)
-    rescue FeaturedEventPresenter::ParseError
-      # Ignore invalid events
-    end.compact.sample(4).sort_by(&:date)
+    present_featured_events(AirrecordTable.new.all_records('Event List'))
+  rescue StandardError
+    present_featured_events(AirtablePlaceholderService.call('Event List'))
   end
 
   def global_stats
@@ -58,5 +58,12 @@ class PagesController < ApplicationController
       { amount: '154,466', title: 'PARTICIPATING REPOSITORIES' }
     ]
     stats_arr.map { |s| Hashie::Mash.new(s) }
+  end
+
+  def present_faqs(faqs)
+    @faqs_rules = faqs.select { |q| q['Category'] == 'Rules' }
+    @faqs_general = faqs.select { |q| q['Category'] == 'General' }
+    @faqs_events = faqs.select { |q| q['Category'] == 'Events' }
+    @faqs_shipping = faqs.select { |q| q['Category'] == 'Shipping' }
   end
 end

@@ -41,7 +41,7 @@ class AirrecordTable
     Airrecord.table(api_key, app_id, table_name).tap do |at|
       at.client.connection = faraday_connection
       unless at.client.connection.get.status == (200 || 302)
-        AirtablePlaceholderService.call('FAQs')
+        AirtablePlaceholderService.call(table_name)
       end
     end
   end
