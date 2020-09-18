@@ -12,6 +12,10 @@ FactoryBot.define do
     trait :new do
       terms_acceptance { false }
       state { 'new' }
+
+      after :build do |user|
+        PullRequestFilterHelper.pr_stub_helper(user, [])
+      end
     end
 
     trait :no_email do

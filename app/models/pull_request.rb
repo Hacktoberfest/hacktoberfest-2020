@@ -80,8 +80,10 @@ class PullRequest < ApplicationRecord
     @github_pull_request = ghpr
   end
 
-  def self.from_github_pull_request(ghpr)
-    pr = find_or_create_by(gh_id: ghpr.id)
+  def self.from_github_pull_request(ghpr, create = true)
+    pr = create ? find_or_create_by(gh_id: ghpr.id) : find_by(gh_id: ghpr.id)
+    return unless pr
+
     pr.define_github_pull_request(ghpr)
     pr.check_state
     pr

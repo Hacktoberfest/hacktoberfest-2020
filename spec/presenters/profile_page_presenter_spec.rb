@@ -14,6 +14,11 @@ describe ProfilePagePresenter do
   let(:won_sticker_presenter) { ProfilePagePresenter.new(sticker_winner) }
   let(:incompleted_user_presenter) { ProfilePagePresenter.new(incomplete_user) }
 
+  before do
+    allow(UserPullRequestSegmentUpdaterService)
+      .to receive(:call).and_return(true)
+  end
+
   context 'Hacktoberfest is in pre launch' do
     before { travel_to Time.zone.parse(ENV['START_DATE']) - 7.days }
 
