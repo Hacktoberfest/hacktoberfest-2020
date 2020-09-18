@@ -8,7 +8,7 @@ RSpec.describe PullRequestService do
 
   before do
     allow(UserPullRequestSegmentUpdaterService)
-      .to receive(:call).and_return(false)
+      .to receive(:call).and_return(true)
     allow(SpamRepositoryService)
       .to receive(:call).and_return(false)
   end

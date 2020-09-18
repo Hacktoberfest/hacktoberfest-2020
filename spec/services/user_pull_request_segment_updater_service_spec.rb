@@ -39,7 +39,7 @@ RSpec.describe UserPullRequestSegmentUpdaterService do
           PR_DATA[:mature_array][0...3]
         )
         allow(UserPullRequestSegmentUpdaterService)
-          .to receive(:call).and_return(false)
+          .to receive(:call).and_return(true)
         user.score
         allow(UserPullRequestSegmentUpdaterService)
           .to receive(:call).and_call_original
@@ -65,7 +65,7 @@ RSpec.describe UserPullRequestSegmentUpdaterService do
           PR_DATA[:mature_array][0...3]
         )
         allow(UserPullRequestSegmentUpdaterService)
-          .to receive(:call).and_return(false)
+          .to receive(:call).and_return(true)
         user.score
         allow(UserPullRequestSegmentUpdaterService)
           .to receive(:call).and_call_original
@@ -99,20 +99,20 @@ RSpec.describe UserPullRequestSegmentUpdaterService do
       before(:each) do
         # Add the initial three PRs and ignore that Segment update
         PullRequestFilterHelper.pr_stub_helper(
-            user,
-            PR_DATA[:large_immature_array][0...3]
+          user,
+          PR_DATA[:large_immature_array][0...3]
         )
         allow(UserPullRequestSegmentUpdaterService)
-            .to receive(:call).and_return(false)
+          .to receive(:call).and_return(true)
         user.score
         allow(UserPullRequestSegmentUpdaterService)
-            .to receive(:call).and_call_original
+          .to receive(:call).and_call_original
 
         # Stub the user with all six PRs, keeping the previous three in the DB
         PullRequestFilterHelper.pr_stub_helper(
-            user,
-            PR_DATA[:large_immature_array],
-            false
+          user,
+          PR_DATA[:large_immature_array],
+          false
         )
       end
 
@@ -127,7 +127,7 @@ RSpec.describe UserPullRequestSegmentUpdaterService do
           # You might be confused why this is 4, and not 6...
           # We send User#score to Segment, which is capped at 4
           expect_any_instance_of(SegmentService)
-              .to receive(:identify).with(pull_requests_count: 4)
+            .to receive(:identify).with(pull_requests_count: 4)
           user.score
         end
       end

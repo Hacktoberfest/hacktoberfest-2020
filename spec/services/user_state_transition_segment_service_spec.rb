@@ -7,7 +7,7 @@ RSpec.describe UserStateTransitionSegmentService do
 
   before do
     allow(UserPullRequestSegmentUpdaterService)
-        .to receive(:call).and_return(true)
+      .to receive(:call).and_return(true)
   end
 
   describe '.call' do
