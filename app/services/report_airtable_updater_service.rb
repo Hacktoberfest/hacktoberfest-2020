@@ -8,6 +8,7 @@ module ReportAirtableUpdaterService
       # Existing record, update it
       if (existing_record = spammy_repo_report(repository.id))
         existing_record["Reports"] += 1
+        existing_record["Year"] = Hacktoberfest.start_date.year
         existing_record.save
         return existing_record
       end
