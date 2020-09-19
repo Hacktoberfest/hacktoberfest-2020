@@ -84,7 +84,7 @@ http_interactions:
     uri: https://api.airtable.com/v0/<TEST_AIRTABLE_APP_ID>/Spam%20Repos
     body:
       encoding: UTF-8
-      string: '{"fields":{"Repo ID":"211178535","Repo Link":"https://github.com/raise-dev/hacktoberfest-test"}}'
+      string: '{"fields":{"Repo ID":"211178535","Repo Link":"https://github.com/raise-dev/hacktoberfest-test","Reports":1,"Year":2020}}'
     headers:
       Authorization:
       - Bearer <TEST_AIRTABLE_API_KEY>
@@ -134,7 +134,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"id":"rec2D2ZbcCeVqqaHL","fields":{"Repo ID":"211178535","Repo Link":"https://github.com/raise-dev/hacktoberfest-test"},"createdTime":"2019-11-12T17:03:01.000Z"}'
+      string: '{"id":"rec2D2ZbcCeVqqaHL","fields":{"Repo ID":"211178535","Repo Link":"https://github.com/raise-dev/hacktoberfest-test","Reports":1,"Year":2020},"createdTime":"2019-11-12T17:03:01.000Z"}'
     http_version: 
   recorded_at: Tue, 12 Nov 2019 17:03:00 GMT
 - request:
