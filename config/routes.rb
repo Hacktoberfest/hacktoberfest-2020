@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   get '/events', to: 'pages#events'
   get '/eventkit', to: 'pages#event_kit', as: :event_kit
   get '/faq', to: 'pages#faqs'
-  get '/thanks', to: 'pages#thanks'
   get '/api-error', to: 'pages#api_error'
   get '/languages/projects(/:language_id)', to: 'languages#projects'
   get '/report', to: 'reports#new'
