@@ -10,7 +10,7 @@ describe AirrecordTable do
     let(:airrecord_table) { AirrecordTable.new }
 
     it 'returns success status' do
-      VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_successful/returns_a_data_hash' do
+      VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_successful/returns_success_status' do
         response = airrecord_table.faraday_connection.get
         expect(response.status).to eq(302)
       end
