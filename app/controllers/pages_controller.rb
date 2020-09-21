@@ -2,7 +2,6 @@
 
 class PagesController < ApplicationController
   include PagesHelper
-  before_action :disallow_registered_user!, only: :start
 
   def index
     @events = front_page_events
@@ -30,8 +29,6 @@ class PagesController < ApplicationController
   end
 
   def event_kit; end
-
-  def start; end
 
   def api_error; end
 
