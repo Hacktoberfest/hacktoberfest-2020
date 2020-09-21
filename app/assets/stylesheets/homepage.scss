@@ -5,6 +5,8 @@ $break-tiny: 812px;
 $break-small: 1024px;
 $break-med: 1350px;
 $break-large: 1920px;
+$red: #ff8ae2;
+
 $yellow: hsl(58.37, 100%, 56.67%);
 $grey: hsl(221.54, 14.61%, 65.1%);
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
@@ -25,273 +27,55 @@ $tile-padding: 0;
 $tile-width: 150%;
 $box-color: rgba(0, 0, 0, 0);
 
-$mainImg1: asset-url("polygon-photo-1.png");
-$mainImg2: asset-url("polygon-photo-2.png");
-$mainImg3: asset-url("polygon-photo-3.png");
-$mainImg4: asset-url("polygon-photo-4.png");
-$mainImg5: asset-url("polygon-photo-5.png");
-$mainImg6: asset-url("polygon-photo-6.png");
-
-main.home.mainImg0 {
-  background-image: $mainImg1, $mainImg2;
-}
-main.home.mainImg1 {
-  background-image: $mainImg3, $mainImg4;
-}
-main.home.mainImg2 {
-  background-image: $mainImg5, $mainImg6;
-}
-
 main.home {
-  text-align: left;
   background-repeat: no-repeat;
-  background-position: top 10px right 164px, top -120px right 0px;
-  opacity: 1;
-  transition: background-image 1.5s linear;
-
-  &.closing {
-    .hero-body {
-      .title {
-        font-size: $size-0;
-      }
-
-      .subtitle {
-        font-size: $size-3;
-        color: $grey;
-      }
-    }
-
-    .presented-cont {
-      margin-top: 10rem;
-
-      @media screen and (max-width: $break-small) {
-        margin-top: 1.25rem;
-      }
-    }
-
-    .logos-cont {
-      white-space: nowrap;
-
-      .do-logo {
-        padding-top: 5px;
-      }
-
-      .dev-logo {
-        padding-top: 2px;
-      }
-
-      .do-title {
-        padding-top: 8px;
-      }
-    }
-
-    .box.stats-cont {
-      width: 100%;
-      text-align: left !important;
-      margin: 0;
-
-      @media screen and(min-width: $break-large) {
-        width: 80%;
-      }
-
-      p {
-        margin-left: 10px;
-      }
-    }
-
-    .mktoForm {
-      display: flex;
-      flex-wrap: wrap;
-      width: auto !important;
-
-      @media screen and (max-width: $break-small) {
-        width: 100% !important;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0;
-      }
-
-      label,
-      .mktoOffset,
-      .mktoGutter {
-        display: none;
-      }
-
-      .mktoFormRow .mktoFormCol .mktoField,
-      .mktoButtonWrap .mktoButton {
-        color: $white;
-        font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
-        font-size: 1rem;
-        margin: 0;
-        height: auto;
-        line-height: 30px;
-        padding: 15px 20px;
-        border-radius: 0;
-        border: none;
-      }
-
-      .mktoFormCol,
-      .mktoFieldWrap {
-        float: unset !important;
-      }
-
-      .mktoFormRow {
-        @media screen and (max-width: $break-small) {
-          flex-grow: 1;
-          width: 100%;
-        }
-
-        .mktoFormCol {
-          margin: 0 !important;
-
-          .mktoFieldWrap {
-            .mktoField {
-              justify-content: flex-start;
-              background-color: $grey-dark;
-              box-shadow: 0px 30px 60px hsla(0, 0%, 0%, 0.2);
-              width: 33vw !important;
-
-              @media screen and (max-width: $break-small) {
-                width: 100% !important;
-              }
-            }
-          }
-        }
-      }
-
-      .mktoButtonWrap {
-        margin: 0 !important;
-
-        .mktoButton {
-          float: left;
-          background: $purple;
-          color: $white;
-          white-space: nowrap;
-
-          &:hover {
-            background: $cyan;
-            color: $grey-dark;
-          }
-        }
-      }
-    }
-  }
-
-  .p {
-    max-width: 620px;
-    margin: 24px 0px 24px 0px;
-    color: $grey;
-  }
 
   @media screen and (max-width: $break-small) {
-    background-position: top 530px right 164px, top 380px right 0px;
   }
 
   @media screen and (max-width: $break-mobile) {
-    background-position: top 730px right 64px, top 640px right 0px;
     background-size: 100%;
   }
 
-  .hero-body {
-    padding-top: 0;
-    max-width: 620px;
-    margin-bottom: 130px;
-    @media screen and (max-width: $break-small) {
-      margin: 0 auto;
-    }
-    @media screen and (min-width: $break-small) {
-      padding-left: 0;
-    }
-  }
+  .home-hero {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 900px;
+    top: -167px;
+    width: 100%;
+    padding-top: 150px;
 
-  .hero-body h1 {
-    font-size: $size-1;
-    line-height: 60px;
-    padding-left: $padding-left;
-    padding-top: 0;
-    margin-bottom: 50px;
-  }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
 
-  .section2 {
-    margin-top: 0;
-    padding-top: 40px;
-    margin-bottom: 200px;
-
-    p {
-      margin: 20px 0 60px 0;
-    }
-
-    .climate {
-      margin-top: 60px;
-    }
-
-    @media screen and (max-width: $break-small) {
-      text-align: left;
-      margin-bottom: 140px;
+      h1 {
+        font-size: $size-1;
+        line-height: 60px;
+        padding-left: $padding-left;
+        padding-top: 0;
+        margin-top: 64px;
+        margin-bottom: 50px;
+        max-width: 870px;
+      }
     }
   }
 
-  .section2.space {
-    margin-bottom: 180px;
-  }
-  .space {
-    @media screen and (max-width: $break-small) {
-      margin-top: 620px;
-    }
-  }
-
-  .section2-closing {
-    padding-top: 40px;
-    margin-bottom: 200px;
-
-    @media screen and (max-width: $break-small) {
-      text-align: left;
-      margin-bottom: 140px;
-    }
-  }
-
-  .section2-closing.space {
-    margin-bottom: 80px;
-    margin-top: 200px;
-
-    @media screen and (max-width: $break-small) {
-      margin-top: 45vh;
-    }
-  }
-
-  .section3-closing {
-    padding-top: 40px;
-    margin-bottom: 200px;
-
-    @media screen and (max-width: $break-small) {
-      text-align: left;
-    }
-  }
-  .space {
-    padding-top: 200px;
-    margin-bottom: 200px;
-
-    @media screen and (max-width: $break-small) {
-      margin-top: 0px;
-      margin-bottom: 60px !important;
-    }
-  }
-
-  .left-title-mob {
-    @media screen and (max-width: $break-small) {
-      text-align: left;
-    }
-  }
-
-  .is-spaced {
-    padding-top: 20px;
+  ul {
+    margin-top: 10px;
   }
 
   .bullet {
     list-style-type: disc;
-    color: $yellow;
+    color: $red;
     margin-bottom: 30px;
     margin-left: 20px;
+    margin-top: 10px;
   }
 
   .eventsBlock {
@@ -390,8 +174,7 @@ main.home {
     }
   }
 
-  .eventUnion,
-  .statUnion {
+  .event-union {
     display: flex;
     justify-content: flex-start;
     vertical-align: baseline;
@@ -424,36 +207,21 @@ main.home {
     }
   }
 
-  .eventUnion .box:nth-child(4n + 1) {
+  .event-union .box:nth-child(4n + 1) {
     background: linear-gradient(76.04deg, #febd3b -0.33%, #ff9353 100.08%);
   }
-  .eventUnion .box:nth-child(4n + 2) {
+  .event-union .box:nth-child(4n + 2) {
     background: linear-gradient(76.04deg, #ff8c57 -0.33%, #ff646f 100.08%);
   }
-  .eventUnion .box:nth-child(4n + 3) {
+  .event-union .box:nth-child(4n + 3) {
     background: linear-gradient(76.04deg, #ff5d73 -0.33%, #ff358b 100.08%);
   }
-  .eventUnion .box:nth-child(4n + 4) {
+  .event-union .box:nth-child(4n + 4) {
     background: linear-gradient(76.04deg, #ff2e90 -0.33%, #ff06a6 100.08%);
     margin-right: 0;
   }
 
-  .statUnion .box:nth-child(3n + 1) {
-    background: linear-gradient(76.04deg, #febd3b -0.33%, #ff865b 100.08%);
-  }
-  .statUnion .box:nth-child(3n + 2) {
-    background: linear-gradient(76.04deg, #ff815f -0.33%, #ff4282 100.08%);
-  }
-  .statUnion .box:nth-child(3n + 3) {
-    background: linear-gradient(76.04deg, #ff3e86 -0.33%, #ff00a9 100.08%);
-    margin-right: 0;
-
-    @media screen and (max-width: $break-small) {
-      margin-right: 26px;
-    }
-  }
-
-  .eventMonth {
+  .event-month {
     font-weight: bold;
     font-size: 18px;
     line-height: 27px;
@@ -462,32 +230,25 @@ main.home {
     text-transform: uppercase;
   }
 
-  .eventDay,
-  .statAmount {
+  .event-day {
     font-weight: bold;
     font-size: 48px;
     line-height: 71px;
     /* identical to box height */
   }
 
-  .eventTitle,
-  .statTitle {
+  .event-title {
     font-weight: normal;
     font-size: 18px;
     line-height: 160%;
     /* identical to box height, or 29px */
   }
 
-  .eventLocation {
+  .event-location {
     font-weight: normal;
     font-size: 12px;
     line-height: 18px;
     /* identical to box height */
-  }
-
-  .statAmount,
-  .statTitle {
-    text-align: left;
   }
 
   .language-filter {

@@ -42,10 +42,6 @@ class MlhEventPresenter
     @event.dig('links', 'register')
   end
 
-  #  def featured? # maybe we will re-enable this?
-  #    @event['Featured?']
-  #  end
-
   def current?
     date > Date.yesterday
   end

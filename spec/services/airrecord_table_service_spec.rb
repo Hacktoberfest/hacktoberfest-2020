@@ -9,16 +9,16 @@ describe AirrecordTable do
   context 'the call to the API is successful' do
     let(:airrecord_table) { AirrecordTable.new }
 
-    it 'returns a 200 status' do
-      VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_successful/returns_a_200_status' do
+    it 'returns success status' do
+      VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_successful/returns_a_data_hash' do
         response = airrecord_table.faraday_connection.get
         expect(response.status).to eq(302)
       end
     end
 
     it 'returns a data hash' do
-      VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_successful/returns_a_200_status' do
-        records = airrecord_table.all_records('FAQ')
+      VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_successful/returns_a_data_hash' do
+        records = airrecord_table.all_records('FAQs')
         expect(records.first.fields).to have_key('Question')
       end
     end
@@ -36,7 +36,7 @@ describe AirrecordTable do
     end
 
     it 'creates a mock table object' do
-      table = AirtablePlaceholderService.call('FAQ')
+      table = AirtablePlaceholderService.call('FAQs')
       expect(table.first).to have_key('Question')
     end
   end

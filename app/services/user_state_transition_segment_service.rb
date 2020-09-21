@@ -26,6 +26,7 @@ module UserStateTransitionSegmentService
       intel_marketing_emails: user.intel_marketing_emails,
       dev_marketing_emails: user.dev_marketing_emails,
       category: user.category,
+      pull_requests_count: user.score,
       state: 'register'
     )
     segment(user).track('register')
