@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   # Sign up
   unless Hacktoberfest.ended?
-    get '/start', to: 'pages#start', as: :start
     get '/register', to: 'users#registration', as: :register_form
     patch '/register', to: 'users#register', as: :register
   end
