@@ -5,10 +5,21 @@ module ReportAirtableUpdaterService
 
   def call(report)
     if (repository = github_client.repository(report.github_repo_identifier))
-      return if spammy_repo_report_exists?(repository.id)
+      # Existing record, update it
+      if (existing_record = spammy_repo_report(repository.id))
+        existing_record['Reports'] += 1
+        existing_record['Year'] = Hacktoberfest.start_date.year
+        existing_record.save
+        return existing_record
+      end
 
-      # mark it as spam
-      new_record = { "Repo ID": repository.id.to_s, "Repo Link": report.url }
+      # Create a new record to mark it as spam
+      new_record = {
+        "Repo ID": repository.id.to_s,
+        "Repo Link": report.url,
+        Reports: 1,
+        Year: Hacktoberfest.start_date.year
+      }
       AirrecordTable.new.table('Spam Repos').create(new_record)
     end
   rescue Octokit::NotFound, Octokit::InvalidRepository
@@ -19,12 +30,9 @@ module ReportAirtableUpdaterService
     Octokit::Client.new(access_token: GithubTokenService.random)
   end
 
-  def spammy_repo_report_exists?(repo_id)
-    previously_reported_repo_ids = AirrecordTable.new.all_records(
-      'Spam Repos'
-    ).map do |repo|
-      repo['Repo ID']&.to_i if repo['Verified?'] || repo['Permitted?']
-    end.compact
-    previously_reported_repo_ids.include?(repo_id)
+  def spammy_repo_report(repo_id)
+    AirrecordTable.new.all_records('Spam Repos')
+                  .select { |repo| repo['Repo ID']&.to_i == repo_id }
+                  .first
   end
 end
