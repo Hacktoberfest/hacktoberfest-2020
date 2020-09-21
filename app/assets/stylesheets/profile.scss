@@ -5,6 +5,7 @@
   max-width: 1152px;
   margin: 0 auto;
   padding-left: 20px;
+  min-height: 73vh;
 
   .profile-left {
     width: 65%;
@@ -24,6 +25,14 @@
 
       p, h1, h3, h4 {
         color: $light-headlineColor;
+      }
+
+      a.button-static {
+        color: $buttonTextColor;
+      }
+
+      a.button-static:hover {
+        text-decoration: none;
       }
 
       a {
@@ -115,6 +124,12 @@
         margin: 44px 0;
         text-align: center;
       }
+    }
+
+    .timeline-wrapper {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
     }
 
     .timeline-date {
@@ -416,7 +431,7 @@
 
     .progress-block {
       flex-grow: 1;
-      border: 2px solid $progress-color-light;
+      border: 1px solid $progress-color-light;
       height: 20px;
       z-index: 1;
       background: transparent;

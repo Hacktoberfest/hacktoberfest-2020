@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <div>
+    <div class="timeline-wrapper">
       <div class="timeline-date">
         <%= render partial: 'users/show/pr/icon', locals: { pr: pr } %>
         <p><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>

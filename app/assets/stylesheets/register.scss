@@ -34,6 +34,11 @@ section.reg-content {
         color: $light-categoryColor;
       }
 
+      p.error {
+        color: $red;
+        font-size: $size-button-text;
+      }
+
       .select {
         margin: 32px 0;
 
@@ -80,6 +85,8 @@ section.reg-content {
         background-position:center;
         display: inline-block;
         width: 100%;
+        min-height: 100vh;
+        margin-top: -248px;
       }
     }
   }
