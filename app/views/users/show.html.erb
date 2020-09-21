@@ -42,7 +42,7 @@
 
   <div class="profile-right">
     <div class="progress-wrapper">
-      <h4 class="side-headers">your progress</h4>
+      <h4 class="progress-header">your progress</h4>
       <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
       <% if @presenter.bonus_score > 0 %>
         <div class="icon-box">
