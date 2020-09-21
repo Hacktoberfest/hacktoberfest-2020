@@ -61,6 +61,7 @@ $size-4: 1.25rem;
 $size-5: 1.125rem;
 $size-table-header: 0.75rem;
 $size-button-text: 0.875rem;
+$size-winner-text: 1rem;
 $family-sans-serif: "Inter Regular", "Helvetica", "Arial", san-serif;
 
 // Derived Variables
@@ -87,7 +88,8 @@ $progress-color-light: #F1F7FA;
 $progress-bar-before: #ff00aa;
 $progress-bar-gradient-01: #ffc337;
 $progress-bar-gradient-02: #ff00aa;
-
+$winner-background-dark: #39486f;
+$winner-color-dark: #92eaff;
 
 //light mode
 $light-backgroundColor: #ffffff;
@@ -189,6 +191,32 @@ $modal-content-width: 60vw;
   &.button-small {
     height: 100%;
     padding: 10px 20px !important;
+  }
+}
+
+.button-static {
+  align-items: flex-start;
+  background-color: $blue;
+  border-color: $blue;
+  border-width: 0;
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05);
+  color: $light-backgroundColor;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 900;
+  font-size: $size-button-text;
+  justify-content: center;
+  padding: 14px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -khtml-border-radius: 30px;
+  border-radius: 30px;
+
+  &:hover {
+    background-color: $red;
   }
 }
 

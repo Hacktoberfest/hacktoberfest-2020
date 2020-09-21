@@ -1,8 +1,3 @@
-$break-phone: 600px;
-$break-small: 1024px;
-$break-med: 1288px;
-
-
 section.reg-content {
   .registration-wrapper {
     display: flex;
@@ -26,7 +21,7 @@ section.reg-content {
         font-family: $family-sans-serif;
         font-style: normal;
         font-weight: 900;
-        font-size: 14px;
+        font-size: $size-button-text;
         line-height: 160%;
         text-transform: uppercase;
       }
@@ -44,7 +39,7 @@ section.reg-content {
 
         select {
           background-color: $light-backgroundColor;
-          border: 1px solid #93C2DB;
+          border: 1px solid $diamondColor;
           border-radius: 3px;
           box-sizing: border-box;
           color: $light-categoryColor;
@@ -52,7 +47,7 @@ section.reg-content {
       }
 
       label.checkbox:hover {
-        color: #99a1b3;
+        color: $platinumColor;
       }
 
       label.checkbox {
@@ -64,10 +59,10 @@ section.reg-content {
         flex-direction: row;
         padding: 21px 40px;
         position: static;
-        background: #0069FF;
+        background: $buttonColor;
         border-radius: 48px;
         border: none;
-        color: #fff;
+        color: $buttonTextColor;
         text-transform: uppercase;
         font-weight: 600;
       }
@@ -100,11 +95,11 @@ body.dark {
   }
 
   section.reg-content .registration-wrapper .registration-left label.checkbox, section.reg-content .registration-wrapper .registration-left p {
-    color: #93C2DB !important;
+    color: $diamondColor !important;
   }
 
   section.reg-content .registration-wrapper .registration-left label.checkbox:hover {
-    color: #FFF !important;
+    color: $buttonTextColor !important;
   }
 
   section.reg-content .registration-wrapper .registration-left .select select {

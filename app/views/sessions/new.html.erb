@@ -6,7 +6,7 @@
     <p>
       If for some reason you are not automatically redirected, click here: <br/><br />
       <%= button_to 'Sign in with GitHub', '/auth/github',
-          id: 'github-sign-in', class: 'button', method: :post %>
+          id: 'github-sign-in', class: 'button-static', method: :post %>
     </p>
   </div>
   <%= javascript_tag '$(function(){ $("#github-sign-in").click(); });' %>

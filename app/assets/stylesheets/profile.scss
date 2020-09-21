@@ -22,7 +22,7 @@
       -khtml-border-radius: 8px;
       border-radius: 8px;
 
-      p, h1, h3 {
+      p, h1, h3, h4 {
         color: $light-headlineColor;
       }
 
@@ -43,13 +43,17 @@
       }
 
       #winner-code {
-        font-size: 1rem;
-        background-color: #F1F7FA;
+        font-size: $size-winner-text;
+        background-color: $progress-color-light;
         border: none;
-        color: #072540;
+        color: $light-headlineColor;
         width: 25vw;
         padding: 10px;
         margin-right: 20px;
+      }
+
+      .legend-container {
+        text-align: left;
       }
     }
 
@@ -84,7 +88,7 @@
 
         .logout {
           background-color: $buttonColor;
-          color: #fff;
+          color: $light-backgroundColor;
           font-size: $size-button-text;
           padding: 5px 20px;
           -moz-border-radius: 32px;
@@ -110,6 +114,46 @@
         line-height: 39px;
         margin: 44px 0;
         text-align: center;
+      }
+    }
+
+    .legend {
+      margin: 3rem 0 0;
+
+      @media screen and (max-width: $break-small) {
+        padding: 0;
+        box-shadow: none;
+      }
+
+      h4 {
+        margin: 0 0 1.25rem;
+      }
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 .5em;
+
+        .icon-name {
+          display: flex;
+          flex-direction: row;
+
+          .icon-box {
+            padding: 0;
+            margin: 0 .5em 0 0;
+          }
+
+          p {
+            flex-grow: 1;
+            margin: 0;
+            font-size: .95em;
+          }
+        }
+
+        > p {
+          margin: .2em 0 .8em;
+          font-size: .8em;
+        }
       }
     }
   }
@@ -259,7 +303,7 @@ body.dark {
     background-color: $dark-inputBackgroundColor !important;
   }
 
-  .profile-page .profile-left .pre-launch-container h2, .profile-page .profile-left .main-content-wrapper p, .profile-page .profile-left .main-content-wrapper h3 {
+  .profile-page .profile-left .pre-launch-container h2, .profile-page .profile-left .main-content-wrapper p, .profile-page .profile-left .main-content-wrapper h3, .profile-page .profile-left .main-content-wrapper h4 {
     color: $dark-headlineColor !important;
   }
 
@@ -281,8 +325,8 @@ body.dark {
   }
 
   #winner-code {
-    background-color: #39486f !important;
-    color: #92eaff !important;
+    background-color: $winner-background-dark !important;
+    color: $winner-color-dark !important;
   }
 }
 
@@ -299,479 +343,4 @@ body.dark {
   .profile-page .profile-left {
     margin-right: 0;
   }
-}
-
-
-
-$break-med: 1366px;
-$break-small: 1024px;
-$grey-dark: hsl(223.33, 32.14%, 32.94%);
-$grey-darker: hsl(222.5, 43.64%, 21.57%);
-$cyan: hsl(191.56, 100%, 78.63%);
-$red: hsl(320, 100%, 50%);
-
-.container.profile {
-  text-align: center;
-  margin: 0 auto;
-
-  .congratulations-txt {
-    padding: 1.25rem;
-    text-align: left;
-    max-width: 60%;
-
-    @media screen and (max-width: $break-small - 1) {
-      max-width: 100%;
-
-      // This font size decrease was made to fit the "Congradulations!" word on
-      // one line on common mobile screen sizes
-      .thanks-text{
-        font-size: 2rem;
-      }
-    }
-  }
-
-  .code-button {
-    height: 68px !important;
-    width: 105px;
-    margin-right: 13vw;
-    float: right !important;
-    @media screen and (max-width: $break-small) {
-      display: inline-block;
-    }
-  }
-
-  .code-textarea {
-    background-color: $grey-dark !important;
-    flex: 1;
-    overflow: auto;
-    width: auto;
-    height: auto;
-
-    @media screen and (max-width: $break-small) {
-      width: 60vw;
-      display: inline-block;
-    }
-    @media screen and (max-width: $break-med) {
-      width: 40vw;
-      display: inline-block;
-    }
-  }
-
-  .profile-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: $grey-darker;
-
-    @media screen and (max-width: $break-small) {
-      margin: 5rem 1.5rem 0 1.5rem;
-    }
-  }
-
-  .pre-launch-container {
-    padding-top: 100px;
-    max-width: 765px;
-    padding: 100px 30px;
-    min-height: 400px;
-    margin: 0 auto;
-
-    h2 {
-      font-size: 44px;
-      line-height: 1.5em;
-
-      @media screen and (max-width: $break-small) {
-        font-size: 32px;
-      }
-    }
-
-    @media screen and (max-width: $break-small) {
-      padding-right: 0px;
-      padding-left: 0px;
-    }
-  }
-
-  .timeline-container {
-    padding-top: 20px;
-    padding-left: 20px;
-    text-align: left;
-
-    @media screen and (max-width: $break-small) {
-      padding-left: 0;
-    }
-
-    table {
-      tbody {
-        @media screen and (max-width: $break-small) {
-          display: block;
-        }
-
-        tr {
-          @media screen and (max-width: $break-small) {
-            display: flex;
-            flex-direction: column;
-          }
-
-          td {
-            padding-bottom: 20px;
-            @media screen and (max-width: $break-small) {
-              &:last-child {
-                padding-bottom: 1.5em;
-              }
-
-              &:not(:last-child) {
-                border-bottom: none;
-              }
-            }
-
-            &.icon-block {
-              @media screen and (max-width: $break-small) {
-                display: none;
-              }
-
-              .icon-box {
-                padding: 40px 10px 0;
-              }
-            }
-
-            .timeline-date {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              margin-top: 30px;
-
-              @media screen and (max-width: $break-small) {
-                margin-bottom: 20px;
-              }
-
-              .icon-box {
-                display: none;
-
-                @media screen and (max-width: $break-small) {
-                  display: block;
-                }
-              }
-
-              p {
-                @media screen and (max-width: $break-small) {
-                  margin-left: .75em;
-                }
-              }
-            }
-
-            .timeline-mature {
-              p {
-                @media screen and (max-width: $break-small) {
-                  margin-top: .25em;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .username {
-    font-size: 24px;
-    line-height: 36px;
-    color: white;
-    padding-left: 25px;
-  }
-
-  .user-section {
-    min-height: 160px;
-    left: 135px;
-    top: 236px;
-    background: $grey-dark;
-
-    .level {
-      min-height: 160px;
-      @media screen and (max-width: $break-small) {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .level-left,
-      .level-right {
-        max-width: 100%;
-
-        @media screen and (max-width: $break-small) {
-          padding: 20px;
-          flex-direction: column;
-        }
-      }
-
-      .level-left {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-
-        @media screen and (max-width: $break-small) {
-          margin-top: 15px;
-          justify-content: center;
-        }
-      }
-
-      .level-left .avatar,
-      .level-left .username {
-        @media screen and (max-width: $break-small) {
-          padding: 0;
-        }
-      }
-
-      .level-right {
-        .icon-box {
-          margin: 6px 20px 4px -8px;
-          padding: 0;
-          /* padding: 2px;
-          background: linear-gradient(90deg, $red 0%, $purple 90%, $purple 100%); */
-          transform: rotate(5deg);
-
-          @media screen and (max-width: $break-small) {
-            margin: 10px 0;
-          }
-
-          .bonus-box {
-            width: auto;
-            padding: 0 0.65em;
-            margin: 0;
-            display: inline-flex;
-            background: $purple;
-            position: relative;
-
-            img {
-              height: 0.65em;
-              width: auto;
-            }
-
-            span {
-              padding-left: 0.15em;
-              font-weight: 900;
-              font-size: 1.1em;
-              transform: rotate(2.5deg);
-              color: #fff;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .progress-msg {
-    margin-top: 0;
-    font-size: 14px;
-    line-height: 1em;
-    @media screen and (max-width: $break-small) {
-      margin-bottom: 15px;
-    }
-  }
-
-  .icon-box {
-    padding: 0;
-
-    > div {
-      width: 30px;
-      height: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      &.eligible-box {
-        background-color: #ff00aa;
-      }
-
-      &.bonus-box {
-        background-color: #a11ec6;
-      }
-
-      &.pending-box {
-        background-color: #39486e;
-      }
-
-      &.spammy-box {
-        background-color: #ff4e4e;
-      }
-
-      &.ineligible-box {
-        background-color: #ff4e4e;
-      }
-    }
-
-    + p {
-      margin-top: 0;
-    }
-  }
-
-  .hacktoberfest-results-box {
-    background-image: asset-url('bg-right.png');
-    background-color: #223257;
-    background-position: bottom center;
-    background-size: cover;
-  }
-
-  .image {
-    width: 100px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20000px;
-    border: 2px solid #fff;
-  }
-
-  $progress-color: #152347;
-
-  .progress-bar {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    position: relative;
-    background: $progress-color;
-    width: 330px;
-    max-width: 100%;
-    border: 2px solid $progress-color;
-    margin: 0 20px;
-
-    @media screen and (max-width: $break-small) {
-      margin: 0 auto;
-    }
-
-    &:before {
-      position: absolute;
-      content: "";
-      display: block;
-      left: 0;
-      height: 100%;
-      background: #ff00aa;
-      background: linear-gradient(80deg, #ffc337 0%, #ff00aa 100%);
-    }
-
-    &.progress-state-0 {
-      &:before {
-        width: 0;
-      }
-    }
-
-    &.progress-state-1 {
-      &:before {
-        width: 25%;
-      }
-    }
-
-    &.progress-state-2 {
-      &:before {
-        width: 50%;
-      }
-    }
-
-    &.progress-state-3 {
-      &:before {
-        width: 75%;
-      }
-    }
-
-    &.progress-state-4 {
-      &:before {
-        width: 100%;
-      }
-    }
-
-    .progress-block {
-      flex-grow: 1;
-      border: 2px solid $progress-color;
-      height: 20px;
-      z-index: 1;
-      background: transparent;
-    }
-  }
-
-}
-
-.pink-highlight {
-  color: $red;
-}
-
-.winning-msg-cont {
-  margin: 1.25rem;
-
-  @media screen and (max-width: $break-small) {
-    margin: 1.25rem 0px 0px 0px;
-  }
-
-  span.title {
-    @media screen and (max-width: $break-small) {
-      font-size: 1.25rem;
-    }
-  }
-
-  h1.title {
-    @media screen and (max-width: $break-small) {
-      font-size: 1.5rem;
-    }
-  }
-}
-
-.legend {
-  margin: 3rem 0 0;
-
-  @media screen and (max-width: $break-small) {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  h4 {
-    margin: 0 0 1.25rem;
-  }
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    margin: 0 0 0 .5em;
-
-    .icon-name {
-      display: flex;
-      flex-direction: row;
-
-      .icon-box {
-        padding: 0;
-        margin: 0 .5em 0 0;
-      }
-
-      p {
-        flex-grow: 1;
-        margin: 0;
-        font-size: .95em;
-      }
-    }
-
-    > p {
-      margin: .2em 0 .8em;
-      font-size: .8em;
-    }
-  }
-}
-
-.winning-msg {
-  text-align: left;
-}
-
-.report-spam-cont {
-  padding: 1rem;
-  margin-top: 8rem;
-
-  @media screen and (max-width: $break-small) {
-    margin: 5rem 1.5rem 0 1.5rem;
-  }
-}
-
-.coupon-box {
-  display: flex;
-  margin-top: 50px;
-  min-width: 48vw;
-}
-
-#winner-code {
-  font-size: 1rem;
-  background-color: #39486f;
-  border: none;
-  color: $cyan;
-  width: 25vw;
 }
