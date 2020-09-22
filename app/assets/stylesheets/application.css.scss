@@ -245,6 +245,7 @@ strong {
 body {
   overflow: hidden;
   position: relative;
+  min-height: 100vh;
 
   .section {
     padding: 0 120px;
