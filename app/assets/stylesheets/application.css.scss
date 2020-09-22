@@ -128,7 +128,7 @@ $dark-socialBackgroundColor: #183d5d;
 
 // -- general
 $body-background-color: $light-backgroundColor;
-$body-color: $grey;
+$body-color: $light-textColor;
 $body-family: $family-sans-serif;
 $body-font-size: $size-5;
 
@@ -318,6 +318,10 @@ body {
     font-family: "Inter Black", "Helvetica", "Arial", san-serif;
   }
 
+  p {
+    color: $light-textColor;
+  }
+
   // navigation
   #navbar {
     .nav-logo {
@@ -394,15 +398,42 @@ body {
 
   .home-projects {
     .select {
-      background-color: $light-inputBackgroundColor;
-      color: $dark-boxColor;
-      border-color: $light-inputBackgroundColor;
-      border-radius: none;
+      select {
+        background-color: $white;
+        color: $dark-boxColor;
+        border-color: $light-inputBackgroundColor;
+        border-radius: none;
+      }
     }
   }
 
   .home-special-projects {
     background-color: #f1f7fa;
+  }
+
+  .box {
+    background-color: $white !important;
+    border: 0.764461px solid #93c2db;
+    box-shadow: 0px 5.2029px 20.8116px rgba(24, 61, 93, 0.08) !important;
+
+    .title-wrap {
+      h3 {
+        color: $light-headlineColor !important;
+      }
+    }
+    .description {
+      color: $light-textColor !important;
+    }
+  }
+
+  .event-month,
+  .event-title,
+  .event-day {
+    color: $light-textColor !important;
+  }
+
+  .event-day {
+    color: $light-headlineColor !important;
   }
 
   h1 {
@@ -424,6 +455,10 @@ body.dark {
   h2,
   h3 {
     color: $dark-headlineColor !important;
+  }
+
+  p {
+    color: $dark-textColor;
   }
 
   // navigation
@@ -503,15 +538,46 @@ body.dark {
 
   .home-projects {
     .select {
-      background-color: $dark-boxColor !important;
-      color: #fff !important;
-      border-color: $dark-boxColor !important;
-      border-radius: none;
+      select {
+        background-color: $dark-boxColor !important;
+        color: #fff !important;
+        border-color: $dark-boxColor !important;
+        border-radius: none;
+      }
     }
   }
 
   .home-special-projects {
     background-color: #183d5d;
+
+    .box.projects {
+      background-color: $dark-backgroundColor !important;
+    }
+  }
+
+  .box {
+    background-color: $dark-boxColor !important;
+    border: 0.764461px solid $dark-backgroundColor;
+    box-shadow: 0px 2px 20px rgba(61, 27, 43, 0.1) !important;
+
+    .title-wrap {
+      h3 {
+        color: $dark-textColor !important;
+      }
+    }
+    .description {
+      color: $white !important;
+    }
+  }
+
+  .event-month,
+  .event-title,
+  .event-day {
+    color: $dark-textColor !important;
+  }
+
+  .event-day {
+    color: $dark-headlineColor !important;
   }
 
   h1 {
