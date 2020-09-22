@@ -108,7 +108,7 @@
       <div class="section events">
         <h2 class="title is-2">Global events</h2>
         <p>
-          Celebrate and support open source technology by  <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a> or  <a href="https://hacktoberfest.digitalocean.com/event">attending</a> a virtual event in October.
+          Celebrate and support open source technology by <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a> or  <a href="https://hacktoberfest.digitalocean.com/event">attending</a> a virtual event in October.
         </p>
         <!-- FEATURED EVENTS GENERATED HERE -->
         <section class="event-union">
@@ -132,6 +132,7 @@
           </a>
           <% end %>
         </section>
+        <div id="eventmap" style="width: 500px; height: 400px;"></div>
       <%= link_to 'See more events', events_path, :class => 'button' %>
       </div>
     </div>
@@ -173,5 +174,10 @@
 </main>
 <script type="text/javascript">
   setupLanguageFilter();
-  setupPRsOpenedChart();
+  // setupPRsOpenedChart();
 </script>
+<script defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaiOH0fpf3MEEsObdMPSJgWw3H4iiNmEo&callback=setupEventMap">
+    // DO's actual google api key AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k
+</script>
+
