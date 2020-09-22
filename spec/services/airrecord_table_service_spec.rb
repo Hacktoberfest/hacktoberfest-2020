@@ -17,7 +17,7 @@ describe AirrecordTable do
     end
 
     it 'returns a data hash' do
-      VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_successful/returns_a_data_hash' do
+      VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_successful/returns_a_data_hash', :match_requests_on => [:host] do
         records = airrecord_table.all_records('FAQs')
         expect(records.first.fields).to have_key('Question')
       end
