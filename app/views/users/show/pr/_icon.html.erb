@@ -1,25 +1,21 @@
 <% if pr.invalid_label? %>
   <div class="icon-box">
     <div class="ineligible-box">
-      
     </div>
   </div>
 <% elsif pr.spam_repo? %>
   <div class="icon-box">
     <div class="spammy-box">
-      
     </div>
   </div>
 <% elsif pr.eligible? %>
   <div class="icon-box">
     <div class="eligible-box">
-      
     </div>
   </div>
 <% elsif pr.waiting? %>
   <div class="icon-box">
     <div class="pending-box">
-      
     </div>
   </div>
 <% end %>

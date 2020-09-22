@@ -11,6 +11,10 @@
     width: 65%;
     margin-right: 5%;
     text-align: center;
+
+    .container {
+      padding: 0;
+    }
     
     .main-content-wrapper {
       background-color: $light-backgroundColor;
@@ -61,8 +65,88 @@
         margin-right: 20px;
       }
 
+      .legend {
+        margin-top: 80px;
+      }
+
       .legend-container {
+        display: flex;
+        flex-wrap: wrap;
         text-align: left;
+        border-bottom: 1px solid $light-tableBorderColor;
+        padding-bottom: 30px;
+        margin: 30px 0 10px 0;
+
+        .icon-box {
+          width: 32px;
+          height: 32px;
+          margin-right: 20px;
+
+          .spammy-box {
+            background-image:url('icon-light-ineligible.svg');
+            background-repeat:no-repeat;
+            background-size:contain;
+            background-position:center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
+
+          .eligible-box {
+            background-image:url('icon-light-eligible.svg');
+            background-repeat:no-repeat;
+            background-size:contain;
+            background-position:center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
+
+          .bonus-box {
+            background-image:url('icon-light-bonus.svg');
+            background-repeat:no-repeat;
+            background-size:contain;
+            background-position:center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
+
+          .invalid-box {
+            background-image:url('icon-light-invalid.svg');
+            background-repeat:no-repeat;
+            background-size:contain;
+            background-position:center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
+
+          .pending-box {
+            background-image:url('icon-light-pending.svg');
+            background-repeat:no-repeat;
+            background-size:contain;
+            background-position:center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
+        }
+
+        .icon-name-desc {
+          width: 90%;
+
+          .icon-name {
+            color: $light-inputTextColor;
+            font-size: $size-button-text;
+            font-weight: 900;
+          }
+
+          .icon-desc {
+            color: $light-inputTextColor;
+            font-size: $size-button-text;
+          }
+        }
       }
     }
 
@@ -130,153 +214,114 @@
       width: 100%;
       display: flex;
       flex-wrap: wrap;
+      margin: 10px 0;
+      border-bottom: 1px dashed $light-tableBorderColor;
+      padding-bottom: 30px;
+
+      .pr-icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 20px;
+
+        .spammy-box {
+          background-image:url('icon-light-ineligible.svg');
+          background-repeat:no-repeat;
+          background-size:contain;
+          background-position:center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+
+        .eligible-box {
+          background-image:url('icon-light-eligible.svg');
+          background-repeat:no-repeat;
+          background-size:contain;
+          background-position:center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+
+        .bonus-box {
+          background-image:url('icon-light-bonus.svg');
+          background-repeat:no-repeat;
+          background-size:contain;
+          background-position:center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+
+        .invalid-box {
+          background-image:url('icon-light-invalid.svg');
+          background-repeat:no-repeat;
+          background-size:contain;
+          background-position:center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+
+        .pending-box {
+          background-image:url('icon-light-pending.svg');
+          background-repeat:no-repeat;
+          background-size:contain;
+          background-position:center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      .pr-time-title {
+        width: 60%;
+        margin-right: 20px;
+
+        p.date {
+          font-weight: 500;
+          font-size: $size-small-text;
+          line-height: 12px;
+          text-transform: uppercase;
+          color: $light-tableBorderColor;
+          margin-bottom: 10px;
+          font-weight: 900;
+         }
+
+        .pr-title {
+          font-weight: 500;
+          font-size: $size-button-text;
+          line-height: 17px;
+          color: $light-inputTextColor;
+        }
+        
+      }
+
+      .pr-waiting {
+        width: 28%;
+
+        span.mature {
+          font-size: $size-small-text;
+          line-height: 12px;
+          text-align: right;
+          text-transform: uppercase;
+          color: $light-textColor;
+        }
+
+        span.count-down {
+          font-weight: 900;
+          font-size: $size-5;
+          line-height: 22px;
+          color: $light-inputTextColor;
+        }
+      }
     }
 
     .timeline-date {
-      margin: 20px 0;
+      margin: 0 0;
 
       p {
         margin-top: 0;
-      }
-
-      .spammy-box {
-        background-image:url('icon-light-ineligible.svg');
-        background-repeat:no-repeat;
-        background-size:contain;
-        background-position:center;
-        display: inline-block;
-        width: 32px;
-        height: 32px;
-      }
-
-      .eligible-box {
-        background-image:url('icon-light-eligible.svg');
-        background-repeat:no-repeat;
-        background-size:contain;
-        background-position:center;
-        display: inline-block;
-        width: 32px;
-        height: 32px;
-      }
-
-      .bonus-box {
-        background-image:url('icon-light-bonus.svg');
-        background-repeat:no-repeat;
-        background-size:contain;
-        background-position:center;
-        display: inline-block;
-        width: 32px;
-        height: 32px;
-      }
-
-      .invalid-box {
-        background-image:url('icon-light-invalid.svg');
-        background-repeat:no-repeat;
-        background-size:contain;
-        background-position:center;
-        display: inline-block;
-        width: 32px;
-        height: 32px;
-      }
-
-      .pending-box {
-        background-image:url('icon-light-pending.svg');
-        background-repeat:no-repeat;
-        background-size:contain;
-        background-position:center;
-        display: inline-block;
-        width: 32px;
-        height: 32px;
-      }
-    }
-
-    .legend {
-      margin: 3rem 0 0;
-
-      @media screen and (max-width: $break-small) {
-        padding: 0;
-        box-shadow: none;
-      }
-
-      h4 {
-        margin: 0 0 1.25rem;
-      }
-
-      > div {
-        display: flex;
-        flex-direction: column;
-        margin: 0 0 0 .5em;
-
-        .icon-name {
-          display: flex;
-          flex-direction: row;
-
-          .icon-box {
-            padding: 0;
-            margin: 0 .5em 0 0;
-
-            .spammy-box {
-              background-image:url('icon-light-ineligible.svg');
-              background-repeat:no-repeat;
-              background-size:contain;
-              background-position:center;
-              display: inline-block;
-              width: 32px;
-              height: 32px;
-            }
-
-            .eligible-box {
-              background-image:url('icon-light-eligible.svg');
-              background-repeat:no-repeat;
-              background-size:contain;
-              background-position:center;
-              display: inline-block;
-              width: 32px;
-              height: 32px;
-            }
-
-            .bonus-box {
-              background-image:url('icon-light-bonus.svg');
-              background-repeat:no-repeat;
-              background-size:contain;
-              background-position:center;
-              display: inline-block;
-              width: 32px;
-              height: 32px;
-            }
-
-            .invalid-box {
-              background-image:url('icon-light-invalid.svg');
-              background-repeat:no-repeat;
-              background-size:contain;
-              background-position:center;
-              display: inline-block;
-              width: 32px;
-              height: 32px;
-            }
-
-            .pending-box {
-              background-image:url('icon-light-pending.svg');
-              background-repeat:no-repeat;
-              background-size:contain;
-              background-position:center;
-              display: inline-block;
-              width: 32px;
-              height: 32px;
-            }
-          }
-
-          p {
-            flex-grow: 1;
-            margin: 0;
-            font-size: .95em;
-          }
-        }
-
-        > p {
-          margin: .2em 0 .8em;
-          font-size: .8em;
-        }
       }
     }
   }
@@ -379,7 +424,7 @@
     background: $progress-color-light;
     width: 330px;
     max-width: 100%;
-    border: 2px solid $progress-color-light;
+    border: 1px solid $progress-color-light;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     -khtml-border-radius: 8px;
@@ -470,28 +515,39 @@ body.dark {
     color: $winner-color-dark !important;
   }
 
-  .profile-page .profile-left .legend > div .icon-name .icon-box .spammy-box, .timeline-date .spammy-box {
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .spammy-box, .timeline-date .spammy-box {
     background-image:url('icon-dark-ineligible.svg') !important;
   }
 
-  .profile-page .profile-left .legend > div .icon-name .icon-box .eligible-box, .timeline-date .eligible-box {
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .eligible-box, .timeline-date .eligible-box {
     background-image:url('icon-dark-eligible.svg') !important;
   }
 
-  .profile-page .profile-left .legend > div .icon-name .icon-box .bonus-box, .timeline-date .bonus-box {
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .bonus-box, .timeline-date .bonus-box {
     background-image:url('icon-dark-bonus.svg') !important;
   }
 
-  .profile-page .profile-left .legend > div .icon-name .icon-box .invalid-box, .timeline-date .invalid-box {
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .invalid-box, .timeline-date .invalid-box {
     background-image:url('icon-dark-invalid.svg') !important;
   }
 
-  .profile-page .profile-left .legend > div .icon-name .icon-box .pending-box, .timeline-date .pending-box {
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .pending-box, .timeline-date .pending-box {
     background-image:url('icon-dark-pending.svg') !important;
   }
 
   .profile-page .profile-right .pr-score {
     color: $buttonTextColor !important;
+  }
+
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-name-desc .icon-name, 
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-name-desc .icon-desc, 
+  .profile-page .profile-left .timeline-wrapper .pr-time-title .pr-title, 
+  .profile-page .profile-left .timeline-wrapper .pr-waiting span.count-down {
+    color: $dark-socialTextColor !important;
+  }
+
+  .profile-page .profile-left .timeline-wrapper .pr-waiting span.mature {
+    color: $dark-textColor !important;
   }
 }
 
