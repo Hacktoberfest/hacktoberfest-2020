@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get '/eventkit', to: 'pages#event_kit', as: :event_kit
   get '/faq', to: 'pages#faqs'
   get '/api-error', to: 'pages#api_error'
+  get '/unauthorized-error', to: 'pages#github_unauthorized_error'
+  get '/suspended-error', to: 'pages#github_suspended_error'
   get '/languages/projects(/:language_id)', to: 'languages#projects'
   get '/report', to: 'reports#new'
   post '/report', to: 'reports#create'

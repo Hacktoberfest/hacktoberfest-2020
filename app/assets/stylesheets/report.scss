@@ -1,5 +1,7 @@
 .section.report-form{
   text-align: left;
+  padding-top: 10%;
+  min-height: 510px;
 
   .error{
     margin-bottom: 20px;
@@ -15,6 +17,8 @@
 
   input.input{
     margin-top: 0px;
+    border-radius: 48px;
+    padding: 20px;
   }
 }
 

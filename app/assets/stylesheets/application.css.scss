@@ -263,6 +263,13 @@ body {
       padding: 30px 30px 30px 30px;
       text-align: center;
     }
+
+    div.underline-div {
+      width: 100%;
+      height: 1px;
+      margin-top: 10px;
+      background-color: $red;
+    }
   }
 
   p {

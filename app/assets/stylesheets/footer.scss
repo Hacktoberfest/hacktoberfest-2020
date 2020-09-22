@@ -27,6 +27,10 @@ $break-med: 1288px;
       height: 130px;
       flex-direction: column;
     }
+
+    @media (max-height: 500px) {
+      height: 0;
+    }
   }
 
   .do-logo {
