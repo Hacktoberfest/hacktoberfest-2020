@@ -55,14 +55,27 @@
         text-decoration: none;
       }
 
-      #winner-code {
-        font-size: $size-winner-text;
-        background-color: $progress-color-light;
-        border: none;
-        color: $light-headlineColor;
-        width: 25vw;
-        padding: 10px;
-        margin-right: 20px;
+      .timeline-container {
+        margin-top: 60px;
+      }
+
+      .coupon-box {
+        margin: 30px 0;
+
+        #winner-code {
+          font-size: $size-winner-text;
+          background-color: $progress-color-light;
+          border: none;
+          color: $light-headlineColor;
+          width: 100%;
+          max-width: 400px;
+          padding: 10px;
+          margin-right: 20px;
+        }
+
+        .code-button {
+          margin-top: 20px;
+        }
       }
 
       .legend {
@@ -172,6 +185,7 @@
         color: white;
         padding-left: 25px;
         font-weight: 900;
+        vertical-align: top;
       }
 
       .logout-wrapper {
@@ -306,6 +320,9 @@
           text-align: right;
           text-transform: uppercase;
           color: $light-textColor;
+          width: 100%;
+          display: inline-block;
+          text-align: left;
         }
 
         span.count-down {
@@ -322,6 +339,58 @@
 
       p {
         margin-top: 0;
+      }
+    }
+
+    .congratulations-txt {
+      margin: 60px 0 0 0;
+      text-align: left;
+
+      .congrats-wrapper {
+        display: flex;
+
+        .congrats-text {
+          width: 70%;
+          margin-right: 3%;
+        }
+
+        .parrot-image {
+          width: 25%;
+        }
+      }
+    }
+
+    .winning-msg-cont {
+      margin-top: 40px;
+      width: 100%;
+
+      h2.winning-title {
+        font-size: $size-3;
+        color: $light-inputTextColor;
+      }
+
+      .winning-desc {
+        font-size: $size-4;
+        color: $light-inputTextColor;
+      }
+    }
+
+    .progress-wrapper.mobile {
+      margin: 30px 0;
+      display: none;
+      p {
+        color: $platinumColor;
+        font-size: $size-button-text;
+        line-height: 170%;
+      }
+
+      h4.progress-header {
+        font-weight: 900;
+        font-size: $size-button-text;
+        line-height: 17px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        color: $platinumColor;
       }
     }
   }
@@ -515,23 +584,28 @@ body.dark {
     color: $winner-color-dark !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .spammy-box, .timeline-date .spammy-box {
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .spammy-box, .timeline-date .spammy-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .spammy-box {
     background-image:url('icon-dark-ineligible.svg') !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .eligible-box, .timeline-date .eligible-box {
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .eligible-box, .timeline-date .eligible-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .eligible-box {
     background-image:url('icon-dark-eligible.svg') !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .bonus-box, .timeline-date .bonus-box {
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .bonus-box, .timeline-date .bonus-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .bonus-box {
     background-image:url('icon-dark-bonus.svg') !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .invalid-box, .timeline-date .invalid-box {
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .invalid-box, .timeline-date .invalid-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .invalid-box {
     background-image:url('icon-dark-invalid.svg') !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .pending-box, .timeline-date .pending-box {
+  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .pending-box, .timeline-date .pending-box, 
+  .profile-page .profile-left .timeline-wrapper .pr-icon .pending-box {
     background-image:url('icon-dark-pending.svg') !important;
   }
 
@@ -549,6 +623,10 @@ body.dark {
   .profile-page .profile-left .timeline-wrapper .pr-waiting span.mature {
     color: $dark-textColor !important;
   }
+
+  .profile-page .profile-left .winning-msg-cont .winning-desc {
+    color: $dark-headlineColor !important;
+  }
 }
 
 @media screen and (max-width: $break-small) {
@@ -564,4 +642,40 @@ body.dark {
   .profile-page .profile-left {
     margin-right: 0;
   }
+
+  .profile-page .profile-left .progress-wrapper.mobile {
+    display: block;
+  }
+
+  .profile-page .profile-right .progress-wrapper.desktop {
+    display: none;
+  }
 }
+
+@media screen and (max-width: $break-mobile) {
+  .profile-page .profile-left .congratulations-txt .congrats-wrapper .congrats-text {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .profile-page .profile-left .congratulations-txt .congrats-wrapper .parrot-image {
+    display: none;
+  }
+
+  .profile-page .profile-left .account-wrapper {
+    display: block;
+  }
+
+  .profile-page .profile-left .account-wrapper .logout-wrapper {
+    position: relative;
+    display: block;
+    margin: 20px 0;
+  }
+
+  .profile-page .profile-left .account-wrapper {
+    display: block;
+  }
+}
+
+
+

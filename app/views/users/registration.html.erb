@@ -12,10 +12,19 @@
         <div class="field">
           <div class="control">
             <div class="select">
-              <%= f.select :email, @emails, :prompt => "Select prefered email address" %>
+              <%= f.select :email, @emails, { :prompt => "Select prefered email address" }, { :required => true } %>
+              
             </div>
           </div>
         </div>
+
+        <div class="field last-dropdown">
+        <div class="control">
+          <div class="select">
+            <%= f.select :category, @categories, { :prompt => "Role" }, { :required => true } %>
+          </div>
+        </div>
+      </div>
 
         <div class="field">
           <div class="control">

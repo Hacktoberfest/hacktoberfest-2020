@@ -26,6 +26,10 @@ section.reg-content {
         text-transform: uppercase;
       }
 
+      .field.last-dropdown {
+        margin-bottom: 40px;
+      }
+
       a {
         color: $labelColor;
       }
@@ -35,12 +39,12 @@ section.reg-content {
       }
 
       p.error {
-        color: $red;
+        color: $pink;
         font-size: $size-button-text;
       }
 
       .select {
-        margin: 32px 0;
+        margin: 10px 0;
 
         select {
           background-color: $light-backgroundColor;
@@ -57,6 +61,11 @@ section.reg-content {
 
       label.checkbox {
         color: $light-categoryColor;
+      }
+
+      .check-style {
+        width: 15px;
+        height: 15px;
       }
 
       .submit-btn {

@@ -2,15 +2,30 @@
   <div class="profile-left">
     <div class="main-content-wrapper">
       <div class="account-wrapper">
-        <div class="avatar">
-          <figure class='image'>
-            <%= image_tag "https://github.com/#{@presenter.name}.png?size=150", class: 'is-rounded'%>
-          </figure>
-        </div>
-        <h2 class='username title is-2'><%= @presenter.name %> </h2>
+        <span>
+          <div class="avatar">
+            <figure class='image'>
+              <%= image_tag "https://github.com/#{@presenter.name}.png?size=150", class: 'is-rounded'%>
+            </figure>
+          </div>
+          <h2 class='username title is-2'><%= @presenter.name %> </h2>
+        </span>
         <div class="logout-wrapper">
           <%= link_to "Log out @#{@presenter.name}", logout_path, :class => "logout" %>
         </div>
+      </div>
+
+      <div class="progress-wrapper mobile">
+        <h4 class="progress-header">your progress</h4>
+        <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
+        <% if @presenter.bonus_score > 0 %>
+          <div class="icon-box">
+            <div class="bonus-box">
+              <%= image_tag 'bonus.png' %>
+              <span><%= @presenter.bonus_score %></span>
+            </div>
+          </div>
+        <% end %>
       </div>
       
       <% if @presenter.display_pre_launch? %>
@@ -41,7 +56,7 @@
   </div>
 
   <div class="profile-right">
-    <div class="progress-wrapper">
+    <div class="progress-wrapper desktop">
       <h4 class="progress-header">your progress</h4>
       <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
       <% if @presenter.bonus_score > 0 %>
