@@ -1,42 +1,197 @@
 window.setupEventMap = function () {
-  console.log('hey');
-  // DO's actual google api key AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k
 
   function initialize() {
-    var center = new google.maps.LatLng(37.4419, -122.1419);
+    const center = new google.maps.LatLng(19.8968, 155.5828);
+    const styledMapType = new google.maps.StyledMapType([
+      {
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#f5f5f5"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#616161"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "color": "#f5f5f5"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#bdbdbd"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#eeeeee"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#757575"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#e5e5e5"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#9e9e9e"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "road.arterial",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#757575"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#dadada"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#616161"
+          }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#9e9e9e"
+          }
+        ]
+      },
+      {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#e5e5e5"
+          }
+        ]
+      },
+      {
+        "featureType": "transit.station",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#eeeeee"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#c9c9c9"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#9e9e9e"
+          }
+        ]
+      }
+    ],
+    {name: 'Styled Map'});
 
-    var map = new google.maps.Map(document.getElementById('eventmap'), {
-      zoom: 3,
+    const map = new google.maps.Map(document.getElementById('eventmap'), {
+      zoom: 2,
       center: center,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      // mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControlOptions: {
+        mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "styled_map"]
+      }
     });
 
-    var markerz = new google.maps.Marker({
-      position: center,
+    map.mapTypes.set('styled_map', styledMapType);
+    map.setMapTypeId('styled_map');
+
+    const generateMarker = location => {
+      const latLng = new google.maps.LatLng(location.lat, location.lng);
+      const marker = new google.maps.Marker({
+      position: latLng,
+      icon: "https://prismic-io.s3.amazonaws.com/www-static/2a31a6f0-5d0d-4823-b27e-6d110c411d69_marker.svg",
       map: map,
-      title: 'Hello World!'
-    });
-
-    console.log('works', markerz)
-
-    // console.log('marker',)
-    // marker.setMap(map);
-    var markers = [];
-    locations.map(location => {
-      var latLng = new google.maps.LatLng(location.lat,
-          location.lng);
-      var marker = new google.maps.Marker({
-        position: latLng,
       });
-      console.log('marker', marker)
-      markers.push(marker);
-    });
-  
-    // // var markerCluster = new MarkerClusterer(map, markers);
-    markers.map(marker => marker.setMap(map));
-  }
+      return marker;
+    }
+    
+    locations.map(location => generateMarker(location));
+  };
+
   google.maps.event.addDomListener(window, 'load', initialize);
 
+  // data from MLH events parsed out manually - E.D. is a champ.
   const locations = [
     { lat: -9.767623, lng: -52.911903 },
     { lat: 28.594217, lng: 77.206051 },
@@ -127,3 +282,4 @@ window.setupEventMap = function () {
     { lat: 0.8375067, lng: 103.9126891 },
   ];
 };
+
