@@ -428,7 +428,7 @@ body {
 
   .event-month,
   .event-title,
-  .event-day {
+  .event-location {
     color: $light-textColor !important;
   }
 
@@ -572,7 +572,6 @@ body.dark {
 
   .event-month,
   .event-title,
-  .event-day,
   .event-location {
     color: $dark-textColor !important;
   }
