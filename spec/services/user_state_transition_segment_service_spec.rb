@@ -25,6 +25,7 @@ RSpec.describe UserStateTransitionSegmentService do
           intel_marketing_emails: user.intel_marketing_emails,
           dev_marketing_emails: user.dev_marketing_emails,
           category: user.category,
+          country: user.country,
           state: 'register',
           pull_requests_count: 0
         )
@@ -41,6 +42,7 @@ RSpec.describe UserStateTransitionSegmentService do
           intel_marketing_emails: user.intel_marketing_emails,
           dev_marketing_emails: user.dev_marketing_emails,
           category: user.category,
+          country: user.country,
           state: 'register',
           pull_requests_count: 0
         )
