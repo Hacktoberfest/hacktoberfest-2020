@@ -5,6 +5,10 @@ $break-med: 1288px;
 .container.details {
   margin-bottom: 60px;
 
+  .errors {
+    min-height: 400px;
+  }
+
   h1 {
     a {
       color: #fff;
