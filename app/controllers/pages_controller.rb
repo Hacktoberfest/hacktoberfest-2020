@@ -21,7 +21,7 @@ class PagesController < ApplicationController
     rescue StandardError
       faqs = AirtablePlaceholderService.call('FAQs')
     end
-    present_faqs(faqs)
+    present_faqs(filter_faqs(faqs))
   end
 
   def events
@@ -59,6 +59,13 @@ class PagesController < ApplicationController
       { amount: '154,466', title: 'PARTICIPATING REPOSITORIES' }
     ]
     stats_arr.map { |s| Hashie::Mash.new(s) }
+  end
+
+  def filter_faqs(faqs)
+    faqs.select do |faq|
+      stages = faq['Site Stage'].map(&:strip)
+      stages.include?('Main') || stages.include?('Pre Launch')
+    end
   end
 
   def present_faqs(faqs)
