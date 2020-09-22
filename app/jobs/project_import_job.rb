@@ -6,7 +6,7 @@ class ProjectImportJob
 
   def perform(query_string = nil)
     ProjectImportService.call(query_string)
-  rescue
+  rescue StandardError
     # Ignored
   end
 end
