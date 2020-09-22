@@ -50,7 +50,7 @@
         <label class="label">Location</label>
         <div class="control">
           <div class="select">
-            <%= f.country_select :country %>
+            <%= f.country_select :country, { include_blank: 'Optional: Select a country' } %>
           </div>
         </div>
       </div>
