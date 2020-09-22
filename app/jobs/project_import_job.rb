@@ -6,5 +6,7 @@ class ProjectImportJob
 
   def perform(query_string = nil)
     ProjectImportService.call(query_string)
+  rescue
+    # Ignored
   end
 end
