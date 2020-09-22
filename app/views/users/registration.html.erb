@@ -26,14 +26,22 @@
         </div>
       </div>
 
-        <div class="field">
-          <div class="control">
-            <label class="checkbox">
-              <%= f.check_box :digitalocean_marketing_emails, :class=> 'check-style' %>
-              Send me updates related to the Hacktoberfest community,
-              open source, and products from DigitalOcean.
-            </label>
+      <div class="field">
+        <label class="label">Location</label>
+        <div class="control">
+          <div class="select">
+            <%= f.country_select :country, { include_blank: 'Optional: Select a country' } %>
           </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= f.check_box :digitalocean_marketing_emails %>
+            Send me updates related to the Hacktoberfest community,
+            open source, and products from DigitalOcean.
+          </label>
         </div>
 
         <div class="field">

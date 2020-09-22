@@ -32,6 +32,10 @@ class PagesController < ApplicationController
 
   def api_error; end
 
+  def github_unauthorized_error; end
+
+  def github_suspended_error; end
+
   private
 
   def all_events
