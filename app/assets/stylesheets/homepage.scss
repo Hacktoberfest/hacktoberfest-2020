@@ -47,12 +47,24 @@ main.home {
     width: 100%;
     padding-top: 150px;
 
+    @media screen and (max-width: $break-small) {
+      height: 100%;
+    }
+
     .container {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
+
+      img {
+        max-width: 620px;
+
+        @media screen and (max-width: $break-small) {
+          max-width: 100% !important;
+        }
+      }
 
       h1 {
         font-size: $size-1;
@@ -63,11 +75,67 @@ main.home {
         margin-bottom: 50px;
         max-width: 870px;
       }
+
+      .presented-by {
+        margin-top: 55px;
+        display: flex;
+        max-width: 485px;
+        justify-content: center;
+        align-items: center;
+
+        @media screen and (max-width: $break-small) {
+          max-width: 100%;
+          flex-direction: column;
+        }
+
+        p {
+          font-size: 16px;
+          margin: 0 16px;
+
+          @media screen and (max-width: $break-small) {
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+  }
+
+  .home-video {
+    .container {
+      margin: 64px auto;
+
+      @media screen and (max-width: $break-small) {
+        margin: -100px auto 66px auto;
+      }
+    }
+  }
+
+  .home-event-details {
+    .container {
+      .particiation-link {
+        color: #ff8ae2;
+      }
+    }
+  }
+
+  .home-projects {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  .home-special-projects {
+    text-align: center;
+
+    .container {
+      padding-top: 80px;
+      padding-bottom: 80px;
     }
   }
 
   ul {
     margin-top: 10px;
+    margin-bottom: 32px;
   }
 
   .bullet {
@@ -82,10 +150,7 @@ main.home {
     margin-left: 0px;
     height: 800px;
     width: 100%;
-    background-image: asset-url("bg-map.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    overflow-x: visible;
+    text-align: center;
   }
 
   .events {
@@ -102,7 +167,7 @@ main.home {
     grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
     padding-bottom: 60px;
-    margin: 0 auto;
+    margin: 32px auto 0;
 
     @media screen and (max-width: $break-small) {
       grid-template-columns: repeat(1, 1fr);
@@ -139,17 +204,27 @@ main.home {
     margin-right: 0;
     margin-top: 0;
     width: 100%;
-    background-color: $grey-darker;
 
     .title-wrap {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      color: $white;
+
+      .repo-name {
+        max-width: 175px;
+        text-overflow: ellipsis;
+        max-height: 22px;
+        white-space: nowrap;
+        overflow: hidden;
+      }
 
       span.lang {
-        color: $cyan;
+        color: $white;
         font-weight: 600;
+        background-color: #9c4668;
+        border-radius: 3px;
+        padding: 3px 6px;
+        font-size: 12px;
       }
     }
     .details-wrap {
@@ -195,7 +270,6 @@ main.home {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
       font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
       font-style: normal;
       color: #ffffff;
@@ -207,21 +281,8 @@ main.home {
     }
   }
 
-  .event-union .box:nth-child(4n + 1) {
-    background: linear-gradient(76.04deg, #febd3b -0.33%, #ff9353 100.08%);
-  }
-  .event-union .box:nth-child(4n + 2) {
-    background: linear-gradient(76.04deg, #ff8c57 -0.33%, #ff646f 100.08%);
-  }
-  .event-union .box:nth-child(4n + 3) {
-    background: linear-gradient(76.04deg, #ff5d73 -0.33%, #ff358b 100.08%);
-  }
-  .event-union .box:nth-child(4n + 4) {
-    background: linear-gradient(76.04deg, #ff2e90 -0.33%, #ff06a6 100.08%);
-    margin-right: 0;
-  }
-
   .event-month {
+    text-align: center;
     font-weight: bold;
     font-size: 18px;
     line-height: 27px;
@@ -267,6 +328,7 @@ main.home {
     }
 
     .right {
+      margin: 64px auto;
       display: flex;
       flex-direction: column;
 
@@ -278,9 +340,6 @@ main.home {
 
           select {
             width: 27vw;
-            background-color: $grey-darker;
-            color: #fff;
-            border-color: $grey-darker;
 
             @media screen and (max-width: $break-small) {
               width: 100%;
