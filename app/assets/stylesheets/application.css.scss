@@ -66,8 +66,8 @@ $family-sans-serif: "Inter Regular", "Helvetica", "Arial", san-serif;
 // Derived Variables
 $primary: $grey-darker;
 $family-primary: $family-sans-serif;
-$link: $cyan;
-$link-hover: $pink;
+$link: $pink;
+$link-hover: $blue;
 
 // Custom Variables
 
@@ -234,6 +234,13 @@ select {
   border-radius: 0;
 }
 
+a {
+  color: $pink;
+}
+strong {
+  color: $pink !important;
+}
+
 // Global styles (light mode)
 body {
   overflow: hidden;
@@ -385,6 +392,19 @@ body {
     }
   }
 
+  .home-projects {
+    .select {
+      background-color: $light-inputBackgroundColor;
+      color: $dark-boxColor;
+      border-color: $light-inputBackgroundColor;
+      border-radius: none;
+    }
+  }
+
+  .home-special-projects {
+    background-color: #f1f7fa;
+  }
+
   h1 {
     color: $light-headlineColor;
     font-family: $family-sans-serif;
@@ -479,6 +499,19 @@ body.dark {
         color: #93c2db;
       }
     }
+  }
+
+  .home-projects {
+    .select {
+      background-color: $dark-boxColor !important;
+      color: #fff !important;
+      border-color: $dark-boxColor !important;
+      border-radius: none;
+    }
+  }
+
+  .home-special-projects {
+    background-color: #183d5d;
   }
 
   h1 {

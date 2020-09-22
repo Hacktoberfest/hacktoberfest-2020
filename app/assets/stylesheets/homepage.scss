@@ -47,6 +47,10 @@ main.home {
     width: 100%;
     padding-top: 150px;
 
+    @media screen and (max-width: $break-small) {
+      height: 100%;
+    }
+
     .container {
       display: flex;
       flex-direction: column;
@@ -56,6 +60,10 @@ main.home {
 
       img {
         max-width: 620px;
+
+        @media screen and (max-width: $break-small) {
+          max-width: 100% !important;
+        }
       }
 
       h1 {
@@ -75,9 +83,18 @@ main.home {
         justify-content: center;
         align-items: center;
 
+        @media screen and (max-width: $break-small) {
+          max-width: 100%;
+          flex-direction: column;
+        }
+
         p {
           font-size: 16px;
           margin: 0 16px;
+
+          @media screen and (max-width: $break-small) {
+            margin: 10px 0;
+          }
         }
       }
     }
@@ -85,12 +102,40 @@ main.home {
 
   .home-video {
     .container {
-      margin-top: 64px;
+      margin: 64px auto;
+
+      @media screen and (max-width: $break-small) {
+        margin: -100px auto 66px auto;
+      }
+    }
+  }
+
+  .home-event-details {
+    .container {
+      .particiation-link {
+        color: #ff8ae2;
+      }
+    }
+  }
+
+  .home-projects {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  .home-special-projects {
+    text-align: center;
+
+    .container {
+      padding-top: 80px;
+      padding-bottom: 80px;
     }
   }
 
   ul {
     margin-top: 10px;
+    margin-bottom: 32px;
   }
 
   .bullet {
@@ -290,6 +335,7 @@ main.home {
     }
 
     .right {
+      margin: 64px auto;
       display: flex;
       flex-direction: column;
 
@@ -301,9 +347,6 @@ main.home {
 
           select {
             width: 27vw;
-            background-color: $grey-darker;
-            color: #fff;
-            border-color: $grey-darker;
 
             @media screen and (max-width: $break-small) {
               width: 100%;

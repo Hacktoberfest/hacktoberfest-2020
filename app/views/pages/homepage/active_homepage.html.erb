@@ -32,20 +32,20 @@
       </p>
       <ul>
         <li class="bullet">
-          <span>Hacktoberfest is open to everyone in our global community!</span>
+          <span>Hacktoberfest is a celebration <strong>open to everyone</strong> in our global community.</span>
         </li>
         <li class="bullet">
-          <span>Pull requests can be made in any GitHub-hosted repositories/projects.</span>
+          <span>Pull requests can be made in <strong>any GitHub-hosted repositories/projects.</strong></span>
         </li>
         <li class="bullet">
-          <span>Sign up anytime between October 1 and October 31.</span>
+          <span>You can sign up anytime between October 1 and October 31.</span>
         </li>
       </ul>
       <h2 class="title is-2">Rules</h2>
       <p>
-        To qualify for the official limited edition Hacktoberfest shirt, you must register and make four pull requests (PRs) between October 1-31 (in any time zone). PRs can be made to any public repo on GitHub, not only the ones with issues labeled Hacktoberfest. If a maintainer reports your pull request as spam or behavior not in line with the project’s code of conduct, you will be ineligible to participate. This year, the first 50,000 participants who successfully complete the challenge will earn a T-shirt.
+       To earn your Hacktoberfest tee or tree reward, you must register and make four valid pull requests (PRs) between October 1-31 (in any time zone). PRs can be made to any public repo on GitHub, not only the ones with issues labeled Hacktoberfest. If a maintainer reports your pull request as spam or behavior not in line with the project’s code of conduct, you will be ineligible to participate. This year, the first 75,000 participants who successfully complete the challenge will be eligible to receive a prize.
       </p>
-      <p>Read more about <%= link_to 'participation details', details_path, :class => "participation-link" %>.</p>
+      <p>Read the <%= link_to 'participation details', details_path, :class => "participation-link" %> to learn how to earn your Hacktoberfest tee or tree reward.</p>
     </div>
   </section>
   
@@ -57,7 +57,6 @@
         You can contribute to any project on GitHub. Here are a few looking for some help:
       </p>
       <div class="level language-filter">
-        <p id="projects-message" class="highlight">Displaying all Hacktoberfest projects</p>
         <div class="right">
           <div class="field">
             <div class="control">
@@ -73,27 +72,6 @@
         <%= render partial: 'languages/all_projects', locals: { projects: @projects } %>
       </div>
       <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen+no%3Aassignee+is%3Aissue&type=Issues">
-        <button class="button" type="button" name="button">Browse more on GitHub</button>
-      </a>
-      <a name="climate"></a>
-      <h2 class="title is-2 climate">Projects focused on climate change</h2>
-      <p>
-        Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
-      </p>
-      <div class="grid">
-        <% @climate_repositories.map do |repository| %>
-          <a href="<%= repository[:url] %>">
-          <div class="box projects grow-shadow">
-            <div class="title-wrap">
-              <h3 class="repo-name"> <%= repository[:name] %> </h3>
-              <span class="lang"><%= repository[:language] %></span>
-            </div>
-            <p class="description"><%= repository[:description] %></p>
-          </div>
-            </a>
-        <% end %>
-      </div>
-      <a href="https://github.com/topics/climate-change">
         <button class="button" type="button" name="button">Browse more on GitHub</button>
       </a>
     </div>
@@ -101,30 +79,6 @@
 
   <section class="home-special-projects">
     <div class="container">
-      <a name="projects"></a>
-      <h2 class="title is-2">Special Projects headline</h2>
-      <p>
-        You can contribute to any project on GitHub. Here are a few looking for some help:
-      </p>
-      <div class="level language-filter">
-        <p id="projects-message" class="highlight">Displaying all Hacktoberfest projects</p>
-        <div class="right">
-          <div class="field">
-            <div class="control">
-              <div class="select">
-                <%= collection_select(:language, :id, Language.all.sort_by(&:name), :id, :name, prompt: "Select language", html_options: {class: 'language-dropdown'}) %>
-              </div>
-            </div>
-          </div>
-          <button type="button" class="button button-small" id="reset-filter">Remove filter</button>
-        </div>
-      </div>
-      <div class="grid" id="project-list">
-        <%= render partial: 'languages/all_projects', locals: { projects: @projects } %>
-      </div>
-      <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen+no%3Aassignee+is%3Aissue&type=Issues">
-        <button class="button" type="button" name="button">Browse more on GitHub</button>
-      </a>
       <a name="climate"></a>
       <h2 class="title is-2 climate">Projects focused on climate change</h2>
       <p>
@@ -146,7 +100,7 @@
       <a href="https://github.com/topics/climate-change">
         <button class="button" type="button" name="button">Browse more on GitHub</button>
       </a>
-    </div>
+     </div>
   </section>
 
   <section class="eventsBlock">
