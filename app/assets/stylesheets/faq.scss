@@ -11,13 +11,13 @@
     }
   }
 
-  .title.is-1{
-    font-size: 2.5rem;
+  .question, .question p{
+    color: $light-categoryColor;
+    margin: 0px;
   }
 
-  .question, .question p{
-    color: $white;
-    margin: 0px;
+  .title.is-1{
+    font-size: 2.5rem;
   }
 
   .qa-section{
@@ -39,6 +39,14 @@
 
     .answer {
       display: none;
+      color: $light-textColor;
     }
+  }
+}
+
+body.dark {
+  .question, .question p{
+    color: $dark-textColor;
+    margin: 0px;
   }
 }
