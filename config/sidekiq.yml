@@ -9,6 +9,11 @@
     class: TransitionAllUsersJob
     queue: critical
     description: 'This job transitions users every two hours'
+  :homepage_project_import:
+    cron: '0 1 * * * America/New_York'
+    class: ProjectImportJob
+    queue: default
+    description: 'This job updates the projects displayed on the homepage every day at 1AM'
   :update_all_issues:
     cron: '0 3 * * * America/New_York'
     class: UpdateAllIssuesJob
