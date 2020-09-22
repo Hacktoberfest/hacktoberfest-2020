@@ -91,6 +91,13 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
+    countries (3.0.1)
+      i18n_data (~> 0.10.0)
+      sixarm_ruby_unaccent (~> 1.1)
+      unicode_utils (~> 1.4)
+    country_select (4.0.0)
+      countries (~> 3.0)
+      sort_alphabetical (~> 1.0)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.5)
@@ -143,6 +150,7 @@ GEM
       railties (>= 5.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    i18n_data (0.10.0)
     jaro_winkler (1.5.3)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
@@ -311,6 +319,9 @@ GEM
       sidekiq (>= 3)
       thwait
       tilt (>= 1.4.0)
+    sixarm_ruby_unaccent (1.2.0)
+    sort_alphabetical (1.1.0)
+      unicode_utils (>= 1.2.2)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -346,6 +357,7 @@ GEM
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
+    unicode_utils (1.4.0)
     vcr (5.0.0)
     web-console (3.7.0)
       actionview (>= 5.0)
@@ -376,6 +388,7 @@ DEPENDENCIES
   capistrano-sidekiq
   capistrano3-puma (~> 4.0)
   coffee-rails (~> 4.2)
+  country_select (~> 4.0)
   dalli (~> 2.7)
   dotenv-rails
   factory_bot_rails

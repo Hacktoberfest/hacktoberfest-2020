@@ -8,6 +8,7 @@ FactoryBot.define do
     provider_token    { user_github_token }
     terms_acceptance  { true }
     state             { 'registered' }
+    country           { 'US' }
 
     trait :new do
       terms_acceptance { false }

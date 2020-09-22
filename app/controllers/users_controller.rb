@@ -67,7 +67,8 @@ class UsersController < ApplicationController
       :digitalocean_marketing_emails,
       :intel_marketing_emails,
       :dev_marketing_emails,
-      :category
+      :category,
+      :country
     )
   end
 
