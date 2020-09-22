@@ -62,10 +62,26 @@ class PagesController < ApplicationController
   end
 
   def filter_faqs(faqs)
-    faqs.select do |faq|
-      stages = faq['Site Stage'].map(&:strip)
-      stages.include?('Main') || stages.include?('Pre Launch')
+    def faq_item(faq)
+      [ faq['Category'].strip, faq['Question'].strip ]
     end
+
+    # Get all the main FAQs
+    main = faqs.select do |faq|
+      faq['Site Stage'].map(&:strip).include?('Main')
+    end
+
+    # Get the category & question for each item in main
+    main_qs = main.map { |faq| faq_item(faq) }
+
+    # Get pre launch FAQs that aren't in main
+    pre_launch = faqs.select do |faq|
+      faq['Site Stage'].map(&:strip).include?('Pre Launch') &&
+          !main_qs.include?(faq_item(faq))
+    end
+
+    # Combine main + extras from pre launch
+    main + pre_launch
   end
 
   def present_faqs(faqs)
