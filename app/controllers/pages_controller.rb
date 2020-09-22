@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   def index
     @events = front_page_events
     @projects = ProjectService.sample(9)
-    @climate_repositories = ClimateProjectService.sample(3)
+    @featured_projects = front_page_projects.sample(3)
     @global_stats = global_stats
     if Hacktoberfest.ended?
       render 'pages/homepage/closing_homepage'
@@ -46,6 +46,12 @@ class PagesController < ApplicationController
     present_featured_events(AirrecordTable.new.all_records('Event List'))
   rescue StandardError
     present_featured_events(AirtablePlaceholderService.call('Event List'))
+  end
+
+  def front_page_projects
+    AirrecordTable.new.all_records('Themed Repos')
+  rescue StandardError
+    AirtablePlaceholderService.call('Themed Repos')
   end
 
   def global_stats
