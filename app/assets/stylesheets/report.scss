@@ -3,6 +3,12 @@
   padding-top: 10%;
   min-height: 510px;
 
+  h1.title {
+    @media screen and (max-width: $break-mobile) {
+      width: 300px;
+    }
+  }
+
   .error{
     margin-bottom: 20px;
   }
