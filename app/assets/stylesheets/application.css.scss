@@ -43,7 +43,7 @@ $break-med: 1288px;
 $black: hsl(0, 100%, 0%);
 $white: hsl(0, 0%, 100%);
 $blue: #0069ff;
-$red: #ff8ae2;
+$pink: #ff8ae2;
 
 //TODO: old color variables to be removed and swapped out with custom variables below
 $grey: hsl(221.54, 14.61%, 65.1%);
@@ -67,7 +67,7 @@ $family-sans-serif: "Inter Regular", "Helvetica", "Arial", san-serif;
 $primary: $grey-darker;
 $family-primary: $family-sans-serif;
 $link: $cyan;
-$link-hover: $red;
+$link-hover: $pink;
 
 // Custom Variables
 
@@ -75,7 +75,7 @@ $buttonColor: #0069ff;
 $buttonHoverColor: #ff73fa;
 $buttonTextColor: #ffffff;
 $accordionRuleColor: #93c2db;
-$labelColor: $red;
+$labelColor: $pink;
 $checkColor: #4551ff;
 $tableHeaderColor: #072540;
 $tableColor: #ffffff;
@@ -145,6 +145,7 @@ $footer-padding: 0;
 // -- title
 $title-color: $white;
 $title-size: $size-1;
+$title-family: "Inter Bold", "Helvetica", "Arial", san-serif;
 
 // -- box
 $box-color: $grey;
@@ -163,15 +164,15 @@ $button-color: $white;
 $button-background-color: $blue;
 $button-border-color: $blue;
 $button-border-width: 0;
-$button-padding-vertical: 1.125em;
-$button-padding-horizontal: 2em;
-$button-hover-color: $red;
+$button-padding-vertical: 24px;
+$button-padding-horizontal: 40px;
+$button-hover-color: $pink;
 
 .button {
   border-radius: 48px !important;
-  font-weight: 900;
+  font-family: "Inter Bold", "Helvetica", "Arial", san-serif !important;
   font-size: 14px;
-  padding: 24px 40px !important;
+  height: auto !important;
   display: inline-flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -179,7 +180,7 @@ $button-hover-color: $red;
   box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05);
 
   &:hover {
-    background-color: $red;
+    background-color: $pink;
     color: $white !important;
     padding: 24px 40px !important;
   }
@@ -264,17 +265,17 @@ body {
   // Reuseable
 
   .highlight {
-    color: $red !important;
+    color: $pink !important;
   }
 
   .line-br {
-    color: $red;
+    color: $pink;
     line-height: 0.4rem;
     position: relative;
     margin-bottom: 10px;
 
     span {
-      background-color: $red;
+      background-color: $pink;
     }
 
     span.line-br-1 {
@@ -366,6 +367,16 @@ body {
     background-image: asset-url("hero-bg-light.svg");
   }
 
+  .header-do-logo {
+    content: url(DO-light-logo.svg) !important;
+  }
+  .header-intel-logo {
+    content: url(intel-light-logo.svg) !important;
+  }
+  .header-dev-logo {
+    content: url(dev-light-logo.svg) !important;
+  }
+
   .home-event-details {
     .bullet {
       span {
@@ -450,6 +461,16 @@ body.dark {
   // home page
   .home-hero {
     background-image: asset-url("hero-bg-dark.svg");
+  }
+
+  .header-do-logo {
+    content: url(DO-dark-logo.svg) !important;
+  }
+  .header-intel-logo {
+    content: url(intel-dark-logo.svg) !important;
+  }
+  .header-dev-logo {
+    content: url(dev-dark-logo.svg) !important;
   }
 
   .home-event-details {

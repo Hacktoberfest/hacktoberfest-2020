@@ -54,6 +54,10 @@ main.home {
       align-items: center;
       text-align: center;
 
+      img {
+        max-width: 620px;
+      }
+
       h1 {
         font-size: $size-1;
         line-height: 60px;
@@ -63,6 +67,25 @@ main.home {
         margin-bottom: 50px;
         max-width: 870px;
       }
+
+      .presented-by {
+        margin-top: 55px;
+        display: flex;
+        max-width: 485px;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          font-size: 16px;
+          margin: 0 16px;
+        }
+      }
+    }
+  }
+
+  .home-video {
+    .container {
+      margin-top: 64px;
     }
   }
 
