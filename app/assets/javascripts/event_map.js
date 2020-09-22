@@ -162,15 +162,14 @@ window.setupEventMap = function () {
         ]
       }
     ],
-    {name: 'Styled Map'});
+    {name: 'Map'});
 
     const map = new google.maps.Map(document.getElementById('eventmap'), {
       zoom: 2,
       center: center,
       // mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControlOptions: {
-        mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "styled_map"]
-      }
+      mapTypeId: "styled_map",
+      disableDefaultUI: true
     });
 
     map.mapTypes.set('styled_map', styledMapType);
