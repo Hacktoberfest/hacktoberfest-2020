@@ -1,22 +1,28 @@
 <div class=level>
   <div class="congratulations-txt">
-    <h1 class="title is-1">Thank you for your contributions!</h1>
-    <h3 class="title is-3">This marks the end of Hacktoberfest 2019.</h3>
-    <p>
-      As a token of our appreciation, we'll be sending you a limited edition Hacktoberfest sticker pack in celebration
-      of your achievement!
-    </p>
-    <p>Remember, this code is only for you. Don't share it with anyone!</p>
-    <p>After completing the form, please be patient until you receive a shipping confirmation via your email.</p>
-    <div class="coupon-box">
-      <div class="code-textarea box">
-        <label for="winner-code" class="is-sr-only">Prize URL</label>
-        <input type="text" id="winner-code" value="https://stores.kotisdesign.com/hacktoberfeststickers/<%= code %>" readonly/>
+    <div class="congrats-wrapper">
+      <div class="congrats-text">
+        <h1 class="title is-1">Thank you for your contributions!</h1>
+        <h3 class="title is-3">This marks the end of Hacktoberfest 2020.</h3>
+        <p>
+          As a token of our appreciation, we'll be sending you a limited edition Hacktoberfest sticker pack in celebration
+          of your achievement!
+        </p>
+        <p>Remember, this code is only for you. Don't share it with anyone!</p>
+        <p>After completing the form, please be patient until you receive a shipping confirmation via your email.</p>
       </div>
-      <button class="button code-button" id="copy-winner-code" onclick="copyCodeToClipboard()">Copy</button>
+      <div class="parrot-image">
+        <%= image_tag 'parrot.png' %>
+      </div>
     </div>
-  </div>
-  <div>
-    <%= image_tag 'parrot.png' %>
+    <div class="coupon-box">
+      <div class="coupon-box">
+        <div class="code-textarea">
+          <label for="winner-code" class="is-sr-only">Prize URL</label>
+          <input type="text" id="winner-code" value="https://stores.kotisdesign.com/hacktoberfeststickers/<%= code %>" readonly/>
+          <button class="button-static code-button" id="copy-winner-code" onclick="copyCodeToClipboard()">Copy</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

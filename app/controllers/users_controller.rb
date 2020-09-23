@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def register
     @current_user.assign_attributes(params_for_registration)
     if save_or_register(@current_user)
-      render 'users/registered'
+      redirect_to profile_path
     else
       set_user_emails
       render 'users/registration'
