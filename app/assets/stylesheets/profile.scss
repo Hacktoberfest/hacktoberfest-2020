@@ -5,7 +5,6 @@
   max-width: 1152px;
   margin: 0 auto;
   padding-left: 20px;
-  min-height: 73vh;
 
   .profile-left {
     width: 65%;
@@ -418,6 +417,30 @@
       margin-bottom: 20px;
     }
 
+    .icon-box.bonus-wrapper {
+      display: inline-block;
+      width: 100%;
+      margin: 10px 0 0 0;
+
+      .bonus-box {
+        background-image:url('icon-light-bonus.svg');
+        background-repeat:no-repeat;
+        background-size:contain;
+        background-position:center;
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+      }
+
+      span {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 3px;
+        color: $light-inputTextColor;
+        font-weight: 900;
+      }
+    }
+
     .progress-wrapper, .education-wrapper {
       background-color: $light-backgroundColor;
       box-shadow: 0px 5.2029px 20.8116px rgba(24, 61, 93, 0.08);
@@ -595,7 +618,8 @@ body.dark {
   }
 
   .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .bonus-box, .timeline-date .bonus-box,
-  .profile-page .profile-left .timeline-wrapper .pr-icon .bonus-box {
+  .profile-page .profile-left .timeline-wrapper .pr-icon .bonus-box,
+  .profile-page .profile-right .icon-box.bonus-wrapper .bonus-box {
     background-image:url('icon-dark-bonus.svg') !important;
   }
 
@@ -607,6 +631,10 @@ body.dark {
   .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .pending-box, .timeline-date .pending-box, 
   .profile-page .profile-left .timeline-wrapper .pr-icon .pending-box {
     background-image:url('icon-dark-pending.svg') !important;
+  }
+
+  .profile-page .profile-right .icon-box.bonus-wrapper span {
+    color: $dark-textColor !important;
   }
 
   .profile-page .profile-right .pr-score {

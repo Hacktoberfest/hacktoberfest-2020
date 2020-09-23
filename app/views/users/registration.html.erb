@@ -12,25 +12,24 @@
         <div class="field">
           <div class="control">
             <div class="select">
-              <%= f.select :email, @emails, { :prompt => "Select prefered email address" }, { :required => true } %>
+              <%= f.select :email, @emails, { include_blank: 'Select prefered email address' }, { :required => true } %>
               
             </div>
           </div>
         </div>
 
-        <div class="field last-dropdown">
+        <div class="field">
         <div class="control">
           <div class="select">
-            <%= f.select :category, @categories, { :prompt => "Role" }, { :required => true } %>
+            <%= f.select :category, @categories, { include_blank: 'Role' }, { :required => true } %>
           </div>
         </div>
       </div>
 
-      <div class="field">
-        <label class="label">Location</label>
+      <div class="field last-dropdown">
         <div class="control">
           <div class="select">
-            <%= f.country_select :country, { include_blank: 'Optional: Select a country' } %>
+            <%= f.country_select :country, { include_blank: 'Optional: Select your country' } %>
           </div>
         </div>
       </div>
@@ -69,7 +68,7 @@
         <div class="field">
           <div class="control">
             <label class="checkbox">
-              <%= f.check_box :terms_acceptance, :class=> 'check-style' %>
+              <%= f.check_box :terms_acceptance, { :class=> 'check-style', :required => true } %>
               I have read and understand the
               <a target="_blank" href="/details#participation-rules">Rules and Values</a>.
             </label>
@@ -79,6 +78,7 @@
         <%= f.submit 'Start Hacking', :class => 'submit-btn'%>
 
       <% end %>
+    </div>
     </div>
 
     <div class="registration-right">

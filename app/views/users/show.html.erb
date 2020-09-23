@@ -60,11 +60,11 @@
       <h4 class="progress-header">your progress</h4>
       <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
       <% if @presenter.bonus_score > 0 %>
-        <div class="icon-box">
+        <div class="icon-box bonus-wrapper">
           <div class="bonus-box">
             <%= image_tag 'bonus.png' %>
-            <span><%= @presenter.bonus_score %></span>
           </div>
+          <span><%= @presenter.bonus_score %></span>
         </div>
       <% end %>
     </div>
