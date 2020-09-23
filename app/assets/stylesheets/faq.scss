@@ -130,9 +130,9 @@
 body.dark {
   .question, .question p{
     color: $dark-headlineColor;
+  }
 
-    .faq-image {
-      content: asset-url("faqdark.svg") !important;
-    }
+  .faq-image {
+    content: asset-url("faqdark.svg");
   }
 }
