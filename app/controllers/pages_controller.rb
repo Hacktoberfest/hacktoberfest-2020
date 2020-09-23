@@ -87,7 +87,6 @@ class PagesController < ApplicationController
     @faqs_shipping = faqs.select { |q| q['Category'] == 'Shipping' }
   end
 
-
   def faq_item(faq)
     [faq['Category'].strip, faq['Question'].strip]
   end
