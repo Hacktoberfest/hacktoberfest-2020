@@ -79,6 +79,11 @@ section.reg-content {
         color: $buttonTextColor;
         text-transform: uppercase;
         font-weight: 600;
+        font-size: $size-button-text;
+      }
+
+      .submit-btn:hover {
+        background-color: $pink;
       }
     }
 
