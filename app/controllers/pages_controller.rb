@@ -5,7 +5,8 @@ class PagesController < ApplicationController
 
   def index
     @events = front_page_events
-    @projects = SampleProjectService.sample(9)
+    @projects = ProjectService.sample(9)
+    @sample_projects = SampleProjectService.sample(9) if @projects.empty?
     @featured_projects = front_page_projects.sample(3)
     @global_stats = global_stats
     if Hacktoberfest.ended?
