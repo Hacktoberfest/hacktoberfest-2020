@@ -12,15 +12,13 @@
   }
 
   .question, .question p{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    color: $light-categoryColor;
     align-items: center;
-    margin: 0px;
-    min-width: 760px;
-    max-width: 760px;
+    color: $light-categoryColor;
+    display: flex;
     line-height: 130%;
+    margin: 0px;
+    max-width: 760px;
+    min-width: 760px;
   }
 
   .title.is-1{
@@ -36,22 +34,24 @@
   }
 
   .question-answer{
+    align-items: center;
+    border-bottom: 1px solid $accordionRuleColor;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    display: flex;
-    border-bottom: 1px solid #1F2D4F;
-    align-items: center;
-    min-width: 790px;
-    max-width: 790px;
 
     .toggle {
-      display: flex;
-      color: $pink;
-      opacity: 0.65;
-      font-size: 35px;
       align-items: center;
-      transition: all .35s;
+      color: $pink;
+      cursor: pointer;
+      display: flex;
+      font-size: 35px;
+      opacity: 0.65;
       max-height: 70px;
+      transition: all .35s;
       
       @media (max-width: 1024px) {
         position: absolute;
@@ -71,10 +71,14 @@
       color: $light-textColor;
 
       p {
-        display: flex;
         min-width: 760px;
-        max-width: 760px;
       }
+    }
+
+    .answer-show {
+      @extend .answer;
+      display: flex;
+      flex-flow: wrap;
     }
   }
 }

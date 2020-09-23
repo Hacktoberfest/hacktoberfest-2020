@@ -2,12 +2,10 @@ window.addEventListener('click', (e) => {
 	var $target = $(e.target);
 	e.preventDefault();
 	if ($target.hasClass('toggle')) {
-		$target.removeClass('toggle');
-		$target.addClass('active');
-		$target.next().toggle();
+		$target.toggleClass('active');
+		$target.next().toggleClass('answer-show');
 	} else if ($target.hasClass('active')) {
-		$target.removeClass('active');
-		$target.addClass('toggle');
-		$target.next().toggle();
+		$target.toggleClass('toggle');
+		$target.next().toggleClass('answer-show');
 	}
 });
