@@ -26,8 +26,9 @@ section.reg-content {
         text-transform: uppercase;
       }
 
-      .field.last-dropdown {
-        margin-bottom: 40px;
+      .dropdowns,
+      .checkboxes {
+        margin: 32px 0;
       }
 
       a {
@@ -80,17 +81,21 @@ section.reg-content {
         text-transform: uppercase;
         font-weight: 600;
         font-size: $size-button-text;
-      }
+        cursor: pointer;
+        margin: 32px 0 8px;
 
-      .submit-btn:hover {
-        background-color: $pink;
+        &:hover {
+          background-color: $pink;
+        }
       }
     }
 
     .registration-right {
       width: 45%;
       min-height: 380px;
-      display: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       .background-img {
         background-image:url('hactoberfest-logo-with-sponsors-light.svg');
@@ -99,6 +104,8 @@ section.reg-content {
         background-position:center;
         display: inline-block;
         width: 100%;
+        max-width: 570px;
+        height: 100%;
       }
     }
   }
