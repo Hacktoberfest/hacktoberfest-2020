@@ -249,6 +249,14 @@ body {
   .section {
     padding: 0 120px;
     margin: 0;
+
+    @media screen and (max-width: $break-mobile) {
+      padding: 50px 0;
+    }
+
+    @media screen and (max-width: $break-med) {
+      padding: 0;
+    }
   }
 
   .container {

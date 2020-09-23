@@ -19,6 +19,22 @@
     margin: 0px;
     max-width: 760px;
     min-width: 760px;
+
+    @media (min-width: 768px) and (max-width: $break-med) {
+      font-size: 18px !important;
+      margin-right: 35px;
+      min-width: 650px;
+      max-width: 650px;
+    }
+
+    @media (max-width: 760px) {
+      min-width: 300px;
+      max-width: 300px;	      
+    }	 
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .title.is-1{
@@ -43,6 +59,10 @@
     margin-bottom: 1rem;
     padding-bottom: 1rem;
 
+    @media (max-width: $break-med) {
+      align-items: flex-start;
+    }
+
     .toggle {
       align-items: center;
       color: $pink;
@@ -52,11 +72,6 @@
       opacity: 0.65;
       max-height: 70px;
       transition: all .35s;
-      
-      @media (max-width: 1024px) {
-        position: absolute;
-        right: 12px;
-      }
     }
 
     .active {
@@ -72,6 +87,16 @@
 
       p {
         min-width: 760px;
+
+        @media (max-width: $break-mobile) {
+          margin-top: 5px;
+          min-width: 0;
+          overflow: auto;
+        }
+
+        @media (max-width: $break-med) {
+          margin-top: 5px;
+        }
       }
     }
 
