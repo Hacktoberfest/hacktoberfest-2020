@@ -105,15 +105,15 @@
      </div>
   </section>
 
-  <section class="eventsBlock">
+  <section class="events-block">
     <div class="container">
-      <div class="section events">
+      <div class="events">
         <h2 class="title is-2">Global events</h2>
         <p>
-          Celebrate and support open source technology by  <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a> or  <a href="https://hacktoberfest.digitalocean.com/event">attending</a> a virtual event in October.
+          Celebrate and support open source technology by <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a> or  <a href="https://hacktoberfest.digitalocean.com/event">attending</a> a virtual event in October.
         </p>
         <!-- FEATURED EVENTS GENERATED HERE -->
-        <section class="event-union">
+        <div class="event-union">
           <% @events.map do |e| %>
           <a class="box grow-shadow" href="<%= e.url %>">
               <span class="event-month">
@@ -133,7 +133,8 @@
               </div>
           </a>
           <% end %>
-        </section>
+        </div>
+        <div id="eventmap" style="max-width: 1170px; height: 470px;"></div>
       <%= link_to 'See more events', events_path, :class => 'button' %>
       </div>
     </div>
@@ -175,5 +176,11 @@
 </main>
 <script type="text/javascript">
   setupLanguageFilter();
-  setupPRsOpenedChart();
+  // setupPRsOpenedChart();
 </script>
+<script defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaiOH0fpf3MEEsObdMPSJgWw3H4iiNmEo&callback=setupEventMap">
+    // DO's actual google api key AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k
+    // test key AIzaSyBaiOH0fpf3MEEsObdMPSJgWw3H4iiNmEo
+</script>
+
