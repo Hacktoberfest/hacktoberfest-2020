@@ -5,85 +5,87 @@
       <div class="register-header">Register</div>
       <h1 class="title is-1">About you</h1>
       <p>
-        Please select which email address you’d like to use for Hacktoberfest and read the <a target="_blank" href="/details#participation-rules">rules and values</a>.
+        Please select which email address you’d like to use for Hacktoberfest and read the
+        <a target="_blank" href="/details#participation-rules">rules and values</a>.
       </p>
-      <%= form_for :user, url: { action: 'register' }, method: :patch do |f| %>
 
-        <div class="field">
-          <div class="control">
-            <div class="select">
-              <%= f.select :email, @emails, { include_blank: 'Select prefered email address' }, { :required => true } %>
-              
+      <%= form_for :user, url: {action: 'register'}, method: :patch do |f| %>
+        <div class="dropdowns">
+          <div class="field">
+            <div class="control">
+              <div class="select">
+                <%= f.select :email, @emails, {include_blank: 'Select preferred email address'}, {:required => true} %>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <div class="select">
+                <%= f.select :category, @categories, {include_blank: 'Select your role'}, {:required => true} %>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <div class="select">
+                <%= f.country_select :country, {include_blank: 'Optional: Select your country'} %>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="field">
-        <div class="control">
-          <div class="select">
-            <%= f.select :category, @categories, { include_blank: 'Role' }, { :required => true } %>
+        <div class="checkboxes">
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <%= f.check_box :digitalocean_marketing_emails, :class => 'check-style' %>
+                Send me updates related to the Hacktoberfest community,
+                open source, and products from DigitalOcean.
+              </label>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="field last-dropdown">
-        <div class="control">
-          <div class="select">
-            <%= f.country_select :country, { include_blank: 'Optional: Select your country' } %>
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <%= f.check_box :intel_marketing_emails, :class => 'check-style' %>
+                Send me updates from Hacktoberfest partner, Intel.
+              </label>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <%= f.check_box :digitalocean_marketing_emails %>
-            Send me updates related to the Hacktoberfest community,
-            open source, and products from DigitalOcean.
-          </label>
-        </div>
-
-        <div class="field">
-          <div class="control">
-            <label class="checkbox">
-              <%= f.check_box :intel_marketing_emails, :class=> 'check-style' %>
-              Send me updates from Hacktoberfest partner, Intel.
-            </label>
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <%= f.check_box :dev_marketing_emails, :class => 'check-style' %>
+                Send me updates from Hacktoberfest partner, DEV.
+              </label>
+            </div>
           </div>
         </div>
 
-        <div class="field">
-          <div class="control">
-            <label class="checkbox">
-              <%= f.check_box :dev_marketing_emails, :class=> 'check-style' %>
-              Send me updates from Hacktoberfest partner, DEV.
-            </label>
-          </div>
-        </div>
-
-        <% if @current_user.errors.messages[:terms_acceptance].include?("must be accepted")  %>
-           <p class="error">You must accept the terms and conditions to participate in Hactoberfest.</p>
+        <% if @current_user.errors.messages[:terms_acceptance].include?("must be accepted") %>
+          <p class="error">You must accept the terms and conditions to participate in Hactoberfest.</p>
         <% end %>
 
         <div class="field">
           <div class="control">
             <label class="checkbox">
-              <%= f.check_box :terms_acceptance, { :class=> 'check-style', :required => true } %>
+              <%= f.check_box :terms_acceptance, {:class => 'check-style', :required => true} %>
               I have read and understand the
               <a target="_blank" href="/details#participation-rules">Rules and Values</a>.
             </label>
           </div>
         </div>
 
-        <%= f.submit 'Start Hacking', :class => 'submit-btn'%>
-
+        <%= f.submit 'Start Hacking', :class => 'submit-btn' %>
       <% end %>
-    </div>
     </div>
 
     <div class="registration-right">
       <div class="background-img"></div>
     </div>
-    
   </div>
 </section>
