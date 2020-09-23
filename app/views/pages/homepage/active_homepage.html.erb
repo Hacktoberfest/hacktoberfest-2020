@@ -79,20 +79,22 @@
 
   <section class="home-special-projects">
     <div class="container">
-      <a name="climate"></a>
-      <h2 class="title is-2 climate">Projects focused on climate change</h2>
+      <a name="featured"></a>
+      <h2 class="title is-2 featured">
+        Projects focused on climate change & COVID-19 Relief
+      </h2>
       <p>
-        Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
+        Featured projects focused on tackling Climate Change and supporting the fight against COVID-19
       </p>
       <div class="grid">
-        <% @climate_repositories.map do |repository| %>
-          <a href="<%= repository[:url] %>">
+        <% @featured_projects.map do |repository| %>
+          <a href="<%= repository['Repo URL'] %>">
           <div class="box projects grow-shadow">
             <div class="title-wrap">
-              <h3 class="repo-name"> <%= repository[:name] %> </h3>
-              <span class="lang"><%= repository[:language] %></span>
+              <h3 class="repo-name"> <%= repository['Repo Name'] %> </h3>
+              <span class="lang"><%= repository['Repo Language'] %></span>
             </div>
-            <p class="description"><%= repository[:description] %></p>
+            <p class="description"><%= repository['Description'] %></p>
           </div>
             </a>
         <% end %>
