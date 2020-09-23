@@ -85,10 +85,10 @@ $diamondColor: #93c2db;
 $platinumColor: #99a1b3;
 $goldColor: #ffd700;
 $socialHoverColor: #010e2f;
-$progress-color-light: #F1F7FA;
+$progress-color-light: #f1f7fa;
 $progress-bar-before: #ff00aa;
-$progress-bar-gradient-01: #FF73FA;
-$progress-bar-gradient-02: #FF73FA;
+$progress-bar-gradient-01: #ff73fa;
+$progress-bar-gradient-02: #ff73fa;
 $winner-background-dark: #39486f;
 $winner-color-dark: #92eaff;
 
@@ -500,6 +500,73 @@ body {
     font-weight: 900;
     line-height: 44px;
   }
+
+  // sponsors logos
+  .sponsors {
+    .sponsors-vonage {
+      content: url(sponsors-light-vonage.svg) !important;
+    }
+    .sponsors-circleci {
+      content: url(sponsors-light-circleci.svg) !important;
+    }
+    .sponsors-jetbrains {
+      content: url(sponsors-light-jetbrains.svg) !important;
+    }
+    .sponsors-github {
+      content: url(sponsors-light-github.svg) !important;
+    }
+    .sponsors-mongodb {
+      content: url(sponsors-light-mongodb.svg) !important;
+    }
+
+    .sponsor-quotes {
+      .box {
+        border: none !important;
+        background-color: $light-boxColor !important;
+        p {
+          color: $light-textColor;
+        }
+      }
+    }
+  }
+  //social share
+  .social {
+    .social-wrapper {
+      p {
+        color: $light-socialTextColor;
+      }
+
+      .social-share-icons {
+        .social-circle {
+          :hover svg path {
+            fill: $socialHoverColor;
+          }
+          background: $light-socialBackgroundColor;
+        }
+      }
+
+      .social-share-twitter {
+        content: asset-url("footer-light-twitter.svg") !important;
+      }
+      .social-share-facebook {
+        content: asset-url("footer-light-facebook.svg") !important;
+      }
+      .social-share-linkedin {
+        content: asset-url("footer-light-linkedin.svg") !important;
+      }
+
+      .social-CTA {
+        button {
+          svg {
+            &,
+            path {
+              fill: $buttonTextColor;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // -------- Global darkmode styles --------
@@ -639,6 +706,59 @@ body.dark {
 
   h1 {
     color: $dark-headlineColor !important;
+  }
+
+  // sponsors logos
+  .sponsors {
+    .sponsors-vonage {
+      content: url(sponsors-dark-vonage.svg) !important;
+    }
+    .sponsors-circleci {
+      content: url(sponsors-dark-circleci.svg) !important;
+    }
+    .sponsors-jetbrains {
+      content: url(sponsors-dark-jetbrains.svg) !important;
+    }
+    .sponsors-github {
+      content: url(sponsors-dark-github.svg) !important;
+    }
+    .sponsors-mongodb {
+      content: url(sponsors-dark-mongodb.svg) !important;
+    }
+
+    .sponsor-quotes {
+      .box {
+        background-color: $dark-boxColor !important;
+        p {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  //social share
+  .social {
+    .social-wrapper {
+      p {
+        color: $dark-socialTextColor;
+      }
+
+      .social-share-icons {
+        .social-circle {
+          background: $dark-socialBackgroundColor !important;
+        }
+      }
+
+      .social-share-twitter {
+        content: asset-url("footer-dark-twitter.svg") !important;
+      }
+      .social-share-facebook {
+        content: asset-url("footer-dark-facebook.svg") !important;
+      }
+      .social-share-linkedin {
+        content: asset-url("footer-dark-linkedin.svg") !important;
+      }
+    }
   }
 }
 

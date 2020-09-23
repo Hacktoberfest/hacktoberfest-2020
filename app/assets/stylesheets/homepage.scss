@@ -373,43 +373,99 @@ main.home {
 
   .sponsors {
     text-align: left;
-    margin-top: 40px;
+    margin: 80px auto 0;
 
-    @media screen and (max-width: $break-small) {
-      margin-top: 530px;
-    }
+    .sponsor-quotes {
+      .box {
+        text-align: left;
+        margin: 0;
+        width: 100%;
+        box-shadow: none !important;
 
-    .tile {
-      text-align: left;
-      margin: $tile-margin !important;
-      padding: $tile-padding;
+        h6 {
+          text-transform: uppercase;
+          color: #93c2db;
+          font-size: 14px;
+        }
 
-      .is-child {
-        padding: 0;
-
-        .dev-logo {
-          transform: rotate(5deg);
+        p {
+          line-height: 160%;
         }
       }
     }
 
-    .is-ancestor {
-      width: 100%;
+    .main-sponsors,
+    .secondary-sponsors {
+      max-width: 1170px;
+      margin: 0 auto 32px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        margin-right: 64px;
+        margin-bottom: 32px;
+      }
+      a:last-of-type {
+        margin-right: 0;
+      }
+    }
+
+    @media screen and (max-width: $break-small) {
     }
   }
 
-  .reg {
-    font-size: 0.75em;
-    position: relative;
-    top: -0.2em;
-    padding-right: 2px;
-  }
-}
+  .social {
+    margin: 160px auto;
+    text-align: center;
 
-.form-cont {
-  display: flex;
+    .social-wrapper {
+      margin: 64px auto;
+      max-width: 670px;
 
-  @media screen and (max-width: $break-small) {
-    margin-left: 0;
+      p {
+        font-size: 14px !important;
+        text-transform: uppercase;
+        font-family: "Inter Bold", "Helvetica", "Arial", san-serif;
+        margin: 0;
+      }
+
+      .social-share-icons {
+        display: flex;
+        margin: 0 auto 82px;
+        justify-content: center;
+
+        .social-circle {
+          cursor: pointer;
+          margin-top: 16px;
+          margin-right: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 64px;
+          height: 64px;
+          border-radius: 64px;
+
+          :last-of-type {
+            margin-right: 0;
+          }
+
+          img {
+            margin: 0;
+          }
+        }
+      }
+
+      .social-CTA {
+        button {
+          align-items: center;
+
+          img {
+            margin: 4px 8px 0 0;
+          }
+        }
+      }
+    }
   }
 }
