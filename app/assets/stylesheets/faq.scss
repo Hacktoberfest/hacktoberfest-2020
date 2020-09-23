@@ -4,13 +4,6 @@
 
 
 .fluid-content-page{
-  .faq-toc{
-    margin-top: 3rem;
-    p {
-      margin: 1rem 0;
-    }
-  }
-
   .question, .question p{
     align-items: center;
     color: $light-categoryColor;
@@ -30,8 +23,13 @@
     @media (max-width: 760px) {
       min-width: 300px;
       max-width: 300px;	      
-    }	 
+    }
 
+    @media (min-width: $break-med) {
+      max-width: 900px;
+      min-width: 900px;
+    }
+    
     &:hover {
       cursor: pointer;
     }
@@ -39,6 +37,7 @@
 
   .title.is-1{
     font-size: 2.5rem;
+    width: 100%;
   }
 
   .qa-section{
@@ -108,9 +107,32 @@
   }
 }
 
+.faq-header {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+
+  .faq-image {
+    height: 200px;
+    content: asset-url("faqlight.svg");
+    width: 100%;
+  
+    @media (max-width: 1024px) {
+      max-width:90%;
+    }
+  }
+
+  .faq-intro {
+    width: 100%;
+  }
+}
+
 body.dark {
   .question, .question p{
     color: $dark-headlineColor;
-    margin: 0px;
+
+    .faq-image {
+      content: asset-url("faqdark.svg") !important;
+    }
   }
 }
