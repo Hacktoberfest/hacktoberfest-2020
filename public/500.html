@@ -79,10 +79,13 @@
       flex-wrap: wrap;
       align-items: center;
       list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .nav .links li {
-      margin: 10px 15px;
+      position: relative;
+      margin: 0.75rem 1rem;
     }
 
     .nav .links li a {
@@ -95,6 +98,49 @@
 
     .nav .links li a:hover {
       color: #ff8ae2;
+    }
+
+    .nav .links li a small {
+      font-size: 0.75rem;
+      vertical-align: text-top;
+    }
+
+    .nav .links li .dropdown {
+      display: none;
+      padding: 0.5rem;
+      margin: 0;
+      background: #183d5d;
+      box-shadow: rgba(24, 61, 93, 0.08) 0px 4px 10px;
+      border-radius: 0.25rem;
+      flex-direction: column;
+      list-style: none;
+      min-width: 10rem;
+      transform: translateX(-50%);
+    }
+
+    .nav .links li:hover .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      display: flex;
+    }
+
+    .nav .links li .dropdown li {
+      margin: 0;
+    }
+
+    .nav .links li .dropdown li a {
+      color: #fff;
+      text-transform: none;
+      font-size: 0.8rem;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+      border-radius: 0.25rem;
+    }
+
+    .nav .links li .dropdown li a:hover {
+      background: rgba(7, 37, 64, 0.24)
     }
 
     .content {
@@ -217,6 +263,13 @@
     <ul class="links">
       <li><a href="/">Home</a></li>
       <li><a href="/details">Resources</a></li>
+      <li>
+        <a href="/events">Events <small>▼</small></a>
+        <ul class="dropdown">
+          <li><a href="/events">View All Events</a></li>
+          <li><a href="/eventkit">Event Organizer Kit</a></li>
+        </ul>
+      </li>
       <li><a href="/faq">FAQ</a></li>
     </ul>
   </div>
