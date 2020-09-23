@@ -26,6 +26,7 @@
     <% @faqs_general.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
+        <div class="toggle">&#xFE62;</div>
         <div class="answer"> <%= markdown q["Answer"] %></div>
       </div>
     <% end %>
@@ -37,6 +38,7 @@
     <% @faqs_rules.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
+        <div class="toggle">&#xFE62;</div>
         <div class="answer"> <%= markdown q["Answer"] %></div>
       </div>
     <% end %>
@@ -48,6 +50,7 @@
     <% @faqs_events.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
+        <div class="toggle">&#xFE62;</div>
         <div class="answer"> <%= markdown q["Answer"] %></div>
       </div>
     <% end %>
@@ -59,6 +62,7 @@
     <% @faqs_shipping.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
+        <div class="toggle">&#xFE62;</div>
         <div class="answer"> <%= markdown q["Answer"] %></div>
       </div>
     <% end %>
