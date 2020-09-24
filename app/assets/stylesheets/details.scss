@@ -105,6 +105,14 @@ $break-med: 1288px;
     .box {
       margin-bottom: 0;
       padding: 60px;
+
+      @media screen and (max-width: $break-small) {
+        padding: 0;
+      }
     }
+  }
+
+  .beginners-video {
+    margin: 0 0 32px 0;
   }
 }
