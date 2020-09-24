@@ -49,6 +49,7 @@ main.home {
 
     @media screen and (max-width: $break-small) {
       height: 100%;
+      top: 0;
     }
 
     .container {
