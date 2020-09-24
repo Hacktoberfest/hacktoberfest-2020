@@ -301,23 +301,10 @@
 </main>
 <script type="text/javascript">
     setupLanguageFilter();
-    
-    document.addEventListener("turbolinks:load", ()=> {
-      let script = document.createElement('script');
-      script.onload = function() {
-        alert("Script loaded and ready");
-      };
-      script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k&callback=setupEventMap";
-      document.getElementsByTagName('head')[0].appendChild(script);
-    });
+
+    window.google = undefined;
+    var script = document.createElement('script');
+    script.onload = window.setupEventMap;
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k";
+    document.head.appendChild(script);
 </script>
-<%# <script>
-
-
-      // $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k&callback=setupEventMap")
-   
-</script> %>
-
-<%# <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k&callback=setupEventMap">
-</script> %>
