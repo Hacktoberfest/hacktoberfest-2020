@@ -86,23 +86,30 @@
       <p>
         You can contribute to any project on GitHub. Here are a few looking for some help:
       </p>
-      <div class="level language-filter">
-        <div class="right">
-          <div class="field">
-            <div class="control">
-              <div class="select">
-                <%= collection_select(:language, :id, Language.all.sort_by(&:name), :id, :name, prompt: "Select language", html_options: {class: 'language-dropdown'}) %>
+      <% if @projects.empty? %>
+        <br/>
+        <p><i>Sorry, we couldn't load any projects to highlight at this time.</i></p>
+        <br/>
+        <br/>
+      <% else %>
+        <div class="level language-filter">
+          <div class="right">
+            <div class="field">
+              <div class="control">
+                <div class="select">
+                  <%= collection_select(:language, :id, Language.all.sort_by(&:name), :id, :name, prompt: "Select language", html_options: {class: 'language-dropdown'}) %>
+                </div>
               </div>
             </div>
+            <button type="button" class="button button-small" id="reset-filter">Remove filter</button>
           </div>
-          <button type="button" class="button button-small" id="reset-filter">Remove filter</button>
         </div>
-      </div>
-      <div class="grid" id="project-list">
-        <%= render partial: 'languages/all_projects', locals: {projects: @projects} %>
-      </div>
-      <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen+no%3Aassignee+is%3Aissue&type=Issues">
-        <button class="button" type="button" name="button">Browse more on GitHub</button>
+        <div class="grid" id="project-list">
+          <%= render partial: 'languages/all_projects', locals: {projects: @projects} %>
+        </div>
+      <% end %>
+      <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen+no%3Aassignee+is%3Aissue&type=Issues" class="button">
+        Browse <%= @projects.empty? ? 'projects' : 'more' %> on GitHub
       </a>
     </div>
   </section>
@@ -128,8 +135,8 @@
           </a>
         <% end %>
       </div>
-      <a href="https://github.com/topics/climate-change">
-        <button class="button" type="button" name="button">Browse more on GitHub</button>
+      <a href="https://github.com/topics/climate-change" class="button">
+        Browse more on GitHub
       </a>
     </div>
   </section>
@@ -292,4 +299,3 @@
 <script defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaiOH0fpf3MEEsObdMPSJgWw3H4iiNmEo&callback=setupEventMap">
 </script>
-
