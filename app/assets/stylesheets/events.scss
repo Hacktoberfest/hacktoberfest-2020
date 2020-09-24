@@ -3,6 +3,10 @@
   width: 100%;
   text-align: center;
 
+  @media screen and (max-width: $break-small) {
+    padding: 10px;
+  }
+
   p {
     max-width: 800px;
     margin: 0 auto;
@@ -54,14 +58,14 @@ table.event-table {
       font-size: $size-table-header;
       line-height: 35px;
       padding: 5px 10px;
-      border-top: solid 1px rgba(255,255,255,0.25);
+      border-top: solid 1px rgba(255, 255, 255, 0.25);
 
       :first-of-type {
-        border-left: solid 1px rgba(255,255,255,0.25);
+        border-left: solid 1px rgba(255, 255, 255, 0.25);
       }
 
       :last-of-type {
-        border-right: solid 1px rgba(255,255,255,0.25);
+        border-right: solid 1px rgba(255, 255, 255, 0.25);
       }
     }
 
@@ -84,7 +88,6 @@ table.event-table {
     background-color: $light-backgroundColor;
     box-shadow: 0px 8px 16px rgba(1, 14, 40, 0.05);
     border-radius: 8px;
-    
 
     tr {
       td {
@@ -164,9 +167,10 @@ table.event-table {
 .sort {
   cursor: pointer;
 
-  &.asc, &.desc {
+  &.asc,
+  &.desc {
     &::after {
-      margin-left: .25em;
+      margin-left: 0.25em;
       text-decoration: none;
     }
   }
@@ -193,16 +197,16 @@ td {
   border: none;
   padding: 18px 20px 17px;
   border-radius: 48px;
-  color:$light-inputTextColor;
+  color: $light-inputTextColor;
   outline: transparent;
 }
 
-::placeholder { 
+::placeholder {
   color: $light-inputTextColor;
-  opacity: 1; 
+  opacity: 1;
 }
 
-:-ms-input-placeholder { 
+:-ms-input-placeholder {
   color: $light-inputTextColor;
 }
 
@@ -235,12 +239,12 @@ body.dark {
     color: $dark-inputTextColor !important;
   }
 
-  ::placeholder { 
+  ::placeholder {
     color: $dark-tableColor !important;
-    opacity: 1; 
+    opacity: 1;
   }
 
-  :-ms-input-placeholder { 
+  :-ms-input-placeholder {
     color: $dark-tableColor !important;
   }
 
@@ -249,14 +253,12 @@ body.dark {
   }
 
   .table-mobile-cards table.event-table tbody tr {
-      background-color: $dark-inputBackgroundColor !important;
-    }
+    background-color: $dark-inputBackgroundColor !important;
+  }
 }
 
 .table-mobile-cards {
   @media screen and (max-width: $break-small) {
-    
-
     table.event-table {
       border: 0;
       margin-top: 0;
@@ -267,10 +269,10 @@ body.dark {
 
         tr {
           display: block;
-          margin-bottom: .7em;
+          margin-bottom: 0.7em;
           border: 0;
           background-color: $light-backgroundColor;
-          padding: .625rem;
+          padding: 0.625rem;
           box-shadow: $box-shadow;
 
           td {

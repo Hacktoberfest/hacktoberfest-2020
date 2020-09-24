@@ -13,7 +13,7 @@ section.reg-content {
     }
 
     .registration-left {
-      width:50%;
+      width: 50%;
       margin-right: 4%;
 
       .register-header {
@@ -98,10 +98,12 @@ section.reg-content {
       justify-content: center;
 
       .background-img {
-        background-image: asset_url('hactoberfest-logo-with-sponsors-light.svg');
-        background-repeat:no-repeat;
-        background-size:contain;
-        background-position:center;
+        background-image: asset-url(
+          "hactoberfest-logo-with-sponsors-light.svg"
+        );
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
         display: inline-block;
         width: 100%;
         max-width: 570px;
@@ -116,15 +118,24 @@ body.dark {
     color: $dark-headlineColor !important;
   }
 
-  section.reg-content .registration-wrapper .registration-right .background-img {
-    background-image: asset_url('hactoberfest-logo-with-sponsors-dark-v2.svg') !important;
+  section.reg-content
+    .registration-wrapper
+    .registration-right
+    .background-img {
+    background-image: asset-url(
+      "hactoberfest-logo-with-sponsors-dark-v2.svg"
+    ) !important;
   }
 
-  section.reg-content .registration-wrapper .registration-left label.checkbox, section.reg-content .registration-wrapper .registration-left p {
+  section.reg-content .registration-wrapper .registration-left label.checkbox,
+  section.reg-content .registration-wrapper .registration-left p {
     color: $diamondColor !important;
   }
 
-  section.reg-content .registration-wrapper .registration-left label.checkbox:hover {
+  section.reg-content
+    .registration-wrapper
+    .registration-left
+    label.checkbox:hover {
     color: $buttonTextColor !important;
   }
 
@@ -136,11 +147,15 @@ body.dark {
 }
 
 @media screen and (max-width: $break-small) {
-  section.reg-content .registration-wrapper .registration-right, section.reg-content .registration-wrapper .registration-left {
+  section.reg-content .registration-wrapper .registration-right,
+  section.reg-content .registration-wrapper .registration-left {
     width: 100%;
   }
 
-  section.reg-content .registration-wrapper .registration-right .background-img {
+  section.reg-content
+    .registration-wrapper
+    .registration-right
+    .background-img {
     margin-top: 60px;
   }
 }

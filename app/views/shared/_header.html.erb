@@ -9,7 +9,10 @@
         <li><%= link_to "resources", details_path, :class => active_path_class?(details_path, '') + " navLink"  %></li>
         <li class="dropdown is-hoverable">
           <div class="dropdown-trigger">
-            <%= link_to "Events", events_path, :class => active_path_class?(events_path, event_kit_path) + " navLink"%>
+            <%= link_to events_path, :class => active_path_class?(events_path, event_kit_path) + " navLink" do %>
+              Events
+              <small>▼</small>
+            <% end %>
           </div>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">

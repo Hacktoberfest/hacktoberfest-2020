@@ -85,10 +85,10 @@ $diamondColor: #93c2db;
 $platinumColor: #99a1b3;
 $goldColor: #ffd700;
 $socialHoverColor: #010e2f;
-$progress-color-light: #F1F7FA;
+$progress-color-light: #f1f7fa;
 $progress-bar-before: #ff00aa;
-$progress-bar-gradient-01: #FF73FA;
-$progress-bar-gradient-02: #FF73FA;
+$progress-bar-gradient-01: #ff73fa;
+$progress-bar-gradient-02: #ff73fa;
 $winner-background-dark: #39486f;
 $winner-color-dark: #92eaff;
 
@@ -222,7 +222,7 @@ $button-hover-color: $pink;
   text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
-  moz-border-radius: 30px;
+  -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   -khtml-border-radius: 30px;
   border-radius: 30px;
@@ -373,6 +373,10 @@ body {
   h3 {
     color: $light-headlineColor !important;
     font-family: "Inter Black", "Helvetica", "Arial", san-serif;
+
+    a {
+      color: $light-headlineColor !important;
+    }
   }
 
   p {
@@ -409,7 +413,7 @@ body {
   // footer
   .footer {
     .footer-do-logo {
-      content: asset_url("DO-light-logo.svg") !important;
+      content: asset-url("DO-light-logo.svg") !important;
     }
 
     .footer-wrapper {
@@ -500,6 +504,108 @@ body {
     font-weight: 900;
     line-height: 44px;
   }
+
+  // sponsors logos
+  .sponsors {
+    .sponsors-vonage {
+      content: asset-url("sponsors-light-vonage.svg") !important;
+    }
+    .sponsors-circleci {
+      content: asset-url("sponsors-light-circleci.svg") !important;
+    }
+    .sponsors-jetbrains {
+      content: asset-url("sponsors-light-jetbrains.svg") !important;
+    }
+    .sponsors-github {
+      content: asset-url("sponsors-light-github.svg") !important;
+    }
+
+    .sponsor-quotes {
+      .box {
+        border: none !important;
+        background-color: $light-boxColor !important;
+        p {
+          color: $light-textColor;
+        }
+      }
+    }
+  }
+  //social share
+  .social {
+    .social-wrapper {
+      p {
+        color: $light-socialTextColor;
+      }
+
+      .social-share-icons {
+        .social-circle {
+          :hover svg path {
+            fill: $socialHoverColor;
+          }
+          background: $light-socialBackgroundColor;
+        }
+      }
+
+      .social-share-twitter {
+        content: asset-url("footer-light-twitter.svg") !important;
+      }
+      .social-share-facebook {
+        content: asset-url("footer-light-facebook.svg") !important;
+      }
+      .social-share-linkedin {
+        content: asset-url("footer-light-linkedin.svg") !important;
+      }
+
+      .social-CTA {
+        .button {
+          svg {
+            &,
+            path {
+              fill: $buttonTextColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // resources page
+  .resources {
+    .details {
+      .resources-graphic {
+        content: asset-url("resources-light.svg") !important;
+      }
+    }
+
+    .box {
+      li {
+        color: $light-textColor !important;
+      }
+    }
+
+    #tabs.box {
+      background-color: $light-boxColor !important;
+
+      li {
+        a {
+          color: $light-textColor;
+        }
+        :hover {
+          background-color: $pink;
+          color: $white !important;
+        }
+        .selected {
+          background-color: $light-textColor;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  // eventkit
+  .eventkit-graphic {
+    content: asset-url("eventkit-light.svg") !important;
+  }
 }
 
 // -------- Global darkmode styles --------
@@ -512,10 +618,18 @@ body.dark {
   h2,
   h3 {
     color: $dark-headlineColor !important;
+
+    a {
+      color: $dark-headlineColor !important;
+    }
   }
 
   p {
     color: $dark-textColor;
+  }
+
+  hr {
+    background-color: $dark-ruleColor !important;
   }
 
   // navigation
@@ -639,6 +753,97 @@ body.dark {
 
   h1 {
     color: $dark-headlineColor !important;
+  }
+
+  // sponsors logos
+  .sponsors {
+    .sponsors-vonage {
+      content: asset-url("sponsors-dark-vonage.svg") !important;
+    }
+    .sponsors-circleci {
+      content: asset-url("sponsors-dark-circleci.svg") !important;
+    }
+    .sponsors-jetbrains {
+      content: asset-url("sponsors-dark-jetbrains.svg") !important;
+    }
+    .sponsors-github {
+      content: asset-url("sponsors-dark-github.svg") !important;
+    }
+
+    .sponsor-quotes {
+      .box {
+        background-color: $dark-boxColor !important;
+        p {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  //social share
+  .social {
+    .social-wrapper {
+      p {
+        color: $dark-socialTextColor;
+      }
+
+      .social-share-icons {
+        .social-circle {
+          background: $dark-socialBackgroundColor !important;
+        }
+      }
+
+      .social-share-twitter {
+        content: asset-url("footer-dark-twitter.svg") !important;
+      }
+      .social-share-facebook {
+        content: asset-url("footer-dark-facebook.svg") !important;
+      }
+      .social-share-linkedin {
+        content: asset-url("footer-dark-linkedin.svg") !important;
+      }
+    }
+  }
+
+  // resources page
+  .resources {
+    .details {
+      .resources-graphic {
+        content: asset-url("resources-dark.svg") !important;
+      }
+    }
+
+    .box {
+      hr {
+        background-color: $dark-footerBackgroundColor !important;
+      }
+      li {
+        color: $dark-textColor !important;
+      }
+    }
+
+    #tabs.box {
+      background-color: $dark-boxColor !important;
+
+      li {
+        a {
+          color: $dark-textColor;
+        }
+        :hover {
+          background-color: $pink;
+          color: $white !important;
+        }
+        .selected {
+          background-color: $dark-footerBackgroundColor;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  // eventkit
+  .eventkit-graphic {
+    content: asset-url("eventkit-dark.svg") !important;
   }
 }
 
