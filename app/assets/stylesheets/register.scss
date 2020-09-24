@@ -98,7 +98,7 @@ section.reg-content {
       justify-content: center;
 
       .background-img {
-        background-image:url('hactoberfest-logo-with-sponsors-light.svg');
+        background-image: asset_url('hactoberfest-logo-with-sponsors-light.svg');
         background-repeat:no-repeat;
         background-size:contain;
         background-position:center;
@@ -117,7 +117,7 @@ body.dark {
   }
 
   section.reg-content .registration-wrapper .registration-right .background-img {
-    background-image:url('hactoberfest-logo-with-sponsors-dark-v2.svg') !important;
+    background-image: asset_url('hactoberfest-logo-with-sponsors-dark-v2.svg') !important;
   }
 
   section.reg-content .registration-wrapper .registration-left label.checkbox, section.reg-content .registration-wrapper .registration-left p {
