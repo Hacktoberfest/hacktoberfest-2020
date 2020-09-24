@@ -14,7 +14,7 @@
     .container {
       padding: 0;
     }
-    
+
     .main-content-wrapper {
       background-color: $light-backgroundColor;
       box-shadow: 0px 5.2029px 20.8116px rgba(24, 61, 93, 0.08);
@@ -26,7 +26,10 @@
       -khtml-border-radius: 8px;
       border-radius: 8px;
 
-      p, h1, h3, h4 {
+      p,
+      h1,
+      h3,
+      h4 {
         color: $light-headlineColor;
       }
 
@@ -95,50 +98,50 @@
           margin-right: 20px;
 
           .spammy-box {
-            background-image: asset_url('icon-light-ineligible.svg');
-            background-repeat:no-repeat;
-            background-size:contain;
-            background-position:center;
+            background-image: asset_url("icon-light-ineligible.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
             display: inline-block;
             width: 32px;
             height: 32px;
           }
 
           .eligible-box {
-            background-image: asset_url('icon-light-eligible.svg');
-            background-repeat:no-repeat;
-            background-size:contain;
-            background-position:center;
+            background-image: asset_url("icon-light-eligible.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
             display: inline-block;
             width: 32px;
             height: 32px;
           }
 
           .bonus-box {
-            background-image: asset_url('icon-light-bonus.svg');
-            background-repeat:no-repeat;
-            background-size:contain;
-            background-position:center;
+            background-image: asset_url("icon-light-bonus.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
             display: inline-block;
             width: 32px;
             height: 32px;
           }
 
           .invalid-box {
-            background-image: asset_url('icon-light-invalid.svg');
-            background-repeat:no-repeat;
-            background-size:contain;
-            background-position:center;
+            background-image: asset_url("icon-light-invalid.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
             display: inline-block;
             width: 32px;
             height: 32px;
           }
 
           .pending-box {
-            background-image: asset_url('icon-light-pending.svg');
-            background-repeat:no-repeat;
-            background-size:contain;
-            background-position:center;
+            background-image: asset_url("icon-light-pending.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
             display: inline-block;
             width: 32px;
             height: 32px;
@@ -167,6 +170,11 @@
       position: relative;
       text-align: left;
 
+      @media screen and (max-width: $break-small) {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+
       .avatar {
         display: inline-block;
 
@@ -182,7 +190,7 @@
         font-size: $size-3;
         line-height: 29px;
         color: white;
-        padding-left: 25px;
+        padding-left: 8px;
         font-weight: 900;
         vertical-align: top;
         margin-top: 0;
@@ -238,50 +246,50 @@
         margin-right: 20px;
 
         .spammy-box {
-          background-image: asset_url('icon-light-ineligible.svg');
-          background-repeat:no-repeat;
-          background-size:contain;
-          background-position:center;
+          background-image: asset_url("icon-light-ineligible.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
           display: inline-block;
           width: 32px;
           height: 32px;
         }
 
         .eligible-box {
-          background-image: asset_url('icon-light-eligible.svg');
-          background-repeat:no-repeat;
-          background-size:contain;
-          background-position:center;
+          background-image: asset_url("icon-light-eligible.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
           display: inline-block;
           width: 32px;
           height: 32px;
         }
 
         .bonus-box {
-          background-image: asset_url('icon-light-bonus.svg');
-          background-repeat:no-repeat;
-          background-size:contain;
-          background-position:center;
+          background-image: asset_url("icon-light-bonus.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
           display: inline-block;
           width: 32px;
           height: 32px;
         }
 
         .invalid-box {
-          background-image: asset_url('icon-light-invalid.svg');
-          background-repeat:no-repeat;
-          background-size:contain;
-          background-position:center;
+          background-image: asset_url("icon-light-invalid.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
           display: inline-block;
           width: 32px;
           height: 32px;
         }
 
         .pending-box {
-          background-image: asset_url('icon-light-pending.svg');
-          background-repeat:no-repeat;
-          background-size:contain;
-          background-position:center;
+          background-image: asset_url("icon-light-pending.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
           display: inline-block;
           width: 32px;
           height: 32px;
@@ -289,7 +297,7 @@
       }
 
       .pr-time-title {
-        width: 60%;
+        width: 64%;
         margin-right: 20px;
 
         p.date {
@@ -300,7 +308,7 @@
           color: $light-tableBorderColor;
           margin-bottom: 10px;
           font-weight: 900;
-         }
+        }
 
         .pr-title {
           font-weight: 500;
@@ -308,11 +316,15 @@
           line-height: 17px;
           color: $light-inputTextColor;
         }
-        
       }
 
       .pr-waiting {
-        width: 28%;
+        width: 138px;
+
+        @media screen and (max-width: $break-small) {
+          margin-left: 50px;
+          margin-top: 20px;
+        }
 
         span.mature {
           font-size: $size-small-text;
@@ -422,10 +434,10 @@
       margin: 10px 0 0 0;
 
       .bonus-box {
-        background-image:url('icon-light-bonus.svg');
-        background-repeat:no-repeat;
-        background-size:contain;
-        background-position:center;
+        background-image: url("icon-light-bonus.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
         display: inline-block;
         width: 32px;
         height: 32px;
@@ -440,7 +452,8 @@
       }
     }
 
-    .progress-wrapper, .education-wrapper {
+    .progress-wrapper,
+    .education-wrapper {
       background-color: $light-backgroundColor;
       box-shadow: 0px 5.2029px 20.8116px rgba(24, 61, 93, 0.08);
       margin-bottom: 30px;
@@ -505,6 +518,12 @@
         }
       }
     }
+
+    .education-wrapper {
+      @media screen and (max-width: $break-small) {
+        margin-bottom: 80px;
+      }
+    }
   }
 
   .progress-bar {
@@ -532,7 +551,11 @@
       left: 0;
       height: 100%;
       background: $progress-bar-before;
-      background: linear-gradient(80deg, $progress-bar-gradient-01 0%, $progress-bar-gradient-02 100%);
+      background: linear-gradient(
+        80deg,
+        $progress-bar-gradient-01 0%,
+        $progress-bar-gradient-02 100%
+      );
     }
 
     &.progress-state-0 {
@@ -576,11 +599,16 @@
 }
 
 body.dark {
-  .profile-page .profile-left .main-content-wrapper, .profile-page .profile-right .progress-wrapper, .profile-page .profile-right .education-wrapper {
+  .profile-page .profile-left .main-content-wrapper,
+  .profile-page .profile-right .progress-wrapper,
+  .profile-page .profile-right .education-wrapper {
     background-color: $dark-inputBackgroundColor !important;
   }
 
-  .profile-page .profile-left .pre-launch-container h2, .profile-page .profile-left .main-content-wrapper p, .profile-page .profile-left .main-content-wrapper h3, .profile-page .profile-left .main-content-wrapper h4 {
+  .profile-page .profile-left .pre-launch-container h2,
+  .profile-page .profile-left .main-content-wrapper p,
+  .profile-page .profile-left .main-content-wrapper h3,
+  .profile-page .profile-left .main-content-wrapper h4 {
     color: $dark-headlineColor !important;
   }
 
@@ -597,7 +625,8 @@ body.dark {
     border: 2px solid $dark-backgroundColor !important;
   }
 
-  .profile-page .profile-right .progress-wrapper .education-section a, .profile-page .profile-right .education-wrapper .education-section a {
+  .profile-page .profile-right .progress-wrapper .education-section a,
+  .profile-page .profile-right .education-wrapper .education-section a {
     color: $labelColor !important;
   }
 
@@ -606,30 +635,60 @@ body.dark {
     color: $winner-color-dark !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .spammy-box, .timeline-date .spammy-box,
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .spammy-box,
+  .timeline-date .spammy-box,
   .profile-page .profile-left .timeline-wrapper .pr-icon .spammy-box {
-    background-image: asset_url('icon-dark-ineligible.svg') !important;
+    background-image: asset_url("icon-dark-ineligible.svg") !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .eligible-box, .timeline-date .eligible-box,
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .eligible-box,
+  .timeline-date .eligible-box,
   .profile-page .profile-left .timeline-wrapper .pr-icon .eligible-box {
-    background-image: asset_url('icon-dark-eligible.svg') !important;
+    background-image: asset_url("icon-dark-eligible.svg") !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .bonus-box, .timeline-date .bonus-box,
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .bonus-box,
+  .timeline-date .bonus-box,
   .profile-page .profile-left .timeline-wrapper .pr-icon .bonus-box,
   .profile-page .profile-right .icon-box.bonus-wrapper .bonus-box {
-    background-image: asset_url('icon-dark-bonus.svg') !important;
+    background-image: asset_url("icon-dark-bonus.svg") !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .invalid-box, .timeline-date .invalid-box,
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .invalid-box,
+  .timeline-date .invalid-box,
   .profile-page .profile-left .timeline-wrapper .pr-icon .invalid-box {
-    background-image: asset_url('icon-dark-invalid.svg') !important;
+    background-image: asset_url("icon-dark-invalid.svg") !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .pending-box, .timeline-date .pending-box, 
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .pending-box,
+  .timeline-date .pending-box,
   .profile-page .profile-left .timeline-wrapper .pr-icon .pending-box {
-    background-image: asset_url('icon-dark-pending.svg') !important;
+    background-image: asset_url("icon-dark-pending.svg") !important;
   }
 
   .profile-page .profile-right .icon-box.bonus-wrapper span {
@@ -640,9 +699,19 @@ body.dark {
     color: $buttonTextColor !important;
   }
 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-name-desc .icon-name, 
-  .profile-page .profile-left .main-content-wrapper .legend-container .icon-name-desc .icon-desc, 
-  .profile-page .profile-left .timeline-wrapper .pr-time-title .pr-title, 
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-name-desc
+    .icon-name,
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-name-desc
+    .icon-desc,
+  .profile-page .profile-left .timeline-wrapper .pr-time-title .pr-title,
   .profile-page .profile-left .timeline-wrapper .pr-waiting span.count-down {
     color: $dark-socialTextColor !important;
   }
@@ -657,7 +726,8 @@ body.dark {
 }
 
 @media screen and (max-width: $break-small) {
-  .profile-page .profile-left, .profile-page .profile-right {
+  .profile-page .profile-left,
+  .profile-page .profile-right {
     padding: 0 20px;
     width: 100%;
   }
@@ -680,12 +750,20 @@ body.dark {
 }
 
 @media screen and (max-width: $break-mobile) {
-  .profile-page .profile-left .congratulations-txt .congrats-wrapper .congrats-text {
+  .profile-page
+    .profile-left
+    .congratulations-txt
+    .congrats-wrapper
+    .congrats-text {
     width: 100%;
     margin-right: 0;
   }
 
-  .profile-page .profile-left .congratulations-txt .congrats-wrapper .parrot-image {
+  .profile-page
+    .profile-left
+    .congratulations-txt
+    .congrats-wrapper
+    .parrot-image {
     display: none;
   }
 
@@ -703,6 +781,3 @@ body.dark {
     display: block;
   }
 }
-
-
-

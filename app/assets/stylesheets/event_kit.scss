@@ -1,16 +1,10 @@
 $break-small: 1024px;
 $red: #ff8ae2;
 
-h2 {
-  font-size: $size-1;
-  margin: 64px 0px 16px;
-}
-
-h3 {
-  font-size: $size-3;
-}
-
 .event-kit-page {
+  h2 {
+    margin: 64px 0px 16px;
+  }
   section {
     margin: 60px 0;
   }
