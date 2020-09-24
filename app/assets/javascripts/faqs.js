@@ -10,7 +10,6 @@ window.addEventListener("click", (e) => {
   
     if ($target.is("p")) {
       var $toggle = $target.parent().next();
-      console.log($toggle.hasClass("toggle"));
       if ($toggle.hasClass("toggle")) {
         $toggle.toggleClass("active");
         $toggle.next().toggleClass("answer-show");
