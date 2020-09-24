@@ -508,19 +508,19 @@ body {
   // sponsors logos
   .sponsors {
     .sponsors-vonage {
-      content: url(sponsors-light-vonage.svg) !important;
+      content: asset-url("sponsors-light-vonage.svg") !important;
     }
     .sponsors-circleci {
-      content: url(sponsors-light-circleci.svg) !important;
+      content: asset-url("sponsors-light-circleci.svg") !important;
     }
     .sponsors-jetbrains {
-      content: url(sponsors-light-jetbrains.svg) !important;
+      content: asset-url("sponsors-light-jetbrains.svg") !important;
     }
     .sponsors-github {
-      content: url(sponsors-light-github.svg) !important;
+      content: asset-url("sponsors-light-github.svg") !important;
     }
     .sponsors-mongodb {
-      content: url(sponsors-light-mongodb.svg) !important;
+      content: asset-url("sponsors-light-mongodb.svg") !important;
     }
 
     .sponsor-quotes {
@@ -603,6 +603,11 @@ body {
         }
       }
     }
+  }
+
+  // eventkit
+  .eventkit-graphic {
+    content: asset-url("eventkit-light.svg") !important;
   }
 }
 
@@ -756,19 +761,19 @@ body.dark {
   // sponsors logos
   .sponsors {
     .sponsors-vonage {
-      content: url(sponsors-dark-vonage.svg) !important;
+      content: asset-url("sponsors-dark-vonage.svg") !important;
     }
     .sponsors-circleci {
-      content: url(sponsors-dark-circleci.svg) !important;
+      content: asset-url("sponsors-dark-circleci.svg") !important;
     }
     .sponsors-jetbrains {
-      content: url(sponsors-dark-jetbrains.svg) !important;
+      content: asset-url("sponsors-dark-jetbrains.svg") !important;
     }
     .sponsors-github {
-      content: url(sponsors-dark-github.svg) !important;
+      content: asset-url("sponsors-dark-github.svg") !important;
     }
     .sponsors-mongodb {
-      content: url(sponsors-dark-mongodb.svg) !important;
+      content: asset-url("sponsors-dark-mongodb.svg") !important;
     }
 
     .sponsor-quotes {
@@ -840,6 +845,11 @@ body.dark {
         }
       }
     }
+  }
+
+  // eventkit
+  .eventkit-graphic {
+    content: asset-url("eventkit-dark.svg") !important;
   }
 }
 
