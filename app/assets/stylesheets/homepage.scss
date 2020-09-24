@@ -414,15 +414,12 @@ main.home {
       }
 
       a {
-        margin-right: 64px;
-        margin-bottom: 32px;
+        padding: 0.5rem 1rem;
+        margin: 0 2rem 1rem;
 
         @media screen and (max-width: $break-small) {
-          margin-right: 0;
+          margin: 0 0 1rem;
         }
-      }
-      a:last-of-type {
-        margin-right: 0;
       }
     }
   }
@@ -469,7 +466,7 @@ main.home {
       }
 
       .social-CTA {
-        button {
+        .button {
           align-items: center;
 
           img {
