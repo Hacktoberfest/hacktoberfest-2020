@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   post '/report', to: 'reports#create'
 
   # Sidekiq
-  if Rails.env.production?
+  if Rails.env.production? || Rails.env.staging?
     Sidekiq::Web.use Rack::Auth::Basic do |username, password|
       ActiveSupport::SecurityUtils
         .secure_compare(::Digest::SHA256.hexdigest(username),
