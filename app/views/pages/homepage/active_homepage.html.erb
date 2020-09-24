@@ -9,11 +9,17 @@
         <%= link_to "start hacking", login_path, :class => active_path_class?(profile_path, '') + " button" %>
         <div class="presented-by">
           <p>Presented by</p>
-          <img alt="DigitalOcean logo" class="header-do-logo">
+            <a href="https://www.digitalocean.com">
+              <img alt="DigitalOcean logo" class="header-do-logo">
+            </a>
           <p>+</p>
+          <a href="/static-assets/intel.pdf" download>
           <img alt="Intel logo" class="header-intel-logo">
+          </a>
           <p>+</p>
+          <a href="https://github.com/forem/forem">
           <img alt="DEV logo" class="header-dev-logo">
+          </a>
         </div>
     </div>
   </section>
@@ -142,37 +148,110 @@
 
   <section class="sponsors">
     <div class="container">
-      <h2 class="title is-2">Words from our sponsors</h2>
-      <div class="tile is-ancestor">
-        <div class="tile is-child is-6">
-          <h4 class="title is-4">
-            <%= image_tag("DO-logo-footer.svg", :alt => "DO Logo") %>
-          </h4>
+    <div class="grid sponsor-quotes">
+        <div class="box">
+          <h6 class="title is-6">
+            From DigitalOcean
+          </h6>
           <p>
-            We’re so excited to partner with
-            <a href="https://dev.to">DEV</a>
-            – an
-            <a href="https://github.com/thepracticaldev/dev.to">open source</a>
-            community platform built for developers of all backgrounds and experience levels – for this year’s Hacktoberfest. As a torch-bearer for open source, transparency, and inclusion in tech, DEV fully embodies the Hacktoberfest values. Check out the <a href="https://dev.to/t/hacktoberfest">#Hacktoberfest</a>
-            tag on DEV for announcements and resources before, during, and after the event.
+           Now in its 7th year, Hacktoberfest has become an integral thread in our company fabric. We wouldn’t be here without the passionate community and helpful partners that make this program such a spectacular event. A big thank you to all that are joining for the first time and those that keep coming back year after year. 
           </p>
         </div>
-        <div class="tile is-child is-6">
-          <h4 class="title is-4">
-            <%= image_tag("DEV-logo-footer.svg", :alt => "DEV Logo", :class => "dev-logo") %>
-          </h4>
+        <div class="box">
+          <h6 class="title is-6">
+            From Intel
+          </h6>
           <p>
-            As participants long before we became sponsors, we’re thankful to our friends at
-            <a href="https://www.digitalocean.com/">DigitalOcean</a>
-            for creating Hacktoberfest. As an advocate of developers and startups, their cloud platform uniquely hits on both simplicity and scalability. And their
-            <a href="https://www.digitalocean.com/community">Community platform</a>
-            has become a global resource for education on development and DevOps topics, further illustrating that they, too, are stewards of
-            <a href="https://developers.digitalocean.com/opensource/">open source</a>.
+           Did you know that Intel is among the top ten contributors to open-source software?  <br/> <br/>
+          We’re honored to join the Hacktoberfest celebration this year to build on this foundation along with hundreds of thousands of software engineers around the world.
+          </p>
+        </div>
+        <div class="box">
+          <h6 class="title is-6">
+            From Dev
+          </h6>
+          <p>
+           DEV/Forem is proud to support Hacktoberfest, a truly wonderful celebration of open-source.  Whether you're an individual contributor or a project maintainer, please join us on DEV to share your Hacktoberfest journey. We can't wait to see you there.
           </p>
         </div>
       </div>
     </div>
+    <div class="main-sponsors">
+      <a href="https://nexmo.dev/digitalocean"><img alt="vonage logo" class="sponsors-vonage" /></a>
+      <a href="https://circleci.com/"><img alt="circleci logo" class="sponsors-circleci" /></a>    
+      <a href="https://www.jetbrains.com/"><img alt="jetbrains logo" class="sponsors-jetbrains" /></a>    
+      <a href="https://github.com/"><img alt="github logo" class="sponsors-github" /></a> 
+      <a href="https://www.mongodb.com/"><img alt="mongodb logo" class="sponsors-mongodb" /></a>           
+    </div>
+    <div class="secondary-sponsors">
+       <a href="https://opensource.indeedeng.io/">
+          <%= image_tag("community-indeed.svg", :alt => "Indeed Logo") %>
+        </a>
+        <a href="https://mlh.io/events">
+          <%= image_tag("community-mlh.svg", :alt => "MLH Logo") %>
+        </a>
+        <a href="https://www.gremlin.com/">
+        <%= image_tag("community-gremlin.svg", :alt => "Gremlin Logo") %>
+        </a>
+        <a href="https://progate.com/">
+        <%= image_tag("community-progate.svg", :alt => "Progate Logo") %>
+        </a>
+        <a href="https://stripe.dev/">
+        <%= image_tag("community-stripe.svg", :alt => "Stripe Logo") %>
+        </a>
+        <a href="https://www.freshworks.com/">
+        <%= image_tag("community-freshworks.svg", :alt => "Freshworks Logo") %>
+        </a>
+        <a href="https://developers.cloudflare.com/sponsorships/">
+        <%= image_tag("community-cloudflare.svg", :alt => "Cloudflare Logo") %>
+        </a>
+        <a href="https://www.cockroachlabs.com/bug-hunt">
+        <%= image_tag("community-cockroach-labs.svg", :alt => "Cockroach Labs Logo") %>
+        </a>
+        <a href="https://pulumi.com/start">
+        <%= image_tag("community-pulumi.svg", :alt => "Pulumi Logo") %>
+        </a>
+        <a href="https://mattermost.com/hacktoberfest/">
+        <%= image_tag("community-mattermost.svg", :alt => "Mattermost Logo") %>
+        </a>
+        <a href="https://gitcoin.co/landing">
+        <%= image_tag("community-gitcoin.svg", :alt => "Gitcoin Logo") %>
+        </a>
+        <a href="https://raise.dev/hacktoberfest">
+        <%= image_tag("community-raise.svg", :alt => "Raise.dev Logo") %>
+        </a>
+        <a href="https://www.oscollective.org/">
+        <%= image_tag("community-osc.svg", :alt => "Open Source Collective Logo") %>
+        </a>
+    </div>
   </section>
+
+  <section class="social">
+    <%= image_tag("HF-full-logo.svg", :alt => "Hacktoberfest Logo") %>  
+      <div class="social-wrapper">
+        <p>Spread the word</p>
+        <div class="social-share-icons">
+          <a class="social-circle" href="https://ctt.ac/60V6P">
+            <img alt="twitter" class="social-share-twitter" />
+          </a>
+          <a class="social-circle" href="https://www.facebook.com/sharer/sharer.php?u=https://hacktoberfest.digitalocean.com/">
+            <img alt="facebook" class="social-share-facebook" />
+          </a>
+          <a class="social-circle" href="https://www.linkedin.com/sharing/share-offsite/?url=https://hacktoberfest.digitalocean.com/">
+            <img alt="linkedin" class="social-share-linkedin" />
+          </a>
+        </div>
+      </div>
+      <div class="social-wrapper">
+        <div class="social-CTA">
+          <button class="button" url="https://discord.gg/hacktoberfest">
+             <%= image_tag("footer-social-discord.svg", :alt => "Discord Logo") %>  
+            Join the conversation
+          </button>
+        </div>
+      </div>
+  </section>
+
 </main>
 <script type="text/javascript">
   setupLanguageFilter();
@@ -180,7 +259,5 @@
 </script>
 <script defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaiOH0fpf3MEEsObdMPSJgWw3H4iiNmEo&callback=setupEventMap">
-    // DO's actual google api key AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k
-    // test key AIzaSyBaiOH0fpf3MEEsObdMPSJgWw3H4iiNmEo
 </script>
 
