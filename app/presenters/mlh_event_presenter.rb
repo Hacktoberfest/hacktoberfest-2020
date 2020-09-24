@@ -39,7 +39,7 @@ class MlhEventPresenter
   end
 
   def url
-    @event.dig('links', 'register')
+    @event.dig('links', 'view')
   end
 
   def current?
