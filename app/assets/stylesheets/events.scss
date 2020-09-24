@@ -224,6 +224,10 @@ body.dark {
         }
       }
     }
+
+    .table-mobile-cards table.event-table tbody tr td {
+      color: $dark-tableColor !important;
+    }
   }
 
   .filter-input {
@@ -272,7 +276,7 @@ body.dark {
           td {
             display: block;
             font-size: $size-button-text;
-            color: $white;
+            color: $winner-background-dark;
             text-align: right !important;
             border: solid $grey-dark;
             border-width: 0 0 1px;
