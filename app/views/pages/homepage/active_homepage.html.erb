@@ -79,20 +79,22 @@
 
   <section class="home-special-projects">
     <div class="container">
-      <a name="climate"></a>
-      <h2 class="title is-2 climate">Projects focused on climate change</h2>
+      <a name="featured"></a>
+      <h2 class="title is-2 featured">
+        Projects focused on climate change & COVID-19 Relief
+      </h2>
       <p>
-        Because we believe open source technology has the potential to change the world, we wanted to showcase a few projects focused on combating climate change:
+        Featured projects focused on tackling Climate Change and supporting the fight against COVID-19
       </p>
       <div class="grid">
-        <% @climate_repositories.map do |repository| %>
-          <a href="<%= repository[:url] %>">
+        <% @featured_projects.map do |repository| %>
+          <a href="<%= repository['Repo URL'] %>">
           <div class="box projects grow-shadow">
             <div class="title-wrap">
-              <h3 class="repo-name"> <%= repository[:name] %> </h3>
-              <span class="lang"><%= repository[:language] %></span>
+              <h3 class="repo-name"> <%= repository['Repo Name'] %> </h3>
+              <span class="lang"><%= repository['Repo Language'] %></span>
             </div>
-            <p class="description"><%= repository[:description] %></p>
+            <p class="description"><%= repository['Description'] %></p>
           </div>
             </a>
         <% end %>
@@ -103,15 +105,15 @@
      </div>
   </section>
 
-  <section class="eventsBlock">
+  <section class="events-block">
     <div class="container">
-      <div class="section events">
+      <div class="events">
         <h2 class="title is-2">Global events</h2>
         <p>
-          Celebrate and support open source technology by  <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a> or  <a href="https://hacktoberfest.digitalocean.com/event">attending</a> a virtual event in October.
+          Celebrate and support open source technology by <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a> or  <a href="https://hacktoberfest.digitalocean.com/event">attending</a> a virtual event in October.
         </p>
         <!-- FEATURED EVENTS GENERATED HERE -->
-        <section class="event-union">
+        <div class="event-union">
           <% @events.map do |e| %>
           <a class="box grow-shadow" href="<%= e.url %>">
               <span class="event-month">
@@ -131,7 +133,8 @@
               </div>
           </a>
           <% end %>
-        </section>
+        </div>
+        <div id="eventmap" style="max-width: 1170px; height: 470px;"></div>
       <%= link_to 'See more events', events_path, :class => 'button' %>
       </div>
     </div>
@@ -173,5 +176,11 @@
 </main>
 <script type="text/javascript">
   setupLanguageFilter();
-  setupPRsOpenedChart();
+  // setupPRsOpenedChart();
 </script>
+<script defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaiOH0fpf3MEEsObdMPSJgWw3H4iiNmEo&callback=setupEventMap">
+    // DO's actual google api key AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k
+    // test key AIzaSyBaiOH0fpf3MEEsObdMPSJgWw3H4iiNmEo
+</script>
+

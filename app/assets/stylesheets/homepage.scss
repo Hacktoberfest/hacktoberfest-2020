@@ -146,11 +146,15 @@ main.home {
     margin-top: 10px;
   }
 
-  .eventsBlock {
+  .events-block {
     margin-left: 0px;
-    height: 800px;
+    height: 100%;
     width: 100%;
     text-align: center;
+  }
+
+  #eventmap {
+    margin-bottom: 64px;
   }
 
   .events {
@@ -278,6 +282,10 @@ main.home {
     .box span {
       width: 100%;
       float: left;
+    }
+
+    .box:last-of-type {
+      margin-right: 0;
     }
   }
 
