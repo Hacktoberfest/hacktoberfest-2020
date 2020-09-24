@@ -138,7 +138,6 @@
           <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a> or
           <a href="https://hacktoberfest.digitalocean.com/event">attending</a> a virtual event in October.
         </p>
-        <!-- FEATURED EVENTS GENERATED HERE -->
         <div class="event-union">
           <% @events.map do |e| %>
             <a class="box grow-shadow" href="<%= e.url %>">
@@ -282,7 +281,6 @@
 </main>
 <script type="text/javascript">
     setupLanguageFilter();
-    // setupPRsOpenedChart();
 </script>
 <script defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaiOH0fpf3MEEsObdMPSJgWw3H4iiNmEo&callback=setupEventMap">
