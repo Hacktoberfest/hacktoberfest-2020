@@ -33,9 +33,9 @@ class UsersController < ApplicationController
     if @current_user.save
       segment = SegmentService.new(@current_user)
       segment.identify(
-          email: @current_user.email,
-          category: @current_user.category,
-          country: @current_user.country
+        email: @current_user.email,
+        category: @current_user.category,
+        country: @current_user.country
       )
       redirect_to profile_path
     else
@@ -62,11 +62,11 @@ class UsersController < ApplicationController
   end
 
   def transform_categories
-    if params[:user].present? && params[:user][:category].present?
-      params[:user][:category] = params[:user][:category]
-                                     .reject(&:empty?)
-                                     .join(',')
-      end
+    return unless params[:user].present? && params[:user][:category].present?
+
+    params[:user][:category] = params[:user][:category]
+                               .reject(&:empty?)
+                               .join(',')
   end
 
   def params_for_registration
@@ -83,7 +83,7 @@ class UsersController < ApplicationController
 
   def params_for_update
     params.require(:user).permit(
-:email,
+      :email,
       :category,
       :country
     )
