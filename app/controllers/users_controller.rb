@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in!
   before_action :require_user_registered!, only: :show
   before_action :disallow_registered_user!, only: :registration
+  before_action :transform_categories, only: %i[register update]
 
   # render current user profile
   def show
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
 
   # action to render register form
   def registration
-    @categories = { 'Participant' => 'Participant',
+    @categories = { 'Participant' => 'participant',
                     'Event Organizer' => 'organizer',
                     'Maintainer' => 'maintainer' }
     set_user_emails
@@ -58,6 +59,14 @@ class UsersController < ApplicationController
 
   def set_user_emails
     @emails = UserEmailService.new(@current_user).emails
+  end
+
+  def transform_categories
+    if params[:user].present? && params[:user][:category].present?
+      params[:user][:category] = params[:user][:category]
+                                     .reject(&:empty?)
+                                     .join(',')
+      end
   end
 
   def params_for_registration
