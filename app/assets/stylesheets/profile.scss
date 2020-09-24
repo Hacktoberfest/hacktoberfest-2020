@@ -487,7 +487,7 @@
           font-weight: bold;
           font-size: $size-button-text;
           line-height: 170%;
-          color: $light-tableBorderColor;
+          color: $light-textColor;
         }
 
         svg {
@@ -628,6 +628,10 @@ body.dark {
   .profile-page .profile-right .progress-wrapper .education-section a,
   .profile-page .profile-right .education-wrapper .education-section a {
     color: $labelColor !important;
+  }
+
+  .education-section h5 {
+    color: $dark-textColor !important;
   }
 
   #winner-code {
