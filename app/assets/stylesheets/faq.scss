@@ -42,6 +42,7 @@
 
   .qa-section{
     margin-top: 4rem;
+    padding: 0 20px;
 
     .title.is-2{
       margin-bottom: 2.5rem;
@@ -89,7 +90,6 @@
       color: $light-textColor;
 
       p {
-        min-width: 760px;
 
         @media (max-width: $break-mobile) {
           margin-top: 5px;
