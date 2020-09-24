@@ -26,6 +26,12 @@ $break-med: 1288px;
   ol {
     margin-left: 32px;
 
+    @media screen and (max-width: $break-med) {
+      text-align: left;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
     li {
       padding: 12px 0;
     }
@@ -34,6 +40,12 @@ $break-med: 1288px;
   ul {
     list-style: initial;
     margin-left: 32px;
+
+    @media screen and (max-width: $break-med) {
+      text-align: left;
+      max-width: 80%;
+      margin: 0 auto;
+    }
 
     li {
       padding: 12px 0;
@@ -59,11 +71,12 @@ $break-med: 1288px;
       width: 284px;
       margin-bottom: 0;
       list-style: none;
-      margin-right: 0;
+      margin-left: 0;
 
       @media screen and (max-width: $break-med) {
         flex-direction: row;
-        width: 100%;
+        width: 100% !important;
+        max-width: 100%;
       }
 
       @media screen and (max-width: $break-small) {
