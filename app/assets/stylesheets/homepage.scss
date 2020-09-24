@@ -151,6 +151,11 @@ main.home {
     height: 100%;
     width: 100%;
     text-align: center;
+
+    .container {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
   }
 
   #eventmap {
@@ -161,7 +166,6 @@ main.home {
     padding-top: 30px;
 
     @media screen and (max-width: $break-small) {
-      text-align: left;
       padding-top: 0px;
     }
   }
@@ -195,6 +199,7 @@ main.home {
     }
     @media screen and (max-width: $break-small) {
       width: 100%;
+      margin-right: 0;
     }
   }
 
@@ -403,16 +408,22 @@ main.home {
       justify-content: center;
       align-items: center;
 
+      @media screen and (max-width: $break-small) {
+        flex-direction: column;
+        margin: 0 auto;
+      }
+
       a {
         margin-right: 64px;
         margin-bottom: 32px;
+
+        @media screen and (max-width: $break-small) {
+          margin-right: 0;
+        }
       }
       a:last-of-type {
         margin-right: 0;
       }
-    }
-
-    @media screen and (max-width: $break-small) {
     }
   }
 
