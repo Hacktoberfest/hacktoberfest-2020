@@ -1,55 +1,57 @@
 <main class="section is-fluid fluid-content-page">
-  <div class="faq-header">
-    <img alt="faq icon image" class="faq-image">
-    <h1 class="title is-1">What is Hacktoberfest?</h1>
-    <p class="faq-intro">Have questions? These are the most Frequently Asked Questions about Hacktoberfest.</p>
-  </div>
-  <div class="qa-section">
-    <a name="general">
-      <h2 class="title is-2 highlight">General </h2>
-    </a>
-    <% @faqs_general.map do |q| %>
-      <div class="question-answer">
-        <div class="question"><%= markdown(q["Question"])%></div>
-        <div class="toggle">&#xFE62;</div>
-        <div class="answer"> <%= markdown(q["Answer"]) %></div>
-      </div>
-    <% end %>
-  </div>
-  <div class="qa-section">
-    <a name="rules">
-      <h2 class="title is-2 highlight">Rules</h2>
-    </a>
-    <% @faqs_rules.map do |q| %>
-      <div class="question-answer">
-        <div class="question"><%= markdown(q["Question"])%></div>
-        <div class="toggle">&#xFE62;</div>
-        <div class="answer"><%= markdown(q["Answer"]) %></div>
-      </div>
-    <% end %>
-  </div>
-  <div class="qa-section">
-    <a name="events">
-      <h2 class="title is-2 highlight">Events </h2>
-    </a>
-    <% @faqs_events.map do |q| %>
-      <div class="question-answer">
-        <div class="question"><%= markdown(q["Question"])%></div>
-        <div class="toggle">&#xFE62;</div>
-        <div class="answer"> <%= markdown(q["Answer"]) %></div>
-      </div>
-    <% end %>
-  </div>
-  <div class="qa-section">
-    <a name="shipping">
-      <h2 class="title is-2 highlight">Shipping </h2>
-    </a>
-    <% @faqs_shipping.map do |q| %>
-      <div class="question-answer">
-        <div class="question"><%= markdown(q["Question"])%></div>
-        <div class="toggle">&#xFE62;</div>
-        <div class="answer"> <%= markdown(q["Answer"]) %></div>
-      </div>
-    <% end %>
+  <div class="container">
+    <div class="faq-header">
+      <img alt="faq icon image" class="faq-image">
+      <h1 class="title is-1">What is Hacktoberfest?</h1>
+      <p class="faq-intro">Have questions? These are the most Frequently Asked Questions about Hacktoberfest.</p>
+    </div>
+    <div class="qa-section">
+      <a name="general">
+        <h2 class="title is-2 highlight">General </h2>
+      </a>
+      <% @faqs_general.map do |q| %>
+        <div class="question-answer">
+          <div class="question"><%= markdown(q["Question"])%></div>
+          <div class="toggle">&#xFE62;</div>
+          <div class="answer"> <%= markdown(q["Answer"]) %></div>
+        </div>
+      <% end %>
+    </div>
+    <div class="qa-section">
+      <a name="rules">
+        <h2 class="title is-2 highlight">Rules</h2>
+      </a>
+      <% @faqs_rules.map do |q| %>
+        <div class="question-answer">
+          <div class="question"><%= markdown(q["Question"])%></div>
+          <div class="toggle">&#xFE62;</div>
+          <div class="answer"><%= markdown(q["Answer"]) %></div>
+        </div>
+      <% end %>
+    </div>
+    <div class="qa-section">
+      <a name="events">
+        <h2 class="title is-2 highlight">Events </h2>
+      </a>
+      <% @faqs_events.map do |q| %>
+        <div class="question-answer">
+          <div class="question"><%= markdown(q["Question"])%></div>
+          <div class="toggle">&#xFE62;</div>
+          <div class="answer"> <%= markdown(q["Answer"]) %></div>
+        </div>
+      <% end %>
+    </div>
+    <div class="qa-section">
+      <a name="shipping">
+        <h2 class="title is-2 highlight">Shipping </h2>
+      </a>
+      <% @faqs_shipping.map do |q| %>
+        <div class="question-answer">
+          <div class="question"><%= markdown(q["Question"])%></div>
+          <div class="toggle">&#xFE62;</div>
+          <div class="answer"> <%= markdown(q["Answer"]) %></div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </main>
