@@ -52,7 +52,6 @@ $navColor: rgba(0, 0, 0, 0);
 
 #navbar {
   font-family: "Inter Black", "Helvetica", "Arial", san-serif;
-  font-weight: 900;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -108,6 +107,7 @@ $navColor: rgba(0, 0, 0, 0);
 
         .button.button-small.navLink {
           color: #fff;
+
           @media screen and (max-width: $break-small) {
             margin-top: 10px;
           }
@@ -118,13 +118,20 @@ $navColor: rgba(0, 0, 0, 0);
         }
 
         .dropdown-trigger {
+          small {
+            font-size: 0.5rem;
+            vertical-align: text-top;
+            position: relative;
+            top: 0.2rem;
+          }
+
           @media screen and (max-width: $break-small) {
             display: none;
           }
         }
 
         .dropdown-menu {
-          padding-top: 15px;
+          padding-top: 10px;
 
           @media screen and (max-width: $break-small) {
             display: flex;
@@ -135,7 +142,7 @@ $navColor: rgba(0, 0, 0, 0);
           }
 
           .dropdown-content {
-            padding: 0;
+            padding: 10px;
             box-shadow: rgba(24, 61, 93, 0.08) 0px 4px 10px;
             text-decoration: none;
 
@@ -150,8 +157,9 @@ $navColor: rgba(0, 0, 0, 0);
 
             .navLink {
               margin-left: 0;
-              padding: 15px 20px;
+              padding: 10px 15px;
               font-size: 12px;
+              border-radius: 4px;
 
               @media screen and (max-width: $break-small) {
                 font-size: 0.875rem;
@@ -198,6 +206,7 @@ $navColor: rgba(0, 0, 0, 0);
         .button.navLink:hover {
           color: $grey-darker;
           border-bottom: 0;
+
           @media screen and (max-width: $break-small) {
             margin-top: 10px;
             padding-bottom: 7px;
