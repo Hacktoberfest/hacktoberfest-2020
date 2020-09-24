@@ -222,7 +222,7 @@ $button-hover-color: $pink;
   text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
-  moz-border-radius: 30px;
+  -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   -khtml-border-radius: 30px;
   border-radius: 30px;
@@ -373,6 +373,10 @@ body {
   h3 {
     color: $light-headlineColor !important;
     font-family: "Inter Black", "Helvetica", "Arial", san-serif;
+
+    a {
+      color: $light-headlineColor !important;
+    }
   }
 
   p {
@@ -567,6 +571,39 @@ body {
       }
     }
   }
+
+  // resources page
+  .resources {
+    .details {
+      .resources-graphic {
+        content: asset-url("resources-light.svg") !important;
+      }
+    }
+
+    .box {
+      li {
+        color: $light-textColor !important;
+      }
+    }
+
+    #tabs.box {
+      background-color: $light-boxColor !important;
+
+      li {
+        a {
+          color: $light-textColor;
+        }
+        :hover {
+          background-color: $pink;
+          color: $white !important;
+        }
+        .selected {
+          background-color: $light-textColor;
+          color: $white;
+        }
+      }
+    }
+  }
 }
 
 // -------- Global darkmode styles --------
@@ -579,10 +616,18 @@ body.dark {
   h2,
   h3 {
     color: $dark-headlineColor !important;
+
+    a {
+      color: $dark-headlineColor !important;
+    }
   }
 
   p {
     color: $dark-textColor;
+  }
+
+  hr {
+    background-color: $dark-ruleColor !important;
   }
 
   // navigation
@@ -757,6 +802,42 @@ body.dark {
       }
       .social-share-linkedin {
         content: asset-url("footer-dark-linkedin.svg") !important;
+      }
+    }
+  }
+
+  // resources page
+  .resources {
+    .details {
+      .resources-graphic {
+        content: asset-url("resources-dark.svg") !important;
+      }
+    }
+
+    .box {
+      hr {
+        background-color: $dark-footerBackgroundColor !important;
+      }
+      li {
+        color: $dark-textColor !important;
+      }
+    }
+
+    #tabs.box {
+      background-color: $dark-boxColor !important;
+
+      li {
+        a {
+          color: $dark-textColor;
+        }
+        :hover {
+          background-color: $pink;
+          color: $white !important;
+        }
+        .selected {
+          background-color: $dark-footerBackgroundColor;
+          color: $white;
+        }
       }
     }
   }
