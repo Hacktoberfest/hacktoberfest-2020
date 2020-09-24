@@ -519,9 +519,6 @@ body {
     .sponsors-github {
       content: asset-url("sponsors-light-github.svg") !important;
     }
-    .sponsors-mongodb {
-      content: asset-url("sponsors-light-mongodb.svg") !important;
-    }
 
     .sponsor-quotes {
       .box {
@@ -771,9 +768,6 @@ body.dark {
     }
     .sponsors-github {
       content: asset-url("sponsors-dark-github.svg") !important;
-    }
-    .sponsors-mongodb {
-      content: asset-url("sponsors-dark-mongodb.svg") !important;
     }
 
     .sponsor-quotes {
