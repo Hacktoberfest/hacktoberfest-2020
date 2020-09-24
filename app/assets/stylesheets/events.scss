@@ -229,7 +229,7 @@ body.dark {
       }
     }
 
-    .table-mobile-cards table.event-table tbody tr td {
+    .table-mobile-cards table.event-table tbody tr td, .table-mobile-cards table.event-table tbody tr td .emphasis {
       color: $dark-tableColor !important;
     }
   }
@@ -302,7 +302,7 @@ body.dark {
             }
 
             .emphasis {
-              color: $cyan;
+              color: $winner-background-dark;
               font-size: $size-5;
             }
           }
