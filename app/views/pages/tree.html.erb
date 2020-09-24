@@ -1,0 +1,15 @@
+<% content_for(:meta_image) { image_url("tree-meta.png") } %>
+
+<div class="section">
+  <div class="container">
+    <h3 class="title is-3">
+      Redirecting you to our homepage...
+    </h3>
+    <p>
+      If for some reason you are not automatically redirected, click here: <br/><br />
+      <%= button_to 'Go to our homepage', '/',
+                    id: 'homepage-button', class: 'button', method: :get %>
+    </p>
+  </div>
+  <%= javascript_tag '$(function(){ $("#homepage-button").click(); });' %>
+</div>

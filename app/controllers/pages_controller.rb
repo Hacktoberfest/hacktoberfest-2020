@@ -36,6 +36,10 @@ class PagesController < ApplicationController
 
   def github_suspended_error; end
 
+  def tshirt; end
+
+  def tree; end
+
   private
 
   def all_events

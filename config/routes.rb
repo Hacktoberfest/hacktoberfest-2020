@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get '/api-error', to: 'pages#api_error'
   get '/unauthorized-error', to: 'pages#github_unauthorized_error'
   get '/suspended-error', to: 'pages#github_suspended_error'
+  get '/tshirt', to: 'pages#tshirt'
+  get '/tree', to: 'pages#tree'
   get '/languages/projects(/:language_id)', to: 'languages#projects'
   get '/report', to: 'reports#new'
   post '/report', to: 'reports#create'
