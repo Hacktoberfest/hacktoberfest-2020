@@ -1,7 +1,140 @@
 $break-small: 1024px;
 $red: #ff8ae2;
 
+h2 {
+  font-size: $size-1;
+  margin: 64px 0px 16px
+}
+
+h3 {
+  font-size: $size-3;
+}
+
 .event-kit-page{
+  strong {
+    color: $tableHeaderColor !important;
+  }
+
+  h1 {
+    margin-bottom: 120px;
+  }
+
+  p {
+    text-align: left;
+  }
+
+  a:hover {
+    color: $pink;
+    text-decoration: none;
+  }
+
+  h2, h3 {
+    a {
+      color: $tableHeaderColor;
+    }
+
+    a:hover {
+      color: $pink;
+    }
+  }
+
+  ol {
+    li {
+      margin: 16px 0px 16px 30px;
+      text-align: left;
+    }
+  }
+  
+  ul {
+    margin-top: 40px;
+
+    li {
+      margin: 16px 0px 16px 30px;
+      list-style: disc;
+      text-align: left;
+
+      a {
+        font-weight: 900;
+      }
+    }
+  }
+
+  .header-logo {
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  .event-kit-sub {
+    margin: 30px 0 120px 0;
+
+    p {
+      text-align: center;
+    }
+  }
+
+  div.underline-div-header {
+    width: 100%;
+    height: 1px;
+    margin-top: 10px;
+    background-color: $light-categoryColor;
+  }
+
+  .create-online-event {
+    margin-top: 40px;
+  }
+
+  .invite-box {
+    background-color: $progress-color-light;
+    margin-top: 60px;
+    padding: 60px;
+    -moz-border-radius: 32px;
+    -webkit-border-radius: 32px;
+    -khtml-border-radius: 32px;
+    border-radius: 32px;
+
+    h3 {
+      color: $light-headlineColor;
+
+      a {
+        color: $light-headlineColor;
+        font-weight: 900;
+      }
+
+      a:hover {
+        color: $pink;
+      }
+    }
+  }
+
+  .sample-schedule {
+    background-color: $progress-color-light;
+    margin-top: 60px;
+    padding: 60px;
+    -moz-border-radius: 32px;
+    -webkit-border-radius: 32px;
+    -khtml-border-radius: 32px;
+    border-radius: 32px;
+    overflow-x: auto;
+
+    table th {
+      color: $light-headlineColor;
+      font-size: $size-button-text;
+      font-weight: 900;
+    }
+
+    table th, table td {
+      border-bottom: 1px solid;
+      border-collapse: collapse;
+      border-spacing: 0px;
+      padding: 10px 5px;
+    }
+
+    table td {
+      font-size: 13px;
+      height: 33px;
+    }
+  }
+
   .title.is-1{
     font-size: 3.0rem;
     font-weight: bold;
@@ -61,5 +194,33 @@ $red: #ff8ae2;
 
   .down-load-assets {
     margin-top: 40px;
+  }
+}
+
+body.dark {
+  strong {
+    color: $dark-headlineColor !important;
+  }
+
+  h2, h3 {
+    a {
+      color: $buttonTextColor !important;
+    }
+  }
+
+  .invite-box {
+    background-color: $light-categoryColor !important;
+  }
+
+  .event-kit-page .invite-box h3 a {
+    color:  $dark-headlineColor !important;
+  }
+
+  .event-kit-page .sample-schedule {
+    background-color: $light-categoryColor !important;
+  }
+
+  .event-kit-page .sample-schedule table th, .event-kit-page .sample-schedule table td {
+    color:  $dark-headlineColor !important;
   }
 }

@@ -140,6 +140,10 @@ $body-color: $light-textColor;
 $body-family: $family-sans-serif;
 $body-font-size: $size-5;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .container {
   padding-bottom: 64px;
   max-width: 1170px;
