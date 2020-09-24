@@ -1,21 +1,30 @@
-$(document).on('turbolinks:load', function() {
-  $('#tabs li a:first').addClass('selected');
-  $('#tabs li a:not(:first)').addClass('inactive');
-  $('.tab-block').hide();
-  $('.tab-block:first').show();
-
-  $('#tabs li a').click(function() {
-    var t = $(this).attr('id');
+function showTab(tab) {
+    var $a = $('#' + tab);
     $('#tabs li a').removeClass('selected');
-
-    if ($(this).hasClass('inactive')) {
-      //this is the start of our condition
-      $('#tabs li a').addClass('inactive');
-      $(this).removeClass('inactive');
-      $(this).addClass('selected');
-
-      $('.tab-block').hide();
-      $('#' + t + 'C').fadeIn('slow');
+    $a.addClass('selected');
+    if ($a.hasClass('inactive')) {
+        $('#tabs li a').addClass('inactive');
+        $a.removeClass('inactive');
+        $('.tab-block').hide();
+        $('#' + tab + '-content').fadeIn('slow');
+        window.location.hash = '#' + tab;
     }
-  });
+}
+
+$(document).on('turbolinks:load', function() {
+    $('#tabs li a').addClass('inactive');
+    $('.tab-block').hide();
+
+    var initialTab = window.location.hash;
+    if (initialTab) {
+        initialTab = initialTab.slice(1);
+    }
+    if (!initialTab) {
+        initialTab = $('#tabs li a:first').attr('id');
+    }
+    showTab(initialTab);
+
+    $('#tabs li a').click(function() {
+        showTab($(this).attr('id'));
+    });
 });
