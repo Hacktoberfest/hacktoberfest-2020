@@ -6,35 +6,11 @@
         <h1 class="title is-1">About you</h1>
         <p>
           Please select which email address you’d like to use for Hacktoberfest and read the
-          <a target="_blank" href="/details#participation-rules">rules and values</a>.
+          <a target="_blank" href="/details#rules">rules and values</a>.
         </p>
 
         <%= form_for :user, url: {action: 'register'}, method: :patch do |f| %>
-          <div class="dropdowns">
-            <div class="field">
-              <div class="control">
-                <div class="select">
-                  <%= f.select :email, @emails, {include_blank: 'Select preferred email address'}, {:required => true} %>
-                </div>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="control">
-                <div class="select">
-                  <%= f.select :category, @categories, {include_blank: 'Select your role'}, {:required => true} %>
-                </div>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="control">
-                <div class="select">
-                  <%= f.country_select :country, {include_blank: 'Optional: Select your country'} %>
-                </div>
-              </div>
-            </div>
-          </div>
+          <%= render partial: 'users/dropdowns', locals: { f: f, u: User.new } %>
 
           <div class="checkboxes">
             <div class="field">
@@ -75,7 +51,7 @@
               <label class="checkbox">
                 <%= f.check_box :terms_acceptance, {:class => 'check-style', :required => true} %>
                 I have read and understand the
-                <a target="_blank" href="/details#participation-rules">Rules and Values</a>.
+                <a target="_blank" href="/details#rules">Rules and Values</a>.
               </label>
             </div>
           </div>

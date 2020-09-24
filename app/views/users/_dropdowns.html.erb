@@ -1,0 +1,44 @@
+<div class="dropdowns">
+  <div class="field">
+    <div class="control">
+      <div class="select">
+        <%= f.select :email, @emails,
+                     {
+                         include_blank: 'Select your preferred email address...',
+                         selected: u.email
+                     },
+                     {
+                         :required => true
+                     } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <div class="select is-multiple">
+        <%= f.select :category, @categories,
+                     {
+                         include_blank: 'Select all roles that apply to you...',
+                         selected: (u.category || '').split(',')
+                     },
+                     {
+                         :required => true,
+                         :multiple => true
+                     } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <div class="select">
+        <%= f.country_select :country,
+                             {
+                                 include_blank: 'Optional: Select your country...',
+                                 selected: u.country
+                             } %>
+      </div>
+    </div>
+  </div>
+</div>

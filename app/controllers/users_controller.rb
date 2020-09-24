@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in!
   before_action :require_user_registered!, only: :show
   before_action :disallow_registered_user!, only: :registration
+  before_action :transform_categories, only: %i[register update]
+  before_action :set_dropdowns, only: %i[registration edit]
 
   # render current user profile
   def show
@@ -17,31 +19,27 @@ class UsersController < ApplicationController
     if save_or_register(@current_user)
       redirect_to profile_path
     else
-      set_user_emails
+      set_dropdowns
       render 'users/registration'
     end
   end
 
-  # action to render register form
-  def registration
-    @categories = { 'Participant' => 'Participant',
-                    'Event Organizer' => 'organizer',
-                    'Maintainer' => 'maintainer' }
-    set_user_emails
-  end
+  def registration; end
 
-  def edit
-    set_user_emails
-  end
+  def edit; end
 
   def update
     @current_user.assign_attributes(params_for_update)
     if @current_user.save
       segment = SegmentService.new(@current_user)
-      segment.identify(email: @current_user.email)
+      segment.identify(
+        email: @current_user.email,
+        category: @current_user.category,
+        country: @current_user.country
+      )
       redirect_to profile_path
     else
-      set_user_emails
+      set_dropdowns
       render 'users/edit'
     end
   end
@@ -56,8 +54,19 @@ class UsersController < ApplicationController
     end
   end
 
-  def set_user_emails
+  def set_dropdowns
     @emails = UserEmailService.new(@current_user).emails
+    @categories = { 'Participant' => 'participant',
+                    'Event Organizer' => 'organizer',
+                    'Maintainer' => 'maintainer' }
+  end
+
+  def transform_categories
+    return unless params[:user].present? && params[:user][:category].present?
+
+    params[:user][:category] = params[:user][:category]
+                               .reject(&:empty?)
+                               .join(',')
   end
 
   def params_for_registration
@@ -73,6 +82,10 @@ class UsersController < ApplicationController
   end
 
   def params_for_update
-    params.require(:user).permit(:email)
+    params.require(:user).permit(
+      :email,
+      :category,
+      :country
+    )
   end
 end
