@@ -95,7 +95,7 @@
           margin-right: 20px;
 
           .spammy-box {
-            background-image:url('icon-light-ineligible.svg');
+            background-image: asset_url('icon-light-ineligible.svg');
             background-repeat:no-repeat;
             background-size:contain;
             background-position:center;
@@ -105,7 +105,7 @@
           }
 
           .eligible-box {
-            background-image:url('icon-light-eligible.svg');
+            background-image: asset_url('icon-light-eligible.svg');
             background-repeat:no-repeat;
             background-size:contain;
             background-position:center;
@@ -115,7 +115,7 @@
           }
 
           .bonus-box {
-            background-image:url('icon-light-bonus.svg');
+            background-image: asset_url('icon-light-bonus.svg');
             background-repeat:no-repeat;
             background-size:contain;
             background-position:center;
@@ -125,7 +125,7 @@
           }
 
           .invalid-box {
-            background-image:url('icon-light-invalid.svg');
+            background-image: asset_url('icon-light-invalid.svg');
             background-repeat:no-repeat;
             background-size:contain;
             background-position:center;
@@ -135,7 +135,7 @@
           }
 
           .pending-box {
-            background-image:url('icon-light-pending.svg');
+            background-image: asset_url('icon-light-pending.svg');
             background-repeat:no-repeat;
             background-size:contain;
             background-position:center;
@@ -185,6 +185,7 @@
         padding-left: 25px;
         font-weight: 900;
         vertical-align: top;
+        margin-top: 0;
       }
 
       .logout-wrapper {
@@ -237,7 +238,7 @@
         margin-right: 20px;
 
         .spammy-box {
-          background-image:url('icon-light-ineligible.svg');
+          background-image: asset_url('icon-light-ineligible.svg');
           background-repeat:no-repeat;
           background-size:contain;
           background-position:center;
@@ -247,7 +248,7 @@
         }
 
         .eligible-box {
-          background-image:url('icon-light-eligible.svg');
+          background-image: asset_url('icon-light-eligible.svg');
           background-repeat:no-repeat;
           background-size:contain;
           background-position:center;
@@ -257,7 +258,7 @@
         }
 
         .bonus-box {
-          background-image:url('icon-light-bonus.svg');
+          background-image: asset_url('icon-light-bonus.svg');
           background-repeat:no-repeat;
           background-size:contain;
           background-position:center;
@@ -267,7 +268,7 @@
         }
 
         .invalid-box {
-          background-image:url('icon-light-invalid.svg');
+          background-image: asset_url('icon-light-invalid.svg');
           background-repeat:no-repeat;
           background-size:contain;
           background-position:center;
@@ -277,7 +278,7 @@
         }
 
         .pending-box {
-          background-image:url('icon-light-pending.svg');
+          background-image: asset_url('icon-light-pending.svg');
           background-repeat:no-repeat;
           background-size:contain;
           background-position:center;
@@ -607,28 +608,28 @@ body.dark {
 
   .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .spammy-box, .timeline-date .spammy-box,
   .profile-page .profile-left .timeline-wrapper .pr-icon .spammy-box {
-    background-image:url('icon-dark-ineligible.svg') !important;
+    background-image: asset_url('icon-dark-ineligible.svg') !important;
   }
 
   .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .eligible-box, .timeline-date .eligible-box,
   .profile-page .profile-left .timeline-wrapper .pr-icon .eligible-box {
-    background-image:url('icon-dark-eligible.svg') !important;
+    background-image: asset_url('icon-dark-eligible.svg') !important;
   }
 
   .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .bonus-box, .timeline-date .bonus-box,
   .profile-page .profile-left .timeline-wrapper .pr-icon .bonus-box,
   .profile-page .profile-right .icon-box.bonus-wrapper .bonus-box {
-    background-image:url('icon-dark-bonus.svg') !important;
+    background-image: asset_url('icon-dark-bonus.svg') !important;
   }
 
   .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .invalid-box, .timeline-date .invalid-box,
   .profile-page .profile-left .timeline-wrapper .pr-icon .invalid-box {
-    background-image:url('icon-dark-invalid.svg') !important;
+    background-image: asset_url('icon-dark-invalid.svg') !important;
   }
 
   .profile-page .profile-left .main-content-wrapper .legend-container .icon-box .pending-box, .timeline-date .pending-box, 
   .profile-page .profile-left .timeline-wrapper .pr-icon .pending-box {
-    background-image:url('icon-dark-pending.svg') !important;
+    background-image: asset_url('icon-dark-pending.svg') !important;
   }
 
   .profile-page .profile-right .icon-box.bonus-wrapper span {

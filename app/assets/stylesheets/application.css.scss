@@ -409,7 +409,7 @@ body {
   // footer
   .footer {
     .footer-do-logo {
-      content: url(DO-light-logo.svg) !important;
+      content: asset_url("DO-light-logo.svg") !important;
     }
 
     .footer-wrapper {
