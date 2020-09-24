@@ -52,7 +52,7 @@ class GithubPullRequestService
       end
     end
 
-    @pull_requests = response.data.node.pullRequests.nodes.map do |pr|
+    @pull_requests = response.data.node.pullRequests.nodes.compact.map do |pr|
       GithubPullRequest.new(pr)
     end
   end
