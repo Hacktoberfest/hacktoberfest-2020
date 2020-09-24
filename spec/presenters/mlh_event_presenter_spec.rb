@@ -18,7 +18,8 @@ describe MlhEventPresenter do
             }
           },
           'links' => {
-            'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register'
+            'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register',
+            'view' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia'
           }
         }
       end
@@ -35,7 +36,7 @@ describe MlhEventPresenter do
           event.dig('attributes', 'location', 'city'),
           event.dig('attributes', 'location', 'country')
         )
-        expect(event_presenter.url).to eq event.dig('links', 'register')
+        expect(event_presenter.url).to eq event.dig('links', 'view')
       end
     end
 
@@ -68,6 +69,7 @@ describe MlhEventPresenter do
       end
     end
   end
+
   describe '#current?' do
     let(:event) do
       {
@@ -80,7 +82,8 @@ describe MlhEventPresenter do
           }
         },
         'links' => {
-          'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register'
+          'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register',
+          'view' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia'
         }
       }
     end
