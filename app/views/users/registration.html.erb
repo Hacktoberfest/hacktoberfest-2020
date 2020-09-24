@@ -10,31 +10,7 @@
         </p>
 
         <%= form_for :user, url: {action: 'register'}, method: :patch do |f| %>
-          <div class="dropdowns">
-            <div class="field">
-              <div class="control">
-                <div class="select">
-                  <%= f.select :email, @emails, {include_blank: 'Select your preferred email address...'}, {:required => true} %>
-                </div>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="control">
-                <div class="select is-multiple">
-                  <%= f.select :category, @categories, {include_blank: 'Select all roles that apply to you...'}, {:required => true, :multiple => true} %>
-                </div>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="control">
-                <div class="select">
-                  <%= f.country_select :country, {include_blank: 'Optional: Select your country...'} %>
-                </div>
-              </div>
-            </div>
-          </div>
+          <%= render partial: 'users/dropdowns', locals: { f: f, u: User.new } %>
 
           <div class="checkboxes">
             <div class="field">
