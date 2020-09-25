@@ -392,7 +392,7 @@ main.home {
 
         h6 {
           text-transform: uppercase;
-          color: #93c2db;
+          color: $diamondColor;
           font-size: 14px;
         }
 
@@ -400,20 +400,27 @@ main.home {
           position: absolute;
           top: 0;
           right: -10px;
-          transform: translate(0, -50%);
+          transform: translate(0, -40%);
+          background: $light-sponsorBackgroundColor;
+          border-radius: 0 20px 0 0;
+          height: 5rem;
+          width: 5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
           .sponsors-digitalocean {
-            height: 4rem;
+            height: 2.25rem;
             width: auto;
           }
 
           .sponsors-intel {
-            height: 3rem;
+            height: 1.4rem;
             width: auto;
           }
 
           .sponsors-dev {
-            height: 5rem;
+            height: 2.5rem;
             width: auto;
           }
         }
@@ -498,6 +505,16 @@ main.home {
             margin: 4px 8px 0 0;
           }
         }
+      }
+    }
+  }
+}
+
+body.dark {
+  .sponsor-quotes {
+    .box {
+      a {
+        background: $dark-sponsorBackgroundColor !important;
       }
     }
   }
