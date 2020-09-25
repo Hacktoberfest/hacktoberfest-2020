@@ -1,14 +1,16 @@
 function showTab(tab, initial) {
-    var $a = $('#' + tab);
-    $('#tabs li a').removeClass('selected');
-    $a.addClass('selected');
-    if (initial || $a.hasClass('inactive')) {
-        $('#tabs li a').addClass('inactive');
-        $a.removeClass('inactive');
-        $('.tab-block').hide();
-        $('#' + tab + '-content').fadeIn('slow');
-        if (!initial) {
-            window.location.hash = '#' + tab;
+    var $a = $('#tabs #' + tab);
+    if ($a.length) {
+        $('#tabs li a').removeClass('selected');
+        $a.addClass('selected');
+        if (initial || $a.hasClass('inactive')) {
+            $('#tabs li a').addClass('inactive');
+            $a.removeClass('inactive');
+            $('.tab-block').hide();
+            $('#' + tab + '-content').fadeIn('slow');
+            if (!initial) {
+                window.location.hash = '#' + tab;
+            }
         }
     }
 }
@@ -18,7 +20,7 @@ $(document).on('turbolinks:load', function() {
     if (initialTab) {
         initialTab = initialTab.slice(1);
     }
-    if (!initialTab) {
+    if (!initialTab || !$('#tabs #' + initialTab).length) {
         initialTab = $('#tabs li a:first').attr('id');
     }
     showTab(initialTab, true);
