@@ -262,7 +262,8 @@ main.home {
 
   .event-union {
     display: flex;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
     vertical-align: baseline;
     margin-bottom: 60px;
 
@@ -272,18 +273,22 @@ main.home {
 
     @media screen and (min-width: $break-large) {
       width: 80%;
+      margin: 0 auto 60px;
     }
 
     .box {
-      flex-basis: 100%;
-      flex-grow: 1;
-      width: auto;
+      width: calc(25% - 30px);
+      margin: 30px 15px 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
       font-style: normal;
       color: #ffffff;
+
+      @media screen and (max-width: $break-small) {
+        width: calc(100% - 30px);
+      }
     }
 
     .box span {
