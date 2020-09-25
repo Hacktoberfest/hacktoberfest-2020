@@ -38,7 +38,7 @@
           <%= link_to "Attend an event", events_path, class: "button-static" %>
           <%= link_to "Organize an event", event_kit_path, class: "button-static" %>
         </div>
-      <% elsif scoring_pull_requests.empty? %>
+      <% elsif @presenter.scoring_pull_requests.empty? %>
         <div class="container pre-launch-container">
           <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
           <%= link_to "Get started", details_path, anchor: "getting-started", class: "button-static" %>
