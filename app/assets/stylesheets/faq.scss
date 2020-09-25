@@ -10,24 +10,15 @@
     display: flex;
     line-height: 130%;
     margin: 0px;
-    max-width: 760px;
-    min-width: 760px;
+    width: 90%;
 
     @media (min-width: 768px) and (max-width: $break-med) {
       font-size: 18px !important;
       margin-right: 35px;
-      min-width: 650px;
-      max-width: 650px;
     }
-
-    @media (max-width: 760px) {
-      min-width: 300px;
-      max-width: 300px;	      
-    }
-
-    @media (min-width: $break-med) {
-      max-width: 900px;
-      min-width: 900px;
+    
+    @media (max-width: $break-mobile) {
+      width: 75%;
     }
     
     &:hover {
@@ -107,6 +98,7 @@
       @extend .answer;
       display: flex;
       flex-flow: wrap;
+      width: 100%;
     }
   }
 }
