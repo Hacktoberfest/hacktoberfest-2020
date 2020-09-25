@@ -29,7 +29,7 @@ class FeaturedEventPresenter
   end
 
   def location
-    return "#{city}, #{country}" unless city.blank?
+    return "#{city}, #{country}" if city.present?
 
     country
   end
