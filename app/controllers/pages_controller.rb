@@ -61,7 +61,7 @@ class PagesController < ApplicationController
       FeaturedEventPresenter.new(e)
     rescue FeaturedEventPresenter::ParseError
       # Ignore invalid events
-    end.compact.sort_by(&:date)
+    end.compact.select(&:current?).sort_by(&:date)
   end
 
   def front_page_projects
