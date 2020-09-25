@@ -35,9 +35,9 @@ module PagesHelper
 
   def global_stats
     stats_arr = [
-        { amount: '61,956', title: 'CHALLENGE COMPLETIONS' },
-        { amount: '482,182', title: 'PULL REQUESTS OPENED' },
-        { amount: '154,466', title: 'PARTICIPATING REPOSITORIES' }
+      { amount: '61,956', title: 'CHALLENGE COMPLETIONS' },
+      { amount: '482,182', title: 'PULL REQUESTS OPENED' },
+      { amount: '154,466', title: 'PARTICIPATING REPOSITORIES' }
     ]
     stats_arr.map { |s| Hashie::Mash.new(s) }
   end
@@ -60,21 +60,18 @@ module PagesHelper
     # Get pre launch FAQs that aren't in main
     pre_launch = faqs.select do |faq|
       faq['Site Stage'].map(&:strip).include?('Pre Launch') &&
-          !main_qs.include?(faq_item(faq))
+        !main_qs.include?(faq_item(faq))
     end
 
     # Combine main + extras from pre launch
     main + pre_launch
   end
 
-  def present_faqs(faqs)
-    @faqs_rules = faqs.select { |q| q['Category'] == 'Rules' }
-    @faqs_general = faqs.select { |q| q['Category'] == 'General' }
-    @faqs_events = faqs.select { |q| q['Category'] == 'Events' }
-    @faqs_shipping = faqs.select { |q| q['Category'] == 'Shipping' }
-  end
-
   def faq_item(faq)
     [faq['Category'].strip, faq['Question'].strip]
+  end
+
+  def present_faqs(faqs, category)
+    faqs.select { |q| q['Category'].strip == category }
   end
 end

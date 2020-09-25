@@ -16,7 +16,11 @@ class PagesController < ApplicationController
   end
 
   def faqs
-    present_faqs(filter_faqs(all_faqs))
+    clean_faqs = filter_faqs(all_faqs)
+    @faqs_rules = present_faqs(clean_faqs, 'Rules')
+    @faqs_general = present_faqs(clean_faqs, 'General')
+    @faqs_events = present_faqs(clean_faqs, 'Events')
+    @faqs_shipping = present_faqs(clean_faqs, 'Shipping')
   end
 
   def events
