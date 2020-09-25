@@ -21,21 +21,17 @@ class FeaturedEventPresenter
   end
 
   def city
-    @event['Event City']
+    @event['Event City']&.strip
   end
 
   def country
-    @event['Event Country']
+    @event['Event Country']&.strip
   end
 
   def location
-    location = ''
+    return "#{city}, #{country}" unless city.blank?
 
-    location += "#{city}, " if city.present?
-
-    location += country
-
-    location
+    country
   end
 
   def url
