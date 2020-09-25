@@ -41,7 +41,7 @@ These instructions will get you a copy of the project up and running on your loc
 1) [Install and Setup](#installing)
 2) [Local Setup With Docker](#local-setup-with-docker)
 3) [Setup Oauth Token](#setup-oauth-token)
-4) [Configure remaining environment variales](#env-variables)
+4) [Configure remaining environment variables](#env-variables)
 5) [Create first user](#create-first-user)
 6) [Import Projects](#import-projects)
 
