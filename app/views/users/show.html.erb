@@ -29,8 +29,22 @@
       </div>
       
       <% if @presenter.display_pre_launch? %>
-          <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, scoring_pull_requests: @presenter.scoring_pull_requests, non_scoring_pull_requests: @presenter.non_scoring_pull_requests, show_timer: @presenter.show_timer?, show_congratulations: @presenter.show_congratulations? }  %>
-      <% else %>
+        <div class="container pre-launch-container">
+          <h2 class='title is-2'>Get ready to start contributing to Hacktoberfest.</h2>
+          <h4 class="title is-4">Pull requests for Hacktoberfest count October 1-31.</h4>
+          <br/>
+
+          <%= link_to "Find out more", details_path, anchor: "getting-started", class: "button-static" %>
+          <%= link_to "Attend an event", events_path, class: "button-static" %>
+          <%= link_to "Organize an event", event_kit_path, class: "button-static" %>
+        </div>
+      <% elsif scoring_pull_requests.empty? %>
+        <div class="container pre-launch-container">
+          <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
+          <%= link_to "Get started", details_path, anchor: "getting-started", class: "button-static" %>
+        </div>
+      <% end %>
+
       <div class="hacktoberfest-results-box">
         <% if @presenter.display_coupon? %>
             <%= render partial: 'users/show/display_coupons', locals: { code: @presenter.code } %>
@@ -45,11 +59,11 @@
             <%= render partial: 'users/show/thank_you', locals: { user: @presenter.user } %>
         <% end %>
       </div>
-        <div class="container">
-          <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, scoring_pull_requests: @presenter.scoring_pull_requests, non_scoring_pull_requests: @presenter.non_scoring_pull_requests, show_timer: @presenter.show_timer?, show_congratulations: @presenter.show_congratulations? }  %>
-        </div>
-      <% end %>
+      <div class="container">
+        <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, scoring_pull_requests: @presenter.scoring_pull_requests, non_scoring_pull_requests: @presenter.non_scoring_pull_requests, show_timer: @presenter.show_timer?, show_congratulations: @presenter.show_congratulations? }  %>
+      </div>
     </div>
+
     <div class="main-content-wrapper">
       <p>Have you seen a repository that you don't think aligns with the <%= link_to "Hacktoberfest values", details_path %>? Please <%= link_to "report it to us", report_path %> so we can take a look.</p>
     </div>
