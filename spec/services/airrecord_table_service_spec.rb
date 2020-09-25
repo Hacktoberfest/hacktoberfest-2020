@@ -12,14 +12,7 @@ describe AirrecordTable do
     it 'returns success status' do
       VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_successful/returns_success_status' do
         response = airrecord_table.faraday_connection.get
-        expect(response.status).to eq(302)
-      end
-    end
-
-    it 'returns a data hash' do
-      VCR.use_cassette 'AirrecordTable/the_call_to_the_API_is_successful/returns_a_data_hash', match_requests_on: [:host] do
-        records = airrecord_table.all_records('FAQs')
-        expect(records.first.fields).to have_key('Question')
+        expect(response.status).to_not eq(404)
       end
     end
   end
