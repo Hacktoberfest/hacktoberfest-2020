@@ -507,6 +507,15 @@ body {
 
   // sponsors logos
   .sponsors {
+    .sponsors-digitalocean {
+      content: asset-url("sponsors-light-digitalocean.svg") !important;
+    }
+    .sponsors-intel {
+      content: asset-url("sponsors-light-intel.svg") !important;
+    }
+    .sponsors-dev {
+      content: asset-url("sponsors-light-dev.svg") !important;
+    }
     .sponsors-vonage {
       content: asset-url("sponsors-light-vonage.svg") !important;
     }
@@ -757,6 +766,15 @@ body.dark {
 
   // sponsors logos
   .sponsors {
+    .sponsors-digitalocean {
+      content: asset-url("sponsors-dark-digitalocean.svg") !important;
+    }
+    .sponsors-intel {
+      content: asset-url("sponsors-dark-intel.svg") !important;
+    }
+    .sponsors-dev {
+      content: asset-url("sponsors-dark-dev.svg") !important;
+    }
     .sponsors-vonage {
       content: asset-url("sponsors-dark-vonage.svg") !important;
     }
