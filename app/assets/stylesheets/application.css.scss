@@ -112,6 +112,7 @@ $light-navActiveColor: #183d5d;
 $light-navBackgroundColor: #ffffff;
 $light-socialTextColor: #031b4e;
 $light-socialBackgroundColor: #f3f5f9;
+$light-sponsorBackgroundColor: #d9e9f1;
 
 //dark mode
 $dark-backgroundColor: #072540;
@@ -133,6 +134,7 @@ $dark-navActiveColor: #ffffff;
 $dark-navBackgroundColor: #183d5d;
 $dark-socialTextColor: #ffffff;
 $dark-socialBackgroundColor: #183d5d;
+$dark-sponsorBackgroundColor: #5a85a1;
 
 // -- general
 $body-background-color: $light-backgroundColor;
@@ -507,6 +509,15 @@ body {
 
   // sponsors logos
   .sponsors {
+    .sponsors-digitalocean {
+      content: asset-url("sponsors-light-digitalocean.svg") !important;
+    }
+    .sponsors-intel {
+      content: asset-url("sponsors-light-intel.svg") !important;
+    }
+    .sponsors-dev {
+      content: asset-url("sponsors-light-dev.svg") !important;
+    }
     .sponsors-vonage {
       content: asset-url("sponsors-light-vonage.svg") !important;
     }
@@ -757,6 +768,15 @@ body.dark {
 
   // sponsors logos
   .sponsors {
+    .sponsors-digitalocean {
+      content: asset-url("sponsors-dark-digitalocean.svg") !important;
+    }
+    .sponsors-intel {
+      content: asset-url("sponsors-dark-intel.svg") !important;
+    }
+    .sponsors-dev {
+      content: asset-url("sponsors-dark-dev.svg") !important;
+    }
     .sponsors-vonage {
       content: asset-url("sponsors-dark-vonage.svg") !important;
     }
