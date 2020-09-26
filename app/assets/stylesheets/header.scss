@@ -7,14 +7,15 @@ $grey-darker: hsl(222, 45%, 21%); // box dark blue
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
 
 header {
-  margin: 30px 55px;
+  padding: 30px 55px 0;
+  margin: 0;
 
   @media screen and (max-width: $break-med) {
-    margin: 30px 85px 30px 85px;
+    padding: 30px 85px 30px 85px;
   }
 
   @media screen and (max-width: $break-small) {
-    margin: 30px 30px 30px 30px;
+    padding-inline-start: 30px 30px 30px 30px;
   }
 }
 

@@ -370,6 +370,10 @@ body {
   background-color: $light-backgroundColor;
   color: $light-textColor;
 
+  header {
+    background-color: $light-boxColor;
+  }
+
   h1,
   h2,
   h3 {
@@ -438,7 +442,14 @@ body {
 
   // home page
   .home-hero {
-    background-image: asset-url("hero-bg-light.svg");
+    background-color: $light-boxColor;
+
+    .hero-tshirt {
+      content: asset-url("hero-tshirt-light.png");
+      @media screen and (max-width: $break-small) {
+        content: asset-url("hero-mobile-tshirt-light.png");
+      }
+    }
   }
 
   .header-do-logo {
@@ -625,6 +636,10 @@ body.dark {
   background-color: $dark-backgroundColor !important;
   color: $dark-textColor !important;
 
+  header {
+    background-color: $dark-boxColor;
+  }
+
   h1,
   h2,
   h3 {
@@ -697,7 +712,14 @@ body.dark {
 
   // home page
   .home-hero {
-    background-image: asset-url("hero-bg-dark.svg");
+    background-color: $dark-boxColor;
+
+    .hero-tshirt {
+      content: asset-url("hero-tshirt-dark.png");
+      @media screen and (max-width: $break-small) {
+        content: asset-url("hero-mobile-tshirt-dark.png");
+      }
+    }
   }
 
   .header-do-logo {
