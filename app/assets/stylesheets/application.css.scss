@@ -366,6 +366,11 @@ body {
     font-family: "Inter Black", "Helvetica", "Arial", san-serif;
   }
 
+  .button {
+    white-space: normal;
+    max-width: 100%;
+  }
+
   // -------- Global light mode styles --------
   background-color: $light-backgroundColor;
   color: $light-textColor;
