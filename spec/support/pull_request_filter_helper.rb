@@ -115,31 +115,31 @@ INVALID_LABEL_PR = {
 }.freeze
 
 SPAM_LABEL_PR = {
-    'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
-    'title' => 'Coercion type systems',
-    'body' =>
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-    'url' => 'https://github.com/intridea/hashie/pull/379',
-    # This is valid, eligible
-    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 11.days).to_s,
-    # Spam label should make it invalid
-    'labels' => { 'edges' => [{ 'node': { 'name': 'Spam' } }] },
-    'repository' => { 'databaseId' => 123 }
+  'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
+  'title' => 'Coercion type systems',
+  'body' =>
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+  'url' => 'https://github.com/intridea/hashie/pull/379',
+  # This is valid, eligible
+  'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 11.days).to_s,
+  # Spam label should make it invalid
+  'labels' => { 'edges' => [{ 'node': { 'name': 'Spam' } }] },
+  'repository' => { 'databaseId' => 123 }
 }.freeze
 
 LONG_SPAM_LABEL_PR = {
-    'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
-    'title' => 'Coercion type systems',
-    'body' =>
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-    'url' => 'https://github.com/intridea/hashie/pull/379',
-    # This is valid, eligible
-    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 11.days).to_s,
-    # Spam label should make it invalid
-    'labels' => { 'edges' => [{ 'node': { 'name': 'This is a spam PR' } }] },
-    'repository' => { 'databaseId' => 123 }
+  'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
+  'title' => 'Coercion type systems',
+  'body' =>
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+  'url' => 'https://github.com/intridea/hashie/pull/379',
+  # This is valid, eligible
+  'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 11.days).to_s,
+  # Spam label should make it invalid
+  'labels' => { 'edges' => [{ 'node': { 'name': 'This is a spam PR' } }] },
+  'repository' => { 'databaseId' => 123 }
 }.freeze
 
 ELIGIBLE_PR = {
@@ -254,7 +254,7 @@ MATURE_ARRAY = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 9.days).to_s,
     'labels' => { 'edges' => [] },
     'repository' => { 'databaseId' => 123 } },
-  INVALID_LABEL_PR.merge({ 'merged' => true }),
+  INVALID_LABEL_PR.merge('merged' => true),
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
