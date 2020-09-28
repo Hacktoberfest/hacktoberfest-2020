@@ -12,7 +12,7 @@ RSpec.describe PullRequest, type: :model do
       end
 
       context 'Pull request is merged' do
-        let(:pr) { pr_helper(ELIGIBLE_INVALID_MERGED_PR) }
+        let(:pr) { pr_helper(INVALID_LABEL_PR.merge({ 'merged' => true })) }
 
         it 'is not considered labelled invalid' do
           expect(pr.labelled_invalid?).to eq(false)
@@ -23,8 +23,48 @@ RSpec.describe PullRequest, type: :model do
     context 'Pull request has a label for "❌ Invalid"' do
       let(:pr) { pr_helper(INVALID_EMOJI_LABEL_PR) }
 
-      it 'is considered labelled labelled invalid' do
+      it 'is considered labelled invalid' do
         expect(pr.labelled_invalid?).to eq(true)
+      end
+
+      context 'Pull request is merged' do
+        let(:pr) { pr_helper(INVALID_EMOJI_LABEL_PR.merge({ 'merged' => true })) }
+
+        it 'is not considered labelled invalid' do
+          expect(pr.labelled_invalid?).to eq(false)
+        end
+      end
+    end
+
+    context 'Pull request has a label for "Spam"' do
+      let(:pr) { pr_helper(SPAM_LABEL_PR) }
+
+      it 'is considered labelled invalid' do
+        expect(pr.labelled_invalid?).to eq(true)
+      end
+
+      context 'Pull request is merged' do
+        let(:pr) { pr_helper(SPAM_LABEL_PR.merge({ 'merged' => true })) }
+
+        it 'is not considered labelled invalid' do
+          expect(pr.labelled_invalid?).to eq(false)
+        end
+      end
+    end
+
+    context 'Pull request has a label for "This is a spam PR"' do
+      let(:pr) { pr_helper(LONG_SPAM_LABEL_PR) }
+
+      it 'is considered labelled invalid' do
+        expect(pr.labelled_invalid?).to eq(true)
+      end
+
+      context 'Pull request is merged' do
+        let(:pr) { pr_helper(LONG_SPAM_LABEL_PR.merge({ 'merged' => true })) }
+
+        it 'is not considered labelled invalid' do
+          expect(pr.labelled_invalid?).to eq(false)
+        end
       end
     end
 
