@@ -101,7 +101,7 @@ INVALID_EMOJI_LABEL_PR = {
 }.freeze
 
 INVALID_LABEL_PR = {
-  'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
+  'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQj=',
   'title' => 'Coercion type systems',
   'body' =>
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
