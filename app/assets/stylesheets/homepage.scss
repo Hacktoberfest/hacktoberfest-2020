@@ -39,21 +39,26 @@ main.home {
 
   .home-hero {
     position: relative;
-    height: 842px;
+    height: 985px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: left;
+    margin-top: -140px;
+    padding-top: 140px;
 
     @media screen and (max-width: $break-med) {
-      height: 562px;
+      height: 701px;
+      margin-top: -167px;
     }
 
     @media screen and (max-width: $break-small) {
       height: 100%;
       top: 0;
+      margin-top: -600px;
       margin-bottom: 160px;
+      padding-top: 600px;
       flex-direction: column-reverse;
     }
 

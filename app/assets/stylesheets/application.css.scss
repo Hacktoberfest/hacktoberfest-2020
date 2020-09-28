@@ -370,10 +370,6 @@ body {
   background-color: $light-backgroundColor;
   color: $light-textColor;
 
-  header {
-    background-color: $light-boxColor;
-  }
-
   h1,
   h2,
   h3 {
@@ -635,10 +631,6 @@ body {
 body.dark {
   background-color: $dark-backgroundColor !important;
   color: $dark-textColor !important;
-
-  header {
-    background-color: $dark-boxColor;
-  }
 
   h1,
   h2,
