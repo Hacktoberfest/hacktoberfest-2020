@@ -38,65 +38,91 @@ main.home {
   }
 
   .home-hero {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     position: relative;
-    height: 900px;
-    top: -167px;
+    height: 985px;
     width: 100%;
-    padding-top: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    margin-top: -140px;
+    padding-top: 140px;
+
+    @media screen and (max-width: $break-med) {
+      height: 701px;
+      margin-top: -167px;
+    }
 
     @media screen and (max-width: $break-small) {
       height: 100%;
       top: 0;
-      margin-bottom: 120px;
+      margin-top: -600px;
+      margin-bottom: 160px;
+      padding-top: 600px;
+      padding-bottom: 64px;
+      flex-direction: column;
     }
 
-    .container {
+    .hero-content {
+      margin-left: 160px;
+
+      @media screen and (max-width: $break-med) {
+        margin-left: 80px;
+      }
+
+      @media screen and (max-width: $break-small) {
+        text-align: center;
+        margin: 0 32px 64px;
+      }
+    }
+
+    img.hero-tshirt {
+      max-width: 747px;
+
+      @media screen and (max-width: $break-med) {
+        max-width: 498px;
+      }
+
+      @media screen and (max-width: $break-small) {
+        max-width: 75%;
+      }
+    }
+
+    h1 {
+      font-size: 3em;
+      line-height: 58px;
+      letter-spacing: -1px;
+      padding-left: $padding-left;
+      padding-top: 0;
+      margin-top: 0;
+      margin-bottom: 50px;
+      max-width: 760px;
+
+      @media screen and (max-width: $break-small) {
+        font-size: 2.5em;
+        line-height: 50px;
+        margin-top: 32px;
+      }
+    }
+
+    .presented-by {
+      margin-top: 55px;
       display: flex;
-      flex-direction: column;
+      max-width: 485px;
       justify-content: center;
       align-items: center;
-      text-align: center;
 
-      img {
-        max-width: 620px;
-
-        @media screen and (max-width: $break-small) {
-          max-width: 100% !important;
-        }
+      @media screen and (max-width: $break-small) {
+        max-width: 100%;
+        flex-direction: column;
       }
 
-      h1 {
-        font-size: $size-1;
-        line-height: 60px;
-        padding-left: $padding-left;
-        padding-top: 0;
-        margin-top: 64px;
-        margin-bottom: 50px;
-        max-width: 870px;
-      }
-
-      .presented-by {
-        margin-top: 55px;
-        display: flex;
-        max-width: 485px;
-        justify-content: center;
-        align-items: center;
+      p {
+        font-size: 16px;
+        margin: 0 16px;
 
         @media screen and (max-width: $break-small) {
-          max-width: 100%;
-          flex-direction: column;
-        }
-
-        p {
-          font-size: 16px;
-          margin: 0 16px;
-
-          @media screen and (max-width: $break-small) {
-            margin: 10px 0;
-          }
+          margin: 10px 0;
         }
       }
     }
