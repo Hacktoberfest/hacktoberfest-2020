@@ -12,6 +12,7 @@ describe MlhEventPresenter do
           'attributes' => {
             'title' => 'Hacktoberfest in Brasilia',
             'startDate' => '2020-10-16',
+            'timeZone' => 'America/Sao_Paulo',
             'location' => {
               'city' => 'Brasilia',
               'country' => 'Brazil'
@@ -31,6 +32,7 @@ describe MlhEventPresenter do
         expect(event_presenter.date)
           .to eq Date.strptime(event.dig('attributes', 'startDate'), '%Y-%m-%d')
         expect(event_presenter.country).to eq event.dig('attributes', 'location', 'country')
+        expect(event_presenter.time_zone).to eq event.dig('attributes', 'timeZone').gsub(/_/, ' ')
         expect(event_presenter.city).to eq event.dig('attributes', 'location', 'city')
         expect(event_presenter.location).to include(
           event.dig('attributes', 'location', 'city'),
@@ -76,6 +78,7 @@ describe MlhEventPresenter do
         'attributes' => {
           'title' => 'Hacktoberfest in Brasilia',
           'startDate' => '2020-10-16',
+          'timeZone' => 'America/Sao_Paulo',
           'location' => {
             'city' => 'Brasilia',
             'country' => 'Brazil'

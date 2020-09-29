@@ -20,6 +20,7 @@
           <th class="sort" data-sort="location">Organizer's Location</th>
           <th class="sort" data-sort="event_name">Event</th>
           <th class="sort" data-sort="date">Date</th>
+          <th class="sort" data-sort="time_zone">Time Zone</th>
           <th>RSVP</th>
         </tr>
         </thead>
@@ -42,6 +43,7 @@
                 </td>
                 <td class="date is-hidden"><%= e.date %></td>
                 <td data-label="date"><%= e.date.strftime("%Y/%m/%d") %></td>
+                <td><%= e.time_zone %></td>
                 <td><a class="rsvp" href="<%= e.url %>">RSVP here</a></td>
               </tr>
           <% end %>

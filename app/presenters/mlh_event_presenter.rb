@@ -20,6 +20,10 @@ class MlhEventPresenter
     nil
   end
 
+  def time_zone
+    @event.dig('attributes', 'timeZone').gsub(/_/, ' ')
+  end
+
   def city
     @event.dig('attributes', 'location', 'city')
   end
