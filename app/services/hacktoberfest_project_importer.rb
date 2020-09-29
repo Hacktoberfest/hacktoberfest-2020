@@ -10,7 +10,7 @@ class HacktoberfestProjectImporter
   def import(project)
     language = import_language(project)
     repository = import_repository(project, language)
-    import_issue(project, repository)
+    import_issue(project, repository) unless repository.spammy?
   end
 
   private
@@ -59,5 +59,9 @@ class HacktoberfestProjectImporter
       issue.save!
     end
     issue
+  end
+
+  def spammy?
+    SpamRepositoryService.call(repository.id)
   end
 end
