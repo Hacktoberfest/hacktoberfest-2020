@@ -43,7 +43,7 @@
                 </td>
                 <td class="date is-hidden"><%= e.date %></td>
                 <td data-label="date"><%= e.date.strftime("%Y/%m/%d") %></td>
-                <td><%= e.time_zone %></td>
+                <td data-label="zone"><%= e.time_zone %></td>
                 <td><a class="rsvp" href="<%= e.url %>">RSVP here</a></td>
               </tr>
           <% end %>
