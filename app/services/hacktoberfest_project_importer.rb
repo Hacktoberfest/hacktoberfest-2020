@@ -10,7 +10,7 @@ class HacktoberfestProjectImporter
   def import(project)
     language = import_language(project)
     repository = import_repository(project, language)
-    import_issue(project, repository) unless repository.spammy?
+    import_issue(project, repository)
   end
 
   private
@@ -20,9 +20,11 @@ class HacktoberfestProjectImporter
   end
 
   def import_repository(project, language)
-    repository = Repository.find_or_initialize_by(
-      gh_database_id: project[:repo_database_id]
-    )
+    unless spammy?(project[:repo_database_id])
+      repository = Repository.find_or_initialize_by(
+        gh_database_id: project[:repo_database_id]
+      )
+    end
     unless repository.persisted?
       repository.code_of_conduct_url = project[:repo_code_of_conduct_url]
       repository.description = project[:repo_description]
@@ -61,7 +63,7 @@ class HacktoberfestProjectImporter
     issue
   end
 
-  def spammy?
-    SpamRepositoryService.call(repository.id)
+  def spammy?(repo_id)
+    SpamRepositoryService.call(repo_id)
   end
 end
