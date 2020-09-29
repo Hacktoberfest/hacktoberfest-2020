@@ -20,5 +20,7 @@ class ProjectImportJob
     POPULAR_LANGUAGES.each do |language|
       ProjectImportService.call("language:#{language}")
     end
+  rescue StandardError
+    # Ignored
   end
 end
