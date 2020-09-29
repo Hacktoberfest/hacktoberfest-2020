@@ -29,3 +29,8 @@
     class: FetchSpamRepositoriesJob
     queue: default
     description: 'Updates spam repos every 15 minutes'
+  :homepage_project_import:
+    cron: '0 1 */3 * * America/New_York'
+    class: ProjectImportJob
+    queue: default
+    description: 'Updates the projects displayed on the homepage every day at 1AM'

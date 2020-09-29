@@ -6,7 +6,7 @@ class Repository < ApplicationRecord
   before_validation :truncate_description
 
   belongs_to :language, optional: true
-  has_many :pull_requests, dependent: :destroy
+  has_many :issues, dependent: :destroy
 
   validates :full_name, presence: true
   validates :gh_database_id, presence: true, uniqueness: true
