@@ -190,7 +190,7 @@ $navColor: rgba(0, 0, 0, 0);
         }
 
         .navLink:hover {
-          color: #ff8ae2;
+          color: $light-highlightColor;
         }
 
         .active {
@@ -295,6 +295,14 @@ $navColor: rgba(0, 0, 0, 0);
       -webkit-transition: 0.4s;
       transition: 0.4s;
       border-radius: 50%;
+    }
+  }
+}
+
+body.dark {
+  #navbar {
+    .navLink:hover {
+      color: $dark-highlightColor !important;
     }
   }
 }

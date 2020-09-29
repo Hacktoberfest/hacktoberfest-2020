@@ -12,7 +12,7 @@
     margin: 0 auto;
 
     a {
-      color: $labelColor;
+      color: $light-highlightColor;
     }
 
     a:hover {
@@ -27,6 +27,7 @@
     border: none;
     color: $buttonTextColor;
     font-weight: 900;
+    font-family: "Inter Bold", "Helvetica", "Arial", san-serif;
     font-size: $size-button-text;
     padding: 24px 40px;
     display: inline-flex;
@@ -37,7 +38,7 @@
     margin-top: 30px;
 
     &:hover {
-      background-color: $buttonHoverColor;
+      background-color: $light-buttonHoverColor;
       text-decoration: none;
     }
   }
@@ -118,7 +119,7 @@ table.event-table {
         }
 
         a.rsvp {
-          color: $labelColor;
+          color: $light-highlightColor;
         }
       }
     }
@@ -254,6 +255,24 @@ body.dark {
 
   .table-mobile-cards table.event-table tbody tr {
     background-color: $dark-inputBackgroundColor !important;
+  }
+
+  .events-page-wrapper{
+    p a {
+      color: $dark-highlightColor !important;
+    }
+
+    a.create-event {
+      color: $buttonTextColor !important;
+
+      &:hover {
+        background: $dark-buttonHoverColor !important;
+      }
+    }
+
+    a.rsvp {
+      color: $dark-highlightColor !important;
+    }
   }
 }
 

@@ -21,19 +21,10 @@ $red: #ff8ae2;
     text-align: left;
   }
 
-  a:hover {
-    color: $pink;
-    text-decoration: none;
-  }
-
   h2,
   h3 {
     a {
       color: $tableHeaderColor;
-    }
-
-    a:hover {
-      color: $pink;
     }
   }
 
@@ -97,10 +88,6 @@ $red: #ff8ae2;
         color: $light-headlineColor;
         font-weight: 900;
       }
-
-      a:hover {
-        color: $pink;
-      }
     }
 
     p {
@@ -136,17 +123,6 @@ $red: #ff8ae2;
       font-size: 13px;
       height: 33px;
     }
-  }
-
-  .pink-highlight {
-    color: $red;
-  }
-
-  div.underline-div {
-    width: 100%;
-    height: 1px;
-    margin-top: 10px;
-    background-color: $red;
   }
 
   .sample-section {
