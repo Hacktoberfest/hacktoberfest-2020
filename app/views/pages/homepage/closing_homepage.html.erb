@@ -1,10 +1,9 @@
 <main class="home">
 
   <section class="home-hero">
-    <div class="container">
-      <%= image_tag("HF-full-logo.svg", :alt => "Hacktoberfest Logo") %>
+    <div class="hero-content">
       <h1 class="title is-1">
-        <strong class="highlight">Support open source</strong> and pick a limited edition T-shirt or plant a tree.
+        <span class="highlight">Support open source</span> and pick a limited edition T-shirt or plant a tree.
       </h1>
       <%= link_to "start hacking", login_path, :class => active_path_class?(profile_path, '') + " button" %>
       <div class="presented-by">
@@ -22,6 +21,7 @@
         </a>
       </div>
     </div>
+    <img alt="Hacktoberfest T-shirt" class="hero-tshirt">
   </section>
 
   <section class="home-video">
