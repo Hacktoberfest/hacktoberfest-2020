@@ -42,7 +42,7 @@
       }
 
       a {
-        color: $labelColor;
+        color: $light-highlightColor;
       }
 
       a:hover {
@@ -213,7 +213,7 @@
         }
 
         .logout:hover {
-          background-color: $labelColor;
+          background-color: $light-buttonHoverColor;
           text-decoration: none;
         }
       }
@@ -599,6 +599,18 @@
 }
 
 body.dark {
+  .profile-page .profile-left .main-content-wrapper a {
+    color: $dark-highlightColor;
+  }
+
+  .profile-page .profile-left .account-wrapper .logout-wrapper .logout:hover {
+    background-color: $dark-buttonHoverColor;
+  }
+
+  .profile-page .profile-left .main-content-wrapper a.button-static {
+    color: $buttonTextColor;
+  }
+
   .profile-page .profile-left .main-content-wrapper,
   .profile-page .profile-right .progress-wrapper,
   .profile-page .profile-right .education-wrapper {

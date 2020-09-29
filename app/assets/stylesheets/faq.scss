@@ -60,7 +60,7 @@
 
     .toggle {
       align-items: center;
-      color: $pink;
+      color: $light-highlightColor;
       cursor: pointer;
       display: flex;
       font-size: 35px;
@@ -130,5 +130,11 @@ body.dark {
 
   .faq-image {
     content: asset-url("faqdark.svg");
+  }
+
+  .question-answer {
+    .toggle {
+      color: $dark-highlightColor !important;
+    }
   }
 }

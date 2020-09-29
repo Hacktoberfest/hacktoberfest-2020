@@ -452,6 +452,16 @@ body {
         color: $light-highlightColor !important;
       }
     }
+
+    .footer-discord {
+      content: asset-url("footer-light-discord.svg") !important;
+    }
+    .footer-instagram {
+      content: asset-url("footer-light-instagram.svg") !important;
+    }
+    .footer-twitter {
+      content: asset-url("footer-light-twitter.svg") !important;
+    }
   }
 
   // home page
@@ -583,13 +593,13 @@ body {
       }
 
       .social-share-twitter {
-        content: asset-url("footer-light-twitter.svg") !important;
+        content: asset-url("social-light-twitter.svg") !important;
       }
       .social-share-facebook {
-        content: asset-url("footer-light-facebook.svg") !important;
+        content: asset-url("social-light-facebook.svg") !important;
       }
       .social-share-linkedin {
-        content: asset-url("footer-light-linkedin.svg") !important;
+        content: asset-url("social-light-linkedin.svg") !important;
       }
 
       .social-CTA {
@@ -627,7 +637,7 @@ body {
           color: $light-textColor;
         }
         :hover {
-          background-color: $pink;
+          background-color: $light-buttonHoverColor;
           color: $white !important;
         }
         .selected {
@@ -690,6 +700,8 @@ body.dark {
 
   .button,
   .button-static {
+    color: $buttonTextColor;
+
     &:hover {
       background-color: $dark-buttonHoverColor;
     }
@@ -748,6 +760,16 @@ body.dark {
       a {
         color: $dark-highlightColor !important;
       }
+    }
+
+    .footer-discord {
+      content: asset-url("footer-dark-discord.svg") !important;
+    }
+    .footer-instagram {
+      content: asset-url("footer-dark-instagram.svg") !important;
+    }
+    .footer-twitter {
+      content: asset-url("footer-dark-twitter.svg") !important;
     }
   }
 
@@ -877,13 +899,13 @@ body.dark {
       }
 
       .social-share-twitter {
-        content: asset-url("footer-dark-twitter.svg") !important;
+        content: asset-url("social-dark-twitter.svg") !important;
       }
       .social-share-facebook {
-        content: asset-url("footer-dark-facebook.svg") !important;
+        content: asset-url("social-dark-facebook.svg") !important;
       }
       .social-share-linkedin {
-        content: asset-url("footer-dark-linkedin.svg") !important;
+        content: asset-url("social-dark-linkedin.svg") !important;
       }
     }
   }
@@ -913,7 +935,7 @@ body.dark {
           color: $dark-textColor;
         }
         :hover {
-          background-color: $pink;
+          background-color: $dark-buttonHoverColor;
           color: $white !important;
         }
         .selected {
