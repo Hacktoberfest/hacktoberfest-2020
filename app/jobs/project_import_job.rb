@@ -17,7 +17,7 @@ class ProjectImportJob
   ].freeze
 
   def perform
-    remove_banned_issues
+    remove_sample_repos_and_issues
     POPULAR_LANGUAGES.each do |language|
       ProjectImportService.call("language:#{language}")
     end
@@ -27,7 +27,7 @@ class ProjectImportJob
 
   private
 
-  def remove_banned_issues
-    IssueRepositoryChecker.update_all
+  def remove_sample_repos_and_issues
+    ClearSampleRepositories.clear_all
   end
 end
