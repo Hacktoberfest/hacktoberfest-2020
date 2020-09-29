@@ -16,7 +16,13 @@ namespace :github do
     POPULAR_LANGUAGES = [
       'C#',
       'JavaScript',
-      'Python'
+      'PHP',
+      'Python',
+      'Go',
+      'C++',
+      'Java',
+      'TypeScript',
+      'Ruby'
     ].freeze
 
     POPULAR_LANGUAGES.each do |language|
