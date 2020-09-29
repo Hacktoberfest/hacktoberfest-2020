@@ -113,6 +113,8 @@ $light-navBackgroundColor: #ffffff;
 $light-socialTextColor: #031b4e;
 $light-socialBackgroundColor: #f3f5f9;
 $light-sponsorBackgroundColor: #d9e9f1;
+$light-highlightColor: #9c4668;
+$light-buttonHoverColor: #9c4668;
 
 //dark mode
 $dark-backgroundColor: #072540;
@@ -135,6 +137,8 @@ $dark-navBackgroundColor: #183d5d;
 $dark-socialTextColor: #ffffff;
 $dark-socialBackgroundColor: #183d5d;
 $dark-sponsorBackgroundColor: #5a85a1;
+$dark-highlightColor: #ff8ae2;
+$dark-buttonHoverColor: #ff73fa;
 
 // -- general
 $body-background-color: $light-backgroundColor;
@@ -180,7 +184,6 @@ $button-border-color: $blue;
 $button-border-width: 0;
 $button-padding-vertical: 24px;
 $button-padding-horizontal: 40px;
-$button-hover-color: $pink;
 
 .button {
   color: $buttonTextColor;
@@ -197,7 +200,6 @@ $button-hover-color: $pink;
   box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05);
 
   &:hover {
-    background-color: $pink;
     color: $white !important;
     padding: 24px 40px !important;
   }
@@ -228,10 +230,6 @@ $button-hover-color: $pink;
   -webkit-border-radius: 30px;
   -khtml-border-radius: 30px;
   border-radius: 30px;
-
-  &:hover {
-    background-color: $pink;
-  }
 }
 
 // -- table
@@ -275,13 +273,6 @@ select {
   font-size: 14px;
   border: 0;
   border-radius: 0;
-}
-
-a {
-  color: $pink;
-}
-strong {
-  color: $pink !important;
 }
 
 // Global styles (light mode)
@@ -330,19 +321,10 @@ body {
 
   // Reuseable
 
-  .highlight {
-    color: $pink !important;
-  }
-
   .line-br {
-    color: $pink;
     line-height: 0.4rem;
     position: relative;
     margin-bottom: 10px;
-
-    span {
-      background-color: $pink;
-    }
 
     span.line-br-1 {
       width: 40px;
@@ -388,6 +370,33 @@ body {
 
   p {
     color: $light-textColor;
+  }
+
+  a {
+    color: $light-highlightColor;
+  }
+
+  strong {
+    color: $light-highlightColor !important;
+  }
+
+  .highlight {
+    color: $light-highlightColor !important;
+  }
+
+  .line-br {
+    color: $light-highlightColor;
+
+    span {
+      background-color: $light-highlightColor;
+    }
+  }
+
+  .button,
+  .button-static {
+    &:hover {
+      background-color: $light-buttonHoverColor;
+    }
   }
 
   // navigation
@@ -653,6 +662,33 @@ body.dark {
 
   hr {
     background-color: $dark-ruleColor !important;
+  }
+
+  a {
+    color: $dark-highlightColor;
+  }
+
+  strong {
+    color: $dark-highlightColor !important;
+  }
+
+  .highlight {
+    color: $dark-highlightColor !important;
+  }
+
+  .line-br {
+    color: $dark-highlightColor;
+
+    span {
+      background-color: $dark-highlightColor;
+    }
+  }
+
+  .button,
+  .button-static {
+    &:hover {
+      background-color: $dark-buttonHoverColor;
+    }
   }
 
   // navigation
