@@ -141,7 +141,7 @@ main.home {
   .home-event-details {
     .container {
       .particiation-link {
-        color: #ff8ae2;
+        color: $light-highlightColor;
       }
     }
   }
@@ -168,7 +168,7 @@ main.home {
 
   .bullet {
     list-style-type: disc;
-    color: $red;
+    color: $light-highlightColor;
     margin-bottom: 30px;
     margin-left: 20px;
     margin-top: 10px;
@@ -548,5 +548,17 @@ body.dark {
         background: $dark-sponsorBackgroundColor !important;
       }
     }
+  }
+
+  .home-event-details {
+    .container {
+      .particiation-link {
+        color: $dark-highlightColor !important;
+      }
+    }
+  }
+
+  .bullet {
+    color: $dark-highlightColor !important;
   }
 }

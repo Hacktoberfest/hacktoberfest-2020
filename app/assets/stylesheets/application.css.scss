@@ -399,6 +399,10 @@ body {
     }
   }
 
+  .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: $light-highlightColor;
+  }
+
   // navigation
   #navbar {
     .nav-logo {
@@ -445,7 +449,7 @@ body {
         border-right: 1px solid $light-footerTextColor;
       }
       a {
-        color: $labelColor !important;
+        color: $light-highlightColor !important;
       }
     }
   }
@@ -691,6 +695,10 @@ body.dark {
     }
   }
 
+  .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: $dark-highlightColor;
+  }
+
   // navigation
   #navbar {
     .nav-logo {
@@ -738,7 +746,7 @@ body.dark {
         border-right: 1px solid $dark-footerTextColor;
       }
       a {
-        color: $labelColor !important;
+        color: $dark-highlightColor !important;
       }
     }
   }
