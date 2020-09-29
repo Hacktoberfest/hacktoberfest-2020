@@ -17,10 +17,17 @@ class ProjectImportJob
   ].freeze
 
   def perform
+    remove_banned_issues
     POPULAR_LANGUAGES.each do |language|
       ProjectImportService.call("language:#{language}")
     end
   rescue StandardError
     # Ignored
+  end
+
+  private
+
+  def remove_banned_issues
+    IssueRepositoryChecker.update_all
   end
 end
