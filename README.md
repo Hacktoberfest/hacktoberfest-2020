@@ -81,6 +81,7 @@ END_DATE=<fill-in-for-dev-setup>
 AIRTABLE_API_KEY=<fill-in-for-dev-setup>
 AIRTABLE_APP_ID=<fill-in-for-dev-setup>
 SEGMENT_WRITE_KEY=<leave-blank>
+TEST_USER_GITHUB_TOKEN=<leave-blank>
 ```
 **Note**: Use the following values when setting up your Oauth token:
 
