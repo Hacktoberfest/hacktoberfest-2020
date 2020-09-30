@@ -4,7 +4,7 @@
     <table class="is-narrow is-fullwidth">
       <tbody>
         <% scoring_pull_requests.map.with_index do |pr, key| %>
-          <%= render partial: 'users/show/pr/pr', locals: { pr: pr, score: scoring_pull_requests.length } %>
+          <%= render partial: 'users/show/pr/pr', locals: { pr: pr } %>
 
           <% if show_timer && key == 3 %>
             <tr>
