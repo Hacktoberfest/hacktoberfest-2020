@@ -7,6 +7,10 @@ module PagesHelper
     rescue MlhEventPresenter::ParseError
       # Ignore invalid events
     end.compact
+  rescue JSON::ParserError
+    AirtablePlaceholderService.call('Event List').map do |e|
+      MlhEventPresenter.new(e)
+    end.compact
   end
 
   def front_page_events
