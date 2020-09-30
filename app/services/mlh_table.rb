@@ -23,7 +23,6 @@ class MlhTable
       response.body do
         ActiveSupport::Cache.lookup_store(
           *Rails.configuration.cache_store,
-          namespace: 'mlh',
           expires_in: 3.hours
         )
       end
