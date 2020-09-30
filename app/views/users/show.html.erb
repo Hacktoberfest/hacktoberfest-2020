@@ -20,10 +20,8 @@
         <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
         <% if @presenter.bonus_score > 0 %>
           <div class="icon-box">
-            <div class="bonus-box">
-              <%= image_tag 'bonus.png' %>
-              <span><%= @presenter.bonus_score %></span>
-            </div>
+            <div class="bonus-box"></div>
+            <span><%= @presenter.bonus_score %> extra <%= "PR".pluralize(@presenter.bonus_score) %></span>
           </div>
         <% end %>
       </div>
@@ -75,10 +73,8 @@
       <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
       <% if @presenter.bonus_score > 0 %>
         <div class="icon-box bonus-wrapper">
-          <div class="bonus-box">
-            <%= image_tag 'bonus.png' %>
-          </div>
-          <span><%= @presenter.bonus_score %></span>
+          <div class="bonus-box"></div>
+          <span><%= @presenter.bonus_score %> extra <%= "PR".pluralize(@presenter.bonus_score) %></span>
         </div>
       <% end %>
     </div>
