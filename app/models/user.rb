@@ -139,13 +139,13 @@ class User < ApplicationRecord
 
     after_transition to: :banned do |user, _transition|
       user.moderator_banned = true
-      user.moderator_banned_at = Time.now
+      user.moderator_banned_at = Time.zone.now
       user.save!
     end
 
     after_transition to: :unbanned do |user, _transition|
       user.moderator_banned = false
-      user.moderator_banned_at = Time.now
+      user.moderator_banned_at = Time.zone.now
       user.save!
       user.register
       TryUserTransitionService.call(user)
@@ -212,11 +212,18 @@ class User < ApplicationRecord
   def check_flagged_state
     should_flag = should_be_flagged?
 
-    return if system_flagged == should_flag
+    unless system_flagged == should_flag
+      self.system_flagged_at = Time.zone.now
+      self.system_flagged = should_flag
+      save!
+    end
 
-    self.system_flagged_at = Date.current
-    self.system_flagged = should_flag
-    save!
+    return if moderator_banned?
+
+    if should_be_banned? and ban
+      self.moderator_notes = "#{moderator_notes} User automatically banned by system.".strip
+      save!
+    end
   end
 
   delegate :assign_coupon, to: :coupon_service
@@ -224,10 +231,11 @@ class User < ApplicationRecord
   private
 
   def should_be_flagged?
-    invalid_count = invalid_label_pull_requests_count + spam_repo_pull_requests_count
-    total_count = pull_requests.count
+    invalid_label_pull_requests_count + spam_repo_pull_requests_count >= 2
+  end
 
-    total_count >= 8 && invalid_count.to_f / total_count >= 0.75
+  def should_be_banned?
+    invalid_label_pull_requests_count + spam_repo_pull_requests_count >= 4
   end
 
   def github_emails

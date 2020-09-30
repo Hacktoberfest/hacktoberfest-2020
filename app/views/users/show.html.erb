@@ -45,23 +45,34 @@
         </div>
       <% end %>
 
-      <div class="hacktoberfest-results-box">
-        <% if @presenter.display_coupon? %>
-            <%= render partial: 'users/show/display_coupons', locals: { code: @presenter.code } %>
-        <% end %>
-        <% if @presenter.display_sticker_gift? %>
-          <%= render partial: 'users/show/display_sticker_gift', locals: { code: @presenter.code } %>
-        <% end %>
-        <% if @presenter.display_waiting_for_prize? %>
-            <%= render partial: 'users/show/waiting_for_prize', locals: { code: @presenter.code } %>
-        <% end %>
-        <% if @presenter.display_thank_you? %>
-            <%= render partial: 'users/show/thank_you', locals: { user: @presenter.user } %>
-        <% end %>
-      </div>
-      <div class="container">
-        <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, scoring_pull_requests: @presenter.scoring_pull_requests, non_scoring_pull_requests: @presenter.non_scoring_pull_requests, show_timer: @presenter.show_timer?, show_congratulations: @presenter.show_congratulations? }  %>
-      </div>
+      <% if @presenter.show_banned_message? %>
+        <div class="container pre-launch-container">
+          <h4 class="title is-4">
+            Unfortunately, too many of your pull requests have been marked as
+            spam, making you ineligible to participate in Hacktoberfest this
+            year. If you think this is invalid, we encourage you to
+            <%= link_to "contact support", "mailto:hacktoberfest@digialocean.com" %>.
+          </h4>
+        </div>
+      <% else %>
+        <div class="hacktoberfest-results-box">
+          <% if @presenter.display_coupon? %>
+              <%= render partial: 'users/show/display_coupons', locals: { code: @presenter.code } %>
+          <% end %>
+          <% if @presenter.display_sticker_gift? %>
+            <%= render partial: 'users/show/display_sticker_gift', locals: { code: @presenter.code } %>
+          <% end %>
+          <% if @presenter.display_waiting_for_prize? %>
+              <%= render partial: 'users/show/waiting_for_prize', locals: { code: @presenter.code } %>
+          <% end %>
+          <% if @presenter.display_thank_you? %>
+              <%= render partial: 'users/show/thank_you', locals: { user: @presenter.user } %>
+          <% end %>
+        </div>
+        <div class="container">
+          <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, scoring_pull_requests: @presenter.scoring_pull_requests, non_scoring_pull_requests: @presenter.non_scoring_pull_requests, show_timer: @presenter.show_timer?, show_congratulations: @presenter.show_congratulations? }  %>
+        </div>
+      <% end %>
     </div>
 
     <div class="main-content-wrapper">

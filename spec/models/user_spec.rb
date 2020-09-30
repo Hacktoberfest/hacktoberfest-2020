@@ -562,47 +562,53 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'the user has 8 PRs, 6 invalid' do
+    context 'the user has 2 invalid PRs' do
       context 'the user is not flagged' do
         before do
-          pr_stub_helper(user, PR_DATA[:invalid_flagged_array])
+          pr_stub_helper(user, [INVALID_LABEL_PR] + [INVALID_EMOJI_LABEL_PR])
 
           expect(UserStateTransitionSegmentService)
               .to receive(:insufficient).and_return(true)
           user.insufficient
 
           freeze_time
+          user.check_flagged_state
         end
 
         it 'does flag the user' do
-          user.check_flagged_state
           expect(user.system_flagged).to eq(true)
-          expect(user.system_flagged_at).to eq(Date.current)
+          expect(user.system_flagged_at).to eq(Time.zone.now)
+        end
+
+        it 'does not ban the user' do
+          expect(user.moderator_banned).to eq(false)
         end
 
         after { travel_back }
       end
     end
 
-    context 'the user has 9 PRs, 6 invalid' do
+    context 'the user has 4 invalid PRs' do
       context 'the user is flagged' do
         before do
-          pr_stub_helper(user, PR_DATA[:invalid_flagged_array] + [IMMATURE_PR])
+          pr_stub_helper(user, [INVALID_LABEL_PR] + [INVALID_EMOJI_LABEL_PR] + [SPAM_LABEL_PR] + [LONG_SPAM_LABEL_PR])
 
           expect(UserStateTransitionSegmentService)
               .to receive(:insufficient).and_return(true)
           user.insufficient
 
-          user.system_flagged = true
-          user.system_flagged_at = Date.current
-
           freeze_time
+          user.check_flagged_state
         end
 
-        it 'unflags the user' do
-          user.check_flagged_state
-          expect(user.system_flagged).to eq(false)
-          expect(user.system_flagged_at).to eq(Date.current)
+        it 'does flag the user' do
+          expect(user.system_flagged).to eq(true)
+          expect(user.system_flagged_at).to eq(Time.zone.now)
+        end
+
+        it 'does ban the user' do
+          expect(user.moderator_banned).to eq(true)
+          expect(user.moderator_banned_at).to eq(Time.zone.now)
         end
 
         after { travel_back }
