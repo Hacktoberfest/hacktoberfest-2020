@@ -1,71 +1,316 @@
-<main class="home closing" id="main-home">
-  <section class="section">
-    <div class="hero-body">
-      <p class="subtitle is-spaced">Open source is changing the world – one pull request at a time.</p>
-      <h1 class="title is-1 is-spaced">We'll see you <span class="highlight">next year</span>!</h1>
-      <!-- update button as soon as blog post is live -->
-      <%# <%= link_to 'Read the HF2019 Recap', blog_link, :class => 'button' %>
-      <div class="level presented-cont">
-        <p>
-          Hacktoberfest<span class="reg">&reg;</span> 2019 was presented by
-          <span class="logos-cont">
-            <a href="https://www.digitalocean.com">
-              <img class="do-logo" src="<%= asset_path('DO-logo-gray.png')%>" alt="DigitalOcean Logo">
-              <img class="do-title" src="<%= asset_path('DO-title.png')%>" alt="DigitalOcean">
-            </a>
-             &
-            <a href="https://www.dev.to">
-              <img class="dev-logo" src="<%= asset_path('DEV-logo-gray.png')%>" alt="Dev Logo">
-            </a>
-          </span>
-        </p>
+<main class="home">
+
+  <section class="home-hero">
+    <div class="hero-content">
+      <h1 class="title is-1">
+        <span class="highlight">Support open source</span> and pick a limited edition T-shirt or plant a tree.
+      </h1>
+      <%= link_to "start hacking", login_path, :class => active_path_class?(profile_path, '') + " button" %>
+      <div class="presented-by">
+        <p>Presented by</p>
+        <a href="https://www.digitalocean.com">
+          <img alt="DigitalOcean logo" class="header-do-logo">
+        </a>
+        <p>+</p>
+        <a href="/intel.pdf" download>
+          <img alt="Intel logo" class="header-intel-logo">
+        </a>
+        <p>+</p>
+        <a href="https://github.com/forem/forem">
+          <img alt="DEV logo" class="header-dev-logo">
+        </a>
       </div>
     </div>
-    <div class="section2-closing space">
-      <div class="line-br">
-        <span class="line-br-1">-</span>
-        <span class="line-br-2">-</span>
-      </div>
-    </div>
-    <h2 class="title is-2 is-spaced left-title-mob">Global stats</h2>
-    <section class="statUnion">
-      <% @global_stats.map do |s| %>
-        <div class="box grow-shadow">
-          <span class="statAmount">
-            <%= s.amount %>
-          </span>
-          <div>
-            <span class="statTitle">
-              <%= s.title %>
-            </span>
+    <img alt="Hacktoberfest T-shirt" class="hero-tshirt">
+  </section>
+
+  <section class="home-video">
+    <div class="container">
+      <script src="https://fast.wistia.com/embed/medias/rrnq2hxoso.jsonp" async></script>
+      <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+      <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+          <div class="wistia_embed wistia_async_rrnq2hxoso videoFoam=true" style="height:100%;position:relative;width:100%">
+            <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+              <img src="https://fast.wistia.com/embed/medias/rrnq2hxoso/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;"/>
+            </div>
           </div>
         </div>
-      <% end %>
-    </section>
-    <section>
-      <div class="box stats-cont">
-        <p class="title is-6">PULL REQUESTS OPENED</p>
-        <div id="prsOpenedChart" style="height: 350px; width: 100%;"></div>
-      </div>
-    </section>
-    <div class="section3-closing space">
-      <div class="line-br">
-        <span class="line-br-1">-</span>
-        <span class="line-br-2">-</span>
       </div>
     </div>
-    <section>
-      <h1 class="title is-3 left-title-mob">Sign up to get notified about Hacktoberfest</h1>
-      <div class="form-cont">
-        <script src="//app-ab16.marketo.com/js/forms2/js/forms2.min.js"></script>
-          <form id="mktoForm_1265" class="level"></form>
-        <script>MktoForms2.loadForm("//app-ab16.marketo.com", "937-EID-756", 1265);</script>
-      </div>
-    </section>
   </section>
+
+  <section class="home-event-details">
+    <div class="container">
+      <h2 class="title is-2" id="event-details">
+        <a href="#event-details">Event details</a>
+      </h2>
+      <p>
+        Hacktoberfest<span class="reg">&reg;</span> is open to everyone in our global community. Whether you’re a
+        developer, student learning to code, event host, or company of any size, you can help drive growth of open
+        source and make positive contributions to an ever-growing community. All backgrounds and skill levels are
+        encouraged to complete the challenge.
+      </p>
+      <ul>
+        <li class="bullet">
+          <span>Hacktoberfest is a celebration <strong>open to everyone</strong> in our global community.</span>
+        </li>
+        <li class="bullet">
+          <span>Pull requests can be made in <strong>any GitHub-hosted repositories/projects.</strong></span>
+        </li>
+        <li class="bullet">
+          <span>You can sign up anytime between October 1 and October 31.</span>
+        </li>
+      </ul>
+
+      <h2 class="title is-2" id="rules">
+        <a href="#rules">Rules</a>
+      </h2>
+      <p>
+        To earn your Hacktoberfest tee or tree reward, you must register and make four valid pull requests (PRs) between
+        October 1-31 (in any time zone). PRs can be made to any public repo on GitHub, not only the ones with issues
+        labeled Hacktoberfest. If a maintainer reports your pull request as spam or behavior not in line with the
+        project’s code of conduct, you will be ineligible to participate. This year, the first 70,000 participants who
+        successfully complete the challenge will be eligible to receive a prize.
+      </p>
+      <p>Read the <%= link_to 'participation details', details_path, :class => "participation-link" %> to learn how to
+        earn your Hacktoberfest tee or tree reward.</p>
+    </div>
+  </section>
+
+  <section class="home-projects">
+    <div class="container">
+      <h2 class="title is-2" id="projects">
+        <a href="#projects">Hacktoberfest projects</a>
+      </h2>
+      <p>
+        You can contribute to any project on GitHub. Here are a few looking for some help:
+      </p>
+      <% if @projects.empty? %>
+        <br/>
+        <p>
+          <i>
+            Sorry, we couldn't load any projects to highlight at this time.
+            <br/>
+            Click the button below to browse for projects directly on GitHub.
+          </i>
+        </p>
+        <br/>
+        <br/>
+      <% else %>
+        <div class="level language-filter">
+          <div class="right">
+            <div class="field">
+              <div class="control">
+                <div class="select">
+                  <%= collection_select(:language, :id, Language.all.sort_by(&:name), :id, :name, prompt: "Select language", html_options: {class: 'language-dropdown'}) %>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="button button-small" id="reset-filter">Remove filter</button>
+          </div>
+        </div>
+        <div class="grid" id="project-list">
+          <%= render partial: 'languages/all_projects', locals: {projects: @projects} %>
+        </div>
+      <% end %>
+      <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen+no%3Aassignee+is%3Aissue&type=Issues" class="button">
+        Browse <%= @projects.empty? ? 'projects' : 'more' %> on GitHub
+      </a>
+    </div>
+  </section>
+
+  <section class="home-special-projects">
+    <div class="container">
+      <h2 class="title is-2 featured" id="featured">
+        <a href="#featured">Projects focused on climate change & COVID-19 relief</a>
+      </h2>
+      <p>
+        Featured projects focused on tackling climate change and supporting the fight against COVID-19.
+      </p>
+      <div class="grid">
+        <% @featured_projects.map do |repository| %>
+          <a href="<%= repository['Repo URL'] %>">
+            <div class="box projects grow-shadow">
+              <div class="title-wrap">
+                <h3 class="repo-name"> <%= repository['Repo Name'] %> </h3>
+                <span class="lang"><%= repository['Repo Language'] %></span>
+              </div>
+              <p class="description"><%= repository['Description'] %></p>
+            </div>
+          </a>
+        <% end %>
+      </div>
+      <a href="https://github.com/topics/climate-change" class="button">
+        Browse more on GitHub
+      </a>
+    </div>
+  </section>
+
+  <section class="events-block">
+    <div class="container">
+      <div class="events">
+        <h2 class="title is-2" id="events">
+          <a href="#events">Global events</a>
+        </h2>
+        <p>
+          Celebrate and support open source technology by
+          <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a> or
+          <a href="https://hacktoberfest.digitalocean.com/events">attending</a> a virtual event in October.
+        </p>
+        <div class="event-union">
+          <% @events.map do |e| %>
+            <a class="box grow-shadow" href="<%= e.url %>">
+              <span class="event-month">
+                <% formatted_date = e.date.to_formatted_s(:long).split(" ") %>
+                <%= formatted_date[0] %>
+              </span>
+              <span class="event-day">
+                <%= formatted_date[1].split(",")[0] %>
+              </span>
+              <div>
+              <span class="event-title">
+                <%= e.name %>
+              </span>
+                <span class="event-location">
+                <%= e.location %>
+              </span>
+              </div>
+            </a>
+          <% end %>
+        </div>
+        <div id="eventmap" style="max-width: 1170px; height: 470px;"></div>
+        <%= link_to 'See more events', events_path, :class => 'button' %>
+      </div>
+    </div>
+  </section>
+
+  <section class="sponsors">
+    <div class="container">
+      <div class="grid sponsor-quotes">
+        <div class="box">
+          <h6 class="title is-6">
+            From DigitalOcean
+          </h6>
+          <a href="https://www.digitalocean.com/"><img alt="DigitalOcean logo" class="sponsors-digitalocean"/></a>
+          <p>
+            Now in its 7th year, Hacktoberfest has become an integral thread in our company fabric. We wouldn’t be here
+            without the passionate community and helpful partners that make this program such a spectacular event. A big
+            thank you to all that are joining for the first time and those that keep coming back year after year.
+          </p>
+        </div>
+        <div class="box">
+          <h6 class="title is-6">
+            From Intel
+          </h6>
+          <a href="/intel.pdf"><img alt="Intel logo" class="sponsors-intel"/></a>
+          <p>
+            Did you know that Intel is among the top ten contributors to open-source software? <br/> <br/>
+            We’re honored to join the Hacktoberfest celebration this year to build on this foundation along with
+            hundreds of thousands of software engineers around the world.
+          </p>
+        </div>
+        <div class="box">
+          <h6 class="title is-6">
+            From Dev
+          </h6>
+          <a href="https://github.com/forem/forem"><img alt="DEV logo" class="sponsors-dev"/></a>
+          <p>
+            DEV/Forem is proud to support Hacktoberfest, a truly wonderful celebration of open-source. Whether you're an
+            individual contributor or a project maintainer, please join us on DEV to share your Hacktoberfest journey.
+            We can't wait to see you there.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="main-sponsors">
+      <a href="https://nexmo.dev/digitalocean"><img alt="vonage logo" class="sponsors-vonage"/></a>
+      <a href="https://hacktoberfest.circleci.com/"><img alt="circleci logo" class="sponsors-circleci"/></a>
+      <a href="https://www.jetbrains.com/lp/hacktoberfest-2020/"><img alt="jetbrains logo" class="sponsors-jetbrains"/></a>
+      <a href="https://github.com/"><img alt="github logo" class="sponsors-github"/></a>
+    </div>
+    <div class="secondary-sponsors">
+      <a href="https://opensource.indeedeng.io/">
+        <%= image_tag("community-indeed.svg", :alt => "Indeed Logo") %>
+      </a>
+      <a href="https://mlh.io/events">
+        <%= image_tag("community-mlh.svg", :alt => "MLH Logo") %>
+      </a>
+      <a href="https://www.gremlin.com/">
+        <%= image_tag("community-gremlin.svg", :alt => "Gremlin Logo") %>
+      </a>
+      <a href="https://progate.com/">
+        <%= image_tag("community-progate.svg", :alt => "Progate Logo") %>
+      </a>
+      <a href="https://stripe.dev/">
+        <%= image_tag("community-stripe.svg", :alt => "Stripe Logo") %>
+      </a>
+      <a href="https://www.freshworks.com/">
+        <%= image_tag("community-freshworks.svg", :alt => "Freshworks Logo") %>
+      </a>
+      <a href="https://developers.cloudflare.com/sponsorships/">
+        <%= image_tag("community-cloudflare.svg", :alt => "Cloudflare Logo") %>
+      </a>
+      <a href="https://github.com/cockroachdb/cockroach/blob/master/CONTRIBUTING.md">
+        <%= image_tag("community-cockroach-labs.svg", :alt => "Cockroach Labs Logo") %>
+      </a>
+      <a href="https://pulumi.com/start">
+        <%= image_tag("community-pulumi.svg", :alt => "Pulumi Logo") %>
+      </a>
+      <a href="https://mattermost.com/hacktoberfest/">
+        <%= image_tag("community-mattermost.svg", :alt => "Mattermost Logo") %>
+      </a>
+      <a href="https://gitcoin.co/landing">
+        <%= image_tag("community-gitcoin.svg", :alt => "Gitcoin Logo") %>
+      </a>
+      <a href="https://raise.dev/hacktoberfest">
+        <%= image_tag("community-raise.svg", :alt => "Raise.dev Logo") %>
+      </a>
+      <a href="https://www.mongodb.com/">
+        <%= image_tag("community-mongodb.svg", :alt => "MongoDB Logo") %>
+      </a>
+      <a href="https://www.oscollective.org/">
+        <%= image_tag("community-osc.svg", :alt => "Open Source Collective Logo") %>
+      </a>
+      <a href="https://tree-nation.com/">
+        <%= image_tag("community-tree-nation.svg", :alt => "Tree-Nation Logo") %>
+      </a>
+    </div>
+  </section>
+
+  <section class="social">
+    <%= image_tag("HF-full-logo.svg", :alt => "Hacktoberfest Logo") %>
+    <div class="social-wrapper">
+      <p>Spread the word</p>
+      <div class="social-share-icons">
+        <a class="social-circle" href="https://ctt.ac/Vu1a7">
+          <img alt="twitter" class="social-share-twitter"/>
+        </a>
+        <a class="social-circle" href="https://www.facebook.com/sharer/sharer.php?u=https://hacktoberfest.digitalocean.com/">
+          <img alt="facebook" class="social-share-facebook"/>
+        </a>
+        <a class="social-circle" href="https://www.linkedin.com/sharing/share-offsite/?url=https://hacktoberfest.digitalocean.com/">
+          <img alt="linkedin" class="social-share-linkedin"/>
+        </a>
+      </div>
+    </div>
+    <div class="social-wrapper">
+      <div class="social-CTA">
+        <a class="button" href="https://discord.gg/hacktoberfest">
+          <%= image_tag("footer-social-discord.svg", :alt => "Discord Logo") %>
+          Join the conversation
+        </a>
+      </div>
+    </div>
+  </section>
+
 </main>
 <script type="text/javascript">
-  setupHomeImageSwap();
-  setupLanguageFilter();
-  setupPRsOpenedChart();
+    setupLanguageFilter();
+
+    window.google = undefined;
+    var script = document.createElement('script');
+    script.onload = window.setupEventMap;
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k";
+    document.head.appendChild(script);
 </script>

@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.airtable.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <TEST_AIRTABLE_API_KEY>
+      User-Agent:
+      - Airrecord/1.0.2
+      X-Api-Version:
+      - 0.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Date:
+      - Mon, 21 Sep 2020 21:25:53 GMT
+      Location:
+      - https://airtable.com/api
+      Server:
+      - Tengine
+      Set-Cookie:
+      - brw=brw55KhcPD8QFU1bI; path=/; expires=Tue, 21 Sep 2021 21:25:53 GMT; domain=.airtable.com;
+        samesite=none; secure; httponly
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept
+      Content-Length:
+      - '46'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: Found. Redirecting to https://airtable.com/api
+    http_version: 
+  recorded_at: Mon, 21 Sep 2020 21:25:53 GMT
+recorded_with: VCR 5.0.0

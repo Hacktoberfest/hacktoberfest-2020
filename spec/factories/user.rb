@@ -8,10 +8,15 @@ FactoryBot.define do
     provider_token    { user_github_token }
     terms_acceptance  { true }
     state             { 'registered' }
+    country           { 'US' }
 
     trait :new do
       terms_acceptance { false }
       state { 'new' }
+
+      after :build do |user|
+        PullRequestFilterHelper.pr_stub_helper(user, [])
+      end
     end
 
     trait :no_email do

@@ -3,6 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe CouponService do
+  before do
+    allow(UserPullRequestSegmentUpdaterService)
+      .to receive(:call).and_return(true)
+  end
+
   describe '#assign_coupon' do
     context 'with a completed user' do
       let(:user) { FactoryBot.create(:user, :completed) }

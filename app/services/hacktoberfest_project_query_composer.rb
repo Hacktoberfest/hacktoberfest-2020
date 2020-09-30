@@ -66,12 +66,14 @@ module HacktoberfestProjectQueryComposer
   GRAPHQL
 
   def compose_query_string(query_string = nil)
+    date_now = Time.zone.now.strftime('%Y-%m-%d')
     search_clauses = [
       'state:open',
       'label:hacktoberfest',
       'no:assignee'
     ]
     search_clauses.push(query_string) if query_string.present?
+    search_clauses.push('created:' + date_now)
     search_clauses.join(' ')
   end
 

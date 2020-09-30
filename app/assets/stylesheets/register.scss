@@ -1,154 +1,161 @@
-$break-phone: 600px;
-$break-small: 1024px;
-$break-med: 1288px;
-
-.registration-steps {
-  display: flex;
-  justify-content: space-between;
-  max-width: 695px;
-  position: relative;
-  margin: 0 auto;
-
-  @media screen and (max-width: $break-med) {
-    max-width: 500px;
-  }
-
-  @media screen and (max-width: $break-small) {
-    max-width: 300px;
-  }
-
-  @media screen and (max-width: $break-phone) {
-    max-width: 225px;
-    flex-direction: column;
-  }
-
-  .step {
+section.reg-content {
+  .registration-wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 14px;
-    color: #fff;
-    font-weight: 600;
-    position: absolute;
+    flex-wrap: wrap;
+    width: 100%;
 
-    @media screen and (max-width: $break-phone) {
-      align-items: flex-start;
-      flex-direction: row;
-      position: relative;
-      margin-bottom: 10px;
+    h1 {
+      color: $light-headlineColor;
+      font-family: $family-sans-serif;
+      font-size: $size-1;
+      font-weight: 900;
+      line-height: 44px;
+    }
+
+    .registration-left {
+      width: 50%;
+      margin-right: 4%;
+
+      .register-header {
+        color: $dark-textColor;
+        font-family: $family-sans-serif;
+        font-style: normal;
+        font-weight: 900;
+        font-size: $size-button-text;
+        line-height: 160%;
+        text-transform: uppercase;
+      }
+
+      .dropdowns,
+      .checkboxes {
+        margin: 32px 0;
+      }
+
+      a {
+        color: $labelColor;
+      }
 
       p {
-        margin-top: 3px;
-        margin-left: 10px;
+        color: $light-categoryColor;
       }
-    }
 
-    .circle {
-      width: 18px;
-      height: 18px;
-      border-radius: 100px;
-      padding: 3px 6px;
-      font-size: 6px;
-    }
+      p.error {
+        color: $pink;
+        font-size: $size-button-text;
+      }
 
-    .yellow {
-      background: hsl(58, 100%, 57%);
-      color: hsl(58, 100%, 57%);
-    }
+      .select {
+        margin: 10px 0;
 
-    .pink {
-      background: hsl(320, 100%, 50%);
-      color: hsl(320, 100%, 50%);
-    }
+        select {
+          background-color: $light-backgroundColor;
+          border: 1px solid $diamondColor;
+          border-radius: 3px;
+          box-sizing: border-box;
+          color: $light-categoryColor;
+        }
+      }
 
-    .pink-open {
-      background: hsl(223.2, 54.35%, 18.04%);
-      border: 3px solid hsl(320, 100%, 50%);
-      color: hsl(223.2, 54.35%, 18.04%);
-    }
-  }
+      label.checkbox:hover {
+        color: $platinumColor;
+      }
 
-  .step.one {
-    left: -80px;
-    top: -8px;
-    @media screen and (max-width: $break-phone) {
-      left: 0;
-      top: 0;
-    }
-  }
+      label.checkbox {
+        color: $light-categoryColor;
+      }
 
-  .step.two {
-    left: 310px;
-    top: -8px;
-    @media screen and (max-width: $break-med) {
-      left: 207px;
-    }
+      .check-style {
+        width: 15px;
+        height: 15px;
+      }
 
-    @media screen and (max-width: $break-small) {
-      left: 122px;
-    }
+      .submit-btn {
+        display: flex;
+        flex-direction: row;
+        padding: 21px 40px;
+        position: static;
+        background: $buttonColor;
+        border-radius: 48px;
+        border: none;
+        color: $buttonTextColor;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: $size-button-text;
+        cursor: pointer;
+        margin: 32px 0 8px;
 
-    @media screen and (max-width: $break-phone) {
-      left: 0;
-      top: 0;
-    }
-  }
-
-  .step.three {
-    right: -80px;
-    top: -8px;
-
-    @media screen and (max-width: $break-phone) {
-      left: 0;
-      top: 0;
-    }
-  }
-
-  div:empty {
-    width: 100%;
-    max-width: 314px;
-    height: 5px;
-    margin-left: 19px;
-    background: hsla(0, 0%, 100%, 0.1);
-    @media screen and (max-width: $break-phone) {
-      display: none;
-    }
-  }
-
-  div.right-bar:empty {
-    margin-left: 0;
-    margin-right: 14px;
-    max-width: 318px;
-  }
-
-  div.pink-line:empty {
-    background: hsl(320, 100%, 50%);
-  }
-}
-
-section.reg-content {
-  & > div {
-    max-width: 695px;
-    margin: 120px auto;
-    @media screen and (max-width: $break-phone) {
-      margin: 0px auto;
-    }
-    p {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .field {
-      margin-bottom: 1.5rem;
-      label {
-        color: #fff922;
-        font-weight: 400;
         &:hover {
-          color: #fff922;
+          background-color: $pink;
         }
       }
     }
+
+    .registration-right {
+      width: 45%;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .background-img {
+        background-image: asset-url(
+          "hactoberfest-logo-with-sponsors-light.svg"
+        );
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        display: inline-block;
+        width: 100%;
+        max-width: 570px;
+        height: 100%;
+      }
+    }
   }
-  .button {
-    margin-top: 40px;
+}
+
+body.dark {
+  h1 {
+    color: $dark-headlineColor !important;
+  }
+
+  section.reg-content
+    .registration-wrapper
+    .registration-right
+    .background-img {
+    background-image: asset-url(
+      "hactoberfest-logo-with-sponsors-dark-v2.svg"
+    ) !important;
+  }
+
+  section.reg-content .registration-wrapper .registration-left label.checkbox,
+  section.reg-content .registration-wrapper .registration-left p {
+    color: $diamondColor !important;
+  }
+
+  section.reg-content
+    .registration-wrapper
+    .registration-left
+    label.checkbox:hover {
+    color: $buttonTextColor !important;
+  }
+
+  section.reg-content .registration-wrapper .registration-left .select select {
+    background-color: $dark-boxColor !important;
+    color: $dark-headlineColor !important;
+    border-color: transparent;
+  }
+}
+
+@media screen and (max-width: $break-small) {
+  section.reg-content .registration-wrapper .registration-right,
+  section.reg-content .registration-wrapper .registration-left {
+    width: 100%;
+  }
+
+  section.reg-content
+    .registration-wrapper
+    .registration-right
+    .background-img {
+    margin-top: 60px;
   }
 }

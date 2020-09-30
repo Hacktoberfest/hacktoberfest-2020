@@ -1,23 +1,22 @@
 <section class="section reg-content">
-  <div>
-    <h1 class="title is-1">About you</h1>
-    <p>
-      Please select which email address you'd like
-      to use for Hacktoberfest:
-    </p>
-    <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
+  <div class="container">
+    <div class="registration-wrapper">
+      <div class="registration-left">
+        <h1 class="title is-1">About you</h1>
+        <p>
+          Please select which email address you'd like to use for Hacktoberfest:
+        </p>
 
-      <div class="field">
-        <label class="label">Preferred email</label>
-        <div class="control">
-          <div class="select">
-            <%= f.select :email, @emails %>
-          </div>
-        </div>
+        <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
+          <%= render partial: 'users/dropdowns', locals: { f: f, u: @current_user } %>
+
+          <%= f.submit 'Update profile', :class => 'button-static'%>
+        <% end %>
       </div>
 
-      <%= f.submit 'Update email', :class => 'button'%>
-
-    <% end %>
+      <div class="registration-right">
+        <div class="background-img"></div>
+      </div>
+    </div>
   </div>
 </section>

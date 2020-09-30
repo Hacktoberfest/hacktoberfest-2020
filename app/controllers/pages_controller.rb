@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
-  before_action :disallow_registered_user!, only: :start
+  include PagesHelper
 
   def index
     @events = front_page_events
     @projects = ProjectService.sample(9)
-    @climate_repositories = ClimateProjectService.sample(3)
+    @featured_projects = front_page_projects
     @global_stats = global_stats
     if Hacktoberfest.ended?
       render 'pages/homepage/closing_homepage'
@@ -16,11 +16,11 @@ class PagesController < ApplicationController
   end
 
   def faqs
-    faq = AirrecordTable.new.all_records('FAQs')
-    @faqs_rules = faq.select { |q| q['Category'] == 'Rules' }
-    @faqs_general = faq.select { |q| q['Category'] == 'General' }
-    @faqs_events = faq.select { |q| q['Category'] == 'Events' }
-    @faqs_shipping = faq.select { |q| q['Category'] == 'Shipping' }
+    clean_faqs = filter_faqs(all_faqs)
+    @faqs_rules = present_faqs(clean_faqs, 'Rules')
+    @faqs_general = present_faqs(clean_faqs, 'General')
+    @faqs_events = present_faqs(clean_faqs, 'Events')
+    @faqs_shipping = present_faqs(clean_faqs, 'Shipping')
   end
 
   def events
@@ -29,35 +29,13 @@ class PagesController < ApplicationController
 
   def event_kit; end
 
-  def start; end
-
   def api_error; end
 
-  private
+  def github_unauthorized_error; end
 
-  def all_events
-    MlhTable.new.records['data'].map do |e|
-      MlhEventPresenter.new(e)
-    rescue MlhEventPresenter::ParseError
-      # Ignore invalid events
-    end.compact
-  end
+  def github_suspended_error; end
 
-  def front_page_events
-    all_events
-    # .select(&:current?)
-    # .select(&:published?)
-    # .select(&:featured?)
-    # .sample(4)
-    # .sort_by(&:date)
-  end
+  def tshirt; end
 
-  def global_stats
-    stats_arr = [
-      { amount: '61,956', title: 'CHALLENGE COMPLETIONS' },
-      { amount: '482,182', title: 'PULL REQUESTS OPENED' },
-      { amount: '154,466', title: 'PARTICIPATING REPOSITORIES' }
-    ]
-    stats_arr.map { |s| Hashie::Mash.new(s) }
-  end
+  def tree; end
 end

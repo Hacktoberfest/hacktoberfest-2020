@@ -20,6 +20,10 @@ class MlhEventPresenter
     nil
   end
 
+  def time_zone
+    @event.dig('attributes', 'timeZone').gsub(/_/, ' ')
+  end
+
   def city
     @event.dig('attributes', 'location', 'city')
   end
@@ -39,12 +43,8 @@ class MlhEventPresenter
   end
 
   def url
-    @event.dig('links', 'register')
+    @event.dig('links', 'view')
   end
-
-  #  def featured? # maybe we will re-enable this?
-  #    @event['Featured?']
-  #  end
 
   def current?
     date > Date.yesterday

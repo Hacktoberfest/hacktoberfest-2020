@@ -3,6 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe GiftService do
+  before do
+    allow(UserPullRequestSegmentUpdaterService)
+      .to receive(:call).and_return(true)
+    allow(UserStateTransitionSegmentService)
+      .to receive(:call).and_return(true)
+  end
+
   describe '.call' do
     context 'Users in the incompleted state' do
       before { travel_to Time.zone.parse(ENV['END_DATE']) + 1.day }
@@ -33,7 +40,6 @@ RSpec.describe GiftService do
 
       context 'there is 1 sticker coupon' do
         before do
-          allow(UserStateTransitionSegmentService).to receive(:call)
           FactoryBot.create(:sticker_coupon)
           GiftService.call
         end
@@ -47,7 +53,6 @@ RSpec.describe GiftService do
 
       context 'there are 2 sticker coupons' do
         before do
-          allow(UserStateTransitionSegmentService).to receive(:call)
           FactoryBot.create(:sticker_coupon)
           FactoryBot.create(:sticker_coupon)
           GiftService.call
@@ -68,7 +73,6 @@ RSpec.describe GiftService do
 
       context 'there are 3 sticker coupons' do
         before do
-          allow(UserStateTransitionSegmentService).to receive(:call)
           FactoryBot.create(:sticker_coupon)
           FactoryBot.create(:sticker_coupon)
           FactoryBot.create(:sticker_coupon)

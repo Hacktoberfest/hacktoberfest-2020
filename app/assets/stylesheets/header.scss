@@ -7,15 +7,15 @@ $grey-darker: hsl(222, 45%, 21%); // box dark blue
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
 
 header {
-  margin: 30px 55px 100px 55px;
-  min-height: 160px;
+  padding: 30px 55px 0;
+  margin: 0;
 
   @media screen and (max-width: $break-med) {
-    margin: 30px 85px 30px 85px;
+    padding: 30px 85px 30px 85px;
   }
 
   @media screen and (max-width: $break-small) {
-    margin: 30px 30px 30px 30px;
+    padding-inline-start: 30px 30px 30px 30px;
   }
 }
 
@@ -53,7 +53,6 @@ $navColor: rgba(0, 0, 0, 0);
 
 #navbar {
   font-family: "Inter Black", "Helvetica", "Arial", san-serif;
-  font-weight: 900;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -68,6 +67,10 @@ $navColor: rgba(0, 0, 0, 0);
   .navbar-primary {
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: $break-small) {
+      flex-direction: column;
+    }
 
     .logo {
       min-height: 100px;
@@ -92,7 +95,6 @@ $navColor: rgba(0, 0, 0, 0);
         text-align: center;
 
         .navLink {
-          color: #93c2db;
           margin-left: 1.875rem;
           font-size: 0.875rem;
           z-index: 1;
@@ -106,6 +108,7 @@ $navColor: rgba(0, 0, 0, 0);
 
         .button.button-small.navLink {
           color: #fff;
+
           @media screen and (max-width: $break-small) {
             margin-top: 10px;
           }
@@ -116,13 +119,20 @@ $navColor: rgba(0, 0, 0, 0);
         }
 
         .dropdown-trigger {
+          small {
+            font-size: 0.5rem;
+            vertical-align: text-top;
+            position: relative;
+            top: 0.2rem;
+          }
+
           @media screen and (max-width: $break-small) {
             display: none;
           }
         }
 
         .dropdown-menu {
-          padding-top: 15px;
+          padding-top: 10px;
 
           @media screen and (max-width: $break-small) {
             display: flex;
@@ -133,8 +143,9 @@ $navColor: rgba(0, 0, 0, 0);
           }
 
           .dropdown-content {
-            background-color: $grey-darker;
-            padding: 0;
+            padding: 10px;
+            box-shadow: rgba(24, 61, 93, 0.08) 0px 4px 10px;
+            text-decoration: none;
 
             @media screen and (max-width: $break-small) {
               background: transparent;
@@ -147,8 +158,9 @@ $navColor: rgba(0, 0, 0, 0);
 
             .navLink {
               margin-left: 0;
-              padding: 10px;
+              padding: 10px 15px;
               font-size: 12px;
+              border-radius: 4px;
 
               @media screen and (max-width: $break-small) {
                 font-size: 0.875rem;
@@ -160,17 +172,14 @@ $navColor: rgba(0, 0, 0, 0);
 
             .navLink:hover,
             .dropdown-item:hover {
-              background-color: $black-bis;
               border-bottom: 0;
 
               @media screen and (max-width: $break-small) {
                 background-color: transparent;
-                border-bottom: 2px solid #fff922;
               }
             }
 
             .dropdown-divider {
-              background-color: $black-bis;
               margin: 0;
 
               @media screen and (max-width: $break-small) {
@@ -180,12 +189,15 @@ $navColor: rgba(0, 0, 0, 0);
           }
         }
 
-        .navLink:hover,
+        .navLink:hover {
+          color: $light-highlightColor;
+        }
+
         .active {
-          padding-bottom: 5px;
           box-shadow: inset 0 -5px 0 0 #93c2db;
           text-decoration: none;
-          color: #fff;
+          padding: 0 3px;
+          padding-bottom: 2px;
 
           @media screen and (max-width: $break-small) {
             padding-bottom: 2px;
@@ -195,6 +207,7 @@ $navColor: rgba(0, 0, 0, 0);
         .button.navLink:hover {
           color: $grey-darker;
           border-bottom: 0;
+
           @media screen and (max-width: $break-small) {
             margin-top: 10px;
             padding-bottom: 7px;
@@ -282,6 +295,14 @@ $navColor: rgba(0, 0, 0, 0);
       -webkit-transition: 0.4s;
       transition: 0.4s;
       border-radius: 50%;
+    }
+  }
+}
+
+body.dark {
+  #navbar {
+    .navLink:hover {
+      color: $dark-highlightColor !important;
     }
   }
 }

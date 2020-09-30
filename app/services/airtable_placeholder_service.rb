@@ -39,7 +39,38 @@ module AirtablePlaceholderService
           }
         ]
       }
-    when 'FAQ'
+    when 'Event List'
+      [
+        {
+          'Event Named' => 'Hacktoberfest 2020 Official Kick-Off Celebration',
+          'Event City' => 'APAC',
+          'Event Country' => 'India',
+          'Date' => '2020-10-01',
+          'Link' => 'https://organize.mlh.io/participants/events/4019-hacktoberfest-2020-official-kick-off-celebration'
+        },
+        {
+          'Event Named' => 'Hacktoberfest Tuesdays: Americas',
+          'Event City' => 'New York',
+          'Event Country' => 'United States',
+          'Date' => '2020-10-06',
+          'Link' => 'https://organize.mlh.io/participants/events/4079-hacktoberfest-tuesdays-east-coast-and-more'
+        },
+        {
+          'Event Named' => 'Hacktoberfest Tuesdays: Asia',
+          'Event City' => 'Singapore',
+          'Event Country' => 'Singapore',
+          'Date' => '2020-10-13',
+          'Link' => 'https://organize.mlh.io/participants/events/4099-hacktoberfest-tuesdays-asia'
+        },
+        {
+          'Event Named' => 'Hacktoberfest Tuesdays: Europe',
+          'Event City' => 'London',
+          'Event Country' => 'United Kingdom',
+          'Date' => '2020-10-27',
+          'Link' => 'https://organize.mlh.io/participants/events/4101-hacktoberfest-tuesdays-europe'
+        }
+      ]
+    when 'FAQs'
       [
         { 'Question' =>
             "My draft pull requests don't seem
@@ -100,6 +131,74 @@ module AirtablePlaceholderService
             irrelevant, or labeled as
             **invalid**.",
           'Category' => 'Rules' }
+      ]
+    when 'Themed Repos'
+      [
+        {
+          'Repo Name' => 'electricitymap-contrib',
+          'Repo URL' => 'https://github.com/tmrowco/electricitymap-contrib',
+          'Repo Language' => 'Python',
+          'Description' => 'A real-time visualisation of the CO2 emissions of
+            electricity consumption'
+        },
+        {
+          'Repo Name' => 'tmrowapp-contrib',
+          'Repo URL' => 'https://github.com/tmrowco/tmrowapp-contrib',
+          'Repo Language' => 'JavaScript',
+          'Description' => 'Tomorrow automatically calculates the climate
+            impact of your daily choices by connecting to apps and services you
+            already use.'
+        },
+        {
+          'Repo Name' => 'community-toolbox',
+          'Repo URL' => 'https://github.com/publiclab/community-toolbox',
+          'Repo Language' => 'JavaScript',
+          'Description' => 'Tools to understand and welcome people into a
+            contributor community'
+        },
+        {
+          'Repo Name' => 'polarmap.js',
+          'Repo URL' => 'https://github.com/GeoSensorWebLab/polarmap.js',
+          'Repo Language' => 'JavaScript',
+          'Description' => 'Custom Leaflet layer for re-projecting maps and map
+            features'
+        },
+        {
+          'Repo Name' => 'climate',
+          'Repo URL' => 'https://github.com/apache/climate',
+          'Repo Language' => 'Jupyter Notebook',
+          'Description' => 'Mirror of Apache Open Climate Workbench'
+        },
+        {
+          'Repo Name' => 'awesome-open-climate-science',
+          'Repo URL' => 'https://github.com/pangeo-data/awesome-open-climate-science',
+          'Repo Language' => '',
+          'Description' => 'Awesome Open Atmospheric, Ocean, and Climate
+            Science'
+        },
+        {
+          'Repo Name' => 'contributor_covenant',
+          'Repo URL' => 'https://github.com/Ecohackerfarm/contributor_covenant',
+          'Repo Language' => 'CSS',
+          'Description' => 'Pledge your respect and appreciation for
+            contributors of all kinds to your open source project.'
+        },
+        {
+          'Repo Name' => 'RebelsManager',
+          'Repo URL' => 'https://github.com/extinctionrebellion/',
+          'Repo Language' => 'Ruby',
+          'Description' => 'Extinction Rebellion is an international movement
+            that uses non-violent civil disobedience in an attempt to halt mass
+            extinction and minimise the risk of social collapse. The Rebels
+            Manager is a CRM app for coordinators.'
+        },
+        {
+          'Repo Name' => 'pangeo',
+          'Repo URL' => 'https://github.com/pangeo-data/pangeo',
+          'Repo Language' => 'Jupyter Notebook',
+          'Description' => 'Pangeo website + discussion of general issues
+            related to the project.'
+        }
       ]
     else
       []

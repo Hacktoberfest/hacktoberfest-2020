@@ -1,12 +1,7 @@
 <div class="timeline-container">
-  <% if scoring_pull_requests.empty? %>
-    <div class="container pre-launch-container">
-      <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
-      <%= link_to "Get started", details_path, anchor: "getting-started", class: "button" %>
-    </div>
-  <% else %>
+  <% unless scoring_pull_requests.empty? %>
     <h3 class="title is-3">Your contributions</h3><br/>
-    <table class="table is-narrow is-fullwidth">
+    <table class="is-narrow is-fullwidth">
       <tbody>
         <% scoring_pull_requests.map do |pr| %>
           <%= render partial: 'users/show/pr/pr', locals: { pr: pr } %>
@@ -16,10 +11,8 @@
           <tr>
             <td colspan="2">
               <div class="winning-msg-cont">
-                <h1 class="title is-2 pink-highlight">You're almost there!</h1>
-                <span class="title is-3">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in</span>
-                <span class="title is-3 pink-highlight" id="countdown"></span>
-                <span class="title is-3"> — which means you’ll have officially completed this year’s challenge!</span>
+                <h2 class="winning-title">You're almost there!</h2>
+                <span class="winning-desc">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in — which means you’ll have officially completed this year’s challenge!</span>
               </div>
             </td>
           </tr>
@@ -29,8 +22,8 @@
           <tr>
             <td colspan="2">
               <div class="winning-msg-cont">
-                <h1 class="title is-2 pink-highlight">You did it! 🎉</h1>
-                <span class="title is-3">You've made four eligible PRs for Hacktoberfest — which means you officially completed this year’s challenge!</span>
+                <h2 class="winning-title">You did it! 🎉</h2>
+                <span class="winning-desc">You've made four eligible PRs for Hacktoberfest — which means you officially completed this year’s challenge!</span>
               </div>
             </td>
           </tr>
@@ -44,71 +37,63 @@
       </tbody>
     </table>
 
-    <div class="legend box has-text-white">
+    <div class="legend has-text-white">
       <h4 class="title is-4">Legend</h4>
-      <div>
-        <div class="icon-name">
-          <div class="icon-box">
-            <div class="pending-box">
-              <%= image_tag 'pending.png' %>
-            </div>
+      <div class="legend-container">
+        <div class="icon-box">
+          <div class="pending-box">
           </div>
-          <p>Pending</p>
         </div>
-        <p>
-          We're waiting for you to reach four or more pull requests, or your PR is currently within the review period.
-        </p>
+        <div class="icon-name-desc">
+          <div class="icon-name">
+            Pending
+          </div>
+          <div class="icon-desc">
+            Your PR is currently within the review period, which lasts for seven days.
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="icon-name">
-          <div class="icon-box">
-            <div class="ineligible-box">
-              <%= image_tag 'ineligible.png' %>
-            </div>
+      <div class="legend-container">
+        <div class="icon-box">
+          <div class="invalid-box">
           </div>
-          <p>Invalid</p>
         </div>
-        <p>
-          Your PR has been labeled as "invalid" by a maintainer and won't count toward winning Hacktoberfest.
-        </p>
+        <div class="icon-name-desc">
+          <div class="icon-name">
+            Invalid
+          </div>
+          <div class="icon-desc">
+            Your PR has been labeled as "invalid" or "spam" by a maintainer and won't count toward winning Hacktoberfest.
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="icon-name">
-          <div class="icon-box">
-            <div class="spammy-box">
-              <%= image_tag 'spam.png' %>
-            </div>
+      <div class="legend-container">
+        <div class="icon-box">
+          <div class="spammy-box">
           </div>
-          <p>Ineligible Repository</p>
         </div>
-        <p>
-          Your PR was submitted to a repository that we've excluded from Hacktoberfest as it doesn't align with our core
-          values.
-        </p>
+        <div class="icon-name-desc">
+          <div class="icon-name">
+            Ineligible Repository
+          </div>
+          <div class="icon-desc">
+            Your PR was submitted to a repository that we've excluded from Hacktoberfest as it doesn't align with our core values.
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="icon-name">
-          <div class="icon-box">
-            <div class="eligible-box">
-              <%= image_tag 'eligible.png' %>
-            </div>
+      <div class="legend-container">
+        <div class="icon-box">
+          <div class="eligible-box">
           </div>
-          <p>Eligible</p>
         </div>
-        <p>
-          Good job! Your PR has passed the review period and counts toward completing the Hacktoberfest challenge!
-        </p>
-      </div>
-      <div>
-        <div class="icon-name">
-          <div class="icon-box">
-            <div class="bonus-box">
-              <%= image_tag 'bonus.png' %>
-            </div>
+        <div class="icon-name-desc">
+          <div class="icon-name">
+            Eligible
           </div>
-          <p>Bonus</p>
+          <div class="icon-desc">
+            Good job! Your PR has passed the review period and counts toward completing the Hacktoberfest challenge!
+          </div>
         </div>
-        <p>Outstanding! You’ve gone above and beyond this Hacktoberfest.</p>
       </div>
     </div>
   <% end %>

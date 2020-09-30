@@ -1,24 +1,9 @@
 <main class="section is-fluid fluid-content-page">
-  <h1 class="title is-1">What is Hacktoberfest?</h1>
-  <p>Have questions? These are the most Frequently Asked Questions about Hacktoberfest.</p>
-  <section class="faq-toc">
-    <p class="title is-5">Jump to:</p>
-    <ul id="tabs" class="">
-      <li>
-        <a class="is-size-5" href="#general">General</a>
-      </li>
-      <li>
-        <a class="is-size-5" href="#rules">Rules</a>
-      </li>
-      <li>
-        <a class="is-size-5" href="#events">Events</a>
-      </li>
-      <li>
-        <a class="is-size-5" href="#shipping">Shipping</a>
-      </li>
-    </ul>
-  </section>
-
+  <div class="faq-header">
+    <img alt="faq icon image" class="faq-image">
+    <h1 class="title is-1">What is Hacktoberfest?</h1>
+    <p class="faq-intro">Have questions? These are the most frequently asked questions about Hacktoberfest.</p>
+  </div>
   <div class="qa-section">
     <a name="general">
       <h2 class="title is-2 highlight">General </h2>
@@ -26,7 +11,8 @@
     <% @faqs_general.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
-        <div class="answer"> <%= markdown q["Answer"] %></div>
+        <div class="toggle">&#xFE62;</div>
+        <div class="answer"> <%= markdown(q["Answer"]) %></div>
       </div>
     <% end %>
   </div>
@@ -37,7 +23,8 @@
     <% @faqs_rules.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
-        <div class="answer"> <%= markdown q["Answer"] %></div>
+        <div class="toggle">&#xFE62;</div>
+        <div class="answer"><%= markdown(q["Answer"]) %></div>
       </div>
     <% end %>
   </div>
@@ -48,7 +35,8 @@
     <% @faqs_events.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
-        <div class="answer"> <%= markdown q["Answer"] %></div>
+        <div class="toggle">&#xFE62;</div>
+        <div class="answer"> <%= markdown(q["Answer"]) %></div>
       </div>
     <% end %>
   </div>
@@ -59,7 +47,8 @@
     <% @faqs_shipping.map do |q| %>
       <div class="question-answer">
         <div class="question"><%= markdown(q["Question"])%></div>
-        <div class="answer"> <%= markdown q["Answer"] %></div>
+        <div class="toggle">&#xFE62;</div>
+        <div class="answer"> <%= markdown(q["Answer"]) %></div>
       </div>
     <% end %>
   </div>

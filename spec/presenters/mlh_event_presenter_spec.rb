@@ -12,13 +12,15 @@ describe MlhEventPresenter do
           'attributes' => {
             'title' => 'Hacktoberfest in Brasilia',
             'startDate' => '2020-10-16',
+            'timeZone' => 'America/Sao_Paulo',
             'location' => {
               'city' => 'Brasilia',
               'country' => 'Brazil'
             }
           },
           'links' => {
-            'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register'
+            'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register',
+            'view' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia'
           }
         }
       end
@@ -30,12 +32,13 @@ describe MlhEventPresenter do
         expect(event_presenter.date)
           .to eq Date.strptime(event.dig('attributes', 'startDate'), '%Y-%m-%d')
         expect(event_presenter.country).to eq event.dig('attributes', 'location', 'country')
+        expect(event_presenter.time_zone).to eq event.dig('attributes', 'timeZone').gsub(/_/, ' ')
         expect(event_presenter.city).to eq event.dig('attributes', 'location', 'city')
         expect(event_presenter.location).to include(
           event.dig('attributes', 'location', 'city'),
           event.dig('attributes', 'location', 'country')
         )
-        expect(event_presenter.url).to eq event.dig('links', 'register')
+        expect(event_presenter.url).to eq event.dig('links', 'view')
       end
     end
 
@@ -68,19 +71,22 @@ describe MlhEventPresenter do
       end
     end
   end
+
   describe '#current?' do
     let(:event) do
       {
         'attributes' => {
           'title' => 'Hacktoberfest in Brasilia',
           'startDate' => '2020-10-16',
+          'timeZone' => 'America/Sao_Paulo',
           'location' => {
             'city' => 'Brasilia',
             'country' => 'Brazil'
           }
         },
         'links' => {
-          'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register'
+          'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register',
+          'view' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia'
         }
       }
     end

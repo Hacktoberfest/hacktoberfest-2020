@@ -1,53 +1,109 @@
-<div class='container profile'>
-  <div class="profile-container">
-    <div class='user-section'>
-      <div class="level">
-        <div class="level-left">
+<div class="profile-page">
+  <div class="profile-left">
+    <div class="main-content-wrapper">
+      <div class="account-wrapper">
+        <span>
           <div class="avatar">
             <figure class='image'>
               <%= image_tag "https://github.com/#{@presenter.name}.png?size=150", class: 'is-rounded'%>
             </figure>
           </div>
           <h2 class='username title is-2'><%= @presenter.name %> </h2>
-        </div>
-        <div class="level-right">
-          <p class='progress-msg'>YOUR PROGRESS</p>
-          <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
-          <% if @presenter.bonus_score > 0 %>
-            <div class="icon-box">
-              <div class="bonus-box">
-                <%= image_tag 'bonus.png' %>
-                <span><%= @presenter.bonus_score %></span>
-              </div>
-            </div>
-          <% end %>
+        </span>
+        <div class="logout-wrapper">
+          <%= link_to "Log out @#{@presenter.name}", logout_path, :class => "logout" %>
         </div>
       </div>
-    </div>
-    <% if @presenter.display_pre_launch? %>
-        <%= render partial: 'users/show/pre_launch' %>
-    <% else %>
-    <div class="hacktoberfest-results-box">
-      <% if @presenter.display_coupon? %>
-          <%= render partial: 'users/show/display_coupons', locals: { code: @presenter.code } %>
+
+      <div class="progress-wrapper mobile">
+        <h4 class="progress-header">your progress</h4>
+        <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
+        <% if @presenter.bonus_score > 0 %>
+          <div class="icon-box">
+            <div class="bonus-box">
+              <%= image_tag 'bonus.png' %>
+              <span><%= @presenter.bonus_score %></span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
+      <% if @presenter.display_pre_launch? %>
+        <div class="container pre-launch-container">
+          <h2 class='title is-2'>Get ready to start contributing to Hacktoberfest.</h2>
+          <h4 class="title is-4">Pull requests for Hacktoberfest count from October 1st to 31st.</h4>
+          <br/>
+
+          <%= link_to "Find out more", details_path, anchor: "getting-started", class: "button-static" %>
+          <%= link_to "Attend an event", events_path, class: "button-static" %>
+          <%= link_to "Organize an event", event_kit_path, class: "button-static" %>
+        </div>
+      <% elsif @presenter.scoring_pull_requests.empty? %>
+        <div class="container pre-launch-container">
+          <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
+          <%= link_to "Get started", details_path, anchor: "getting-started", class: "button-static" %>
+        </div>
       <% end %>
-      <% if @presenter.display_sticker_gift? %>
-        <%= render partial: 'users/show/display_sticker_gift', locals: { code: @presenter.code } %>
-      <% end %>
-      <% if @presenter.display_waiting_for_prize? %>
-          <%= render partial: 'users/show/waiting_for_prize', locals: { code: @presenter.code } %>
-      <% end %>
-      <% if @presenter.display_thank_you? %>
-          <%= render partial: 'users/show/thank_you', locals: { user: @presenter.user } %>
-      <% end %>
-    </div>
-      <div class="container box">
+
+      <div class="hacktoberfest-results-box">
+        <% if @presenter.display_coupon? %>
+            <%= render partial: 'users/show/display_coupons', locals: { code: @presenter.code } %>
+        <% end %>
+        <% if @presenter.display_sticker_gift? %>
+          <%= render partial: 'users/show/display_sticker_gift', locals: { code: @presenter.code } %>
+        <% end %>
+        <% if @presenter.display_waiting_for_prize? %>
+            <%= render partial: 'users/show/waiting_for_prize', locals: { code: @presenter.code } %>
+        <% end %>
+        <% if @presenter.display_thank_you? %>
+            <%= render partial: 'users/show/thank_you', locals: { user: @presenter.user } %>
+        <% end %>
+      </div>
+      <div class="container">
         <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, scoring_pull_requests: @presenter.scoring_pull_requests, non_scoring_pull_requests: @presenter.non_scoring_pull_requests, show_timer: @presenter.show_timer?, show_congratulations: @presenter.show_congratulations? }  %>
       </div>
-    <% end %>
-    <%= link_to "Log out @#{@presenter.name}", logout_path, :class => "button" %>
+    </div>
+
+    <div class="main-content-wrapper">
+      <p>Have you seen a repository that you don't think aligns with the <%= link_to "Hacktoberfest values", details_path %>? Please <%= link_to "report it to us", report_path %> so we can take a look.</p>
+    </div>
   </div>
-  <div class="box report-spam-cont">
-     <h5 class="title is-5">Have you seen a repository that you don't think aligns with the <%= link_to "Hacktoberfest values", details_path %>? Please <%= link_to "report it to us", report_path %> so we can take a look.  </h5>
-   </div>
+
+  <div class="profile-right">
+    <div class="progress-wrapper desktop">
+      <h4 class="progress-header">your progress</h4>
+      <%= render partial: 'users/show/progress_bar', locals: { score: @presenter.score } %>
+      <% if @presenter.bonus_score > 0 %>
+        <div class="icon-box bonus-wrapper">
+          <div class="bonus-box">
+            <%= image_tag 'bonus.png' %>
+          </div>
+          <span><%= @presenter.bonus_score %></span>
+        </div>
+      <% end %>
+    </div>
+    <div class="education-wrapper">
+      <h4 class="side-headers">education hub</h4>
+      <div class="education-section">
+        <h5>Educate Yourself</h5>
+        <ul>
+          <li><a href="https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source" target="_blank">Get An Introduction to Open Source</a></li>
+          <li><a href="https://hacktoberfest.digitalocean.com/details/" target="_blank">Digest the Resources</a></li>
+          <li><a href="https://hacktoberfest.digitalocean.com/faq/" target="_blank">Get Answers Before Asking</a></li>
+          <li><a href="https://www.digitalocean.com/community/tutorials/how-to-maintain-open-source-software-projects" target="_blank">Learn About Maintainer Experience</a></li>
+        </ul>
+      </div>
+      <div class="education-section">
+        <h5>Make An Impact</h5>
+        <ul>
+          <li><a href="https://hacktoberfest.digitalocean.com/eventkit/" target="_blank">Organize a Hacktoberfest Meetup</a></li>
+          <li><a href="https://www.digitalocean.com/community/meetup_kits/hacktoberfest-workshop-kit-how-to-submit-your-first-pull-request-on-github" target="_blank">Lead an Open Source Workshop</a></li>
+          <li><a href="https://dev.to/" target="_blank">Share Your Experience on DEV</a></li>
+          <li><a href="https://raise.dev/hacktoberfest" target="_blank">Apply to Become a Coach</a></li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+
 </div>

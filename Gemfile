@@ -34,6 +34,8 @@ gem 'omniauth-rails_csrf_protection', '~> 0.1'
 
 gem 'puma', '~> 4.0'
 
+gem 'country_select', '~> 4.0', require: 'country_select_without_sort_alphabetical'
+
 gem 'rails', '~> 5.2.3'
 
 gem 'sass-rails', '~> 5.0'

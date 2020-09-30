@@ -26,3 +26,9 @@ Rails:
   Enabled: true
 Documentation:
   Enabled: false
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging

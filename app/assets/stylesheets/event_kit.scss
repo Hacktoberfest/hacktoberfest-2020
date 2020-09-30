@@ -1,42 +1,132 @@
 $break-small: 1024px;
-$red: hsl(320, 100%, 50%);
-$purple: hsl(286.79, 73.68%, 44.71%);
-$grey-dark: hsl(223, 32%, 33%);
+$red: #ff8ae2;
 
+.event-kit-page {
+  h2 {
+    margin: 64px 0px 16px;
+  }
+  section {
+    margin: 60px 0;
+  }
 
-.event-kit-page{
-  .title.is-1{
-    font-size: 3.0rem;
-    font-weight: bold;
+  strong {
+    color: $tableHeaderColor !important;
+  }
+
+  h1 {
+    margin-bottom: 120px;
+  }
+
+  p {
+    text-align: left;
+  }
+
+  h2,
+  h3 {
+    a {
+      color: $tableHeaderColor;
+    }
+  }
+
+  ol {
+    li {
+      margin: 16px 0px 16px 30px;
+      text-align: left;
+    }
+  }
+
+  ul {
+    margin-top: 40px;
+
+    li {
+      margin: 16px 0px 16px 30px;
+      list-style: disc;
+      text-align: left;
+
+      a {
+        font-weight: 900;
+      }
+    }
+  }
+
+  .header-logo {
+    margin: 40px 0;
     text-align: center;
   }
 
-  .pink-highlight {
-    color: $red;
-  }
-  .title.is-2{
-    margin-top: 5rem;
-    margin-bottom: 0.75rem;
+  .event-kit-sub {
+    margin: 32px auto 120px auto;
+    text-align: center;
+
+    p {
+      text-align: center;
+    }
   }
 
-  .title.is-3{
-    margin-top: 2rem;
+  .eventkit-video {
+    margin: 64px 0 32px 0;
   }
 
-  .title.is-4{
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+  .create-online-event {
+    margin-top: 40px;
   }
 
-  div.underline-div {
-    width: 100%;
-    height: 1px;
-    margin-top: 10px;
-    background-color: $red;
+  .invite-box {
+    background-color: $progress-color-light;
+    margin-top: 60px;
+    padding: 60px;
+    -moz-border-radius: 32px;
+    -webkit-border-radius: 32px;
+    -khtml-border-radius: 32px;
+    border-radius: 32px;
+
+    h4 {
+      color: $light-headlineColor;
+      margin: 0;
+
+      a {
+        color: $light-headlineColor;
+        font-weight: 900;
+      }
+    }
+
+    p {
+      margin: 16px 0 32px 0;
+    }
+  }
+
+  .sample-schedule {
+    background-color: $progress-color-light;
+    margin-top: 60px;
+    padding: 60px;
+    -moz-border-radius: 32px;
+    -webkit-border-radius: 32px;
+    -khtml-border-radius: 32px;
+    border-radius: 32px;
+    overflow-x: auto;
+
+    table th {
+      color: $light-headlineColor;
+      font-size: $size-button-text;
+      font-weight: 900;
+    }
+
+    table th,
+    table td {
+      border-bottom: 1px solid;
+      border-collapse: collapse;
+      border-spacing: 0px;
+      padding: 10px 5px;
+    }
+
+    table td {
+      font-size: 13px;
+      height: 33px;
+    }
   }
 
   .sample-section {
-    padding-top: 0.10rem;
+    padding-top: 0.1rem;
     padding-left: 1.2rem;
     overflow-wrap: break-word;
   }
@@ -46,7 +136,7 @@ $grey-dark: hsl(223, 32%, 33%);
   }
 
   .steps-list {
-    margin-left: 3%
+    margin-left: 3%;
   }
 
   .promote-list {
@@ -64,5 +154,35 @@ $grey-dark: hsl(223, 32%, 33%);
 
   .down-load-assets {
     margin-top: 40px;
+  }
+}
+
+body.dark {
+  strong {
+    color: $dark-headlineColor !important;
+  }
+
+  h2,
+  h3 {
+    a {
+      color: $buttonTextColor !important;
+    }
+  }
+
+  .invite-box {
+    background-color: $light-categoryColor !important;
+  }
+
+  .event-kit-page .invite-box h4 a {
+    color: $dark-headlineColor !important;
+  }
+
+  .event-kit-page .sample-schedule {
+    background-color: $light-categoryColor !important;
+  }
+
+  .event-kit-page .sample-schedule table th,
+  .event-kit-page .sample-schedule table td {
+    color: $dark-headlineColor !important;
   }
 }

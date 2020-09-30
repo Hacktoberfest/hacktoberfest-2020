@@ -1,5 +1,12 @@
 .section.report-form{
   text-align: left;
+  padding-top: 16px;
+
+  h1.title {
+    @media screen and (max-width: $break-mobile) {
+      width: 300px;
+    }
+  }
 
   .error{
     margin-bottom: 20px;
@@ -15,6 +22,8 @@
 
   input.input{
     margin-top: 0px;
+    border-radius: 48px;
+    padding: 20px;
   }
 }
 

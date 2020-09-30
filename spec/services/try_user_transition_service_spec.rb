@@ -3,6 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe 'TryUserTransitionService' do
+  before do
+    allow(UserPullRequestSegmentUpdaterService)
+      .to receive(:call).and_return(true)
+  end
+
   describe '.call' do
     context 'The user is in the registered state' do
       let(:user) { FactoryBot.create(:user) }

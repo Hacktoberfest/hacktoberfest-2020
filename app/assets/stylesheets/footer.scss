@@ -5,117 +5,119 @@ $break-small: 1024px;
 $break-med: 1288px;
 
 .footer {
-  min-height: 1040px;
+  margin-top: 80px;
 
-  @media screen and (max-width: $break-small) {
-    padding-left: 20px;
-    padding-right: 20px;
+  .footer-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 26px;
+    border-top-right-radius: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    margin-top: 32px;
+
+    @media (max-width: 1024px) {
+      height: 6px;
+    }
+
+    @media (max-width: 600px) {
+      height: 130px;
+      flex-direction: column;
+    }
+
+    @media (max-height: 500px) {
+      height: 0;
+    }
   }
 
-  h2 {
-    padding-top: 40px;
-  }
+  .do-logo {
+    margin-left: 32px;
 
-  .level-left {
-    flex-direction: column;
-    align-items: flex-start;
+    @media (max-width: 1024px) {
+      margin-left: 20px;
+    }
 
-    .footer-social-links {
-      @media screen and (max-width: $break-small) {
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        flex-direction: column;
+    @media (max-width: 600px) {
+      margin-left: 0;
+    }
+
+    div,
+    svg {
+      width: 190px;
+
+      @media (max-width: 1024px) {
+        width: 120px;
       }
-      a {
-        font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
-        text-transform: uppercase;
-        color: hsl(0, 0%, 100%);
-        letter-spacing: 3px;
-        font-size: 14px;
-        border: none;
-        width: 170px;
-        height: 150px;
-        background: hsl(287, 74%, 45%);
-        box-shadow: 0px 10px 20px hsla(0, 0%, 0%, 0.2);
-        display: inline-block;
-        cursor: pointer;
-        margin-right: 30px;
-        text-align: left;
-        vertical-align: top;
-        padding: 30px;
 
-        svg {
-          height: 37px;
-        }
-
-        span {
-          position: relative;
-          top: 28px;
-        }
-
-        &:hover {
-          background-color: hsl(192, 100%, 79%);
-          color: hsl(223, 32%, 33%);
-          svg path {
-            fill: hsl(223, 32%, 33%);
-          }
-        }
-
-        @media screen and (max-width: $break-small) {
-          margin-bottom: 40px;
-        }
+      @media (max-width: 600px) {
+        width: 180px;
       }
     }
   }
 
-  img.dev-footer-logo {
-    transform: rotate(5deg);
+  .footer-details {
+    display: flex;
+    margin-right: 32px;
+    align-items: center;
+    justify-content: space-around;
+
+    @media (max-width: 1024px) {
+      margin-left: 20px;
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      min-height: 60px;
+    }
   }
 
-  .level-right {
-    flex-shrink: 1;
-  }
-
-  .footer-end {
+  .footer-p {
     text-align: center;
+    margin: 0 auto;
     position: relative;
-    top: 220px;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+    font-size: 16px !important;
 
-    @media screen and (max-width: $break-small) {
-      top: 0px;
+    @media (max-width: 1024px) {
+      font-size: 12px !important;
+    }
+  }
+
+  .footer-links {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    font-size: 16px !important;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 1024px) {
+      font-size: 12px !important;
     }
 
-    .footer-logos {
-      padding: 10px 5px;
-      align-items: center;
-      justify-content: center;
+    li {
+      padding: 0 8px;
+
+      a {
+        text-decoration: none;
+        font-weight: bold;
+      }
+    }
+
+    li:last-of-type {
+      border-right: none !important;
       display: flex;
-      flex-direction: row;
 
-      .dev-logo {
-        transform: rotate(6deg);
+      a {
+        padding-right: 8px;
       }
 
-      p {
-        margin: 10px 6px;
+      a:last-of-type {
+        padding-left: 4px;
       }
-
-      img:hover {
-        opacity: 0.5;
-        filter: alpha(opacity=50);
-      }
-    }
-
-    .footer-company-links a {
-      font-family: "Inter Regular", "Helvetica", "Arial", san-serif;
-      font-style: normal;
-      font-weight: 400;
-      color: hsl(320, 100%, 50%);
     }
   }
 }

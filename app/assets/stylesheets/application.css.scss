@@ -43,7 +43,7 @@ $break-med: 1288px;
 $black: hsl(0, 100%, 0%);
 $white: hsl(0, 0%, 100%);
 $blue: #0069ff;
-$red: #ff8ae2;
+$pink: #ff8ae2;
 
 //TODO: old color variables to be removed and swapped out with custom variables below
 $grey: hsl(221.54, 14.61%, 65.1%);
@@ -59,13 +59,17 @@ $size-2: 2rem;
 $size-3: 1.5rem;
 $size-4: 1.25rem;
 $size-5: 1.125rem;
+$size-table-header: 0.75rem;
+$size-button-text: 0.875rem;
+$size-small-text: 0.625rem;
+$size-winner-text: 1rem;
 $family-sans-serif: "Inter Regular", "Helvetica", "Arial", san-serif;
 
 // Derived Variables
 $primary: $grey-darker;
 $family-primary: $family-sans-serif;
-$link: $cyan;
-$link-hover: $red;
+$link: $pink;
+$link-hover: $blue;
 
 // Custom Variables
 
@@ -73,7 +77,7 @@ $buttonColor: #0069ff;
 $buttonHoverColor: #ff73fa;
 $buttonTextColor: #ffffff;
 $accordionRuleColor: #93c2db;
-$labelColor: #ff8ae2;
+$labelColor: $pink;
 $checkColor: #4551ff;
 $tableHeaderColor: #072540;
 $tableColor: #ffffff;
@@ -81,6 +85,12 @@ $diamondColor: #93c2db;
 $platinumColor: #99a1b3;
 $goldColor: #ffd700;
 $socialHoverColor: #010e2f;
+$progress-color-light: #f1f7fa;
+$progress-bar-before: #ff00aa;
+$progress-bar-gradient-01: #ff73fa;
+$progress-bar-gradient-02: #ff73fa;
+$winner-background-dark: #39486f;
+$winner-color-dark: #92eaff;
 
 //light mode
 $light-backgroundColor: #ffffff;
@@ -102,6 +112,9 @@ $light-navActiveColor: #183d5d;
 $light-navBackgroundColor: #ffffff;
 $light-socialTextColor: #031b4e;
 $light-socialBackgroundColor: #f3f5f9;
+$light-sponsorBackgroundColor: #d9e9f1;
+$light-highlightColor: #9c4668;
+$light-buttonHoverColor: #9c4668;
 
 //dark mode
 $dark-backgroundColor: #072540;
@@ -123,24 +136,34 @@ $dark-navActiveColor: #ffffff;
 $dark-navBackgroundColor: #183d5d;
 $dark-socialTextColor: #ffffff;
 $dark-socialBackgroundColor: #183d5d;
+$dark-sponsorBackgroundColor: #5a85a1;
+$dark-highlightColor: #ff8ae2;
+$dark-buttonHoverColor: #ff73fa;
 
 // -- general
 $body-background-color: $light-backgroundColor;
-$body-color: $grey;
+$body-color: $light-textColor;
 $body-family: $family-sans-serif;
 $body-font-size: $size-5;
 
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  padding-bottom: 64px;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
 // -- footer
 $footer-background-color: none;
-$footer-padding: 130px 135px 20px 135px;
+$footer-padding: 0;
 
 // -- title
 $title-color: $white;
 $title-size: $size-1;
-.title.is-1,
-.title.is-2 {
-  font-weight: 400;
-}
+$title-family: "Inter Bold", "Helvetica", "Arial", san-serif;
 
 // -- box
 $box-color: $grey;
@@ -148,26 +171,28 @@ $box-radius: none;
 $box-background-color: $grey-darker;
 $box-shadow: 0px 50px 100px rgba($black, 0.2);
 
-// -- button
-$button-color: $white;
-$button-background-color: $blue;
-$button-border-color: $blue;
-$button-border-width: 0;
-$button-padding-vertical: 1.125em;
-$button-padding-horizontal: 2em;
-$button-hover-color: $red;
-
 // -- modal
 $modal-content-width: 60vw;
 .modal-card {
   height: 100vh;
 }
 
+// -- button
+$button-color: $white;
+$button-background-color: $blue;
+$button-border-color: $blue;
+$button-border-width: 0;
+$button-padding-vertical: 24px;
+$button-padding-horizontal: 40px;
+
 .button {
+  color: $buttonTextColor;
   border-radius: 48px !important;
   font-weight: 900;
-  font-size: 14px;
+  font-size: $size-button-text;
   padding: 24px 40px;
+  font-family: "Inter Bold", "Helvetica", "Arial", san-serif !important;
+  height: auto !important;
   display: inline-flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -175,15 +200,36 @@ $modal-content-width: 60vw;
   box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05);
 
   &:hover {
-    background-color: $red;
     color: $white !important;
-    padding: 10px 20px !important;
+    padding: 24px 40px !important;
   }
 
   &.button-small {
     height: 100%;
     padding: 10px 20px !important;
   }
+}
+
+.button-static {
+  align-items: flex-start;
+  background-color: $blue;
+  border-color: $blue;
+  border-width: 0;
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05);
+  color: $buttonTextColor;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 900;
+  font-size: $size-button-text;
+  justify-content: center;
+  padding: 14px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -khtml-border-radius: 30px;
+  border-radius: 30px;
 }
 
 // -- table
@@ -233,10 +279,24 @@ select {
 body {
   overflow: hidden;
   position: relative;
+  min-height: 100vh;
 
   .section {
     padding: 0 120px;
     margin: 0;
+
+    @media screen and (max-width: $break-mobile) {
+      padding: 50px 0;
+    }
+
+    @media screen and (max-width: $break-med) {
+      padding: 0;
+    }
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: 1170px;
 
     @media screen and (max-width: $break-med) {
       padding: 30px 85px 30px 85px;
@@ -246,10 +306,13 @@ body {
       padding: 30px 30px 30px 30px;
       text-align: center;
     }
-  }
 
-  .container {
-    margin: 0;
+    div.underline-div {
+      width: 100%;
+      height: 1px;
+      margin-top: 10px;
+      background-color: $pink;
+    }
   }
 
   p {
@@ -258,19 +321,10 @@ body {
 
   // Reuseable
 
-  .highlight {
-    color: $red;
-  }
-
   .line-br {
-    color: $red;
     line-height: 0.4rem;
     position: relative;
     margin-bottom: 10px;
-
-    span {
-      background-color: $red;
-    }
 
     span.line-br-1 {
       width: 40px;
@@ -291,25 +345,610 @@ body {
   }
 
   strong {
-    font-family: "Inter Bold", "Helvetica", "Arial", san-serif;
+    font-family: "Inter Black", "Helvetica", "Arial", san-serif;
   }
 
-  // light mode
-  background-color: $light-backgroundColor;
+  .button {
+    white-space: normal;
+    max-width: 100%;
+  }
 
-  // images
-  .nav-logo {
-    content: asset-url("h-light.svg");
+  // -------- Global light mode styles --------
+  background-color: $light-backgroundColor;
+  color: $light-textColor;
+
+  h1,
+  h2,
+  h3 {
+    color: $light-headlineColor !important;
+    font-family: "Inter Black", "Helvetica", "Arial", san-serif;
+
+    a {
+      color: $light-headlineColor !important;
+    }
+  }
+
+  p {
+    color: $light-textColor;
+  }
+
+  a {
+    color: $light-highlightColor;
+  }
+
+  strong {
+    color: $light-highlightColor !important;
+  }
+
+  .highlight {
+    color: $light-highlightColor !important;
+  }
+
+  .line-br {
+    color: $light-highlightColor;
+
+    span {
+      background-color: $light-highlightColor;
+    }
+  }
+
+  .button,
+  .button-static {
+    &:hover {
+      background-color: $light-buttonHoverColor;
+    }
+  }
+
+  .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: $light-highlightColor;
+  }
+
+  // navigation
+  #navbar {
+    .nav-logo {
+      content: asset-url("h-light.svg");
+    }
+    .navLink {
+      color: #5b6987;
+    }
+
+    .navLink:hover,
+    .active {
+      color: #183d5d;
+    }
+
+    .dropdown-menu {
+      .dropdown-content {
+        background-color: $white;
+      }
+
+      .dropdown-item:hover {
+        padding: 5px;
+        background-color: rgb(241, 247, 250);
+        color: #183d5d !important;
+      }
+    }
+  }
+
+  // footer
+  .footer {
+    .footer-do-logo {
+      content: asset-url("DO-light-logo.svg") !important;
+    }
+
+    .footer-wrapper {
+      background: $light-footerBackgroundColor;
+    }
+
+    .footer-p {
+      color: $light-footerTextColor !important;
+    }
+
+    .footer-links {
+      li {
+        border-right: 1px solid $light-footerTextColor;
+      }
+      a {
+        color: $light-highlightColor !important;
+      }
+    }
+
+    .footer-discord {
+      content: asset-url("footer-light-discord.svg") !important;
+    }
+    .footer-instagram {
+      content: asset-url("footer-light-instagram.svg") !important;
+    }
+    .footer-twitter {
+      content: asset-url("footer-light-twitter.svg") !important;
+    }
+  }
+
+  // home page
+  .home-hero {
+    background-color: $light-boxColor;
+
+    .hero-tshirt {
+      content: asset-url("hero-tshirt-light.png");
+      @media screen and (max-width: $break-small) {
+        content: asset-url("hero-mobile-tshirt-light.png");
+      }
+    }
+  }
+
+  .header-do-logo {
+    content: asset-url("DO-light-logo.svg") !important;
+  }
+  .header-intel-logo {
+    content: asset-url("intel-light-logo.svg") !important;
+  }
+  .header-dev-logo {
+    content: asset-url("dev-light-logo.svg") !important;
+  }
+
+  .home-event-details {
+    .bullet {
+      span {
+        color: #5b6987;
+      }
+    }
+  }
+
+  .home-projects {
+    .select {
+      select {
+        background-color: $white;
+        color: $dark-boxColor;
+        border-color: $light-inputBackgroundColor;
+        border-radius: none;
+      }
+    }
+  }
+
+  .home-special-projects {
+    background-color: #f1f7fa;
+  }
+
+  .box {
+    background-color: $white !important;
+    border: 0.764461px solid #93c2db;
+    box-shadow: 0px 5.2029px 20.8116px rgba(24, 61, 93, 0.08) !important;
+
+    .title-wrap {
+      h3 {
+        color: $light-headlineColor !important;
+      }
+    }
+    .description {
+      color: $light-textColor !important;
+    }
+  }
+
+  .event-month,
+  .event-title,
+  .event-location {
+    color: $light-textColor !important;
+  }
+
+  .event-day {
+    color: $light-headlineColor !important;
+  }
+
+  h1 {
+    color: $light-headlineColor;
+    font-family: $family-sans-serif;
+    font-size: $size-1;
+    font-weight: 900;
+    line-height: 44px;
+  }
+
+  // sponsors logos
+  .sponsors {
+    .sponsors-digitalocean {
+      content: asset-url("sponsors-light-digitalocean.svg") !important;
+    }
+    .sponsors-intel {
+      content: asset-url("sponsors-light-intel.svg") !important;
+    }
+    .sponsors-dev {
+      content: asset-url("sponsors-light-dev.svg") !important;
+    }
+    .sponsors-vonage {
+      content: asset-url("sponsors-light-vonage.svg") !important;
+    }
+    .sponsors-circleci {
+      content: asset-url("sponsors-light-circleci.svg") !important;
+    }
+    .sponsors-jetbrains {
+      content: asset-url("sponsors-light-jetbrains.svg") !important;
+    }
+    .sponsors-github {
+      content: asset-url("sponsors-light-github.svg") !important;
+    }
+
+    .sponsor-quotes {
+      .box {
+        border: none !important;
+        background-color: $light-boxColor !important;
+        p {
+          color: $light-textColor;
+        }
+      }
+    }
+  }
+  //social share
+  .social {
+    .social-wrapper {
+      p {
+        color: $light-socialTextColor;
+      }
+
+      .social-share-icons {
+        .social-circle {
+          :hover svg path {
+            fill: $socialHoverColor;
+          }
+          background: $light-socialBackgroundColor;
+        }
+      }
+
+      .social-share-twitter {
+        content: asset-url("social-light-twitter.svg") !important;
+      }
+      .social-share-facebook {
+        content: asset-url("social-light-facebook.svg") !important;
+      }
+      .social-share-linkedin {
+        content: asset-url("social-light-linkedin.svg") !important;
+      }
+
+      .social-CTA {
+        .button {
+          svg {
+            &,
+            path {
+              fill: $buttonTextColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // resources page
+  .resources {
+    .details {
+      .resources-graphic {
+        content: asset-url("resources-light.svg") !important;
+      }
+    }
+
+    .box {
+      li {
+        color: $light-textColor !important;
+      }
+    }
+
+    #tabs.box {
+      background-color: $light-boxColor !important;
+
+      li {
+        a {
+          color: $light-textColor;
+        }
+        :hover {
+          background-color: $light-buttonHoverColor;
+          color: $white !important;
+        }
+        .selected {
+          background-color: $light-textColor;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  // eventkit
+  .eventkit-graphic {
+    content: asset-url("eventkit-light.svg") !important;
   }
 }
 
-// Global darkmode styles
+// -------- Global darkmode styles --------
 
 body.dark {
   background-color: $dark-backgroundColor !important;
-  // images
-  .nav-logo {
-    content: asset-url("h-dark.svg") !important;
+  color: $dark-textColor !important;
+
+  h1,
+  h2,
+  h3 {
+    color: $dark-headlineColor !important;
+
+    a {
+      color: $dark-headlineColor !important;
+    }
+  }
+
+  p {
+    color: $dark-textColor;
+  }
+
+  hr {
+    background-color: $dark-ruleColor !important;
+  }
+
+  a {
+    color: $dark-highlightColor;
+  }
+
+  strong {
+    color: $dark-highlightColor !important;
+  }
+
+  .highlight {
+    color: $dark-highlightColor !important;
+  }
+
+  .line-br {
+    color: $dark-highlightColor;
+
+    span {
+      background-color: $dark-highlightColor;
+    }
+  }
+
+  .button,
+  .button-static {
+    color: $buttonTextColor;
+
+    &:hover {
+      background-color: $dark-buttonHoverColor;
+    }
+  }
+
+  .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: $dark-highlightColor;
+  }
+
+  // navigation
+  #navbar {
+    .nav-logo {
+      content: asset-url("h-dark.svg") !important;
+    }
+
+    .navLink {
+      color: #93c2db;
+    }
+
+    .navLink:hover,
+    .active {
+      color: $white;
+    }
+
+    .dropdown-menu {
+      .dropdown-content {
+        background-color: rgb(24, 61, 93);
+      }
+
+      .dropdown-item:hover {
+        padding: 5px;
+        background-color: rgba(7, 37, 64, 0.24);
+        color: $white !important;
+      }
+    }
+  }
+
+  // footer
+  .footer {
+    .footer-do-logo {
+      content: asset-url("DO-dark-logo.svg") !important;
+    }
+
+    .footer-wrapper {
+      background: $dark-footerBackgroundColor;
+    }
+
+    .footer-p {
+      color: $dark-footerTextColor !important;
+    }
+
+    .footer-links {
+      li {
+        border-right: 1px solid $dark-footerTextColor;
+      }
+      a {
+        color: $dark-highlightColor !important;
+      }
+    }
+
+    .footer-discord {
+      content: asset-url("footer-dark-discord.svg") !important;
+    }
+    .footer-instagram {
+      content: asset-url("footer-dark-instagram.svg") !important;
+    }
+    .footer-twitter {
+      content: asset-url("footer-dark-twitter.svg") !important;
+    }
+  }
+
+  // home page
+  .home-hero {
+    background-color: $dark-boxColor;
+
+    .hero-tshirt {
+      content: asset-url("hero-tshirt-dark.png");
+      @media screen and (max-width: $break-small) {
+        content: asset-url("hero-mobile-tshirt-dark.png");
+      }
+    }
+  }
+
+  .header-do-logo {
+    content: asset-url("DO-dark-logo.svg") !important;
+  }
+  .header-intel-logo {
+    content: asset-url("intel-dark-logo.svg") !important;
+  }
+  .header-dev-logo {
+    content: asset-url("dev-dark-logo.svg") !important;
+  }
+
+  .home-event-details {
+    .bullet {
+      span {
+        color: #93c2db;
+      }
+    }
+  }
+
+  .home-projects {
+    .select {
+      select {
+        background-color: $dark-boxColor !important;
+        color: #fff !important;
+        border-color: $dark-boxColor !important;
+        border-radius: none;
+      }
+    }
+  }
+
+  .home-special-projects {
+    background-color: #183d5d;
+
+    .box.projects {
+      background-color: $dark-backgroundColor !important;
+    }
+  }
+
+  .box {
+    background-color: $dark-boxColor !important;
+    border: 0.764461px solid $dark-backgroundColor;
+    box-shadow: 0px 2px 20px rgba(61, 27, 43, 0.1) !important;
+
+    .title-wrap {
+      h3 {
+        color: $dark-textColor !important;
+      }
+    }
+    .description {
+      color: $white !important;
+    }
+  }
+
+  .event-month,
+  .event-title,
+  .event-location {
+    color: $dark-textColor !important;
+  }
+
+  .event-day {
+    color: $dark-headlineColor !important;
+  }
+
+  h1 {
+    color: $dark-headlineColor !important;
+  }
+
+  // sponsors logos
+  .sponsors {
+    .sponsors-digitalocean {
+      content: asset-url("sponsors-dark-digitalocean.svg") !important;
+    }
+    .sponsors-intel {
+      content: asset-url("sponsors-dark-intel.svg") !important;
+    }
+    .sponsors-dev {
+      content: asset-url("sponsors-dark-dev.svg") !important;
+    }
+    .sponsors-vonage {
+      content: asset-url("sponsors-dark-vonage.svg") !important;
+    }
+    .sponsors-circleci {
+      content: asset-url("sponsors-dark-circleci.svg") !important;
+    }
+    .sponsors-jetbrains {
+      content: asset-url("sponsors-dark-jetbrains.svg") !important;
+    }
+    .sponsors-github {
+      content: asset-url("sponsors-dark-github.svg") !important;
+    }
+
+    .sponsor-quotes {
+      .box {
+        background-color: $dark-boxColor !important;
+        p {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  //social share
+  .social {
+    .social-wrapper {
+      p {
+        color: $dark-socialTextColor;
+      }
+
+      .social-share-icons {
+        .social-circle {
+          background: $dark-socialBackgroundColor !important;
+        }
+      }
+
+      .social-share-twitter {
+        content: asset-url("social-dark-twitter.svg") !important;
+      }
+      .social-share-facebook {
+        content: asset-url("social-dark-facebook.svg") !important;
+      }
+      .social-share-linkedin {
+        content: asset-url("social-dark-linkedin.svg") !important;
+      }
+    }
+  }
+
+  // resources page
+  .resources {
+    .details {
+      .resources-graphic {
+        content: asset-url("resources-dark.svg") !important;
+      }
+    }
+
+    .box {
+      hr {
+        background-color: $dark-footerBackgroundColor !important;
+      }
+      li {
+        color: $dark-textColor !important;
+      }
+    }
+
+    #tabs.box {
+      background-color: $dark-boxColor !important;
+
+      li {
+        a {
+          color: $dark-textColor;
+        }
+        :hover {
+          background-color: $dark-buttonHoverColor;
+          color: $white !important;
+        }
+        .selected {
+          background-color: $dark-footerBackgroundColor;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  // eventkit
+  .eventkit-graphic {
+    content: asset-url("eventkit-dark.svg") !important;
   }
 }
 

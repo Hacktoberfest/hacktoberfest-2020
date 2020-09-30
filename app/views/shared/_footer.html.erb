@@ -1,32 +1,43 @@
 <footer class="footer">
-    <div class="social level">
-      <div class="level-left">
-        <div class="line-br">
-          <span class="line-br-1">-</span>
-          <span class="line-br-2">-</span>
-        </div>
-        <h2 class="title is-2">Spread the word!</h2>
-        <div class="footer-social-links">
-          <a class="grow-shadow" href="https://www.facebook.com/sharer/sharer.php?u=https://hacktoberfest.digitalocean.com/">
-            <%= show_svg('icon-facebook.svg') %>
-            <span>Facebook</span>
-          </a>
-          <a class="grow-shadow" href="https://ctt.ac/c5WeF">
-          <%= show_svg('icon-twitter.svg') %>
-            <span>Twitter</span>
-          </a>
-        </div>
+      <div class="footer-wrapper">
+      <div class="do-logo">
+        <a href="https://www.digitalocean.com">
+          <img alt="DigitalOcean Logo" class="footer-do-logo">
+        </a>
       </div>
-      <div class="level-right">
-        <img alt="Hacktoberfest Logo" class="nav-logo">
+
+      <div class="footer-details">
+        <p class="footer-p">
+          © 2020 DigitalOcean, LLC. All rights reserved.
+        </p>
+        <ul class="footer-links">
+          <li>
+            <a href="https://www.digitalocean.com/legal/terms-of-service-agreement/">
+              Terms
+            </a>
+          </li>
+          <li>
+            <a href="https://www.digitalocean.com/legal/privacy-policy/">
+              Privacy
+            </a>
+          </li>
+          <li>
+            <a href="https://do.co/hacktoberbrand">
+              Brand Guidelines
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/hacktoberfest">
+              <img alt="Twitter" class="footer-twitter"/>
+            </a>
+            <a href="https://www.instagram.com/hacktoberfest/">
+              <img alt="Instagram" class="footer-instagram"/>
+            </a>
+            <a href="https://discord.gg/hacktoberfest">
+              <img alt="Discord" class="footer-discord"/>
+            </a>
+          </li>
+        </ul>
       </div>
-    </div>
-    <div class="footer-end">
-      <div class="footer-logos">
-      <a href="https://www.digitalocean.com"><img src="<%= asset_path('do-footer-logo.svg')%>" alt="DigitalOcean Logo" ></a>
-      <p> + </p>
-      <a href="https://www.dev.to"><img class="dev-logo" src="<%= asset_path('dev-footer-logo.svg')  %>" alt="Dev Logo"></a>
-      </div>
-      <p>© 2020 DigitalOcean, LLC. All rights reserved.</p>
     </div>
 </footer>

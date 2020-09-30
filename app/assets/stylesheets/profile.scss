@@ -1,333 +1,544 @@
-$break-med: 1366px;
-$break-small: 1024px;
-$grey-dark: hsl(223.33, 32.14%, 32.94%);
-$grey-darker: hsl(222.5, 43.64%, 21.57%);
-$cyan: hsl(191.56, 100%, 78.63%);
-$red: hsl(320, 100%, 50%);
-
-.avatar {
-  padding-left: 30px;
-}
-
-.container.profile {
-  text-align: center;
+.profile-page {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1152px;
   margin: 0 auto;
+  padding-left: 20px;
 
-  .congratulations-txt {
-    padding: 1.25rem;
-    text-align: left;
-    max-width: 60%;
+  .profile-left {
+    width: 65%;
+    margin-right: 5%;
+    text-align: center;
 
-    @media screen and (max-width: $break-small - 1) {
-      max-width: 100%;
+    .container {
+      padding: 0;
+    }
 
-      // This font size decrease was made to fit the "Congradulations!" word on
-      // one line on common mobile screen sizes
-      .thanks-text{
-        font-size: 2rem;
+    .main-content-wrapper {
+      background-color: $light-backgroundColor;
+      box-shadow: 0px 5.2029px 20.8116px rgba(24, 61, 93, 0.08);
+      margin-bottom: 30px;
+      padding: 30px;
+      width: 100%;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -khtml-border-radius: 8px;
+      border-radius: 8px;
+
+      p,
+      h1,
+      h3,
+      h4 {
+        color: $light-headlineColor;
       }
-    }
-  }
 
-  .code-button {
-    height: 68px !important;
-    width: 105px;
-    margin-right: 13vw;
-    float: right !important;
-    @media screen and (max-width: $break-small) {
-      display: inline-block;
-    }
-  }
-
-  .code-textarea {
-    background-color: $grey-dark !important;
-    flex: 1;
-    overflow: auto;
-    width: auto;
-    height: auto;
-
-    @media screen and (max-width: $break-small) {
-      width: 60vw;
-      display: inline-block;
-    }
-    @media screen and (max-width: $break-med) {
-      width: 40vw;
-      display: inline-block;
-    }
-  }
-
-  .profile-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: $grey-darker;
-
-    @media screen and (max-width: $break-small) {
-      margin: 5rem 1.5rem 0 1.5rem;
-    }
-  }
-
-  .pre-launch-container {
-    padding-top: 100px;
-    max-width: 765px;
-    padding: 100px 30px;
-    min-height: 400px;
-    margin: 0 auto;
-
-    h2 {
-      font-size: 44px;
-      line-height: 1.5em;
-
-      @media screen and (max-width: $break-small) {
-        font-size: 32px;
+      a.button-static {
+        color: $buttonTextColor;
       }
-    }
 
-    @media screen and (max-width: $break-small) {
-      padding-right: 0px;
-      padding-left: 0px;
-    }
-  }
+      a.button-static:hover {
+        text-decoration: none;
+      }
 
-  .timeline-container {
-    padding-top: 20px;
-    padding-left: 20px;
-    text-align: left;
+      a {
+        color: $light-highlightColor;
+      }
 
-    @media screen and (max-width: $break-small) {
-      padding-left: 0;
-    }
+      a:hover {
+        text-decoration: underline;
+      }
 
-    table {
-      tbody {
-        @media screen and (max-width: $break-small) {
-          display: block;
+      a.button {
+        color: $buttonTextColor;
+      }
+
+      a.button:hover {
+        text-decoration: none;
+      }
+
+      .timeline-container {
+        margin-top: 60px;
+      }
+
+      .coupon-box {
+        margin: 30px 0;
+
+        #winner-code {
+          font-size: $size-winner-text;
+          background-color: $progress-color-light;
+          border: none;
+          color: $light-headlineColor;
+          width: 100%;
+          max-width: 400px;
+          padding: 10px;
+          margin-right: 20px;
         }
 
-        tr {
-          @media screen and (max-width: $break-small) {
-            display: flex;
-            flex-direction: column;
-          }
-
-          td {
-            padding-bottom: 20px;
-            @media screen and (max-width: $break-small) {
-              &:last-child {
-                padding-bottom: 1.5em;
-              }
-
-              &:not(:last-child) {
-                border-bottom: none;
-              }
-            }
-
-            &.icon-block {
-              @media screen and (max-width: $break-small) {
-                display: none;
-              }
-
-              .icon-box {
-                padding: 40px 10px 0;
-              }
-            }
-
-            .timeline-date {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              margin-top: 30px;
-
-              @media screen and (max-width: $break-small) {
-                margin-bottom: 20px;
-              }
-
-              .icon-box {
-                display: none;
-
-                @media screen and (max-width: $break-small) {
-                  display: block;
-                }
-              }
-
-              p {
-                @media screen and (max-width: $break-small) {
-                  margin-left: .75em;
-                }
-              }
-            }
-
-            .timeline-mature {
-              p {
-                @media screen and (max-width: $break-small) {
-                  margin-top: .25em;
-                }
-              }
-            }
-          }
+        .code-button {
+          margin-top: 20px;
         }
       }
-    }
-  }
 
-  .username {
-    font-size: 24px;
-    line-height: 36px;
-    color: white;
-    padding-left: 25px;
-  }
+      .legend {
+        margin-top: 80px;
+      }
 
-  .user-section {
-    min-height: 160px;
-    left: 135px;
-    top: 236px;
-    background: $grey-dark;
-
-    .level {
-      min-height: 160px;
-      @media screen and (max-width: $break-small) {
+      .legend-container {
         display: flex;
-        flex-direction: column;
-      }
+        flex-wrap: wrap;
+        text-align: left;
+        border-bottom: 1px solid $light-tableBorderColor;
+        padding-bottom: 30px;
+        margin: 30px 0 10px 0;
 
-      .level-left,
-      .level-right {
-        max-width: 100%;
-
-        @media screen and (max-width: $break-small) {
-          padding: 20px;
-          flex-direction: column;
-        }
-      }
-
-      .level-left {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-
-        @media screen and (max-width: $break-small) {
-          margin-top: 15px;
-          justify-content: center;
-        }
-      }
-
-      .level-left .avatar,
-      .level-left .username {
-        @media screen and (max-width: $break-small) {
-          padding: 0;
-        }
-      }
-
-      .level-right {
         .icon-box {
-          margin: 6px 20px 4px -8px;
-          padding: 0;
-          /* padding: 2px;
-          background: linear-gradient(90deg, $red 0%, $purple 90%, $purple 100%); */
-          transform: rotate(5deg);
+          width: 32px;
+          height: 32px;
+          margin-right: 20px;
 
-          @media screen and (max-width: $break-small) {
-            margin: 10px 0;
+          .spammy-box {
+            background-image: asset-url("icon-light-ineligible.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
+
+          .eligible-box {
+            background-image: asset-url("icon-light-eligible.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
           }
 
           .bonus-box {
-            width: auto;
-            padding: 0 0.65em;
-            margin: 0;
-            display: inline-flex;
-            background: $purple;
-            position: relative;
+            background-image: asset-url("icon-light-bonus.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
 
-            img {
-              height: 0.65em;
-              width: auto;
-            }
+          .invalid-box {
+            background-image: asset-url("icon-light-invalid.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
 
-            span {
-              padding-left: 0.15em;
-              font-weight: 900;
-              font-size: 1.1em;
-              transform: rotate(2.5deg);
-              color: #fff;
-            }
+          .pending-box {
+            background-image: asset-url("icon-light-pending.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
+        }
+
+        .icon-name-desc {
+          width: 90%;
+
+          .icon-name {
+            color: $light-inputTextColor;
+            font-size: $size-button-text;
+            font-weight: 900;
+          }
+
+          .icon-desc {
+            color: $light-inputTextColor;
+            font-size: $size-button-text;
           }
         }
       }
     }
-  }
 
-  .progress-msg {
-    margin-top: 0;
-    font-size: 14px;
-    line-height: 1em;
-    @media screen and (max-width: $break-small) {
-      margin-bottom: 15px;
-    }
-  }
-
-  .icon-box {
-    padding: 0;
-
-    > div {
-      width: 30px;
-      height: 30px;
+    .account-wrapper {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      position: relative;
+      text-align: left;
 
-      &.eligible-box {
-        background-color: #ff00aa;
+      @media screen and (max-width: $break-small) {
+        text-align: center;
+        margin-bottom: 64px;
       }
 
-      &.bonus-box {
-        background-color: #a11ec6;
+      .avatar {
+        display: inline-block;
+
+        .image {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+        }
       }
 
-      &.pending-box {
-        background-color: #39486e;
+      .username {
+        display: inline-block;
+        font-size: $size-3;
+        line-height: 29px;
+        color: white;
+        padding-left: 8px;
+        font-weight: 900;
+        vertical-align: top;
+        margin-top: 0;
       }
 
-      &.spammy-box {
-        background-color: #ff4e4e;
-      }
+      .logout-wrapper {
+        display: inline-block;
+        right: 0;
+        position: absolute;
 
-      &.ineligible-box {
-        background-color: #ff4e4e;
+        .logout {
+          background-color: $buttonColor;
+          color: $light-backgroundColor;
+          font-size: $size-button-text;
+          padding: 5px 20px;
+          -moz-border-radius: 32px;
+          -webkit-border-radius: 32px;
+          -khtml-border-radius: 32px;
+          border-radius: 32px;
+        }
+
+        .logout:hover {
+          background-color: $light-buttonHoverColor;
+          text-decoration: none;
+        }
       }
     }
 
-    + p {
-      margin-top: 0;
+    .pre-launch-container {
+      margin-top: 30px;
+
+      h2 {
+        color: $light-headlineColor;
+        font-size: $size-2;
+        font-weight: 900;
+        line-height: 39px;
+        margin: 44px 0;
+        text-align: center;
+      }
+    }
+
+    .timeline-wrapper {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px 0;
+      border-bottom: 1px dashed $light-tableBorderColor;
+      padding-bottom: 30px;
+
+      .pr-icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 20px;
+
+        .spammy-box {
+          background-image: asset-url("icon-light-ineligible.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+
+        .eligible-box {
+          background-image: asset-url("icon-light-eligible.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+
+        .bonus-box {
+          background-image: asset-url("icon-light-bonus.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+
+        .invalid-box {
+          background-image: asset-url("icon-light-invalid.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+
+        .pending-box {
+          background-image: asset-url("icon-light-pending.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      .pr-time-title {
+        width: 64%;
+        margin-right: 20px;
+
+        p.date {
+          font-weight: 500;
+          font-size: $size-small-text;
+          line-height: 12px;
+          text-transform: uppercase;
+          color: $light-tableBorderColor;
+          margin-bottom: 10px;
+          font-weight: 900;
+        }
+
+        .pr-title {
+          font-weight: 500;
+          font-size: $size-button-text;
+          line-height: 17px;
+          color: $light-inputTextColor;
+        }
+      }
+
+      .pr-waiting {
+        width: 138px;
+
+        @media screen and (max-width: $break-small) {
+          margin-left: 50px;
+          margin-top: 20px;
+        }
+
+        span.mature {
+          font-size: $size-small-text;
+          line-height: 12px;
+          text-transform: uppercase;
+          color: $light-textColor;
+          display: block;
+        }
+
+        span.count-down {
+          font-weight: 900;
+          font-size: $size-5;
+          line-height: 22px;
+          color: $light-inputTextColor;
+          display: block;
+        }
+      }
+    }
+
+    .timeline-date {
+      margin: 0 0;
+
+      p {
+        margin-top: 0;
+      }
+    }
+
+    .congratulations-txt {
+      margin: 60px 0 0 0;
+      text-align: left;
+
+      .congrats-wrapper {
+        display: flex;
+
+        .congrats-text {
+          width: 70%;
+          margin-right: 3%;
+        }
+
+        .parrot-image {
+          width: 25%;
+        }
+      }
+    }
+
+    .winning-msg-cont {
+      margin-top: 40px;
+      width: 100%;
+
+      h2.winning-title {
+        font-size: $size-3;
+        color: $light-inputTextColor;
+      }
+
+      .winning-desc {
+        font-size: $size-4;
+        color: $light-inputTextColor;
+      }
+    }
+
+    .progress-wrapper.mobile {
+      margin: 30px 0;
+      display: none;
+      p {
+        color: $platinumColor;
+        font-size: $size-button-text;
+        line-height: 170%;
+      }
+
+      h4.progress-header {
+        font-weight: 900;
+        font-size: $size-button-text;
+        line-height: 17px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        color: $platinumColor;
+      }
     }
   }
 
-  .hacktoberfest-results-box {
-    background-image: asset-url('bg-right.png');
-    background-color: #223257;
-    background-position: bottom center;
-    background-size: cover;
-  }
+  .profile-right {
+    width: 28%;
 
-  .image {
-    width: 100px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20000px;
-    border: 2px solid #fff;
-  }
+    .side-headers {
+      font-weight: 900;
+      font-size: $size-button-text;
+      line-height: 17px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      color: $platinumColor;
+    }
 
-  $progress-color: #152347;
+    .pr-score {
+      font-family: $family-sans-serif;
+      font-style: normal;
+      font-weight: 900;
+      font-size: $size-3;
+      line-height: 29px;
+      letter-spacing: -1px;
+      color: $light-inputTextColor;
+      margin-bottom: 20px;
+    }
+
+    .icon-box.bonus-wrapper {
+      display: inline-block;
+      width: 100%;
+      margin: 10px 0 0 0;
+
+      .bonus-box {
+        background-image: url("icon-light-bonus.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+      }
+
+      span {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 3px;
+        color: $light-inputTextColor;
+        font-weight: 900;
+      }
+    }
+
+    .progress-wrapper,
+    .education-wrapper {
+      background-color: $light-backgroundColor;
+      box-shadow: 0px 5.2029px 20.8116px rgba(24, 61, 93, 0.08);
+      margin-bottom: 30px;
+      padding: 30px;
+      width: 100%;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -khtml-border-radius: 8px;
+      border-radius: 8px;
+
+      p {
+        color: $platinumColor;
+        font-size: $size-button-text;
+        line-height: 170%;
+      }
+
+      h4.progress-header {
+        font-weight: 900;
+        font-size: $size-button-text;
+        line-height: 17px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        color: $platinumColor;
+      }
+
+      .education-section {
+        margin-bottom: 16px;
+        width: 100%;
+
+        h5 {
+          font-weight: bold;
+          font-size: $size-button-text;
+          line-height: 170%;
+          color: $light-textColor;
+        }
+
+        svg {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        ul {
+          li {
+            list-style-type: disc;
+            margin-left: 20px;
+          }
+        }
+
+        a {
+          color: $buttonColor;
+          display: block;
+          font-size: $size-button-text;
+          font-weight: normal;
+        }
+
+        a.inline {
+          display: inline-block;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .education-wrapper {
+      @media screen and (max-width: $break-small) {
+        margin-bottom: 80px;
+      }
+    }
+  }
 
   .progress-bar {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     position: relative;
-    background: $progress-color;
+    background: $progress-color-light;
     width: 330px;
     max-width: 100%;
-    border: 2px solid $progress-color;
-    margin: 0 20px;
+    border: 1px solid $progress-color-light;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -khtml-border-radius: 8px;
+    border-radius: 8px;
 
     @media screen and (max-width: $break-small) {
       margin: 0 auto;
@@ -339,8 +550,12 @@ $red: hsl(320, 100%, 50%);
       display: block;
       left: 0;
       height: 100%;
-      background: #ff00aa;
-      background: linear-gradient(80deg, #ffc337 0%, #ff00aa 100%);
+      background: $progress-bar-before;
+      background: linear-gradient(
+        80deg,
+        $progress-bar-gradient-01 0%,
+        $progress-bar-gradient-02 100%
+      );
     }
 
     &.progress-state-0 {
@@ -375,102 +590,210 @@ $red: hsl(320, 100%, 50%);
 
     .progress-block {
       flex-grow: 1;
-      border: 2px solid $progress-color;
+      border: 1px solid $progress-color-light;
       height: 20px;
       z-index: 1;
       background: transparent;
     }
   }
-
 }
 
-.pink-highlight {
-  color: $red;
+body.dark {
+  .profile-page .profile-left .main-content-wrapper a {
+    color: $dark-highlightColor;
+  }
+
+  .profile-page .profile-left .account-wrapper .logout-wrapper .logout:hover {
+    background-color: $dark-buttonHoverColor;
+  }
+
+  .profile-page .profile-left .main-content-wrapper a.button-static {
+    color: $buttonTextColor;
+  }
+
+  .profile-page .profile-left .main-content-wrapper,
+  .profile-page .profile-right .progress-wrapper,
+  .profile-page .profile-right .education-wrapper {
+    background-color: $dark-inputBackgroundColor !important;
+  }
+
+  .profile-page .profile-left .pre-launch-container h2,
+  .profile-page .profile-left .main-content-wrapper p,
+  .profile-page .profile-left .main-content-wrapper h3,
+  .profile-page .profile-left .main-content-wrapper h4 {
+    color: $dark-headlineColor !important;
+  }
+
+  .profile-page .profile-right .progress-wrapper p {
+    color: $light-textColor !important;
+  }
+
+  .profile-page .progress-bar {
+    background: $dark-backgroundColor !important;
+    border: 2px solid $dark-backgroundColor !important;
+  }
+
+  .profile-page .progress-bar .progress-block {
+    border: 2px solid $dark-backgroundColor !important;
+  }
+
+  .profile-page .profile-right .progress-wrapper .education-section a,
+  .profile-page .profile-right .education-wrapper .education-section a {
+    color: $labelColor !important;
+  }
+
+  .education-section h5 {
+    color: $dark-textColor !important;
+  }
+
+  #winner-code {
+    background-color: $winner-background-dark !important;
+    color: $winner-color-dark !important;
+  }
+
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .spammy-box,
+  .timeline-date .spammy-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .spammy-box {
+    background-image: asset-url("icon-dark-ineligible.svg") !important;
+  }
+
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .eligible-box,
+  .timeline-date .eligible-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .eligible-box {
+    background-image: asset-url("icon-dark-eligible.svg") !important;
+  }
+
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .bonus-box,
+  .timeline-date .bonus-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .bonus-box,
+  .profile-page .profile-right .icon-box.bonus-wrapper .bonus-box {
+    background-image: asset-url("icon-dark-bonus.svg") !important;
+  }
+
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .invalid-box,
+  .timeline-date .invalid-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .invalid-box {
+    background-image: asset-url("icon-dark-invalid.svg") !important;
+  }
+
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .pending-box,
+  .timeline-date .pending-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .pending-box {
+    background-image: asset-url("icon-dark-pending.svg") !important;
+  }
+
+  .profile-page .profile-right .icon-box.bonus-wrapper span {
+    color: $dark-textColor !important;
+  }
+
+  .profile-page .profile-right .pr-score {
+    color: $buttonTextColor !important;
+  }
+
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-name-desc
+    .icon-name,
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-name-desc
+    .icon-desc,
+  .profile-page .profile-left .timeline-wrapper .pr-time-title .pr-title,
+  .profile-page .profile-left .timeline-wrapper .pr-waiting span.count-down {
+    color: $dark-socialTextColor !important;
+  }
+
+  .profile-page .profile-left .timeline-wrapper .pr-waiting span.mature {
+    color: $dark-textColor !important;
+  }
+
+  .profile-page .profile-left .winning-msg-cont .winning-desc {
+    color: $dark-headlineColor !important;
+  }
 }
 
-.winning-msg-cont {
-  margin: 1.25rem;
-
-  @media screen and (max-width: $break-small) {
-    margin: 1.25rem 0px 0px 0px;
+@media screen and (max-width: $break-small) {
+  .profile-page .profile-left,
+  .profile-page .profile-right {
+    padding: 0 20px;
+    width: 100%;
   }
 
-  span.title {
-    @media screen and (max-width: $break-small) {
-      font-size: 1.25rem;
-    }
+  .profile-page {
+    padding-left: 0;
   }
 
-  h1.title {
-    @media screen and (max-width: $break-small) {
-      font-size: 1.5rem;
-    }
-  }
-}
-
-.legend {
-  margin: 3rem 0 0;
-
-  @media screen and (max-width: $break-small) {
-    padding: 0;
-    box-shadow: none;
+  .profile-page .profile-left {
+    margin-right: 0;
   }
 
-  h4 {
-    margin: 0 0 1.25rem;
+  .profile-page .profile-left .progress-wrapper.mobile {
+    display: block;
   }
 
-  > div {
-    display: flex;
-    flex-direction: column;
-    margin: 0 0 0 .5em;
-
-    .icon-name {
-      display: flex;
-      flex-direction: row;
-
-      .icon-box {
-        padding: 0;
-        margin: 0 .5em 0 0;
-      }
-
-      p {
-        flex-grow: 1;
-        margin: 0;
-        font-size: .95em;
-      }
-    }
-
-    > p {
-      margin: .2em 0 .8em;
-      font-size: .8em;
-    }
+  .profile-page .profile-right .progress-wrapper.desktop {
+    display: none;
   }
 }
 
-.winning-msg {
-  text-align: left;
-}
-
-.report-spam-cont {
-  padding: 1rem;
-  margin-top: 8rem;
-
-  @media screen and (max-width: $break-small) {
-    margin: 5rem 1.5rem 0 1.5rem;
+@media screen and (max-width: $break-mobile) {
+  .profile-page
+    .profile-left
+    .congratulations-txt
+    .congrats-wrapper
+    .congrats-text {
+    width: 100%;
+    margin-right: 0;
   }
-}
 
-.coupon-box {
-  display: flex;
-  margin-top: 50px;
-  min-width: 48vw;
-}
+  .profile-page
+    .profile-left
+    .congratulations-txt
+    .congrats-wrapper
+    .parrot-image {
+    display: none;
+  }
 
-#winner-code {
-  font-size: 1rem;
-  background-color: #39486f;
-  border: none;
-  color: $cyan;
-  width: 25vw;
+  .profile-page .profile-left .account-wrapper {
+    display: block;
+  }
+
+  .profile-page .profile-left .account-wrapper .logout-wrapper {
+    position: relative;
+    display: block;
+    margin: 20px 0;
+  }
+
+  .profile-page .profile-left .account-wrapper {
+    display: block;
+  }
 }

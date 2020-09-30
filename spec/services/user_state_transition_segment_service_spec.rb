@@ -5,6 +5,11 @@ require 'rails_helper'
 RSpec.describe UserStateTransitionSegmentService do
   let(:transition) { double }
 
+  before do
+    allow(UserPullRequestSegmentUpdaterService)
+      .to receive(:call).and_return(true)
+  end
+
   describe '.call' do
     context 'the transition event is register and the user is new' do
       let(:user) { FactoryBot.create(:user, :new) }
@@ -20,7 +25,9 @@ RSpec.describe UserStateTransitionSegmentService do
           intel_marketing_emails: user.intel_marketing_emails,
           dev_marketing_emails: user.dev_marketing_emails,
           category: user.category,
-          state: 'register'
+          country: user.country,
+          state: 'register',
+          pull_requests_count: 0
         )
         allow_any_instance_of(SegmentService).to receive(:track).with(
           'register'
@@ -35,7 +42,9 @@ RSpec.describe UserStateTransitionSegmentService do
           intel_marketing_emails: user.intel_marketing_emails,
           dev_marketing_emails: user.dev_marketing_emails,
           category: user.category,
-          state: 'register'
+          country: user.country,
+          state: 'register',
+          pull_requests_count: 0
         )
         expect_any_instance_of(SegmentService).to receive(:track).with(
           'register'

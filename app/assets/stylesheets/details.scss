@@ -1,75 +1,122 @@
 $break-small: 1024px;
 $break-med: 1288px;
 
-.details,
-.container.details {
-  margin-bottom: 60px;
-
+.resources {
   h1 {
-    a {
-      color: #fff;
+    margin-top: 32px;
+  }
+
+  .details {
+    text-align: center;
+    margin-bottom: 60px;
+
+    .errors {
+      min-height: 400px;
     }
   }
-}
 
-.details-tabs {
-  display: flex;
-  margin: 70px 0;
-
-  @media screen and (max-width: $break-med) {
-    flex-direction: column;
+  p {
+    margin: 0 0 18px 0;
   }
 
-  #tabs.box {
-    padding: 0;
+  section {
+    margin: 64px auto;
   }
 
-  #tabs {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: #39486f;
-    width: 284px;
-    margin-bottom: 0;
+  section.details {
+    margin: 0px auto 64px;
+  }
+
+  ol {
+    margin-left: 32px;
 
     @media screen and (max-width: $break-med) {
-      flex-direction: row;
-      width: 100%;
-    }
-
-    @media screen and (max-width: $break-small) {
-      flex-direction: column;
+      text-align: left;
+      max-width: 80%;
+      margin: 0 auto;
     }
 
     li {
-      width: 284px;
+      padding: 12px 0;
+    }
+  }
+
+  ul {
+    list-style: initial;
+    margin-left: 32px;
+
+    @media screen and (max-width: $break-med) {
       text-align: left;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    li {
+      padding: 12px 0;
+    }
+  }
+  .details-tabs {
+    display: flex;
+    margin: 70px 0;
+
+    @media screen and (max-width: $break-med) {
+      flex-direction: column;
+    }
+
+    #tabs.box {
+      padding: 0;
+    }
+
+    #tabs {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 284px;
+      margin-bottom: 0;
+      list-style: none;
+      margin-left: 0;
+
+      @media screen and (max-width: $break-med) {
+        flex-direction: row;
+        width: 100% !important;
+        max-width: 100%;
+      }
 
       @media screen and (max-width: $break-small) {
-        width: 100%;
-        text-align: center;
+        flex-direction: column;
       }
 
-      :hover {
-        background-color: #a11ec6;
-      }
-      .selected {
-        background-color: #1f2d4f;
-      }
+      li {
+        width: 284px;
+        text-align: left;
+        padding: 0;
 
-      a {
-        font-weight: 600;
-        display: block;
-        color: #fff;
-        padding: 16px 20px;
-        font-size: 14px;
+        @media screen and (max-width: $break-small) {
+          width: 100%;
+          text-align: center;
+        }
+
+        a {
+          font-weight: 600;
+          display: block;
+          padding: 16px 20px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .box {
+      margin-bottom: 0;
+      padding: 60px;
+
+      @media screen and (max-width: $break-small) {
+        padding: 0;
       }
     }
   }
 
-  .box {
-    margin-bottom: 0;
-    padding: 60px;
+  .beginners-video {
+    margin: 0 0 32px 0;
   }
 }
