@@ -1,4 +1,7 @@
-# Hacktoberfest
+<h1 align="center">Hacktoberfest</h1>
+<p align="center">
+    <img src="/app/assets/images/HF-full-logo.svg" alt="Hacktoberfest-2020 Logo" width="350">
+</p>
 
 ## Features
 
