@@ -21,9 +21,11 @@
   </td>
 </tr>
 
-<script type="text/javascript">
-    countdownTimers(
-        document.getElementById('<%= pr.github_id %>-waiting-date'),
-        "<%= pr.waiting_since&.httpdate %>",
-    );
-</script>
+<% if pr.waiting? %>
+  <script type="text/javascript">
+      countdownTimers(
+          document.getElementById('<%= pr.github_id %>-waiting-date'),
+          "<%= pr.waiting_since&.httpdate %>",
+      );
+  </script>
+<% end %>
