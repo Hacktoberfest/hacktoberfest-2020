@@ -6,7 +6,7 @@
         <% scoring_pull_requests.map.with_index do |pr, key| %>
           <%= render partial: 'users/show/pr/pr', locals: { pr: pr } %>
 
-          <% if show_timer && key == 3 %>
+          <% if key == 3 && !show_congratulations %>
             <tr>
               <td colspan="2">
                 <div class="winning-msg-cont">
@@ -15,18 +15,16 @@
                 </div>
               </td>
             </tr>
+          <% elsif key == 3 && show_congratulations %>
+            <tr>
+              <td colspan="2">
+                <div class="winning-msg-cont">
+                  <h2 class="winning-title">You did it! 🎉</h2>
+                  <span class="winning-desc">You've made four eligible PRs for Hacktoberfest — which means you officially completed this year’s challenge!</span>
+                </div>
+              </td>
+            </tr>
           <% end %>
-        <% end %>
-
-        <% if show_congratulations %>
-          <tr>
-            <td colspan="2">
-              <div class="winning-msg-cont">
-                <h2 class="winning-title">You did it! 🎉</h2>
-                <span class="winning-desc">You've made four eligible PRs for Hacktoberfest — which means you officially completed this year’s challenge!</span>
-              </div>
-            </td>
-          </tr>
         <% end %>
 
         <% if non_scoring_pull_requests.any? %>
