@@ -3,7 +3,7 @@
     <img src="/app/assets/images/HF-full-logo.svg" alt="Hacktoberfest-2020 Logo" width="350">
 </p>
 
-## Features
+## FeaturesALL
 
 * Static pages
 * Airtable backed events and FAQs
