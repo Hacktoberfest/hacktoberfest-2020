@@ -42,6 +42,7 @@ describe ReportAirtableUpdaterService do
       #   end
       # end
 
+      # rubocop:disable Metrics/LineLength
       context 'the repository is not already marked as spam' do
         before do
           new_repo_id = 211_178_535
@@ -51,10 +52,13 @@ describe ReportAirtableUpdaterService do
           ReportAirtableUpdaterService.call(report)
         end
 
-        it 'writes to airtable', vcr: { record: :new_episodes } do
-          expect(a_request(:post, AIRTABLE_URI_REGEX)).to have_been_made
+        it 'writes to airtable', :vcr do
+          VCR.use_cassette 'ReportAirtableUpdaterService/_call/the_repository_does_exist/the_repository_is_not_already_marked_as_spam' do
+            expect(a_request(:post, AIRTABLE_URI_REGEX)).to have_been_made
+          end
         end
       end
+      # rubocop:enable Metrics/LineLength
     end
   end
 end
