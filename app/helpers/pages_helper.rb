@@ -8,7 +8,7 @@ module PagesHelper
       # Ignore invalid events
     end.compact
   rescue JSON::ParserError
-    AirtablePlaceholderService.call('Event List').map do |e|
+    AirtablePlaceholderService.call('Meetups').map do |e|
       MlhEventPresenter.new(e)
     end.compact
   end
