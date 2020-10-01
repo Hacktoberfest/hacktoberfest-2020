@@ -142,7 +142,7 @@ LONG_SPAM_LABEL_PR = {
   'repository' => { 'databaseId' => 123 }
 }.freeze
 
-ELIGIBLE_PR = {
+ELIGIBLE_MERGED_PR = {
   'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
   'title' => 'Update README.md',
   'body' =>
@@ -152,13 +152,14 @@ ELIGIBLE_PR = {
   # This is valid, eligible
   'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 9.days).to_s,
   'labels' => { 'edges' => [] },
+  'merged' => true,
   'repository' => { 'databaseId' => 123 }
 }.freeze
 
 # 5 pull requests with 3 valid dates & 2 invalid labels
 ARRAY_WITH_INVALID_LABEL = [
   INVALID_EMOJI_LABEL_PR,
-  ELIGIBLE_PR,
+  ELIGIBLE_MERGED_PR,
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -266,7 +267,19 @@ MATURE_ARRAY = [
     'repository' => { 'databaseId' => 123 } }
 ].freeze
 
-IMMATURE_PR = {
+CREATED_PR = {
+    'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
+    'title' => 'Results by cookie',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/peek/peek/pull/79',
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 2.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => { 'databaseId' => 123 }
+}.freeze
+
+IMMATURE_MERGED_PR = {
   'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
   'title' => 'Results by cookie',
   'body' =>
@@ -275,7 +288,20 @@ IMMATURE_PR = {
   'url' => 'https://github.com/peek/peek/pull/79',
   'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 2.days).to_s,
   'labels' => { 'edges' => [] },
+  'merged' => true,
   'repository' => { 'databaseId' => 123 }
+}.freeze
+
+IMMATURE_ACCEPTED_PR = {
+    'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
+    'title' => 'Results by cookie',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/peek/peek/pull/79',
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 2.days).to_s,
+    'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-Accepted' } }] },
+    'repository' => { 'databaseId' => 123 }
 }.freeze
 
 IMMATURE_INVALID_MERGED_PR = {
@@ -295,7 +321,7 @@ IMMATURE_INVALID_MERGED_PR = {
 
 # 4 pull requests with timestamps less than 7 days old, maturing
 IMMATURE_ARRAY = [
-  IMMATURE_PR,
+    IMMATURE_MERGED_PR,
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

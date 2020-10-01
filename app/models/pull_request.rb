@@ -8,12 +8,12 @@ class PullRequest < ApplicationRecord
 
   state_machine initial: :new do
     event :spam_repo do
-      transition %i[new waiting] => :spam_repo,
+      transition %i[new created waiting] => :spam_repo,
                  if: ->(pr) { pr.spammy? }
     end
 
     event :invalid_label do
-      transition %i[new waiting] => :invalid_label,
+      transition %i[new created waiting] => :invalid_label,
                  if: ->(pr) { pr.labelled_invalid? }
     end
 
@@ -27,13 +27,13 @@ class PullRequest < ApplicationRecord
     # A pull request that has been opened and accepted, not spammy & newer than 7 days
     # Once here a pull request can go back to created if un-accepted (possible if the accepted label is removed)
     event :waiting do
-      transition %i[new spam_repo invalid_label] => :waiting,
+      transition %i[new created spam_repo invalid_label] => :waiting,
                  if: ->(pr) { !pr.spammy_or_invalid? && !pr.older_than_week? && pr.is_accepted? }
     end
 
     # A pull request that has been opened, not spammy, not accepted
     event :created do
-      transition %i[new spam_repo invalid_label waiting] => :created,
+      transition %i[new waiting spam_repo invalid_label] => :created,
                  if: ->(pr) { !pr.spammy_or_invalid? && !pr.older_than_week? && !pr.is_accepted? }
     end
 

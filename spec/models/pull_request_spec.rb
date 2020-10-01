@@ -69,7 +69,7 @@ RSpec.describe PullRequest, type: :model do
     end
 
     context 'Pull request has no labels' do
-      let(:pr) { pr_helper(ELIGIBLE_PR) }
+      let(:pr) { pr_helper(ELIGIBLE_MERGED_PR) }
 
       it 'is not considered labelled invalid' do
         expect(pr.labelled_invalid?).to eq(false)
@@ -93,8 +93,27 @@ RSpec.describe PullRequest, type: :model do
       end
     end
 
+    context 'Pull request is created' do
+      let(:pr) { pr_helper(CREATED_PR) }
+
+      it 'is in the created state initially' do
+        expect(pr.state).to eq('created')
+      end
+
+      context 'Pull request becomes labelled invalid' do
+        before do
+          stub_helper(pr, INVALID_LABEL_PR, 'id' => pr.github_id)
+          pr.check_state
+        end
+
+        it 'is put it in the invalid_label state' do
+          expect(pr.state).to eq('invalid_label')
+        end
+      end
+    end
+
     context 'Pull request is waiting' do
-      let(:pr) { pr_helper(IMMATURE_PR) }
+      let(:pr) { pr_helper(IMMATURE_MERGED_PR) }
 
       it 'is in the waiting state initially' do
         expect(pr.state).to eq('waiting')
@@ -126,7 +145,7 @@ RSpec.describe PullRequest, type: :model do
     end
 
     context 'Pull request is eligible' do
-      let(:pr) { pr_helper(ELIGIBLE_PR) }
+      let(:pr) { pr_helper(ELIGIBLE_MERGED_PR) }
 
       it 'is in the eligible state initially' do
         expect(pr.state).to eq('eligible')
@@ -146,16 +165,20 @@ RSpec.describe PullRequest, type: :model do
   end
 
   describe '#waiting' do
-    context 'Pull request is valid and created less than seven days ago' do
-      let(:pr) { pr_helper(IMMATURE_PR) }
+    context 'Pull request is valid, accepted and created less than seven days ago' do
+      let(:pr) { pr_helper(IMMATURE_MERGED_PR) }
+
+      before { freeze_time }
 
       it 'is put it in the waiting state' do
         expect(pr.state).to eq('waiting')
       end
 
-      it 'has the waiting_since date set to the created date' do
-        expect(pr.waiting_since).to eq(pr.created_at)
+      it 'has the waiting_since date set to now' do
+        expect(pr.waiting_since).to eq(Time.zone.now)
       end
+
+      after { travel_back }
     end
 
     context 'Pull request is in an invalid repo initially' do
@@ -177,7 +200,7 @@ RSpec.describe PullRequest, type: :model do
         before do
           freeze_time
 
-          stub_helper(pr, IMMATURE_PR, 'id' => pr.github_id)
+          stub_helper(pr, IMMATURE_ACCEPTED_PR, 'id' => pr.github_id)
           pr.check_state
         end
 
@@ -187,7 +210,6 @@ RSpec.describe PullRequest, type: :model do
 
         it 'has the waiting_since date set to now' do
           expect(pr.waiting_since).to eq(Time.zone.now)
-          expect(pr.waiting_since).to_not eq(pr.created_at)
         end
 
         after { travel_back }
@@ -228,23 +250,25 @@ RSpec.describe PullRequest, type: :model do
   end
 
   describe '#eligible' do
-    context 'Pull request is valid and created over seven days ago' do
-      let(:pr) { pr_helper(ELIGIBLE_PR) }
+    context 'Pull request is valid, accepted and created over seven days ago' do
+      let(:pr) { pr_helper(ELIGIBLE_MERGED_PR) }
 
       it 'is put it in the eligible state' do
         expect(pr.state).to eq('eligible')
       end
     end
 
-    context 'Pull request is valid and created less than seven days ago' do
-      let(:pr) { pr_helper(IMMATURE_PR) }
+    context 'Pull request is valid, accepted and created less than seven days ago' do
+      let(:pr) { pr_helper(IMMATURE_MERGED_PR) }
+
+      before { freeze_time }
 
       it 'is put it in the waiting state' do
         expect(pr.state).to eq('waiting')
       end
 
-      it 'has the waiting_since date set to the created date' do
-        expect(pr.waiting_since).to eq(pr.created_at)
+      it 'has the waiting_since date set to now' do
+        expect(pr.waiting_since).to eq(Time.zone.now)
       end
 
       context 'Seven days pass from pull request creation' do
