@@ -1,4 +1,4 @@
-<h1 align="center">Hacktoberfest</h1>
+<h1 align="center">Hacktoberfest</h1> -- an amazing project
 <p align="center">
     <img src="/app/assets/images/HF-full-logo.svg" alt="Hacktoberfest-2020 Logo" width="350">
 </p>
