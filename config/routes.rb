@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/suspended-error', to: 'pages#github_suspended_error'
   get '/tshirt', to: 'pages#tshirt'
   get '/tree', to: 'pages#tree'
+  get '/hacktoberfest-update', to: 'pages#hacktoberfest_update'
   get '/languages/projects(/:language_id)', to: 'languages#projects'
   get '/report', to: 'reports#new'
   post '/report', to: 'reports#create'

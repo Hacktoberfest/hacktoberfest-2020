@@ -192,6 +192,7 @@ $button-padding-horizontal: 40px;
   font-size: $size-button-text;
   padding: 24px 40px;
   font-family: "Inter Bold", "Helvetica", "Arial", san-serif !important;
+  outline: none;
   height: auto !important;
   display: inline-flex;
   justify-content: flex-start;
@@ -317,6 +318,22 @@ body {
 
   p {
     margin-top: 20px;
+  }
+
+  blockquote {
+    border-left: 0.25rem solid $pink;
+    padding: 1rem;
+    background: rgba($pink, 0.2);
+    margin: 1rem 0;
+  }
+
+  .title_small {
+    font-size: 1.75rem;
+    margin: 2rem 0 0.5rem;
+  }
+
+  .align-left {
+    text-align: left;
   }
 
   // Reuseable
