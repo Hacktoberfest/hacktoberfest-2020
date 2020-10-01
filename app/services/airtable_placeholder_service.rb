@@ -8,38 +8,6 @@ module AirtablePlaceholderService
   def call(table_name)
     case table_name
     when 'Meetups'
-      {
-        'data' =>
-        [
-          {
-            'attributes' => {
-              'title' => 'Hacktoberfest in Brasilia',
-              'startDate' => '2020-10-16',
-              'location' => {
-                'city' => 'Brasilia',
-                'country' => 'Brazil'
-              }
-            },
-            'links' => {
-              'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register'
-            }
-          },
-          {
-            'attributes' => {
-              'title' => 'Hacktoberfest @IPN',
-              'startDate' => '2020-10-01',
-              'location' => {
-                'city' => 'Mexico City',
-                'country' => 'Mexico'
-              }
-            },
-            'links' => {
-              'register' => 'http://organize.mlh.io/participants/events/3924-hacktoberfest-ipn/register'
-            }
-          }
-        ]
-      }
-    when 'Event List'
       [
         {
           'attributes' => {
@@ -100,6 +68,37 @@ module AirtablePlaceholderService
             'register' => 'https://organize.mlh.io/participants/events/4079-hacktoberfest-tuesdays-east-coast-and-more/register',
             'view' => 'https://organize.mlh.io/participants/events/4079-hacktoberfest-tuesdays-east-coast-and-more'
           }
+        }
+      ]
+    when 'Event List'
+      [
+        {
+          'Event Named' => 'Hacktoberfest 2020 Official Kick-Off Celebration',
+          'Event City' => 'APAC',
+          'Event Country' => 'India',
+          'Date' => '2020-10-01',
+          'Link' => 'https://organize.mlh.io/participants/events/4019-hacktoberfest-2020-official-kick-off-celebration'
+        },
+        {
+          'Event Named' => 'Hacktoberfest Tuesdays: Americas',
+          'Event City' => 'New York',
+          'Event Country' => 'United States',
+          'Date' => '2020-10-06',
+          'Link' => 'https://organize.mlh.io/participants/events/4079-hacktoberfest-tuesdays-east-coast-and-more'
+        },
+        {
+          'Event Named' => 'Hacktoberfest Tuesdays: Asia',
+          'Event City' => 'Singapore',
+          'Event Country' => 'Singapore',
+          'Date' => '2020-10-13',
+          'Link' => 'https://organize.mlh.io/participants/events/4099-hacktoberfest-tuesdays-asia'
+        },
+        {
+          'Event Named' => 'Hacktoberfest Tuesdays: Europe',
+          'Event City' => 'London',
+          'Event Country' => 'United Kingdom',
+          'Date' => '2020-10-27',
+          'Link' => 'https://organize.mlh.io/participants/events/4101-hacktoberfest-tuesdays-europe'
         }
       ]
     when 'FAQs'
