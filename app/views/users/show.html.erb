@@ -39,7 +39,30 @@
       <% elsif @presenter.scoring_pull_requests.empty? %>
         <div class="container pre-launch-container">
           <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
-          <%= link_to "Get started", details_path, anchor: "getting-started", class: "button-static" %>
+          <p>Here are some ideas to get you started:</p>
+          <div class="idea-set">
+            <div class="idea-pane" data-label="Fastest way to win T-Shirt">
+              <h3>Fork our repo and open your own PR's</h3>
+              <p>Not ready yet to get involved as a contributor on an open source project? This guide walks you through making your own Open Source repo and opening your first 4 PR's to win the contest.</p>
+              <%= link_to "Get started", "https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github", class: "button-static" %>
+            </div>
+            <div class="idea-pane">
+              <h3>Find ideas in tagged issues</h3>
+              <p>This guide includes links to several sites that let you search and filter for issues that have been flagged as good first issues.</p>
+              <%= link_to "Find an issue", details_path, anchor: "beginners", class: "button-static" %>
+            </div>
+            <div class="idea-pane">
+              <h3>Register for an event</h3>
+              <p>Join a live event and work through creating your Pull Requests together as a group! Many events this year are 100% virtual.</p>
+              <%= link_to "Attend an event", events_path, class: "button-static" %>
+            </div>
+            <div class="idea-pane">
+              <h3>Join the Hacktoberfest chat</h3>
+              <p>Join the official Hacktoberfest Discord server to connect with other participants, trade ideas and get help.</p>
+              <%= link_to "Join chat server", "https://discord.gg/hacktoberfest", class: "button-static" %>
+            </div>
+          </div>
+          
         </div>
       <% end %>
 
