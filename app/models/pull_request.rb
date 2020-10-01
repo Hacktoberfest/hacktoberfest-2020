@@ -17,24 +17,27 @@ class PullRequest < ApplicationRecord
                  if: ->(pr) { pr.labelled_invalid? }
     end
 
+    # A pull request that has been opened, accepted, not spammy & older than 7 days
+    # Once here, a pull request cannot leave this state
     event :eligible do
-      transition %i[new waiting] => :eligible,
-                 if: ->(pr) { !pr.spammy_or_invalid? && pr.older_than_week? }
+      transition %i[waiting] => :eligible,
+                 if: ->(pr) { !pr.spammy_or_invalid? && pr.older_than_week? && pr.is_accepted? }
     end
 
+    # A pull request that has been opened and accepted, not spammy & newer than 7 days
+    # Once here a pull request can go back to created if un-accepted (possible if the accepted label is removed)
     event :waiting do
       transition %i[new spam_repo invalid_label] => :waiting,
-                 if: ->(pr) { !pr.spammy_or_invalid? && !pr.older_than_week? }
+                 if: ->(pr) { !pr.spammy_or_invalid? && !pr.older_than_week? && pr.is_accepted? }
     end
 
-    before_transition to: %i[waiting],
-                      from: %i[new] do |pr, _transition|
-      pr.waiting_since = pr.created_at
-      pr.save!
+    # A pull request that has been opened, not spammy, not accepted
+    event :created do
+      transition %i[new spam_repo invalid_label waiting] => :created,
+                 if: ->(pr) { !pr.spammy_or_invalid? && !pr.older_than_week? && !pr.is_accepted? }
     end
 
-    before_transition to: %i[waiting],
-                      from: %i[spam_repo invalid_label] do |pr, _transition|
+    before_transition to: %i[waiting] do |pr, _transition|
       pr.waiting_since = Time.zone.now
       pr.save!
     end
@@ -44,18 +47,15 @@ class PullRequest < ApplicationRecord
     return if spam_repo
     return if invalid_label
     return if eligible
+    return if waiting
 
-    waiting
-  end
-
-  def most_recent_time
-    return waiting_since unless waiting_since.nil?
-
-    github_pull_request.created_at
+    created
   end
 
   def older_than_week?
-    most_recent_time <= (Time.zone.now - 7.days)
+    return false if waiting_since.nil?
+
+    waiting_since <= (Time.zone.now - 7.days)
   end
 
   def labelled_invalid?
@@ -70,6 +70,14 @@ class PullRequest < ApplicationRecord
 
   def spammy_or_invalid?
     labelled_invalid? || spammy?
+  end
+
+  def labelled_accepted?
+    label_names.select { |l| l.downcase.strip == 'hacktoberfest-accepted' }.any?
+  end
+
+  def is_accepted?
+    merged? || labelled_accepted?
   end
 
   def github_id
