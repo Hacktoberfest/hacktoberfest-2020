@@ -52,9 +52,11 @@ describe ReportAirtableUpdaterService do
           ReportAirtableUpdaterService.call(report)
         end
 
-        it 'writes to airtable', :vcr do
-          VCR.use_cassette 'ReportAirtableUpdaterService/_call/the_repository_does_exist/the_repository_is_not_already_marked_as_spam/writes_to_airtable' do
-            expect(a_request(:post, AIRTABLE_URI_REGEX)).to have_been_made
+        if ENV['AIRTABLE_APP_ID'].present?
+          it 'writes to airtable', :vcr do
+            VCR.use_cassette 'ReportAirtableUpdaterService/_call/the_repository_does_exist/the_repository_is_not_already_marked_as_spam/writes_to_airtable' do
+              expect(a_request(:post, AIRTABLE_URI_REGEX)).to have_been_made
+            end
           end
         end
       end
