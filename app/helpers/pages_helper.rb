@@ -11,6 +11,10 @@ module PagesHelper
     AirtablePlaceholderService.call('Meetups').map do |e|
       MlhEventPresenter.new(e)
     end.compact
+  rescue StandardError
+    AirtablePlaceholderService.call('Meetups').map do |e|
+      MlhEventPresenter.new(e)
+    end.compact
   end
 
   def front_page_events
