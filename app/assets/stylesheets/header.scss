@@ -301,7 +301,7 @@ $navColor: rgba(0, 0, 0, 0);
 
 body.dark {
   #navbar {
-    .navLink:hover {
+    .navLink:not(.button):hover {
       color: $dark-highlightColor !important;
     }
   }
