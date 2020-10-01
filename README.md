@@ -1,4 +1,4 @@
-<h1 align="center">Hacktoberfest</h1>
+<h1 align="center">Hacktoberfest - An Amazing Project</h1>
 <p align="center">
     <img src="/app/assets/images/HF-full-logo.svg" alt="Hacktoberfest-2020 Logo" width="350">
 </p>
@@ -322,3 +322,5 @@ The Hacktoberfest app is built and maintained for DigitalOcean by developers fro
 
 Licensed under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
 The full license text is available in [LICENSE.md](/LICENSE.md).
+
+Thanks for visit my webpage!
