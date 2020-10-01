@@ -319,6 +319,18 @@ body {
     margin-top: 20px;
   }
 
+  blockquote {
+    border-left: 0.25rem solid $pink;
+    padding: 1rem;
+    background: rgba($pink, 0.2);
+    margin: 1rem 0;
+  }
+
+  .title_small {
+    font-size: 1.75rem;
+    margin: 2rem 0 0.5rem;
+  }
+
   // Reuseable
 
   .line-br {
