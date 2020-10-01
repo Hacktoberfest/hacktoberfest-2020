@@ -13,8 +13,8 @@ Rails.application.configure do
 
   config.log_level = :debug
 
-  if ENV['REDIS_HOST'].presence
-    config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+  if ENV['DALLI_SERVER'].presence
+    config.cache_store = :dalli_store, *ENV['DALLI_SERVER']
     config.action_controller.perform_caching = true
   else
     config.action_controller.perform_caching = false
