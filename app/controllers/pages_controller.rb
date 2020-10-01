@@ -38,4 +38,6 @@ class PagesController < ApplicationController
   def tshirt; end
 
   def tree; end
+
+  def hacktoberfest_update; end
 end
