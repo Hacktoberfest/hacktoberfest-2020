@@ -80,7 +80,7 @@ class PullRequest < ApplicationRecord
 
   def in_topic_repo?
     # Don't have this requirement for old PRs
-    return true if Time.parse(created_at).utc <= Time.parse('2020-10-03 12:00:00 UTC')
+    return true if Time.parse(created_at).utc <= Hacktoberfest.topic_date
 
     repository_topics.select { |topic| topic.strip == 'hacktoberfest' }.any?
   end

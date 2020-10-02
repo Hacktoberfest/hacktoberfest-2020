@@ -80,6 +80,7 @@ DALLI_SERVER=memcached
 GITHUB_CLIENT_ID=<fill-in-for-dev-setup>
 GITHUB_CLIENT_SECRET=<fill-in-for-dev-setup>
 START_DATE=<fill-in-for-dev-setup>
+TOPIC_DATE=<fill-in-for-dev-setup-same-as-start>
 END_DATE=<fill-in-for-dev-setup>
 AIRTABLE_API_KEY=<fill-in-for-dev-setup>
 AIRTABLE_APP_ID=<fill-in-for-dev-setup>

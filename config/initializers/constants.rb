@@ -11,6 +11,10 @@ module Hacktoberfest
     @end_date ||= Time.parse(ENV.fetch('END_DATE')).utc
   end
 
+  def topic_date
+    @topic_date ||= Time.parse(ENV.fetch('TOPIC_DATE')).utc
+  end
+
   def pull_request_maturation_days
     @pull_request_maturation_days ||= ENV.fetch('MATURATION_DAYS', 7).to_i.days
   end
