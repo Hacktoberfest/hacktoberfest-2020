@@ -13,9 +13,11 @@ ARRAY_WITH_INVALID_DATES = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -26,9 +28,11 @@ ARRAY_WITH_INVALID_DATES = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -40,9 +44,11 @@ ARRAY_WITH_INVALID_DATES = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -54,9 +60,11 @@ ARRAY_WITH_INVALID_DATES = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }}
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } }
 ].freeze
 
 # 4 pull_requests with 4 invalid dates & 2 invalid labels
@@ -72,9 +80,11 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -85,9 +95,11 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -98,9 +110,11 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 3.years - 5.months).to_s,
     'labels' => { 'edges': [{ 'node': { 'name': '❌ Invalid' } }] },
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -111,9 +125,11 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 3.years).to_s,
     'labels' => { 'edges': [{ 'node': { 'name': 'Invalid' } }] },
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }}
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } }
 ].freeze
 
 INVALID_EMOJI_LABEL_PR = {
@@ -128,8 +144,10 @@ INVALID_EMOJI_LABEL_PR = {
   # Invalid label should make it invalid
   'labels' => { 'edges' => [{ 'node': { 'name': '❌ Invalid' } }] },
   'repository' => {
-      'databaseId' => 123,
-      'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
+    'databaseId' => 123,
+    'repositoryTopics' => { 'edges': [
+      { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+    ] }
   }
 }.freeze
 
@@ -145,8 +163,10 @@ INVALID_LABEL_PR = {
   # Invalid label should make it invalid
   'labels' => { 'edges' => [{ 'node': { 'name': 'Invalid' } }] },
   'repository' => {
-      'databaseId' => 123,
-      'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
+    'databaseId' => 123,
+    'repositoryTopics' => { 'edges': [
+      { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+    ] }
   }
 }.freeze
 
@@ -162,8 +182,10 @@ SPAM_LABEL_PR = {
   # Spam label should make it invalid
   'labels' => { 'edges' => [{ 'node': { 'name': 'Spam' } }] },
   'repository' => {
-      'databaseId' => 123,
-      'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
+    'databaseId' => 123,
+    'repositoryTopics' => { 'edges': [
+      { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+    ] }
   }
 }.freeze
 
@@ -179,8 +201,10 @@ LONG_SPAM_LABEL_PR = {
   # Spam label should make it invalid
   'labels' => { 'edges' => [{ 'node': { 'name': 'This is a spam PR' } }] },
   'repository' => {
-      'databaseId' => 123,
-      'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
+    'databaseId' => 123,
+    'repositoryTopics' => { 'edges': [
+      { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+    ] }
   }
 }.freeze
 
@@ -195,8 +219,10 @@ ELIGIBLE_PR = {
   'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
   'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
   'repository' => {
-      'databaseId' => 123,
-      'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
+    'databaseId' => 123,
+    'repositoryTopics' => { 'edges': [
+      { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+    ] }
   }
 }.freeze
 
@@ -212,26 +238,28 @@ MISSING_TOPIC_PR = {
   'labels' => { 'edges' => [] },
   'merged' => true,
   'repository' => {
-      'databaseId' => 123,
-      # No hacktoberfest topic, so its invalid
-      'repositoryTopics' => { 'edges' => [] }
+    'databaseId' => 123,
+    # No hacktoberfest topic, so its invalid
+    'repositoryTopics' => { 'edges' => [] }
   }
 }.freeze
 
 UNMERGED_PR = {
-    'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
-    'title' => 'Update README.md',
-    'body' =>
+  'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
+  'title' => 'Update README.md',
+  'body' =>
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
   tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
-    'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
-    # This is valid, eligible
-    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
-    'labels' => { 'edges' => [] },
-    'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }
+  'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
+  # This is valid, eligible
+  'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
+  'labels' => { 'edges' => [] },
+  'repository' => {
+    'databaseId' => 123,
+    'repositoryTopics' => { 'edges': [
+      { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+    ] }
+  }
 }.freeze
 
 # 5 pull requests with 3 valid dates & 2 invalid labels
@@ -249,9 +277,11 @@ ARRAY_WITH_INVALID_LABEL = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   INVALID_LABEL_PR,
   { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Timeline Feature',
@@ -264,9 +294,11 @@ ARRAY_WITH_INVALID_LABEL = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }}
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } }
 ].freeze
 
 # 5 pull requests with valid dates and valid labels
@@ -282,9 +314,11 @@ VALID_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -295,9 +329,11 @@ VALID_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -308,9 +344,11 @@ VALID_ARRAY = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 17.days).to_s,
     'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -322,9 +360,11 @@ VALID_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlBdfsfafsfdsF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Timeline Feature',
     'body' =>
@@ -335,9 +375,11 @@ VALID_ARRAY = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 19.days).to_s,
     'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }}
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } }
 ].freeze
 
 # 4 pull requests all with timestamps older than 14 days, eligible/mature
@@ -352,9 +394,11 @@ MATURE_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -363,9 +407,11 @@ MATURE_ARRAY = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
     'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   INVALID_LABEL_PR.merge('merged' => true),
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
@@ -377,9 +423,11 @@ MATURE_ARRAY = [
     'labels' => { 'edges' => [] },
     'reviewDecision' => 'APPROVED',
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }}
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } }
 ].freeze
 
 IMMATURE_PR = {
@@ -393,8 +441,10 @@ IMMATURE_PR = {
   'labels' => { 'edges' => [] },
   'reviewDecision' => 'APPROVED',
   'repository' => {
-      'databaseId' => 123,
-      'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
+    'databaseId' => 123,
+    'repositoryTopics' => { 'edges': [
+      { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+    ] }
   }
 }.freeze
 
@@ -411,8 +461,10 @@ IMMATURE_INVALID_MERGED_PR = {
   # Merged should override the invalid label and make it valid
   'merged' => true,
   'repository' => {
-      'databaseId' => 123,
-      'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
+    'databaseId' => 123,
+    'repositoryTopics' => { 'edges': [
+      { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+    ] }
   }
 }.freeze
 
@@ -428,9 +480,11 @@ IMMATURE_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -441,9 +495,11 @@ IMMATURE_ARRAY = [
     'labels' => { 'edges' => [] },
     'reviewDecision' => 'APPROVED',
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -453,9 +509,11 @@ IMMATURE_ARRAY = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 5.days).to_s,
     'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }}
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } }
 ].freeze
 
 LARGE_IMMATURE_ARRAY = [
@@ -468,9 +526,11 @@ LARGE_IMMATURE_ARRAY = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 1.day).to_s,
     'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NDc0Nzk5ODQ=',
     'title' => 'Results by localstorage',
     'body' =>
@@ -480,9 +540,11 @@ LARGE_IMMATURE_ARRAY = [
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 2.days).to_s,
     'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -492,9 +554,11 @@ LARGE_IMMATURE_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -505,9 +569,11 @@ LARGE_IMMATURE_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -518,9 +584,11 @@ LARGE_IMMATURE_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQB1bG=',
     'title' => 'Timeline Feature',
     'body' =>
@@ -531,9 +599,11 @@ LARGE_IMMATURE_ARRAY = [
     'labels' => { 'edges' => [] },
     'reviewDecision' => 'APPROVED',
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }}
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } }
 ].freeze
 
 # 4 pull requests with timestamps less than 7 days before the end
@@ -548,9 +618,11 @@ LATE_ARRAY = [
     'labels' => { 'edges' => [] },
     'reviewDecision' => 'APPROVED',
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
     'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -560,9 +632,11 @@ LATE_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NjkyNjE4Mjk=',
     'title' => 'Add natural layer',
     'body' =>
@@ -573,9 +647,11 @@ LATE_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }},
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
     'title' => 'Coercion type systems',
     'body' =>
@@ -586,9 +662,11 @@ LATE_ARRAY = [
     'labels' => { 'edges' => [] },
     'merged' => true,
     'repository' => {
-        'databaseId' => 123,
-        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
-    }}
+      'databaseId' => 123,
+      'repositoryTopics' => { 'edges': [
+        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
+      ] }
+    } }
 ].freeze
 
 MIXED_MATURITY_ARRAY = IMMATURE_ARRAY[0..1] + MATURE_ARRAY[2..3]
