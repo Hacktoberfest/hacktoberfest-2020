@@ -3,7 +3,7 @@
 class PullRequest < ApplicationRecord
   attr_reader :github_pull_request
 
-  delegate :title, :body, :url, :created_at, :name, :owner, :repo_id,
+  delegate :title, :body, :url, :name, :owner, :repo_id,
            :name_with_owner, :label_names, :repository_topics, :merged?,
            :approved?, to: :github_pull_request
 
@@ -52,7 +52,7 @@ class PullRequest < ApplicationRecord
 
     before_transition to: %i[waiting],
                       from: %i[new] do |pr, _transition|
-      pr.waiting_since = pr.created_at
+      pr.waiting_since = pr.github_pull_request.created_at
       pr.save!
     end
 
