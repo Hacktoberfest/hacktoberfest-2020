@@ -41,25 +41,25 @@
           <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
           <p>Here are some ideas to get you started:</p>
           <div class="idea-set">
-            <div class="idea-pane" data-label="Fastest way to win T-Shirt">
-              <h3>Fork our repo and open your own PR's</h3>
-              <p>Not ready yet to get involved as a contributor on an open source project? This guide walks you through making your own Open Source repo and opening your first 4 PR's to win the contest.</p>
-              <%= link_to "Get started", "https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github", class: "button-static" %>
+            <div class="idea-pane">
+              <h3>Attend an Event</h3>
+              <p>Don’t hack alone. Join a virtual event and create your pull requests with others.</p>
+              <%= link_to "Find Events", "/events", class: "button-static" %>
             </div>
             <div class="idea-pane">
               <h3>Find ideas in tagged issues</h3>
-              <p>This guide includes links to several sites that let you search and filter for issues that have been flagged as good first issues.</p>
+              <p>Check out these links for good first issues that will qualify for the Hacktoberfest challenge.</p>
               <%= link_to "Find an issue", details_path, anchor: "beginners", class: "button-static" %>
             </div>
             <div class="idea-pane">
-              <h3>Register for an event</h3>
-              <p>Join a live event and work through creating your Pull Requests together as a group! Many events this year are 100% virtual.</p>
-              <%= link_to "Attend an event", events_path, class: "button-static" %>
+              <h3>Join the Hacktoberfest Discord</h3>
+              <p>Connect with other participants, share ideas and get the help you need to complete the challenge.</p>
+              <%= link_to "Attend an event", "https://discord.gg/hacktoberfest", class: "button-static" %>
             </div>
             <div class="idea-pane">
-              <h3>Join the Hacktoberfest chat</h3>
-              <p>Join the official Hacktoberfest Discord server to connect with other participants, trade ideas and get help.</p>
-              <%= link_to "Join chat server", "https://discord.gg/hacktoberfest", class: "button-static" %>
+              <h3>Fork your own repo with your own PRs</h3>
+              <p>Not ready to contribute to an open source project? View this guide to making your own repo and creating pull requests to complete the challenge.</p>
+              <%= link_to "Get started", "https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github", class: "button-static" %>
             </div>
           </div>
           
@@ -102,25 +102,20 @@
       <% end %>
     </div>
     <div class="education-wrapper">
-      <h4 class="side-headers">education hub</h4>
-      <div class="education-section">
-        <h5>Educate Yourself</h5>
-        <ul>
-          <li><a href="https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source" target="_blank">Get An Introduction to Open Source</a></li>
-          <li><a href="https://hacktoberfest.digitalocean.com/details/" target="_blank">Digest the Resources</a></li>
-          <li><a href="https://hacktoberfest.digitalocean.com/faq/" target="_blank">Get Answers Before Asking</a></li>
-          <li><a href="https://www.digitalocean.com/community/tutorials/how-to-maintain-open-source-software-projects" target="_blank">Learn About Maintainer Experience</a></li>
-          <li><a href="https://raise.dev/hacktoberfest" target="_blank">Get help from the Helpdesk</a></li>
-        </ul>
-      </div>
-      <div class="education-section">
-        <h5>Make An Impact</h5>
-        <ul>
-          <li><a href="https://hacktoberfest.digitalocean.com/eventkit/" target="_blank">Organize a Hacktoberfest Meetup</a></li>
-          <li><a href="https://www.digitalocean.com/community/meetup_kits/hacktoberfest-workshop-kit-how-to-submit-your-first-pull-request-on-github" target="_blank">Lead an Open Source Workshop</a></li>
-          <li><a href="https://dev.to/" target="_blank">Share Your Experience on DEV</a></li>
-          <li><a href="https://raise.dev/hacktoberfest" target="_blank">Answer questions on the Helpdesk</a></li>
-        </ul>
+      <div class="info-pane">
+        <h3>Do's and Dont's of Hacktoberfest</h3>
+        <div class="info-pane-item dont">
+          <h2>Don't: open pull requests with minor text edits on other people's repositories</h2>
+          <p>If you're looking for a faster way to open four PR's and win, <a href="#">there's a better way!</a></p>
+        </div>
+        <div class="info-pane-item do">
+          <h2>Do: Follow a repository's contribution guidelines</h2>
+          <p>Almost every repo looking for help has a <code>CONTRIBUTING.md</code> file in it, <em>read it first!</em></p>
+        </div>
+        <div class="info-pane-item dont">
+          <h2>Don't: feel intimidated</h2>
+          <p><a href="#">Register for an event</a> and learn with a group, or connect with others in the Discord chat.</p>
+        </div>
       </div>
     </div>
 
