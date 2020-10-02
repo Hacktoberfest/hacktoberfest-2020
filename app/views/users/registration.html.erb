@@ -3,14 +3,14 @@
     <div class="registration-wrapper">
       <div class="registration-left">
         <div class="register-header">Register</div>
-        <h1 class="title is-1">About you</h1>
-        <p>
-          Please select which email address you’d like to use for Hacktoberfest and read the
-          <a target="_blank" href="/details#rules">rules and values</a>.
-        </p>
 
         <%= form_for :user, url: {action: 'register'}, method: :patch do |f| %>
           <div id="form-first">
+            <h1 class="title is-1">About you</h1>
+            <p>
+              Please select which email address you’d like to use for Hacktoberfest and read the
+              <a target="_blank" href="/details#rules">rules and values</a>.
+            </p>
             <%= render partial: 'users/dropdowns', locals: { f: f, u: User.new } %>
 
             <div class="checkboxes">
@@ -60,8 +60,22 @@
           </div>
 
           <div id="form-second" class="hidden">
+            <p>Before you get started, learn how to create a quality pull request:</p>
+            <div class="beginners-video">
+              <script src="https://fast.wistia.com/embed/medias/u8up7h2m32.jsonp" async></script>
+              <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+              <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                  <div class="wistia_embed wistia_async_u8up7h2m32 videoFoam=true" style="height:100%;position:relative;width:100%">
+                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                      <img src="https://fast.wistia.com/embed/medias/u8up7h2m32/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <%= f.submit 'Start Hacking', :class => 'submit-btn', :html => {:data => {:js => 'submit'}} %>
+            <%= f.submit 'Start Hacking', :class => 'submit-btn' %>
             <div data-js="back" class="submit-btn btn-back">Back</div>
           </end>
         <% end %>
