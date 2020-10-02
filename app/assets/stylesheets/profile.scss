@@ -97,7 +97,7 @@
           height: 32px;
           margin-right: 20px;
 
-          .spammy-box {
+          .ineligible-box {
             background-image: asset-url("icon-light-ineligible.svg");
             background-repeat: no-repeat;
             background-size: contain;
@@ -245,7 +245,7 @@
         height: 32px;
         margin-right: 20px;
 
-        .spammy-box {
+        .ineligible-box {
           background-image: asset-url("icon-light-ineligible.svg");
           background-repeat: no-repeat;
           background-size: contain;
@@ -656,9 +656,9 @@ body.dark {
     .main-content-wrapper
     .legend-container
     .icon-box
-    .spammy-box,
-  .timeline-date .spammy-box,
-  .profile-page .profile-left .timeline-wrapper .pr-icon .spammy-box {
+    .ineligible-box,
+  .timeline-date .ineligible-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .ineligible-box {
     background-image: asset-url("icon-dark-ineligible.svg") !important;
   }
 
