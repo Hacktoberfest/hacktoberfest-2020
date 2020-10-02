@@ -17,6 +17,8 @@ class GithubPullRequestService
               body
               url
               createdAt
+              merged
+              reviewDecision
               repository {
                 databaseId
                 repositoryTopics(first: 100) {

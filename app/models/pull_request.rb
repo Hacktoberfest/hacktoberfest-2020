@@ -4,7 +4,8 @@ class PullRequest < ApplicationRecord
   attr_reader :github_pull_request
 
   delegate :title, :body, :url, :created_at, :name, :owner, :repo_id,
-           :name_with_owner, :label_names, :repository_topics, :merged?, to: :github_pull_request
+           :name_with_owner, :label_names, :repository_topics, :merged?,
+           :approved?, to: :github_pull_request
 
   state_machine initial: :new do
     event :spam_repo do
@@ -22,14 +23,27 @@ class PullRequest < ApplicationRecord
                  unless: ->(pr) { pr.in_topic_repo? }
     end
 
+    event :not_accepted do
+      transition all - %i[eligible] => :not_accepted,
+                 unless: ->(pr) { pr.is_accepted? }
+    end
+
     event :eligible do
       transition %i[new waiting] => :eligible,
-                 if: ->(pr) { !pr.spammy_or_invalid? && pr.passed_review_period? }
+                 if: ->(pr) { pr.passed_review_period? &&
+                     !pr.spammy? &&
+                     !pr.labelled_invalid? &&
+                     pr.in_topic_repo? &&
+                     pr.is_accepted? }
     end
 
     event :waiting do
       transition all - %i[eligible] => :waiting,
-                 if: ->(pr) { !pr.spammy_or_invalid? && !pr.passed_review_period? }
+                 if: ->(pr) { !pr.passed_review_period? &&
+                     !pr.spammy? &&
+                     !pr.labelled_invalid? &&
+                     pr.in_topic_repo? &&
+                     pr.is_accepted? }
     end
 
     before_transition to: %i[waiting],
@@ -39,7 +53,7 @@ class PullRequest < ApplicationRecord
     end
 
     before_transition to: %i[waiting],
-                      from: %i[spam_repo invalid_label topic_missing] do |pr, _transition|
+                      from: all - %i[new] do |pr, _transition|
       pr.waiting_since = Time.zone.now
       pr.save!
     end
@@ -49,6 +63,7 @@ class PullRequest < ApplicationRecord
     return if spam_repo
     return if invalid_label
     return if topic_missing
+    return if not_accepted
     return if eligible
 
     waiting
@@ -70,19 +85,26 @@ class PullRequest < ApplicationRecord
     label_names.select { |l| l[/\b(invalid|spam)\b/i] }.any?
   end
 
+  def labelled_accepted?
+    label_names.select { |l| l.downcase.strip == 'hacktoberfest-accepted' }.any?
+  end
+
   def spammy?
     SpamRepositoryService.call(repo_id)
   end
 
-  def spammy_or_invalid?
-    labelled_invalid? || spammy?
-  end
-
   def in_topic_repo?
     # Don't have this requirement for old PRs
-    return true if Time.parse(created_at).utc <= Hacktoberfest.topic_date
+    return true if Time.parse(created_at).utc <= Hacktoberfest.rules_date
 
     repository_topics.select { |topic| topic.strip == 'hacktoberfest' }.any?
+  end
+
+  def is_accepted?
+    # Don't have this requirement for old PRs
+    return true if Time.parse(created_at).utc <= Hacktoberfest.rules_date
+
+    merged? || approved? || labelled_accepted?
   end
 
   def github_id

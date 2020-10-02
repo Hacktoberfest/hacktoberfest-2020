@@ -6,7 +6,7 @@ require 'active_support/core_ext/numeric/time'
 
 ENV['RAILS_ENV'] = 'test'
 ENV['START_DATE'] = (Time.now.utc - 3.weeks).to_s
-ENV['TOPIC_DATE'] = (Time.now.utc - 3.weeks).to_s
+ENV['RULES_DATE'] = (Time.now.utc - 3.weeks).to_s
 ENV['NOW_DATE'] = Time.now.utc.to_s
 ENV['END_DATE'] = (Time.now.utc + 1.weeks).to_s
 
