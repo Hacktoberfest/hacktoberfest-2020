@@ -3,9 +3,9 @@
     <div class="invalid-box">
     </div>
   </div>
-<% elsif pr.spam_repo? %>
+<% elsif pr.spam_repo? || pr.topic_missing? %>
   <div class="icon-box">
-    <div class="spammy-box">
+    <div class="ineligible-box">
     </div>
   </div>
 <% elsif pr.eligible? %>
