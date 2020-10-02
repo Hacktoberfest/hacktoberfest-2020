@@ -242,6 +242,47 @@
       }
     }
 
+    .idea-set {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 1rem;
+
+      .idea-pane {
+        background: rgba($cyan, 0.1);
+        padding: 2rem 1rem;
+        margin: 1rem;
+        position: relative;
+        width: calc(50% - 2rem);
+        min-width: 300px;
+        
+        &[data-label]:before {
+          content: attr(data-label);
+          display: inline-block;
+          position: absolute;
+          top: -2rem;
+          left: -1rem;
+          background: $pink;
+          box-shadow: $box-shadow;
+          color: $black;
+          width: 130px;
+          padding: 0.2rem;
+          transform: rotate(-15deg);
+          border-radius: .5rem;
+        }
+
+        p {
+          font-size: 1rem;
+          margin-bottom: calc(1rem + 49px);
+        }
+
+        .button-static {
+          position: absolute;
+          bottom: 1.5rem;
+          right: 1.5rem;
+        }
+      }
+    }
+
     .timeline-wrapper {
       width: 100%;
       display: flex;
