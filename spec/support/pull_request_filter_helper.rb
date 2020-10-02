@@ -11,6 +11,7 @@ ARRAY_WITH_INVALID_DATES = [
     # This is before the event
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.years).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -23,6 +24,7 @@ ARRAY_WITH_INVALID_DATES = [
     # This is before the event
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.years + 1.month).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -36,6 +38,7 @@ ARRAY_WITH_INVALID_DATES = [
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 15.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -49,6 +52,7 @@ ARRAY_WITH_INVALID_DATES = [
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -66,6 +70,7 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     # This is before the event
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.years).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -78,6 +83,7 @@ ARRAY_WITH_INVALID_DATES_AND_INVALID_LABEL = [
     # This is before the event
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.years + 1.month).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -188,6 +194,7 @@ ELIGIBLE_PR = {
   # This is valid, eligible
   'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
   'labels' => { 'edges' => [] },
+  'merged' => true,
   'repository' => {
       'databaseId' => 123,
       'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -204,6 +211,7 @@ MISSING_TOPIC_PR = {
   # This is valid, eligible
   'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
   'labels' => { 'edges' => [] },
+  'merged' => true,
   'repository' => {
       'databaseId' => 123,
       # No hacktoberfest topic, so its invalid
@@ -224,6 +232,7 @@ ARRAY_WITH_INVALID_LABEL = [
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 17.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -238,6 +247,7 @@ ARRAY_WITH_INVALID_LABEL = [
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 19.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -255,6 +265,7 @@ VALID_ARRAY = [
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 15.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -267,6 +278,7 @@ VALID_ARRAY = [
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -279,7 +291,7 @@ VALID_ARRAY = [
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 17.days).to_s,
-    'labels' => { 'edges' => [] },
+    'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -293,6 +305,7 @@ VALID_ARRAY = [
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 18.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -305,7 +318,7 @@ VALID_ARRAY = [
     'url' => 'https://github.com/intridea/hashie/pull/379',
     # This is valid, eligible
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 19.days).to_s,
-    'labels' => { 'edges' => [] },
+    'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -322,6 +335,7 @@ MATURE_ARRAY = [
     'url' => 'https://github.com/peek/peek/pull/79',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 15.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -332,7 +346,7 @@ MATURE_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
-    'labels' => { 'edges' => [] },
+    'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -346,6 +360,7 @@ MATURE_ARRAY = [
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 18.days).to_s,
     'labels' => { 'edges' => [] },
+    'reviewDecision' => 'APPROVED',
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -361,6 +376,7 @@ IMMATURE_PR = {
   'url' => 'https://github.com/peek/peek/pull/79',
   'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 2.days).to_s,
   'labels' => { 'edges' => [] },
+  'reviewDecision' => 'APPROVED',
   'repository' => {
       'databaseId' => 123,
       'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -395,6 +411,7 @@ IMMATURE_ARRAY = [
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 3.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -407,6 +424,7 @@ IMMATURE_ARRAY = [
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.days).to_s,
     'labels' => { 'edges' => [] },
+    'reviewDecision' => 'APPROVED',
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -418,7 +436,7 @@ IMMATURE_ARRAY = [
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 5.days).to_s,
-    'labels' => { 'edges' => [] },
+    'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -433,7 +451,7 @@ LARGE_IMMATURE_ARRAY = [
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 1.day).to_s,
-    'labels' => { 'edges' => [] },
+    'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -445,7 +463,7 @@ LARGE_IMMATURE_ARRAY = [
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
     'url' => 'https://github.com/peek/peek/pull/79',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 2.days).to_s,
-    'labels' => { 'edges' => [] },
+    'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -457,6 +475,7 @@ LARGE_IMMATURE_ARRAY = [
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 3.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -469,6 +488,7 @@ LARGE_IMMATURE_ARRAY = [
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 4.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -481,6 +501,7 @@ LARGE_IMMATURE_ARRAY = [
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 5.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -493,6 +514,7 @@ LARGE_IMMATURE_ARRAY = [
     'url' => 'https://github.com/intridea/hashie/pull/546',
     'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 6.days).to_s,
     'labels' => { 'edges' => [] },
+    'reviewDecision' => 'APPROVED',
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -509,6 +531,7 @@ LATE_ARRAY = [
     'url' => 'https://github.com/peek/peek/pull/79',
     'createdAt' => (Time.zone.parse(ENV['END_DATE']) - 2.days).to_s,
     'labels' => { 'edges' => [] },
+    'reviewDecision' => 'APPROVED',
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -520,6 +543,7 @@ LATE_ARRAY = [
     'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
     'createdAt' => (Time.zone.parse(ENV['END_DATE']) - 3.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -532,6 +556,7 @@ LATE_ARRAY = [
     'url' => 'https://github.com/syl20bnr/spacemacs/pull/6012',
     'createdAt' => (Time.zone.parse(ENV['END_DATE']) - 4.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -544,6 +569,7 @@ LATE_ARRAY = [
     'url' => 'https://github.com/intridea/hashie/pull/379',
     'createdAt' => (Time.zone.parse(ENV['END_DATE']) - 5.days).to_s,
     'labels' => { 'edges' => [] },
+    'merged' => true,
     'repository' => {
         'databaseId' => 123,
         'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
