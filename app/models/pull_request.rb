@@ -8,28 +8,28 @@ class PullRequest < ApplicationRecord
 
   state_machine initial: :new do
     event :spam_repo do
-      transition %i[new waiting] => :spam_repo,
+      transition all - %i[eligible] => :spam_repo,
                  if: ->(pr) { pr.spammy? }
     end
 
     event :invalid_label do
-      transition %i[new waiting] => :invalid_label,
+      transition all - %i[eligible] => :invalid_label,
                  if: ->(pr) { pr.labelled_invalid? }
     end
 
     event :topic_missing do
-      transition %i[new waiting] => :topic_missing,
+      transition all - %i[eligible] => :topic_missing,
                  unless: ->(pr) { pr.in_topic_repo? }
     end
 
     event :eligible do
       transition %i[new waiting] => :eligible,
-                 if: ->(pr) { !pr.spammy_or_invalid? && pr.older_than_week? }
+                 if: ->(pr) { !pr.spammy_or_invalid? && pr.passed_review_period? }
     end
 
     event :waiting do
-      transition %i[new spam_repo invalid_label topic_missing] => :waiting,
-                 if: ->(pr) { !pr.spammy_or_invalid? && !pr.older_than_week? }
+      transition all - %i[eligible] => :waiting,
+                 if: ->(pr) { !pr.spammy_or_invalid? && !pr.passed_review_period? }
     end
 
     before_transition to: %i[waiting],
@@ -60,8 +60,8 @@ class PullRequest < ApplicationRecord
     github_pull_request.created_at
   end
 
-  def older_than_week?
-    most_recent_time <= (Time.zone.now - 7.days)
+  def passed_review_period?
+    most_recent_time <= (Time.zone.now - 14.days)
   end
 
   def labelled_invalid?
