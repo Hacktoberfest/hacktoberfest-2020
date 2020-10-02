@@ -193,8 +193,7 @@ ELIGIBLE_PR = {
   'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
   # This is valid, eligible
   'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
-  'labels' => { 'edges' => [] },
-  'merged' => true,
+  'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
   'repository' => {
       'databaseId' => 123,
       'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
@@ -217,6 +216,22 @@ MISSING_TOPIC_PR = {
       # No hacktoberfest topic, so its invalid
       'repositoryTopics' => { 'edges' => [] }
   }
+}.freeze
+
+UNMERGED_PR = {
+    'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
+    'title' => 'Update README.md',
+    'body' =>
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim.',
+    'url' => 'https://github.com/vulume/Cordova-DBCamera/pull/1',
+    # This is valid, eligible
+    'createdAt' => (Time.zone.parse(ENV['NOW_DATE']) - 16.days).to_s,
+    'labels' => { 'edges' => [] },
+    'repository' => {
+        'databaseId' => 123,
+        'repositoryTopics' => { 'edges': [{ 'node': { 'topic': { 'name': 'Hacktoberfest' } } }] }
+    }
 }.freeze
 
 # 5 pull requests with 3 valid dates & 2 invalid labels
