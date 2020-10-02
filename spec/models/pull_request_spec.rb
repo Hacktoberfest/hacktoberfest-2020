@@ -276,7 +276,7 @@ RSpec.describe PullRequest, type: :model do
       end
 
       it 'has the waiting_since date set to the created date' do
-        expect(pr.waiting_since).to eq(pr.created_at)
+        expect(pr.waiting_since).to eq(pr.github_pull_request.created_at)
       end
     end
 
@@ -309,7 +309,7 @@ RSpec.describe PullRequest, type: :model do
 
         it 'has the waiting_since date set to now' do
           expect(pr.waiting_since).to eq(Time.zone.now)
-          expect(pr.waiting_since).to_not eq(pr.created_at)
+          expect(pr.waiting_since).to_not eq(pr.github_pull_request.created_at)
         end
 
         after { travel_back }
@@ -341,7 +341,7 @@ RSpec.describe PullRequest, type: :model do
 
         it 'has the waiting_since date set to now' do
           expect(pr.waiting_since).to eq(Time.zone.now)
-          expect(pr.waiting_since).to_not eq(pr.created_at)
+          expect(pr.waiting_since).to_not eq(pr.github_pull_request.created_at)
         end
 
         after { travel_back }
@@ -373,7 +373,7 @@ RSpec.describe PullRequest, type: :model do
 
         it 'has the waiting_since date set to now' do
           expect(pr.waiting_since).to eq(Time.zone.now)
-          expect(pr.waiting_since).to_not eq(pr.created_at)
+          expect(pr.waiting_since).to_not eq(pr.github_pull_request.created_at)
         end
 
         after { travel_back }
@@ -405,7 +405,7 @@ RSpec.describe PullRequest, type: :model do
 
         it 'has the waiting_since date set to now' do
           expect(pr.waiting_since).to eq(Time.zone.now)
-          expect(pr.waiting_since).to_not eq(pr.created_at)
+          expect(pr.waiting_since).to_not eq(pr.github_pull_request.created_at)
         end
 
         after { travel_back }
@@ -430,7 +430,7 @@ RSpec.describe PullRequest, type: :model do
       end
 
       it 'has the waiting_since date set to the created date' do
-        expect(pr.waiting_since).to eq(pr.created_at)
+        expect(pr.waiting_since).to eq(pr.github_pull_request.created_at)
       end
 
       context 'Fourteen days pass from pull request creation' do

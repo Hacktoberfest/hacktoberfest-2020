@@ -52,7 +52,7 @@ class PullRequest < ApplicationRecord
 
     before_transition to: %i[waiting],
                       from: %i[new] do |pr, _transition|
-      pr.waiting_since = pr.github_pull_request.created_at
+      pr.waiting_since = Time.parse(pr.github_pull_request.created_at).utc
       pr.save!
     end
 
@@ -76,7 +76,7 @@ class PullRequest < ApplicationRecord
   def most_recent_time
     return waiting_since unless waiting_since.nil?
 
-    github_pull_request.created_at
+    Time.parse(github_pull_request.created_at).utc
   end
 
   def passed_review_period?
@@ -99,14 +99,14 @@ class PullRequest < ApplicationRecord
 
   def in_topic_repo?
     # Don't have this requirement for old PRs
-    return true if Time.parse(created_at).utc <= Hacktoberfest.rules_date
+    return true if created_at <= Hacktoberfest.rules_date
 
     repository_topics.select { |topic| topic.strip == 'hacktoberfest' }.any?
   end
 
   def maintainer_accepted?
     # Don't have this requirement for old PRs
-    return true if Time.parse(created_at).utc <= Hacktoberfest.rules_date
+    return true if created_at <= Hacktoberfest.rules_date
 
     merged? || approved? || labelled_accepted?
   end
