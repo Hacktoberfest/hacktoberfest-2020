@@ -41,6 +41,12 @@ class GithubPullRequest
     end
   end
 
+  def repository_topics
+    @graphql_hash.repository.repositoryTopics.edges.map do |e|
+      e.node.topic.name.downcase
+    end
+  end
+
   def name
     url.split('/')[4]
   end
