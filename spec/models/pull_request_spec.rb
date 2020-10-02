@@ -110,9 +110,9 @@ RSpec.describe PullRequest, type: :model do
           expect(pr.state).to eq('invalid_label')
         end
 
-        context 'Seven days pass from pull request creation' do
+        context 'Fourteen days pass from pull request creation' do
           before do
-            travel_to pr.waiting_since + 7.days
+            travel_to pr.waiting_since + 14.days
             pr.check_state
           end
 
@@ -247,9 +247,9 @@ RSpec.describe PullRequest, type: :model do
         expect(pr.waiting_since).to eq(pr.created_at)
       end
 
-      context 'Seven days pass from pull request creation' do
+      context 'Fourteen days pass from pull request creation' do
         before do
-          travel_to pr.waiting_since + 7.days
+          travel_to pr.waiting_since + 14.days
           pr.check_state
         end
 

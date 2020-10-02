@@ -5,9 +5,10 @@ require 'spec_helper'
 require 'active_support/core_ext/numeric/time'
 
 ENV['RAILS_ENV'] = 'test'
-ENV['START_DATE'] = (Time.now.utc - 2.weeks).to_s
+ENV['START_DATE'] = (Time.now.utc - 3.weeks).to_s
+ENV['TOPIC_DATE'] = (Time.now.utc - 3.weeks).to_s
 ENV['NOW_DATE'] = Time.now.utc.to_s
-ENV['END_DATE'] = (Time.now.utc + 2.weeks).to_s
+ENV['END_DATE'] = (Time.now.utc + 1.weeks).to_s
 
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
