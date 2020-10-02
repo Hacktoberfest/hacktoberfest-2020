@@ -546,4 +546,86 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#check_flagged_state' do
+    let(:user) { FactoryBot.create(:user, :waiting) }
+
+    context 'the user has 4 waiting PRs' do
+      it 'has the user not flagged by default' do
+        expect(user.system_flagged).to eq(false)
+      end
+
+      it 'does not flag the user' do
+        user.check_flagged_state
+        expect(user.system_flagged).to eq(false)
+        expect(user.system_flagged_at).to be_nil
+      end
+    end
+
+    context 'the user has 2 invalid PRs' do
+      context 'the user is not flagged' do
+        before do
+          pr_stub_helper(user, [INVALID_LABEL_PR] + [INVALID_EMOJI_LABEL_PR])
+
+          expect(UserStateTransitionSegmentService)
+              .to receive(:insufficient).and_return(true)
+          user.insufficient
+
+          freeze_time
+          user.check_flagged_state
+        end
+
+        it 'does flag the user' do
+          expect(user.system_flagged).to eq(true)
+          expect(user.system_flagged_at).to eq(Time.zone.now)
+        end
+
+        it 'does not ban the user' do
+          expect(user.moderator_banned).to eq(false)
+        end
+
+        after { travel_back }
+      end
+    end
+
+    context 'the user has 4 invalid PRs' do
+      context 'the user is flagged' do
+        before do
+          pr_stub_helper(user, [INVALID_LABEL_PR] + [INVALID_EMOJI_LABEL_PR] + [SPAM_LABEL_PR] + [LONG_SPAM_LABEL_PR])
+
+          expect(UserStateTransitionSegmentService)
+              .to receive(:insufficient).and_return(true)
+          user.insufficient
+
+          freeze_time
+          user.check_flagged_state
+        end
+
+        it 'does flag the user' do
+          expect(user.system_flagged).to eq(true)
+          expect(user.system_flagged_at).to eq(Time.zone.now)
+        end
+
+        it 'does ban the user' do
+          expect(user.moderator_banned).to eq(true)
+          expect(user.moderator_banned_at).to eq(Time.zone.now)
+        end
+
+        after { travel_back }
+      end
+    end
+  end
+
+  describe '#ban' do
+    # Registered -> Banned - Should work, timestamp + bool updated
+    # Waiting -> Banned - Should work, timestamp + bool updated
+    # Won -> Banned - Shouldn't work, timestamp remains nil, bool false
+    # Banned -> Banned -- Shouldn't work, timestamp remains same, bool true
+  end
+
+  describe '#unban' do
+    # Banned -> Unban -> Registered
+    # Banned -> Unban -> Waiting
+    # Banned -> Unban -> Completed/Won
+  end
 end

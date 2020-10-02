@@ -1,0 +1,35 @@
+<section class="section reg-content">
+  <div>
+    <h1 class="title is-1">About you</h1>
+    <p>
+      Please select which email address you'd like
+      to use for Hacktoberfest:
+    </p>
+
+    <%= form_for @user, url: management_update_path(@user.uid), method: :patch do |f| %>
+      <div class="field">
+        <label class="label">Is moderator?</label>
+        <div class="control">
+          <%= f.check_box :is_moderator %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Moderator notes</label>
+        <div class="control">
+          <%= f.text_area :moderator_notes %>
+        </div>
+      </div>
+
+      <%= f.submit 'Update user', :class => 'button'%>
+    <% end %>
+
+    <% if @user.banned? %>
+      <%= button_to 'Unban User', management_unban_path(@user.uid), class: 'button',
+                    method: :post %>
+    <% else %>
+      <%= button_to 'Ban User', management_ban_path(@user.uid), class: 'button',
+                    method: :post %>
+    <% end %>
+  </div>
+</section>

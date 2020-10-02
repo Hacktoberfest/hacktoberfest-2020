@@ -115,7 +115,7 @@ INVALID_LABEL_PR = {
 }.freeze
 
 SPAM_LABEL_PR = {
-  'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
+  'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQh=',
   'title' => 'Coercion type systems',
   'body' =>
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -129,7 +129,7 @@ SPAM_LABEL_PR = {
 }.freeze
 
 LONG_SPAM_LABEL_PR = {
-  'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQ=',
+  'id' => 'MDExOlB1bGxSZXF1ZXN0OTA4ODAzMzQu=',
   'title' => 'Coercion type systems',
   'body' =>
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

@@ -124,6 +124,12 @@ ActiveRecord::Schema.define(version: 2020_09_22_155319) do
     t.boolean "dev_marketing_emails", default: false
     t.string "category", default: "participant"
     t.string "country"
+    t.boolean "is_moderator", default: false
+    t.boolean "system_flagged", default: false
+    t.datetime "system_flagged_at"
+    t.boolean "moderator_banned", default: false
+    t.datetime "moderator_banned_at"
+    t.text "moderator_notes"
   end
 
 end

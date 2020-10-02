@@ -1,0 +1,53 @@
+<table>
+  <thead>
+  <tr>
+    <th>UID</th>
+    <th>Username</th>
+    <th>Flagged At</th>
+    <th>Banned?</th>
+    <th>Banned At</th>
+    <th>Notes</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @flagged_users.each do |user| %>
+    <tr>
+      <td><%= user.uid %></td>
+      <td><%= user.name %></td>
+      <td><%= user.system_flagged_at %></td>
+      <td><%= user.moderator_banned %></td>
+      <td><%= user.moderator_banned_at %></td>
+      <td><%= user.moderator_notes %></td>
+      <td><%# Button to manage user %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+  <tr>
+    <th>UID</th>
+    <th>Username</th>
+    <th>Banned At</th>
+    <th>Flagged?</th>
+    <th>Flagged At</th>
+    <th>Notes</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @banned_users.each do |user| %>
+    <tr>
+      <td><%= user.uid %></td>
+      <td><%= user.name %></td>
+      <td><%= user.moderator_banned_at %></td>
+      <td><%= user.system_flagged %></td>
+      <td><%= user.system_flagged_at %></td>
+      <td><%= user.moderator_notes %></td>
+      <td><%# Button to manage user %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

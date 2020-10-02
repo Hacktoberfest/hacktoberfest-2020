@@ -35,6 +35,14 @@ class PullRequestService
     prs
   end
 
+  def spam_repo_prs
+    all.select(&:spam_repo?)
+  end
+
+  def invalid_label_prs
+    all.select(&:invalid_label?)
+  end
+
   def waiting_prs
     all.select(&:waiting?)
   end

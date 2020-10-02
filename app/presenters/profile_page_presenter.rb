@@ -7,6 +7,10 @@ class ProfilePagePresenter
     @user = user
   end
 
+  def show_banned_message?
+    @user.banned?
+  end
+
   def display_pre_launch?
     Hacktoberfest.pre_launch?
   end

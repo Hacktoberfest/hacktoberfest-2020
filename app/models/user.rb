@@ -10,7 +10,7 @@ class User < ApplicationRecord
   # rubocop:disable Metrics/BlockLength, Layout/MultilineHashBraceLayout
   state_machine initial: :new do
     event :register do
-      transition new: :registered
+      transition %i[new unbanned] => :registered
     end
 
     event :wait do
@@ -47,6 +47,14 @@ class User < ApplicationRecord
       transition incompleted: :completed
     end
 
+    event :ban do
+      transition %i[registered waiting] => :banned
+    end
+
+    event :unban do
+      transition banned: :unbanned
+    end
+
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
@@ -60,7 +68,7 @@ class User < ApplicationRecord
       validates :sticker_coupon, absence: true
     end
 
-    state all - %i[new registered waiting] do
+    state all - %i[new registered waiting banned unbanned] do
       validates :receipt, presence: true
     end
 
@@ -128,11 +136,33 @@ class User < ApplicationRecord
     after_transition to: :completed do |user, _transition|
       user.win
     end
+
+    after_transition to: :banned do |user, _transition|
+      user.moderator_banned = true
+      user.moderator_banned_at = Time.zone.now
+      user.save!
+    end
+
+    after_transition to: :unbanned do |user, _transition|
+      user.moderator_banned = false
+      user.moderator_banned_at = Time.zone.now
+      user.save!
+      user.register
+      TryUserTransitionService.call(user)
+    end
   end
   # rubocop:enable Metrics/BlockLength, Layout/MultilineHashBraceLayout
 
   def pull_requests
     pull_request_service.all
+  end
+
+  def spam_repo_pull_requests_count
+    pull_request_service.spam_repo_prs.count
+  end
+
+  def invalid_label_pull_requests_count
+    pull_request_service.invalid_label_prs.count
   end
 
   def waiting_pull_requests_count
@@ -179,9 +209,34 @@ class User < ApplicationRecord
     completed? || won_shirt? || won_sticker?
   end
 
+  def check_flagged_state
+    should_flag = should_be_flagged?
+
+    unless system_flagged == should_flag
+      self.system_flagged_at = Time.zone.now
+      self.system_flagged = should_flag
+      save!
+    end
+
+    return if moderator_banned?
+
+    if should_be_banned? and ban
+      self.moderator_notes = "#{moderator_notes} User automatically banned by system.".strip
+      save!
+    end
+  end
+
   delegate :assign_coupon, to: :coupon_service
 
   private
+
+  def should_be_flagged?
+    invalid_label_pull_requests_count + spam_repo_pull_requests_count >= 2
+  end
+
+  def should_be_banned?
+    invalid_label_pull_requests_count + spam_repo_pull_requests_count >= 4
+  end
 
   def github_emails
     UserEmailService.new(self).emails
