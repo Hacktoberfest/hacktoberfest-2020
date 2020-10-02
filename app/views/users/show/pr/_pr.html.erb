@@ -6,7 +6,7 @@
       </div>
       <div class="pr-time-title">
         <div class="timeline-date">
-          <p class="date"><%= DateTime.parse(pr.created_at).to_formatted_s(:long) %><br/></p>
+          <p class="date"><%= Time.parse(pr.github_pull_request.created_at).to_formatted_s(:long) %><br/></p>
         </div>
         <h4 class="pr-title">
           You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
