@@ -4,7 +4,7 @@ class PullRequest < ApplicationRecord
   attr_reader :github_pull_request
 
   delegate :title, :body, :url, :created_at, :name, :owner, :repo_id,
-           :name_with_owner, :label_names, :merged?, to: :github_pull_request
+           :name_with_owner, :label_names, :repository_topics, :merged?, to: :github_pull_request
 
   state_machine initial: :new do
     event :spam_repo do
@@ -17,13 +17,18 @@ class PullRequest < ApplicationRecord
                  if: ->(pr) { pr.labelled_invalid? }
     end
 
+    event :topic_missing do
+      transition %i[new waiting] => :topic_missing,
+                 unless: ->(pr) { pr.in_topic_repo? }
+    end
+
     event :eligible do
       transition %i[new waiting] => :eligible,
                  if: ->(pr) { !pr.spammy_or_invalid? && pr.older_than_week? }
     end
 
     event :waiting do
-      transition %i[new spam_repo invalid_label] => :waiting,
+      transition %i[new spam_repo invalid_label topic_missing] => :waiting,
                  if: ->(pr) { !pr.spammy_or_invalid? && !pr.older_than_week? }
     end
 
@@ -34,7 +39,7 @@ class PullRequest < ApplicationRecord
     end
 
     before_transition to: %i[waiting],
-                      from: %i[spam_repo invalid_label] do |pr, _transition|
+                      from: %i[spam_repo invalid_label topic_missing] do |pr, _transition|
       pr.waiting_since = Time.zone.now
       pr.save!
     end
@@ -43,6 +48,7 @@ class PullRequest < ApplicationRecord
   def check_state
     return if spam_repo
     return if invalid_label
+    return if topic_missing
     return if eligible
 
     waiting
@@ -70,6 +76,13 @@ class PullRequest < ApplicationRecord
 
   def spammy_or_invalid?
     labelled_invalid? || spammy?
+  end
+
+  def in_topic_repo?
+    # Don't have this requirement for old PRs
+    return true if Time.parse(created_at).utc <= Time.parse('2020-10-03 12:00:00 UTC')
+
+    repository_topics.select { |topic| topic.strip == 'hacktoberfest' }.any?
   end
 
   def github_id
