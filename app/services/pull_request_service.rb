@@ -46,7 +46,7 @@ class PullRequestService
   def scoring_pull_requests
     counter = 0
     all.take_while do |pr|
-      if pr.waiting 
+      if pr.waiting
         counter += 1
       elsif pr.eligible
         counter += 1
