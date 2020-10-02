@@ -110,9 +110,9 @@ RSpec.describe PullRequest, type: :model do
           expect(pr.state).to eq('invalid_label')
         end
 
-        context 'Seven days pass from pull request creation' do
+        context 'Fourteen days pass from pull request creation' do
           before do
-            travel_to pr.waiting_since + 7.days
+            travel_to pr.waiting_since + 14.days
             pr.check_state
           end
 
@@ -145,6 +145,128 @@ RSpec.describe PullRequest, type: :model do
     end
   end
 
+  describe '#topic_missing' do
+    context 'Pull request is not in a Hacktoberfest repo initially' do
+      let(:pr) { pr_helper(MISSING_TOPIC_PR) }
+
+      it 'is put it in the topic_missing state' do
+        expect(pr.state).to eq('topic_missing')
+      end
+    end
+
+    context 'Pull request is waiting' do
+      let(:pr) { pr_helper(IMMATURE_PR) }
+
+      it 'is in the waiting state initially' do
+        expect(pr.state).to eq('waiting')
+      end
+
+      context 'Repository removes the Hacktoberfest topic' do
+        before do
+          stub_helper(pr, MISSING_TOPIC_PR, 'id' => pr.github_id)
+          pr.check_state
+        end
+
+        it 'is put it in the topic_missing state' do
+          expect(pr.state).to eq('topic_missing')
+        end
+
+        context 'Fourteen days pass from pull request creation' do
+          before do
+            travel_to pr.waiting_since + 14.days
+            pr.check_state
+          end
+
+          it 'remains in the topic_missing state' do
+            expect(pr.state).to eq('topic_missing')
+          end
+
+          after { travel_back }
+        end
+      end
+    end
+
+    context 'Pull request is eligible' do
+      let(:pr) { pr_helper(ELIGIBLE_PR) }
+
+      it 'is in the eligible state initially' do
+        expect(pr.state).to eq('eligible')
+      end
+
+      context 'Pull request becomes labelled invalid' do
+        before do
+          stub_helper(pr, MISSING_TOPIC_PR, 'id' => pr.github_id)
+          pr.check_state
+        end
+
+        it 'remains in the eligible state' do
+          expect(pr.state).to eq('eligible')
+        end
+      end
+    end
+  end
+
+  describe '#not_accepted' do
+    context 'Pull request is not merged initially' do
+      let(:pr) { pr_helper(UNMERGED_PR) }
+
+      it 'is put it in the not_accepted state' do
+        expect(pr.state).to eq('not_accepted')
+      end
+    end
+
+    context 'Pull request is waiting' do
+      let(:pr) { pr_helper(IMMATURE_PR) }
+
+      it 'is in the waiting state initially' do
+        expect(pr.state).to eq('waiting')
+      end
+
+      context 'Pull request approval is removed' do
+        before do
+          stub_helper(pr, IMMATURE_PR, 'reviewDecision' => 'REVIEW_REQUIRED')
+          pr.check_state
+        end
+
+        it 'is put it in the not_accepted state' do
+          expect(pr.state).to eq('not_accepted')
+        end
+
+        context 'Fourteen days pass from pull request creation' do
+          before do
+            travel_to pr.waiting_since + 14.days
+            pr.check_state
+          end
+
+          it 'remains in the not_accepted state' do
+            expect(pr.state).to eq('not_accepted')
+          end
+
+          after { travel_back }
+        end
+      end
+    end
+
+    context 'Pull request is eligible' do
+      let(:pr) { pr_helper(ELIGIBLE_PR) }
+
+      it 'is in the eligible state initially' do
+        expect(pr.state).to eq('eligible')
+      end
+
+      context 'Pull request approval is removed' do
+        before do
+          stub_helper(pr, ELIGIBLE_PR, 'labels' => { 'edges' => [] })
+          pr.check_state
+        end
+
+        it 'remains in the eligible state' do
+          expect(pr.state).to eq('eligible')
+        end
+      end
+    end
+  end
+
   describe '#waiting' do
     context 'Pull request is valid and created less than seven days ago' do
       let(:pr) { pr_helper(IMMATURE_PR) }
@@ -154,7 +276,7 @@ RSpec.describe PullRequest, type: :model do
       end
 
       it 'has the waiting_since date set to the created date' do
-        expect(pr.waiting_since).to eq(pr.created_at)
+        expect(pr.waiting_since).to eq(pr.github_pull_request.created_at)
       end
     end
 
@@ -187,7 +309,7 @@ RSpec.describe PullRequest, type: :model do
 
         it 'has the waiting_since date set to now' do
           expect(pr.waiting_since).to eq(Time.zone.now)
-          expect(pr.waiting_since).to_not eq(pr.created_at)
+          expect(pr.waiting_since).to_not eq(pr.github_pull_request.created_at)
         end
 
         after { travel_back }
@@ -219,7 +341,71 @@ RSpec.describe PullRequest, type: :model do
 
         it 'has the waiting_since date set to now' do
           expect(pr.waiting_since).to eq(Time.zone.now)
-          expect(pr.waiting_since).to_not eq(pr.created_at)
+          expect(pr.waiting_since).to_not eq(pr.github_pull_request.created_at)
+        end
+
+        after { travel_back }
+      end
+    end
+
+    context 'Pull request is not in a Hacktoberfest repo initially' do
+      let(:pr) { pr_helper(MISSING_TOPIC_PR) }
+
+      it 'is in the topic_missing state initially' do
+        expect(pr.state).to eq('topic_missing')
+      end
+
+      it 'has no set waiting_since' do
+        expect(pr.waiting_since).to be_nil
+      end
+
+      context 'Repository has Hacktoberfest topic added' do
+        before do
+          freeze_time
+
+          stub_helper(pr, IMMATURE_PR, 'id' => pr.github_id)
+          pr.check_state
+        end
+
+        it 'is put it in the waiting state' do
+          expect(pr.state).to eq('waiting')
+        end
+
+        it 'has the waiting_since date set to now' do
+          expect(pr.waiting_since).to eq(Time.zone.now)
+          expect(pr.waiting_since).to_not eq(pr.github_pull_request.created_at)
+        end
+
+        after { travel_back }
+      end
+    end
+
+    context 'Pull request is not approved initially' do
+      let(:pr) { pr_helper(UNMERGED_PR) }
+
+      it 'is in the not_accepted state initially' do
+        expect(pr.state).to eq('not_accepted')
+      end
+
+      it 'has no set waiting_since' do
+        expect(pr.waiting_since).to be_nil
+      end
+
+      context 'Pull request is merged' do
+        before do
+          freeze_time
+
+          stub_helper(pr, IMMATURE_PR, 'id' => pr.github_id)
+          pr.check_state
+        end
+
+        it 'is put it in the waiting state' do
+          expect(pr.state).to eq('waiting')
+        end
+
+        it 'has the waiting_since date set to now' do
+          expect(pr.waiting_since).to eq(Time.zone.now)
+          expect(pr.waiting_since).to_not eq(pr.github_pull_request.created_at)
         end
 
         after { travel_back }
@@ -244,12 +430,12 @@ RSpec.describe PullRequest, type: :model do
       end
 
       it 'has the waiting_since date set to the created date' do
-        expect(pr.waiting_since).to eq(pr.created_at)
+        expect(pr.waiting_since).to eq(pr.github_pull_request.created_at)
       end
 
-      context 'Seven days pass from pull request creation' do
+      context 'Fourteen days pass from pull request creation' do
         before do
-          travel_to pr.waiting_since + 7.days
+          travel_to pr.waiting_since + 14.days
           pr.check_state
         end
 

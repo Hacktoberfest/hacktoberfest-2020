@@ -97,8 +97,18 @@
           height: 32px;
           margin-right: 20px;
 
-          .spammy-box {
+          .ineligible-box {
             background-image: asset-url("icon-light-ineligible.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
+
+          .unaccepted-box {
+            background-image: asset-url("icon-light-unaccepted.svg");
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
@@ -245,8 +255,18 @@
         height: 32px;
         margin-right: 20px;
 
-        .spammy-box {
+        .ineligible-box {
           background-image: asset-url("icon-light-ineligible.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+
+        .unaccepted-box {
+          background-image: asset-url("icon-light-unaccepted.svg");
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
@@ -656,10 +676,21 @@ body.dark {
     .main-content-wrapper
     .legend-container
     .icon-box
-    .spammy-box,
-  .timeline-date .spammy-box,
-  .profile-page .profile-left .timeline-wrapper .pr-icon .spammy-box {
+    .ineligible-box,
+  .timeline-date .ineligible-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .ineligible-box {
     background-image: asset-url("icon-dark-ineligible.svg") !important;
+  }
+
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .unaccepted-box,
+  .timeline-date .unaccepted-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .unaccepted-box {
+    background-image: asset-url("icon-dark-unaccepted.svg") !important;
   }
 
   .profile-page

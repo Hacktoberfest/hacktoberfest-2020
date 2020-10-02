@@ -35,9 +35,19 @@ class GithubPullRequest
     @graphql_hash.merged
   end
 
+  def approved?
+    @graphql_hash.reviewDecision == 'APPROVED'
+  end
+
   def label_names
     @graphql_hash.labels.edges.map do |e|
       e.node.name.downcase
+    end
+  end
+
+  def repository_topics
+    @graphql_hash.repository.repositoryTopics.edges.map do |e|
+      e.node.topic.name.downcase
     end
   end
 
