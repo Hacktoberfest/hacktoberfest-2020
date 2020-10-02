@@ -12,7 +12,7 @@ window.addEventListener("click", (e) => {
         $form_second.toggleClass('hidden');
     }
 
-    $video.bind("end", function(t) {
+    $video.bind("end", function() {
         //logic here
     });
 
