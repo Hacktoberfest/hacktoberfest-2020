@@ -8,6 +8,11 @@
     <div class="ineligible-box">
     </div>
   </div>
+<% elsif pr.not_accepted? %>
+  <div class="icon-box">
+    <div class="unaccepted-box">
+    </div>
+  </div>
 <% elsif pr.eligible? %>
   <div class="icon-box">
     <div class="eligible-box">
