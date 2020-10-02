@@ -114,7 +114,7 @@
           <%= render partial: 'languages/all_projects', locals: {projects: @projects} %>
         </div>
       <% end %>
-      <a href="https://github.com/search?q=label%3Ahacktoberfest+state%3Aopen+no%3Aassignee+is%3Aissue&type=Issues" class="button">
+      <a href="https://github.com/search?q=label%3Ahacktoberfest+no%3Aassignee+is%3Aissue&state=open" class="button">
         Browse <%= @projects.empty? ? 'projects' : 'more' %> on GitHub
       </a>
     </div>
