@@ -25,25 +25,29 @@ class PullRequest < ApplicationRecord
 
     event :not_accepted do
       transition all - %i[eligible] => :not_accepted,
-                 unless: ->(pr) { pr.is_accepted? }
+                 unless: ->(pr) { pr.maintainer_accepted? }
     end
 
     event :eligible do
       transition %i[new waiting] => :eligible,
-                 if: ->(pr) { pr.passed_review_period? &&
-                     !pr.spammy? &&
-                     !pr.labelled_invalid? &&
-                     pr.in_topic_repo? &&
-                     pr.is_accepted? }
+                 if: lambda { |pr|
+                       pr.passed_review_period? &&
+                         !pr.spammy? &&
+                         !pr.labelled_invalid? &&
+                         pr.in_topic_repo? &&
+                         pr.maintainer_accepted?
+                     }
     end
 
     event :waiting do
       transition all - %i[eligible] => :waiting,
-                 if: ->(pr) { !pr.passed_review_period? &&
-                     !pr.spammy? &&
-                     !pr.labelled_invalid? &&
-                     pr.in_topic_repo? &&
-                     pr.is_accepted? }
+                 if: lambda { |pr|
+                       !pr.passed_review_period? &&
+                         !pr.spammy? &&
+                         !pr.labelled_invalid? &&
+                         pr.in_topic_repo? &&
+                         pr.maintainer_accepted?
+                     }
     end
 
     before_transition to: %i[waiting],
@@ -100,7 +104,7 @@ class PullRequest < ApplicationRecord
     repository_topics.select { |topic| topic.strip == 'hacktoberfest' }.any?
   end
 
-  def is_accepted?
+  def maintainer_accepted?
     # Don't have this requirement for old PRs
     return true if Time.parse(created_at).utc <= Hacktoberfest.rules_date
 
