@@ -46,6 +46,12 @@
             <% if @current_user.errors.messages[:terms_acceptance].include?("must be accepted") %>
               <p class="error">You must accept the terms and conditions to participate in Hactoberfest.</p>
             <% end %>
+            <% if @current_user.errors.messages[:quality_acceptance].include?("must be accepted") %>
+              <p class="error">You must acknowledge what constitues a quality contribution to participate in Hactoberfest.</p>
+            <% end %>
+            <% if @current_user.errors.messages[:disqualify_acceptance].include?("must be accepted") %>
+              <p class="error">You must acknowledge that you will be disqualified for submitting two invalid pull requests.</p>
+            <% end %>
 
             <div class="field">
               <div class="control">
@@ -56,11 +62,12 @@
                 </label>
               </div>
             </div>
-            <div data-js="continue" class="submit-btn btn-sml">Continue</div>
+            <div data-js="continue" class="btn-sml">Continue</div>
           </div>
 
           <div id="form-second" class="hidden">
             <p>Before you get started, learn how to create a quality pull request:</p>
+            <br>
             <div class="beginners-video">
               <script src="https://fast.wistia.com/embed/medias/u8up7h2m32.jsonp" async></script>
               <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
@@ -75,8 +82,29 @@
               </div>
             </div>
 
+            <br>
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <%= f.check_box :quality_acceptance, {:class => 'check-extra', :disabled => 'disable'} %>
+                  I have acknowledged these resources and 
+                  understand what a quality contribution is to open source.
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <%= f.check_box :disqualify_acceptance, {:class => 'check-extra', :disabled => 'disable'} %>
+                  I acknowledge that I will be disqualified indefinitely from Hacktoberfest 
+                  if I submit two invalid pull requests.
+                </label>
+              </div>
+            </div>
+
             <%= f.submit 'Start Hacking', :class => 'submit-btn' %>
-            <div data-js="back" class="submit-btn btn-back">Back</div>
+            <div data-js="back" class="btn-sml">Back</div>
           </end>
         <% end %>
       </div>
@@ -85,16 +113,16 @@
       <div class="info-pane">
         <h3>Do's and Dont's of Hacktoberfest</h3>
         <div class="info-pane-item dont">
-          <h2>Don't: open PR's with tiny text edits on other people's repositories</h2>
-          <p>If you're looking for a fast way to open four PR's and win, <a href="#">there's a better way!</a></p>
+          <h2>Don't: open pull requests with minor text edits on other people's repositories</h2>
+          <p>If you're looking for a faster way to open four PR's and win, <a href="#">there's a better way!</a></p>
         </div>
         <div class="info-pane-item do">
-          <h2>Do: Follow a repo's contribution guidelines</h2>
+          <h2>Do: Follow a repository's contribution guidelines</h2>
           <p>Almost every repo looking for help has a <code>CONTRIBUTING.md</code> file in it, <em>read it first!</em></p>
         </div>
         <div class="info-pane-item dont">
           <h2>Don't: feel intimidated</h2>
-          <p><a href="#">Register for an event</a> and learn with a group, or <a href="#">join the discord chat</a> to connect with others.</p>
+          <p><a href="#">Register for an event</a> and learn with a group, or connect with others in the Discord chat.</p>
         </div>
       </div>
     </div>  

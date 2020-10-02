@@ -595,6 +595,29 @@ body {
       }
     }
   }
+
+  //info callouts
+
+  .info-pane {
+    background: rgba($grey, .1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+
+    .info-pane-item {
+      padding: 1rem;
+      margin: 1rem 0;
+
+      &.do {
+        border-left: .25rem solid $success;
+        background: rgba($success, 0.1);
+      }
+      &.dont {
+        border-left: .25rem solid $danger;
+        background: rgba($danger, 0.1);
+      }
+    }
+  }
+  
   //social share
   .social {
     .social-wrapper {
