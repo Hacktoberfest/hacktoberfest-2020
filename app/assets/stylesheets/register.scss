@@ -16,6 +16,14 @@ section.reg-content {
       width: 50%;
       margin-right: 4%;
 
+      form {
+        display: flex;
+      }
+
+      .hidden {
+        display: none;
+      }
+
       .register-header {
         color: $dark-textColor;
         font-family: $family-sans-serif;
@@ -69,7 +77,8 @@ section.reg-content {
         height: 15px;
       }
 
-      .submit-btn {
+      .submit-btn,
+      .btn-sml {
         display: flex;
         flex-direction: row;
         padding: 21px 40px;
@@ -87,6 +96,14 @@ section.reg-content {
         &:hover {
           background-color: $pink;
         }
+      }
+
+      .btn-sml {
+        width: 27%;
+      }
+
+      .btn-back {
+        padding-left: 70px;
       }
     }
 
