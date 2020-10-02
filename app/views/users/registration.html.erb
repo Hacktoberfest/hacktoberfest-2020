@@ -1,15 +1,16 @@
 <section class="section reg-content">
   <div class="container">
     <div class="registration-wrapper">
-        <div class="registration-left">
-          <div class="register-header">Register</div>
-          <h1 class="title is-1">About you</h1>
-          <p>
-            Please select which email address you’d like to use for Hacktoberfest and read the
-            <a target="_blank" href="/details#rules">rules and values</a>.
-          </p>
+      <div class="registration-left">
+        <div class="register-header">Register</div>
+        <h1 class="title is-1">About you</h1>
+        <p>
+          Please select which email address you’d like to use for Hacktoberfest and read the
+          <a target="_blank" href="/details#rules">rules and values</a>.
+        </p>
 
-          <%= form_for :user, url: {action: 'register'}, method: :patch do |f| %>
+        <%= form_for :user, url: {action: 'register'}, method: :patch do |f| %>
+          <div id="form-first">
             <%= render partial: 'users/dropdowns', locals: { f: f, u: User.new } %>
 
             <div class="checkboxes">
@@ -49,34 +50,39 @@
             <div class="field">
               <div class="control">
                 <label class="checkbox">
-                  <%= f.check_box :terms_acceptance, {:class => 'check-style', :required => true} %>
+                  <%= f.check_box :terms_acceptance, {:class => 'check-style'} %>
                   I have read and understand the
                   <a target="_blank" href="/details#rules">Rules and Values</a>.
                 </label>
               </div>
             </div>
+            <div data-js="continue" class="submit-btn btn-sml">Continue</div>
+          </div>
 
-            <%= f.submit 'Start Hacking', :class => 'submit-btn' %>
-          <% end %>
-        </div>
+          <div id="form-second" class="hidden">
 
-      <div class="registration-right">
-        <div class="info-pane">
-          <h3>Do's and Dont's of Hacktoberfest</h3>
-          <div class="info-pane-item dont">
-            <h2>Don't: open PR's with tiny text edits on other people's repositories</h2>
-            <p>If you're looking for a fast way to open four PR's and win, <a href="#">there's a better way!</a></p>
-          </div>
-          <div class="info-pane-item do">
-            <h2>Do: Follow a repo's contribution guidelines</h2>
-            <p>Almost every repo looking for help has a <code>CONTRIBUTING.md</code> file in it, <em>read it first!</em></p>
-          </div>
-          <div class="info-pane-item dont">
-            <h2>Don't: feel intimidated</h2>
-            <p><a href="#">Register for an event</a> and learn with a group, or <a href="#">join the discord chat</a> to connect with others.</p>
-          </div>
-        </section>
+            <%= f.submit 'Start Hacking', :class => 'submit-btn', :html => {:data => {:js => 'submit'}} %>
+            <div data-js="back" class="submit-btn btn-back">Back</div>
+          </end>
+        <% end %>
       </div>
     </div>
+    <div class="registration-right">
+      <div class="info-pane">
+        <h3>Do's and Dont's of Hacktoberfest</h3>
+        <div class="info-pane-item dont">
+          <h2>Don't: open PR's with tiny text edits on other people's repositories</h2>
+          <p>If you're looking for a fast way to open four PR's and win, <a href="#">there's a better way!</a></p>
+        </div>
+        <div class="info-pane-item do">
+          <h2>Do: Follow a repo's contribution guidelines</h2>
+          <p>Almost every repo looking for help has a <code>CONTRIBUTING.md</code> file in it, <em>read it first!</em></p>
+        </div>
+        <div class="info-pane-item dont">
+          <h2>Don't: feel intimidated</h2>
+          <p><a href="#">Register for an event</a> and learn with a group, or <a href="#">join the discord chat</a> to connect with others.</p>
+        </div>
+      </div>
+    </div>  
   </div>
 </section>
