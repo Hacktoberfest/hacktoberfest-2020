@@ -22,9 +22,9 @@ jobs:
       PGHOST: localhost
       PGUSER: postgres
       PGDATABASE: hacktoberfest_test
-      END_DATE: "2019-10-01 00:00:00 UTC"
-      RULES_DATE: "2019-11-01 00:00:00 UTC"
-      START_DATE: "2019-11-01 00:00:00 UTC"
+      START_DATE: "2019-10-01 00:00:00 UTC"
+      RULES_DATE: "2019-10-01 00:00:00 UTC"
+      END_DATE: "2019-11-01 00:00:00 UTC"
       TEST_USER_GITHUB_TOKEN: ${{ secrets.TEST_USER_GITHUB_TOKEN }}
       GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
       GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
