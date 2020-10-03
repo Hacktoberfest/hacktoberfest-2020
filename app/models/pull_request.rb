@@ -51,13 +51,13 @@ class PullRequest < ApplicationRecord
     end
 
     after_transition to: %i[waiting],
-                      from: %i[new] do |pr, _transition|
+                     from: %i[new] do |pr, _transition|
       pr.waiting_since = Time.parse(pr.github_pull_request.created_at).utc
       pr.save!
     end
 
     after_transition to: %i[waiting],
-                      from: all - %i[new waiting] do |pr, _transition|
+                     from: all - %i[new waiting] do |pr, _transition|
       pr.waiting_since = Time.zone.now
       pr.save!
     end
