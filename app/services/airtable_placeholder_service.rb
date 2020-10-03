@@ -90,7 +90,7 @@ module AirtablePlaceholderService
             "In an effort to reduce spam and help maintainers,
             we’ve introduced a one-week review period for all pull requests.
             Once you have submitted four eligible PRs
-            (ready-to-review, not drafts), the seven-day review window begins.
+            (ready-to-review, not drafts), the fourteen-day review window begins.
             This period gives maintainers time to
             identify and label any spammy PRs as **invalid**. If your PRs are
             not marked invalid during that window,
@@ -127,9 +127,9 @@ module AirtablePlaceholderService
           'Category' => 'Events' },
         { 'Question' => 'Do PRs have to be accepted/merged?',
           'Answer' =>
-            "No, they will still count unless they are spam,
-            irrelevant, or labeled as
-            **invalid**.",
+            "Yes, in order for a pull request to count,
+             it must be approved or merged.
+             The repository must also have the Hacktoberfest tag.",
           'Category' => 'Rules' }
       ]
     when 'Themed Repos'
