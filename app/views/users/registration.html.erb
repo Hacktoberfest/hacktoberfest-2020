@@ -47,10 +47,13 @@
               <p class="error">You must accept the terms and conditions to participate in Hactoberfest.</p>
             <% end %>
             <% if @current_user.errors.messages[:quality_acceptance].include?("must be accepted") %>
-              <p class="error">You must acknowledge what constitues a quality contribution to participate in Hactoberfest.</p>
+              <p class="error">You must acknowledge that you understand what constitues a quality contribution to open source.</p>
             <% end %>
             <% if @current_user.errors.messages[:disqualify_acceptance].include?("must be accepted") %>
               <p class="error">You must acknowledge that you will be disqualified for submitting two invalid pull requests.</p>
+            <% end %>
+            <% if @current_user.errors.messages[:email].include?("can't be blank") %>
+              <p class="error">Please select a preferred email address to associate with your profile.</p>
             <% end %>
 
             <div class="field">

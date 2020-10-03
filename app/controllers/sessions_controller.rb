@@ -25,7 +25,8 @@ class SessionsController < ApplicationController
     # rubocop:disable Rails/SkipsModelValidations
     @user.update_columns(
       provider_token: auth_hash.credentials.token,
-      name: auth_hash.info.nickname
+      name: auth_hash.info.nickname,
+      email: auth_hash.info.email
     )
     # rubocop:enable Rails/SkipsModelValidations
   end
