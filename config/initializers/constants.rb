@@ -15,10 +15,6 @@ module Hacktoberfest
     @rules_date ||= Time.parse(ENV.fetch('RULES_DATE')).utc
   end
 
-  def pull_request_maturation_days
-    @pull_request_maturation_days ||= ENV.fetch('MATURATION_DAYS', 7).to_i.days
-  end
-
   def airtable_key_present?
     ENV.fetch('AIRTABLE_API_KEY', nil).present?
   end
