@@ -604,8 +604,9 @@ body {
   //info callouts
 
   .info-pane {
-    background: rgba($grey, .1);
-    border-radius: 0.5rem;
+    background-color: $light-ruleColor;
+    box-shadow: 0px 5.2029px 20.8116px rgba(24, 61, 93, 0.08);
+    border-radius: 8px;
     padding: 1rem;
 
     .info-pane-item {
@@ -620,6 +621,10 @@ body {
         border-left: .25rem solid $danger;
         background: rgba($danger, 0.1);
       }
+    }
+
+    @media screen and (max-width: $break-small) {
+      margin: 40px 0;
     }
   }
   
