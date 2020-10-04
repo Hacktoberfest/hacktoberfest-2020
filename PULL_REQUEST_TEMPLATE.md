@@ -21,3 +21,5 @@ Ensure your pull request meets all the requirements for merging. Place an `x` in
 - [ ] My changes generate no new warnings
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] New and existing unit tests pass locally with my changes
+- [ ] My code easily can get used to changing conditions and add to the new functionality
+- [ ] I maintained a well - structured code that is highly swift and easier to maintain
