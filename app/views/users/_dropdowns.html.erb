@@ -11,6 +11,16 @@
                          :required => true
                      } %>
       </div>
+       <div class="select">
+        <%= f.select :email, @emails,
+                     {
+                         include_blank: 'Select your preferred emails to refer address...',
+                         selected: u.email
+                     },
+                     {
+                         :required => true
+                     } %>
+      </div>
     </div>
   </div>
 
