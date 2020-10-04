@@ -268,7 +268,7 @@ RSpec.describe PullRequest, type: :model do
   end
 
   describe '#waiting' do
-    context 'Pull request is valid and created less than seven days ago' do
+    context 'Pull request is valid and created less than fourteen days ago' do
       let(:pr) { pr_helper(IMMATURE_PR) }
 
       it 'is put it in the waiting state' do
@@ -414,7 +414,7 @@ RSpec.describe PullRequest, type: :model do
   end
 
   describe '#eligible' do
-    context 'Pull request is valid and created over seven days ago' do
+    context 'Pull request is valid and created over fourteen days ago' do
       let(:pr) { pr_helper(ELIGIBLE_PR) }
 
       it 'is put it in the eligible state' do
@@ -422,7 +422,7 @@ RSpec.describe PullRequest, type: :model do
       end
     end
 
-    context 'Pull request is valid and created less than seven days ago' do
+    context 'Pull request is valid and created less than fourteen days ago' do
       let(:pr) { pr_helper(IMMATURE_PR) }
 
       it 'is put it in the waiting state' do

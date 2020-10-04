@@ -35,3 +35,4 @@
 /config/credentials.yml.enc 
 
 .env*
+.vscode
