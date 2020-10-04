@@ -45,7 +45,7 @@ main.home {
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    margin-top: -140px;
+    margin-top: -160px;
     padding-top: 140px;
 
     @media screen and (max-width: $break-med) {
@@ -56,11 +56,16 @@ main.home {
     @media screen and (max-width: $break-small) {
       height: 100%;
       top: 0;
-      margin-top: -600px;
+      margin-top: -625px;
       margin-bottom: 160px;
-      padding-top: 600px;
+      padding-top: 625px;
       padding-bottom: 64px;
       flex-direction: column;
+    }
+
+    @media screen and (max-width: $break-xxsmall) {
+      margin-top: -650px;
+      padding-top: 650px;
     }
 
     .hero-content {

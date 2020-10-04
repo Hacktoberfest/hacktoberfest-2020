@@ -1,22 +1,73 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$break-xxsmall: 352px;
+$break-xsmall: 481px;
 $break-small: 1024px;
 $break-med: 1288px;
 $grey-darker: hsl(222, 45%, 21%); // box dark blue
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
-
+$light-cta-banner-hover: #542247;
+$dark-cta-banner-hover: #2E4C5E;
 header {
-  padding: 30px 55px 0;
+  padding: 75px 55px 30px;
   margin: 0;
 
   @media screen and (max-width: $break-med) {
-    padding: 30px 85px 30px 85px;
+    padding: 75px 85px 30px 85px;
   }
 
   @media screen and (max-width: $break-small) {
-    padding-inline-start: 30px 30px 30px 30px;
+    padding: 50px 85px 30px 85px;
   }
+
+  @media screen and (max-width: $break-xsmall) {
+    padding-top: 100px;
+  }
+
+  @media screen and (max-width: $break-xxsmall) {
+    padding-top: 150px;
+  }
+}
+
+.cta-slim-banner {
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px 55px;
+  color: $grey-darker;
+  background-color: $pink;
+  font-family: "Inter Bold", "Helvetica", "Arial", san-serif;
+  font-size: 0.875rem;
+
+  span{
+    padding: 0.4em 0.6em;
+  }
+
+  span:first-child {
+  text-transform: uppercase;
+  margin: 0em 0.5em;
+  background: white;
+  border-radius: 0.3em;
+  font-family: "Inter Black", "Helvetica", "Arial", san-serif;
+  height: fit-content;
+  }
+
+  @media screen and (max-width: $break-small) {
+    padding: 10px 20px;
+  }
+}
+
+a.cta-slim-banner:hover{
+    color: $light-cta-banner-hover;
+
+    span:last-child{
+      text-decoration: underline;
+    }
 }
 
 $navColor: rgba(0, 0, 0, 0);
@@ -291,7 +342,7 @@ $navColor: rgba(0, 0, 0, 0);
       width: 32px;
       left: 0;
       bottom: 0px;
-      background-color: white;
+      background-color: $white;
       -webkit-transition: 0.4s;
       transition: 0.4s;
       border-radius: 50%;
@@ -304,5 +355,12 @@ body.dark {
     .navLink:hover {
       color: $dark-highlightColor !important;
     }
+  }
+  .cta-slim-banner {
+    background-color: $diamondColor;
+    color: $tableHeaderColor;
+  }
+  a.cta-slim-banner:hover{
+    color: $dark-cta-banner-hover;
   }
 }
