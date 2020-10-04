@@ -1,3 +1,5 @@
+/** @format */
+
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
@@ -7,302 +9,301 @@ $grey-darker: hsl(222, 45%, 21%); // box dark blue
 $black-bis: hsl(223.2, 54.35%, 18.04%); // background color
 
 header {
-  padding: 30px 55px 0;
-  margin: 0;
+	padding: 30px 55px 0;
+	margin: 0;
 
-  @media screen and (max-width: $break-med) {
-    padding: 30px 85px 30px 85px;
-  }
+	@media screen and (max-width: $break-med) {
+		padding: 30px 85px 30px 85px;
+	}
 
-  @media screen and (max-width: $break-small) {
-    padding-inline-start: 30px 30px 30px 30px;
-  }
+	@media screen and (max-width: $break-small) {
+		padding-inline-start: 30px 30px 30px 30px;
+	}
 }
 
 $navColor: rgba(0, 0, 0, 0);
 
 // survey block styling
 .survey {
-  position: absolute;
-  width: 100%;
-  min-height: 40px;
-  left: 0px;
-  top: 0px;
-  background: #0a142e;
-  box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
-  font-size: 0.75rem;
-  padding: 10px 10px 10px 135px;
-  color: white;
+	position: absolute;
+	width: 100%;
+	min-height: 40px;
+	left: 0px;
+	top: 0px;
+	background: #0a142e;
+	box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.2);
+	font-size: 0.75rem;
+	padding: 10px 10px 10px 135px;
+	color: white;
 
-  @media screen and (max-width: $break-small) {
-    padding-left: 30px;
-    padding-right: 30px;
-    text-align: center;
-  }
+	@media screen and (max-width: $break-small) {
+		padding-left: 30px;
+		padding-right: 30px;
+		text-align: center;
+	}
 
-  a {
-    color: hsl(320, 100%, 50%);
-  }
+	a {
+		color: hsl(320, 100%, 50%);
+	}
 
-  p {
-    margin: 0;
-  }
+	p {
+		margin: 0;
+	}
 }
 
 // Main Nav
 
 #navbar {
-  font-family: "Inter Black", "Helvetica", "Arial", san-serif;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0);
+	font-family: 'Inter Black', 'Helvetica', 'Arial', san-serif;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0);
 
-  @media screen and (max-width: $break-small) {
-    flex-direction: column;
-    align-items: center;
-    margin: 64px 0 20px 0;
-  }
+	@media screen and (max-width: $break-small) {
+		flex-direction: column;
+		align-items: center;
+		margin: 64px 0 20px 0;
+	}
 
-  .navbar-primary {
-    display: flex;
-    align-items: center;
+	.navbar-primary {
+		display: flex;
+		align-items: center;
 
-    @media screen and (max-width: $break-small) {
-      flex-direction: column;
-    }
+		@media screen and (max-width: $break-small) {
+			flex-direction: column;
+		}
 
-    .logo {
-      min-height: 100px;
-      min-width: 109px;
-    }
-    .nav-logo {
-      max-width: 109px;
-    }
+		.logo {
+			min-height: 100px;
+			min-width: 109px;
+		}
+		.nav-logo {
+			max-width: 109px;
+		}
 
-    ul.navbar-links {
-      display: flex;
-      align-items: center;
+		ul.navbar-links {
+			display: flex;
+			align-items: center;
 
-      @media screen and (max-width: $break-small) {
-        margin: 20px 0 0;
-        flex-direction: column;
-        align-items: center;
-      }
+			@media screen and (max-width: $break-small) {
+				margin: 20px 0 0;
+				flex-direction: column;
+				align-items: center;
+			}
 
-      li {
-        margin-bottom: 10px;
-        text-align: center;
+			li {
+				margin-bottom: 10px;
+				text-align: center;
 
-        .navLink {
-          margin-left: 1.875rem;
-          font-size: 0.875rem;
-          z-index: 1;
-          text-transform: uppercase;
-          text-align: center;
+				.navLink {
+					margin-left: 1.875rem;
+					font-size: 0.875rem;
+					z-index: 1;
+					text-transform: uppercase;
+					text-align: center;
 
-          @media screen and (max-width: $break-small) {
-            margin-left: 0;
-          }
-        }
+					@media screen and (max-width: $break-small) {
+						margin-left: 0;
+					}
+				}
 
-        .button.button-small.navLink {
-          color: #fff;
+				.button.button-small.navLink {
+					color: #fff;
 
-          @media screen and (max-width: $break-small) {
-            margin-top: 10px;
-          }
-        }
+					@media screen and (max-width: $break-small) {
+						margin-top: 10px;
+					}
+				}
 
-        .button.button-small.navLink:hover {
-          box-shadow: none;
-        }
+				.button.button-small.navLink:hover {
+					box-shadow: none;
+				}
 
-        .dropdown-trigger {
-          small {
-            font-size: 0.5rem;
-            vertical-align: text-top;
-            position: relative;
-            top: 0.2rem;
-          }
+				.dropdown-trigger {
+					small {
+						font-size: 0.5rem;
+						vertical-align: text-top;
+						position: relative;
+						top: 0.2rem;
+					}
 
-          @media screen and (max-width: $break-small) {
-            display: none;
-          }
-        }
+					@media screen and (max-width: $break-small) {
+						display: none;
+					}
+				}
 
-        .dropdown-menu {
-          padding-top: 10px;
+				.dropdown-menu {
+					padding-top: 10px;
 
-          @media screen and (max-width: $break-small) {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            top: 0;
-            padding-top: 0;
-          }
+					@media screen and (max-width: $break-small) {
+						display: flex;
+						flex-direction: column;
+						position: relative;
+						top: 0;
+						padding-top: 0;
+					}
 
-          .dropdown-content {
-            padding: 10px;
-            box-shadow: rgba(24, 61, 93, 0.08) 0px 4px 10px;
-            text-decoration: none;
+					.dropdown-content {
+						padding: 10px;
+						text-decoration: none;
 
-            @media screen and (max-width: $break-small) {
-              background: transparent;
-              box-shadow: none;
+						@media screen and (max-width: $break-small) {
+							background: transparent;
+							box-shadow: none;
 
-              :first-child {
-                margin-bottom: 8px;
-              }
-            }
+							:first-child {
+								margin-bottom: 8px;
+							}
+						}
 
-            .navLink {
-              margin-left: 0;
-              padding: 10px 15px;
-              font-size: 12px;
-              border-radius: 4px;
+						.navLink {
+							margin-left: 0;
+							padding: 10px 15px;
+							font-size: 12px;
+							border-radius: 4px;
 
-              @media screen and (max-width: $break-small) {
-                font-size: 0.875rem;
-                padding: 0;
-                text-align: center;
-                height: 25px;
-              }
-            }
+							@media screen and (max-width: $break-small) {
+								font-size: 0.875rem;
+								padding: 0;
+								text-align: center;
+								height: 25px;
+							}
+						}
 
-            .navLink:hover,
-            .dropdown-item:hover {
-              border-bottom: 0;
+						.navLink:hover,
+						.dropdown-item:hover {
+							border-bottom: 0;
 
-              @media screen and (max-width: $break-small) {
-                background-color: transparent;
-              }
-            }
+							@media screen and (max-width: $break-small) {
+								background-color: transparent;
+							}
+						}
 
-            .dropdown-divider {
-              margin: 0;
+						.dropdown-divider {
+							margin: 0;
 
-              @media screen and (max-width: $break-small) {
-                display: none;
-              }
-            }
-          }
-        }
+							@media screen and (max-width: $break-small) {
+								display: none;
+							}
+						}
+					}
+				}
 
-        .navLink:hover {
-          color: $light-highlightColor;
-        }
+				.navLink:hover {
+					color: $light-highlightColor;
+				}
 
-        .active {
-          box-shadow: inset 0 -5px 0 0 #93c2db;
-          text-decoration: none;
-          padding: 0 3px;
-          padding-bottom: 2px;
+				.active {
+					box-shadow: inset 0 -5px 0 0 #93c2db;
+					text-decoration: none;
+					padding: 0 3px;
+					padding-bottom: 10px;
 
-          @media screen and (max-width: $break-small) {
-            padding-bottom: 2px;
-          }
-        }
+					@media screen and (max-width: $break-small) {
+						padding-bottom: 2px;
+					}
+				}
 
-        .button.navLink:hover {
-          color: $grey-darker;
-          border-bottom: 0;
+				.button.navLink:hover {
+					color: $grey-darker;
+					border-bottom: 0;
 
-          @media screen and (max-width: $break-small) {
-            margin-top: 10px;
-            padding-bottom: 7px;
-          }
-        }
-      }
-    }
-  }
+					@media screen and (max-width: $break-small) {
+						margin-top: 10px;
+						padding-bottom: 7px;
+					}
+				}
+			}
+		}
+	}
 
-  // Toggle
+	// Toggle
 
-  .toggle {
-    display: flex;
-    align-items: center;
-    padding-left: 32px;
-    height: 60px;
-    letter-spacing: 0;
+	.toggle {
+		display: flex;
+		align-items: center;
+		padding-left: 32px;
+		height: 60px;
+		letter-spacing: 0;
 
-    @media (max-width: 1024px) {
-      border-left: none;
-      padding-left: 0;
-    }
+		@media (max-width: 1024px) {
+			border-left: none;
+			padding-left: 0;
+		}
 
-    p {
-      text-transform: uppercase;
-      font-size: 14px !important;
-      font-weight: 900;
-      margin: 0 16px 0 0;
-    }
-  }
+		p {
+			text-transform: uppercase;
+			font-size: 14px !important;
+			font-weight: 900;
+			margin: 0 16px 0 0;
+		}
+	}
 
-  .toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 64px;
-    height: 32px;
-    background: none;
-    border: none;
-    outline: none;
-    height: 32px;
-    width: 64px;
+	.toggle-switch {
+		position: relative;
+		display: inline-block;
+		width: 64px;
+		height: 32px;
+		background: none;
+		border: none;
+		outline: none;
+		height: 32px;
+		width: 64px;
 
-    input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
+		input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
 
-    input:checked + span {
-      background-color: #0069ff;
-    }
+		input:checked + span {
+			background-color: #0069ff;
+		}
 
-    input:focus + span {
-      box-shadow: 0px 8px 16px rgba(1, 14, 40, 0.05);
-    }
+		input:focus + span {
+			box-shadow: 0px 8px 16px rgba(1, 14, 40, 0.05);
+		}
 
-    input:checked + span:before {
-      -webkit-transform: translateX(32px);
-      -ms-transform: translateX(32px);
-      transform: translateX(32px);
-    }
+		input:checked + span:before {
+			-webkit-transform: translateX(32px);
+			-ms-transform: translateX(32px);
+			transform: translateX(32px);
+		}
 
-    .toggle-slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #e5e8ed;
-      -webkit-transition: 0.4s;
-      transition: 0.4s;
-      border-radius: 32px;
-      box-shadow: 0px 4px 16px rgba(1, 14, 40, 0.1);
-    }
+		.toggle-slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #e5e8ed;
+			-webkit-transition: 0.4s;
+			transition: 0.4s;
+			border-radius: 32px;
+			box-shadow: 0px 4px 16px rgba(1, 14, 40, 0.1);
+		}
 
-    .toggle-slider:before {
-      position: absolute;
-      content: "";
-      height: 32px;
-      width: 32px;
-      left: 0;
-      bottom: 0px;
-      background-color: white;
-      -webkit-transition: 0.4s;
-      transition: 0.4s;
-      border-radius: 50%;
-    }
-  }
+		.toggle-slider:before {
+			position: absolute;
+			content: '';
+			height: 32px;
+			width: 32px;
+			left: 0;
+			bottom: 0px;
+			background-color: white;
+			-webkit-transition: 0.4s;
+			transition: 0.4s;
+			border-radius: 50%;
+		}
+	}
 }
 
 body.dark {
-  #navbar {
-    .navLink:hover {
-      color: $dark-highlightColor !important;
-    }
-  }
+	#navbar {
+		.navLink:hover {
+			color: $dark-highlightColor !important;
+		}
+	}
 }
