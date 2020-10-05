@@ -70,8 +70,13 @@
         <li>Maintainers can opt-in to participate by 
           <a href="https://do.co/hfest-topics">classifying their projects with the <code>hacktoberfest</code> topic</a>.
         </li>
-        <li>Your pull requests will count toward your participation once they have been merged, approved by
-          a maintainer or labelled as <code>hacktoberfest-accepted</code>.
+        <li>Your pull requests will count toward your participation if they are in a repository with the
+          <code>hacktoberfest</code> topic and once they have been merged, approved by a maintainer or labelled as
+          <code>hacktoberfest-accepted</code>.
+        </li>
+        <li>Additionally, any pull request with the <code>hacktoberfest-accepted</code> label, submitted to any public
+          GitHub repository, with or without the <code>hacktoberfest</code> topic, will be considered valid for
+          Hacktoberfest.
         </li>
         <li>You can sign up anytime between October 1 and October 31. Just be sure to sign up on the official
           Hacktoberfest website for your pull requests to count.
@@ -92,6 +97,9 @@
       <p>Pull requests following the rule change must be to a participating public repository on GitHub, and have been 
         merged, labelled as <code>hacktoberfest-accepted</code>, or approved.
       </p>
+      <p>Pull requests labelled as <code>hacktoberfest-accepted</code> will count toward to Hacktoberest from any public
+        repository on GitHub, with or without the <code>hacktoberfest</code> topic.
+      </p>
       <p>The pull request must contain commits you made yourself. If a maintainer reports your pull request as spam, 
         it will not be counted toward your participation in Hacktoberfest. If a maintainer reports behavior that’s 
         not in line with the values of Hacktoberfest or the project’s code of conduct, you will be ineligible to
@@ -100,12 +108,13 @@
       <p>To put it in terms that some folks will more easily understand:</p>
       <blockquote>
         PRs count if:
-        <br>Submitted in a repo with the <code>hacktoberfest</code> topic AND
-        <br>during the month of October AND (
-        <br>&nbsp;&nbsp;The PR is merged OR
-        <br>&nbsp;&nbsp;The PR is labelled as <code>hacktoberfest-accepted</code> by a maintainer OR
-        <br>&nbsp;&nbsp;The PR has been approved
-        <br>)
+        <br/>Submitted during the month of October AND (
+        <br/>&nbsp;&nbsp;The PR is labelled as <code>hacktoberfest-accepted</code> by a maintainer OR
+        <br/>&nbsp;&nbsp;Submitted in a repo with the <code>hacktoberfest</code> topic AND (
+        <br/>&nbsp;&nbsp;&nbsp;&nbsp;The PR is merged OR
+        <br/>&nbsp;&nbsp;&nbsp;&nbsp;The PR has been approved
+        <br/>&nbsp;&nbsp;)
+        <br/>)
       </blockquote>
     </section>
 
