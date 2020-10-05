@@ -3,38 +3,61 @@
 class PullRequest < ApplicationRecord
   attr_reader :github_pull_request
 
-  delegate :title, :body, :url, :created_at, :name, :owner, :repo_id,
-           :name_with_owner, :label_names, :merged?, to: :github_pull_request
+  delegate :title, :body, :url, :name, :owner, :repo_id,
+           :name_with_owner, :label_names, :repository_topics, :merged?,
+           :approved?, to: :github_pull_request
 
   state_machine initial: :new do
     event :spam_repo do
-      transition %i[new waiting] => :spam_repo,
+      transition all - %i[eligible] => :spam_repo,
                  if: ->(pr) { pr.spammy? }
     end
 
     event :invalid_label do
-      transition %i[new waiting] => :invalid_label,
+      transition all - %i[eligible] => :invalid_label,
                  if: ->(pr) { pr.labelled_invalid? }
+    end
+
+    event :topic_missing do
+      transition all - %i[eligible] => :topic_missing,
+                 unless: ->(pr) { pr.in_topic_repo? }
+    end
+
+    event :not_accepted do
+      transition all - %i[eligible] => :not_accepted,
+                 unless: ->(pr) { pr.maintainer_accepted? }
     end
 
     event :eligible do
       transition %i[new waiting] => :eligible,
-                 if: ->(pr) { !pr.spammy_or_invalid? && pr.older_than_week? }
+                 if: lambda { |pr|
+                       pr.passed_review_period? &&
+                         !pr.spammy? &&
+                         !pr.labelled_invalid? &&
+                         pr.in_topic_repo? &&
+                         pr.maintainer_accepted?
+                     }
     end
 
     event :waiting do
-      transition %i[new spam_repo invalid_label] => :waiting,
-                 if: ->(pr) { !pr.spammy_or_invalid? && !pr.older_than_week? }
+      transition all - %i[eligible] => :waiting,
+                 if: lambda { |pr|
+                       !pr.passed_review_period? &&
+                         !pr.spammy? &&
+                         !pr.labelled_invalid? &&
+                         pr.in_topic_repo? &&
+                         pr.maintainer_accepted?
+                     }
     end
 
-    before_transition to: %i[waiting],
-                      from: %i[new] do |pr, _transition|
-      pr.waiting_since = pr.created_at
+    after_transition to: %i[waiting],
+                     from: %i[new] do |pr, _transition|
+      pr.waiting_since = Time.parse(pr.github_pull_request.created_at).utc
       pr.save!
     end
 
-    before_transition to: %i[waiting],
-                      from: %i[spam_repo invalid_label] do |pr, _transition|
+    after_transition to: %i[waiting],
+                     from: all - %i[new waiting] do |pr, _transition|
       pr.waiting_since = Time.zone.now
       pr.save!
     end
@@ -43,6 +66,8 @@ class PullRequest < ApplicationRecord
   def check_state
     return if spam_repo
     return if invalid_label
+    return if topic_missing
+    return if not_accepted
     return if eligible
 
     waiting
@@ -51,11 +76,11 @@ class PullRequest < ApplicationRecord
   def most_recent_time
     return waiting_since unless waiting_since.nil?
 
-    github_pull_request.created_at
+    Time.parse(github_pull_request.created_at).utc
   end
 
-  def older_than_week?
-    most_recent_time <= (Time.zone.now - 7.days)
+  def passed_review_period?
+    most_recent_time <= (Time.zone.now - 14.days)
   end
 
   def labelled_invalid?
@@ -64,12 +89,26 @@ class PullRequest < ApplicationRecord
     label_names.select { |l| l[/\b(invalid|spam)\b/i] }.any?
   end
 
+  def labelled_accepted?
+    label_names.select { |l| l.downcase.strip == 'hacktoberfest-accepted' }.any?
+  end
+
   def spammy?
     SpamRepositoryService.call(repo_id)
   end
 
-  def spammy_or_invalid?
-    labelled_invalid? || spammy?
+  def in_topic_repo?
+    # Don't have this requirement for old PRs
+    return true if created_at <= Hacktoberfest.rules_date
+
+    repository_topics.select { |topic| topic.strip == 'hacktoberfest' }.any?
+  end
+
+  def maintainer_accepted?
+    # Don't have this requirement for old PRs
+    return true if created_at <= Hacktoberfest.rules_date
+
+    merged? || approved? || labelled_accepted?
   end
 
   def github_id

@@ -77,7 +77,9 @@ class UsersController < ApplicationController
       :intel_marketing_emails,
       :dev_marketing_emails,
       :category,
-      :country
+      :country,
+      :quality_acceptance,
+      :disqualify_acceptance
     )
   end
 

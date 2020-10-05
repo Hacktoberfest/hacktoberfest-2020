@@ -7,6 +7,8 @@ FactoryBot.define do
     uid               { rand(1..1_000_000) }
     provider_token    { user_github_token }
     terms_acceptance  { true }
+    quality_acceptance { true }
+    disqualify_acceptance { true }
     state             { 'registered' }
     country           { 'US' }
 

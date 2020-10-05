@@ -16,6 +16,14 @@ section.reg-content {
       width: 50%;
       margin-right: 4%;
 
+      form {
+        display: flex;
+      }
+
+      .hidden {
+        display: none;
+      }
+
       .register-header {
         color: $dark-textColor;
         font-family: $family-sans-serif;
@@ -64,7 +72,8 @@ section.reg-content {
         color: $light-categoryColor;
       }
 
-      .check-style {
+      .check-style,
+      .check-extra {
         width: 15px;
         height: 15px;
       }
@@ -87,6 +96,36 @@ section.reg-content {
         &:hover {
           background-color: $pink;
         }
+
+        @media screen and (max-width: $break-mobile) {
+          display: inline-flex;
+        }
+      }
+
+      .btn-sml {
+        align-items: flex-start;
+        background-color: $blue;
+        border-color: $blue;
+        border-width: 0;
+        box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05);
+        color: $buttonTextColor;
+        cursor: pointer;
+        display: inline-flex;
+        font-weight: 900;
+        font-size: $size-button-text;
+        justify-content: center;
+        padding: 20px 75px;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        -moz-border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -khtml-border-radius: 30px;
+        border-radius: 30px;
+
+        &:hover {
+          background-color: $pink;
+        } 
       }
     }
 

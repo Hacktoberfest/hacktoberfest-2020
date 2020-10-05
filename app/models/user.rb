@@ -50,6 +50,8 @@ class User < ApplicationRecord
     state all - [:new] do
       validates :terms_acceptance, acceptance: true
       validates :email, presence: true
+      validates :quality_acceptance, acceptance: true
+      validates :disqualify_acceptance, acceptance: true
     end
 
     state all - [:won_shirt] do

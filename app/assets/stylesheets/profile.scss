@@ -97,8 +97,18 @@
           height: 32px;
           margin-right: 20px;
 
-          .spammy-box {
+          .ineligible-box {
             background-image: asset-url("icon-light-ineligible.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+          }
+
+          .unaccepted-box {
+            background-image: asset-url("icon-light-unaccepted.svg");
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
@@ -232,6 +242,47 @@
       }
     }
 
+    .idea-set {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 1rem;
+
+      .idea-pane {
+        background: rgba($cyan, 0.1);
+        padding: 2rem 1rem;
+        margin: 1rem;
+        position: relative;
+        width: calc(50% - 2rem);
+        min-width: 300px;
+        
+        &[data-label]:before {
+          content: attr(data-label);
+          display: inline-block;
+          position: absolute;
+          top: -2rem;
+          left: -1rem;
+          background: $pink;
+          box-shadow: $box-shadow;
+          color: $black;
+          width: 130px;
+          padding: 0.2rem;
+          transform: rotate(-15deg);
+          border-radius: .5rem;
+        }
+
+        p {
+          font-size: 1rem;
+          margin-bottom: calc(1rem + 49px);
+        }
+
+        .button-static {
+          position: absolute;
+          bottom: 1.5rem;
+          right: 1.5rem;
+        }
+      }
+    }
+
     .timeline-wrapper {
       width: 100%;
       display: flex;
@@ -245,8 +296,18 @@
         height: 32px;
         margin-right: 20px;
 
-        .spammy-box {
+        .ineligible-box {
           background-image: asset-url("icon-light-ineligible.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+        }
+
+        .unaccepted-box {
+          background-image: asset-url("icon-light-unaccepted.svg");
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
@@ -340,6 +401,7 @@
           line-height: 22px;
           color: $light-inputTextColor;
           display: block;
+          font-variant-numeric: tabular-nums;
         }
       }
     }
@@ -656,10 +718,21 @@ body.dark {
     .main-content-wrapper
     .legend-container
     .icon-box
-    .spammy-box,
-  .timeline-date .spammy-box,
-  .profile-page .profile-left .timeline-wrapper .pr-icon .spammy-box {
+    .ineligible-box,
+  .timeline-date .ineligible-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .ineligible-box {
     background-image: asset-url("icon-dark-ineligible.svg") !important;
+  }
+
+  .profile-page
+    .profile-left
+    .main-content-wrapper
+    .legend-container
+    .icon-box
+    .unaccepted-box,
+  .timeline-date .unaccepted-box,
+  .profile-page .profile-left .timeline-wrapper .pr-icon .unaccepted-box {
+    background-image: asset-url("icon-dark-unaccepted.svg") !important;
   }
 
   .profile-page

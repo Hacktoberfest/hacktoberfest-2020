@@ -7,7 +7,7 @@ class GithubPullRequestService
   attr_reader :user
 
   PULL_REQUEST_QUERY = <<~GRAPHQL
-    query($nodeId:ID!){
+    query($nodeId:ID!) {
       node(id:$nodeId) {
         ... on User {
           pullRequests(states: [OPEN, MERGED, CLOSED] last: 100) {
@@ -17,8 +17,19 @@ class GithubPullRequestService
               body
               url
               createdAt
-              repository{
+              merged
+              reviewDecision
+              repository {
                 databaseId
+                repositoryTopics(first: 100) {
+                  edges {
+                    node {
+                      topic {
+                        name
+                      }
+                    }
+                  }
+                }
               }
               labels(first: 100) {
                 edges {
