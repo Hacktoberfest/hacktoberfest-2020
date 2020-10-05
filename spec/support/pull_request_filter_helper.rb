@@ -220,9 +220,7 @@ ELIGIBLE_PR = {
   'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
   'repository' => {
     'databaseId' => 123,
-    'repositoryTopics' => { 'edges': [
-      { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
-    ] }
+    'repositoryTopics' => { 'edges' => [] }
   }
 }.freeze
 
@@ -376,9 +374,7 @@ VALID_ARRAY = [
     'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
       'databaseId' => 123,
-      'repositoryTopics' => { 'edges': [
-        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
-      ] }
+      'repositoryTopics' => { 'edges' => [] }
     } }
 ].freeze
 
@@ -541,9 +537,7 @@ LARGE_IMMATURE_ARRAY = [
     'labels' => { 'edges': [{ 'node': { 'name': 'hacktoberfest-accepted' } }] },
     'repository' => {
       'databaseId' => 123,
-      'repositoryTopics' => { 'edges': [
-        { 'node': { 'topic': { 'name': 'Hacktoberfest' } } }
-      ] }
+      'repositoryTopics' => { 'edges' => [] }
     } },
   { 'id' => 'MDExOlB1bGxSZXF1ZXN0NTE0MTg4ODg=',
     'title' => 'Update README.md',
