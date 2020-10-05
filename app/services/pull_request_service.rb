@@ -46,14 +46,12 @@ class PullRequestService
   def scoring_pull_requests
     counter = 0
     all.take_while do |pr|
-      if pr.waiting
-        counter += 1
-      elsif pr.eligible
-        counter += 1
-      end
+      counter += 1 if pr.eligible?
       counter <= 4
     end
   end
+
+  
 
   def scoring_pull_requests_receipt
     scoring_pull_requests.map do |pr|
