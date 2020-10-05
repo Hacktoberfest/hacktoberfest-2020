@@ -28,11 +28,9 @@ class MlhTable
         )
       end
     end
-    if response.success?
-      response.body
-    else
-      AirtablePlaceholderService.call('Meetups')
-    end
+    response.body if response.success?
+  rescue StandardError
+    { 'data' => AirtablePlaceholderService.call('Meetups') }
   end
 
   def records
