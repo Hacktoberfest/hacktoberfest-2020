@@ -29,7 +29,6 @@ class MlhTable
       end
     end
     response.body if response.success?
-  rescue StandardError
     { 'data' => AirtablePlaceholderService.call('Meetups') }
   end
 
