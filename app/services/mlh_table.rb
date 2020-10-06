@@ -4,7 +4,7 @@ class MlhTable
   attr_accessor :api_url
 
   def initialize
-    @api_url = 'https://organize.mlh.io/api/v2/events?type=hacktoberfest-2020/wrong-wrong'
+    @api_url = 'https://organize.mlh.io/api/v2/events?type=hacktoberfest-2020'
   end
 
   def faraday_connection
