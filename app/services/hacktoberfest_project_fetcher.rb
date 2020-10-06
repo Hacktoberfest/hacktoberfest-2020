@@ -100,7 +100,8 @@ class HacktoberfestProjectFetcher
         repo_name_with_owner: repository['nameWithOwner'],
         repo_stars: repository['stargazers']['totalCount'],
         repo_watchers: repository['watchers']['totalCount'],
-        repo_url: repository['url']
+        repo_url: repository['url'],
+        repo_topics: repository['repositoryTopics']
       }
       @projects << project
     end

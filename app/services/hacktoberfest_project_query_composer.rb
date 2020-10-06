@@ -57,6 +57,15 @@ module HacktoberfestProjectQueryComposer
                   codeOfConduct {
                     url
                   }
+                  repositoryTopics(first: 100) {
+                    edges {
+                      node {
+                        topic {
+                          name
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
