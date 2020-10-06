@@ -4,12 +4,12 @@
     <table class="is-narrow is-fullwidth">
       <tbody>
         <% @valid_pr = 0 %>
-        <% scoring_pull_requests.map.with_index do |pr, key| %>
+        <% scoring_pull_requests.map.with_index do |pr| %>
           
           <% if pr.eligible? || pr.waiting? %>
-            <%= render partial: 'users/show/pr/pr', locals: { pr: pr, key: key, valid_pr: @valid_pr +=1, show_congratulations: show_congratulations }  %>
+            <%= render partial: 'users/show/pr/pr', locals: { pr: pr, valid_pr: @valid_pr +=1, show_congratulations: show_congratulations }  %>
           <% else %>
-            <%= render partial: 'users/show/pr/pr', locals: { pr: pr, key: key, valid_pr: 0, show_congratulations: show_congratulations }  %>
+            <%= render partial: 'users/show/pr/pr', locals: { pr: pr, valid_pr: 0, show_congratulations: show_congratulations }  %>
           <% end %>
         <% end %>
 
