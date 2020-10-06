@@ -4,7 +4,7 @@ class MlhTable
   attr_accessor :api_url
 
   def initialize
-    @api_url = 'https://organize.mlh.io/api/v2/events?type=hacktoberfest-2020'
+    @api_url = 'https://organize.mlh.io/api/v2/events?type=hacktoberfest-2020/wrong-wrong'
   end
 
   def faraday_connection
@@ -18,7 +18,7 @@ class MlhTable
       faraday.use Faraday::Response::RaiseError
       faraday.adapter Faraday.default_adapter
       unless Rails.configuration.cache_store == :null_store
-        faraday.response :caching do    
+        faraday.response :caching do
           ActiveSupport::Cache.lookup_store(
             *Rails.configuration.cache_store,
             namespace: 'mlh',
@@ -27,8 +27,9 @@ class MlhTable
         end
       end
     end
+    response = @faraday_connection.get
     return response.body if response.success?
-
+  rescue StandardError
     { 'data' => AirtablePlaceholderService.call('Meetups') }
   end
 
