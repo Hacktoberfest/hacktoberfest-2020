@@ -85,7 +85,7 @@ RSpec.describe HacktoberfestProjectFetcher do
                                 "name": "#{repo_topic_name}"
                               }
                             }
-                          }                        
+                          }
                         ]
                       }
                     }
@@ -122,7 +122,9 @@ RSpec.describe HacktoberfestProjectFetcher do
           repo_stars: repo_stars,
           repo_url: repo_url,
           repo_watchers: repo_watchers,
-          repo_topics: {'edges'=>[{'node'=>{'topic'=>{'name'=>repo_topic_name}}}]}
+          repo_topics: { 'edges' => [
+            { 'node' => { 'topic' => { 'name' => repo_topic_name } } }
+          ] }
         }
       ]
     end
@@ -209,7 +211,7 @@ RSpec.describe HacktoberfestProjectFetcher do
                                   "name": "#{repo_topic_name}"
                                 }
                               }
-                            }                        
+                            }
                           ]
                         }
                       }
@@ -278,7 +280,7 @@ RSpec.describe HacktoberfestProjectFetcher do
                                   "name": "#{repo_topic_name}"
                                 }
                               }
-                            }                        
+                            }
                           ]
                         }
                       }
@@ -324,7 +326,9 @@ RSpec.describe HacktoberfestProjectFetcher do
             repo_stars: repo_stars,
             repo_url: repo_url,
             repo_watchers: repo_watchers,
-            repo_topics: {'edges'=>[{'node'=>{'topic'=>{'name'=>repo_topic_name}}}]}
+            repo_topics: { 'edges' => [
+              { 'node' => { 'topic' => { 'name' => repo_topic_name } } }
+            ] }
           },
           {
             issue_database_id: issue_database_id2,
@@ -343,7 +347,9 @@ RSpec.describe HacktoberfestProjectFetcher do
             repo_stars: repo_stars,
             repo_url: repo_url,
             repo_watchers: repo_watchers,
-            repo_topics: {'edges'=>[{'node'=>{'topic'=>{'name'=>repo_topic_name}}}]}
+            repo_topics: { 'edges' => [
+              { 'node' => { 'topic' => { 'name' => repo_topic_name } } }
+            ] }
           }
         ]
       end

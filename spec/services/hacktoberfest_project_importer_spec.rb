@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/LineLength
 describe HacktoberfestProjectImporter do
   describe '#import' do
     context 'Given a project' do
@@ -40,7 +41,7 @@ describe HacktoberfestProjectImporter do
           repo_stars: repo_stars,
           repo_url: repo_url,
           repo_watchers: repo_watchers,
-          repo_topics: Hashie::Mash.new('edges'=>[{'node'=>{'topic'=>{'name'=>repo_topic_name}}}])
+          repo_topics: Hashie::Mash.new('edges' => [{ 'node' => { 'topic' => { 'name' => repo_topic_name } } }])
         }
 
         importer = HacktoberfestProjectImporter.new
@@ -116,7 +117,7 @@ describe HacktoberfestProjectImporter do
           repo_stars: repo_stars,
           repo_url: repo_url,
           repo_watchers: repo_watchers,
-          repo_topics: Hashie::Mash.new('edges'=>[{'node'=>{'topic'=>{'name'=>repo_topic_name}}}])
+          repo_topics: Hashie::Mash.new('edges' => [{ 'node' => { 'topic' => { 'name' => repo_topic_name } } }])
         }
 
         importer = HacktoberfestProjectImporter.new
@@ -204,7 +205,7 @@ describe HacktoberfestProjectImporter do
           repo_stars: shared_repo_stars,
           repo_url: shared_repo_url,
           repo_watchers: shared_repo_watchers,
-          repo_topics: Hashie::Mash.new('edges'=>[{'node'=>{'topic'=>{'name'=>shared_repo_topic_name}}}])
+          repo_topics: Hashie::Mash.new('edges' => [{ 'node' => { 'topic' => { 'name' => shared_repo_topic_name } } }])
         }
         shared_project2 = {
           issue_database_id: shared_issue_database_id2,
@@ -223,7 +224,7 @@ describe HacktoberfestProjectImporter do
           repo_stars: shared_repo_stars,
           repo_url: shared_repo_url,
           repo_watchers: shared_repo_watchers,
-          repo_topics: Hashie::Mash.new('edges'=>[{'node'=>{'topic'=>{'name'=>shared_repo_topic_name}}}])
+          repo_topics: Hashie::Mash.new('edges' => [{ 'node' => { 'topic' => { 'name' => shared_repo_topic_name } } }])
         }
         other_project = {
           issue_database_id: other_issue_database_id,
@@ -242,7 +243,7 @@ describe HacktoberfestProjectImporter do
           repo_stars: other_repo_stars,
           repo_url: other_repo_url,
           repo_watchers: other_repo_watchers,
-          repo_topics: Hashie::Mash.new('edges'=>[{'node'=>{'topic'=>{'name'=>shared_repo_topic_name}}}])
+          repo_topics: Hashie::Mash.new('edges' => [{ 'node' => { 'topic' => { 'name' => shared_repo_topic_name } } }])
         }
         projects = [shared_project1, shared_project2, other_project]
 
@@ -263,3 +264,4 @@ describe HacktoberfestProjectImporter do
     end
   end
 end
+# rubocop:enable Metrics/LineLength
