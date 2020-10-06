@@ -1,4 +1,8 @@
 <header>
+  <%= link_to hacktoberfest_update_path, :class => "cta-slim-banner" do %>
+    <span>Updated</span>
+    <span>Hacktoberfest is now officially opt-in only for projects and maintainers.</span>
+  <% end %>
   <nav class="navbar" id="navbar">
     <div class="navbar-primary">
       <a href="/" class="logo">
@@ -23,6 +27,7 @@
           </div>
         </li>
         <li><%= link_to "faq", faq_path, :class => active_path_class?(faq_path, '') + " navLink"  %></li>
+        <li><%= link_to "updates", hacktoberfest_update_path, :class => active_path_class?(hacktoberfest_update_path, '') + " navLink"  %></li>
         <li>
           <% if @current_user %>
             <%= link_to "profile", profile_path, :class => active_path_class?(profile_path, '') + " navLink"  %>
@@ -39,9 +44,9 @@
             id="toggle-checkbox"
             type="checkbox"
             onclick="
-            localStorage.setItem('mode', (localStorage.getItem('mode') || 'light') === 'light' ? 'dark' : 'light'); 
+            localStorage.setItem('mode', (localStorage.getItem('mode') || 'light') === 'light' ? 'dark' : 'light');
             localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
-            " 
+            "
             title="Dark/light"
           />
           <span class="toggle-slider"></span>
