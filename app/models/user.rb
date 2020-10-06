@@ -172,7 +172,7 @@ class User < ApplicationRecord
 
   def bonus_score
     score = waiting_or_eligible_pull_requests_count - 4
-    score < 0 ? 0 : score
+    [score, 0].max
   end
 
   delegate :scoring_pull_requests, :non_scoring_pull_requests,
