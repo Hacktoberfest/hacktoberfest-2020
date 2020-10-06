@@ -7,6 +7,16 @@ class MlhTable
     @api_url = 'https://organize.mlh.io/api/v2/events?type=hacktoberfest-2020'
   end
 
+  def records
+    validated_response || MlhTable.placeholder
+  end
+
+  def self.placeholder
+    { 'data' => AirtablePlaceholderService.call('Meetups') }
+  end
+
+  private
+
   def faraday_connection
     @faraday_connection ||= Faraday.new(
       url: @api_url,
@@ -28,16 +38,25 @@ class MlhTable
       end
     end
     response = @faraday_connection.get
-    return response.body if response.success?
-  rescue StandardError
-    { 'data' => AirtablePlaceholderService.call('Meetups') }
+    response.body if response.success?
   end
 
-  def records
+  def parsed_response
     if faraday_connection.is_a? String
       JSON.parse(faraday_connection)
     else
       faraday_connection
     end
+  end
+
+  def validated_response
+    data = parsed_response
+    return if data.blank?
+    return unless data.key?('data')
+    return unless data['data'].is_a?(Array)
+
+    data
+  rescue StandardError
+    # Ignored
   end
 end
