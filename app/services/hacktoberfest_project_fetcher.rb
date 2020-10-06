@@ -2,7 +2,7 @@
 
 # rubocop:disable Metrics/ClassLength
 class HacktoberfestProjectFetcher
-  NODE_LIMIT = 1
+  NODE_LIMIT = 5
   MAX_RETRIES = ENV.fetch('IMPORT_MAX_RETRIES', 7).to_i
 
   attr_reader :projects
@@ -100,7 +100,8 @@ class HacktoberfestProjectFetcher
         repo_name_with_owner: repository['nameWithOwner'],
         repo_stars: repository['stargazers']['totalCount'],
         repo_watchers: repository['watchers']['totalCount'],
-        repo_url: repository['url']
+        repo_url: repository['url'],
+        repo_topics: repository['repositoryTopics']
       }
       @projects << project
     end
