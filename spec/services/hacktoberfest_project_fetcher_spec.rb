@@ -9,6 +9,7 @@ end
 RSpec.describe HacktoberfestProjectFetcher do
   describe '#fetch!' do
     it 'returns query results in the correct format' do
+      repo_topic_name = 'hacktoberfest'
       repo_code_of_conduct_url = 'https://example.com/code_of_conduct'
       repo_database_id = 9876
       repo_description = 'some clear repo description'
@@ -75,6 +76,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                       },
                       "codeOfConduct": {
                         "url": "#{repo_code_of_conduct_url}"
+                      },
+                      "repositoryTopics": {
+                        "edges": [
+                          {
+                            "node": {
+                              "topic": {
+                                "name": "#{repo_topic_name}"
+                              }
+                            }
+                          }                        
+                        ]
                       }
                     }
                   }
@@ -109,13 +121,15 @@ RSpec.describe HacktoberfestProjectFetcher do
           repo_name_with_owner: repo_name_with_owner,
           repo_stars: repo_stars,
           repo_url: repo_url,
-          repo_watchers: repo_watchers
+          repo_watchers: repo_watchers,
+          repo_topics: {'edges'=>[{'node'=>{'topic'=>{'name'=>repo_topic_name}}}]}
         }
       ]
     end
 
     context 'When there are multiple pages of results' do
       it 'paginates over the results and returns the aggregated result' do
+        repo_topic_name = 'hacktoberfest'
         repo_code_of_conduct_url = 'https://example.com/code_of_conduct'
         repo_database_id = 9876
         repo_description = 'some repo description'
@@ -186,6 +200,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                         },
                         "codeOfConduct": {
                           "url": "#{repo_code_of_conduct_url}"
+                        },
+                        "repositoryTopics": {
+                          "edges": [
+                            {
+                              "node": {
+                                "topic": {
+                                  "name": "#{repo_topic_name}"
+                                }
+                              }
+                            }                        
+                          ]
                         }
                       }
                     }
@@ -244,6 +269,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                         },
                         "codeOfConduct": {
                           "url": "#{repo_code_of_conduct_url}"
+                        },
+                        "repositoryTopics": {
+                          "edges": [
+                            {
+                              "node": {
+                                "topic": {
+                                  "name": "#{repo_topic_name}"
+                                }
+                              }
+                            }                        
+                          ]
                         }
                       }
                     }
@@ -287,7 +323,8 @@ RSpec.describe HacktoberfestProjectFetcher do
             repo_name_with_owner: repo_name_with_owner,
             repo_stars: repo_stars,
             repo_url: repo_url,
-            repo_watchers: repo_watchers
+            repo_watchers: repo_watchers,
+            repo_topics: {'edges'=>[{'node'=>{'topic'=>{'name'=>repo_topic_name}}}]}
           },
           {
             issue_database_id: issue_database_id2,
@@ -305,7 +342,8 @@ RSpec.describe HacktoberfestProjectFetcher do
             repo_name_with_owner: repo_name_with_owner,
             repo_stars: repo_stars,
             repo_url: repo_url,
-            repo_watchers: repo_watchers
+            repo_watchers: repo_watchers,
+            repo_topics: {'edges'=>[{'node'=>{'topic'=>{'name'=>repo_topic_name}}}]}
           }
         ]
       end
@@ -377,6 +415,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                       },
                       'codeOfConduct' => {
                         'url' => 'https://example.com/code_of_conduct'
+                      },
+                      'repositoryTopics' => {
+                        'edges' => [
+                          {
+                            'node' => {
+                              'topic' => {
+                                'name' => 'hacktoberfest'
+                              }
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -487,6 +536,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                       },
                       'codeOfConduct' => {
                         'url' => 'https://example.com/code_of_conduct'
+                      },
+                      'repositoryTopics' => {
+                        'edges' => [
+                          {
+                            'node' => {
+                              'topic' => {
+                                'name' => 'hacktoberfest'
+                              }
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -527,6 +587,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                       },
                       'codeOfConduct' => {
                         'url' => 'https://example.com/code_of_conduct'
+                      },
+                      'repositoryTopics' => {
+                        'edges' => [
+                          {
+                            'node' => {
+                              'topic' => {
+                                'name' => 'hacktoberfest'
+                              }
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -593,6 +664,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                       },
                       'codeOfConduct' => {
                         'url' => 'https://example.com/code_of_conduct'
+                      },
+                      'repositoryTopics' => {
+                        'edges' => [
+                          {
+                            'node' => {
+                              'topic' => {
+                                'name' => 'hacktoberfest'
+                              }
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -630,6 +712,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                       },
                       'codeOfConduct' => {
                         'url' => 'https://example.com/code_of_conduct'
+                      },
+                      'repositoryTopics' => {
+                        'edges' => [
+                          {
+                            'node' => {
+                              'topic' => {
+                                'name' => 'hacktoberfest'
+                              }
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -698,6 +791,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                       },
                       'codeOfConduct' => {
                         'url' => 'https://example.com/code_of_conduct'
+                      },
+                      'repositoryTopics' => {
+                        'edges' => [
+                          {
+                            'node' => {
+                              'topic' => {
+                                'name' => 'hacktoberfest'
+                              }
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -735,6 +839,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                       },
                       'codeOfConduct' => {
                         'url' => 'https://example.com/code_of_conduct'
+                      },
+                      'repositoryTopics' => {
+                        'edges' => [
+                          {
+                            'node' => {
+                              'topic' => {
+                                'name' => 'hacktoberfest'
+                              }
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -772,6 +887,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                       },
                       'codeOfConduct' => {
                         'url' => 'https://example.com/code_of_conduct'
+                      },
+                      'repositoryTopics' => {
+                        'edges' => [
+                          {
+                            'node' => {
+                              'topic' => {
+                                'name' => 'hacktoberfest'
+                              }
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -857,6 +983,17 @@ RSpec.describe HacktoberfestProjectFetcher do
                       },
                       'codeOfConduct' => {
                         'url' => 'https://example.com/code_of_conduct'
+                      },
+                      'repositoryTopics' => {
+                        'edges' => [
+                          {
+                            'node' => {
+                              'topic' => {
+                                'name' => 'hacktoberfest'
+                              }
+                            }
+                          }
+                        ]
                       }
                     }
                   }
