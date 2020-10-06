@@ -712,6 +712,14 @@ body.dark {
   background-color: $dark-backgroundColor !important;
   color: $dark-textColor !important;
 
+  .info-pane h2, .info-pane h3 {
+    color: $dark-backgroundColor !important;
+  }
+
+  .info-pane p {
+    color: $dark-backgroundColor !important;
+  }
+
   h1,
   h2,
   h3 {
