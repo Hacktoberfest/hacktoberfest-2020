@@ -627,7 +627,7 @@ body {
       margin: 60px 0;
     }
   }
-  
+
   //social share
   .social {
     .social-wrapper {
@@ -934,6 +934,17 @@ body.dark {
           color: $white;
         }
       }
+    }
+  }
+
+  .info-pane {
+    background-color: $dark-toggleColor;
+
+    &.do {
+      background: rgba($success, 0.8);
+    }
+    &.dont {
+      background: rgba($danger, 0.8);
     }
   }
 
