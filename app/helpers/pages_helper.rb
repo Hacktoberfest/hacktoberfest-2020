@@ -7,6 +7,10 @@ module PagesHelper
     rescue MlhEventPresenter::ParseError
       # Ignore invalid events
     end.compact
+  rescue StandardError
+    MlhTable.placeholder['data'].map do |e|
+      MlhEventPresenter.new(e)
+    end.compact
   end
 
   def front_page_events

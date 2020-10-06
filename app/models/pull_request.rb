@@ -101,6 +101,9 @@ class PullRequest < ApplicationRecord
     # Don't have this requirement for old PRs
     return true if created_at <= Hacktoberfest.rules_date
 
+    # PR-specific opt-in
+    return true if labelled_accepted?
+
     repository_topics.select { |topic| topic.strip == 'hacktoberfest' }.any?
   end
 

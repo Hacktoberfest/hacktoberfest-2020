@@ -8,37 +8,68 @@ module AirtablePlaceholderService
   def call(table_name)
     case table_name
     when 'Meetups'
-      {
-        'data' =>
-        [
-          {
-            'attributes' => {
-              'title' => 'Hacktoberfest in Brasilia',
-              'startDate' => '2020-10-16',
-              'location' => {
-                'city' => 'Brasilia',
-                'country' => 'Brazil'
-              }
-            },
-            'links' => {
-              'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register'
+      [
+        {
+          'attributes' => {
+            'title' => 'Hacktoberfest in Brasilia',
+            'startDate' => '2020-10-16',
+            'timeZone' => 'America/Sao_Paulo',
+            'location' => {
+              'city' => 'Brasilia',
+              'country' => 'Brazil'
             }
           },
-          {
-            'attributes' => {
-              'title' => 'Hacktoberfest @IPN',
-              'startDate' => '2020-10-01',
-              'location' => {
-                'city' => 'Mexico City',
-                'country' => 'Mexico'
-              }
-            },
-            'links' => {
-              'register' => 'http://organize.mlh.io/participants/events/3924-hacktoberfest-ipn/register'
-            }
+          'links' => {
+            'register' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia/register',
+            'view' => 'http://organize.mlh.io/participants/events/3921-hacktoberfest-in-brasilia'
           }
-        ]
-      }
+        },
+        {
+          'attributes' => {
+            'title' => 'Hacktoberfest 2020 Official Kick-Off Celebration',
+            'startDate' => '2020-10-01',
+            'timeZone' => 'Asia/Calcutta',
+            'location' => {
+              'city' => 'APAC',
+              'country' => 'India'
+            }
+          },
+          'links' => {
+            'register' => 'https://organize.mlh.io/participants/events/4019-hacktoberfest-2020-official-kick-off-celebration/register',
+            'view' => 'https://organize.mlh.io/participants/events/4019-hacktoberfest-2020-official-kick-off-celebration'
+          }
+        },
+        {
+          'attributes' => {
+            'title' => 'Hacktoberfest Tuesdays: Europe',
+            'startDate' => '2020-10-27',
+            'timeZone' => 'Europe/London',
+            'location' => {
+              'city' => 'London',
+              'country' => 'United Kingdom'
+            }
+          },
+          'links' => {
+            'register' => 'https://organize.mlh.io/participants/events/4101-hacktoberfest-tuesdays-europe/register',
+            'view' => 'https://organize.mlh.io/participants/events/4101-hacktoberfest-tuesdays-europe'
+          }
+        },
+        {
+          'attributes' => {
+            'title' => 'Hacktoberfest Tuesdays: Americas',
+            'startDate' => '2020-10-06',
+            'timeZone' => 'America/New_York',
+            'location' => {
+              'city' => 'New York',
+              'country' => 'United States'
+            }
+          },
+          'links' => {
+            'register' => 'https://organize.mlh.io/participants/events/4079-hacktoberfest-tuesdays-east-coast-and-more/register',
+            'view' => 'https://organize.mlh.io/participants/events/4079-hacktoberfest-tuesdays-east-coast-and-more'
+          }
+        }
+      ]
     when 'Event List'
       [
         {

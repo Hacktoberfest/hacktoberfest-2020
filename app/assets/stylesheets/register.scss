@@ -79,7 +79,7 @@ section.reg-content {
       }
 
       .submit-btn {
-        display: flex;
+        display: inline-flex;
         flex-direction: row;
         padding: 21px 40px;
         position: static;
@@ -114,7 +114,8 @@ section.reg-content {
         font-weight: 900;
         font-size: $size-button-text;
         justify-content: center;
-        padding: 20px 75px;
+        padding: 19px 77px;
+        margin-top: 10px;
         text-align: center;
         text-transform: uppercase;
         white-space: nowrap;

@@ -38,7 +38,7 @@ describe MlhTable do
 
     it 'creates a mock table object' do
       table = AirtablePlaceholderService.call('Meetups')
-      expect(table).to have_key('data')
+      expect(table.first).to have_key('attributes')
     end
   end
   # rubocop:enable Metrics/LineLength

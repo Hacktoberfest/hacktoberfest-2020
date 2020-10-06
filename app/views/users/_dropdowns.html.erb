@@ -5,9 +5,7 @@
         <%= f.select :email, @emails,
                      {
                          include_blank: 'Select your preferred email address...',
-                         selected: u.email
-                     },
-                     {
+                         :selected => u.email,
                          :required => true
                      } %>
       </div>
