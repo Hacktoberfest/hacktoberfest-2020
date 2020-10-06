@@ -170,6 +170,11 @@ class User < ApplicationRecord
     score > 4 ? 4 : score
   end
 
+  def bonus_score
+    score = waiting_or_eligible_pull_requests_count - 4
+    [score, 0].max
+  end
+
   delegate :scoring_pull_requests, :non_scoring_pull_requests,
            :scoring_pull_requests_receipt, to: :pull_request_service
 
