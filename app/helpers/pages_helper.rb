@@ -8,7 +8,7 @@ module PagesHelper
       # Ignore invalid events
     end.compact
   rescue StandardError
-    AirtablePlaceholderService.call('Meetups').map do |e|
+    MlhTable.placeholder['data'].map do |e|
       MlhEventPresenter.new(e)
     end.compact
   end
