@@ -36,6 +36,13 @@ Here are a few things you can do that will increase the likelihood of your pull 
 - Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
 - Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 
+Don't: 
+open pull requests with minor text edits on other people's repositories
+If you're looking for a faster way to open four PR's and win, there's a better way!
+Do: 
+Follow a repository's contribution guidelines
+Almost every repo looking for help has a CONTRIBUTING.md file in it, read it first!
+
 ## Resources
 
 - [Contributing to Open Source on GitHub](https://guides.github.com/activities/contributing-to-open-source/)
