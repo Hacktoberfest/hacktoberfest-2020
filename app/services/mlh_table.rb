@@ -28,7 +28,8 @@ class MlhTable
         )
       end
     end
-    response.body if response.success?
+    return response.body if response.success?
+
     { 'data' => AirtablePlaceholderService.call('Meetups') }
   end
 
