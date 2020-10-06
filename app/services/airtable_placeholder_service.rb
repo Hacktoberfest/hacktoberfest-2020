@@ -121,7 +121,7 @@ module AirtablePlaceholderService
             "In an effort to reduce spam and help maintainers,
             we’ve introduced a one-week review period for all pull requests.
             Once you have submitted four eligible PRs
-            (ready-to-review, not drafts), the seven-day review window begins.
+            (ready-to-review, not drafts), the fourteen-day review window begins.
             This period gives maintainers time to
             identify and label any spammy PRs as **invalid**. If your PRs are
             not marked invalid during that window,
