@@ -92,7 +92,7 @@
         padding-bottom: 30px;
         margin: 30px 0 10px 0;
 
-        .icon-box {
+        .icon-box, .icon-box-bonus {
           width: 32px;
           height: 32px;
           margin-right: 20px;
@@ -135,6 +135,7 @@
             display: inline-block;
             width: 32px;
             height: 32px;
+            position: absolute;
           }
 
           .invalid-box {
@@ -156,6 +157,10 @@
             width: 32px;
             height: 32px;
           }
+        }
+
+        .icon-box-bonus {
+          position: relative;
         }
 
         .icon-name-desc {
@@ -296,6 +301,10 @@
         height: 32px;
         margin-right: 20px;
 
+        .icon-box-bonus {
+          position: relative;
+        }
+
         .ineligible-box {
           background-image: asset-url("icon-light-ineligible.svg");
           background-repeat: no-repeat;
@@ -334,6 +343,7 @@
           display: inline-block;
           width: 32px;
           height: 32px;
+          position: absolute;
         }
 
         .invalid-box {
@@ -503,6 +513,7 @@
         display: inline-block;
         width: 32px;
         height: 32px;
+        position: absolute;
       }
 
       span {

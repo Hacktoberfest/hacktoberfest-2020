@@ -3,27 +3,13 @@
     <h3 class="title is-3">Your contributions</h3><br/>
     <table class="is-narrow is-fullwidth">
       <tbody>
+        <% @valid_pr = 0 %>
         <% scoring_pull_requests.map.with_index do |pr, key| %>
-          <%= render partial: 'users/show/pr/pr', locals: { pr: pr } %>
-
-          <% if key == 3 && !show_congratulations %>
-            <tr>
-              <td colspan="2">
-                <div class="winning-msg-cont">
-                  <h2 class="winning-title">You're almost there!</h2>
-                  <span class="winning-desc">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in — which means you’ll have officially completed this year’s challenge!</span>
-                </div>
-              </td>
-            </tr>
-          <% elsif key == 3 && show_congratulations %>
-            <tr>
-              <td colspan="2">
-                <div class="winning-msg-cont">
-                  <h2 class="winning-title">You did it! 🎉</h2>
-                  <span class="winning-desc">You've made four eligible PRs for Hacktoberfest — which means you officially completed this year’s challenge!</span>
-                </div>
-              </td>
-            </tr>
+          
+          <% if pr.eligible? || pr.waiting? %>
+            <%= render partial: 'users/show/pr/pr', locals: { pr: pr, key: key, valid_pr: @valid_pr +=1, show_congratulations: show_congratulations }  %>
+          <% else %>
+            <%= render partial: 'users/show/pr/pr', locals: { pr: pr, key: key, valid_pr: 0, show_congratulations: show_congratulations }  %>
           <% end %>
         <% end %>
 
@@ -104,6 +90,20 @@
           </div>
           <div class="icon-desc">
             Good job! Your PR has passed the review period and counts toward completing the Hacktoberfest challenge!
+          </div>
+        </div>
+      </div>
+      <div class="legend-container">
+        <div class="icon-box-bonus">
+          <div class="bonus-box">
+          </div>
+        </div>
+        <div class="icon-name-desc">
+          <div class="icon-name">
+            Bonus
+          </div>
+          <div class="icon-desc">
+            Outstanding! You’ve gone above and beyond this Hacktoberfest.
           </div>
         </div>
       </div>
