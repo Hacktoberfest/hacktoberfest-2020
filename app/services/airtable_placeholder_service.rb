@@ -176,16 +176,6 @@ module AirtablePlaceholderService
         'Site Stage' => ['Main '],
         'Internal Notes' => 'Check timing given COVID'
       }, {
-        'Question' => 'Do I get a prize for participating? ',
-        'Answer' => 'Aside from the knowledge you’ll gain (and the fun you’ll have), you’ll also receive a limited edition Hacktoberfest T-shirt for submitting 4 valid pull requests. ',
-        'Category' => 'General',
-        'Site Stage' => ['Teaser']
-      }, {
-        'Question' => 'What is a pull request? ',
-        'Answer' => 'Pull requests are proposed code changes you can submit to a branch in a repository on GitHub. Once submitted, a project maintainer will review  and discuss the changes before they become final. ',
-        'Category' => 'General',
-        'Site Stage' => ['Teaser']
-      }, {
         'Question' => 'Do pull requests made on my own repositories count?',
         'Answer' => 'Yes, but we strongly encourage you to make quality contributions to other repositories.',
         'Category' => 'Rules',
@@ -251,11 +241,6 @@ module AirtablePlaceholderService
         'Answer' => 'Why not!? Meetups help increase awareness of open source in your community, all while meeting maintainers, contributors, and community members. You gain the opportunity to learn about the open source ecosystem, from how to start an open source project to marketing your project, sustaining growth, and troubleshooting and maintenance.',
         'Category' => 'Events',
         'Site Stage' => ['Pre Launch ']
-      }, {
-        'Question' => 'How do I get started?',
-        'Answer' => 'Enter your email above to receive updates on this year’s program. ',
-        'Category' => 'General',
-        'Site Stage' => ['Teaser']
       }, {
         'Question' => 'I’d like some credits for my Hacktoberfest meetup attendees. Can you give me some?',
         'Answer' => "Feel free to share the following link with your attendees along with this wording: “New to DigitalOcean? Receive USD $100 in infrastructure credit at https://do.co/hacktoberfest_eventpromo.”\n\nNote that the free credit only applies to users who are new to DigitalOcean, and requires a valid credit card.",
@@ -364,20 +349,10 @@ module AirtablePlaceholderService
         'Category' => 'General',
         'Site Stage' => ['Main ']
       }, {
-        'Question' => 'What is open source? ',
-        'Answer' => 'Open source refers to source code that is publicly accessible and allows anyone to inspect, modify or learn from it. Open source projects encourage collaboration and the freedom to use the software for any purpose you wish.',
-        'Category' => 'General',
-        'Site Stage' => ['Teaser']
-      }, {
         'Question' => 'My international order is delayed. What can I do?',
         'Answer' => 'We recommend contacting DHL in your country for help with clearing the package: [www.dhl.com/global-en/home/our-divisions/ecommerce/customer-service.html](https://www.dhl.com/global-en/home/our-divisions/ecommerce/customer-service.html).',
         'Category' => 'Shipping',
         'Site Stage' => ['Main ']
-      }, {
-        'Question' => 'What is Hacktoberfest?',
-        'Answer' => "Hacktoberfest is a monthlong global celebration of open source software run by DigitalOcean, with a strong focus on encouraging contributions to open source projects. \n\n- Hacktoberfest is open to everyone in our global community!\n- Four quality pull requests must be submitted to public GitHub repositories.\n- You can sign up anytime between October 1 and October 31.",
-        'Category' => 'General',
-        'Site Stage' => ['Teaser']
       }, {
         'Question' => 'Can I make pull requests to issues/repositories that are not listed on the homepage?',
         'Answer' => 'Yes! Any public GitHub repository is good for Hacktoberfest.',
