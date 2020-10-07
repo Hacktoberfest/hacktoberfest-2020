@@ -63,10 +63,6 @@ class ProfilePagePresenter
     @user.name
   end
 
-  def show_timer?
-    @user.waiting?
-  end
-
   def show_congratulations?
     @user.completed_or_won?
   end

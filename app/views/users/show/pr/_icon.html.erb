@@ -1,10 +1,3 @@
-<% if valid_pr > 4 && pr.eligible?%>
-  <div class="icon-box-bonus">
-    <div class="bonus-box">
-    </div>
-  </div>
-<% end %>
-
 <% if pr.invalid_label? %>
   <div class="icon-box">
     <div class="invalid-box">
@@ -18,6 +11,11 @@
 <% elsif pr.not_accepted? %>
   <div class="icon-box">
     <div class="unaccepted-box">
+    </div>
+  </div>
+<% elsif valid_pr > 4 && pr.eligible? %>
+  <div class="icon-box-bonus">
+    <div class="bonus-box">
     </div>
   </div>
 <% elsif pr.eligible? %>
