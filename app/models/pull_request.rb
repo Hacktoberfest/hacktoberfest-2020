@@ -42,7 +42,8 @@ class PullRequest < ApplicationRecord
     event :waiting do
       transition all - %i[eligible] => :waiting,
                  if: lambda { |pr|
-                       !pr.passed_review_period? &&
+                       !pr.hacktoberfest_ended? &&
+                         !pr.passed_review_period? &&
                          !pr.spammy? &&
                          !pr.labelled_invalid? &&
                          pr.in_topic_repo? &&
@@ -112,6 +113,10 @@ class PullRequest < ApplicationRecord
     return true if created_at <= Hacktoberfest.rules_date
 
     merged? || approved? || labelled_accepted?
+  end
+
+  def hacktoberfest_ended?
+    Hacktoberfest.end_date.past?
   end
 
   def github_id
