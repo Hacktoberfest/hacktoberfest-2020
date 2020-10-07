@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class PullRequest < ApplicationRecord
   attr_reader :github_pull_request
 
@@ -136,3 +137,4 @@ class PullRequest < ApplicationRecord
     pr
   end
 end
+# rubocop:enable Metrics/ClassLength
