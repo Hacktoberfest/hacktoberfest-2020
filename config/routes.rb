@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   # Users
   get '/profile', to: 'users#show', as: :profile
-  get '/profile/edit', to: 'users#edit'
+  get '/profile/edit', to: 'users#edit', as: :profile_edit
   patch '/profile/edit', to: 'users#update'
 
   # Pages
