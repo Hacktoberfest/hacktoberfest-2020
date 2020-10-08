@@ -55,6 +55,14 @@ GEM
       net-http-persistent (>= 2.9)
     arel (9.0.0)
     ast (2.4.0)
+    better_html (1.0.15)
+      actionview (>= 4.0)
+      activesupport (>= 4.0)
+      ast (~> 2.0)
+      erubi (~> 1.4)
+      html_tokenizer (~> 0.0.6)
+      parser (>= 2.4)
+      smart_properties
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
@@ -108,6 +116,13 @@ GEM
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
     e2mmap (0.1.0)
+    erb_lint (0.0.30)
+      activesupport
+      better_html (~> 1.0.7)
+      html_tokenizer
+      rainbow
+      rubocop (~> 0.51)
+      smart_properties
     erubi (1.8.0)
     et-orbi (1.2.4)
       tzinfo
@@ -148,6 +163,7 @@ GEM
     hashie (3.6.0)
     health_check (3.0.0)
       railties (>= 5.0)
+    html_tokenizer (0.0.7)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     i18n_data (0.10.0)
@@ -322,6 +338,7 @@ GEM
       thwait
       tilt (>= 1.4.0)
     sixarm_ruby_unaccent (1.2.0)
+    smart_properties (1.15.0)
     sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
     spring (2.1.0)
@@ -393,6 +410,7 @@ DEPENDENCIES
   country_select (~> 4.0)
   dalli (~> 2.7)
   dotenv-rails
+  erb_lint
   factory_bot_rails
   faraday
   faraday_middleware
