@@ -44,21 +44,13 @@ class PullRequestService
   end
 
   def scoring_pull_requests
-    counter = 0
-    all.take_while do |pr|
-      counter += 1 if pr.eligible?
-      counter <= 4
-    end
+    eligible_prs.first(4)
   end
 
   def scoring_pull_requests_receipt
     scoring_pull_requests.map do |pr|
       pr.github_pull_request.graphql_hash
     end
-  end
-
-  def non_scoring_pull_requests
-    all.drop(scoring_pull_requests.count)
   end
 
   protected

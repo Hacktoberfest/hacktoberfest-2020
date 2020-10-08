@@ -102,22 +102,6 @@ RSpec.describe PullRequestService do
     end
   end
 
-  describe '#non_scoring_pull_requests' do
-    context 'a user with more than 4 eligible pull requests' do
-      before { stub_helper(PR_DATA[:valid_array]) }
-      it 'returns the all PRs minus scoring_pull_requests' do
-        expect(pr_service.non_scoring_pull_requests.count).to eq(1)
-      end
-    end
-
-    context 'a user with with 2 eligible pull requests' do
-      before { stub_helper(PR_DATA[:valid_array].first(2)) }
-      it 'returns an empty array' do
-        expect(pr_service.non_scoring_pull_requests.count).to eq(0)
-      end
-    end
-  end
-
   def stub_helper(arr_type)
     PullRequest.delete_all
     allow(pr_service)
