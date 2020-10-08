@@ -173,8 +173,8 @@ class User < ApplicationRecord
     [0, waiting_or_eligible_pull_requests_count - 4].max
   end
 
-  delegate :scoring_pull_requests, :non_scoring_pull_requests,
-           :scoring_pull_requests_receipt, to: :pull_request_service
+  delegate :scoring_pull_requests, :scoring_pull_requests_receipt,
+           to: :pull_request_service
 
   def hacktoberfest_ended?
     Hacktoberfest.end_date.past?
