@@ -79,6 +79,9 @@
         <% if @presenter.display_thank_you? %>
             <%= render partial: 'users/show/thank_you', locals: { user: @presenter.user } %>
         <% end %>
+        <% if @presenter.display_waiting_thank_you? %>
+          <%= render partial: 'users/show/waiting_thank_you', locals: { user: @presenter.user } %>
+        <% end %>
       </div>
       <div class="container">
         <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, scoring_pull_requests: @presenter.scoring_pull_requests, non_scoring_pull_requests: @presenter.non_scoring_pull_requests, show_timer: @presenter.show_timer?, show_congratulations: @presenter.show_congratulations? }  %>

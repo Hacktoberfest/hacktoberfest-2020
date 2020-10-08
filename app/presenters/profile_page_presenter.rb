@@ -27,6 +27,10 @@ class ProfilePagePresenter
     @user.incompleted?
   end
 
+  def display_waiting_thank_you?
+    @user.waiting? && Hacktoberfest.ended?
+  end
+
   def scoring_pull_requests
     # If the user has won, show their winning PRs
     return persisted_winning_pull_requests if @user.receipt
