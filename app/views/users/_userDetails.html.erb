@@ -12,24 +12,26 @@
     </div>
   </div>
 
-  <%= f.label "Select all roles that apply to you..." %>
-  <div class="checkboxes">
-    <% @categories.each do |key, value| %>
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <%= f.check_box(:category,
-                            {
-                                :multiple => true,
-                                :class => 'check-style',
-                                :checked => ((u.category || '').split(',').include? value)
-                            },
-                            value, nil) %>
-            <%= key %>
-          </label>
+  <div class="field">
+    <div class="control">
+      <%= f.label "Select all roles that apply to you..." %>
+      <% @categories.each do |key, value| %>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <%= f.check_box(:category,
+                              {
+                                  :multiple => true,
+                                  :class => 'check-style',
+                                  :checked => ((u.category || '').split(',').include? value)
+                              },
+                              value, nil) %>
+              <%= key %>
+            </label>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 
   <div class="field">
