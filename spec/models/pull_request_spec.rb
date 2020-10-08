@@ -411,6 +411,37 @@ RSpec.describe PullRequest, type: :model do
         after { travel_back }
       end
     end
+
+    context 'Pull request is not approved initially' do
+      let(:pr) { pr_helper(UNMERGED_PR) }
+
+      it 'is in the not_accepted state initially' do
+        expect(pr.state).to eq('not_accepted')
+      end
+
+      it 'has no set waiting_since' do
+        expect(pr.waiting_since).to be_nil
+      end
+
+      context 'Pull request is merged after the end of Hacktoberfest' do
+        before do
+          travel_to Time.zone.parse(ENV['END_DATE']) + 1.day
+
+          stub_helper(pr, IMMATURE_PR, 'id' => pr.github_id)
+          pr.check_state
+        end
+
+        it 'is left in the not_accepted state' do
+          expect(pr.state).to eq('not_accepted')
+        end
+
+        it 'has no set waiting_since' do
+          expect(pr.waiting_since).to be_nil
+        end
+
+        after { travel_back }
+      end
+    end
   end
 
   describe '#eligible' do

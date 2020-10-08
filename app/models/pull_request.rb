@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class PullRequest < ApplicationRecord
   attr_reader :github_pull_request
 
@@ -42,7 +43,8 @@ class PullRequest < ApplicationRecord
     event :waiting do
       transition all - %i[eligible] => :waiting,
                  if: lambda { |pr|
-                       !pr.passed_review_period? &&
+                       !pr.hacktoberfest_ended? &&
+                         !pr.passed_review_period? &&
                          !pr.spammy? &&
                          !pr.labelled_invalid? &&
                          pr.in_topic_repo? &&
@@ -114,6 +116,10 @@ class PullRequest < ApplicationRecord
     merged? || approved? || labelled_accepted?
   end
 
+  def hacktoberfest_ended?
+    Hacktoberfest.end_date.past?
+  end
+
   def github_id
     github_pull_request.id
   end
@@ -131,3 +137,4 @@ class PullRequest < ApplicationRecord
     pr
   end
 end
+# rubocop:enable Metrics/ClassLength
