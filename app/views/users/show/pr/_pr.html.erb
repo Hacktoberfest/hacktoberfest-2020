@@ -1,59 +1,25 @@
-<% if valid_pr == 4 && !show_congratulations %>
-  <tr>
-    <td>
-      <div class="timeline-wrapper">
-        <div class="pr-icon">
-          <%= render partial: 'users/show/pr/icon', locals: { pr: pr, valid_pr: valid_pr } %>
-        </div>
-        <div class="pr-time-title">
-          <div class="timeline-date">
-            <p class="date"><%= Time.parse(pr.github_pull_request.created_at).to_formatted_s(:long) %><br/></p>
-          </div>
-          <h4 class="pr-title">
-            You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
-          </h4>
-        </div>
-        <div class="pr-waiting">
-          <% if pr.waiting? %>
-            <span class="mature">mature in:</span> <span class="count-down" id="<%= pr.github_id %>-waiting-date"><%= pr.waiting_since.to_formatted_s(:long) %></span>
-          <% end %>
-        </div>
+<tr>
+  <td>
+    <div class="timeline-wrapper">
+      <div class="pr-icon">
+        <%= render partial: 'users/show/pr/icon', locals: { pr: pr, pr_type: pr_type } %>
       </div>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <div class="winning-msg-cont">
-        <h2 class="winning-title">You're almost there!</h2>
-        <span class="winning-desc">🎉 You’ve submitted the four required PRs for the Hacktoberfest challenge! So long as your PRs successfully pass the review period, they’ll become valid in — which means you’ll have officially completed this year’s challenge!</span>
+      <div class="pr-time-title">
+        <div class="timeline-date">
+          <p class="date"><%= Time.parse(pr.github_pull_request.created_at).to_formatted_s(:long) %><br/></p>
+        </div>
+        <h4 class="pr-title">
+          You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
+        </h4>
       </div>
-    </td>
-  </tr>
-<% else %>
-  <tr>
-    <td>
-      <div class="timeline-wrapper">
-        <div class="pr-icon">
-          <%= render partial: 'users/show/pr/icon', locals: { pr: pr, pr_type: pr_type } %>
-        </div>
-        <div class="pr-time-title">
-          <div class="timeline-date">
-            <p class="date"><%= Time.parse(pr.github_pull_request.created_at).to_formatted_s(:long) %><br/></p>
-          </div>
-          <h4 class="pr-title">
-            You submitted <a href="<%= pr.url %>"><%= pr.title %></a> to <%= pr.name_with_owner %><br/>
-          </h4>
-        </div>
-        <div class="pr-waiting">
-          <% if pr.waiting? %>
-            <span class="mature">mature in:</span> <span class="count-down" id="<%= pr.github_id %>-waiting-date"><%= pr.waiting_since.to_formatted_s(:long) %></span>
-          <% end %>
-        </div>
+      <div class="pr-waiting">
+        <% if pr.waiting? %>
+          <span class="mature">mature in:</span> <span class="count-down" id="<%= pr.github_id %>-waiting-date"><%= pr.waiting_since.to_formatted_s(:long) %></span>
+        <% end %>
       </div>
-    </td>
-  </tr>
-<% end %>
-
+    </div>
+  </td>
+</tr>
 
 <% if pr.waiting? %>
   <script type="text/javascript">
