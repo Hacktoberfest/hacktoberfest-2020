@@ -57,7 +57,7 @@ section.reg-content {
       }
 
       .select {
-        margin: 10px 0;
+        margin: 10px 0 0;
         width: 470px;
 
         select {
@@ -66,6 +66,20 @@ section.reg-content {
           border-radius: 3px;
           box-sizing: border-box;
           color: $light-categoryColor;
+        }
+      }
+
+      .field {
+        margin: 0 0 30px;
+
+        .field {
+          margin: 0 0 10px;
+        }
+      }
+
+      .checkboxes {
+        .field {
+          margin: 0 0 20px;
         }
       }
 
@@ -178,8 +192,13 @@ body.dark {
   }
 
   section.reg-content .registration-wrapper .registration-left label.checkbox,
+  section.reg-content .registration-wrapper .registration-left label,
   section.reg-content .registration-wrapper .registration-left p {
     color: $diamondColor !important;
+  }
+
+  section.reg-content .registration-wrapper .registration-left p.error {
+    color: $pink !important;
   }
 
   section.reg-content
