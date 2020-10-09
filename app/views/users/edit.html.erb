@@ -8,9 +8,18 @@
         </p>
 
         <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
-          <%= render partial: 'users/dropdowns', locals: { f: f, u: @current_user } %>
+          <div id="form-first">
+            <%= render partial: 'users/dropdowns', locals: { f: f, u: @current_user } %>
 
-          <%= f.submit 'Update profile', :class => 'button-static'%>
+            <div class="checkboxes">
+              <div class="field">
+                <div class="control">
+                  <%= f.submit 'Update profile', :class => 'button-static'%>
+                </div>
+              </div>
+            </div>
+
+          </div>
         <% end %>
       </div>
 

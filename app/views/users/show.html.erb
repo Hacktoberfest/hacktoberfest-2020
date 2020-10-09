@@ -10,8 +10,9 @@
           </div>
           <h2 class='username title is-2'><%= @presenter.name %> </h2>
         </span>
-        <div class="logout-wrapper">
-          <%= link_to "Log out @#{@presenter.name}", logout_path, :class => "logout" %>
+        <div class="profile-actions">
+          <%= link_to "Edit Profile", profile_edit_path, :class => "button-static edit" %>
+          <%= link_to "Log out @#{@presenter.name}", logout_path, :class => "button-static logout" %>
         </div>
       </div>
 
@@ -38,30 +39,37 @@
         </div>
       <% elsif @presenter.scoring_pull_requests.empty? %>
         <div class="container pre-launch-container">
-          <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
-          <p>Here are some ideas to get you started:</p>
-          <div class="idea-set">
-            <div class="idea-pane">
-              <h3>Attend an Event</h3>
-              <p>Don’t hack alone. Join a virtual event and create your pull requests with others.</p>
-              <%= link_to "Find Events", "/events", class: "button-static" %>
+          <% if @presenter.display_post_launch? %>                    
+            <h2 class='title is-2'>Hacktoberfest 2020 is officially over.</h2>
+            <p>We noticed that you registered but didn’t make any pull requests this year. 
+               Please come back next year and contribute to #Hacktoberfest2021!
+            </p>
+          <% else %>
+            <h2 class='title is-2'>You haven't made any pull requests yet.</h2>
+            <p>Here are some ideas to get you started:</p>
+            <div class="idea-set">
+              <div class="idea-pane">
+                <h3>Attend an Event</h3>
+                <p>Don’t hack alone. Join a virtual event and create your pull requests with others.</p>
+                <%= link_to "Find Events", "/events", class: "button-static" %>
+              </div>
+              <div class="idea-pane">
+                <h3>Find ideas in tagged issues</h3>
+                <p>Check out these links for good first issues that will qualify for the Hacktoberfest challenge.</p>
+                <%= link_to "Find an issue", details_path, anchor: "beginners", class: "button-static" %>
+              </div>
+              <div class="idea-pane">
+                <h3>Join the Hacktoberfest Discord</h3>
+                <p>Connect with other participants, share ideas and get the help you need to complete the challenge.</p>
+                <%= link_to "Attend an event", "https://discord.gg/hacktoberfest", class: "button-static" %>
+              </div>
+              <div class="idea-pane">
+                <h3>Fork your own repo with your own PRs</h3>
+                <p>Not ready to contribute to an open source project? View this guide to making your own repo and creating pull requests to complete the challenge.</p>
+                <%= link_to "Get started", "https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github", class: "button-static" %>
+              </div>
             </div>
-            <div class="idea-pane">
-              <h3>Find ideas in tagged issues</h3>
-              <p>Check out these links for good first issues that will qualify for the Hacktoberfest challenge.</p>
-              <%= link_to "Find an issue", details_path, anchor: "beginners", class: "button-static" %>
-            </div>
-            <div class="idea-pane">
-              <h3>Join the Hacktoberfest Discord</h3>
-              <p>Connect with other participants, share ideas and get the help you need to complete the challenge.</p>
-              <%= link_to "Attend an event", "https://discord.gg/hacktoberfest", class: "button-static" %>
-            </div>
-            <div class="idea-pane">
-              <h3>Fork your own repo with your own PRs</h3>
-              <p>Not ready to contribute to an open source project? View this guide to making your own repo and creating pull requests to complete the challenge.</p>
-              <%= link_to "Get started", "https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github", class: "button-static" %>
-            </div>
-          </div>
+          <% end %>
           
         </div>
       <% end %>
@@ -78,6 +86,9 @@
         <% end %>
         <% if @presenter.display_thank_you? %>
             <%= render partial: 'users/show/thank_you', locals: { user: @presenter.user } %>
+        <% end %>
+        <% if @presenter.display_waiting_thank_you? %>
+          <%= render partial: 'users/show/waiting_thank_you', locals: { user: @presenter.user } %>
         <% end %>
       </div>
       <div class="container">
@@ -103,9 +114,9 @@
     </div>
     <div class="education-wrapper">
       <div class="info-pane">
-        <h3>Do's and Dont's of Hacktoberfest</h3>
+        <h3>Do's and Don'ts of Hacktoberfest</h3>
         <div class="info-pane-item dont">
-          <h2>Don't: open pull requests with minor text edits on other people's repositories</h2>
+          <h2>Don't: Open pull requests with minor text edits on other people's repositories</h2>
           <p>If you're looking for a faster way to open four PR's and win, there's a better way!</p>
         </div>
         <div class="info-pane-item do">
@@ -113,7 +124,7 @@
           <p>Almost every repo looking for help has a <code>CONTRIBUTING.md</code> file in it, <em>read it first!</em></p>
         </div>
         <div class="info-pane-item dont">
-          <h2>Don't: feel intimidated</h2>
+          <h2>Don't: Feel intimidated</h2>
           <p><a href="/events">Register for an event</a> and learn with a group, or connect with others in the Discord chat.</p>
         </div>
       </div>
