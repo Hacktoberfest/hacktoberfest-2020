@@ -6,7 +6,7 @@ section.reg-content {
 
     h1 {
       color: $light-headlineColor;
-      font-family: $family-sans-serif;
+      font-family: $title-family;
       font-size: $size-1;
       font-weight: 900;
       line-height: 44px;
@@ -18,6 +18,10 @@ section.reg-content {
 
       form {
         display: flex;
+
+        > div {
+          max-width: 100%;
+        }
       }
 
       .hidden {
@@ -54,6 +58,7 @@ section.reg-content {
 
       .select {
         margin: 10px 0;
+        width: 470px;
 
         select {
           background-color: $light-backgroundColor;
@@ -62,6 +67,11 @@ section.reg-content {
           box-sizing: border-box;
           color: $light-categoryColor;
         }
+      }
+
+      label {
+        color: $light-categoryColor;
+        font-size: 1rem;
       }
 
       label.checkbox:hover {
