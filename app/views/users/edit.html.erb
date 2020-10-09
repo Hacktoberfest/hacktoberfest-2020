@@ -2,23 +2,16 @@
   <div class="container">
     <div class="registration-wrapper">
       <div class="registration-left">
-        <h1 class="title is-1">About you</h1>
-        <p>
-          Please select which email address you'd like to use for Hacktoberfest:
-        </p>
-
         <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
           <div id="form-first">
+            <h1 class="title is-1">About you</h1>
+            <p>
+              Update your profile preferences for Hacktoberfest:
+            </p>
+
             <%= render partial: 'users/userDetails', locals: { f: f, u: @current_user } %>
 
-            <div class="checkboxes">
-              <div class="field">
-                <div class="control">
-                  <%= f.submit 'Update profile', :class => 'button-static'%>
-                </div>
-              </div>
-            </div>
-
+            <%= f.submit 'Update profile', :class => 'btn-sml'%>
           </div>
         <% end %>
       </div>
