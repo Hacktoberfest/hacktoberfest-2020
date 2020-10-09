@@ -11,6 +11,10 @@ class ProfilePagePresenter
     Hacktoberfest.pre_launch?
   end
 
+  def display_post_launch?
+    Hacktoberfest.ended?
+  end
+
   def display_coupon?
     @user.won_shirt? || @user.won_sticker?
   end
