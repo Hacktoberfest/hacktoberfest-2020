@@ -100,4 +100,26 @@ describe ProfilePagePresenter do
 
     after { travel_back }
   end
+
+  context 'Hacktoberfest has ended the user is waiting' do
+    before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
+
+    it 'displays the waiting thank you partial' do
+      expect(waiting_user_presenter.display_waiting_thank_you?).to eq(true)
+    end
+
+    it 'does not display the coupons partial' do
+      expect(incompleted_user_presenter.display_coupon?).to eq(false)
+    end
+
+    it 'does not display the waiting for prize partial' do
+      expect(waiting_user_presenter.display_waiting_for_prize?).to eq(false)
+    end
+
+    it 'does not display the pre_launch partial' do
+      expect(incompleted_user_presenter.display_pre_launch?).to eq(false)
+    end
+
+    after { travel_back }
+  end
 end
