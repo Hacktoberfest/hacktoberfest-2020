@@ -10,8 +10,9 @@
           </div>
           <h2 class='username title is-2'><%= @presenter.name %> </h2>
         </span>
-        <div class="logout-wrapper">
-          <%= link_to "Log out @#{@presenter.name}", logout_path, :class => "logout" %>
+        <div class="profile-actions">
+          <%= link_to "Edit Profile", profile_edit_path, :class => "button-static edit" %>
+          <%= link_to "Log out @#{@presenter.name}", logout_path, :class => "button-static logout" %>
         </div>
       </div>
 

@@ -206,24 +206,24 @@
         margin-top: 0;
       }
 
-      .logout-wrapper {
+      .profile-actions {
         display: inline-block;
         right: 0;
         position: absolute;
 
-        .logout {
-          background-color: $buttonColor;
-          color: $light-backgroundColor;
+        .button-static {
           font-size: $size-button-text;
           padding: 5px 20px;
           -moz-border-radius: 32px;
           -webkit-border-radius: 32px;
           -khtml-border-radius: 32px;
           border-radius: 32px;
+          font-weight: normal;
+          text-transform: none;
+          margin: 0 5px;
         }
 
-        .logout:hover {
-          background-color: $light-buttonHoverColor;
+        .button-static:hover {
           text-decoration: none;
         }
       }
@@ -675,10 +675,6 @@ body.dark {
     color: $dark-highlightColor;
   }
 
-  .profile-page .profile-left .account-wrapper .logout-wrapper .logout:hover {
-    background-color: $dark-buttonHoverColor;
-  }
-
   .profile-page .profile-left .main-content-wrapper a.button-static {
     color: $buttonTextColor;
   }
@@ -870,7 +866,7 @@ body.dark {
     display: block;
   }
 
-  .profile-page .profile-left .account-wrapper .logout-wrapper {
+  .profile-page .profile-left .account-wrapper .profile-actions {
     position: relative;
     display: block;
     margin: 20px 0;
