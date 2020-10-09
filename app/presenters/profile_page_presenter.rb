@@ -11,6 +11,10 @@ class ProfilePagePresenter
     Hacktoberfest.pre_launch?
   end
 
+  def display_post_launch?
+    Hacktoberfest.ended?
+  end
+
   def display_coupon?
     @user.won_shirt? || @user.won_sticker?
   end
@@ -27,11 +31,19 @@ class ProfilePagePresenter
     @user.incompleted?
   end
 
+  def display_waiting_thank_you?
+    @user.waiting? && Hacktoberfest.ended?
+  end
+
   def scoring_pull_requests
-    if @user.receipt
-      persisted_winning_pull_requests
-    else
-      @user.scoring_pull_requests
+    # If the user has won, show their winning PRs
+    return persisted_winning_pull_requests if @user.receipt
+
+    # Show all the PRs until we reach four winning/waiting
+    counter = 0
+    @user.pull_requests.take_while do |pr|
+      counter += 1 if pr.eligible? || pr.waiting?
+      counter <= 4
     end
   end
 
@@ -44,7 +56,9 @@ class ProfilePagePresenter
   end
 
   def non_scoring_pull_requests
-    @user.non_scoring_pull_requests
+    # Show all the PRs not in the scoring section
+    scoring = scoring_pull_requests.map(&:github_id)
+    @user.pull_requests.reject { |pr| scoring.include?(pr.github_id) }
   end
 
   def score
@@ -56,7 +70,7 @@ class ProfilePagePresenter
   end
 
   def bonus_score
-    (@user.eligible_pull_requests_count || 0) - @user.score
+    @user.bonus_score || 0
   end
 
   def name
