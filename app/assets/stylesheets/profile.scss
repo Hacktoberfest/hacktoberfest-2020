@@ -182,8 +182,8 @@
 
     .account-wrapper {
       display: flex;
-      position: relative;
       text-align: left;
+      justify-content: space-between;
 
       @media screen and (max-width: $break-small) {
         text-align: center;
@@ -212,10 +212,6 @@
       }
 
       .profile-actions {
-        display: inline-block;
-        right: 0;
-        position: absolute;
-
         .button-static {
           font-size: $size-button-text;
           padding: 5px 20px;
@@ -225,7 +221,7 @@
           border-radius: 32px;
           font-weight: normal;
           text-transform: none;
-          margin: 0 5px;
+          margin: 5px;
         }
 
         .button-static:hover {
