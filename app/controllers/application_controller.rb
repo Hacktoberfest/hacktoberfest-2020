@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :set_current_user
+  around_action :switch_locale
   rescue_from Faraday::ClientError, with: :api_error
   rescue_from Octokit::Unauthorized, with: :github_unauthorized_error
   rescue_from Octokit::ServerError, with: :api_error
@@ -50,6 +51,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+ 
+  def switch_locale(&action)
+    locale = params[:locale] || I18n.default_locale
+    I18n.with_locale(locale, &action)
+  end
 
   def valid_token?
     TokenValidatorService.new(@current_user.provider_token).valid?

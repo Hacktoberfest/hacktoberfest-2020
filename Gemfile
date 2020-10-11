@@ -18,6 +18,8 @@ gem 'faraday_middleware'
 
 gem 'health_check'
 
+gem "i18n", "~> 1.6"
+
 gem 'jbuilder', '~> 2.5'
 
 gem 'kramdown'

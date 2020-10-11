@@ -399,6 +399,7 @@ DEPENDENCIES
   figaro
   guard-rspec
   health_check
+  i18n (~> 1.6)
   jbuilder (~> 2.5)
   kramdown
   listen (>= 3.0.5, < 3.2)
