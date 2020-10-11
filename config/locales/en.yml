@@ -1,33 +1,56 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  pages:
+    homepage:
+      closing_homepage:
+        browse_github:
+          zero: "Browse more on GitHub"
+          other: "Browse projects on GitHub"
+        cannot_load_projects: "Sorry, we couldn't load any projects to highlight at this time."
+        click_to_browse_projects: "Click the button below to browse for projects directly on GitHub."
+        event_details: "Event details"
+        event_details_intro: 'Hacktoberfest® is open to everyone in our global community. Whether you’re a
+        developer, student learning to code, event host, or company of any size, you can help drive growth of open
+        source and make positive contributions to an ever-growing community. All backgrounds and skill levels are
+        encouraged to complete the challenge.'
+        event_details_open_to_all_html: 'Hacktoberfest is a celebration <strong>open to everyone</strong> in our global community.'
+        event_details_participating_repos_html: 'Pull requests can be made in <strong>participating GitHub-hosted repositories/projects</strong>,
+        classified with the Hacktoberfest topic.'
+        event_details_signup_timeline_html: 'You can sign up anytime between October 1 and October 31.'
+        featured_projects_title: 'Projects focused on climate change & COVID-19 relief'
+        featured_projects_description: "Featured projects focused on tackling climate change and supporting the fight against COVID-19."
+        global_events: 'Global events'
+        hacktoberfest: "Hacktoberfest"
+        hacktoberfest_projects: "Hacktoberfest projects"
+        join_discord: "Join the conversation"
+        organize_or_paricipate_in_event_html: 'Celebrate and support open source technology by
+          <a href="https://hacktoberfest.digitalocean.com/eventkit">organizing</a> or
+          <a href="https://hacktoberfest.digitalocean.com/events">attending</a> a virtual event in October.'
+        participating_projects_list: "You can contribute to participating projects on GitHub. Here are a few looking for some help:"
+        participation_details_link: "participation details"
+        presented_by: "Presented by"
+        read_participation_details: "Read the %{participation_details_link} to learn how to
+        earn your Hacktoberfest tee or tree reward."
+        remove_filter: 'Remove filter'
+        rules: 'To earn your Hacktoberfest tee or tree reward, you must register and make four valid pull requests (PRs) between
+        October 1-31 (in any time zone). PRs can be made to participating public repos on GitHub, those that have the
+        Hacktoberfest topic. If a maintainer reports your pull request as spam or behavior not in line with the
+        project’s code of conduct, you will be ineligible to participate. This year, the first 70,000 participants who
+        successfully complete the challenge will be eligible to receive a prize.'
+        rules_title: 'Rules'
+        see_more_events: 'See more events'
+        select_language: "Select language"
+        spread_the_word: "Spread the word"
+        sponsor_dev_from: "From Dev"
+        sponsor_dev_message: "DEV/Forem is proud to support Hacktoberfest, a truly wonderful celebration of open-source. Whether you're an
+            individual contributor or a project maintainer, please join us on DEV to share your Hacktoberfest journey.
+            We can't wait to see you there."
+        sponsor_digital_ocean_from: "From Digital Ocean"
+        sponsor_digital_ocean_message: "Now in its 7th year, Hacktoberfest has become an integral thread in our company fabric. We wouldn’t be here
+            without the passionate community and helpful partners that make this program such a spectacular event. A big
+            thank you to all that are joining for the first time and those that keep coming back year after year."
+        sponsor_intel_from: "From Intel"
+        sponsor_intel_message: "Did you know that Intel is among the top ten contributors to open-source software? <br/> <br/>
+            We’re honored to join the Hacktoberfest celebration this year to build on this foundation along with
+            hundreds of thousands of software engineers around the world."
+        start_hacking: "start hacking"
+        support_for_free_tree_or_shirt_html: "<span class='highlight'>Support open source</span> and pick a limited edition T-shirt or plant a tree."
