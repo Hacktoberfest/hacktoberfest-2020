@@ -13,6 +13,11 @@
     <div class="unaccepted-box">
     </div>
   </div>
+<% elsif is_bonus == true && pr.eligible? %>
+  <div class="icon-box-bonus">
+    <div class="bonus-box">
+    </div>
+  </div>
 <% elsif pr.eligible? %>
   <div class="icon-box">
     <div class="eligible-box">

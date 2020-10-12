@@ -4,7 +4,7 @@
     <table class="is-narrow is-fullwidth">
       <tbody>
         <% scoring_pull_requests.map do |pr| %>
-          <%= render partial: 'users/show/pr/pr', locals: { pr: pr } %>
+          <%= render partial: 'users/show/pr/pr', locals: { pr: pr, is_bonus: false } %>
         <% end %>
 
         <% if show_timer %>
@@ -31,12 +31,12 @@
 
         <% if non_scoring_pull_requests.any? %>
           <% non_scoring_pull_requests.map do |pr| %>
-            <%= render partial: 'users/show/pr/pr', locals: { pr: pr } %>
+            <%= render partial: 'users/show/pr/pr', locals: { pr: pr, is_bonus: true } %>
           <% end %>
         <% end %>
+        
       </tbody>
     </table>
-
     <div class="legend has-text-white">
       <h4 class="title is-4">Legend</h4>
       <div class="legend-container">
@@ -108,6 +108,20 @@
           </div>
           <div class="icon-desc">
             Good job! Your PR has passed the review period and counts toward completing the Hacktoberfest challenge!
+          </div>
+        </div>
+      </div>
+      <div class="legend-container">
+        <div class="icon-box-bonus">
+          <div class="bonus-box">
+          </div>
+        </div>
+        <div class="icon-name-desc">
+          <div class="icon-name">
+            Bonus
+          </div>
+          <div class="icon-desc">
+            Outstanding! You’ve gone above and beyond this Hacktoberfest.
           </div>
         </div>
       </div>
