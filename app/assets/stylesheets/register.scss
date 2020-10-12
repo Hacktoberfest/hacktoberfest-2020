@@ -150,7 +150,7 @@ section.reg-content {
 
         &:hover {
           background-color: $pink;
-        } 
+        }
       }
     }
 
@@ -163,7 +163,7 @@ section.reg-content {
 
       .background-img {
         background-image: asset-url(
-          "hactoberfest-logo-with-sponsors-light.svg"
+          "hacktoberfest-logo-with-sponsors-light.svg"
         );
         background-repeat: no-repeat;
         background-size: contain;
@@ -187,7 +187,7 @@ body.dark {
     .registration-right
     .background-img {
     background-image: asset-url(
-      "hactoberfest-logo-with-sponsors-dark-v2.svg"
+      "hacktoberfest-logo-with-sponsors-dark-v2.svg"
     ) !important;
   }
 
