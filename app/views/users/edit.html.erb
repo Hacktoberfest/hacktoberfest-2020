@@ -9,7 +9,7 @@
 
         <%= form_for :user, url: { action: 'update' }, method: :patch do |f| %>
           <div id="form-first">
-            <%= render partial: 'users/dropdowns', locals: { f: f, u: @current_user } %>
+            <%= render partial: 'users/userDetails', locals: { f: f, u: @current_user } %>
 
             <div class="checkboxes">
               <div class="field">
