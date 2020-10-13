@@ -45,7 +45,7 @@ class ProfilePagePresenter
 
   def scoring_pull_requests
     # If the user has won, show their winning PRs
-    return persisted_winning_pull_requests if @user.receipt
+    return persisted_winning_pull_requests if @user.receipt.present?
 
     # Show all the PRs until we reach four winning/waiting
     counter = 0
