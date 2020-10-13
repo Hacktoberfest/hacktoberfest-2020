@@ -37,7 +37,7 @@
           <%= link_to "Attend an event", events_path, class: "button-static" %>
           <%= link_to "Organize an event", event_kit_path, class: "button-static" %>
         </div>
-      <% elsif @presenter.scoring_pull_requests.empty? %>
+      <% elsif @presenter.display_no_contributions? %>
         <div class="container pre-launch-container">
           <% if @presenter.display_post_launch? %>                    
             <h2 class='title is-2'>Hacktoberfest 2020 is officially over.</h2>
@@ -92,7 +92,7 @@
         <% end %>
       </div>
       <div class="container">
-        <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, scoring_pull_requests: @presenter.scoring_pull_requests, non_scoring_pull_requests: @presenter.non_scoring_pull_requests, show_timer: @presenter.show_timer?, show_congratulations: @presenter.show_congratulations? }  %>
+        <%= render partial: 'users/show/timeline', locals: { user: @presenter.user, display_timeline: @presenter.display_timeline?, scoring_pull_requests: @presenter.scoring_pull_requests, non_scoring_pull_requests: @presenter.non_scoring_pull_requests, show_timer: @presenter.show_timer?, show_congratulations: @presenter.show_congratulations? }  %>
       </div>
     </div>
 
