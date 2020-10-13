@@ -177,8 +177,8 @@
 
     .account-wrapper {
       display: flex;
-      position: relative;
       text-align: left;
+      justify-content: space-between;
 
       @media screen and (max-width: $break-small) {
         text-align: center;
@@ -206,24 +206,20 @@
         margin-top: 0;
       }
 
-      .logout-wrapper {
-        display: inline-block;
-        right: 0;
-        position: absolute;
-
-        .logout {
-          background-color: $buttonColor;
-          color: $light-backgroundColor;
+      .profile-actions {
+        .button-static {
           font-size: $size-button-text;
           padding: 5px 20px;
           -moz-border-radius: 32px;
           -webkit-border-radius: 32px;
           -khtml-border-radius: 32px;
           border-radius: 32px;
+          font-weight: normal;
+          text-transform: none;
+          margin: 5px;
         }
 
-        .logout:hover {
-          background-color: $light-buttonHoverColor;
+        .button-static:hover {
           text-decoration: none;
         }
       }
@@ -344,6 +340,7 @@
           display: inline-block;
           width: 32px;
           height: 32px;
+          position: absolute;
         }
 
         .invalid-box {
@@ -443,7 +440,7 @@
     }
 
     .winning-msg-cont {
-      margin-top: 40px;
+      margin: 40px 0;
       width: 100%;
 
       h2.winning-title {
@@ -675,10 +672,6 @@ body.dark {
     color: $dark-highlightColor;
   }
 
-  .profile-page .profile-left .account-wrapper .logout-wrapper .logout:hover {
-    background-color: $dark-buttonHoverColor;
-  }
-
   .profile-page .profile-left .main-content-wrapper a.button-static {
     color: $buttonTextColor;
   }
@@ -870,7 +863,7 @@ body.dark {
     display: block;
   }
 
-  .profile-page .profile-left .account-wrapper .logout-wrapper {
+  .profile-page .profile-left .account-wrapper .profile-actions {
     position: relative;
     display: block;
     margin: 20px 0;

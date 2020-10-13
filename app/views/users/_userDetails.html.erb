@@ -1,0 +1,58 @@
+<div class="dropdowns">
+  <% if @current_user.errors.messages[:email].include?("can't be blank") %>
+    <p class="error">Please select a preferred email address to associate with your profile.</p>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email, 'Select your preferred email address' %>
+
+    <div class="control">
+      <div class="select">
+        <%= f.select :email, @emails,
+                     {
+                         include_blank: 'None selected',
+                         :selected => u.email,
+                         :required => true
+                     } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="field">
+      <%= f.label :category, 'Select all roles that apply to you:' %>
+    </div>
+
+    <% categories_selected = (u.category || '').split(',') %>
+    <% @categories.each do |key, value| %>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= f.check_box(:category,
+                            {
+                                :multiple => true,
+                                :class => 'check-style',
+                                :checked => categories_selected.include?(value)
+                            },
+                            value, nil) %>
+            <%= key %>
+          </label>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, 'Select your country (optional)' %>
+
+    <div class="control">
+      <div class="select">
+        <%= f.country_select :country,
+                             {
+                                 include_blank: 'None selected',
+                                 selected: u.country
+                             } %>
+      </div>
+    </div>
+  </div>
+</div>

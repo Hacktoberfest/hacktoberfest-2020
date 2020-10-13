@@ -15,7 +15,7 @@
   </div>
 <% elsif pr.eligible? %>
   <div class="icon-box">
-    <div class="eligible-box">
+    <div class="<%= is_bonus == true ? "bonus" : "eligible" %>-box">
     </div>
   </div>
 <% elsif pr.waiting? %>

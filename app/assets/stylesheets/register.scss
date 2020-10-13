@@ -6,7 +6,7 @@ section.reg-content {
 
     h1 {
       color: $light-headlineColor;
-      font-family: $family-sans-serif;
+      font-family: $title-family;
       font-size: $size-1;
       font-weight: 900;
       line-height: 44px;
@@ -18,6 +18,10 @@ section.reg-content {
 
       form {
         display: flex;
+
+        > div {
+          max-width: 100%;
+        }
       }
 
       .hidden {
@@ -53,7 +57,8 @@ section.reg-content {
       }
 
       .select {
-        margin: 10px 0;
+        margin: 10px 0 0;
+        width: 470px;
 
         select {
           background-color: $light-backgroundColor;
@@ -62,6 +67,25 @@ section.reg-content {
           box-sizing: border-box;
           color: $light-categoryColor;
         }
+      }
+
+      .field {
+        margin: 0 0 30px;
+
+        .field {
+          margin: 0 0 10px;
+        }
+      }
+
+      .checkboxes {
+        .field {
+          margin: 0 0 20px;
+        }
+      }
+
+      label {
+        color: $light-categoryColor;
+        font-size: 1rem;
       }
 
       label.checkbox:hover {
@@ -126,7 +150,7 @@ section.reg-content {
 
         &:hover {
           background-color: $pink;
-        } 
+        }
       }
     }
 
@@ -139,7 +163,7 @@ section.reg-content {
 
       .background-img {
         background-image: asset-url(
-          "hactoberfest-logo-with-sponsors-light.svg"
+          "hacktoberfest-logo-with-sponsors-light.svg"
         );
         background-repeat: no-repeat;
         background-size: contain;
@@ -163,13 +187,18 @@ body.dark {
     .registration-right
     .background-img {
     background-image: asset-url(
-      "hactoberfest-logo-with-sponsors-dark-v2.svg"
+      "hacktoberfest-logo-with-sponsors-dark-v2.svg"
     ) !important;
   }
 
   section.reg-content .registration-wrapper .registration-left label.checkbox,
+  section.reg-content .registration-wrapper .registration-left label,
   section.reg-content .registration-wrapper .registration-left p {
     color: $diamondColor !important;
+  }
+
+  section.reg-content .registration-wrapper .registration-left p.error {
+    color: $pink !important;
   }
 
   section.reg-content

@@ -11,7 +11,7 @@
               Please select which email address you’d like to use for Hacktoberfest and read the
               <a target="_blank" href="/details#rules">rules and values</a>.
             </p>
-            <%= render partial: 'users/dropdowns', locals: { f: f, u: User.new } %>
+            <%= render partial: 'users/userDetails', locals: { f: f, u: User.new } %>
 
             <div class="checkboxes">
               <div class="field">
@@ -41,103 +41,112 @@
                   </label>
                 </div>
               </div>
-            </div>
 
-            <% if @current_user.errors.messages[:terms_acceptance].include?("must be accepted") %>
-              <p class="error">You must accept the terms and conditions to participate in Hactoberfest.</p>
-            <% end %>
-            <% if @current_user.errors.messages[:quality_acceptance].include?("must be accepted") %>
-              <p class="error">You must acknowledge that you understand what constitues a quality contribution to open source.</p>
-            <% end %>
-            <% if @current_user.errors.messages[:disqualify_acceptance].include?("must be accepted") %>
-              <p class="error">You must acknowledge that you will be disqualified for submitting two invalid pull requests.</p>
-            <% end %>
-            <% if @current_user.errors.messages[:email].include?("can't be blank") %>
-              <p class="error">Please select a preferred email address to associate with your profile.</p>
-            <% end %>
+              <% if @current_user.errors.messages[:terms_acceptance].include?("must be accepted") %>
+                <p class="error">You must accept the terms and conditions to participate in Hacktoberfest.</p>
+              <% end %>
 
-            <div class="field">
-              <div class="control">
-                <label class="checkbox">
-                  <%= f.check_box :terms_acceptance, {:class => 'check-style'} %>
-                  I have read and understand the
-                  <a target="_blank" href="/details#rules">Rules and Values</a>.
-                </label>
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <%= f.check_box :terms_acceptance, {:class => 'check-style'} %>
+                    I have read and understand the <a target="_blank" href="/details#rules">Rules and Values</a>.
+                  </label>
+                </div>
               </div>
             </div>
+
             <div data-js="continue" class="btn-sml">Continue</div>
           </div>
 
           <div id="form-second" class="hidden">
-            <p>Before you get started, learn how to create a quality pull request. <strong>You must watch the full video before moving on to the registration steps below.</strong></p>
+            <p>Before you get started, learn how to create a quality pull request.
+              <strong>You must watch the full video before moving on to the registration steps below.</strong></p>
             <br>
             <div class="beginners-video">
               <script src="https://fast.wistia.com/embed/medias/u8up7h2m32.jsonp" async></script>
               <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
               <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
                 <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                  <div class="wistia_embed wistia_async_u8up7h2m32 videoFoam=true" style="height:100%;position:relative;width:100%">
+                  <div class="wistia_embed wistia_async_u8up7h2m32 videoFoam=true"
+                       style="height:100%;position:relative;width:100%">
                     <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-                      <img src="https://fast.wistia.com/embed/medias/u8up7h2m32/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;"/>
+                      <img src="https://fast.wistia.com/embed/medias/u8up7h2m32/swatch"
+                           style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true"
+                           onload="this.parentNode.style.opacity=1;"/>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <br>
-            <div class="field">
-              <div class="control">
-                <label class="checkbox">
-                  <%= f.check_box :quality_acceptance, {:class => 'check-extra', :disabled => 'disable'} %>
-                  I have acknowledged these resources and 
-                  understand what a quality contribution is to open source.
-                </label>
+            <div class="checkboxes">
+              <% if @current_user.errors.messages[:quality_acceptance].include?("must be accepted") %>
+                <p class="error">You must acknowledge that you understand what constitutes a quality contribution to
+                  open source.</p>
+              <% end %>
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <%= f.check_box :quality_acceptance, {:class => 'check-extra', :disabled => 'disable'} %>
+                    I have acknowledged these resources and understand what a quality contribution is to open source.
+                  </label>
+                </div>
               </div>
-            </div>
 
-            <div class="field">
-              <div class="control">
-                <label class="checkbox">
-                  <%= f.check_box :disqualify_acceptance, {:class => 'check-extra', :disabled => 'disable'} %>
-                  I acknowledge that I will be disqualified indefinitely from Hacktoberfest 
-                  if I submit two invalid pull requests.
-                </label>
+              <% if @current_user.errors.messages[:disqualify_acceptance].include?("must be accepted") %>
+                <p class="error">You must acknowledge that you will be disqualified for submitting two invalid pull
+                  requests.</p>
+              <% end %>
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <%= f.check_box :disqualify_acceptance, {:class => 'check-extra', :disabled => 'disable'} %>
+                    I acknowledge that I will be disqualified indefinitely from Hacktoberfest if I submit two invalid
+                    pull requests.
+                  </label>
+                </div>
               </div>
             </div>
 
             <%= f.submit 'Start Hacking', :class => 'submit-btn' %>
             <div data-js="back" class="btn-sml">Back</div>
-          </end>
+          </div>
         <% end %>
       </div>
-    </div>
-    <div class="registration-right">
-      <div class="info-pane">
-        <h3>Do's and Dont's of Hacktoberfest</h3>
-        <div class="info-pane-item dont">
-          <h2>Don't: open pull requests with minor text edits on other people's repositories</h2>
-          <p>If you're looking for a faster way to open four PR's and win, there's a better way!</p>
-        </div>
-        <div class="info-pane-item do">
-          <h2>Do: Follow a repository's contribution guidelines</h2>
-          <p>Almost every repo looking for help has a <code>CONTRIBUTING.md</code> file in it, <em>read it first!</em></p>
-        </div>
-        <div class="info-pane-item dont">
-          <h2>Don't: feel intimidated</h2>
-          <p><a href="/events">Register for an event</a> and learn with a group, or connect with others in the Discord chat.</p>
+
+      <div class="registration-right">
+        <div class="info-pane">
+          <h3>Do's and Don'ts of Hacktoberfest</h3>
+          <div class="info-pane-item dont">
+            <h2>Don't: Open pull requests with minor text edits on other people's repositories</h2>
+            <p>If you're looking for a faster way to open four PR's and win, there's a better way!</p>
+          </div>
+          <div class="info-pane-item do">
+            <h2>Do: Follow a repository's contribution guidelines</h2>
+            <p>Almost every repo looking for help has a <code>CONTRIBUTING.md</code> file in it, <em>read it first!</em>
+            </p>
+          </div>
+          <div class="info-pane-item dont">
+            <h2>Don't: Feel intimidated</h2>
+            <p><a target="_blank" href="/events">Register for an event</a> and learn with a group, or connect with
+              others in the <a target="_blank" href="https://discord.gg/hacktoberfest">Discord chat</a>.</p>
+          </div>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
 </section>
+
 <script type="text/javascript">
-window._wq = window._wq || [];
-_wq.push({ id: 'u8up7h2m32', onReady: function(video) {
-  video.bind("end", function() {
-    $quality_checkers.each(function() {
-        $(this).removeAttr('disabled');     
+    window._wq = window._wq || [];
+    _wq.push({
+        id: 'u8up7h2m32', onReady: function (video) {
+            video.bind("end", function () {
+                $quality_checkers.each(function () {
+                    $(this).removeAttr('disabled');
+                });
+            });
+        }
     });
-  }); 
-}});
 </script>
