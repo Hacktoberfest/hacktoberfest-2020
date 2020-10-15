@@ -44,7 +44,7 @@ class PullRequestService
   end
 
   def scoring_pull_requests
-    eligible_prs.sort_by { |pr| [pr.:eligible?, pr.waiting_since]}.first(4)
+    eligible_prs.sort_by { |pr| [pr.:eligible?, pr.waiting_since] }.first(4)
   end
 
   def scoring_pull_requests_receipt
