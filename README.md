@@ -148,6 +148,9 @@ If you would like to run commands against your app service, you can do that with
 ./script/test-command.sh bundle exec rubocop app config db lib spec --safe-auto-correct
 ```
 
+
+
+
 Or to run a particular spec:
 
 ```
@@ -251,7 +254,7 @@ For your convenience we have created two options:
 
 We created a read-only copy of what the Airtable database should look like.
 
-With this you can create your own schema by following this format:
+With this you can create your own schema by following this format:-
 (https://airtable.com/shrqM142bVC1Gj2t8)
 
 After you’ve created and configured the schema of an Airtable base from the graphical interface,
