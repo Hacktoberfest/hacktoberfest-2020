@@ -2,5 +2,5 @@
 
 require 'simplecov'
 
-SimpleCov.minimum_coverage 90
+SimpleCov.minimum_coverage 72
 SimpleCov.start 'rails'
