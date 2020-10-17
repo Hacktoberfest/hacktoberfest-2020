@@ -2,6 +2,7 @@
 
 require 'omniauth'
 require 'factory_bot'
+require 'coverage_helper'
 require 'webmock/rspec'
 
 # Allow us to mock some methods inside of our factories

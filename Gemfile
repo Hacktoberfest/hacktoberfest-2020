@@ -78,7 +78,7 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'rubocop-rails'
-
+  gem 'simplecov', require: false
   gem 'shoulda-matchers'
 
   gem 'vcr'
