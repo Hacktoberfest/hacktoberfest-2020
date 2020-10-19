@@ -1,10 +1,10 @@
-name: RSpec Tests
+name: Brakeman checks
 
 on: [pull_request]
 
 jobs:
   verify:
-    name:  Build
+    name: Build
     runs-on: ubuntu-latest
 
     services:
@@ -44,6 +44,6 @@ jobs:
     - name: Build
       run: |
         script/cibuild
-    - name: Testing with Rspec
+    - name: Checking vulnerabilities with Brakeman
       run: |
-        bundle exec rspec
+        brakeman --color
