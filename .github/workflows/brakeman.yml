@@ -7,43 +7,15 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:11.3
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    env:
-      RAILS_ENV: test
-      PGHOST: localhost
-      PGUSER: postgres
-      PGDATABASE: hacktoberfest_test
-      START_DATE: "2019-10-01 00:00:00 UTC"
-      RULES_DATE: "2019-10-01 00:00:00 UTC"
-      END_DATE: "2019-11-01 00:00:00 UTC"
-      TEST_USER_GITHUB_TOKEN: ${{ secrets.TEST_USER_GITHUB_TOKEN }}
-      GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
-      GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
-      AIRTABLE_APP_ID: ${{ secrets.AIRTABLE_APP_ID }}
-      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-      SEGMENT_WRITE_KEY: ${{ secrets.SEGMENT_WRITE_KEY }}
-      HACKTOBERFEST_API_KEY: test
-      REDIS_HOST: localhost
-      REDIS_PORT: 6379
-
     steps:
     - uses: actions/checkout@v1
     - name: Set up Ruby 2.5
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.5
-    - name: Build
-      run: |
-        script/cibuild
     - name: Checking vulnerabilities with Brakeman
       run: |
+        sudo apt-get install libpq-dev
+        gem install bundler dotenv
+        bundle install --jobs 4 --retry 3
         brakeman --color
