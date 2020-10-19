@@ -15,7 +15,6 @@ jobs:
         ruby-version: 2.5
     - name: Linting with Rubocop
       run: |
-        sudo apt-get install libpq-dev
-        gem install bundler dotenv
-        bundle install --jobs 4 --retry 3
+        gem install bundler bundle-only
+        bundle-only lint
         bundle exec rubocop
