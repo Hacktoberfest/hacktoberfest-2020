@@ -16,6 +16,5 @@ jobs:
     - name: Checking vulnerabilities with Brakeman
       run: |
         sudo apt-get install libpq-dev
-        gem install bundler dotenv
-        bundle install --jobs 4 --retry 3
+        gem install brakeman
         brakeman --color
