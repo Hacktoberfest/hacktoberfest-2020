@@ -16,7 +16,7 @@ Metrics/BlockLength:
     - 'Guardfile'
 Metrics/MethodLength:
   Max: 35
-Lint/HandleExceptions:
+Lint/SuppressedException:
   AllowComments: true
 Style/PercentLiteralDelimiters:
   Enabled: false
