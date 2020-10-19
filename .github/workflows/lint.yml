@@ -3,18 +3,13 @@ name: Rubocop Linter
 on: [pull_request]
 
 jobs:
-  verify:
-    name: Build
+  build:
     runs-on: ubuntu-latest
-
     steps:
+
     - uses: actions/checkout@v1
-    - name: Set up Ruby 2.5
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.5
-    - name: Linting with Rubocop
-      run: |
-        sudo apt-get install libpq-dev
-        gem install rubocop-rails dotenv
-        rubocop
+
+    - name: Rubocop checks
+        uses: luizfonseca/github-actions-rubocop@1.5.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.TEST_USER_GITHUB_TOKEN }}
