@@ -13,8 +13,8 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.5
-
-    - name: Rubocop checks
-        uses: luizfonseca/github-actions-rubocop@1.5.5
-        env:
-          GITHUB_TOKEN: ${{ secrets.TEST_USER_GITHUB_TOKEN }}
+    - name: Linting with Rubocop
+      run: |
+        gem install bundler bundle-only
+        bundle-only lint
+        bundle exec rubocop
