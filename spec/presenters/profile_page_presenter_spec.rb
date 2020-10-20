@@ -35,29 +35,29 @@ describe ProfilePagePresenter do
 
   context 'the user has won a shirt' do
     let(:shirt_winner) { FactoryBot.create(:user, :won_shirt) }
-    let(:won_shirt_presenter) { ProfilePagePresenter.new(shirt_winner) }
+    let(:shirt_presenter) { ProfilePagePresenter.new(shirt_winner) }
 
     it 'returns a coupon code for the user' do
-      expect(won_shirt_presenter.code).to be_a(String)
+      expect(shirt_presenter.code).to be_a(String)
     end
 
     context 'Hacktoberfest has ended' do
       before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
       it 'displays the coupons partial for a shirt winner' do
-        expect(won_shirt_presenter.display_coupon?).to eq(true)
+        expect(shirt_presenter.display_coupon?).to eq(true)
       end
 
       it 'does not display participant partial' do
-        expect(won_shirt_presenter.display_thank_you?).to eq(false)
+        expect(shirt_presenter.display_thank_you?).to eq(false)
       end
 
       it 'does not display the pre_launch partial' do
-        expect(won_shirt_presenter.display_pre_launch?).to eq(false)
+        expect(shirt_presenter.display_pre_launch?).to eq(false)
       end
 
       it 'does not display the display the waiting for prize partial' do
-        expect(won_shirt_presenter.display_waiting_for_prize?).to eq(false)
+        expect(shirt_presenter.display_waiting_for_prize?).to eq(false)
       end
 
       after { travel_back }
@@ -66,29 +66,29 @@ describe ProfilePagePresenter do
 
   context 'the user has won a sticker' do
     let(:sticker_winner) { FactoryBot.create(:user, :won_sticker) }
-    let(:won_sticker_presenter) { ProfilePagePresenter.new(sticker_winner) }
+    let(:sticker_presenter) { ProfilePagePresenter.new(sticker_winner) }
 
     it 'returns a coupon code for the user' do
-      expect(won_sticker_presenter.code).to be_a(String)
+      expect(sticker_presenter.code).to be_a(String)
     end
 
     context 'Hacktoberfest has ended' do
       before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
       it 'displays the coupons partial for a sticker winner' do
-        expect(won_sticker_presenter.display_coupon?).to eq(true)
+        expect(sticker_presenter.display_coupon?).to eq(true)
       end
 
       it 'does not display participant partial' do
-        expect(won_sticker_presenter.display_thank_you?).to eq(false)
+        expect(sticker_presenter.display_thank_you?).to eq(false)
       end
 
       it 'does not display the pre_launch partial' do
-        expect(won_sticker_presenter.display_pre_launch?).to eq(false)
+        expect(sticker_presenter.display_pre_launch?).to eq(false)
       end
 
       it 'does not display the display the waiting for prize partial' do
-        expect(won_sticker_presenter.display_waiting_for_prize?).to eq(false)
+        expect(sticker_presenter.display_waiting_for_prize?).to eq(false)
       end
 
       after { travel_back }
@@ -99,22 +99,22 @@ describe ProfilePagePresenter do
     before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
     let(:incomplete_user) { FactoryBot.create(:user, :incompleted) }
-    let(:incompleted_user_presenter) { ProfilePagePresenter.new(incomplete_user) }
+    let(:incomplete_presenter) { ProfilePagePresenter.new(incomplete_user) }
 
     it 'displays the thank you partial' do
-      expect(incompleted_user_presenter.display_thank_you?).to eq(true)
+      expect(incomplete_presenter.display_thank_you?).to eq(true)
     end
 
     it 'does not display the coupons partial' do
-      expect(incompleted_user_presenter.display_coupon?).to eq(false)
+      expect(incomplete_presenter.display_coupon?).to eq(false)
     end
 
     it 'does not display the waiting for prize partial' do
-      expect(incompleted_user_presenter.display_waiting_for_prize?).to eq(false)
+      expect(incomplete_presenter.display_waiting_for_prize?).to eq(false)
     end
 
     it 'does not display the pre_launch partial' do
-      expect(incompleted_user_presenter.display_pre_launch?).to eq(false)
+      expect(incomplete_presenter.display_pre_launch?).to eq(false)
     end
 
     after { travel_back }
@@ -122,7 +122,7 @@ describe ProfilePagePresenter do
 
   context 'the user is waiting' do
     let(:waiting_user) { FactoryBot.create(:user, :waiting) }
-    let(:waiting_user_presenter) { ProfilePagePresenter.new(waiting_user) }
+    let(:waiting_presenter) { ProfilePagePresenter.new(waiting_user) }
 
     # Ensure the user is in the right state before we change time
     before { waiting_user.state }
@@ -131,19 +131,19 @@ describe ProfilePagePresenter do
       before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
       it 'displays the waiting thank you partial' do
-        expect(waiting_user_presenter.display_waiting_thank_you?).to eq(true)
+        expect(waiting_presenter.display_waiting_thank_you?).to eq(true)
       end
 
       it 'does not display the coupons partial' do
-        expect(waiting_user_presenter.display_coupon?).to eq(false)
+        expect(waiting_presenter.display_coupon?).to eq(false)
       end
 
       it 'does not display the waiting for prize partial' do
-        expect(waiting_user_presenter.display_waiting_for_prize?).to eq(false)
+        expect(waiting_presenter.display_waiting_for_prize?).to eq(false)
       end
 
       it 'does not display the pre_launch partial' do
-        expect(waiting_user_presenter.display_pre_launch?).to eq(false)
+        expect(waiting_presenter.display_pre_launch?).to eq(false)
       end
 
       after { travel_back }
