@@ -30,7 +30,7 @@ class PullRequest < ApplicationRecord
     end
 
     event :eligible do
-      transition %i[new waiting] => :eligible,
+      transition %i[waiting] => :eligible,
                  if: lambda { |pr|
                        pr.passed_review_period? &&
                          !pr.spammy? &&

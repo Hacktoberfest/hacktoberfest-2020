@@ -393,13 +393,13 @@ RSpec.describe User, type: :model do
     end
 
     context 'hacktoberfest has ended' do
-      before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
-
       context 'user has insufficient eligible prs' do
         let(:user) { FactoryBot.create(:user) }
 
         before do
           pr_stub_helper(user, PR_DATA[:mature_array][0...3])
+          travel_to Time.zone.parse(ENV['END_DATE']) + 8.days
+
           expect(UserStateTransitionSegmentService)
             .to receive(:incomplete).and_return(true)
           user.incomplete
@@ -419,6 +419,8 @@ RSpec.describe User, type: :model do
           expect(user.receipt)
             .to eq(JSON.parse(user.scoring_pull_requests_receipt.to_json))
         end
+
+        after { travel_back }
       end
 
       context 'user has insufficient eligible prs but no receipt' do
@@ -426,6 +428,8 @@ RSpec.describe User, type: :model do
 
         before do
           pr_stub_helper(user, PR_DATA[:mature_array][0...3])
+          travel_to Time.zone.parse(ENV['END_DATE']) + 8.days
+
           allow(user).to receive(:receipt).and_return(nil)
           user.incomplete
         end
@@ -438,6 +442,8 @@ RSpec.describe User, type: :model do
           user.reload
           expect(user.state).to eq('waiting')
         end
+
+        after { travel_back }
       end
 
       context 'user has too many eligible prs' do
@@ -445,6 +451,8 @@ RSpec.describe User, type: :model do
 
         before do
           pr_stub_helper(user, PR_DATA[:mature_array])
+          travel_to Time.zone.parse(ENV['END_DATE']) + 8.days
+
           user.incomplete
         end
 
@@ -456,9 +464,9 @@ RSpec.describe User, type: :model do
           user.reload
           expect(user.state).to eq('waiting')
         end
-      end
 
-      after { travel_back }
+        after { travel_back }
+      end
     end
   end
 

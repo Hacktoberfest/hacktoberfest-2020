@@ -695,6 +695,7 @@ module PullRequestFilterHelper
     allow(target.send(:pull_request_service))
       .to receive(:github_pull_requests)
       .and_return(pull_request_data(pr_data))
+    target.pull_requests
   end
 
   class << self
