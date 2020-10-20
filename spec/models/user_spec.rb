@@ -401,6 +401,7 @@ RSpec.describe User, type: :model do
 
         before do
           pr_stub_helper(user, PR_DATA[:mature_array][0...3])
+          user.pull_requests # Ensure they're in the DB before the time change
           travel_to Time.zone.parse(ENV['END_DATE']) + 8.days
 
           expect(UserStateTransitionSegmentService)
@@ -431,6 +432,7 @@ RSpec.describe User, type: :model do
 
         before do
           pr_stub_helper(user, PR_DATA[:mature_array][0...3])
+          user.pull_requests # Ensure they're in the DB before the time change
           travel_to Time.zone.parse(ENV['END_DATE']) + 8.days
 
           allow(user).to receive(:receipt).and_return(nil)
@@ -454,6 +456,7 @@ RSpec.describe User, type: :model do
 
         before do
           pr_stub_helper(user, PR_DATA[:mature_array])
+          user.pull_requests # Ensure they're in the DB before the time change
           travel_to Time.zone.parse(ENV['END_DATE']) + 8.days
 
           user.incomplete
