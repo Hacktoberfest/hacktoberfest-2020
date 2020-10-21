@@ -15,6 +15,6 @@ jobs:
         ruby-version: 2.5
     - name: Checking vulnerabilities with Brakeman
       run: |
-        sudo apt-get install libpq-dev
-        gem install brakeman
+        gem install bundler bundle-only
+        bundle-only lint
         brakeman --color

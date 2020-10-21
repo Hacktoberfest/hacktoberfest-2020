@@ -70,7 +70,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
-  gem 'brakeman'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'dotenv-rails'
@@ -87,6 +86,7 @@ group :development, :test do
 end
 
 group :lint, :development, :test do
+  gem 'brakeman'
   gem 'rubocop-rails'
 end
 
