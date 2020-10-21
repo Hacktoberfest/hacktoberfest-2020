@@ -39,3 +39,15 @@
   border: 5px solid $light-tooltipBackgroundColor;
   border-color: $light-tooltipBackgroundColor transparent transparent transparent;
 }
+
+body.dark {
+  [data-tooltip]::before {
+    background: $dark-tooltipBackgroundColor;
+    color: $black;
+  }
+
+  [data-tooltip]::after {
+    border: 5px solid $dark-tooltipBackgroundColor;
+    border-color: $dark-tooltipBackgroundColor transparent transparent transparent;
+  }
+}
