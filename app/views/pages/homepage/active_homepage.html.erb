@@ -182,7 +182,7 @@
             </a>
           <% end %>
         </div>
-        <div id="eventmap" style="max-width: 1170px; height: 470px;"></div>
+        <img src="/hf_events_map.png" alt="Hacktoberfest Events 2020" />
         <%= link_to 'See more events', events_path, :class => 'button' %>
       </div>
     </div>
@@ -310,10 +310,5 @@
 </main>
 <script type="text/javascript">
     setupLanguageFilter();
-
     window.google = undefined;
-    var script = document.createElement('script');
-    script.onload = window.setupEventMap;
-    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCSKmGpLScyml6i3_YOoKoE7UCUeYs-H0k";
-    document.head.appendChild(script);
 </script>
