@@ -14,10 +14,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
 
   # Sign up
-  unless Hacktoberfest.ended?
-    get '/register', to: 'users#registration', as: :register_form
-    patch '/register', to: 'users#register', as: :register
-  end
+  get '/register', to: 'users#registration', as: :register_form
+  patch '/register', to: 'users#register', as: :register
 
   # Users
   get '/profile', to: 'users#show', as: :profile
