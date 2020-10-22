@@ -86,6 +86,7 @@ group :development, :test do
 end
 
 group :lint, :development, :test do
+  gem 'brakeman'
   gem 'rubocop-rails'
 end
 
