@@ -40,7 +40,7 @@ RSpec.describe SessionsController, type: :request do
     context 'user not logged in' do
       it 'redirects the user to login', vcr: { record: :new_episodes } do
         get profile_path
-        expect(response).to redirect_to(login_path)
+        expect(response).to redirect_to(login_path(locale: 'en'))
       end
 
       it 'saves user destination in session', vcr: { record: :new_episodes } do
@@ -72,7 +72,7 @@ RSpec.describe SessionsController, type: :request do
         end
 
         it 'redirects to the root_path' do
-          expect(response).to redirect_to(root_path)
+          expect(response).to redirect_to(root_path(locale: 'en'))
         end
       end
     end

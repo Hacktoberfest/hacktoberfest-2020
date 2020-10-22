@@ -109,7 +109,7 @@ RSpec.describe UsersController, type: :request do
       context 'hacktoberfest is active' do
         it 'redirects to the register_path' do
           get profile_path
-          expect(response).to redirect_to(register_path)
+          expect(response).to redirect_to(register_path(locale: 'en'))
         end
       end
 
