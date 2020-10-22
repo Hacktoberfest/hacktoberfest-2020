@@ -182,7 +182,7 @@
             </a>
           <% end %>
         </div>
-        <img src="/hf_events_map.png" alt="Hacktoberfest Events 2020" />
+        <img id="eventmap" src="/hf_events_map.png" alt="Hacktoberfest Events 2020" />
         <%= link_to 'See more events', events_path, :class => 'button' %>
       </div>
     </div>
@@ -310,5 +310,4 @@
 </main>
 <script type="text/javascript">
     setupLanguageFilter();
-    window.google = undefined;
 </script>
