@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   def login_cta
-    Hacktoberfest.ended? ? "View Your Profile" : "Start Hacking"
+    Hacktoberfest.ended? ? 'View Your Profile' : 'Start Hacking'
   end
 end
 # rubocop:enable Rails/OutputSafety
