@@ -8,11 +8,7 @@ class PagesController < ApplicationController
     @projects = ProjectService.sample(9)
     @featured_projects = front_page_projects
     @global_stats = global_stats
-    if Hacktoberfest.ended?
-      render 'pages/homepage/closing_homepage'
-    else
-      render 'pages/homepage/active_homepage'
-    end
+    render 'pages/homepage'
   end
 
   def faqs
