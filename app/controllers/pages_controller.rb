@@ -21,6 +21,7 @@ class PagesController < ApplicationController
 
   def events
     @events = all_events
+    @presenter = EventsPresenter.new
   end
 
   def event_kit; end

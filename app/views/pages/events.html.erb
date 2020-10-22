@@ -1,62 +1,82 @@
 <section class="section">
   <div class="container">
-    <span class="events-page-wrapper">
-      <h1>View all events</h1>
-      <p>
-        Find an event in your time zone and complete the challenge with others in your community! Or, check out our <a href="/eventkit">Hacktoberfest Event Organizer Kit</a> to create your own meetup.
-      </p>
-      <p>
-        <a class="create-event" href="https://organize.mlh.io/host/hacktoberfest-2020">create new event</a>
-      </p>
+    <div class="events-page-wrapper">
+      <h1 class="title is-1">View all events</h1>
 
-    <div id="meetups" class="table-mobile-cards">
-      <input name="filter" class="search filter-input" placeholder="Search for events" />
+      <% if @presenter.display_create_an_event? %>
+        <p>
+          Find an event in your time zone and complete the challenge with others
+          in your community! Or, check out our <a href="/eventkit">Hacktoberfest
+          Event Organizer Kit</a> to create your own meetup.
+        </p>
+        <p>
+          <a class="create-event" href="https://organize.mlh.io/host/hacktoberfest-2020">create new event</a>
+        </p>
+      <% end %>
 
-      <h2 class="highlight">Showing <span data-js="visible_event_count"> all <%= @events.length %></span> events</h2>
+      <% if @presenter.display_look_at_events? %>
+        <p>
+          Take a look at all of the global events that took place during
+          Hacktoberfest 2020.
+        </p>
+        <br/>
+      <% end %>
 
-      <table class="table is-narrow is-narrow is-fullwidth event-table is-fluid">
-        <thead class="thead-sort">
-        <tr class= "sort-container">
-          <th class="sort" data-sort="location">Organizer's Location</th>
-          <th class="sort" data-sort="event_name">Event</th>
-          <th class="sort" data-sort="date">Date</th>
-          <th class="sort" data-sort="time_zone">Time Zone</th>
-          <th>RSVP</th>
-        </tr>
-        </thead>
-        <tbody class="list">
-          <% @events.map do |e| %>
-            <% if e.current? %>
-              <tr>
-            <% else %>
-              <tr class="past">
+      <div id="meetups" class="table-mobile-cards">
+        <input name="filter" class="search filter-input" placeholder="Search for events"/>
+
+        <h2 class="highlight">
+          Showing <span data-js="visible_event_count">all
+          <%= @events.length %></span> events
+        </h2>
+
+        <table class="table is-narrow is-narrow is-fullwidth event-table is-fluid">
+          <thead class="thead-sort">
+          <tr class="sort-container">
+            <th class="sort" data-sort="location">Organizer's Location</th>
+            <th class="sort" data-sort="event_name">Event</th>
+            <th class="sort" data-sort="date">Date</th>
+            <th class="sort" data-sort="time_zone">Time Zone</th>
+            <% if @presenter.display_rsvp_link? %>
+              <th>RSVP</th>
             <% end %>
-                <td class="multisort is-hidden">
-                  <%= e.current? ? 'Future' : 'Past'%>
-                  <%= e.country %>
-                  <%= e.date.strftime("%m %d") %>
-                </td>
-                <td class="location" data-label="location"><%= e.location %></td>
-                <td class="event_name" data-label="event">
-                  <a class="emphasis" href="<%= e.url %>" target="blank" rel="noopener"><%= e.name %></a>
-                  <br/>
-                </td>
-                <td class="date is-hidden"><%= e.date %></td>
-                <td data-label="date"><%= e.date.strftime("%Y/%m/%d") %></td>
-                <td data-label="zone"><%= e.time_zone %></td>
+          </tr>
+          </thead>
+          <tbody class="list">
+            <% @events.map do |e| %>
+            <tr class="<%= e.current? ? "" : "past" %>">
+              <td class="multisort is-hidden">
+                <%= e.current? ? 'Future' : 'Past' %>
+                <%= e.country %>
+                <%= e.date.strftime("%m %d") %>
+              </td>
+              <td class="location" data-label="location"><%= e.location %></td>
+              <td class="event_name" data-label="event">
+                <a class="emphasis" href="<%= e.url %>" target="blank" rel="noopener"><%= e.name %></a>
+                <br/>
+              </td>
+              <td class="date is-hidden"><%= e.date %></td>
+              <td data-label="date"><%= e.date.strftime("%Y/%m/%d") %></td>
+              <td data-label="zone"><%= e.time_zone %></td>
+              <% if @presenter.display_rsvp_link? %>
                 <td><a class="rsvp" href="<%= e.url %>">RSVP here</a></td>
-              </tr>
-          <% end %>
+              <% end %>
+            </tr>
+            <% end %>
+          </tbody>
         </table>
       </div>
-  <script type="text/javascript">
-    var event_count_display = document.querySelector('*[data-js="visible_event_count"]'),
-        meetupsList = new List('meetups', {
-      valueNames: ['multisort', 'location', 'event_name', 'date']
-    });
-    meetupsList.sort('multisort', { order: "asc" });
-    meetupsList.on('updated', function(){
-      event_count_display.innerText = meetupsList.visibleItems.length;
-    });
-  </script>
-</div>
+
+      <script type="text/javascript">
+          var event_count_display = document.querySelector('*[data-js="visible_event_count"]'),
+              meetupsList = new List('meetups', {
+                  valueNames: ['multisort', 'location', 'event_name', 'date']
+              });
+          meetupsList.sort('multisort', {order: "asc"});
+          meetupsList.on('updated', function () {
+              event_count_display.innerText = meetupsList.visibleItems.length;
+          });
+      </script>
+    </div>
+  </div>
+</section>
