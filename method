@@ -1,0 +1,53 @@
+public class code_32_method_overloading {
+     static void foo(){
+          System.out.println("Good morining Bro!");
+     }
+     static void foo(String a){
+          System.out.println("Good morining " + a + " Bro!");
+     }
+     static void foo(int a, int b){
+          System.out.println("Good morining " + a + " Bro!");
+          System.out.println("Good morining " + b + " Bro!");
+     }
+     static void foo(int a, int b, int c){
+          System.out.println("Good morining " + a + " Bro!");
+          System.out.println("Good morining " + b + " Bro!");
+     }
+
+          static void change(int a){
+               a = 98; 
+          }
+
+          static void change2(int [] arr){
+               arr[0] = 98; 
+          }
+
+          static void telljoke(){
+               System.out.println("I Invented a new word\nPlagiarism!");
+          }
+
+	public static void main(String[] args){
+         //telljoke(); 
+
+
+          // Case 1 changing the integer
+          //int x = 45 ;
+          //change(x);
+         // System.out.println("The value of x after running change is: " + x);
+
+
+
+          // Case 2 changing the Array
+          //int[] marks = {52, 85, 46, 52, 76, 67};
+          //change2(marks);
+          //System.out.println("The value of x after running change is: " + marks[0]);
+          
+
+          // method overloading
+          foo();
+          foo("lolo");
+          foo(300, 400);
+          // arguments are actual
+
+     }
+}
