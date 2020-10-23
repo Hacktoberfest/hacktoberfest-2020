@@ -35,8 +35,9 @@ RSpec.describe 'TryUserTransitionFromRegisteredService' do
 
     context 'The user has insufficient PRs and Hacktoberfest has ended' do
       before do
-        travel_to Time.zone.parse(ENV['END_DATE']) + 1.day
         pr_stub_helper(user, PR_DATA[:mature_array][0...3])
+        user.pull_requests # Ensure they're in the DB before the time change
+        travel_to Time.zone.parse(ENV['END_DATE']) + 1.day
         TryUserTransitionFromRegisteredService.call(user)
       end
 

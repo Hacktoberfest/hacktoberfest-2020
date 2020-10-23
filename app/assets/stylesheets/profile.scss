@@ -25,7 +25,11 @@
       -webkit-border-radius: 8px;
       -khtml-border-radius: 8px;
       border-radius: 8px;
-
+      
+      .p-margin{
+        margin-top: 0;
+      }
+      
       p,
       h1,
       h3,
@@ -431,6 +435,15 @@
         .congrats-text {
           width: 70%;
           margin-right: 3%;
+
+         .title.is-1 {
+            font-size: 2.25rem;
+            width: 100%;
+            
+            @media screen and (max-width: $break-small) {
+              font-size: 2rem;
+            }
+          }
         }
 
         .parrot-image {

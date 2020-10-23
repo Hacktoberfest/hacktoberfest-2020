@@ -16,4 +16,4 @@ script/update
 
 echo "==> Running tests…"
 
-bundle exec rspec && rubocop
+bundle exec rspec && rubocop && brakeman --color

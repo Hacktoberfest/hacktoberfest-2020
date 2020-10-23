@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ClassLength
 class PullRequest < ApplicationRecord
   attr_reader :github_pull_request
 
@@ -30,7 +29,7 @@ class PullRequest < ApplicationRecord
     end
 
     event :eligible do
-      transition %i[new waiting] => :eligible,
+      transition %i[waiting] => :eligible,
                  if: lambda { |pr|
                        pr.passed_review_period? &&
                          !pr.spammy? &&
@@ -44,7 +43,6 @@ class PullRequest < ApplicationRecord
       transition all - %i[eligible] => :waiting,
                  if: lambda { |pr|
                        !pr.hacktoberfest_ended? &&
-                         !pr.passed_review_period? &&
                          !pr.spammy? &&
                          !pr.labelled_invalid? &&
                          pr.in_topic_repo? &&
@@ -54,8 +52,13 @@ class PullRequest < ApplicationRecord
 
     after_transition to: %i[waiting],
                      from: %i[new] do |pr, _transition|
+      # If a PR is new to the app, allow it to mature from when it was created
       pr.waiting_since = Time.parse(pr.github_pull_request.created_at).utc
       pr.save!
+
+      # As this PR has a waiting since that might be in the past,
+      #  check if its already eligible
+      pr.eligible
     end
 
     after_transition to: %i[waiting],
@@ -75,14 +78,10 @@ class PullRequest < ApplicationRecord
     waiting
   end
 
-  def most_recent_time
-    return waiting_since unless waiting_since.nil?
-
-    Time.parse(github_pull_request.created_at).utc
-  end
-
   def passed_review_period?
-    most_recent_time <= (Time.zone.now - 14.days)
+    return false if waiting_since.nil?
+
+    waiting_since <= (Time.zone.now - 14.days)
   end
 
   def labelled_invalid?
@@ -137,4 +136,3 @@ class PullRequest < ApplicationRecord
     pr
   end
 end
-# rubocop:enable Metrics/ClassLength

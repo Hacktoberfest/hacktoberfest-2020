@@ -1,25 +1,25 @@
 <% if pr.invalid_label? %>
-  <div class="icon-box">
+  <div class="icon-box" data-tooltip="Invalid">
     <div class="invalid-box">
     </div>
   </div>
 <% elsif pr.spam_repo? || pr.topic_missing? %>
-  <div class="icon-box">
+  <div class="icon-box" data-tooltip="Ineligible Repository">
     <div class="ineligible-box">
     </div>
   </div>
 <% elsif pr.not_accepted? %>
-  <div class="icon-box">
+  <div class="icon-box" data-tooltip="Pending">
     <div class="unaccepted-box">
     </div>
   </div>
 <% elsif pr.eligible? %>
-  <div class="icon-box">
+  <div class="icon-box" data-tooltip="<%= is_bonus == true ? "Bonus" : "Accepted" %>">
     <div class="<%= is_bonus == true ? "bonus" : "eligible" %>-box">
     </div>
   </div>
 <% elsif pr.waiting? %>
-  <div class="icon-box">
+  <div class="icon-box" data-tooltip="In Review">
     <div class="pending-box">
     </div>
   </div>

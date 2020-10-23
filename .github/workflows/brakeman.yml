@@ -1,4 +1,4 @@
-name: Rubocop Linter
+name: Brakeman checks
 
 on: [pull_request]
 
@@ -13,8 +13,8 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.5
-    - name: Linting with Rubocop
+    - name: Checking vulnerabilities with Brakeman
       run: |
         gem install bundler bundle-only
         bundle-only lint
-        bundle exec rubocop
+        brakeman --color

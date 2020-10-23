@@ -116,9 +116,14 @@ RSpec.describe UsersController, type: :request do
       context 'hacktoberfest has ended' do
         before { travel_to Time.zone.parse(ENV['END_DATE']) + 8.days }
 
-        it 'renders the the hacktoberfest ended page' do
+        it 'redirects to the register_path' do
           get profile_path
-          expect(response.body).to include('Registrations are now closed.')
+          expect(response).to redirect_to(register_path)
+        end
+
+        it 'renders the the hacktoberfest ended page' do
+          get register_path
+          expect(response.body).to include('Hacktoberfest 2020 has ended')
         end
 
         after { travel_back }

@@ -77,13 +77,17 @@ group :development, :test do
   gem 'factory_bot_rails'
 
   gem 'rspec-rails'
-  gem 'rubocop-rails'
-
+  gem 'simplecov', require: false
   gem 'shoulda-matchers'
 
   gem 'vcr'
 
   gem 'webmock'
+end
+
+group :lint, :development, :test do
+  gem 'brakeman'
+  gem 'rubocop-rails'
 end
 
 group :development do
