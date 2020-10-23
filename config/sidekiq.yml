@@ -33,4 +33,4 @@
     cron: '0 1 */3 9-11 * America/New_York'
     class: ProjectImportJob
     queue: default
-    description: 'Updates the projects displayed on the homepage every day at 1AM'
+    description: 'Updates the projects displayed on the homepage every three days at 1AM'
