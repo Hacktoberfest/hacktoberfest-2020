@@ -93,21 +93,39 @@ main.home {
       }
     }
 
-    h1 {
-      font-size: 3em;
-      line-height: 58px;
+    h1,
+    h2 {
       letter-spacing: -1px;
       padding-left: $padding-left;
       padding-top: 0;
-      margin-top: 0;
-      margin-bottom: 50px;
+      margin: 0;
       max-width: 760px;
+    }
+
+    h1 {
+      font-size: 3em;
+      line-height: 58px;
 
       @media screen and (max-width: $break-small) {
         font-size: 2.5em;
         line-height: 50px;
         margin-top: 32px;
       }
+    }
+
+    h2 {
+      font-size: 2em;
+      line-height: 38px;
+      margin-top: 32px;
+
+      @media screen and (max-width: $break-small) {
+        font-size: 1.5em;
+        line-height: 30px;
+      }
+    }
+
+    .button {
+      margin-top: 50px;
     }
 
     .presented-by {

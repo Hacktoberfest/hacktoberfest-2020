@@ -1,11 +1,16 @@
 <main class="home">
 
   <section class="home-hero">
-    <div class="hero-content">
+      <div class="hero-content">
       <h1 class="title is-1">
         <span class="highlight">Support open source</span> and pick a limited edition T-shirt or plant a tree.
       </h1>
-      <%= link_to "start hacking", login_path, :class => active_path_class?(profile_path, '') + " button" %>
+      <% if Hacktoberfest.ended? %>
+        <h2 class="title is-2">
+          Hacktoberfest 2020 has ended. See you next year for more open source!
+        </h2>
+      <% end %>
+      <%= link_to login_cta, login_path, :class => active_path_class?(profile_path, '') + " button" %>
       <div class="presented-by">
         <p>Presented by</p>
         <a href="https://www.digitalocean.com">
@@ -20,8 +25,8 @@
           <img alt="DEV logo" class="header-dev-logo">
         </a>
       </div>
-    </div>
-    <img alt="Hacktoberfest T-shirt" class="hero-tshirt">
+      </div>
+      <img alt="Hacktoberfest T-shirt" class="hero-tshirt">
   </section>
 
   <section class="home-video">
@@ -87,7 +92,9 @@
         <a href="#projects">Hacktoberfest projects</a>
       </h2>
       <p>
-        You can contribute to participating projects on GitHub. Here are a few looking for some help:
+        You can contribute to participating projects on GitHub.
+        <%= 'However, pull requests made after October 31st will not count towards Hacktoberfest.' if Hacktoberfest.ended? %>
+        Here are a few looking for some help:
       </p>
       <% if @projects.empty? %>
         <br/>

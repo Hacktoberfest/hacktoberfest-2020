@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :require_user_logged_in!
-  before_action :require_user_registered!, only: :show
+  before_action :require_user_registered!, only: %i[show edit update]
   before_action :disallow_registered_user!, only: :registration
   before_action :transform_categories, only: %i[register update]
   before_action :set_dropdowns, only: %i[registration edit]
@@ -15,16 +15,26 @@ class UsersController < ApplicationController
 
   # action to save registration
   def register
-    @current_user.assign_attributes(params_for_registration)
-    if save_or_register(@current_user)
-      redirect_to profile_path
+    if Hacktoberfest.ended?
+      render 'users/registration_closed'
     else
-      set_dropdowns
-      render 'users/registration'
+      @current_user.assign_attributes(params_for_registration)
+      if save_or_register(@current_user)
+        redirect_to profile_path
+      else
+        set_dropdowns
+        render 'users/registration'
+      end
     end
   end
 
-  def registration; end
+  def registration
+    if Hacktoberfest.ended?
+      render 'users/registration_closed'
+    else
+      render 'users/registration'
+    end
+  end
 
   def edit; end
 
