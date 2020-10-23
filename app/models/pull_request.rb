@@ -44,7 +44,6 @@ class PullRequest < ApplicationRecord
       transition all - %i[eligible] => :waiting,
                  if: lambda { |pr|
                        !pr.hacktoberfest_ended? &&
-                         !pr.passed_review_period? &&
                          !pr.spammy? &&
                          !pr.labelled_invalid? &&
                          pr.in_topic_repo? &&
