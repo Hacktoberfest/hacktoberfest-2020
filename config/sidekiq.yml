@@ -20,7 +20,7 @@
     queue: default
     description: 'This job updates issues for quality standards every day at 5AM'
   :ban_all_repos:
-    cron: 0 */1 * 9-11 *
+    cron: '0 */1 * 9-11 * America/New_York'
     class: BanAllReposJob
     queue: default
     description: 'Ban repos every hour'
