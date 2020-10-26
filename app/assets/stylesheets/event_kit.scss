@@ -55,7 +55,7 @@ $red: #ff8ae2;
   }
 
   .event-kit-sub {
-    margin: 32px auto 120px auto;
+    margin: 32px auto 60px auto;
     text-align: center;
 
     p {
@@ -69,6 +69,17 @@ $red: #ff8ae2;
 
   .create-online-event {
     margin-top: 40px;
+  }
+
+  .table-of-contents {
+    ul {
+      margin-top: 0;
+    }
+
+    a {
+      text-decoration: underline;
+      font-weight: 400;
+    }
   }
 
   .invite-box {
