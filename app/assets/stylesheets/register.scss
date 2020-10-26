@@ -152,6 +152,20 @@ section.reg-content {
           background-color: $pink;
         }
       }
+
+      .beginners-video {
+        position: relative;
+
+        &:before {
+          content: "Video not loading? Ensure that you have disabled any adblockers or privacy shields that may prevent *.wistia.com from loading.\00000a\00000aProblem persisting? Send us an email: hacktoberfest@digitalocean.com";
+          white-space: pre-wrap;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 100%;
+          text-align: center;
+        }
+      }
     }
 
     .registration-right {
