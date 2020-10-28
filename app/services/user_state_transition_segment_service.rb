@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# This class relays the appropiate data to Segment for specific
+# This class relays the appropriate data to Segment for specific
 # user state transitions.
 # rubocop:disable Metrics/CyclomaticComplexity
 module UserStateTransitionSegmentService

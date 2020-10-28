@@ -268,7 +268,7 @@ We have created placeholder service objects that will render test data if your A
 
 This service will be used as default.
 
-You can find this service in `app/services/airtable_placehoder_service.rb`
+You can find this service in `app/services/airtable_placeholder_service.rb`
 
 ### Create First User
 
