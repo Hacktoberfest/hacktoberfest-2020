@@ -15,7 +15,7 @@ module UserStateTransitionSegmentService
     when :incomplete then incomplete(user)
     when :insufficient then insufficient(user)
     when :won then won(user, transition)
-    when :gifted then gifted(user,transition)
+    when :gifted then gifted(user, transition)
     end
   end
 
@@ -69,13 +69,13 @@ module UserStateTransitionSegmentService
 
   # TODO: change this to gifted(user, transition) and check transition.to to
   # add case for 'gifted_shirt'
-  def gifted(user,transition)
+  def gifted(user, transition)
      if transition.to == 'gifted_shirt'
       segment(user).track('user_gifted_shirt')
       segment(user).identify(
         state: 'gifted_shirt'
       )
-    elsif transition.to == 'gifted_sticker'
+     elsif transition.to == 'gifted_sticker'
       segment(user).track('user_gifted_sticker')
       segment(user).identify(
         state: 'gifted_sticker'
