@@ -105,6 +105,9 @@ class PullRequest < ApplicationRecord
     # PR-specific opt-in
     return true if labelled_accepted?
 
+    # Handle maintainers removing the topic after Oct. 31st
+    return true if PreservedTopicPR.has?(github_id)
+
     repository_topics.select { |topic| topic.strip == 'hacktoberfest' }.any?
   end
 
