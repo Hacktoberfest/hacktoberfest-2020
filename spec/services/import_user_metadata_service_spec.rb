@@ -34,7 +34,8 @@ RSpec.describe ImportUserMetadataService do
         it 'updates the UserStat' do
           ImportUserMetadataService.call(user)
 
-          expect(UserStat.last.data).to eq('test' => 1)
+          # This data also has serialized user data which we're not testing
+          expect(UserStat.last.data['test']).to eq(1)
         end
       end
     end
