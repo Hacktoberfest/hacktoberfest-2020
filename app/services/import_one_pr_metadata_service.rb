@@ -5,6 +5,7 @@ module ImportOnePrMetadataService
 
   def call(url)
     pr_data = client.pull_request(*pull_request_args_from_url(url)).to_hash
+    pr_data[:app] = PullRequest.find_by(gh_id: pr_data[:node_id]).as_json
 
     # using node_id here because that's what we
     # used previously as the pr_id in a PRStat. This way the data is consistent

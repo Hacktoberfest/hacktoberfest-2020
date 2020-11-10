@@ -10,6 +10,7 @@ module ImportUserMetadataService
     api_client = Octokit::Client.new(access_token: access_token)
 
     user_data = api_client.user(user.uid).to_hash
+    user_data[:app] = user.as_json.except('provider_token')
 
     user_stat = UserStat.where(user_id: user.id)
                         .first_or_create(data: user_data)

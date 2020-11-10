@@ -48,7 +48,7 @@ RSpec.describe ImportOnePrMetadataService do
 
         it 'updates the existing pr stat' do
           expect(PRStat.first.data).to eq(
-            'node_id' => 'test', 'data' => 'updated-data'
+            'node_id' => 'test', 'data' => 'updated-data', 'app' => nil
           )
         end
       end
