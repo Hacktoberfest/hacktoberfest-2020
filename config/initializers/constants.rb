@@ -17,7 +17,7 @@ module Hacktoberfest
 
   def api_keys
     @api_keys ||= ENV.fetch('HACKTOBERFEST_API_KEY').split(',').map(&:strip)
-                      .select { |key| key.is_a?(String) && key.length }
+                     .select { |key| key.is_a?(String) && key.length }
   end
 
   def airtable_key_present?
