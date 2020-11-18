@@ -15,6 +15,11 @@ module Hacktoberfest
     @rules_date ||= Time.parse(ENV.fetch('RULES_DATE')).utc
   end
 
+  def api_keys
+    @api_keys ||= ENV.fetch('HACKTOBERFEST_API_KEY').split(',').map(&:strip)
+                      .select { |key| key.is_a?(String) && key.length }
+  end
+
   def airtable_key_present?
     ENV.fetch('AIRTABLE_API_KEY', nil).present?
   end
