@@ -22,6 +22,6 @@ class ApiController < ApplicationController
   end
 
   def valid_authentication?
-    request.headers['Authorization'] == ENV.fetch('HACKTOBERFEST_API_KEY')
+    Hacktoberfest.api_keys.include? request.headers['Authorization']&.strip
   end
 end
