@@ -1,4 +1,4 @@
-name: Rubocop Linter
+name: Linter
 
 on: [pull_request]
 
@@ -18,3 +18,5 @@ jobs:
         gem install bundler bundle-only
         bundle-only lint
         bundle exec rubocop
+    - name: Enforce EditorConfig
+      uses: zbeekman/EditorConfig-Action@28b76e718c351dd35b22c8f7216192bb9de5c21b
